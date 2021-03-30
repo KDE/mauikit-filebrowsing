@@ -8,6 +8,7 @@
 #include "filebrowsing_plugin.h"
 #include "placeslist.h"
 #include "fmlist.h"
+#include "thumbnailer.h"
 
 void FileBrowsingPlugin::registerTypes(const char *uri)
 {
@@ -20,4 +21,12 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileDialog.qml")), uri, 1, 0, "FileDialog");
+}
+
+void FileBrowsingPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
+{
+    Q_UNUSED(uri);
+  
+    /** IMAGE PROVIDERS **/
+    engine->addImageProvider("thumbnailer", new Thumbnailer());
 }

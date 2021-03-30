@@ -10,6 +10,9 @@ set(
     code/fm.cpp
     code/fmlist.cpp
     code/placeslist.cpp
+    code/downloader.cpp
+    code/fileloader.cpp
+    code/thumbnailer.cpp
     resources.qrc
     ${filebrowsing_QM_LOADER}
 )
@@ -19,6 +22,9 @@ set(
     code/fm.h
     code/fmlist.h
     code/placeslist.h
+    code/downloader.h
+    code/fileloader.h
+    code/thumbnailer.h
 )
 
 set(

@@ -14,6 +14,8 @@ class FileBrowsingPlugin : public QQmlExtensionPlugin
 public:
     void registerTypes(const char *uri) override;
 private:
+    void initializeEngine(QQmlEngine *engine, const char *uri) override;
+    
     QString resolveFilePath(const QString &path) const
     {
 #if defined(Q_OS_ANDROID)
