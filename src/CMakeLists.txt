@@ -33,14 +33,13 @@ set(
 )
 
 add_library(
-    filebrowsingplugin
+    MauiKitFileBrowsing
     SHARED
-
     ${sources} ${pluginData}
 )
 
 target_link_libraries(
-    filebrowsingplugin
+    MauiKitFileBrowsing
        
     PRIVATE
         Qt5::Core
@@ -54,10 +53,16 @@ target_link_libraries(
         MauiKit
 )
 
-generate_export_header(filebrowsingplugin BASE_NAME FileBrowsing)
-install(TARGETS filebrowsingplugin EXPORT FileBrowsingTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
+generate_export_header(MauiKitFileBrowsing BASE_NAME FileBrowsing)
+set_target_properties(MauiKitFileBrowsing PROPERTIES
+    VERSION ${FileBrowsing_VERSION_STRING}
+    SOVERSION ${FileBrowsing_SOVERSION}
+    EXPORT_NAME FileBrowsing
+)
 
-target_include_directories(filebrowsingplugin
+install(TARGETS MauiKitFileBrowsing EXPORT FileBrowsingTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+
+target_include_directories(MauiKitFileBrowsing
     INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing>")
 
 if (BUILD_SHARED_LIBS)
@@ -67,7 +72,7 @@ if (BUILD_SHARED_LIBS)
         COMMAND ${CMAKE_COMMAND} -E
                 copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/controls ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
         COMMAND ${CMAKE_COMMAND} -E
-                copy $<TARGET_FILE:filebrowsingplugin> ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
+                copy $<TARGET_FILE:MauiKitFileBrowsing> ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
     )
 
     install(DIRECTORY controls/ DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
@@ -85,4 +90,4 @@ install(FILES
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
 
-install(TARGETS filebrowsingplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing )
+install(TARGETS MauiKitFileBrowsing DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing )

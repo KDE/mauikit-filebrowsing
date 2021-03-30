@@ -1,4 +1,4 @@
 module org.mauikit.filebrowsing
-plugin filebrowsingplugin
+plugin MauiKitFileBrowsing
 classname FileBrowsingPlugin
 typeinfo plugins.qmltypes
