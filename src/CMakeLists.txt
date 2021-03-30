@@ -37,6 +37,9 @@ add_library(
     SHARED
     ${sources} ${pluginData}
 )
+
+add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
+
 generate_export_header(MauiKitFileBrowsing BASE_NAME FileBrowsing)
 set_target_properties(MauiKitFileBrowsing PROPERTIES
     VERSION ${FileBrowsing_VERSION_STRING}
