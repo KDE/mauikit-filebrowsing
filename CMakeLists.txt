@@ -42,15 +42,13 @@ install(FILES
     COMPONENT Devel
 )
 
-if(TARGET FileBrowsing)
     install(EXPORT FileBrowsingTargets
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         FILE FileBrowsingTargets.cmake
         NAMESPACE MauiKit::)
-endif()
         
 ecm_setup_version(${PROJECT_VERSION}
-    VARIABLE_PREFIX TEXTEDITOR
+    VARIABLE_PREFIX FILEBROWSING
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/FileBrowsingConfigVersion.cmake"
     SOVERSION 1
@@ -59,7 +57,7 @@ ecm_setup_version(${PROJECT_VERSION}
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
         DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
         COMPONENT Devel)
-        
+                
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n Config KIO)
 find_package(MauiKit)
