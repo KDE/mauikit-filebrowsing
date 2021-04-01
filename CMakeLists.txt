@@ -29,15 +29,15 @@ include(KDEPackageAppTemplates)
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/MauiKitFileBrowsing")
 
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/FileBrowsingConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/FileBrowsingConfig.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/MauiKitFileBrowsingConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
     PATH_VARS KF5_INCLUDE_INSTALL_DIR CMAKE_INSTALL_PREFIX
 )
 
 install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/FileBrowsingConfigVersion.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/FileBrowsingConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     COMPONENT Devel
 )
@@ -48,9 +48,9 @@ install(FILES
         NAMESPACE MauiKit::)
         
 ecm_setup_version(${PROJECT_VERSION}
-    VARIABLE_PREFIX FILEBROWSING
+    VARIABLE_PREFIX FileBrowsing
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
-    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/FileBrowsingConfigVersion.cmake"
+    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
     SOVERSION 1
 )
 
@@ -60,7 +60,7 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
                 
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n Config KIO)
-find_package(MauiKit)
+find_package(MauiKit REQUIRED)
     
 add_subdirectory(src)
 
