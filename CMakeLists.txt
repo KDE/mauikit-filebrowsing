@@ -44,7 +44,7 @@ install(FILES
 
     install(EXPORT FileBrowsingTargets
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        FILE FileBrowsingTargets.cmake
+        FILE MauiKitFileBrowsingTargets.cmake
         NAMESPACE MauiKit::)
         
 ecm_setup_version(${PROJECT_VERSION}
