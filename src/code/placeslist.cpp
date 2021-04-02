@@ -37,7 +37,7 @@
 #endif
 
 #ifdef COMPONENT_TAGGING
-#include <MauiKit/tagging.h>
+#include <MauiKit/FileTagging/tagging.h>
 #endif
 
 #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
@@ -233,9 +233,13 @@ void PlacesList::setList()
             break;
 
         case FMH::PATHTYPE_KEY::TAGS_PATH:
-            this->list << FMStatic::getTags();
+            
+#ifdef COMPONENT_TAGGING
+            this->list << Tagging::getInstance()->getTags();
+#endif
             break;
-
+            
+            
 #ifdef COMPONENT_ACCOUNTS
         case FMH::PATHTYPE_KEY::CLOUD_PATH:
             this->list << MauiAccounts::instance()->getCloudAccounts();

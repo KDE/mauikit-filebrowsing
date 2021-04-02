@@ -25,7 +25,7 @@
 #endif
 
 #ifdef COMPONENT_TAGGING
-#include <MauiKit/tagging.h>
+#include <MauiKit/FileTagging/tagging.h>
 #endif
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
@@ -166,7 +166,7 @@ void FMList::setList()
 
     switch (this->pathType) {
     case FMList::PATHTYPE::TAGS_PATH:
-        this->assignList(FMStatic::getTagContent(this->path.fileName(), QStringList() << this->filters << FMH::FILTER_LIST[static_cast<FMH::FILTER_TYPE>(this->filterType)]));
+        this->assignList(Tagging::getInstance()->getTagContent(this->path.fileName(), QStringList() << this->filters << FMH::FILTER_LIST[static_cast<FMH::FILTER_TYPE>(this->filterType)]));
         break; // SYNC
 
     case FMList::PATHTYPE::CLOUD_PATH:

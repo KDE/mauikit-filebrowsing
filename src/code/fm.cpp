@@ -20,7 +20,7 @@
 #include "fm.h"
 
 #ifdef COMPONENT_TAGGING
-#include "tagging.h"
+#include <MauiKit/FileTagging/tagging.h>
 #endif
 
 #ifdef COMPONENT_SYNCING

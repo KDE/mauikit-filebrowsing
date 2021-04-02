@@ -9,8 +9,8 @@
 #include <QVector>
 
 #include <MauiKit/fmh.h>
-#include <MauiKit/fmstatic.h>
 
+#include "fmstatic.h"
 #include "filebrowsing_export.h"
 
 #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)

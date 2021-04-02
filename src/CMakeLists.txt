@@ -8,6 +8,7 @@ set(
     sources
     code/filebrowsing_plugin.cpp
     code/fm.cpp
+    code/fmstatic.cpp
     code/fmlist.cpp
     code/placeslist.cpp
     code/downloader.cpp
@@ -20,6 +21,7 @@ set(
 set(
     headers
     code/fm.h
+    code/fmstatic.h
     code/fmlist.h
     code/placeslist.h
     code/downloader.h
@@ -52,6 +54,12 @@ target_include_directories(MauiKitFileBrowsing
     
 target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
 
+if(MauiKitFileTagging_FOUND)
+    message("FOUND MAUIKIT::FILETAGGING")
+    target_link_libraries(MauiKitFileBrowsing PRIVATE MauiKit::FileTagging )
+    add_definitions(-DCOMPONENT_TAGGING)
+endif()
+
 target_link_libraries(
     MauiKitFileBrowsing
        
@@ -67,7 +75,7 @@ target_link_libraries(
         MauiKit
 )
 
-install(TARGETS MauiKitFileBrowsing EXPORT FileBrowsingTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS MauiKitFileBrowsing EXPORT MauiKitFileBrowsingTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
     ${headers} 

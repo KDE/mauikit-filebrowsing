@@ -9,6 +9,7 @@
 #include "placeslist.h"
 #include "fmlist.h"
 #include "thumbnailer.h"
+#include "fmstatic.h"
 
 void FileBrowsingPlugin::registerTypes(const char *uri)
 {
@@ -21,6 +22,12 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileDialog.qml")), uri, 1, 0, "FileDialog");
+    
+        qmlRegisterSingletonType<FMStatic>(uri, 1, 0, "FM", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+            Q_UNUSED(engine)
+            Q_UNUSED(scriptEngine)
+            return new FMStatic;
+        });
 }
 
 void FileBrowsingPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

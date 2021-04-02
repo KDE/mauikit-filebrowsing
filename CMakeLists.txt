@@ -42,7 +42,7 @@ install(FILES
     COMPONENT Devel
 )
 
-    install(EXPORT FileBrowsingTargets
+    install(EXPORT MauiKitFileBrowsingTargets
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         FILE MauiKitFileBrowsingTargets.cmake
         NAMESPACE MauiKit::)
@@ -61,6 +61,7 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n Config KIO)
 find_package(MauiKit REQUIRED)
+find_package(MauiKit OPTIONAL_COMPONENTS FileTagging)
     
 add_subdirectory(src)
 
