@@ -308,7 +308,7 @@ Maui.Page
         visible: String(control.currentPath).startsWith("trash:/")
         icon.name: "trash-empty"
         text: i18n("Empty Trash")
-        onClicked: Maui.FM.emptyTrash()
+        onClicked: FB.FM.emptyTrash()
     }
     
     Loader
@@ -326,7 +326,7 @@ Maui.Page
             id: _removeDialog
            property double freedSpace : calculateFreedSpace(urls)
             title:  i18n("Removing %1 files", urls.length)
-            message: i18n("Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.FM.formatSize(freedSpace)) 
+            message: i18n("Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
             rejectButton.text: i18n("Delete")
             acceptButton.text: i18n("Trash")
             acceptButton.visible: Maui.Handy.isLinux            
@@ -339,13 +339,13 @@ Maui.Page
             
             onRejected:
             {
-                Maui.FM.removeFiles(urls)
+                FB.FM.removeFiles(urls)
                 close()
             }
             
             onAccepted:
             {
-                Maui.FM.moveToTrash(urls)
+                FB.FM.moveToTrash(urls)
                 close()
             }
             
@@ -354,7 +354,7 @@ Maui.Page
                 var size = 0
                 for(var url of urls)
                 {
-                    size += parseFloat(Maui.FM.getFileInfo(url).size)
+                    size += parseFloat(FB.FM.getFileInfo(url).size)
                 }
                 
                 return size
@@ -377,7 +377,7 @@ Maui.Page
                 switch(_newActions.currentIndex)
                 {
                     case 0: control.currentFMList.createDir(text); break;
-                    case 1: Maui.FM.createFile(control.currentPath, text); break;
+                    case 1: FB.FM.createFile(control.currentPath, text); break;
                     
                 }
             }
@@ -422,7 +422,7 @@ Maui.Page
             template.iconSizeHint: Maui.Style.iconSizes.huge
             textEntry.text: item.label
             textEntry.placeholderText: i18n("New name")
-            onFinished: Maui.FM.rename(item.path, textEntry.text)
+            onFinished: FB.FM.rename(item.path, textEntry.text)
             onRejected: close()
             acceptButton.text: i18n("Rename")
             rejectButton.text: i18n("Cancel")
@@ -723,29 +723,29 @@ Maui.Page
                     restoreMode: Binding.RestoreBindingOrValue
                 }
                 
-                Maui.NewTagDialog
-                {
-                    id: _newTagDialog
-                }
+                //Maui.NewTagDialog
+                //{
+                    //id: _newTagDialog
+                //}
                 
-                Maui.FloatingButton
-                {
-                    visible: String(control.currentPath) === "tags:///"
+                //Maui.FloatingButton
+                //{
+                    //visible: String(control.currentPath) === "tags:///"
                     
-                    anchors.right: parent.right
-                    anchors.bottom: parent.bottom
-                    anchors.margins: Maui.Style.toolBarHeight
-                    anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
-                    icon.name : "list-add"
-                    onClicked: _newTagDialog.open()
-                }
+                    //anchors.right: parent.right
+                    //anchors.bottom: parent.bottom
+                    //anchors.margins: Maui.Style.toolBarHeight
+                    //anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
+                    //icon.name : "list-add"
+                    //onClicked: _newTagDialog.open()
+                //}
             }
             
             Menu
             {
                 id: _dropMenu
                 property string urls
-                enabled: Maui.FM.getFileInfo(control.currentPath).isdir == "true"
+                enabled: FB.FM.getFileInfo(control.currentPath).isdir == "true"
                 
                 MenuItem
                 {
@@ -753,7 +753,7 @@ Maui.Page
                     onTriggered:
                     {
                         const urls = _dropMenu.urls.split(",")
-                        Maui.FM.copy(urls, control.currentPath, false)
+                        FB.FM.copy(urls, control.currentPath, false)
                     }
                 }
                 
@@ -763,7 +763,7 @@ Maui.Page
                     onTriggered:
                     {
                         const urls = _dropMenu.urls.split(",")
-                        Maui.FM.cut(urls, control.currentPath)
+                        FB.FM.cut(urls, control.currentPath)
                     }
                 }
                 
@@ -774,7 +774,7 @@ Maui.Page
                     {
                         const urls = _dropMenu.urls.split(",")
                         for(var i in urls)
-                            Maui.FM.createSymlink(urls[i], control.currentPath)
+                            FB.FM.createSymlink(urls[i], control.currentPath)
                     }
                 }
                 
@@ -895,7 +895,7 @@ Maui.Page
                 }
                 else
                 {
-                    Maui.FM.openCloudItem(item)
+                    FB.FM.openCloudItem(item)
                 }
                 break;
             default:
@@ -928,7 +928,7 @@ Maui.Page
      **/
     function openFile(path)
     {
-        Maui.FM.openUrl(path)
+        FB.FM.openUrl(path)
     }
     
     /**
@@ -1022,7 +1022,7 @@ Maui.Page
     {
         for(var i in paths)
         {
-            Maui.FM.bookmark(paths[i])
+            FB.FM.bookmark(paths[i])
         }
     }    
 
@@ -1096,7 +1096,7 @@ Maui.Page
             const uris = selectionBar.uris
             for(var uri of uris)
             {
-                if(Maui.FM.parentDir(uri) === currentPath)
+                if(FB.FM.parentDir(uri) === currentPath)
                 {
                     res.push(uri)
                 }

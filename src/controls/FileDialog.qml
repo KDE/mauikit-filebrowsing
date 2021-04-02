@@ -133,7 +133,7 @@ Maui.Dialog
     onAccepted:
     {
         console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
-        if(control.mode === modes.SAVE && Maui.FM.fileExists(browser.currentPath+"/"+textField.text))
+        if(control.mode === modes.SAVE && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
         {
             _confirmationDialog.open()
         }else
@@ -180,7 +180,7 @@ Maui.Dialog
         {
             onPathChanged: browser.openFolder(path)
             url: browser.currentPath
-            onHomeClicked: browser.openFolder(Maui.FM.homePath())
+            onHomeClicked: browser.openFolder(FB.FM.homePath())
             onPlaceClicked: browser.openFolder(path)
         }
     }
@@ -397,7 +397,7 @@ Maui.Dialog
 
                     selectionBar: _selectionBar
                     settings.viewType: FB.FMList.LIST_VIEW
-                    currentPath: Maui.FM.homePath()
+                    currentPath: FB.FM.homePath()
                     selectionMode: control.mode === modes.OPEN
                     onItemClicked:
                     {

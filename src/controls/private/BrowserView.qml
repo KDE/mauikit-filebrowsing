@@ -159,7 +159,7 @@ Maui.AltBrowser
         property string urls
         property url target
         
-        enabled: Maui.FM.getFileInfo(target).isdir == "true" && !urls.includes(target.toString())
+        enabled: FB.FM.isDir(target) && !urls.includes(target.toString())
         
         MenuItem
         {
@@ -167,7 +167,7 @@ Maui.AltBrowser
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
-                Maui.FM.copy(urls, _dropMenu.target, false)
+                FB.FM.copy(urls, _dropMenu.target, false)
             }
         }
         
@@ -177,7 +177,7 @@ Maui.AltBrowser
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
-                Maui.FM.cut(urls, _dropMenu.target)
+                FB.FM.cut(urls, _dropMenu.target)
             }
         }
         
@@ -188,7 +188,7 @@ Maui.AltBrowser
             {
                 const urls = _dropMenu.urls.split(",")
                 for(var i in urls)
-                    Maui.FM.createSymlink(url[i], _dropMenu.target)
+                    FB.FM.createSymlink(url[i], _dropMenu.target)
             }
         }
         
@@ -224,8 +224,8 @@ Maui.AltBrowser
         iconSource: model.icon
         
         label1.text: model.label ? model.label : ""
-        label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.FM.formatSize(model.size)) : ""
-        label4.text: model.modified ? Maui.FM.formatDate(model.modified, "MM/dd/yyyy") : ""
+        label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+        label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
         
         iconSizeHint : Maui.Style.iconSizes.medium
         imageSizeHint : height * 0.8
@@ -309,7 +309,7 @@ Maui.AltBrowser
         
         ListView.onRemove:
         {
-            if(selectionBar && !Maui.FM.fileExists(delegate.path))
+            if(selectionBar && !FB.FM.fileExists(delegate.path))
             {
                 selectionBar.removeAtUri(delegate.path)
             }
@@ -347,7 +347,7 @@ Maui.AltBrowser
         
         GridView.onRemove:
         {
-            if(selectionBar && !Maui.FM.fileExists(delegate.path))
+            if(selectionBar && !FB.FM.fileExists(delegate.path))
             {
                 selectionBar.removeAtUri(delegate.path)
             }
@@ -397,7 +397,7 @@ Maui.AltBrowser
                 font.pointSize: Maui.Style.fontSizes.tiny
                 horizontalAlignment: Qt.AlignHCenter
                 Layout.fillWidth: true
-                text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.FM.formatSize(model.size)) : ""
+                text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
             }
             
             onClicked:

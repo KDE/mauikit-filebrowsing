@@ -231,7 +231,7 @@ FM::FM(QObject *parent)
 
     const static auto packItems = [](const KFileItemList &items) -> FMH::MODEL_LIST {
         return std::accumulate(items.constBegin(), items.constEnd(), FMH::MODEL_LIST(), [](FMH::MODEL_LIST &res, const KFileItem &item) -> FMH::MODEL_LIST {
-            res << FMH::getFileInfo(item);
+            res << FMStatic::getFileInfo(item);
             return res;
         });
     };
@@ -265,7 +265,7 @@ FM::FM(QObject *parent)
 
         const auto res = std::accumulate(
             items.constBegin(), items.constEnd(), QVector<QPair<FMH::MODEL, FMH::MODEL>>(), [](QVector<QPair<FMH::MODEL, FMH::MODEL>> &list, const QPair<KFileItem, KFileItem> &pair) -> QVector<QPair<FMH::MODEL, FMH::MODEL>> {
-                list << QPair<FMH::MODEL, FMH::MODEL> {FMH::getFileInfo(pair.first), FMH::getFileInfo(pair.second)};
+                list << QPair<FMH::MODEL, FMH::MODEL> {FMStatic::getFileInfo(pair.first), FMStatic::getFileInfo(pair.second)};
                 return list;
             });
 

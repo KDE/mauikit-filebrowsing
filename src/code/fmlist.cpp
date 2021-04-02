@@ -159,6 +159,26 @@ void FMList::clear()
     emit this->postListChanged();
 }
 
+FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &filters)
+{
+    #ifdef COMPONENT_TAGGING
+    
+    if (tag.isEmpty()) {
+        return Tagging::getInstance()->getTags();
+    } else {
+        FMH::MODEL_LIST content;
+        const auto urls = Tagging::getInstance()->getTagUrls(tag, filters, false);
+        for (const auto &url : urls) {
+            content << FMStatic::getFileInfoModel(url);
+        }
+        
+        return content;
+    }
+#endif
+
+return FMH::MODEL_LIST();
+}
+
 void FMList::setList()
 {
     qDebug() << "PATHTYPE FOR URL" << pathType << this->path.toString() << this->filters << this;
@@ -166,7 +186,7 @@ void FMList::setList()
 
     switch (this->pathType) {
     case FMList::PATHTYPE::TAGS_PATH:
-        this->assignList(Tagging::getInstance()->getTagContent(this->path.fileName(), QStringList() << this->filters << FMH::FILTER_LIST[static_cast<FMH::FILTER_TYPE>(this->filterType)]));
+        this->assignList(getTagContent(this->path.fileName(), QStringList() << this->filters << FMH::FILTER_LIST[static_cast<FMH::FILTER_TYPE>(this->filterType)]));
         break; // SYNC
 
     case FMList::PATHTYPE::CLOUD_PATH:

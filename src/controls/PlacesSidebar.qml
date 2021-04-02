@@ -23,6 +23,7 @@ import QtQuick.Layouts 1.3
 
 import org.kde.mauikit 1.3 as Maui
 import org.kde.kirigami 2.6 as Kirigami
+import org.mauikit.filebrowsing 1.0 as FB
 
 Maui.SideBar
 {
@@ -96,10 +97,9 @@ Maui.SideBar
 	{
 		id: placesList
 		groups: [
-		Maui.FMList.PLACES_PATH, 
-//         Maui.FMList.APPS_PATH, 
-        Maui.FMList.BOOKMARKS_PATH, 
-        Maui.FMList.DRIVES_PATH, 
-        Maui.FMList.TAGS_PATH]
+		FB.FMList.PLACES_PATH, 
+        FB.FMList.BOOKMARKS_PATH, 
+        FB.FMList.DRIVES_PATH, 
+        FB.FMList.TAGS_PATH]
 	}
 }

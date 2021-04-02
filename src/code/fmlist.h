@@ -331,7 +331,19 @@ private:
     void sortList();
     void search(const QString &query, const QUrl &path, const bool &hidden = false, const bool &onlyDirs = false, const QStringList &filters = QStringList());
     void filterContent(const QString &query, const QUrl &path);
-    void setStatus(const PathStatus &status);
+    void setStatus(const PathStatus &status);    
+    
+    /**
+     * @brief getTagContent
+     * Gets a model of the files associated with a tag
+     * @param tag
+     * The lookup tag
+     * @param filters
+     * Filters as regular expression
+     * @return
+     * Model of files associated
+     */
+    FMH::MODEL_LIST getTagContent(const QString &tag, const QStringList &filters = {});
 
     FMH::MODEL_LIST list = {{}};
 

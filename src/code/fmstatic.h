@@ -115,39 +115,6 @@ public slots:
     static bool removeDir(const QUrl &path);
 
     /**
-     * @brief formatSize
-     * Format a file size
-     * @param size
-     * size in bytes
-     * @return
-     * Formated into a readable string
-     */
-    static QString formatSize(const int &size);
-
-    /**
-     * @brief formatTime
-     * Format a milliseconds value to a readable format
-     * @param value
-     * Milliseconds
-     * @return
-     * Readable formated value
-     */
-    static QString formatTime(const qint64 &value);
-
-    /**
-     * @brief formatDate
-     * Given a date string, a format and a intended format return a readable string
-     * @param dateStr
-     * Date format
-     * @param format
-     * Intended format, by default "dd/MM/yyyy"
-     * @param initFormat
-     * Date format
-     * @return
-     */
-    static QString formatDate(const QString &dateStr, const QString &format = QString("dd/MM/yyyy"), const QString &initFormat = QString());
-
-    /**
      * @brief homePath
      * The default home path in different systems
      * @return
@@ -164,25 +131,7 @@ public slots:
      */
     static QUrl parentDir(const QUrl &path);
 
-    /**
-     * @brief getDirInfo
-     * Get info of a directory packed as a QVariantMap model
-     * @param path
-     * Path URL
-     * @return
-     */
-    static QVariantMap getDirInfo(const QUrl &path);
-
-    /**
-     * @brief getFileInfo
-     * Get file info
-     * @param path
-     * @return
-     * File info packed as a QVariantMap model
-     */
-    static QVariantMap getFileInfo(const QUrl &path);
-
-    /**
+       /**
      * @brief isDefaultPath
      * Checks if a given path URL is a default path as in returned by the defaultPaths method
      * @param path
@@ -383,6 +332,48 @@ public slots:
      * The file path or file name
      */
     static QString iconName(const QString &value);
+       
+    #if (!defined Q_OS_ANDROID && defined Q_OS_LINUX) || defined Q_OS_WIN
+    
+    /**
+     * @brief getFileInfo
+     * Get file info
+     * @param path
+     * @return
+     * File info packed as a QVariantMap model
+     */
+    static const FMH::MODEL getFileInfo(const KFileItem &kfile);
+    #endif
+    
+    /**
+     * @brief getFileInfoModel
+     * @param path
+     * @return
+     */
+    static const FMH::MODEL getFileInfoModel(const QUrl &path);
+    
+    /**
+     * @brief getFileInfo
+     * @param path
+     * @return
+     */
+    static const QVariantMap getFileInfo(const QUrl &path);
+    
+    /**
+     * @brief getDirInfoModel
+     * @param path
+     * @param type
+     * @return
+     */
+    static const FMH::MODEL getDirInfoModel(const QUrl &path, const QString &type = QString());
+    
+    /**
+     * @brief getDirInfo
+     * @param path
+     * @param type
+     * @return
+     */
+    static const QVariantMap getDirInfo(const QUrl &path);
 };
 
 #endif // FMSTATIC_H

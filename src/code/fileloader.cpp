@@ -1,8 +1,9 @@
 #include "fileloader.h"
+#include "fmstatic.h"
 
 using namespace FMH;
 
-std::function<FMH::MODEL(const QUrl &url)> FileLoader::informer = &FMH::getFileInfoModel;
+std::function<FMH::MODEL(const QUrl &url)> FileLoader::informer = &FMStatic::getFileInfoModel;
 
 FileLoader::FileLoader(QObject *parent)
     : QObject(parent)
