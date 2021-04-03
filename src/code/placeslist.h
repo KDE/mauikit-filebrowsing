@@ -53,7 +53,6 @@ public:
 
 protected:
     void setList();
-    void reset();
 
 public slots:
     /**
@@ -88,6 +87,8 @@ public slots:
     void requestEject (const int &index);
 
     void requestSetup (const int &index);
+    
+    static void addBookmark(const QUrl &url);
 
 private:
     FM *fm;

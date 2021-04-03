@@ -374,3 +374,21 @@ void PlacesList::requestSetup(const int &index)
     }
 #endif
 }
+
+void PlacesList::addBookmark(const QUrl& url)
+{
+    #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
+    // do android stuff until cmake works with android
+    if (isDefaultPath(url.toString()))
+        return;
+    
+        auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
+        bookmarks << url.toString();
+        UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
+    #else
+    KFilePlacesModel model;
+    model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMH::getIconName(url));
+    #endif
+}
+
+

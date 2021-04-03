@@ -1,11 +1,11 @@
 #include "fmstatic.h"
+#include "placeslist.h"
 
 #include <QDesktopServices>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 #include <KCoreDirLister>
 #include <KFileItem>
-#include <KFilePlacesModel>
 #include <KIO/CopyJob>
 #include <KIO/DeleteJob>
 #include <KIO/EmptyTrashJob>
@@ -409,18 +409,7 @@ bool FMStatic::checkFileType(const int &type, const QString &mimeTypeName)
 
 void FMStatic::bookmark(const QUrl &url)
 {
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    // do android stuff until cmake works with android
-    if (isDefaultPath(url.toString()))
-        return;
-
-//     auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
-//     bookmarks << url.toString();
-//     UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
-#else
-    KFilePlacesModel model;
-    model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMH::getIconName(url));
-#endif
+    PlacesList::addBookmark(url);
 }
 
 QStringList FMStatic::nameFilters(const int &type)
