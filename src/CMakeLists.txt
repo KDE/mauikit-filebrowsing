@@ -62,12 +62,6 @@ target_include_directories(MauiKitFileBrowsing
     
 target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
 
-if(MauiKitFileTagging_FOUND)
-    message("FOUND MAUIKIT::FILETAGGING")
-    target_link_libraries(MauiKitFileBrowsing PRIVATE MauiKit::FileTagging )
-    add_definitions(-DCOMPONENT_TAGGING)
-endif()
-
 target_link_libraries(
     MauiKitFileBrowsing
        
