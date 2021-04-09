@@ -18,6 +18,7 @@
 
 #include "placeslist.h"
 #include "fm.h"
+#include "tagging.h"
 
 #include <QEventLoop>
 #include <QFileSystemWatcher>
@@ -34,10 +35,6 @@
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 #include <KFilePlacesModel>
 #include <Solid/Device>
-#endif
-
-#ifdef COMPONENT_TAGGING
-#include <MauiKit/FileTagging/tagging.h>
 #endif
 
 #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
@@ -139,9 +136,7 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMH::P
     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
 #endif
 
-#ifdef COMPONENT_TAGGING
     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "tags:///"}, {FMH::MODEL_KEY::ICON, "tag"}, {FMH::MODEL_KEY::LABEL, "Tags"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
-#endif
 
     return res;
 }
@@ -232,14 +227,10 @@ void PlacesList::setList()
             this->list << getGroup(*this->model, FMH::PATHTYPE_KEY::REMOVABLE_PATH);
             break;
 
-        case FMH::PATHTYPE_KEY::TAGS_PATH:
-            
-#ifdef COMPONENT_TAGGING
+        case FMH::PATHTYPE_KEY::TAGS_PATH:            
             this->list << Tagging::getInstance()->getTags();
-#endif
             break;
-            
-            
+                        
 #ifdef COMPONENT_ACCOUNTS
         case FMH::PATHTYPE_KEY::CLOUD_PATH:
             this->list << MauiAccounts::instance()->getCloudAccounts();

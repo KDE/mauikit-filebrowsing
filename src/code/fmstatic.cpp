@@ -1,5 +1,6 @@
 #include "fmstatic.h"
 #include "placeslist.h"
+#include "tagging.h"
 
 #include <QDesktopServices>
 
@@ -12,10 +13,6 @@
 #include <KIO/MkdirJob>
 #include <KIO/SimpleJob>
 #include <QIcon>
-#endif
-
-#ifdef COMPONENT_TAGGING
-#include <MauiKit/FileTagging/tagging.h>
 #endif
 
 #include <MauiKit/platform.h>
@@ -233,9 +230,7 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
         QFile file(url.toLocalFile());
         file.rename(_where.toLocalFile());
 
-#ifdef COMPONENT_TAGGING
         Tagging::getInstance()->updateUrl(url.toString(), _where.toString());
-#endif
     }
 #else
     QUrl _where = where;
@@ -245,7 +240,6 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
     auto job = KIO::move(urls, _where, KIO::HideProgressInfo);
     job->start();
 
-#ifdef COMPONENT_TAGGING
     for (const auto &url : urls) {
         QUrl where_ = QUrl(where.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
         if (!name.isEmpty())
@@ -254,18 +248,15 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
         Tagging::getInstance()->updateUrl(url.toString(), where_.toString());
     }
 #endif
-#endif
 
     return true;
 }
 
 bool FMStatic::removeFiles(const QList<QUrl> &urls)
 {
-#ifdef COMPONENT_TAGGING
     for (const auto &url : qAsConst(urls)) {
         Tagging::getInstance()->removeUrl(url.toString());
     }
-#endif
 
 #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
 

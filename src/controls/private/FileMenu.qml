@@ -3,7 +3,8 @@ import QtQuick.Controls 2.15
 
 import org.kde.mauikit 1.3 as Maui
 import org.kde.kirigami 2.2 as Kirigami
-import org.mauikit.filetagging 1.3 as FT
+
+import org.mauikit.filebrowsing 1.3 as FB
 
 Maui.ContextualMenu
 {
@@ -81,7 +82,7 @@ Maui.ContextualMenu
         icon.name: "love"
         onTriggered:
         {
-            if(FT.Tagging.toggleFav(item.path))
+            if(FB.Tagging.toggleFav(item.path))
                 control.isFav = !control.isFav
         }
     }
@@ -162,7 +163,7 @@ Maui.ContextualMenu
                 control.index = index
                 control.isDir = item.isdir == true || item.isdir == "true"
                 control.isExec = item.executable == true || item.executable == "true"
-                control.isFav = FT.Tagging.isFav(item.path)
+                control.isFav = FB.Tagging.isFav(item.path)
                 control.open()
             }
     }

@@ -14,6 +14,10 @@ set(
     code/downloader.cpp
     code/fileloader.cpp
     code/thumbnailer.cpp
+       code/tagging.cpp
+        code/tagdb.cpp
+        code/tagslist.cpp
+    code/tagging.qrc
     resources.qrc
     ${filebrowsing_QM_LOADER}
 )
@@ -27,6 +31,10 @@ set(
     code/downloader.h
     code/fileloader.h
     code/thumbnailer.h
+    code/tag.h
+        code/tagging.h
+        code/tagdb.h
+        code/tagslist.h
 )
 
 set(
@@ -68,6 +76,8 @@ target_link_libraries(
         Qt5::Quick
         Qt5::Qml
         Qt5::Sql
+        Qt5::Concurrent
+        Qt5::Network
         KF5::I18n
         KF5::ConfigCore
         KF5::KIOCore

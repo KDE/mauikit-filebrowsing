@@ -13,5 +13,10 @@ SPDX-License-Identifier: LGPL-2.1-or-later
       <file alias="private/BrowserMenu.qml">controls/private/BrowserMenu.qml</file>
       <file alias="private/BrowserHolder.qml">controls/private/BrowserHolder.qml</file>
       <file alias="private/BrowserSettings.qml">controls/private/BrowserSettings.qml</file>
+      <file alias="NewTagDialog.qml">controls/NewTagDialog.qml</file>
+      <file alias="TagsBar.qml">controls/TagsBar.qml</file>
+      <file alias="TagsDialog.qml">controls/TagsDialog.qml</file>
+      <file alias="private/TagList.qml">controls/private/TagList.qml</file>
+      <file alias="private/TagDelegate.qml">controls/private/TagDelegate.qml</file>
   </qresource>
 </RCC>

@@ -18,14 +18,12 @@
 
 #include "fmlist.h"
 #include "fm.h"
+#include "tagging.h"
+
 #include <MauiKit/utils.h>
 
 #ifdef COMPONENT_SYNCING
 #include <MauiKit/syncing.h>
-#endif
-
-#ifdef COMPONENT_TAGGING
-#include <MauiKit/FileTagging/tagging.h>
 #endif
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
@@ -117,7 +115,6 @@ FMList::FMList(QObject *parent)
         }
     });
     
-    #ifdef COMPONENT_TAGGING 
     connect(Tagging::getInstance(), &Tagging::urlTagged, [this](QString, QString tag)
     {
         if(this->path.toString().endsWith(tag))
@@ -133,7 +130,6 @@ FMList::FMList(QObject *parent)
             this->refresh();
         }
     });
-    #endif
 }
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
@@ -160,9 +156,7 @@ void FMList::clear()
 }
 
 FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &filters)
-{
-    #ifdef COMPONENT_TAGGING
-    
+{   
     if (tag.isEmpty()) {
         return Tagging::getInstance()->getTags();
     } else {
@@ -174,9 +168,6 @@ FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &fil
         
         return content;
     }
-#endif
-
-return FMH::MODEL_LIST();
 }
 
 void FMList::setList()

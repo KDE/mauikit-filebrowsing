@@ -58,7 +58,7 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
         DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
         COMPONENT Devel)
                 
-find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql REQUIRED)
+find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Concurrent Network REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n Config KIO)
 find_package(MauiKit REQUIRED)
 find_package(MauiKit OPTIONAL_COMPONENTS FileTagging)

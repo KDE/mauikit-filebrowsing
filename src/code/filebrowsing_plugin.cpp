@@ -11,23 +11,42 @@
 #include "thumbnailer.h"
 #include "fmstatic.h"
 
+#include "tagslist.h"
+#include "tagging.h"
+
 void FileBrowsingPlugin::registerTypes(const char *uri)
 {
 #if defined(Q_OS_ANDROID)
     QResource::registerResource(QStringLiteral("assets:/android_rcc_bundle.rcc"));
-#endif
-
+    #endif
+    
+    //File Browsing components
     qmlRegisterType<PlacesList>(uri, 1, 0, "PlacesList");
     qmlRegisterType<FMList>(uri, 1, 0, "FMList");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileDialog.qml")), uri, 1, 0, "FileDialog");
     
-        qmlRegisterSingletonType<FMStatic>(uri, 1, 0, "FM", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
-            Q_UNUSED(engine)
-            Q_UNUSED(scriptEngine)
-            return new FMStatic;
-        });
+    qmlRegisterSingletonType<FMStatic>(uri, 1, 0, "FM", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+        Q_UNUSED(engine)
+        Q_UNUSED(scriptEngine)
+        return new FMStatic;
+    });    
+    
+    //File Tagging components
+    qmlRegisterSingletonType<Tagging>(uri, 1, 3, "Tagging", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
+        Q_UNUSED(engine)
+        Q_UNUSED(scriptEngine)
+        return Tagging::getInstance();
+    }); //the singleton instance results in having tagging instance created in different threads which is not supported byt the slq driver
+    
+    qmlRegisterType<TagsList>(uri, 1, 0, "TagsListModel");
+    qmlRegisterType(resolveFileUrl(QStringLiteral("private/TagList.qml")), uri, 1, 0, "TagList");
+    qmlRegisterType(resolveFileUrl(QStringLiteral("TagsBar.qml")), uri, 1, 0, "TagsBar");
+    qmlRegisterType(resolveFileUrl(QStringLiteral("TagsDialog.qml")), uri, 1, 0, "TagsDialog");
+    qmlRegisterType(resolveFileUrl(QStringLiteral("NewTagDialog.qml")), uri, 1, 3, "NewTagDialog");
+    
+    //File Syncing components
 }
 
 void FileBrowsingPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
