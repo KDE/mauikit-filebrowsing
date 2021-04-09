@@ -159,7 +159,7 @@ Maui.Dialog
             }
         },
 
-        Maui.TagsBar
+        FB.TagsBar
         {
             id: _tagsBar
             visible: control.mode === modes.SAVE
