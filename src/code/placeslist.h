@@ -19,9 +19,11 @@
 #ifndef PLACESLIST_H
 #define PLACESLIST_H
 
-#include <MauiKit/mauilist.h>
 #include <QObject>
 #include <QModelIndex>
+#include "fmstatic.h"
+
+#include <MauiKit/Core/mauilist.h>
 
 class FM;
 class KFilePlacesModel;
@@ -105,7 +107,7 @@ private:
 
     void setCount();
 
-    FMH::MODEL_LIST getGroup(const KFilePlacesModel &model, const FMH::PATHTYPE_KEY &type);
+    FMH::MODEL_LIST getGroup(const KFilePlacesModel &model, const FMStatic::PATHTYPE_KEY &type);
 
 signals:
     void groupsChanged();

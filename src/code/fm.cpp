@@ -32,6 +32,7 @@
 #include <QLocale>
 #include <QRegularExpression>
 #include <QUrl>
+#include <QDebug>
 
 #if defined(Q_OS_ANDROID)
 #elif defined Q_OS_LINUX
@@ -56,7 +57,7 @@ QDirLister::QDirLister(QObject *parent)
     , m_watcher(new QFileSystemWatcher(this))
 {
     m_loader->setBatchCount(20);
-    m_loader->informer = &FMH::getFileInfoModel;
+    m_loader->informer = &FMStatic::getFileInfoModel;
     connect(m_loader, &FMH::FileLoader::itemsReady, [this](FMH::MODEL_LIST items, QList<QUrl> urls) {
         emit this->itemsReady(items, urls.first());
     });
@@ -81,7 +82,7 @@ QDirLister::QDirLister(QObject *parent)
         const auto fileUrl = QUrl::fromLocalFile(path);
         if (this->includes(fileUrl)) {
             if (FMH::fileExists(fileUrl)) {
-                emit this->refreshItems({{this->m_list.at(this->indexOf(FMH::MODEL_KEY::URL, fileUrl.toString())), FMH::getFileInfoModel(fileUrl)}}, this->m_url);
+                emit this->refreshItems({{this->m_list.at(this->indexOf(FMH::MODEL_KEY::URL, fileUrl.toString())), FMStatic::getFileInfoModel(fileUrl)}}, this->m_url);
             }
         }
     });
@@ -94,7 +95,7 @@ void QDirLister::reviewChanges()
 
     this->m_checking = true;
     auto checkLoader = new FMH::FileLoader;
-    checkLoader->informer = &FMH::getFileInfoModel;
+    checkLoader->informer = &FMStatic::getFileInfoModel;
 
     qDebug() << "Doign the check" << m_checking;
 
@@ -356,20 +357,6 @@ void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDi
         qDebug() << "GETTING PATH CONTENT" << path;
 }
 
-FMH::MODEL_LIST FM::getAppsPath()
-{
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS // for android, windows and mac use this for now
-
-    return FMH::MODEL_LIST();
-#else
-
-    return FMH::MODEL_LIST {FMH::MODEL {{FMH::MODEL_KEY::ICON, "system-run"},
-                                        {FMH::MODEL_KEY::LABEL, FMH::PATHTYPE_LABEL[FMH::PATHTYPE_KEY::APPS_PATH]},
-                                        {FMH::MODEL_KEY::PATH, FMH::PATHTYPE_URI[FMH::PATHTYPE_KEY::APPS_PATH]},
-                                        {FMH::MODEL_KEY::TYPE, FMH::PATHTYPE_LABEL[FMH::PATHTYPE_KEY::PLACES_PATH]}}};
-#endif
-}
-
 bool FM::getCloudServerContent(const QUrl &path, const QStringList &filters, const int &depth)
 {
 #ifdef COMPONENT_SYNCING
@@ -429,13 +416,13 @@ void FM::getCloudItem(const QVariantMap &item)
 QString FM::resolveUserCloudCachePath(const QString &server, const QString &user)
 {
     Q_UNUSED(server)
-    return FMH::CloudCachePath + "opendesktop/" + user;
+    return FMStatic::CloudCachePath + "opendesktop/" + user;
 }
 
 QString FM::resolveLocalCloudPath(const QString &path)
 {
 #ifdef COMPONENT_SYNCING
-    return QString(path).replace(FMH::PATHTYPE_URI[FMH::PATHTYPE_KEY::CLOUD_PATH] + this->sync->getUser(), "");
+    return QString(path).replace(FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::CLOUD_PATH] + this->sync->getUser(), "");
 #else
     return QString();
 #endif

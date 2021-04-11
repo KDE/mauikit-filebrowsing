@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-import org.kde.mauikit 1.3 as Maui
+import org.mauikit.controls 1.3 as Maui
 import org.kde.kirigami 2.2 as Kirigami
 
 import org.mauikit.filebrowsing 1.3 as FB

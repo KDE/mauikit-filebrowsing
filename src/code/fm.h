@@ -6,9 +6,10 @@
 #include <QStorageInfo>
 #include <QStringList>
 #include <QVariantList>
+#include <QDirIterator>
 #include <QVector>
 
-#include <MauiKit/fmh.h>
+#include <MauiKit/Core/fmh.h>
 
 #include "fmstatic.h"
 #include "filebrowsing_export.h"
@@ -149,13 +150,6 @@ public:
     QString resolveLocalCloudPath(const QString &path);
 
     /**
-     * @brief getAppsPath
-     * Gives the path to the applications directory. Missing integration with other system other than GNU Linux
-     * @return
-     */
-    static FMH::MODEL_LIST getAppsPath();
-
-    /**
      * @brief resolveUserCloudCachePath
      * @param server
      * @param user
@@ -183,10 +177,10 @@ signals:
     void cloudItemReady(FMH::MODEL item, QUrl path); // when a item is downloaded and ready
 
     void pathContentReady(QUrl path);
-    void pathContentItemsReady(FMH::PATH_CONTENT list);
+    void pathContentItemsReady(FMStatic::PATH_CONTENT list);
     void pathContentChanged(QUrl path);
     void pathContentItemsChanged(QVector<QPair<FMH::MODEL, FMH::MODEL>> items);
-    void pathContentItemsRemoved(FMH::PATH_CONTENT list);
+    void pathContentItemsRemoved(FMStatic::PATH_CONTENT list);
 
     void warningMessage(QString message);
     void loadProgress(int percent);

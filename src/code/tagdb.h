@@ -36,12 +36,12 @@
 
 #include "tag.h"
 
-#include "mauikit_export.h"
+#include "filebrowsing_export.h"
 
 /**
  * @brief The TAGDB class
  */
-class MAUIKIT_EXPORT TAGDB : public QObject
+class FILEBROWSING_EXPORT TAGDB : public QObject
 {
     Q_OBJECT
 private:

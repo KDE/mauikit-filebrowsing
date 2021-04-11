@@ -3,22 +3,25 @@
 #include "tagging.h"
 
 #include <QDesktopServices>
+#include <QDirIterator>
+#include <QFileInfo>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 #include <KCoreDirLister>
-#include <KFileItem>
 #include <KIO/CopyJob>
 #include <KIO/DeleteJob>
 #include <KIO/EmptyTrashJob>
 #include <KIO/MkdirJob>
 #include <KIO/SimpleJob>
+#include <KConfig>
+#include <KConfigGroup>
+#include <KRun>
+#include <KApplicationTrader>
 #include <QIcon>
 #endif
 
-#include <MauiKit/platform.h>
-
 #ifdef Q_OS_ANDROID
-#include <MauiKit/mauiandroid.h>
+#include <MauiKit/Core/mauiandroid.h>
 #endif
 
 FMStatic::FMStatic(QObject *parent)
@@ -44,7 +47,7 @@ FMH::MODEL_LIST FMStatic::packItems(const QStringList &items, const QString &typ
 
 FMH::MODEL_LIST FMStatic::getDefaultPaths()
 {
-    return FMStatic::packItems(FMH::defaultPaths, FMH::PATHTYPE_LABEL[FMH::PATHTYPE_KEY::PLACES_PATH]);
+    return FMStatic::packItems(FMStatic::defaultPaths, FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::PLACES_PATH]);
 }
 
 FMH::MODEL_LIST FMStatic::search(const QString &query, const QUrl &path, const bool &hidden, const bool &onlyDirs, const QStringList &filters)
@@ -83,7 +86,7 @@ FMH::MODEL_LIST FMStatic::getDevices()
     FMH::MODEL_LIST drives;
 
 #ifdef Q_OS_ANDROID
-    drives << packItems(MAUIAndroid::sdDirs(), FMH::PATHTYPE_LABEL[FMH::PATHTYPE_KEY::DRIVES_PATH]);
+    drives << packItems(MAUIAndroid::sdDirs(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::DRIVES_PATH]);
     return drives;
 #endif
 
@@ -92,7 +95,7 @@ FMH::MODEL_LIST FMStatic::getDevices()
 
 bool FMStatic::isDefaultPath(const QString &path)
 {
-    return FMH::defaultPaths.contains(path);
+    return FMStatic::defaultPaths.contains(path);
 }
 
 QUrl FMStatic::parentDir(const QUrl &path)
@@ -120,7 +123,7 @@ bool FMStatic::isDir(const QUrl &path)
 
 bool FMStatic::isCloud(const QUrl &path)
 {
-    return path.scheme() == FMH::PATHTYPE_SCHEME[FMH::PATHTYPE_KEY::CLOUD_PATH];
+    return path.scheme() == FMStatic::PATHTYPE_SCHEME[FMStatic::PATHTYPE_KEY::CLOUD_PATH];
 }
 
 bool FMStatic::fileExists(const QUrl &path)
@@ -145,7 +148,7 @@ QString FMStatic::fileDir(const QUrl &path) // the directory path of the file
 
 QString FMStatic::homePath()
 {
-    return FMH::HomePath;
+    return FMStatic::HomePath;
 }
 #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
 
@@ -364,7 +367,6 @@ bool FMStatic::createSymlink(const QUrl &path, const QUrl &where)
 
 bool FMStatic::openUrl(const QUrl &url)
 {
-    Platform::instance()->openUrl(url);
     //#ifdef Q_OS_ANDROID
     //    MAUIAndroid::openUrl(url.toString());
     //    return true;
@@ -374,6 +376,11 @@ bool FMStatic::openUrl(const QUrl &url)
     //#elif defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
     //    return QDesktopServices::openUrl(url);
     //#endif
+    
+    const QMimeDatabase mimedb;
+    
+    KRun::runUrl(url, mimedb.mimeTypeForFile(url.toLocalFile()).name(), nullptr, false, KRun::RunFlag::DeleteTemporaryFiles);
+    
     return true;
 }
 
@@ -385,17 +392,81 @@ void FMStatic::openLocation(const QStringList &urls)
 
 const QVariantMap FMStatic::dirConf(const QUrl &path)
 {
-    return FMH::dirConf(path);
+    if (!path.isLocalFile()) {
+        qWarning() << "URL recived is not a local file" << path;
+        return QVariantMap();
+    }
+    
+    if (!fileExists(path))
+        return QVariantMap();
+    
+    QString icon, iconsize, hidden, detailview, showthumbnail, showterminal;
+    
+    uint count = 0, sortby = FMH::MODEL_KEY::MODIFIED, viewType = 0;
+    
+    bool foldersFirst = false;
+    
+    #if defined Q_OS_ANDROID || defined Q_OS_WIN || defined Q_OS_MACOS || defined Q_OS_IOS
+    QSettings file(path.toLocalFile(), QSettings::Format::NativeFormat);
+    file.beginGroup(QString("Desktop Entry"));
+    icon = file.value("Icon").toString();
+    file.endGroup();
+    
+    file.beginGroup(QString("Settings"));
+    hidden = file.value("HiddenFilesShown").toString();
+    file.endGroup();
+    
+    file.beginGroup(QString("MAUIFM"));
+    iconsize = file.value("IconSize").toString();
+    detailview = file.value("DetailView").toString();
+    showthumbnail = file.value("ShowThumbnail").toString();
+    showterminal = file.value("ShowTerminal").toString();
+    count = file.value("Count").toInt();
+    sortby = file.value("SortBy").toInt();
+    foldersFirst = file.value("FoldersFirst").toBool();
+    viewType = file.value("ViewType").toInt();
+    file.endGroup();
+    
+    #else
+    KConfig file(path.toLocalFile());
+    icon = file.entryMap(QString("Desktop Entry"))["Icon"];
+    hidden = file.entryMap(QString("Settings"))["HiddenFilesShown"];
+    iconsize = file.entryMap(QString("MAUIFM"))["IconSize"];
+    detailview = file.entryMap(QString("MAUIFM"))["DetailView"];
+    showthumbnail = file.entryMap(QString("MAUIFM"))["ShowThumbnail"];
+    showterminal = file.entryMap(QString("MAUIFM"))["ShowTerminal"];
+    count = file.entryMap(QString("MAUIFM"))["Count"].toInt();
+    sortby = file.entryMap(QString("MAUIFM"))["SortBy"].toInt();
+    foldersFirst = file.entryMap(QString("MAUIFM"))["FoldersFirst"] == "true" ? true : false;
+    viewType = file.entryMap(QString("MAUIFM"))["ViewType"].toInt();
+    #endif
+    
+    return QVariantMap({{FMH::MODEL_NAME[FMH::MODEL_KEY::ICON], icon.isEmpty() ? "folder" : icon},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::ICONSIZE], iconsize},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::COUNT], count},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::SHOWTERMINAL], showterminal.isEmpty() ? "false" : showterminal},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::SHOWTHUMBNAIL], showthumbnail.isEmpty() ? "false" : showthumbnail},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::DETAILVIEW], detailview.isEmpty() ? "false" : detailview},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::HIDDEN], hidden.isEmpty() ? false : (hidden == "true" ? true : false)},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::SORTBY], sortby},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::FOLDERSFIRST], foldersFirst},
+                       {FMH::MODEL_NAME[FMH::MODEL_KEY::VIEWTYPE], viewType}});
+    
 }
 
 void FMStatic::setDirConf(const QUrl &path, const QString &group, const QString &key, const QVariant &value)
 {
-    FMH::setDirConf(path, group, key, value);
+    FMStatic::setDirConf(path, group, key, value);
 }
 
 bool FMStatic::checkFileType(const int &type, const QString &mimeTypeName)
 {
-    return FMH::checkFileType(static_cast<FMH::FILTER_TYPE>(type), mimeTypeName);
+    return FMStatic::checkFileType(static_cast<FMStatic::FILTER_TYPE>(type), mimeTypeName);
+}
+
+bool FMStatic::checkFileType(const FMStatic::FILTER_TYPE &type, const QString &mimeTypeName)
+{
+    return SUPPORTED_MIMETYPES[type].contains(mimeTypeName);
 }
 
 void FMStatic::bookmark(const QUrl &url)
@@ -405,23 +476,34 @@ void FMStatic::bookmark(const QUrl &url)
 
 QStringList FMStatic::nameFilters(const int &type)
 {
-    return FMH::FILTER_LIST[static_cast<FMH::FILTER_TYPE>(type)];
+    return FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(type)];
 }
 
 QString FMStatic::iconName(const QString &value)
 {
-    return FMH::getIconName(value);
+    return FMStatic::getIconName(value);
+}
+
+const QString FMStatic::getMime(const QUrl &path)
+{
+    if (!path.isLocalFile()) {
+        qWarning() << "URL recived is not a local file, getMime" << path;
+        return QString();
+    }
+    
+    const QMimeDatabase mimedb;
+    return mimedb.mimeTypeForFile(path.toLocalFile()).name();
 }
 
 static const QUrl thumbnailUrl(const QUrl &url, const QString &mimetype)
 {
     #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    if (checkFileType(FMH::FILTER_TYPE::DOCUMENT, mimetype) || FMH::checkFileType(FMH::FILTER_TYPE::VIDEO, mimetype) || url.toString().endsWith(".appimage", Qt::CaseInsensitive)) {
+    if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::DOCUMENT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::VIDEO, mimetype) || url.toString().endsWith(".appimage", Qt::CaseInsensitive)) {
         return QUrl("image://thumbnailer/" + url.toString());
     }
     #endif
     
-    if (checkFileType(FMH::FILTER_TYPE::IMAGE, mimetype)) {
+    if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::IMAGE, mimetype)) {
         return url;
     }
     
@@ -464,7 +546,7 @@ const FMH::MODEL FMStatic::getFileInfoModel(const QUrl &path)
     if (!file.exists())
         return FMH::MODEL();
     
-    const auto mime = FMH::getMime(path);
+    const auto mime = FMStatic::getMime(path);
     res = FMH::MODEL {{FMH::MODEL_KEY::GROUP, file.group()},
     {FMH::MODEL_KEY::OWNER, file.owner()},
     {FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
@@ -489,7 +571,7 @@ const FMH::MODEL FMStatic::getFileInfoModel(const QUrl &path)
     {FMH::MODEL_KEY::THUMBNAIL, thumbnailUrl(path, mime).toString()},
     {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()) : "0"}};
     #else
-    res = getFileInfo(KFileItem(path, KFileItem::MimeTypeDetermination::NormalMimeTypeDetermination));
+    res = FMStatic::getFileInfo(KFileItem(path, KFileItem::MimeTypeDetermination::NormalMimeTypeDetermination));
     #endif
     return res;
 }
@@ -509,4 +591,31 @@ const FMH::MODEL FMStatic::getDirInfoModel(const QUrl &path, const QString &type
 const QVariantMap FMStatic::getDirInfo(const QUrl &path)
 {
     return FMH::toMap(getDirInfoModel(path));
+}
+
+const QString FMStatic::getIconName(const QUrl &path)
+{
+    if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir()) {
+        if (folderIcon.contains(path.toString()))
+            return folderIcon[path.toString()];
+        else {
+            const auto icon = dirConf(QString(path.toString() + "/%1").arg(".directory"))[FMH::MODEL_NAME[FMH::MODEL_KEY::ICON]].toString();
+            return icon.isEmpty() ? "folder" : icon;
+        }
+        
+    } else {
+        #if defined Q_OS_ANDROID || defined Q_OS_MACOS || defined Q_OS_IOS
+        QMimeDatabase mime;
+        const auto type = mime.mimeTypeForFile(path.toString());
+        return type.iconName();
+        #else
+        KFileItem mime(path);
+        return mime.iconName();
+        #endif
+    }
+}
+
+FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
+{
+    return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
 }

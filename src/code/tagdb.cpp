@@ -18,8 +18,9 @@
  */
 
 #include "tagdb.h"
-#include "fmh.h"
+
 #include <QUuid>
+#include <MauiKit/Core/fmh.h>
 
 TAGDB::TAGDB()
     : QObject(nullptr)

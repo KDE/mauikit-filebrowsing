@@ -6,6 +6,7 @@ SPDX-License-Identifier: LGPL-2.1-or-later
 <RCC>
   <qresource prefix="/">
       <file alias="FileBrowser.qml">controls/FileBrowser.qml</file>
+      <file alias="OpenWithDialog.qml">controls/OpenWithDialog.qml</file>      
       <file alias="FileDialog.qml">controls/FileDialog.qml</file>
       <file alias="PlacesListBrowser.qml">controls/FileBrowser.qml</file>
       <file alias="private/FileMenu.qml">controls/private/FileMenu.qml</file>

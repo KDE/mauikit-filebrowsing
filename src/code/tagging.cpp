@@ -21,6 +21,7 @@
 #include <QMimeDatabase>
 
 #include "tagging.h"
+#include "fmstatic.h"
 
 Tagging::Tagging()
     : TAGDB()
@@ -292,12 +293,12 @@ FMH::MODEL_LIST Tagging::getTags(const int &limit)
         const QVariantMap item = tag.toMap();
         const auto label = item.value(FMH::MODEL_NAME[FMH::MODEL_KEY::TAG]).toString();
         
-        data << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMH::PATHTYPE_URI[FMH::PATHTYPE_KEY::TAGS_PATH] + label},
+        data << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + label},
         {FMH::MODEL_KEY::ICON, item.value(FMH::MODEL_NAME[FMH::MODEL_KEY::ICON], "tag").toString()},
         {FMH::MODEL_KEY::MODIFIED, QDateTime::fromString(item.value(FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE]).toString(), Qt::TextDate).toString()},
         {FMH::MODEL_KEY::IS_DIR, "true"},
         {FMH::MODEL_KEY::LABEL, label},
-        {FMH::MODEL_KEY::TYPE, FMH::PATHTYPE_LABEL[FMH::PATHTYPE_KEY::TAGS_PATH]}};
+        {FMH::MODEL_KEY::TYPE, FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::TAGS_PATH]}};
     }
     
     return data;

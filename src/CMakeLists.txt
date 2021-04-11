@@ -18,6 +18,7 @@ set(
         code/tagdb.cpp
         code/tagslist.cpp
     code/tagging.qrc
+    code/openwithmodel.cpp
     resources.qrc
     ${filebrowsing_QM_LOADER}
 )
@@ -35,6 +36,7 @@ set(
         code/tagging.h
         code/tagdb.h
         code/tagslist.h
+        code/openwithmodel.h
 )
 
 set(

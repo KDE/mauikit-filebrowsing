@@ -3,8 +3,8 @@
 
 #include <QObject>
 
-#include <MauiKit/mauilist.h>
-#include <MauiKit/fmh.h>
+#include <MauiKit/Core/mauilist.h>
+#include <MauiKit/Core/fmh.h>
 #include "tag.h"
 
 class Tagging;
