@@ -226,7 +226,7 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
     for (const auto &url : qAsConst(urls)) {
         QUrl _where;
         if (name.isEmpty())
-            _where = QUrl(where.toString() + "/" + FMH::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
+            _where = QUrl(where.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
         else
             _where = QUrl(where.toString() + "/" + name);
 
