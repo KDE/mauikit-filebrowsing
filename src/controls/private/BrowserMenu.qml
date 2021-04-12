@@ -18,9 +18,8 @@ Maui.ContextualMenu
     MenuItem
     {
         icon.name: "document-new"
-        text: i18n("New item")
+        text: i18n("New")
 //         enabled: _optionsButton.enabled
-
         onTriggered: newItem()        
     }
 
