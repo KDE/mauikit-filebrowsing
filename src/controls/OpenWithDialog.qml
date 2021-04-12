@@ -72,7 +72,7 @@ Maui.Dialog
                 id: _openWithList
             }
         }
-
+        
         delegate: Maui.AlternateListItem
         {
             width: ListView.view.width
@@ -81,7 +81,7 @@ Maui.Dialog
     
             Maui.ListItemTemplate
             {
-                isCurrentItem: parent.hovered
+                //isCurrentItem: parent.hovered
                 anchors.fill: parent
                 label1.text: model.label
                 label2.text: model.comment

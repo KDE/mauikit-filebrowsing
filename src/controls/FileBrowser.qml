@@ -24,7 +24,7 @@ import QtQuick.Layouts 1.3
 
 import org.kde.kirigami 2.8 as Kirigami
 import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.0 as FB
+import org.mauikit.filebrowsing 1.3 as FB
 
 import "private" as Private
 
@@ -723,22 +723,22 @@ Maui.Page
                     restoreMode: Binding.RestoreBindingOrValue
                 }
                 
-                //Maui.NewTagDialog
-                //{
-                    //id: _newTagDialog
-                //}
+                FB.NewTagDialog
+                {
+                    id: _newTagDialog
+                }
                 
-                //Maui.FloatingButton
-                //{
-                    //visible: String(control.currentPath) === "tags:///"
+                Maui.FloatingButton
+                {
+                    visible: String(control.currentPath) === "tags:///"
                     
-                    //anchors.right: parent.right
-                    //anchors.bottom: parent.bottom
-                    //anchors.margins: Maui.Style.toolBarHeight
-                    //anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
-                    //icon.name : "list-add"
-                    //onClicked: _newTagDialog.open()
-                //}
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+                    anchors.margins: Maui.Style.toolBarHeight
+                    anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
+                    icon.name : "list-add"
+                    onClicked: _newTagDialog.open()
+                }
             }
             
             Menu
