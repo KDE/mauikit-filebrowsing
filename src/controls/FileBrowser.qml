@@ -741,7 +741,7 @@ Maui.Page
                 }
             }
             
-            Menu
+            Maui.ContextualMenu
             {
                 id: _dropMenu
                 property string urls

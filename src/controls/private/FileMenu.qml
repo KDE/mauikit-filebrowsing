@@ -95,7 +95,6 @@ Maui.ContextualMenu
         onTriggered:
         {
             bookmarkClicked(control.item)
-            close()
         }
     }
 
@@ -109,7 +108,6 @@ Maui.ContextualMenu
         onTriggered:
         {
             copyClicked(control.item)
-            close()
         }
     }
 
@@ -121,7 +119,6 @@ Maui.ContextualMenu
         onTriggered:
         {
             cutClicked(control.item)
-            close()
         }
     }
 
@@ -133,7 +130,6 @@ Maui.ContextualMenu
         onTriggered:
         {
             renameClicked(control.item)
-            close()
         }
     }
 
@@ -145,7 +141,6 @@ Maui.ContextualMenu
         onTriggered:
         {
             removeClicked(control.item)
-            close()
         }
     }
 
