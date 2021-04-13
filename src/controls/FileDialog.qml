@@ -214,7 +214,7 @@ Maui.Dialog
     {
         Layout.fillWidth: true
         Layout.minimumWidth: 100
-        Layout.maximumWidth: 500
+//         Layout.maximumWidth: 500
         Layout.preferredHeight: Maui.Style.iconSizes.big
         sourceComponent: searchBar ? _searchFieldComponent : _pathBarComponent
     }
