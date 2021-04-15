@@ -96,7 +96,7 @@ Maui.Dialog
          template.iconSource: "tag"
          onAccepted: 
          {
-             Maui.Tagging.removeTag(tag)
+             FB.Tagging.removeTag(tag)
              _deleteDialog.close()
          }
          

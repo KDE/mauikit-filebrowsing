@@ -705,7 +705,7 @@ Maui.Page
                 if(drop.urls)
                 {
                     _dropMenu.urls = drop.urls.join(",")
-                    _dropMenu.popup()
+                    _dropMenu.open()
                     control.urlsDropped(drop.urls)
                 }
             }
