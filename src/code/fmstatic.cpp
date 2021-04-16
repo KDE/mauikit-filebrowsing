@@ -456,7 +456,24 @@ const QVariantMap FMStatic::dirConf(const QUrl &path)
 
 void FMStatic::setDirConf(const QUrl &path, const QString &group, const QString &key, const QVariant &value)
 {
-    FMStatic::setDirConf(path, group, key, value);
+    if (!path.isLocalFile()) {
+        qWarning() << "URL recived is not a local file" << path;
+        return;
+    }
+    
+    #if defined Q_OS_ANDROID || defined Q_OS_WIN || defined Q_OS_MACOS || defined Q_OS_IOS
+    QSettings file(path.toLocalFile(), QSettings::Format::IniFormat);
+    file.beginGroup(group);
+    file.setValue(key, value);
+    file.endGroup();
+    file.sync();
+    #else
+    KConfig file(path.toLocalFile(), KConfig::SimpleConfig);
+    auto kgroup = file.group(group);
+    kgroup.writeEntry(key, value);
+    // 		file.reparseConfiguration();
+    file.sync();
+    #endif
 }
 
 bool FMStatic::checkFileType(const int &type, const QString &mimeTypeName)

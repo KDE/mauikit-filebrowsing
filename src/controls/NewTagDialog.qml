@@ -19,8 +19,8 @@ Maui.Dialog
 {
     id: control
 
-    property string currentColor
-    property var defaultColors : ["#4DD0E1", "#64B5F6", "#9575CD", "#F06292", "#81C784", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
+    property alias currentColor : _colorsRow.currentColor
+    readonly property var defaultColors : ["#4DD0E1", "#64B5F6", "#9575CD", "#F06292", "#81C784", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
 
     entryField: true
     spacing: Maui.Style.space.big
@@ -42,46 +42,11 @@ Maui.Dialog
     page.margins: Maui.Style.space.big
     
     page.footerBackground.color: "transparent"
-    footBar.leftContent: Repeater
+    footBar.leftContent: Maui.ColorsRow
     {
-        model: control.defaultColors
-        MouseArea
-        {
-            readonly property bool checked : control.currentColor === modelData
-            implicitHeight: Maui.Style.iconSizes.medium
-            implicitWidth: implicitHeight
-            
-            onClicked: control.currentColor = modelData
-            
-            Rectangle
-            {
-                anchors.fill: parent
-                radius: height/2
-                color: modelData             
-                
-                Kirigami.Icon
-                {
-                    visible: opacity > 0
-                    color: "white"
-                    anchors.centerIn: parent
-                    height: checked ? Math.round(parent.height * 0.9) : 0
-                    width: height
-                    opacity: checked ? 1 : 0
-                    isMask: true
-                    
-                    source: "qrc:/assets/checkmark.svg"
-                    
-                    Behavior on opacity
-                    {
-                        NumberAnimation
-                        {
-                            duration: Kirigami.Units.shortDuration
-                            easing.type: Easing.InOutQuad
-                        }
-                    }
-                }
-            }
-        }    
+        id: _colorsRow
+        colors: control.defaultColors
+        onColorPicked: currentColor = color
     }
     
     Flow
