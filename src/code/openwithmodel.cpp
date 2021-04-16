@@ -42,11 +42,13 @@ void OpenWithModel::openWith(const int& index)
     {
         return;
     }
-    
+#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
     KService service(this->m_list[index][FMH::MODEL_KEY::EXECUTABLE]);
     KRun::runApplication(service, QUrl::fromStringList(m_urls), nullptr);
+#endif
 }
 
+#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 static FMH::MODEL createActionItem(const QExplicitlySharedDataPointer< KService > &service)
 {
     FMH::MODEL map 
@@ -61,6 +63,7 @@ static FMH::MODEL createActionItem(const QExplicitlySharedDataPointer< KService 
     
     return map;
 }
+#endif
 
 void OpenWithModel::setList()
 {

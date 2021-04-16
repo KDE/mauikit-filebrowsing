@@ -64,6 +64,19 @@ target_include_directories(MauiKitFileBrowsing
     
 target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
 
+if(ANDROID)
+    target_link_libraries(MauiKitFileBrowsing PRIVATE Qt5::AndroidExtras )
+
+else()
+    target_link_libraries(
+        MauiKitFileBrowsing
+
+        PRIVATE
+            KF5::KIOCore
+            KF5::KIOFileWidgets
+    )
+endif()
+
 target_link_libraries(
     MauiKitFileBrowsing
        
@@ -76,8 +89,7 @@ target_link_libraries(
         Qt5::Network
         KF5::I18n
         KF5::ConfigCore
-        KF5::KIOCore
-        KF5::KIOFileWidgets
+#        KF5::CoreAddons
         MauiKit
 )
 

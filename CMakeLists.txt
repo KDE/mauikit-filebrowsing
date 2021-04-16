@@ -55,11 +55,18 @@ ecm_setup_version(${PROJECT_VERSION}
 )
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
-        DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
-        COMPONENT Devel)
-                
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
+    COMPONENT Devel)
+
+if(ANDROID)
+    find_package(Qt5 REQUIRED COMPONENTS AndroidExtras)
+    find_package(Gradle REQUIRED)
+else()
+    find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS KIO)
+endif()
+
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Concurrent Network REQUIRED)
-find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n Config KIO)
+find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n Config CoreAddons)
 find_package(MauiKit)
     
 add_subdirectory(src)
