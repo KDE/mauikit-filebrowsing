@@ -44,6 +44,9 @@ set(
     controls/qmldir
 )
 
+ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
+                      DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+
 add_library(
     MauiKitFileBrowsing
     SHARED
