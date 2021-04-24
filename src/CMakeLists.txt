@@ -92,7 +92,7 @@ target_link_libraries(
         Qt5::Network
         KF5::I18n
         KF5::ConfigCore
-#        KF5::CoreAddons
+       #KF5::FileMetaData
         MauiKit
 )
 

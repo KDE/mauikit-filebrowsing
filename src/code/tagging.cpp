@@ -19,7 +19,7 @@
 
 #include <QCoreApplication>
 #include <QMimeDatabase>
-
+// #include <KFileMetaData/UserMetaData>
 #include "tagging.h"
 #include "fmstatic.h"
 
@@ -132,6 +132,10 @@ bool Tagging::tagUrl(const QString &url, const QString &tag, const QString &colo
     {
         qDebug() << "tagging url" << url <<tag;
         emit this->urlTagged(url, myTag);
+        
+//         auto fileMetaData = KFileMetaData::UserMetaData(QUrl::fromUserInput(url).toLocalFile());        
+//         fileMetaData.setTags({tag});
+        
         return true;
     }
     

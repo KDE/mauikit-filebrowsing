@@ -77,7 +77,6 @@ struct NavHistory {
             return this->prev_history.at(0);
 
         this->post_history.append(this->prev_history.takeLast());
-
         return this->prev_history.takeLast();
     }
 

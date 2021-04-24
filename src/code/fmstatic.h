@@ -299,12 +299,10 @@ public:
         HomePath,
         DesktopPath,
         DocumentsPath,
+        DownloadsPath,   
+        MusicPath,        
         PicturesPath,
-        MusicPath,
-        VideosPath,
-        DownloadsPath,
-        RootPath,
-        TrashPath
+        VideosPath
     };
 
 #endif
