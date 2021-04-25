@@ -75,9 +75,10 @@ elseif(UNIX)
         MauiKitFileBrowsing
 
         PRIVATE
-            KF5::KIOCore
-            KF5::KIOFileWidgets
-    )
+        KF5::ConfigCore
+        KF5::KIOCore
+        KF5::KIOFileWidgets
+        )
 endif()
 
 target_link_libraries(
@@ -91,8 +92,6 @@ target_link_libraries(
         Qt5::Concurrent
         Qt5::Network
         KF5::I18n
-        KF5::ConfigCore
-       #KF5::FileMetaData
         MauiKit
 )
 
