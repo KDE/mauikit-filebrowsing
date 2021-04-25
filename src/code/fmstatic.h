@@ -628,7 +628,7 @@ public slots:
      */
     static QString iconName(const QString &value);
 
-#if (!defined Q_OS_ANDROID && defined Q_OS_LINUX) || defined Q_OS_WIN
+#if (!defined Q_OS_ANDROID && defined Q_OS_LINUX)
     /**
      * @brief getFileInfo
      * Get file info

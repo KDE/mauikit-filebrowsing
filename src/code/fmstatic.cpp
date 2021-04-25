@@ -519,7 +519,7 @@ static const QUrl thumbnailUrl(const QUrl &url, const QString &mimetype)
     return QUrl();
 }
 
-#if (!defined Q_OS_ANDROID && defined Q_OS_LINUX) || defined Q_OS_WIN
+#if (!defined Q_OS_ANDROID && defined Q_OS_LINUX)
 const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
 {
     return FMH::MODEL {{FMH::MODEL_KEY::LABEL, kfile.name()},
@@ -613,7 +613,7 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
                 }
 
             } else {
-#if defined Q_OS_ANDROID || defined Q_OS_MACOS || defined Q_OS_IOS
+#if defined Q_OS_ANDROID || defined Q_OS_MACOS || defined Q_OS_IOS || defined Q_OS_WIN
                 QMimeDatabase mime;
                 const auto type = mime.mimeTypeForFile(path.toString());
                 return type.iconName();

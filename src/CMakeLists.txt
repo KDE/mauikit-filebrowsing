@@ -70,7 +70,7 @@ target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE
 if(ANDROID)
     target_link_libraries(MauiKitFileBrowsing PRIVATE Qt5::AndroidExtras )
 
-else()
+elseif(UNIX)
     target_link_libraries(
         MauiKitFileBrowsing
 
