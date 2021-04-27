@@ -40,93 +40,98 @@ Maui.Dialog
      * tagsReady :
      */
     signal tagsReady(var tags)
-    closeButton.visible: false
+
+    closeButtonVisible: false
     defaultButtons: true
-        maxHeight: 500
-        maxWidth: 400
-        page.margins: 0
-        
-        acceptButton.text: i18n("Save")
-        rejectButton.text: i18n("Cancel")
-        
-        onAccepted: setTags()
-        onRejected: close()
-        
-        headBar.visible: true
-        
-        headBar.middleContent: Maui.TextField
+
+    hint: 1
+
+    maxHeight: 500
+    maxWidth: 400
+
+    page.margins: 0
+
+    acceptButton.text: i18n("Save")
+    rejectButton.text: i18n("Cancel")
+
+    onAccepted: setTags()
+    onRejected: close()
+
+    headBar.visible: true
+
+    headBar.middleContent: Maui.TextField
+    {
+        id: tagText
+        Layout.fillWidth: true
+        Layout.maximumWidth: 500
+        placeholderText: i18n("Filter or add a new tag")
+        //             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
+        onAccepted:
         {
-            id: tagText
-            Layout.fillWidth: true
-            Layout.maximumWidth: 500
-            placeholderText: i18n("Filter or add a new tag")
-//             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
-            onAccepted:
+            const tags = tagText.text.split(",")
+            for(var i in tags)
             {
-                const tags = tagText.text.split(",")
-                for(var i in tags)
-                {
-                    const myTag = tags[i].trim()
-                    _tagsList.insert(myTag)
-                    tagListComposer.list.append(myTag)
-                }
-                clear()
-                _tagsModel.filter = ""
+                const myTag = tags[i].trim()
+                _tagsList.insert(myTag)
+                tagListComposer.list.append(myTag)
             }
-            
-            onTextChanged:
-            {
-                _tagsModel.filter = text
-            }
+            clear()
+            _tagsModel.filter = ""
         }
-        
-        FB.NewTagDialog
+
+        onTextChanged:
         {
-            id: _newTagDialog
+            _tagsModel.filter = text
         }
-        
-        Maui.Dialog
+    }
+
+    FB.NewTagDialog
+    {
+        id: _newTagDialog
+    }
+
+    Maui.Dialog
+    {
+        id: _deleteDialog
+
+        page.margins: Maui.Style.space.big
+        property string tag
+        title: i18n("Delete %1", tag)
+        message: i18n("Are you sure you want to delete this tag? This action can not be undone.")
+        template.iconSource: "tag"
+        onAccepted:
         {
-         id: _deleteDialog
-         
-         page.margins: Maui.Style.space.big
-         property string tag
-         title: i18n("Delete %1", tag)
-         message: i18n("Are you sure you want to delete this tag? This action can not be undone.")
-         template.iconSource: "tag"
-         onAccepted: 
-         {
-             FB.Tagging.removeTag(tag)
-             _deleteDialog.close()
-         }
-         
-         onRejected: _deleteDialog.close()         
+            FB.Tagging.removeTag(tag)
+            _deleteDialog.close()
         }
-        
-        Maui.ContextualMenu
+
+        onRejected: _deleteDialog.close()
+    }
+
+    Maui.ContextualMenu
+    {
+        id: _menu
+
+        MenuItem
         {
-            id: _menu
-            
-            MenuItem
-            {
             text: i18n("Edit")
             icon.name: "document-edit"
-            }
-            
-            MenuItem
+        }
+
+        MenuItem
+        {
+            text: i18n("Delete")
+            icon.name: "delete"
+            onTriggered:
             {
-                text: i18n("Delete")
-                icon.name: "delete"
-                onTriggered:
-                {
-                    _deleteDialog.tag = _tagsModel.get(_listView.currentIndex).tag
-                    _deleteDialog.open()
-                }
+                _deleteDialog.tag = _tagsModel.get(_listView.currentIndex).tag
+                _deleteDialog.open()
             }
         }
-        
-        stack: [
-     
+    }
+
+    stack: [
+
         Maui.ListBrowser
         {
             id: _listView
@@ -179,7 +184,7 @@ Maui.Dialog
                     _listView.currentIndex = index
                     if(Maui.Handy.singleClick)
                     {
-                        tagListComposer.list.appendItem(_tagsList.get(_listView.currentIndex))                        
+                        tagListComposer.list.appendItem(_tagsList.get(_listView.currentIndex))
                     }
                 }
                 
@@ -188,19 +193,19 @@ Maui.Dialog
                     _listView.currentIndex = index
                     if(!Maui.Handy.singleClick)
                     {
-                        tagListComposer.list.appendItem(_tagsList.get(_listView.currentIndex))                        
+                        tagListComposer.list.appendItem(_tagsList.get(_listView.currentIndex))
                     }
                 }
                 
                 onPressAndHold:
                 {
-                    _listView.currentIndex = index                    
+                    _listView.currentIndex = index
                     _menu.open()
                 }
                 
                 onRightClicked:
                 {
-                    _listView.currentIndex = index                    
+                    _listView.currentIndex = index
                     _menu.open()
                 }
             }
@@ -245,7 +250,7 @@ Maui.Dialog
                         anchors.rightMargin: Maui.Style.space.tiny
                         radius: Maui.Style.radiusV
                         color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
-                        border.color: Kirigami.Theme.backgroundColor                    
+                        border.color: Kirigami.Theme.backgroundColor
                     }
                     
                     Rectangle
@@ -255,7 +260,7 @@ Maui.Dialog
                         border.color: Kirigami.Theme.backgroundColor
                         
                         radius: Maui.Style.radiusV
-                        color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))        
+                        color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
                         
                         Maui.GridItemTemplate
                         {
@@ -264,43 +269,43 @@ Maui.Dialog
                             iconSizeHint: height
                             
                             iconSource: _info.iconSource
-                            imageSource:  _info.imageSource                 
+                            imageSource:  _info.imageSource
                         }
                     }
                 }
             }
-        }       
-        ]
-        
-        page.footer: FB.TagList
-        {
-            id: tagListComposer
-            width: parent.width
-            visible: count > 0
-           
-            onTagRemoved: list.remove(index)
-            placeholderText: i18n("No tags yet.")
         }
-        
-        onClosed:
-        {
-            composerList.urls = []
-            tagText.clear()
-            _tagsModel.filter = ""
-        }
-        
-        onOpened: tagText.forceActiveFocus()
-        
-        /**
-         * 
+    ]
+
+    page.footer: FB.TagList
+    {
+        id: tagListComposer
+        width: parent.width
+        visible: count > 0
+
+        onTagRemoved: list.remove(index)
+        placeholderText: i18n("No tags yet.")
+    }
+
+    onClosed:
+    {
+        composerList.urls = []
+        tagText.clear()
+        _tagsModel.filter = ""
+    }
+
+    onOpened: tagText.forceActiveFocus()
+
+    /**
+         *
          */
-        function setTags()
-        {
-            var tags = []
-            
-            for(var i = 0; i < tagListComposer.count; i++)
-                tags.push(tagListComposer.list.get(i).tag)
-                control.tagsReady(tags)
-                close()
-        }
+    function setTags()
+    {
+        var tags = []
+
+        for(var i = 0; i < tagListComposer.count; i++)
+            tags.push(tagListComposer.list.get(i).tag)
+        control.tagsReady(tags)
+        close()
+    }
 }

@@ -22,6 +22,8 @@ import QtQml 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.3
 
+import Qt.labs.settings 1.0
+
 import org.kde.kirigami 2.8 as Kirigami
 import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
@@ -173,6 +175,7 @@ Maui.Page
     */
     property alias dialog : dialogLoader.item
     
+       
     //signals
     /*!
       An item was clicked.
@@ -229,7 +232,7 @@ Maui.Page
     floatingFooter: false
     
     showTitle: false
-    headBar.visible: false
+    headBar.visible: control.settings.searchBarVisible
     headBar.leftContent: ToolButton
     {
         text: i18n("Back")
@@ -606,7 +609,7 @@ Maui.Page
             //Shortcut for opening filtering
             if((event.key === Qt.Key_F) && (event.modifiers & Qt.ControlModifier))
             {
-                control.headBar.visible = !control.headBar.visible
+                control.settings.searchBarVisible = !control.settings.searchBarVisible
                 _searchField.forceActiveFocus()
             }
             
@@ -1028,14 +1031,14 @@ Maui.Page
 
     function toggleSearchBar() //only opens the searchbar toolbar, not the search view page
     {
-        if(control.headBar.visible)
+        if(control.settings.searchBarVisible)
         {
-            control.headBar.visible = false
+            control.settings.searchBarVisible = false
             quitSearch()
             _browser.forceActiveFocus()
         }else
         {
-            control.headBar.visible = true
+            control.settings.searchBarVisible = true
            _searchField.forceActiveFocus()
         }
     }
@@ -1049,7 +1052,7 @@ Maui.Page
         {
             _stackView.push(_searchBrowserComponent, StackView.Immediate)
         }
-        control.headBar.visible = true
+        control.settings.searchBarVisible = true
         _searchField.forceActiveFocus()
     }
     

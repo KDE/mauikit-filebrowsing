@@ -23,6 +23,8 @@
 #include "tagging.h"
 #include "fmstatic.h"
 
+Tagging *Tagging::m_instance = nullptr;
+
 Tagging::Tagging()
     : TAGDB()
 {

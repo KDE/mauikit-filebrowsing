@@ -28,7 +28,7 @@ Maui.Dialog
     title: i18n("New tags")
     message: i18n("Create new tags to organize your files. You can create multiple tags separate by a comma.")
 
-    closeButton.visible: false
+    closeButtonVisible: false
     
     acceptButton.text: i18n("Add")
     rejectButton.text: i18n("Cancel")

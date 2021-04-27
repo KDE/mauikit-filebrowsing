@@ -30,6 +30,7 @@
 
 #define MAX_LIMIT 9999
 
+
 /**
  * @brief The Tagging class
  * Provides quick methods to access and modify the tags associated to files.
@@ -52,8 +53,8 @@ public:
             qWarning() << "Can not get Tagging instance from a thread different than the mian one  " << QThread::currentThread() << qApp->thread();
             return nullptr;
         }
-        static Tagging tag;
-        return &tag;
+        m_instance = new Tagging;
+        return m_instance;
     }
 
     
@@ -335,6 +336,8 @@ public slots:
     bool removeTagToUrl(const QString tag, const QUrl &url);    
 
 private:
+    static Tagging *m_instance;
+    
     Tagging();
     Tagging(const Tagging &) = delete;
     Tagging &operator=(const Tagging &) = delete;
