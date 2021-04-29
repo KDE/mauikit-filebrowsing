@@ -53,6 +53,10 @@ public:
             qWarning() << "Can not get Tagging instance from a thread different than the mian one  " << QThread::currentThread() << qApp->thread();
             return nullptr;
         }
+
+        if (m_instance)
+            return m_instance;
+
         m_instance = new Tagging;
         return m_instance;
     }
