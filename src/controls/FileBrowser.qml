@@ -685,7 +685,7 @@ Maui.Page
         {
             browserMenu.show(control)
         }
-    }
+    }   
     
     StackView
     {

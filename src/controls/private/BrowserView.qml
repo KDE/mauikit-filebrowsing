@@ -147,6 +147,15 @@ Maui.AltBrowser
         browser: _commonFMList
     }
     
+    ProgressBar
+    {
+        id: _scanningProgress
+        width: parent.width
+        anchors.bottom: parent.bottom
+        indeterminate: true
+        visible: _commonFMList.status.code === FB.PathStatus.LOADING
+    }
+    
     holder.visible: _holder.visible
     holder.emoji: _holder.emoji
     holder.title: _holder.title
@@ -358,7 +367,7 @@ Maui.AltBrowser
             id: delegate
             readonly property string path : model.path
             
-            iconSizeHint: height * 0.4
+            iconSizeHint: height * 0.5
             imageSource: settings.showThumbnails ? model.thumbnail : ""
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
@@ -389,16 +398,16 @@ Maui.AltBrowser
                 visible: (model.issymlink == true) || (model.issymlink == "true")
             }
             
-            template.content: Label
-            {
-                visible: delegate.height > 100
-                opacity: 0.5
-                color: Kirigami.Theme.textColor
-                font.pointSize: Maui.Style.fontSizes.tiny
-                horizontalAlignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
-            }
+            //template.content: Label
+            //{
+                //visible: delegate.height > 100
+                //opacity: 0.5
+                //color: Kirigami.Theme.textColor
+                //font.pointSize: Maui.Style.fontSizes.tiny
+                //horizontalAlignment: Qt.AlignHCenter
+                //Layout.fillWidth: true
+                //text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+            //}
             
             onClicked:
             {

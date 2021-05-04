@@ -27,13 +27,12 @@
 
 class FM;
 
-enum STATUS_CODE : uint_fast8_t { LOADING, ERROR, READY };
 
 /**
  * @brief The PathStatus class
  * Represents the status of a directory, be it non existance, loading or empty.
  */
-class PathStatus
+struct PathStatus
 {
     Q_GADGET
 
@@ -43,8 +42,12 @@ class PathStatus
     Q_PROPERTY(QString icon MEMBER m_icon)
     Q_PROPERTY(bool empty MEMBER m_empty)
     Q_PROPERTY(bool exists MEMBER m_exists)
-
+    
+    
 public:
+    enum STATUS_CODE : uint_fast8_t { LOADING, ERROR, READY };
+    Q_ENUM(STATUS_CODE)
+    
     STATUS_CODE m_code;
     QString m_title;
     QString m_message;
@@ -108,7 +111,7 @@ class FMList : public MauiList
     Q_PROPERTY(QString pathName READ getPathName NOTIFY pathNameChanged FINAL)
     Q_PROPERTY(FMList::PATHTYPE pathType READ getPathType NOTIFY pathTypeChanged FINAL)
 
-    Q_PROPERTY(PathStatus status READ getStatus NOTIFY statusChanged FINAL)
+    Q_PROPERTY(PathStatus status READ getStatus NOTIFY statusChanged)
 
     Q_PROPERTY(QUrl parentPath READ getParentPath NOTIFY pathChanged)
 
@@ -161,8 +164,9 @@ public:
         LIST_VIEW
     };
     Q_ENUM(VIEW_TYPE)
-
-    Q_ENUM(STATUS_CODE)
+/*
+    enum STATUS : uint_fast8_t { LOADING = STATUS_CODE::LOADING, ERROR = STATUS_CODE::ERROR, READY = STATUS_CODE::READY };*/
+    
 
     /**
      * @brief FMList

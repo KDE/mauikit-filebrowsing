@@ -50,7 +50,7 @@ FMList::FMList(QObject *parent)
     connect(this->fm, &FM::pathContentReady, [&](QUrl) {
         emit this->preListChanged();
         this->sortList();
-        this->setStatus({STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
+        this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
         emit this->postListChanged();
     });
 
@@ -78,7 +78,7 @@ FMList::FMList(QObject *parent)
             return;
 
         if (!FMH::fileExists(res.path)) {
-            this->setStatus({STATUS_CODE::ERROR, "Error", "This URL cannot be listed", "documentinfo", true, false});
+            this->setStatus({PathStatus::STATUS_CODE::ERROR, "Error", "This URL cannot be listed", "documentinfo", true, false});
             return;
         }
 
@@ -89,7 +89,7 @@ FMList::FMList(QObject *parent)
             this->remove(index);
         }
 
-        this->setStatus({STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
+        this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
     });
 
     connect(this->fm, &FM::warningMessage, [&](const QString &message) {
@@ -137,7 +137,7 @@ void FMList::assignList(const FMH::MODEL_LIST &list)
     emit this->preListChanged();
     this->list = list;
     this->sortList();
-    this->setStatus({STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
+    this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
     emit this->postListChanged();
 }
 
@@ -187,7 +187,7 @@ void FMList::setList()
     default: {
         const bool exists = this->path.isLocalFile() ? FMH::fileExists(this->path) : true;
         if (!exists)
-            this->setStatus({STATUS_CODE::ERROR, "Error", "This URL cannot be listed", "documentinfo", this->list.isEmpty(), exists});
+            this->setStatus({PathStatus::STATUS_CODE::ERROR, "Error", "This URL cannot be listed", "documentinfo", this->list.isEmpty(), exists});
         else {
             this->fm->getPathContent(this->path, this->hidden, this->onlyDirs, QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)]);
         }
@@ -345,7 +345,7 @@ void FMList::setPath(const QUrl &path)
     this->path = path_;
     m_navHistory.appendPath(this->path);
 
-    this->setStatus({STATUS_CODE::LOADING, "Loading content", "Almost ready!", "view-refresh", true, false});
+    this->setStatus({PathStatus::STATUS_CODE::LOADING, "Loading content", "Almost ready!", "view-refresh", true, false});
 
     const auto __scheme = this->path.scheme();
     this->pathName = QDir(this->path.toLocalFile()).dirName();

@@ -40,8 +40,12 @@ import org.mauikit.filebrowsing 1.0 as FB
 Maui.Dialog
 {
     id: control
+    
     maxHeight: Kirigami.Settings.isMobile ? parent.height * 0.95 : 500
     maxWidth: 700
+    
+    hint: 1
+    
     page.padding: 0
     closeButtonVisible: false
     

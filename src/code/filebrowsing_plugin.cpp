@@ -26,6 +26,7 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     
     //File Browsing components
     qmlRegisterType<PlacesList>(uri, 1, 0, "PlacesList");
+    qmlRegisterUncreatableType<PathStatus>(uri, 1, 0, "PathStatus", "cannot be created :: PathStatus"); 
     qmlRegisterType<FMList>(uri, 1, 0, "FMList");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
