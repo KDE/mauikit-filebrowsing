@@ -376,7 +376,7 @@ Maui.AltBrowser
             anchors.fill: parent
             anchors.margins: Maui.Style.space.medium
             padding: Maui.Style.space.tiny
-            isCurrentItem: parent.isCurrentItem
+            isCurrentItem: parent.isCurrentItem || checked
             tooltipText: model.path
             checkable: control.selectionMode
             checked: (selectionBar ? selectionBar.contains(model.path) : false)
