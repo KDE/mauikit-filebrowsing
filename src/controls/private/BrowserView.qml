@@ -162,7 +162,7 @@ Maui.AltBrowser
     holder.body: _holder.body
     holder.emojiSize: _holder.emojiSize
     
-    Menu
+    Maui.ContextualMenu
     {
         id: _dropMenu
         property string urls
@@ -313,7 +313,7 @@ Maui.AltBrowser
         {
             _dropMenu.urls = drop.urls.join(",")
             _dropMenu.target = model.path
-            _dropMenu.popup()
+            _dropMenu.open()
         }
         
         ListView.onRemove:
@@ -457,7 +457,7 @@ Maui.AltBrowser
             {
                 _dropMenu.urls = drop.urls.join(",")
                 _dropMenu.target = model.path
-                _dropMenu.popup()
+                _dropMenu.open()
             }
             
             Connections
