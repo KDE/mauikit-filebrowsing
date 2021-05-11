@@ -30,6 +30,7 @@
 #include <KIO/EmptyTrashJob>
 #endif
 
+#include <QHash>
 #include <QFuture>
 #include <QObject>
 #include <QThread>
@@ -228,61 +229,61 @@ void FMList::setSortBy(const FMList::SORTBY &key)
 void FMList::sortList()
 {
     const FMH::MODEL_KEY key = static_cast<FMH::MODEL_KEY>(this->sort);
-    auto index = 0;
+    auto it = this->list.begin();
 
-    if (this->foldersFirst) {
-        qSort(this->list.begin(), this->list.end(), [](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
-            Q_UNUSED(e2)
-            const auto key = FMH::MODEL_KEY::MIME;
-            return e1[key] == "inode/directory";
-        });
+    if (this->foldersFirst) {         
+        
+        it = std::partition(this->list.begin(),
+                                  this->list.end(),
+                                  [](const FMH::MODEL &e1) -> bool {
+                                      return e1[FMH::MODEL_KEY::MIME] == "inode/directory";
+                                  });
 
-        for (const auto &item : qAsConst(this->list))
-            if (item[FMH::MODEL_KEY::MIME] == "inode/directory")
-                index++;
-            else
-                break;
-
-        std::sort(this->list.begin(), this->list.begin() + index, [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
-            switch (key) {
-            case FMH::MODEL_KEY::SIZE: {
-                if (e1[key].toDouble() > e2[key].toDouble())
-                    return true;
-                break;
-            }
-
-            case FMH::MODEL_KEY::MODIFIED:
-            case FMH::MODEL_KEY::DATE: {
-                auto currentTime = QDateTime::currentDateTime();
-
-                auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
-                auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
-
-                if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
-                    return true;
-
-                break;
-            }
-
-            case FMH::MODEL_KEY::LABEL: {
-                const auto str1 = QString(e1[key]).toLower();
-                const auto str2 = QString(e2[key]).toLower();
-
-                if (str1 < str2)
-                    return true;
-                break;
-            }
-
-            default:
-                if (e1[key] < e2[key])
-                    return true;
-            }
-
-            return false;
-        });
+        if(this->list.begin() != it)
+        {
+            std::sort(this->list.begin(), it, [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
+                switch (key) {
+                    case FMH::MODEL_KEY::SIZE: {
+                        if (e1[key].toDouble() > e2[key].toDouble())
+                            return true;
+                        break;
+                    }
+                    
+                    case FMH::MODEL_KEY::MODIFIED:
+                    case FMH::MODEL_KEY::DATE: {
+                        auto currentTime = QDateTime::currentDateTime();
+                        
+                        auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
+                        auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
+                        
+                        if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
+                            return true;
+                        
+                        break;
+                    }
+                    
+                    case FMH::MODEL_KEY::LABEL: {
+                        const auto str1 = QString(e1[key]).toLower();
+                        const auto str2 = QString(e2[key]).toLower();
+                        
+                        if (str1 < str2)
+                            return true;
+                        break;
+                    }
+                    
+                    default:
+                        if (e1[key] < e2[key])
+                            return true;
+                }
+                
+                return false;
+            });
+        }
+        
+       
     }
 
-    std::sort(this->list.begin() + index, this->list.end(), [key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
+    std::sort(it, this->list.end(), [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
         switch (key) {
         case FMH::MODEL_KEY::MIME:
             if (e1[key] == "inode/directory")
@@ -324,6 +325,7 @@ void FMList::sortList()
 
         return false;
     });
+    
 }
 
 QString FMList::getPathName() const
