@@ -480,7 +480,7 @@ Maui.Page
         visible: _typingTimer.running
         label.text: typingQuery
         anchors.left: parent.left
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
         showCloseButton: false
         anchors.margins: Maui.Style.space.medium
     }

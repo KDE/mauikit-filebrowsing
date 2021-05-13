@@ -230,6 +230,45 @@ void FMList::sortList()
 {
     const FMH::MODEL_KEY key = static_cast<FMH::MODEL_KEY>(this->sort);
     auto it = this->list.begin();
+    
+    const auto sortFunc = [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool
+    {
+        switch (key) {
+            case FMH::MODEL_KEY::SIZE: {
+                if (e1[key].toDouble() > e2[key].toDouble())
+                    return true;
+                break;
+            }
+            
+            case FMH::MODEL_KEY::MODIFIED:
+            case FMH::MODEL_KEY::DATE: {
+                auto currentTime = QDateTime::currentDateTime();
+                
+                auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
+                auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
+                
+                if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
+                    return true;
+                
+                break;
+            }
+            
+            case FMH::MODEL_KEY::LABEL: {
+                const auto str1 = QString(e1[key]).toLower();
+                const auto str2 = QString(e2[key]).toLower();
+                
+                if (str1 < str2)
+                    return true;
+                break;
+            }
+            
+            default:
+                if (e1[key] < e2[key])
+                    return true;
+        }
+        
+        return false;
+    };    
 
     if (this->foldersFirst) {         
         
@@ -241,90 +280,13 @@ void FMList::sortList()
 
         if(this->list.begin() != it)
         {
-            std::sort(this->list.begin(), it, [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
-                switch (key) {
-                    case FMH::MODEL_KEY::SIZE: {
-                        if (e1[key].toDouble() > e2[key].toDouble())
-                            return true;
-                        break;
-                    }
-                    
-                    case FMH::MODEL_KEY::MODIFIED:
-                    case FMH::MODEL_KEY::DATE: {
-                        auto currentTime = QDateTime::currentDateTime();
-                        
-                        auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
-                        auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
-                        
-                        if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
-                            return true;
-                        
-                        break;
-                    }
-                    
-                    case FMH::MODEL_KEY::LABEL: {
-                        const auto str1 = QString(e1[key]).toLower();
-                        const auto str2 = QString(e2[key]).toLower();
-                        
-                        if (str1 < str2)
-                            return true;
-                        break;
-                    }
-                    
-                    default:
-                        if (e1[key] < e2[key])
-                            return true;
-                }
-                
-                return false;
-            });
+            std::sort(this->list.begin(), it, sortFunc);
         }
     }
 
     if(it != this->list.end())
     {
-        std::sort(it, this->list.end(), [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool {
-            switch (key) {
-                case FMH::MODEL_KEY::MIME:
-                    if (e1[key] == "inode/directory")
-                        return true;
-                    break;
-                    
-                case FMH::MODEL_KEY::SIZE: {
-                    if (e1[key].toDouble() > e2[key].toDouble())
-                        return true;
-                    break;
-                }
-                
-                case FMH::MODEL_KEY::MODIFIED:
-                case FMH::MODEL_KEY::DATE: {
-                    auto currentTime = QDateTime::currentDateTime();
-                    
-                    auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
-                    auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
-                    
-                    if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
-                        return true;
-                    
-                    break;
-                }
-                
-                case FMH::MODEL_KEY::LABEL: {
-                    const auto str1 = QString(e1[key]).toLower();
-                    const auto str2 = QString(e2[key]).toLower();
-                    
-                    if (str1 < str2)
-                        return true;
-                    break;
-                }
-                
-                default:
-                    if (e1[key] < e2[key])
-                        return true;
-            }
-            
-            return false;
-        });
+        std::sort(it, this->list.end(), sortFunc);
     }    
 }
 
