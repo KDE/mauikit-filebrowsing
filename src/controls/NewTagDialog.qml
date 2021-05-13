@@ -20,7 +20,7 @@ Maui.Dialog
     id: control
 
     property alias currentColor : _colorsRow.currentColor
-    readonly property var defaultColors : ["#4DD0E1", "#64B5F6", "#9575CD", "#F06292", "#81C784", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
+    readonly property var defaultColors : ["#4DD0E1", "#9575CD", "#F06292", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
 
     entryField: true
     spacing: Maui.Style.space.big

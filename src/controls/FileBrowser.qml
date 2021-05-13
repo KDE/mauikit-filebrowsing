@@ -218,9 +218,6 @@ Maui.Page
     */
     signal urlsDropped(var urls)
     
-    //color scheme
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-    Kirigami.Theme.inherit: false
     
     //catch inherited signals from page
     onGoBackTriggered: control.goBack()
