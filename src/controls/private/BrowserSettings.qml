@@ -48,16 +48,6 @@ Settings
     /**
       *
       */
-    property bool trackChanges : false
-
-    /**
-      *
-      */
-    property bool saveDirProps : false
-
-    /**
-      *
-      */
     property bool showThumbnails: true
 
     /**
@@ -81,7 +71,6 @@ Settings
     property bool foldersFirst: true
     
     
-    property bool searchBarVisible : false
-    
+    property bool searchBarVisible : false    
 }
 

@@ -23,6 +23,8 @@
 #include <MauiKit/Core/mauilist.h>
 #include <QObject>
 
+#include "mauikit_export.h"
+
 #include "fmstatic.h"
 
 class FM;
@@ -92,7 +94,7 @@ private:
  * @brief The FMList class
  * Model for listing the file system files and directories and perfom relevant actions upon it
  */
-class FMList : public MauiList
+class MAUIKIT_EXPORT FMList : public MauiList
 {
     Q_OBJECT
 
@@ -106,7 +108,7 @@ class FMList : public MauiList
     Q_PROPERTY(QStringList filters READ getFilters WRITE setFilters NOTIFY filtersChanged)
     Q_PROPERTY(FMList::FILTER filterType READ getFilterType WRITE setFilterType NOTIFY filterTypeChanged)
     Q_PROPERTY(FMList::SORTBY sortBy READ getSortBy WRITE setSortBy NOTIFY sortByChanged)
-
+  
     // readonly
     Q_PROPERTY(QString pathName READ getPathName NOTIFY pathNameChanged FINAL)
     Q_PROPERTY(FMList::PATHTYPE pathType READ getPathType NOTIFY pathTypeChanged FINAL)
@@ -166,7 +168,6 @@ public:
     Q_ENUM(VIEW_TYPE)
 /*
     enum STATUS : uint_fast8_t { LOADING = STATUS_CODE::LOADING, ERROR = STATUS_CODE::ERROR, READY = STATUS_CODE::READY };*/
-    
 
     /**
      * @brief FMList
@@ -324,7 +325,7 @@ public:
      * @return
      */
     PathStatus getStatus() const;
-
+        
 private:
     FM *fm;
 
@@ -358,7 +359,7 @@ private:
 
     bool onlyDirs = false;
     bool hidden = false;
-
+    
     bool foldersFirst = false;
     int cloudDepth = 1;
 
@@ -444,7 +445,7 @@ public slots:
     const QUrl posteriorPath();
     
     int indexOfName(const QString &query);
-
+    
 signals:
     void pathChanged();
     void pathNameChanged();
@@ -461,7 +462,7 @@ signals:
     void warning(QString message);
     void progress(int percent);
 
-    void searchResultReady();
+    void searchResultReady();    
 };
 
 #endif // FMLIST_H

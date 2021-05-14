@@ -130,7 +130,7 @@ FMList::FMList(QObject *parent)
         {
             this->refresh();
         }
-    });
+    });   
 }
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
@@ -175,7 +175,7 @@ void FMList::setList()
 {
     qDebug() << "PATHTYPE FOR URL" << pathType << this->path.toString() << this->filters << this;
     this->clear();
-
+       
     switch (this->pathType) {
     case FMList::PATHTYPE::TAGS_PATH:
         this->assignList(getTagContent(this->path.fileName(), QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)]));
@@ -217,13 +217,8 @@ void FMList::setSortBy(const FMList::SORTBY &key)
     if (this->sort == key)
         return;
 
-    emit this->preListChanged();
-
     this->sort = key;
-    this->sortList();
-
-    emit this->sortByChanged();
-    emit this->postListChanged();
+    emit this->sortByChanged();      
 }
 
 void FMList::sortList()
@@ -348,7 +343,7 @@ void FMList::setPath(const QUrl &path)
 
     emit this->pathNameChanged();
     emit this->pathTypeChanged();
-    emit this->pathChanged();
+    emit this->pathChanged();   
 }
 
 FMList::PATHTYPE FMList::getPathType() const
@@ -439,11 +434,7 @@ void FMList::copyInto(const QStringList &urls)
 
 void FMList::cutInto(const QStringList &urls)
 {
-    this->fm->cut(QUrl::fromStringList(urls), this->path);
-    // 	else if(this->pathType == FMList::PATHTYPE::CLOUD_PATH)
-    // 	{
-    // 		this->fm->createCloudDir(QString(this->path).replace(FMH::PATHTYPE_NAME[FMList::PATHTYPE::CLOUD_PATH]+"/"+this->fm->sync->getUser(), ""), name);
-    // 	}
+    this->fm->cut(QUrl::fromStringList(urls), this->path);  
 }
 
 void FMList::setDirIcon(const int &index, const QString &iconName)
@@ -527,7 +518,17 @@ void FMList::componentComplete()
     connect(this, &FMList::filterTypeChanged, this, &FMList::setList);
     connect(this, &FMList::hiddenChanged, this, &FMList::setList);
     connect(this, &FMList::onlyDirsChanged, this, &FMList::setList);
-
+    
+    connect(this, &FMList::sortByChanged, [this]()
+    {    
+        if(this->list.size() > 0)
+        {
+            emit this->preListChanged();        
+            this->sortList();        
+            emit this->postListChanged();
+        }       
+    });
+   
     this->setList();
 }
 
@@ -641,3 +642,4 @@ int FMList::indexOfName(const QString& query)
     else
         return -1;
 }
+

@@ -213,10 +213,10 @@ Maui.AltBrowser
     listView.section.delegate: Maui.LabelDelegate
     {
         id: delegate
-        width: parent ? parent.width : 0
+        width: ListView.view.width
         height: Maui.Style.toolBarHeightAlt
         
-        label: _listViewBrowser.section.property == "date" || _listViewBrowser.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section
+        label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section
         labelTxt.font.pointSize: Maui.Style.fontSizes.big
         
         isSection: true

@@ -680,8 +680,7 @@ public slots:
     static const QString getIconName(const QUrl &path);
     
     /**
-     * Return the configuration of a single directory represented
-     * by a QVariantMap.
+     * Return icon name set in the directory .directory file
      * The passed path must be a local file URL.
      **/
     /**
@@ -689,7 +688,7 @@ public slots:
      * @param path
      * @return
      */
-    static const QVariantMap dirConf(const QUrl &path);
+    static const QString dirConfIcon(const QUrl &path);
 
     /**
      * @brief getMime
