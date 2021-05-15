@@ -595,7 +595,7 @@ public slots:
      * The URL to be open
      * @return
      */
-    static bool openUrl(const QUrl &url);
+    static void openUrl(const QUrl &url);
 
     /**
      * @brief openLocation

@@ -19,7 +19,15 @@
 
 #include <QCoreApplication>
 #include <QMimeDatabase>
-// #include <KFileMetaData/UserMetaData>
+
+#include <QFileInfo>
+
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QSqlRecord>
+
+#include <MauiKit/Core/fmh.h>
+
 #include "tagging.h"
 #include "fmstatic.h"
 
@@ -40,7 +48,8 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
     if (query.exec()) {
         while (query.next()) {
             QVariantMap data;
-            for (const auto &key : FMH::MODEL_NAME.keys()) {
+            const auto keys = FMH::MODEL_NAME.keys();
+            for (const auto &key : keys) {
                 
                 if (query.record().indexOf(FMH::MODEL_NAME[key]) > -1) {
                     data[FMH::MODEL_NAME[key]] = query.value(FMH::MODEL_NAME[key]).toString();
@@ -49,8 +58,11 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
 
             if (modifier) {
                 if (!modifier(data))
+                {
                     continue;
+                }
             }
+
             mapList << data;
         }
 
@@ -65,13 +77,13 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
 bool Tagging::tagExists(const QString &tag, const bool &strict)
 {
     return !strict ? this->checkExistance(TAG::TABLEMAP[TAG::TABLE::TAGS], FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag)
-                   : this->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
-                                              .arg(this->appOrg, tag));
+            : this->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
+            .arg(this->appOrg, tag));
 }
 
 bool Tagging::urlTagExists(const QString &url, const QString &tag)
 {
-  return this->checkExistance(QString("select * from TAGS_URLS where url = '%1' and tag = '%2'").arg(url, tag));
+    return this->checkExistance(QString("select * from TAGS_URLS where url = '%1' and tag = '%2'").arg(url, tag));
 }
 
 void Tagging::setApp()
@@ -102,17 +114,17 @@ bool Tagging::tag(const QString &tag, const QString &color, const QString &comme
     this->insert(TAG::TABLEMAP[TAG::TABLE::TAGS], tag_map);
     
     const QVariantMap appTag_map {
-        {FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag}, 
-        {FMH::MODEL_NAME[FMH::MODEL_KEY::ORG], this->appOrg}, 
+        {FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag},
+        {FMH::MODEL_NAME[FMH::MODEL_KEY::ORG], this->appOrg},
         {FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE], QDateTime::currentDateTime().toString(Qt::TextDate)}};
-        
-        if (this->insert(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], appTag_map)) {
-            setTagIconName(tag_map);
-            emit this->tagged(tag_map);
-            return true;
-        }
-        
-        return false;
+
+    if (this->insert(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], appTag_map)) {
+        setTagIconName(tag_map);
+        emit this->tagged(tag_map);
+        return true;
+    }
+
+    return false;
 }
 
 bool Tagging::tagUrl(const QString &url, const QString &tag, const QString &color, const QString &comment)
@@ -135,8 +147,8 @@ bool Tagging::tagUrl(const QString &url, const QString &tag, const QString &colo
         qDebug() << "tagging url" << url <<tag;
         emit this->urlTagged(url, myTag);
         
-//         auto fileMetaData = KFileMetaData::UserMetaData(QUrl::fromUserInput(url).toLocalFile());        
-//         fileMetaData.setTags({tag});
+        //         auto fileMetaData = KFileMetaData::UserMetaData(QUrl::fromUserInput(url).toLocalFile());
+        //         fileMetaData.setTags({tag});
         
         return true;
     }
@@ -146,8 +158,8 @@ bool Tagging::tagUrl(const QString &url, const QString &tag, const QString &colo
 
 bool Tagging::updateUrlTags(const QString &url, const QStringList &tags, const bool &strict)
 {
-    this->removeUrlTags(url, strict);    
-   
+    this->removeUrlTags(url, strict);
+
     for (const auto &tag : qAsConst(tags))
     {
         this->tagUrl(url, tag);
@@ -164,7 +176,7 @@ bool Tagging::updateUrl(const QString &url, const QString &newUrl)
 QVariantList Tagging::getUrlsTags(const bool &strict) //all used tags, meaning, all tags that are used with an url in tags_url table
 {
     const auto query = !strict ? QString("select distinct t.* from TAGS t inner join TAGS_URLS turl where t.tag = turl.tag") :
-    QString("select distinct t.* from TAGS t inner join APP_TAGS at on at.tag = t.tag inner join TAGS_URLS turl on t.tag = turl.tag where at.org = '%1'").arg(this->appOrg);    
+                                 QString("select distinct t.* from TAGS t inner join APP_TAGS at on at.tag = t.tag inner join TAGS_URLS turl on t.tag = turl.tag where at.org = '%1'").arg(this->appOrg);
 
     return this->get(query, &setTagIconName);
 }
@@ -190,7 +202,7 @@ QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int 
                                        "inner join TAGS_URLS turl on turl.tag = t.tag "
                                        "where at.org = '%1' and turl.mime like '%4%' "
                                        "and t.tag = '%2' limit %3")
-                                   .arg(this->appOrg, tag, QString::number(limit), mimeType),
+                               .arg(this->appOrg, tag, QString::number(limit), mimeType),
                                modifier);
 }
 
@@ -199,7 +211,7 @@ QVariantList Tagging::getUrlTags(const QString &url, const bool &strict)
     return !strict ? this->get(QString("select distinct turl.*, t.color, t.comment as tagComment from tags t inner join TAGS_URLS turl on turl.tag = t.tag where turl.url  = '%1'").arg(url))
                    : this->get(QString("select distinct t.* from TAGS t inner join APP_TAGS at on t.tag = at.tag inner join TAGS_URLS turl on turl.tag = t.tag "
                                        "where at.org = '%1' and turl.url = '%2'")
-                                   .arg(this->appOrg, url));
+                               .arg(this->appOrg, url));
 }
 
 bool Tagging::removeUrlTags(const QString &url, const bool &strict) // same as removing the url from the tags_urls
@@ -230,16 +242,16 @@ bool Tagging::app()
         {FMH::MODEL_NAME[FMH::MODEL_KEY::COMMENT], this->appComment},
     };
 
-   return this->insert(TAG::TABLEMAP[TAG::TABLE::APPS], app_map);
+    return this->insert(TAG::TABLEMAP[TAG::TABLE::APPS], app_map);
 }
 
 bool Tagging::removeTag(const QString& tag)
 {
-     FMH::MODEL data1 {{FMH::MODEL_KEY::TAG, tag}};
+    FMH::MODEL data1 {{FMH::MODEL_KEY::TAG, tag}};
     
-     if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data1))
+    if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data1))
     {
-             FMH::MODEL data2 {{FMH::MODEL_KEY::TAG, tag}, {FMH::MODEL_KEY::ORG, this->appOrg}};
+        FMH::MODEL data2 {{FMH::MODEL_KEY::TAG, tag}, {FMH::MODEL_KEY::ORG, this->appOrg}};
 
         if(this->remove(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], data2))
         {
@@ -249,7 +261,7 @@ bool Tagging::removeTag(const QString& tag)
                 return true;
             }
         }
-    }    
+    }
     
     return false;
 }
@@ -257,9 +269,9 @@ bool Tagging::removeTag(const QString& tag)
 static bool doNameFilter(const QString &name, const QStringList &filters)
 {
     const auto filtersAccumulate = std::accumulate(filters.constBegin(), filters.constEnd(), QVector<QRegExp> {}, [](QVector<QRegExp> &res, const QString &filter) -> QVector<QRegExp> {
-        res.append(QRegExp(filter, Qt::CaseInsensitive, QRegExp::Wildcard));
-        return res;
-    });
+            res.append(QRegExp(filter, Qt::CaseInsensitive, QRegExp::Wildcard));
+            return res;
+});
     
     for (const auto &filter : filtersAccumulate) {
         if (filter.exactMatch(name)) {
@@ -305,19 +317,19 @@ FMH::MODEL_LIST Tagging::getTags(const int &limit)
         {FMH::MODEL_KEY::IS_DIR, "true"},
         {FMH::MODEL_KEY::LABEL, label},
         {FMH::MODEL_KEY::TYPE, FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::TAGS_PATH]}};
-    }
-    
-    return data;
+}
+
+return data;
 }
 
 FMH::MODEL_LIST Tagging::getUrlTags(const QUrl &url)
 {
- return FMH::toModelList(getUrlTags(url.toString(), false));   
+    return FMH::toModelList(getUrlTags(url.toString(), false));
 }
 
 bool Tagging::addTagToUrl(const QString tag, const QUrl &url)
 {
-   return tagUrl(url.toString(), tag);
+    return tagUrl(url.toString(), tag);
 }
 
 bool Tagging::removeTagToUrl(const QString tag, const QUrl &url)
@@ -345,6 +357,8 @@ bool Tagging::unFav(const QUrl &url)
 
 bool Tagging::isFav(const QUrl &url, const bool &strict)
 {
+    Q_UNUSED(strict)
+    
     return urlTagExists(url.toString(), "fav");
 }
 

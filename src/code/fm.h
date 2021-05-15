@@ -87,7 +87,6 @@ private:
 #endif
 
 class Syncing;
-class Tagging;
 
 /**
  * @brief The FM class
@@ -162,9 +161,6 @@ public:
 #endif
 
 private:
-#ifdef COMPONENT_TAGGING
-    Tagging *tag;
-#endif
 
 #if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
     KCoreDirLister *dirLister;

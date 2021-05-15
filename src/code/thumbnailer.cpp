@@ -27,7 +27,7 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
     });
 
     connect(job, &KIO::PreviewJob::failed, [this](KFileItem) {
-        emit this->cancel();
+        this->cancel();
         emit this->finished();
     });
 

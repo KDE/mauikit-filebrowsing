@@ -19,8 +19,14 @@
 
 #include "tagdb.h"
 
+#include <QDebug>
+#include <QDir>
+#include <QList>
+#include <QSqlDriver>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QUuid>
-#include <MauiKit/Core/fmh.h>
 
 TAGDB::TAGDB()
     : QObject(nullptr)
@@ -178,12 +184,18 @@ bool TAGDB::update(const QString &tableName, const FMH::MODEL &updateData, const
     }
 
     QStringList set;
-    for (auto key : updateData.keys())
+    const auto updateKeys = updateData.keys();
+    for (const auto &key : updateKeys)
+    {
         set.append(FMH::MODEL_NAME[key] + " = '" + updateData[key] + "'");
+    }
 
     QStringList condition;
-    for (auto key : where.keys())
-        condition.append(key + " = '" + where[key].toString() + "'");
+    const auto whereKeys = where.keys();
+    for (const auto &key : whereKeys)
+    {
+         condition.append(key + " = '" + where[key].toString() + "'");
+    }
 
     QString sqlQueryString = "UPDATE " + tableName + " SET " + QString(set.join(",")) + " WHERE " + QString(condition.join(","));
     auto query = this->getQuery(sqlQueryString);
@@ -211,12 +223,15 @@ bool TAGDB::remove(const QString &tableName, const FMH::MODEL &removeData)
 
     QString strValues;
     auto i = 0;
-    for (auto key : removeData.keys()) {
+    const auto keys = removeData.keys();
+    for (const auto &key : keys) {
         strValues.append(QString("%1 = \"%2\"").arg(FMH::MODEL_NAME[key], removeData[key]));
         i++;
 
         if (removeData.size() > 1 && i < removeData.size())
+        {
             strValues.append(" AND ");
+        }
     }
 
     QString sqlQueryString = "DELETE FROM " + tableName + " WHERE " + strValues;

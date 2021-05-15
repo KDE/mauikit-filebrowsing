@@ -15,6 +15,7 @@
 #include <KIO/SimpleJob>
 #include <KConfig>
 #include <KConfigGroup>
+#include <KIO/OpenUrlJob>
 #include <KRun>
 #include <KApplicationTrader>
 #include <QIcon>
@@ -361,19 +362,24 @@ bool FMStatic::createSymlink(const QUrl &path, const QUrl &where)
 #endif
 }
 
-bool FMStatic::openUrl(const QUrl &url)
+void FMStatic::openUrl(const QUrl &url)
 {
 #if defined Q_OS_ANDROID
+    
     MAUIAndroid::openUrl(url.toString());
-    return true;
+    
 #elif defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    const QMimeDatabase mimedb;
-    KRun::runUrl(url, mimedb.mimeTypeForFile(url.toLocalFile()).name(), nullptr, false, KRun::RunFlag::DeleteTemporaryFiles);
+    
+    KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
+    job->setShowOpenOrExecuteDialog(true);
+    job->start();
+    
 #elif defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    return QDesktopServices::openUrl(url);
+    
+    QDesktopServices::openUrl(url);
+    
 #endif
     
-    return true;
 }
 
 void FMStatic::openLocation(const QStringList &urls)
@@ -402,7 +408,8 @@ const QString FMStatic::dirConfIcon(const QUrl &path)
     file.endGroup(); 
 #else
     KConfig file(path.toLocalFile());
-    icon = file.entryMap(QString("Desktop Entry"))["Icon"];    
+    const auto map = file.entryMap(QString("Desktop Entry"));
+    icon = map.isEmpty() ? "folder" : map.value("Icon");
 #endif
     
     return icon;    

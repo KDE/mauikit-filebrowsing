@@ -21,16 +21,9 @@
 #define TAG_H
 
 #include <QDebug>
-#include <QDirIterator>
-#include <QFileInfo>
-#include <QImage>
-#include <QSettings>
 #include <QStandardPaths>
 #include <QString>
-#include <QTime>
-#include <QVariantList>
-
-#include <MauiKit/Core/fmh.h>
+#include <QMap>
 
 namespace TAG
 {

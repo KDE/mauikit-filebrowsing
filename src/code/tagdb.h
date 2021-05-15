@@ -20,19 +20,15 @@
 #ifndef TAGDB_H
 #define TAGDB_H
 
-#include <QDebug>
-#include <QDir>
-#include <QFileInfo>
-#include <QList>
+
 #include <QObject>
 #include <QSqlDatabase>
-#include <QSqlDriver>
-#include <QSqlError>
-#include <QSqlQuery>
-#include <QSqlRecord>
+
 #include <QString>
 #include <QStringList>
 #include <QVariantMap>
+
+#include <MauiKit/Core/fmh.h>
 
 #include "tag.h"
 
