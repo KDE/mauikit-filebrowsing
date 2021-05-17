@@ -216,6 +216,7 @@ Maui.Dialog
     headBar.visible: true
     headBar.middleContent: Loader
     {
+        asynchronous: true
         Layout.fillWidth: true
         Layout.minimumWidth: 100
 //         Layout.maximumWidth: 500

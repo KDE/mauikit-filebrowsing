@@ -5,6 +5,7 @@
 #include <QDesktopServices>
 #include <QDirIterator>
 #include <QFileInfo>
+#include <QDateTime>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 #include <KCoreDirLister>

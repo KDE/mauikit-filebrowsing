@@ -21,6 +21,7 @@
 #include <QMimeDatabase>
 
 #include <QFileInfo>
+#include <QDateTime>
 
 #include <QSqlError>
 #include <QSqlQuery>
