@@ -442,17 +442,17 @@ void FMList::setDirIcon(const int &index, const QString &iconName)
     if (index >= this->list.size() || index < 0)
         return;
 
-    //    const auto index_ = this->mappedIndex(index);
+    const auto index_ = this->mappedIndex(index);
 
-    const auto path = QUrl(this->list.at(index)[FMH::MODEL_KEY::PATH]);
+    const auto path = QUrl(this->list.at(index_)[FMH::MODEL_KEY::PATH]);
 
     if (!FMStatic::isDir(path))
         return;
 
     FMStatic::setDirConf(path.toString() + "/.directory", "Desktop Entry", "Icon", iconName);
 
-    this->list[index][FMH::MODEL_KEY::ICON] = iconName;
-    emit this->updateModel(index, QVector<int> {FMH::MODEL_KEY::ICON});
+    this->list[index_][FMH::MODEL_KEY::ICON] = iconName;
+    emit this->updateModel(index_, QVector<int> {FMH::MODEL_KEY::ICON});
 }
 
 const QUrl FMList::getParentPath()
