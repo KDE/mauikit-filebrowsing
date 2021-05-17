@@ -46,9 +46,10 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
     auto query = this->getQuery(queryTxt);
 
     if (query.exec()) {
+        const auto keys = FMH::MODEL_NAME.keys();
+
         while (query.next()) {
             QVariantMap data;
-            const auto keys = FMH::MODEL_NAME.keys();
             for (const auto &key : keys) {
                 
                 if (query.record().indexOf(FMH::MODEL_NAME[key]) > -1) {
