@@ -14,10 +14,10 @@ Maui.AltBrowser
     title: currentFMList.pathName
     selectionMode: control.selectionMode
     enableLassoSelection: true
-      
+
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.itemSize * 1.3
-    gridView.cacheBuffer: control.height * 5
+    gridView.cacheBuffer: control.height * 10
 
     Binding on currentIndex
     {
@@ -30,8 +30,8 @@ Maui.AltBrowser
     onPathChanged:
     {
         control.currentIndex = 0
-        control.currentView.forceActiveFocus()        
-    }    
+        control.currentView.forceActiveFocus()
+    }
     
     model: Maui.BaseModel
     {
@@ -53,41 +53,41 @@ Maui.AltBrowser
         recursiveFilteringEnabled: true
         sortCaseSensitivity: Qt.CaseInsensitive
         filterCaseSensitivity: Qt.CaseInsensitive
-    }    
+    }
     
     /**
-     * 
+     *
      */
     property url path
     
     /**
-     * 
+     *
      */
     
     property int gridItemSize :  Maui.Style.iconSizes.large * 1.7
     property int listItemSize : Maui.Style.rowHeight
 
     /**
-     * 
+     *
      */
     property alias settings : _settings
     
     
     /**
-     * 
+     *
      */
     readonly property alias currentFMList : _commonFMList
     
     /**
-     * 
+     *
      */
     readonly property alias currentFMModel : _browserModel
     
     
     /**
-     * 
+     *
      */
-    property string filter    
+    property string filter
     
     signal itemClicked(int index)
     signal itemDoubleClicked(int index)
@@ -249,30 +249,177 @@ Maui.AltBrowser
         
         Drag.keys: ["text/uri-list"]
         Drag.mimeData: Drag.active ?
+                           {
+                               "text/uri-list": filterSelection(control.path, model.path).join("\n")
+                           } : {}
+
+    Item
+    {
+        Layout.fillHeight: true
+        Layout.preferredWidth: height
+        visible: (model.issymlink == true) || (model.issymlink == "true")
+
+        Kirigami.Icon
         {
-            "text/uri-list": filterSelection(control.path, model.path).join("\n")
-        } : {}
-        
-        Item
-        {
-            Layout.fillHeight: true
-            Layout.preferredWidth: height
-            visible: (model.issymlink == true) || (model.issymlink == "true")
-            
-            Kirigami.Icon
-            {
-                source: "link"
-                height: Maui.Style.iconSizes.small
-                width: Maui.Style.iconSizes.small
-                anchors.centerIn: parent
-                color: label1.color
-            }
+            source: "link"
+            height: Maui.Style.iconSizes.small
+            width: Maui.Style.iconSizes.small
+            anchors.centerIn: parent
+            isMask: true
+            color: label1.color
         }
-        
+    }
+
+    onClicked:
+    {
+        control.currentIndex = index
+
+        if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
+        {
+            control.itemsSelected([index])
+        }else
+        {
+            control.itemClicked(index)
+        }
+    }
+
+    onDoubleClicked:
+    {
+        control.currentIndex = index
+        control.itemDoubleClicked(index)
+    }
+
+    onPressAndHold:
+    {
+        if(!Maui.Handy.isTouch)
+            return
+
+        control.currentIndex = index
+        control.itemRightClicked(index)
+    }
+
+    onRightClicked:
+    {
+        control.currentIndex = index
+        control.itemRightClicked(index)
+    }
+
+    onToggled:
+    {
+        control.currentIndex = index
+        control.itemToggled(index, state)
+    }
+
+    onContentDropped:
+    {
+        _dropMenu.urls = drop.urls.join(",")
+        _dropMenu.target = model.path
+        _dropMenu.open()
+    }
+
+    ListView.onRemove:
+    {
+        if(selectionBar && !FB.FM.fileExists(delegate.path))
+        {
+            selectionBar.removeAtUri(delegate.path)
+        }
+    }
+
+    Connections
+    {
+        target: selectionBar
+
+        function onUriRemoved(uri)
+        {
+            if(uri === model.path)
+                delegate.checked = false
+        }
+
+        function onUriAdded(uri)
+        {
+            if(uri === model.path)
+                delegate.checked = true
+        }
+
+        function onCleared()
+        {
+            delegate.checked = false
+        }
+    }
+}
+
+gridDelegate: Item
+{
+
+    property bool isCurrentItem : GridView.isCurrentItem
+    height: gridView.cellHeight
+    width: gridView.cellWidth
+
+    GridView.onRemove:
+    {
+        if(selectionBar && !FB.FM.fileExists(delegate.path))
+        {
+            selectionBar.removeAtUri(delegate.path)
+        }
+    }
+
+    Maui.GridBrowserDelegate
+    {
+        id: delegate
+        readonly property string path : model.path
+
+        iconSizeHint: height * 0.5
+        imageSource: settings.showThumbnails ? model.thumbnail : ""
+        template.fillMode: Image.PreserveAspectFit
+        iconSource: model.icon
+        label1.text: model.label
+
+        anchors.fill: parent
+        anchors.margins: Maui.Style.space.medium
+        padding: Maui.Style.space.tiny
+        isCurrentItem: parent.isCurrentItem || checked
+        tooltipText: model.path
+        checkable: control.selectionMode
+        checked: (selectionBar ? selectionBar.contains(model.path) : false)
+        draggable: true
+        opacity: model.hidden == "true" ? 0.5 : 1
+
+        Drag.keys: ["text/uri-list"]
+        Drag.mimeData: Drag.active ?
+                           {
+                               "text/uri-list":  filterSelection(control.path, model.path).join("\n")
+                           } : {}
+
+        Kirigami.Icon
+        {
+            anchors.left: parent.left
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: Maui.Style.space.big
+
+            visible: (model.issymlink == true) || (model.issymlink == "true")
+
+            source: "link"
+            color: Kirigami.Theme.textColor
+            isMask: true
+            height: Maui.Style.iconSizes.small
+        }
+
+        //template.content: Label
+        //{
+        //visible: delegate.height > 100
+        //opacity: 0.5
+        //color: Kirigami.Theme.textColor
+        //font.pointSize: Maui.Style.fontSizes.tiny
+        //horizontalAlignment: Qt.AlignHCenter
+        //Layout.fillWidth: true
+        //text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+        //}
+
         onClicked:
         {
             control.currentIndex = index
-            
+            control.currentView.forceActiveFocus()
+
             if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
             {
                 control.itemsSelected([index])
@@ -281,246 +428,105 @@ Maui.AltBrowser
                 control.itemClicked(index)
             }
         }
-        
+
         onDoubleClicked:
         {
             control.currentIndex = index
+            control.currentView.forceActiveFocus()
             control.itemDoubleClicked(index)
         }
-        
+
         onPressAndHold:
         {
             if(!Maui.Handy.isTouch)
-                return
-                
-                control.currentIndex = index
-                control.itemRightClicked(index)
+            return
+
+            control.currentIndex = index
+            control.currentView.forceActiveFocus()
+            control.itemRightClicked(index)
         }
-        
+
         onRightClicked:
         {
             control.currentIndex = index
+            control.currentView.forceActiveFocus()
             control.itemRightClicked(index)
         }
-        
+
         onToggled:
         {
             control.currentIndex = index
             control.itemToggled(index, state)
         }
-        
+
         onContentDropped:
         {
             _dropMenu.urls = drop.urls.join(",")
             _dropMenu.target = model.path
             _dropMenu.open()
         }
-        
-        ListView.onRemove:
-        {
-            if(selectionBar && !FB.FM.fileExists(delegate.path))
-            {
-                selectionBar.removeAtUri(delegate.path)
-            }
-        }
-        
+
         Connections
         {
             target: selectionBar
-            
+
             function onUriRemoved(uri)
             {
                 if(uri === model.path)
                     delegate.checked = false
             }
-            
+
             function onUriAdded(uri)
             {
                 if(uri === model.path)
                     delegate.checked = true
             }
-            
-            function onCleared()
+
+            function onCleared(uri)
             {
                 delegate.checked = false
             }
         }
     }
-      
-    gridDelegate: Item
-    {
-        
-        property bool isCurrentItem : GridView.isCurrentItem
-        height: gridView.cellHeight
-        width: gridView.cellWidth
-        
-        GridView.onRemove:
-        {
-            if(selectionBar && !FB.FM.fileExists(delegate.path))
-            {
-                selectionBar.removeAtUri(delegate.path)
-            }
-        }
-        
-        Maui.GridBrowserDelegate
-        {
-            id: delegate
-            readonly property string path : model.path
-            
-            iconSizeHint: height * 0.5
-            imageSource: settings.showThumbnails ? model.thumbnail : ""
-            template.fillMode: Image.PreserveAspectFit
-            iconSource: model.icon
-            label1.text: model.label
-            
-            anchors.fill: parent
-            anchors.margins: Maui.Style.space.medium
-            padding: Maui.Style.space.tiny
-            isCurrentItem: parent.isCurrentItem || checked
-            tooltipText: model.path
-            checkable: control.selectionMode
-            checked: (selectionBar ? selectionBar.contains(model.path) : false)
-            draggable: true
-            opacity: model.hidden == "true" ? 0.5 : 1
-            
-            Drag.keys: ["text/uri-list"]
-            Drag.mimeData: Drag.active ?
-            {
-                "text/uri-list":  filterSelection(control.path, model.path).join("\n")
-            } : {}
-            
-            Maui.Badge
-            {
-                iconName: "link"
-                anchors.left: parent.left
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: Maui.Style.space.big
-                visible: (model.issymlink == true) || (model.issymlink == "true")
-            }
-            
-            //template.content: Label
-            //{
-                //visible: delegate.height > 100
-                //opacity: 0.5
-                //color: Kirigami.Theme.textColor
-                //font.pointSize: Maui.Style.fontSizes.tiny
-                //horizontalAlignment: Qt.AlignHCenter
-                //Layout.fillWidth: true
-                //text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
-            //}
-            
-            onClicked:
-            {
-                control.currentIndex = index
-                control.currentView.forceActiveFocus()
-                
-                if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
-                {
-                    control.itemsSelected([index])
-                }else
-                {
-                    control.itemClicked(index)
-                }
-            }
-            
-            onDoubleClicked:
-            {
-                control.currentIndex = index
-                control.currentView.forceActiveFocus()
-                control.itemDoubleClicked(index)
-            }
-            
-            onPressAndHold:
-            {
-                if(!Maui.Handy.isTouch)
-                    return
-                    
-                    control.currentIndex = index
-                    control.currentView.forceActiveFocus()
-                    control.itemRightClicked(index)
-            }
-            
-            onRightClicked:
-            {
-                control.currentIndex = index
-                control.currentView.forceActiveFocus()
-                control.itemRightClicked(index)
-            }
-            
-            onToggled:
-            {
-                control.currentIndex = index
-                control.itemToggled(index, state)
-            }
-            
-            onContentDropped:
-            {
-                _dropMenu.urls = drop.urls.join(",")
-                _dropMenu.target = model.path
-                _dropMenu.open()
-            }
-            
-            Connections
-            {
-                target: selectionBar
-                
-                function onUriRemoved(uri)
-                {
-                    if(uri === model.path)
-                        delegate.checked = false
-                }
-                
-                function onUriAdded(uri)
-                {
-                    if(uri === model.path)
-                        delegate.checked = true
-                }
-                
-                function onCleared(uri)
-                {
-                    delegate.checked = false
-                }
-            }
-        }
-    }
-    
-    
-    /**
-     * 
+}
+
+
+/**
+     *
      */
-    function groupBy()
+function groupBy()
+{
+    var prop = ""
+    var criteria = ViewSection.FullString
+
+    switch(control.currentFMList.sortBy)
     {
-        var prop = ""
-        var criteria = ViewSection.FullString
-        
-        switch(control.currentFMList.sortBy)
-        {
-            case FB.FMList.LABEL:
-                prop = "label"
-                criteria = ViewSection.FirstCharacter
-                break;
-            case FB.FMList.MIME:
-                prop = "mime"
-                break;
-            case FB.FMList.SIZE:
-                prop = "size"
-                break;
-            case FB.FMList.DATE:
-                prop = "date"
-                break;
-            case FB.FMList.MODIFIED:
-                prop = "modified"
-                break;
-        }
-        
-        if(!prop)
-        {
-            control.currentView.section.property = ""
-            return
-        }
-        
-        control.settings.viewType = FB.FMList.LIST_VIEW
-        control.currentView.section.property = prop
-        control.currentView.section.criteria = criteria
+    case FB.FMList.LABEL:
+        prop = "label"
+        criteria = ViewSection.FirstCharacter
+        break;
+    case FB.FMList.MIME:
+        prop = "mime"
+        break;
+    case FB.FMList.SIZE:
+        prop = "size"
+        break;
+    case FB.FMList.DATE:
+        prop = "date"
+        break;
+    case FB.FMList.MODIFIED:
+        prop = "modified"
+        break;
     }
+
+    if(!prop)
+    {
+        control.currentView.section.property = ""
+        return
+    }
+
+    control.settings.viewType = FB.FMList.LIST_VIEW
+    control.currentView.section.property = prop
+    control.currentView.section.criteria = criteria
+}
 }

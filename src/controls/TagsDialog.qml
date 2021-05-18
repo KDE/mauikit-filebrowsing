@@ -225,55 +225,55 @@ Maui.Dialog
             imageSource: itemInfo.thumbnail
             iconSizeHint: Maui.Style.iconSizes.huge
             
-            iconComponent: Item
-            {
-                Item
-                {
-                    anchors.fill: parent
-                    layer.enabled: true
-                    
-                    Rectangle
-                    {
-                        anchors.fill: parent
-                        anchors.leftMargin: Maui.Style.space.small
-                        anchors.rightMargin: Maui.Style.space.small
-                        radius: Maui.Style.radiusV
-                        color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
-                        border.color: Kirigami.Theme.backgroundColor
-                    }
-                    
-                    Rectangle
-                    {
-                        anchors.fill: parent
-                        anchors.topMargin: Maui.Style.space.tiny
-                        anchors.leftMargin: Maui.Style.space.tiny
-                        anchors.rightMargin: Maui.Style.space.tiny
-                        radius: Maui.Style.radiusV
-                        color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
-                        border.color: Kirigami.Theme.backgroundColor
-                    }
-                    
-                    Rectangle
-                    {
-                        anchors.fill: parent
-                        anchors.topMargin: Maui.Style.space.small
-                        border.color: Kirigami.Theme.backgroundColor
-                        
-                        radius: Maui.Style.radiusV
-                        color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
-                        
-                        Maui.GridItemTemplate
-                        {
-                            anchors.fill: parent
-                            anchors.margins: Maui.Style.space.tiny
-                            iconSizeHint: height
-                            
-                            iconSource: _info.iconSource
-                            imageSource:  _info.imageSource
-                        }
-                    }
-                }
-            }
+//             iconComponent: Item
+//             {
+//                 Item
+//                 {
+//                     anchors.fill: parent
+//                     layer.enabled: true
+//                     
+//                     Rectangle
+//                     {
+//                         anchors.fill: parent
+//                         anchors.leftMargin: Maui.Style.space.small
+//                         anchors.rightMargin: Maui.Style.space.small
+//                         radius: Maui.Style.radiusV
+//                         color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
+//                         border.color: Kirigami.Theme.backgroundColor
+//                     }
+//                     
+//                     Rectangle
+//                     {
+//                         anchors.fill: parent
+//                         anchors.topMargin: Maui.Style.space.tiny
+//                         anchors.leftMargin: Maui.Style.space.tiny
+//                         anchors.rightMargin: Maui.Style.space.tiny
+//                         radius: Maui.Style.radiusV
+//                         color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
+//                         border.color: Kirigami.Theme.backgroundColor
+//                     }
+//                     
+//                     Rectangle
+//                     {
+//                         anchors.fill: parent
+//                         anchors.topMargin: Maui.Style.space.small
+//                         border.color: Kirigami.Theme.backgroundColor
+//                         
+//                         radius: Maui.Style.radiusV
+//                         color: Qt.tint(control.Kirigami.Theme.textColor, Qt.rgba(control.Kirigami.Theme.backgroundColor.r, control.Kirigami.Theme.backgroundColor.g, control.Kirigami.Theme.backgroundColor.b, 0.9))
+//                         
+//                         Maui.GridItemTemplate
+//                         {
+//                             anchors.fill: parent
+//                             anchors.margins: Maui.Style.space.tiny
+//                             iconSizeHint: height
+//                             
+//                             iconSource: _info.iconSource
+//                             imageSource:  _info.imageSource
+//                         }
+//                     }
+//                 }
+//             }
         }
     ]
 

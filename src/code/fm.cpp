@@ -182,7 +182,9 @@ bool QDirLister::openUrl(const QUrl &url)
         QDir::Filters dirFilter = (m_dirOnly ? QDir::AllDirs | QDir::NoDotDot | QDir::NoDot : QDir::Files | QDir::AllDirs | QDir::NoDotDot | QDir::NoDot);
 
         if (m_showDotFiles)
-            dirFilter = dirFilter | QDir::Hidden | QDir::System;
+        {
+            dirFilter = dirFilter | QDir::Hidden;
+        }
 
         m_loader->requestPath({this->m_url}, false, m_nameFilters.isEmpty() ? QStringList() : m_nameFilters.split(" "), dirFilter);
 

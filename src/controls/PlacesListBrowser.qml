@@ -124,7 +124,6 @@ Maui.ListBrowser
         iconName: model.icon
         count: model.count > 0 ? model.count : ""
 
-        radius : Maui.Style.radiusV
         onClicked:
         {
             control.currentIndex = index
