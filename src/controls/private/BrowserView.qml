@@ -17,7 +17,8 @@ Maui.AltBrowser
       
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.itemSize * 1.3
-    
+    gridView.cacheBuffer: control.height * 5
+
     Binding on currentIndex
     {
         when: control.currentView
@@ -65,7 +66,7 @@ Maui.AltBrowser
     
     property int gridItemSize :  Maui.Style.iconSizes.large * 1.7
     property int listItemSize : Maui.Style.rowHeight
-    
+
     /**
      * 
      */
@@ -237,7 +238,6 @@ Maui.AltBrowser
         label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
         
         iconSizeHint : Maui.Style.iconSizes.medium
-        imageSizeHint : height * 0.8
         
         tooltipText: model.path
         
