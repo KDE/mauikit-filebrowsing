@@ -392,9 +392,9 @@ gridDelegate: Item
 
         Kirigami.Icon
         {
-            anchors.left: parent.left
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: Maui.Style.space.big
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.margins: Maui.Style.space.medium
 
             visible: (model.issymlink == true) || (model.issymlink == "true")
 

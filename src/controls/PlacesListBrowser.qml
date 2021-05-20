@@ -75,9 +75,6 @@ Maui.ListBrowser
     {
         var item = placesModel.get(index)
         var path = item.path
-
-        placesList.clearBadgeCount(index)
-
         placeClicked(path)
     }
 
@@ -122,7 +119,6 @@ Maui.ListBrowser
         iconVisible: true
         label: model.label
         iconName: model.icon
-        count: model.count > 0 ? model.count : ""
 
         onClicked:
         {

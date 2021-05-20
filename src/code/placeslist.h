@@ -25,9 +25,8 @@
 
 #include <MauiKit/Core/mauilist.h>
 
-class FM;
 class KFilePlacesModel;
-class QFileSystemWatcher;
+
 class PlacesList : public MauiList
 {
     Q_OBJECT
@@ -58,13 +57,6 @@ protected:
 
 public slots:
     /**
-     * @brief clearBadgeCount
-     * Clears the count associated to a place at a given index in the model
-     * @param index
-     */
-    void clearBadgeCount(const int &index);
-
-    /**
      * @brief removePlace
      * Removes a place from the model and if the data at the given index is a file URL bookmark then it gets removed from the bookmarks.
      * @param index
@@ -92,20 +84,15 @@ public slots:
     
     static void addBookmark(const QUrl &url);
 
+    int indexOfPath(const QUrl &url) const;
+
 private:
-    FM *fm;
     FMH::MODEL_LIST list;
     KFilePlacesModel *model;
-    QHash<QString, int> count;
 
     QList<int> groups;
 
     QHash<QString, QModelIndex> m_devices;
-
-    QFileSystemWatcher *watcher;
-    void watchPath(const QString &path);
-
-    void setCount();
 
     FMH::MODEL_LIST getGroup(const KFilePlacesModel &model, const FMStatic::PATHTYPE_KEY &type);
 

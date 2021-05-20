@@ -21,7 +21,6 @@
 #include "tagging.h"
 
 #include <QEventLoop>
-#include <QFileSystemWatcher>
 #include <QIcon>
 #include <QTimer>
 
@@ -40,34 +39,13 @@
 #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
 PlacesList::PlacesList(QObject *parent)
     : MauiList(parent)
-    , fm(new FM(this))
     , model(nullptr)
-    , watcher(new QFileSystemWatcher(this))
     #else
 PlacesList::PlacesList(QObject *parent)
     : MauiList(parent)
-    , fm(new FM(this))
     , model(new KFilePlacesModel(this))
-    , watcher(new QFileSystemWatcher(this))
     #endif
 {
-    /*
-     *  The watcher signal returns a local file URL withouth a scheme, and the model is using a local file URL with file:// scheme.
-     *  So those need to be correctly mapped
-     * */
-    connect(watcher, &QFileSystemWatcher::directoryChanged, [&](const QString &path) {
-        if (this->count.contains(QUrl::fromLocalFile(path).toString())) {
-            const auto oldCount = this->count[QUrl::fromLocalFile(path).toString()];
-            const auto index = this->indexOf(FMH::MODEL_KEY::PATH, QUrl::fromLocalFile(path).toString());
-            const QDir dir(path);
-            const auto newCount = dir.count();
-            int count = newCount - oldCount;
-
-            this->list[index][FMH::MODEL_KEY::COUNT] = QString::number(std::max(0, count));
-            emit this->updateModel(index, {FMH::MODEL_KEY::COUNT});
-        }
-    });
-
 #ifdef COMPONENT_ACCOUNTS
     connect(MauiAccounts::instance(), &MauiAccounts::accountAdded, this, &PlacesList::setList);
     connect(MauiAccounts::instance(), &MauiAccounts::accountRemoved, this, &PlacesList::setList);
@@ -104,14 +82,6 @@ PlacesList::PlacesList(QObject *parent)
         }
     });
 #endif
-}
-
-void PlacesList::watchPath(const QString &path)
-{
-    if (path.isEmpty() || !FMH::fileExists(path) || !QUrl(path).isLocalFile())
-        return;
-
-    this->watcher->addPath(QUrl(path).toLocalFile());
 }
 
 void PlacesList::componentComplete()
@@ -235,23 +205,7 @@ void PlacesList::setList()
         }
     }
 
-    this->setCount();
     emit this->postListChanged();
-}
-
-void PlacesList::setCount()
-{
-    this->watcher->removePaths(this->watcher->directories());
-    for (auto &data : this->list) {
-        const auto path = data[FMH::MODEL_KEY::URL];
-        if (FMStatic::isDir(path)) {
-            data.insert(FMH::MODEL_KEY::COUNT, "0");
-            QDir dir(QUrl(path).toLocalFile());
-            const auto count = dir.count();
-            this->count.insert(path, count);
-            this->watchPath(path);
-        }
-    }
 }
 
 QList<int> PlacesList::getGroups() const
@@ -276,13 +230,6 @@ QVariantMap PlacesList::get(const int &index) const
     const auto model = this->list.at(index);
     return FMH::toMap(model);
 }
-
-void PlacesList::clearBadgeCount(const int &index)
-{
-    this->list[index][FMH::MODEL_KEY::COUNT] = "0";
-    emit this->updateModel(index, {FMH::MODEL_KEY::COUNT});
-}
-
 void PlacesList::removePlace(const int &index)
 {
     if (index >= this->list.size() || index < 0)
@@ -375,7 +322,12 @@ void PlacesList::addBookmark(const QUrl& url)
     #else
     KFilePlacesModel model;
     model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMStatic::getIconName(url));
-    #endif
+#endif
+}
+
+int PlacesList::indexOfPath(const QUrl &url) const
+{
+    return this->indexOf(FMH::MODEL_KEY::PATH, url.toString());
 }
 
 
