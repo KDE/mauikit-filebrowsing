@@ -148,25 +148,8 @@ Maui.Page
 
     */
     property Maui.SelectionBar selectionBar : null //TODO remove
-    
-    
-    //relevant menus to file item and the browserview
-    /*!
-     \qmlproperty BrowserMenu FileBrowser::browserMenu
 
-     Gives access to the file browser menu to add new menu item actions.
-    */
-    property alias browserMenu: browserMenu
-    
-    /*!
-     \qmlproperty FileMenu FileBrowser::itemMenu
 
-     Gives access to the file browser items menu to add new menu item actions,
-     relevant to the file items.
-     To get info about the current file item for the menu check the FileMenu documentation.
-    */
-    property alias itemMenu: itemMenu
-    
     //access to the loaded the dialog components
     /*!
       \qmlproperty Dialog FileBrowser::dialog
@@ -436,38 +419,7 @@ Maui.Page
 //             }
         }
     }
-    
-    Private.BrowserMenu { id: browserMenu }
-    
-    Private.FileMenu
-    {
-        id: itemMenu
-        onBookmarkClicked: control.bookmarkFolder([item.path])
-        onCopyClicked:
-        {
-            if(item)
-                control.copy(filterSelection(currentPath, item.path))
-        }
-        
-        onCutClicked:
-        {
-            if(item)
-                control.cut(filterSelection(currentPath, item.path))
-        }
-        
-        onRenameClicked:
-        {
-            dialogLoader.sourceComponent = renameDialogComponent
-            dialog.open()
-        }
-        
-        onRemoveClicked:
-        {
-            console.log("REMOVE", item.path)
-            control.remove(filterSelection(currentPath, item.path))
-        }
-    }
-    
+
     property string typingQuery
     
     Maui.Chip
@@ -640,10 +592,7 @@ Maui.Page
         
         function onItemRightClicked(index)
         {
-            if(control.currentFMList.pathType !== FB.FMList.TRASH_PATH && control.currentFMList.pathType !== FB.FMList.REMOTE_PATH)
-            {
-                itemMenu.show(index)
-            }
+            control.currentIndex = index
             control.itemRightClicked(index)
             control.currentView.forceActiveFocus()
         }
@@ -662,25 +611,18 @@ Maui.Page
             control.itemLeftEmblemClicked(index)
             control.currentView.forceActiveFocus()
         }
-        
+
+
         function onAreaClicked(mouse)
         {
-            if(!Kirigami.Settings.isMobile && mouse.button === Qt.RightButton)
-            {
-                browserMenu.show(control)
-            }
-            else 
-            {
-                return
-            }
-            
             control.rightClicked()
             control.currentView.forceActiveFocus()
         }
-        
+
         function onAreaRightClicked(mouse)
         {
-            browserMenu.show(control)
+            control.rightClicked()
+            control.currentView.forceActiveFocus()
         }
     }   
     
@@ -1080,6 +1022,26 @@ Maui.Page
     function newItem()
     {
         dialogLoader.sourceComponent= newDialogComponent
+        dialog.open()
+        dialog.forceActiveFocus()
+    }
+
+    /**
+     *
+     **/
+    function renameItem()
+    {
+        dialogLoader.sourceComponent= renameDialogComponent
+        dialog.open()
+        dialog.forceActiveFocus()
+    }
+
+    /**
+     *
+     **/
+    function removeItem()
+    {
+        dialogLoader.sourceComponent= renameDialogComponent
         dialog.open()
         dialog.forceActiveFocus()
     }

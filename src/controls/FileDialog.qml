@@ -355,22 +355,6 @@ Maui.Dialog
                                 browser.settings.group = !browser.settings.group
                             }
                         }
-                    },
-
-                    ToolButton
-                    {
-                        id: _optionsButton
-                        icon.name: "overflow-menu"
-                        enabled: browser.currentFMList.pathType !== FB.FMList.TAGS_PATH && browser.currentFMList.pathType !== FB.FMList.TRASH_PATH && browser.currentFMList.pathType !== FB.FMList.APPS_PATH
-                        onClicked:
-                        {
-                            if(browser.browserMenu.visible)
-                                browser.browserMenu.close()
-                            else
-                                browser.browserMenu.show(_optionsButton, 0, height)
-                        }
-                        checked: browser.browserMenu.visible
-                        checkable: false
                     }
                 ]
 
