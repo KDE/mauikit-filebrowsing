@@ -615,7 +615,6 @@ Maui.Page
 
         function onAreaClicked(mouse)
         {
-            control.rightClicked()
             control.currentView.forceActiveFocus()
         }
 
