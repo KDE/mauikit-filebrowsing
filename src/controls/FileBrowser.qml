@@ -615,6 +615,11 @@ Maui.Page
 
         function onAreaClicked(mouse)
         {
+            if(!Kirigami.Settings.isMobile && mouse.button === Qt.RightButton)
+            {
+                control.rightClicked()
+            }
+
             control.currentView.forceActiveFocus()
         }
 
