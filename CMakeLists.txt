@@ -68,7 +68,7 @@ ecm_setup_version(${PROJECT_VERSION}
 )
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR_KF5}"
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
 
 if(ANDROID)
