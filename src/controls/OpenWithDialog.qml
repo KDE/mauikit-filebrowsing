@@ -21,6 +21,7 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.14
 
 import org.kde.kirigami 2.7 as Kirigami
+
 import org.mauikit.controls 1.2 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
 

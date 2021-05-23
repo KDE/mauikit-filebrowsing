@@ -23,7 +23,7 @@
 #include <MauiKit/Core/mauilist.h>
 #include <QObject>
 
-#include "mauikit_export.h"
+#include "filebrowsing_export.h"
 
 #include "fmstatic.h"
 
@@ -94,7 +94,7 @@ private:
  * @brief The FMList class
  * Model for listing the file system files and directories and perfom relevant actions upon it
  */
-class MAUIKIT_EXPORT FMList : public MauiList
+class FILEBROWSING_EXPORT FMList : public MauiList
 {
     Q_OBJECT
 
