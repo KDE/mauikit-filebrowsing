@@ -49,7 +49,8 @@ Maui.Dialog
     
     page.padding: 0
     closeButtonVisible: false
-    
+    headBar.visible: false
+
     /**
       * currentPath : url
       * The current path of the directory URL.
@@ -129,7 +130,6 @@ Maui.Dialog
       */
     signal finished(var urls)
 
-    page.headerBackground.color: Kirigami.Theme.backgroundColor
     rejectButton.text: i18n("Cancel")
     acceptButton.text: control.mode === modes.SAVE ? i18n("Save") : i18n("Open")
 
@@ -177,62 +177,6 @@ Maui.Dialog
         }
     ]
 
-    Component
-    {
-        id: _pathBarComponent
-
-        Maui.PathBar
-        {
-            onPathChanged: browser.openFolder(path)
-            url: browser.currentPath
-            onHomeClicked: browser.openFolder(FB.FM.homePath())
-            onPlaceClicked: browser.openFolder(path)
-        }
-    }
-
-    Component
-    {
-        id: _searchFieldComponent
-
-        Maui.TextField
-        {
-            placeholderText: i18n("Search for files... ")
-            onAccepted: browser.search(text)
-            onCleared: browser.quitSearch()
-            onGoBackTriggered:
-            {
-                searchBar = false
-                clear()
-            }
-
-            background: Rectangle
-            {
-                border.color: Qt.tint(Kirigami.Theme.textColor, Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.7))
-                radius: Maui.Style.radiusV
-                color: Kirigami.Theme.backgroundColor
-            }
-        }
-    }
-
-    headBar.visible: true
-    headBar.middleContent: Loader
-    {
-        asynchronous: true
-        Layout.fillWidth: true
-        Layout.minimumWidth: 100
-//         Layout.maximumWidth: 500
-        Layout.preferredHeight: Maui.Style.iconSizes.big
-        sourceComponent: searchBar ? _searchFieldComponent : _pathBarComponent
-    }
-
-    headBar.rightContent: ToolButton
-    {
-        id: searchButton
-        icon.name: "edit-find"
-        onClicked: searchBar = !searchBar
-        checked: searchBar
-    }
-
     Maui.Dialog
     {
         id: _confirmationDialog
@@ -255,7 +199,7 @@ Maui.Dialog
 
         separatorVisible: wideMode
         initialPage: [sidebar, _browserLayout]
-        defaultColumnWidth: 160 * (Kirigami.Settings.isMobile? 2 : 1)
+        defaultColumnWidth: 200
 
         FB.PlacesListBrowser
         {
@@ -267,9 +211,9 @@ Maui.Dialog
             }
 
             list.groups:  [FB.FMList.PLACES_PATH,
-            FB.FMList.REMOTE_PATH,
-            FB.FMList.CLOUD_PATH,
-            FB.FMList.DRIVES_PATH]
+                FB.FMList.REMOTE_PATH,
+                FB.FMList.CLOUD_PATH,
+                FB.FMList.DRIVES_PATH]
         }
 
         ColumnLayout
@@ -284,6 +228,12 @@ Maui.Dialog
 
                 headBar.visible: true
                 headBar.rightContent:[
+                    ToolButton
+                    {
+                        icon.name: "folder-new"
+                        onClicked: browser.newItem()
+                    },
+
                     Maui.ToolButtonMenu
                     {
                         icon.name: "view-sort"
@@ -356,6 +306,14 @@ Maui.Dialog
                                 browser.settings.group = !browser.settings.group
                             }
                         }
+                    },
+
+                    ToolButton
+                    {
+                        id: searchButton
+                        icon.name: "edit-find"
+                        onClicked: browser.toggleSearchBar()
+                        checked: browser.headBar.visible
                     }
                 ]
 
