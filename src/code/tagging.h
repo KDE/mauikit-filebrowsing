@@ -362,9 +362,9 @@ protected:
     static bool setTagIconName(QVariantMap &item);
 
 signals:
-    void urlTagged(const QString &url, const QString &tag);
-    void tagged(const QVariantMap &tag);
-    void tagRemoved(const QString &tag);
+    void urlTagged(QString url, QString tag);
+    void tagged(QVariantMap tag);
+    void tagRemoved(QString tag);
 };
 
 #endif // TAGGING_H

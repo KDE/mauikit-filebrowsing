@@ -60,6 +60,7 @@ Maui.ListBrowser
     Label
     {
         anchors.fill: parent
+        anchors.leftMargin: Maui.Style.space.medium
         verticalAlignment: Qt.AlignVCenter
         text: control.placeholderText
         opacity: 0.7

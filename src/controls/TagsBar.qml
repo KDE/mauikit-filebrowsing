@@ -36,7 +36,7 @@ import "private"
  *
  *
  */
-Control
+Item
 {
     id: control
     
@@ -87,149 +87,138 @@ Control
     
     implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.tiny
     
-    background: Rectangle
-    {
-        color: control.hovered || control.editMode ?  Qt.darker(control.Kirigami.Theme.backgroundColor, 1.1): control.Kirigami.Theme.backgroundColor
+//    background: Rectangle
+//    {
+//        color: control.Kirigami.Theme.backgroundColor
         
-        Maui.Separator
-        {
-            edge: Qt.TopEdge
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-        }
-    }
-    
+//        Maui.Separator
+//        {
+//            edge: Qt.TopEdge
+//            anchors.top: parent.top
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+//        }
+//    }
+
+
     RowLayout
     {
         anchors.fill: parent
-        
-        anchors.leftMargin: Maui.Style.space.medium
-        anchors.rightMargin: Maui.Style.space.medium
-        
-        Item
-        {
-            Layout.fillHeight: true
-            Layout.fillWidth: true         
-            
-            TagList
-            {
-                id: tagsList
-                visible: !control.editMode
-                anchors.fill: parent        
-                showPlaceHolder: allowEditMode
-                showDeleteIcon: allowEditMode
-                onTagRemoved: tagRemovedClicked(index)
-                onTagClicked: control.tagClicked(tagsList.list.get(index).tag)
-                Kirigami.Theme.textColor: control.Kirigami.Theme.textColor
-                Kirigami.Theme.backgroundColor: control.Kirigami.Theme.backgroundColor
-                
-                onAreaClicked:
+        TagList
                 {
-                    if(allowEditMode) 
+                    id: tagsList
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    visible: !control.editMode
+                    showPlaceHolder: allowEditMode
+                    showDeleteIcon: allowEditMode
+                    onTagRemoved: tagRemovedClicked(index)
+                    onTagClicked: control.tagClicked(tagsList.list.get(index).tag)
+
+                    onAreaClicked:
                     {
-                        goEditMode()
+                        if(allowEditMode)
+                        {
+                            goEditMode()
+                        }
                     }
-                }        
-            }
-            
-            Maui.TextField
+                }
+
+        Maui.TextField
+        {
+            id: editTagsEntry
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            visible: control.editMode
+            text: list.tags.join(",")
+
+            onVisibleChanged:
             {
-                id: editTagsEntry
-                visible: control.editMode
-                anchors.fill: parent
-                
-                horizontalAlignment: Text.AlignLeft
-                verticalAlignment:  Text.AlignVCenter
-                focus: true
-                text: list.tags.join(",")
-                color: Kirigami.Theme.textColor
-                selectionColor: Kirigami.Theme.highlightColor
-                selectedTextColor: Kirigami.Theme.highlightedTextColor
-                onAccepted: control.saveTags()
-                
-                actions: Action
+                if(visible)
                 {
-                    icon.name: "checkbox"
-                    onTriggered: editTagsEntry.accepted()
+                    forceActiveFocus()
                 }
-                
-                background: Rectangle
+            }
+
+            onAccepted:
+            {
+                control.tagsEdited(getTags())
+                control.closeEditMode()
+            }
+
+            actions: Action
+            {
+                icon.name: "checkbox"
+                onTriggered: editTagsEntry.accepted()
+            }
+
+            background: Rectangle
+            {
+                color: "transparent"
+            }
+
+            function getTags()
+            {
+                if(!editTagsEntry.text.length > 0)
                 {
-                    color: "transparent"
+                    return
                 }
+
+                var tags = []
+                if(editTagsEntry.text.trim().length > 0)
+                {
+                    var list = editTagsEntry.text.split(",")
+
+                    if(list.length > 0)
+                    {
+                        for(var i in list)
+                        {
+                            tags.push(list[i].trim())
+
+                        }
+                    }
+                }
+
+                return tags
             }
         }
-        
-        MouseArea
-        {
-            visible: control.allowEditMode && tagsList.visible
-            hoverEnabled: true
-            onClicked: addClicked()
-            implicitHeight: implicitWidth
-            implicitWidth: Maui.Style.iconSizes.medium
-            
-            Maui.PlusSign
-            {
-                height: Maui.Style.iconSizes.tiny
-                width: height
-                anchors.centerIn: parent
-                color: parent.containsMouse || parent.containsPress ? Kirigami.Theme.highlightColor : Qt.tint(Kirigami.Theme.textColor, Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.7))
-            }
-        }        
+
     }
-    
-    /**
-     * 
-     */
-    function clear()
-    {
-        //         tagsList.model.clear()
-    }
-    
-    /**
-     * 
+
+
+
+
+
+    //        MouseArea
+    //        {
+    //            visible: control.allowEditMode && tagsList.visible
+    //            hoverEnabled: true
+    //            onClicked: addClicked()
+    //            implicitHeight: implicitWidth
+    //            implicitWidth: Maui.Style.iconSizes.medium
+
+    //            Maui.PlusSign
+    //            {
+    //                height: Maui.Style.iconSizes.tiny
+    //                width: height
+    //                anchors.centerIn: parent
+    //                color: parent.containsMouse || parent.containsPress ? Kirigami.Theme.highlightColor : Qt.tint(Kirigami.Theme.textColor, Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.7))
+    //            }
+    //        }
+
+      /**
+     *
      */
     function goEditMode()
     {
         editMode = true
         editTagsEntry.forceActiveFocus()
     }
-    
-    /**
-     * 
-     */
-    function saveTags()
+
+    function closeEditMode()
     {
-        control.tagsEdited(control.getTags())
-        editMode = false
+        control.editMode = false
+
     }
-    
-    /**
-     * 
-     */
-    function getTags()
-    {
-        if(!editTagsEntry.text.length > 0)
-        {
-            return
-        }
-        
-        var tags = []
-        if(editTagsEntry.text.trim().length > 0)
-        {
-            var list = editTagsEntry.text.split(",")
-            
-            if(list.length > 0)
-            {
-                for(var i in list)
-                {
-                    tags.push(list[i].trim())
-                    
-                }
-            }
-        }
-        
-        return tags
-    }
+
 }

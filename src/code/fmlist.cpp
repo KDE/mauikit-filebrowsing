@@ -42,20 +42,20 @@ FMList::FMList(QObject *parent)
     , fm(new FM(this))
 {
     qRegisterMetaType<FMList *>("const FMList*"); // this is needed for QML to know of FMList in the search method
-    connect(this->fm, &FM::cloudServerContentReady, [&](const FMH::MODEL_LIST &list, const QUrl &url) {
+    connect(this->fm, &FM::cloudServerContentReady, [this](const FMH::MODEL_LIST &list, const QUrl &url) {
         if (this->path == url) {
             this->assignList(list);
         }
     });
 
-    connect(this->fm, &FM::pathContentReady, [&](QUrl) {
+    connect(this->fm, &FM::pathContentReady, [this](QUrl) {
         emit this->preListChanged();
         this->sortList();
         this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
         emit this->postListChanged();
     });
 
-    connect(this->fm, &FM::pathContentItemsChanged, [&](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
+    connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
         for (const auto &item : qAsConst(res)) {
             const auto index = this->indexOf(FMH::MODEL_KEY::PATH, item.first[FMH::MODEL_KEY::PATH]);
 
@@ -67,14 +67,14 @@ FMList::FMList(QObject *parent)
         }
     });
 
-    connect(this->fm, &FM::pathContentItemsReady, [&](FMStatic::PATH_CONTENT res) {
+    connect(this->fm, &FM::pathContentItemsReady, [this](FMStatic::PATH_CONTENT res) {
         if (res.path != this->path)
             return;
 
         this->appendToList(res.content);
     });
 
-    connect(this->fm, &FM::pathContentItemsRemoved, [&](FMStatic::PATH_CONTENT res) {
+    connect(this->fm, &FM::pathContentItemsRemoved, [this](FMStatic::PATH_CONTENT res) {
         if (res.path != this->path)
             return;
 
@@ -93,22 +93,22 @@ FMList::FMList(QObject *parent)
         this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
     });
 
-    connect(this->fm, &FM::warningMessage, [&](const QString &message) {
+    connect(this->fm, &FM::warningMessage, [this](const QString &message) {
         emit this->warning(message);
     });
 
-    connect(this->fm, &FM::loadProgress, [&](const int &percent) {
+    connect(this->fm, &FM::loadProgress, [this](const int &percent) {
         emit this->progress(percent);
     });
 
-    connect(this->fm, &FM::pathContentChanged, [&](const QUrl &path) {
+    connect(this->fm, &FM::pathContentChanged, [this](const QUrl &path) {
         qDebug() << "FOLDER PATH CHANGED" << path;
         if (path != this->path)
             return;
         this->sortList();
     });
 
-    connect(this->fm, &FM::newItem, [&](const FMH::MODEL &item, const QUrl &url) {
+    connect(this->fm, &FM::newItem, [this](const FMH::MODEL &item, const QUrl &url) {
         if (this->path == url) {
             emit this->preItemAppended();
             this->list << item;
@@ -118,10 +118,15 @@ FMList::FMList(QObject *parent)
     
     connect(Tagging::getInstance(), &Tagging::urlTagged, [this](QString, QString tag)
     {
-        if(this->path.toString().endsWith(tag))
+        if(this->getPathType() == FMList::PATHTYPE::TAGS_PATH)
         {
-            this->refresh();
+            const auto url = this->path.toString();
+            if(url.endsWith(tag))
+            {
+                this->refresh();
+            }
         }
+
     });
     
     connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap)
@@ -226,7 +231,7 @@ void FMList::sortList()
     const FMH::MODEL_KEY key = static_cast<FMH::MODEL_KEY>(this->sort);
     auto it = this->list.begin();
     
-    const auto sortFunc = [&key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool
+    const auto sortFunc = [key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool
     {
         switch (key) {
             case FMH::MODEL_KEY::SIZE: {
@@ -633,7 +638,7 @@ void FMList::remove(const int &index)
 
 int FMList::indexOfName(const QString& query)
 {
-     const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [&](const FMH::MODEL &item) -> bool {
+     const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [this, query](const FMH::MODEL &item) -> bool {
         return item[FMH::MODEL_KEY::LABEL].startsWith(query, Qt::CaseInsensitive);
     });
 

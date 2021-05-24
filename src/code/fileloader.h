@@ -73,7 +73,7 @@ signals:
      * @brief finished
      * @param items
      */
-    void finished(FMH::MODEL_LIST items, QList<QUrl> &urls);
+    void finished(FMH::MODEL_LIST items, QList<QUrl> urls);
 
     /**
      * @brief start
@@ -83,19 +83,19 @@ signals:
      * @param filters
      * @param limit
      */
-    void start(QList<QUrl> urls, bool recursive, const QStringList &nameFilters, const QDir::Filters &filters, uint limit);
+    void start(QList<QUrl> urls, bool recursive, QStringList nameFilters, QDir::Filters filters, uint limit);
 
     /**
      * @brief itemsReady
      * @param items
      */
-    void itemsReady(FMH::MODEL_LIST items, QList<QUrl> &urls);
+    void itemsReady(FMH::MODEL_LIST items, QList<QUrl> urls);
 
     /**
      * @brief itemReady
      * @param item
      */
-    void itemReady(FMH::MODEL item, QList<QUrl> &urls);
+    void itemReady(FMH::MODEL item, QList<QUrl> urls);
 
 private:
     QThread *m_thread;

@@ -2,12 +2,11 @@
 #define TAGSLIST_H
 
 #include <QObject>
+#include <QStringList>
 
 #include <MauiKit/Core/mauilist.h>
 #include <MauiKit/Core/fmh.h>
 #include "tag.h"
-
-class Tagging;
 
 /**
  * @brief The TagsList class
@@ -34,13 +33,14 @@ public:
 
     QStringList getTags() const;
 
+    void componentComplete() override final;
+
 private:
     FMH::MODEL_LIST list;
     void setList();
-    Tagging *tag;
 
     bool strict = true;
-    QStringList urls = QStringList();
+    QStringList m_urls;
 
     /**
      * @brief append
@@ -158,6 +158,7 @@ public slots:
      * True if the tag exists false otherwise
      */
     bool contains(const QString &tag);
+
 };
 
 #endif // TAGSLIST_H

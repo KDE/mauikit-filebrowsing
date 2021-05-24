@@ -624,11 +624,11 @@ Maui.Page
             control.currentView.forceActiveFocus()
         }
 
-        function onAreaRightClicked(mouse)
-        {
-            control.rightClicked()
-            control.currentView.forceActiveFocus()
-        }
+//        function onAreaRightClicked(mouse)
+//        {
+//            control.rightClicked()
+//            control.currentView.forceActiveFocus()
+//        }
     }   
     
     StackView

@@ -38,6 +38,12 @@ Tagging::Tagging()
     : TAGDB()
 {
     this->setApp();
+    connect(qApp, &QCoreApplication::aboutToQuit, [this]()
+    {
+        qDebug() << "Lets remove Tagging singleton instance";
+        delete m_instance;
+        m_instance = nullptr;
+    });
 }
 
 const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier)
@@ -162,7 +168,7 @@ bool Tagging::updateUrlTags(const QString &url, const QStringList &tags, const b
 {
     this->removeUrlTags(url, strict);
 
-    for (const auto &tag : qAsConst(tags))
+    for (const auto &tag : std::as_const(tags))
     {
         this->tagUrl(url, tag);
     }
