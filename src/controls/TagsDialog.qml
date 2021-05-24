@@ -163,13 +163,12 @@ Maui.Dialog
                 }
             }
             
-            delegate: Maui.ListDelegate
+            delegate: Maui.ListBrowserDelegate
             {
-                id: delegate
                 width: ListView.view.width
-                label: model.tag
-                iconName: model.icon
-                iconSize: Maui.Style.iconSizes.small
+                label1.text: model.tag
+                iconSource: model.icon
+                iconSizeHint: Maui.Style.iconSizes.small
                 
                 template.content: Rectangle
                 {

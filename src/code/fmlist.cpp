@@ -638,7 +638,7 @@ void FMList::remove(const int &index)
 
 int FMList::indexOfName(const QString& query)
 {
-     const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [this, query](const FMH::MODEL &item) -> bool {
+     const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [query](const FMH::MODEL &item) -> bool {
         return item[FMH::MODEL_KEY::LABEL].startsWith(query, Qt::CaseInsensitive);
     });
 

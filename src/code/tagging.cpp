@@ -38,7 +38,7 @@ Tagging::Tagging()
     : TAGDB()
 {
     this->setApp();
-    connect(qApp, &QCoreApplication::aboutToQuit, [this]()
+    connect(qApp, &QCoreApplication::aboutToQuit, []()
     {
         qDebug() << "Lets remove Tagging singleton instance";
         delete m_instance;
