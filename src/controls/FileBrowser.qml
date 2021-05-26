@@ -411,6 +411,17 @@ Maui.Page
             acceptButton.text: i18n("Rename")
             rejectButton.text: i18n("Cancel")
             
+            onOpened:
+            {
+                if(_renameDialog.textEntry.text.indexOf(".") >= 0)
+                {                    
+                    _renameDialog.textEntry.select(0, _renameDialog.textEntry.text.indexOf("."))
+                }else
+                {                    
+                    _renameDialog.textEntry.selectAll()
+                }                
+            }
+            
 //             template.iconComponent: Maui.GridItemTemplate
 //             {
 //                 anchors.fill: parent
