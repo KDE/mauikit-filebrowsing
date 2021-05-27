@@ -246,7 +246,7 @@ Maui.AltBrowser
         tooltipText: model.path
         
         checkable: control.selectionMode
-        imageSource: settings.showThumbnails ? model.thumbnail : ""
+        imageSource: settings.showThumbnails && height > 64 ? model.thumbnail : ""
         checked: selectionBar ? selectionBar.contains(model.path) : false
         opacity: model.hidden == "true" ? 0.5 : 1
         draggable: true

@@ -18,7 +18,8 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
     , m_requestedSize(requestedSize)
 {
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    QStringList plugins = KIO::PreviewJob::defaultPlugins();
+    QStringList plugins = KIO::PreviewJob::availablePlugins();
+//     qDebug() << plugins << KIO::PreviewJob::defaultPlugins();
     auto job = new KIO::PreviewJob(KFileItemList() << KFileItem(QUrl::fromUserInput(id)), requestedSize, &plugins);
 
     connect(job, &KIO::PreviewJob::gotPreview, [this](KFileItem, QPixmap pixmap) {
@@ -27,6 +28,7 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
     });
 
     connect(job, &KIO::PreviewJob::failed, [this](KFileItem) {
+        m_error = "Thumbnail Previewer job failed";
         this->cancel();
         emit this->finished();
     });
@@ -38,4 +40,9 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
 QQuickTextureFactory *AsyncImageResponse::textureFactory() const
 {
     return QQuickTextureFactory::textureFactoryForImage(m_image);
+}
+
+QString AsyncImageResponse::errorString() const
+{
+    return m_error;
 }

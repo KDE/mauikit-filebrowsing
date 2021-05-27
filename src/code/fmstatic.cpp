@@ -17,9 +17,8 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KIO/OpenUrlJob>
-#include <KRun>
 #include <KApplicationTrader>
-#include <QIcon>
+#include <KIO/PreviewJob>
 #endif
 
 FMStatic::FMStatic(QObject *parent)
@@ -477,9 +476,13 @@ const QString FMStatic::getMime(const QUrl &path)
 static const QUrl thumbnailUrl(const QUrl &url, const QString &mimetype)
 {
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::DOCUMENT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::VIDEO, mimetype) || url.toString().endsWith(".appimage", Qt::CaseInsensitive)) {
+    if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::FONT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::TEXT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::AUDIO, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::DOCUMENT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::VIDEO, mimetype) || url.toString().endsWith(".appimage", Qt::CaseInsensitive)) {
         return QUrl("image://thumbnailer/" + url.toString());
     }
+    
+//      if (KIO::PreviewJob::supportedMimeTypes().contains(mimetype)) {
+//         return QUrl("image://thumbnailer/" + url.toString());
+//     }
 #endif
     
     if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::IMAGE, mimetype)) {
