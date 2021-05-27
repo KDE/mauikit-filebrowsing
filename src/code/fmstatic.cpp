@@ -562,18 +562,6 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             return FMH::toMap(getFileInfoModel(path));
         }
 
-        const FMH::MODEL FMStatic::getDirInfoModel(const QUrl &path, const QString &type)
-        {
-            auto res = getFileInfoModel(path);
-            res[FMH::MODEL_KEY::TYPE] = type;
-            return res;
-        }
-
-        const QVariantMap FMStatic::getDirInfo(const QUrl &path)
-        {
-            return FMH::toMap(getDirInfoModel(path));
-        }
-
         const QString FMStatic::getIconName(const QUrl &path)
         {
             if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir()) {

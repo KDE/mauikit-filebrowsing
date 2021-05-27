@@ -652,23 +652,7 @@ public slots:
      * @return
      */
     static const QVariantMap getFileInfo(const QUrl &path);
-    
-    /**
-     * @brief getDirInfoModel
-     * @param path
-     * @param type
-     * @return
-     */
-    static const FMH::MODEL getDirInfoModel(const QUrl &path, const QString &type = QString());
-    
-    /**
-     * @brief getDirInfo
-     * @param path
-     * @param type
-     * @return
-     */
-    static const QVariantMap getDirInfo(const QUrl &path);
-    
+
     /**
      * @brief getIconName
      * Returns the icon name for certain file.
