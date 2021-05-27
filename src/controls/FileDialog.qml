@@ -329,6 +329,13 @@ Maui.Dialog
                             icon.name: "go-previous"
                             onTriggered : browser.goBack()
                         }
+                        
+                            Action
+                        {
+                            icon.name: "go-up"
+                            onTriggered : browser.goUp()
+                        }
+
 
                         Action
                         {

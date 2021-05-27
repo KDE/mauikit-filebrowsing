@@ -378,8 +378,7 @@ void FMStatic::openUrl(const QUrl &url)
     
     QDesktopServices::openUrl(url);
     
-#endif
-    
+#endif    
 }
 
 void FMStatic::openLocation(const QStringList &urls)
