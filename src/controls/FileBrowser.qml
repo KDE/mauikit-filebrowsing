@@ -415,9 +415,9 @@ Maui.Page
             {
                 item = control.currentFMModel.get(control.currentIndex)
 
-                if(_renameDialog.textEntry.text.indexOf(".") >= 0)
+                if(_renameDialog.textEntry.text.lastIndexOf(".") >= 0)
                 {                    
-                    _renameDialog.textEntry.select(0, _renameDialog.textEntry.text.indexOf("."))
+                    _renameDialog.textEntry.select(0, _renameDialog.textEntry.text.lastIndexOf("."))
                 }else
                 {                    
                     _renameDialog.textEntry.selectAll()
