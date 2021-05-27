@@ -398,7 +398,7 @@ Maui.Page
         Maui.NewDialog
         {
             id: _renameDialog
-            property var item : control.currentFMList ? control.currentFMModel.get(control.currentIndex) : ({})
+            property var item : ({})
             title: i18n("Rename")
             message: i18n("Change the name of a file or folder")
             template.iconSource: item.icon
@@ -413,6 +413,8 @@ Maui.Page
             
             onOpened:
             {
+                item = control.currentFMModel.get(control.currentIndex)
+
                 if(_renameDialog.textEntry.text.indexOf(".") >= 0)
                 {                    
                     _renameDialog.textEntry.select(0, _renameDialog.textEntry.text.indexOf("."))

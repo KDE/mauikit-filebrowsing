@@ -53,13 +53,19 @@ public:
                                                       "text/x-vcard",
                                                       "text/x-go",
                                                       "text/x-cmake",
+                                                      "text/x-makefile",
                                                       "text/x-qml",
+                                                      "text/x-python",
+                                                      "text/*",
                                                       "application/xml",
                                                       "application/javascript",
                                                       "application/json",
                                                       "application/pgp-keys",
                                                       "application/x-shellscript",
                                                       "application/x-cmakecache",
+                                                      "application/x-yaml",
+                                                      "application/x-perl",
+                                                      "application/x-kdevelop",
                                                       "application/x-kicad-project"};
 
     inline static const QStringList IMAGE_MIMETYPES = {"image/bmp", "image/webp", "image/png", "image/gif", "image/jpeg", "image/web", "image/svg", "image/svg+xml"};
