@@ -162,7 +162,7 @@ Maui.Dialog
                 placeholderText: i18n("File name...")
                 text: suggestedFileName
             }
-        },
+        }/*,
 
         FB.TagsBar
         {
@@ -174,7 +174,7 @@ Maui.Dialog
             allowEditMode: true
             Kirigami.Theme.textColor: control.Kirigami.Theme.textColor
             Kirigami.Theme.backgroundColor: control.Kirigami.Theme.backgroundColor
-        }
+        }*/
     ]
 
     Maui.Dialog
@@ -227,6 +227,20 @@ Maui.Dialog
                 Layout.fillHeight: true
 
                 headBar.visible: true
+//                altHeader: Kirigami.Settings.isMobile
+
+                headBar.farLeftContent: ToolButton
+                {
+                    visible: pageRow.currentIndex === 1
+                    icon.name: checked ? "sidebar-collapse" : "sidebar-expand"
+                    onClicked: pageRow.currentIndex = !pageRow.currentIndex
+                    checked: pageRow.currentIndex === 0
+                    ToolTip.delay: 1000
+                    ToolTip.timeout: 5000
+                    ToolTip.visible: hovered
+                    ToolTip.text: i18n("Toogle SideBar")
+                }
+
                 headBar.rightContent:[
                     ToolButton
                     {
@@ -356,23 +370,17 @@ Maui.Dialog
                     selectionMode: control.mode === modes.OPEN
                     onItemClicked:
                     {
-                        if(currentFMModel.get(index).isdir == "true")
+                        if(Maui.Handy.singleClick)
                         {
-                            openItem(index)
+                            performAction(index)
                         }
+                    }
 
-                        switch(control.mode)
+                    onItemDoubleClicked:
+                    {
+                        if(!Maui.Handy.singleClick)
                         {
-                        case modes.OPEN :
-                        {
-                            addToSelection(currentFMModel.get(index))
-                            break
-                        }
-                        case modes.SAVE:
-                        {
-                            textField.text = currentFMModel.get(index).label
-                            break
-                        }
+                            performAction(index)
                         }
                     }
 
@@ -387,6 +395,25 @@ Maui.Dialog
                                 sidebar.currentIndex = i
                                 return;
                             }
+                        }
+                    }
+
+                    function performAction(index)
+                    {
+                        if(currentFMModel.get(index).isdir == "true")
+                        {
+                            openItem(index)
+                        }
+
+                        switch(control.mode)
+                        {
+                        case modes.OPEN :
+                            addToSelection(currentFMModel.get(index))
+                            break;
+
+                        case modes.SAVE:
+                            textField.text = currentFMModel.get(index).label
+                            break;
                         }
                     }
                 }
@@ -429,17 +456,17 @@ Maui.Dialog
                 paths[i] = paths[i] + "/" + textField.text
             }
 
-            _tagsBar.list.urls = paths
-            _tagsBar.list.updateToUrls(_tagsBar.getTags())
+//            _tagsBar.list.urls = paths
+//            _tagsBar.list.updateToUrls(_tagsBar.getTags())
         }
 
         control.finished(paths)
 
-        if(control.mode === modes.SAVE) //do it after finished in cas ethe files need to be saved aka exists, before tryign to insert tags
-        {
-            _tagsBar.list.urls = paths
-            _tagsBar.list.updateToUrls(_tagsBar.getTags())
-        }
+//        if(control.mode === modes.SAVE) //do it after finished in cas ethe files need to be saved aka exists, before tryign to insert tags
+//        {
+//            _tagsBar.list.urls = paths
+//            _tagsBar.list.updateToUrls(_tagsBar.getTags())
+//        }
 
         if(control.callback)
         {
