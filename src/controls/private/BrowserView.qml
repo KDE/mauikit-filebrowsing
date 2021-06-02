@@ -178,6 +178,7 @@ Maui.AltBrowser
         MenuItem
         {
             text: i18n("Copy here")
+            icon.name: "edit-copy"
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
@@ -188,6 +189,7 @@ Maui.AltBrowser
         MenuItem
         {
             text: i18n("Move here")
+            icon.name: "edit-move"
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
@@ -198,6 +200,7 @@ Maui.AltBrowser
         MenuItem
         {
             text: i18n("Link here")
+            icon.name: "edit-link"
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
@@ -211,6 +214,7 @@ Maui.AltBrowser
         MenuItem
         {
             text: i18n("Cancel")
+            icon.name: "dialog-cancel"
             onTriggered: _dropMenu.close()
         }
     }
@@ -354,7 +358,6 @@ Maui.AltBrowser
 
 gridDelegate: Item
 {
-
     property bool isCurrentItem : GridView.isCurrentItem
     height: gridView.cellHeight
     width: gridView.cellWidth
