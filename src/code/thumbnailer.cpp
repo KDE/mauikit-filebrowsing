@@ -1,6 +1,6 @@
 #include "thumbnailer.h"
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
 #include <KIO/PreviewJob>
 #endif
 
@@ -17,7 +17,7 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
     : m_id(id)
     , m_requestedSize(requestedSize)
 {
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     QStringList plugins = KIO::PreviewJob::availablePlugins();
 //     qDebug() << plugins << KIO::PreviewJob::defaultPlugins();
     auto job = new KIO::PreviewJob(KFileItemList() << KFileItem(QUrl::fromUserInput(id)), requestedSize, &plugins);

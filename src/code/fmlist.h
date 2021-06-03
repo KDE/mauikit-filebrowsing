@@ -29,7 +29,6 @@
 
 class FM;
 
-
 /**
  * @brief The PathStatus class
  * Represents the status of a directory, be it non existance, loading or empty.
@@ -43,8 +42,7 @@ struct PathStatus
     Q_PROPERTY(QString message MEMBER m_message)
     Q_PROPERTY(QString icon MEMBER m_icon)
     Q_PROPERTY(bool empty MEMBER m_empty)
-    Q_PROPERTY(bool exists MEMBER m_exists)
-    
+    Q_PROPERTY(bool exists MEMBER m_exists)    
     
 public:
     enum STATUS_CODE : uint_fast8_t { LOADING, ERROR, READY };

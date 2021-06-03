@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(UNIX)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 endif()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -46,36 +46,50 @@ configure_package_config_file(
     "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
     PATH_VARS KF5_INCLUDE_INSTALL_DIR CMAKE_INSTALL_PREFIX
-)
+    )
 
 install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
     "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     COMPONENT Devel
-)
+    )
 
-    install(EXPORT MauiKitFileBrowsingTargets
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        FILE MauiKitFileBrowsingTargets.cmake
-        NAMESPACE MauiKit::)
-        
+install(EXPORT MauiKitFileBrowsingTargets
+    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+    FILE MauiKitFileBrowsingTargets.cmake
+    NAMESPACE MauiKit::)
+
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX FileBrowsing
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
     SOVERSION 1
-)
+    )
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
 
+option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" )
+
+if(ANDROID OR APPLE OR WIN32)
+    set(KIO_AVAILABLE OFF)
+else()
+    set(KIO_AVAILABLE OFF)
+endif()
+
 if(ANDROID)
     find_package(Qt5 REQUIRED COMPONENTS AndroidExtras)
     find_package(Gradle REQUIRED)
-elseif(UNIX)
-    find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS Config KIO)
+endif()
+
+if(UNIX AND NOT ANDROID)
+find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS Config)
+endif()
+
+if(${KIO_AVAILABLE})
+    find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS KIO)
 endif()
 
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Concurrent Network REQUIRED)

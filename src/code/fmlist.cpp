@@ -26,10 +26,6 @@
 #include <MauiKit/syncing.h>
 #endif
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-#include <KIO/EmptyTrashJob>
-#endif
-
 #include <QHash>
 #include <QFuture>
 #include <QObject>

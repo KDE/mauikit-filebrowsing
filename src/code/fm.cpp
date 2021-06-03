@@ -30,8 +30,7 @@
 #include <QUrl>
 #include <QDebug>
 
-#if defined(Q_OS_ANDROID)
-#elif defined Q_OS_LINUX
+#ifdef KIO_AVAILABLE
 #include <KCoreDirLister>
 #include <KFileItem>
 #include <KFilePlacesModel>
@@ -40,11 +39,9 @@
 #include <KIO/MkdirJob>
 #include <KIO/SimpleJob>
 #include <QIcon>
-#endif
+#else
 
-#if defined(Q_OS_ANDROID) || defined(Q_OS_WIN) || defined(Q_OS_MACOS)
 #include "fileloader.h"
-
 #include <QFileSystemWatcher>
 
 QDirLister::QDirLister(QObject *parent)
@@ -215,14 +212,14 @@ FM::FM(QObject *parent)
 #ifdef COMPONENT_SYNCING
     , sync(new Syncing(this))
 #endif
-#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
+#ifdef KIO_AVAILABLE
     , dirLister(new KCoreDirLister(this))
 #else
     , dirLister(new QDirLister(this))
 #endif
 {
 
-#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
+#ifdef KIO_AVAILABLE
     this->dirLister->setAutoUpdate(true);
 
     const static auto packItems = [](const KFileItemList &items) -> FMH::MODEL_LIST {

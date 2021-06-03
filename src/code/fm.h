@@ -3,7 +3,7 @@
 
 #include <QHash>
 #include <QObject>
-#include <QStorageInfo>
+
 #include <QStringList>
 #include <QVariantList>
 #include <QDirIterator>
@@ -14,9 +14,10 @@
 #include "fmstatic.h"
 #include "filebrowsing_export.h"
 
-#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
+#ifdef KIO_AVAILABLE
 class KCoreDirLister;
 #else
+
 class QFileSystemWatcher;
 
 namespace FMH
@@ -162,7 +163,7 @@ public:
 
 private:
 
-#if defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
+#ifdef KIO_AVAILABLE
     KCoreDirLister *dirLister;
 #else
     QDirLister *dirLister;

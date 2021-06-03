@@ -27,32 +27,23 @@
 #include <MauiKit/Core/utils.h>
 #include <MauiKit/Core/fmh.h>
 
-#ifdef COMPONENT_ACCOUNTS
-#include <MauiKit/Core/mauiaccounts.h>
-#endif
-
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
 #include <KFilePlacesModel>
 #include <Solid/Device>
 #endif
 
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-PlacesList::PlacesList(QObject *parent)
-    : MauiList(parent)
-    , model(nullptr)
-    #else
+#ifdef KIO_AVAILABLE
 PlacesList::PlacesList(QObject *parent)
     : MauiList(parent)
     , model(new KFilePlacesModel(this))
+    #else
+PlacesList::PlacesList(QObject *parent)
+    : MauiList(parent)
+    , model(nullptr)
     #endif
 {
-#ifdef COMPONENT_ACCOUNTS
-    connect(MauiAccounts::instance(), &MauiAccounts::accountAdded, this, &PlacesList::setList);
-    connect(MauiAccounts::instance(), &MauiAccounts::accountRemoved, this, &PlacesList::setList);
-#endif
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    
+#ifdef KIO_AVAILABLE
     connect(this->model, &KFilePlacesModel::reloaded, this, &PlacesList::setList);
 
     connect(this->model, &KFilePlacesModel::setupDone, this, &PlacesList::setList);
@@ -102,7 +93,7 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     if (type == FMStatic::PATHTYPE_KEY::QUICK_PATH) {
         res << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + "fav"}, {FMH::MODEL_KEY::ICON, "love"}, {FMH::MODEL_KEY::LABEL, "Favorite"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
 #endif
 
@@ -115,19 +106,7 @@ if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
     res << FMStatic::getDefaultPaths();
 }
 
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-Q_UNUSED(model)
-switch (type) {
-    case (FMStatic::PATHTYPE_KEY::PLACES_PATH):
-        res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
-        break;
-    case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
-        res = FMStatic::getDevices();
-        break;
-    default:
-        break;
-}
-#else
+#ifdef KIO_AVAILABLE
 const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type));
 res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
     const QUrl url = model.url(index);
@@ -142,7 +121,7 @@ res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), 
     {FMH::MODEL_KEY::ICON, model.icon(index).name()},
     {FMH::MODEL_KEY::LABEL, model.text(index)},
     {FMH::MODEL_KEY::NAME, model.text(index)},
-                       {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::PLACES_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
+    {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::PLACES_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
 
     if(model.isDevice(index))
     {
@@ -156,6 +135,20 @@ res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), 
     list << data;
     return list;
 });
+
+#else
+Q_UNUSED(model)
+switch (type) {
+    case (FMStatic::PATHTYPE_KEY::PLACES_PATH):
+        res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
+        break;
+    case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
+        res = FMStatic::getDevices();
+        break;
+    default:
+        break;
+}
+
 #endif
 
 return res;
@@ -173,35 +166,29 @@ void PlacesList::setList()
 
     for (const auto &group : qAsConst(this->groups)) {
         switch (group) {
-            case FMStatic::PATHTYPE_KEY::PLACES_PATH:
-                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
+        case FMStatic::PATHTYPE_KEY::PLACES_PATH:
+            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
             break;
 
-            case FMStatic::PATHTYPE_KEY::QUICK_PATH:
-                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::QUICK_PATH);
+        case FMStatic::PATHTYPE_KEY::QUICK_PATH:
+            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::QUICK_PATH);
             break;
 
-            case FMStatic::PATHTYPE_KEY::DRIVES_PATH:
-                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::DRIVES_PATH);
+        case FMStatic::PATHTYPE_KEY::DRIVES_PATH:
+            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::DRIVES_PATH);
             break;
 
-            case FMStatic::PATHTYPE_KEY::REMOTE_PATH:
-                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOTE_PATH);
+        case FMStatic::PATHTYPE_KEY::REMOTE_PATH:
+            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOTE_PATH);
             break;
 
-            case FMStatic::PATHTYPE_KEY::REMOVABLE_PATH:
-                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOVABLE_PATH);
+        case FMStatic::PATHTYPE_KEY::REMOVABLE_PATH:
+            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOVABLE_PATH);
             break;
 
-            case FMStatic::PATHTYPE_KEY::TAGS_PATH:            
+        case FMStatic::PATHTYPE_KEY::TAGS_PATH:
             this->list << Tagging::getInstance()->getTags();
             break;
-                        
-#ifdef COMPONENT_ACCOUNTS
-            case FMStatic::PATHTYPE_KEY::CLOUD_PATH:
-            this->list << MauiAccounts::instance()->getCloudAccounts();
-            break;
-#endif
         }
     }
 
@@ -235,15 +222,15 @@ void PlacesList::removePlace(const int &index)
     if (index >= this->list.size() || index < 0)
         return;
 
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
-    bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
-    UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
-#else
+#ifdef KIO_AVAILABLE
     emit this->preItemRemoved(index);
     this->model->removePlace(this->model->closestItem(this->list.at(index)[FMH::MODEL_KEY::PATH]));
     this->list.removeAt(index);
     emit this->postItemRemoved();
+#else
+    auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
+    bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
+    UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
 #endif
 }
 
@@ -257,7 +244,7 @@ bool PlacesList::isDevice(const int &index)
     if (index >= this->list.size() || index < 0)
         return false;
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     return m_devices.contains(item[FMH::MODEL_KEY::UDI]);
 #endif
@@ -270,7 +257,7 @@ bool PlacesList::setupNeeded(const int &index)
     if (index >= this->list.size() || index < 0)
         return false;
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
@@ -286,11 +273,11 @@ void PlacesList::requestEject(const int &index)
     if (index >= this->list.size() || index < 0)
         return;
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
-       this->model->requestEject(m_devices.value(item[FMH::MODEL_KEY::UDI]));
+        this->model->requestEject(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
 #endif
 }
@@ -300,28 +287,28 @@ void PlacesList::requestSetup(const int &index)
     if (index >= this->list.size() || index < 0)
         return;
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
-       this->model->requestSetup(m_devices.value(item[FMH::MODEL_KEY::UDI]));
+        this->model->requestSetup(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
 #endif
 }
 
 void PlacesList::addBookmark(const QUrl& url)
 {
-    #if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
+#ifdef KIO_AVAILABLE
+    KFilePlacesModel model;
+    model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMStatic::getIconName(url));
+#else
     // do android stuff until cmake works with android
     if (FMStatic::isDefaultPath(url.toString()))
         return;
-    
-        auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
-        bookmarks << url.toString();
-        UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
-    #else
-    KFilePlacesModel model;
-    model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMStatic::getIconName(url));
+
+    auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
+    bookmarks << url.toString();
+    UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
 #endif
 }
 

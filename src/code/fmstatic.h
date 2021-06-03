@@ -15,7 +15,7 @@
 #include <MauiKit/Core/mauiandroid.h>
 #endif
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
 #include <KFilePlacesModel>
 #include <KFileItem>
 #endif
@@ -155,25 +155,7 @@ public:
     /**
      * @brief The PATHTYPE_KEY enum
      */
-#if defined Q_OS_ANDROID || defined Q_OS_WIN || defined Q_OS_MACOS || defined Q_OS_IOS // for android, windows and mac use this for now
-    enum PATHTYPE_KEY : int {
-        PLACES_PATH,
-        REMOTE_PATH,
-        DRIVES_PATH,
-        REMOVABLE_PATH,
-        TAGS_PATH,
-        UNKNOWN_TYPE,
-        APPS_PATH,
-        TRASH_PATH,
-        SEARCH_PATH,
-        CLOUD_PATH,
-        FISH_PATH,
-        MTP_PATH,
-        QUICK_PATH,
-        BOOKMARKS_PATH,
-        OTHER_PATH,
-    };
-#else
+#ifdef KIO_AVAILABLE
     enum PATHTYPE_KEY : int {
         PLACES_PATH = KFilePlacesModel::GroupType::PlacesType,
         REMOTE_PATH = KFilePlacesModel::GroupType::RemoteType,
@@ -190,6 +172,24 @@ public:
         QUICK_PATH = 15,
         BOOKMARKS_PATH = 16,
         OTHER_PATH = 17
+    };
+#else
+    enum PATHTYPE_KEY : int {
+        PLACES_PATH,
+        REMOTE_PATH,
+        DRIVES_PATH,
+        REMOVABLE_PATH,
+        TAGS_PATH,
+        UNKNOWN_TYPE,
+        APPS_PATH,
+        TRASH_PATH,
+        SEARCH_PATH,
+        CLOUD_PATH,
+        FISH_PATH,
+        MTP_PATH,
+        QUICK_PATH,
+        BOOKMARKS_PATH,
+        OTHER_PATH,
     };
 #endif
     
@@ -634,7 +634,7 @@ public slots:
      */
     static QString iconName(const QString &value);
 
-#if (!defined Q_OS_ANDROID && defined Q_OS_LINUX)
+#ifdef KIO_AVAILABLE
     /**
      * @brief getFileInfo
      * Get file info

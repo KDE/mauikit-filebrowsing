@@ -1,6 +1,6 @@
 #include "openwithmodel.h"
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
 #include <KApplicationTrader>
 #include <KFileItem>
 #include <KLocalizedString>
@@ -43,25 +43,25 @@ void OpenWithModel::openWith(const int& index)
     {
         return;
     }
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID    
+#ifdef KIO_AVAILABLE
     KService::Ptr service(new KService(this->m_list[index][FMH::MODEL_KEY::EXECUTABLE]));
     auto *job = new KIO::ApplicationLauncherJob(service, this);
     job->setUrls(QUrl::fromStringList(m_urls));
-    job->start();    
+    job->start();
 #endif
 }
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
 static FMH::MODEL createActionItem(const QExplicitlySharedDataPointer< KService > &service)
 {
-    FMH::MODEL map 
+    FMH::MODEL map
     {
         {FMH::MODEL_KEY::LABEL, service->name().replace('&', "&&")},
         {FMH::MODEL_KEY::ICON, service->icon()},
         {FMH::MODEL_KEY::COMMENT, service->comment()},
         {FMH::MODEL_KEY::ID, "_kicker_fileItem_openWith"},
         {FMH::MODEL_KEY::EXECUTABLE, service->entryPath()}
-//         item["serviceExec"] = service->exec();
+        //         item["serviceExec"] = service->exec();
     };
     
     return map;
@@ -83,15 +83,15 @@ void OpenWithModel::setList()
     
     m_list.clear();
     emit this->preListChanged();
-    #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    
+
+#ifdef KIO_AVAILABLE
     KFileItem fileItem(url);
     
     const auto services = KApplicationTrader::queryByMimeType(fileItem.mimetype());
     for (const auto &service : services) {
-        m_list << createActionItem(service);   
-    }   
+        m_list << createActionItem(service);
+    }
     
     emit postListChanged();
-    #endif
+#endif
 }

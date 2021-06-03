@@ -8,14 +8,16 @@
 #include <QDateTime>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
-#include <KCoreDirLister>
+#include <KConfig>
+#include <KConfigGroup>
+#endif
+
+#ifdef KIO_AVAILABLE
 #include <KIO/CopyJob>
 #include <KIO/DeleteJob>
 #include <KIO/EmptyTrashJob>
 #include <KIO/MkdirJob>
 #include <KIO/SimpleJob>
-#include <KConfig>
-#include <KConfigGroup>
 #include <KIO/OpenUrlJob>
 #include <KApplicationTrader>
 #include <KIO/PreviewJob>
@@ -147,7 +149,7 @@ QString FMStatic::homePath()
 {
     return FMStatic::HomePath;
 }
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
+#if !defined KIO_AVAILABLE
 
 static bool copyRecursively(QString sourceFolder, QString destFolder)
 {
@@ -186,8 +188,12 @@ static bool copyRecursively(QString sourceFolder, QString destFolder)
 
 bool FMStatic::copy(const QList<QUrl> &urls, const QUrl &destinationDir)
 {
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    for (const auto &url : urls) {
+#ifdef KIO_AVAILABLE
+    auto job = KIO::copy(urls, destinationDir);
+    job->start();
+    return true;
+#else
+    for (const auto &url : std::as_const(urls)) {
         QFileInfo srcFileInfo(url.toLocalFile());
         if (!srcFileInfo.isDir() && srcFileInfo.isFile()) {
             const auto _destination = QUrl(destinationDir.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
@@ -205,10 +211,6 @@ bool FMStatic::copy(const QList<QUrl> &urls, const QUrl &destinationDir)
         }
     }
     return true;
-#else
-    auto job = KIO::copy(urls, destinationDir);
-    job->start();
-    return true;
 #endif
 }
 
@@ -219,20 +221,7 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where)
 
 bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &name)
 {
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    for (const auto &url : qAsConst(urls)) {
-        QUrl _where;
-        if (name.isEmpty())
-            _where = QUrl(where.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
-        else
-            _where = QUrl(where.toString() + "/" + name);
-
-        QFile file(url.toLocalFile());
-        file.rename(_where.toLocalFile());
-
-        Tagging::getInstance()->updateUrl(url.toString(), _where.toString());
-    }
-#else
+#ifdef KIO_AVAILABLE
     QUrl _where = where;
     if (!name.isEmpty())
         _where = QUrl(where.toString() + "/" + name);
@@ -247,6 +236,19 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
 
         Tagging::getInstance()->updateUrl(url.toString(), where_.toString());
     }
+#else
+    for (const auto &url : std::as_const(urls)) {
+        QUrl _where;
+        if (name.isEmpty())
+            _where = QUrl(where.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
+        else
+            _where = QUrl(where.toString() + "/" + name);
+
+        QFile file(url.toLocalFile());
+        file.rename(_where.toLocalFile());
+
+        Tagging::getInstance()->updateUrl(url.toString(), _where.toString());
+    }
 #endif
 
     return true;
@@ -254,14 +256,17 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
 
 bool FMStatic::removeFiles(const QList<QUrl> &urls)
 {
-    for (const auto &url : qAsConst(urls)) {
+    for (const auto &url : std::as_const(urls)) {
         Tagging::getInstance()->removeUrl(url.toString());
     }
 
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-
+#ifdef KIO_AVAILABLE
+    auto job = KIO::del(urls);
+    job->start();
+    return true;
+#else
     qDebug() << "ASKED GTO DELETE FILES" << urls;
-    for (const auto &url : qAsConst(urls)) {
+    for (const auto &url : std::as_const(urls)) {
         qDebug() << "@ Want to remove files << " << url.toLocalFile();
 
         if (isDir(url)) {
@@ -273,16 +278,12 @@ bool FMStatic::removeFiles(const QList<QUrl> &urls)
         }
     }
     return true;
-#else
-    auto job = KIO::del(urls);
-    job->start();
-    return true;
 #endif
 }
 
 void FMStatic::moveToTrash(const QList<QUrl> &urls)
 {
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     auto job = KIO::trash(urls);
     job->start();
 #else
@@ -292,7 +293,7 @@ void FMStatic::moveToTrash(const QList<QUrl> &urls)
 
 void FMStatic::emptyTrash()
 {
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     auto job = KIO::emptyTrash();
     job->start();
 #endif
@@ -328,13 +329,12 @@ bool FMStatic::rename(const QUrl &url, const QString &name)
 
 bool FMStatic::createDir(const QUrl &path, const QString &name)
 {
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    QFileInfo dd(path.toLocalFile());
-    return QDir(path.toLocalFile()).mkdir(name);
-#else
+#ifdef KIO_AVAILABLE
     auto job = KIO::mkdir(name.isEmpty() ? path : QUrl(path.toString() + "/" + name));
     job->start();
     return true;
+#else
+    return QDir(path.toLocalFile()).mkdir(name);
 #endif
 }
 
@@ -352,31 +352,29 @@ bool FMStatic::createFile(const QUrl &path, const QString &name)
 
 bool FMStatic::createSymlink(const QUrl &path, const QUrl &where)
 {
-#if defined Q_OS_ANDROID || defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    return QFile::link(path.toLocalFile(), where.toLocalFile() + "/" + QFileInfo(path.toLocalFile()).fileName());
-#else
+#ifdef KIO_AVAILABLE
     qDebug() << "trying to create symlink" << path << where;
     const auto job = KIO::link({path}, where);
     job->start();
     return true;
+#else
+    return QFile::link(path.toLocalFile(), where.toLocalFile() + "/" + QFileInfo(path.toLocalFile()).fileName());
 #endif
 }
 
 void FMStatic::openUrl(const QUrl &url)
 {
-#if defined Q_OS_ANDROID
-    
-    MAUIAndroid::openUrl(url.toString());
-    
-#elif defined Q_OS_LINUX && !defined Q_OS_ANDROID
-    
+#ifdef KIO_AVAILABLE
     KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
     job->setShowOpenOrExecuteDialog(true);
     job->start();
-    
-#elif defined Q_OS_WIN32 || defined Q_OS_MACOS || defined Q_OS_IOS
-    
+#else
+
+#if defined Q_OS_ANDROID
+    MAUIAndroid::openUrl(url.toString());
+#else
     QDesktopServices::openUrl(url);
+#endif
     
 #endif    
 }
@@ -389,7 +387,7 @@ void FMStatic::openLocation(const QStringList &urls)
 
 const QString FMStatic::dirConfIcon(const QUrl &path)
 {
-    QString icon = "folder";    
+    QString icon = "folder";
     
     if (!path.isLocalFile()) {
         qWarning() << "URL recived is not a local file" << path;
@@ -404,14 +402,14 @@ const QString FMStatic::dirConfIcon(const QUrl &path)
     QSettings file(path.toLocalFile(), QSettings::Format::NativeFormat);
     file.beginGroup(QString("Desktop Entry"));
     icon = file.value("Icon").toString();
-    file.endGroup(); 
+    file.endGroup();
 #else
     KConfig file(path.toLocalFile());
     const auto map = file.entryMap(QString("Desktop Entry"));
     icon = map.isEmpty() ? "folder" : map.value("Icon");
 #endif
     
-    return icon;    
+    return icon;
 }
 
 void FMStatic::setDirConf(const QUrl &path, const QString &group, const QString &key, const QVariant &value)
@@ -474,14 +472,14 @@ const QString FMStatic::getMime(const QUrl &path)
 
 static const QUrl thumbnailUrl(const QUrl &url, const QString &mimetype)
 {
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#ifdef KIO_AVAILABLE
     if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::FONT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::TEXT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::AUDIO, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::DOCUMENT, mimetype) || FMStatic::checkFileType(FMStatic::FILTER_TYPE::VIDEO, mimetype) || url.toString().endsWith(".appimage", Qt::CaseInsensitive)) {
         return QUrl("image://thumbnailer/" + url.toString());
     }
     
-//      if (KIO::PreviewJob::supportedMimeTypes().contains(mimetype)) {
-//         return QUrl("image://thumbnailer/" + url.toString());
-//     }
+    //      if (KIO::PreviewJob::supportedMimeTypes().contains(mimetype)) {
+    //         return QUrl("image://thumbnailer/" + url.toString());
+    //     }
 #endif
     
     if (FMStatic::checkFileType(FMStatic::FILTER_TYPE::IMAGE, mimetype)) {
@@ -491,7 +489,7 @@ static const QUrl thumbnailUrl(const QUrl &url, const QString &mimetype)
     return QUrl();
 }
 
-#if (!defined Q_OS_ANDROID && defined Q_OS_LINUX)
+#ifdef KIO_AVAILABLE
 const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
 {
     return FMH::MODEL {{FMH::MODEL_KEY::LABEL, kfile.name()},
@@ -522,7 +520,9 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
         const FMH::MODEL FMStatic::getFileInfoModel(const QUrl &path)
         {
             FMH::MODEL res;
-#if defined Q_OS_ANDROID || defined Q_OS_MACOS || defined Q_OS_IOS || defined Q_OS_WIN
+#ifdef KIO_AVAILABLE
+            res = FMStatic::getFileInfo(KFileItem(path, KFileItem::MimeTypeDetermination::NormalMimeTypeDetermination));
+#else
             const QFileInfo file(path.toLocalFile());
             if (!file.exists())
                 return FMH::MODEL();
@@ -551,39 +551,37 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             {FMH::MODEL_KEY::URL, path.toString()},
             {FMH::MODEL_KEY::THUMBNAIL, thumbnailUrl(path, mime).toString()},
             {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()) : "0"}};
-        #else
-            res = FMStatic::getFileInfo(KFileItem(path, KFileItem::MimeTypeDetermination::NormalMimeTypeDetermination));
-#endif
-            return res;
+        #endif
+                    return res;
         }
 
-        const QVariantMap FMStatic::getFileInfo(const QUrl &path)
-        {
-            return FMH::toMap(getFileInfoModel(path));
+                    const QVariantMap FMStatic::getFileInfo(const QUrl &path)
+            {
+                    return FMH::toMap(getFileInfoModel(path));
         }
 
-        const QString FMStatic::getIconName(const QUrl &path)
-        {
-            if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir()) {
-                if (folderIcon.contains(path.toString()))
+                    const QString FMStatic::getIconName(const QUrl &path)
+            {
+                    if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir()) {
+                    if (folderIcon.contains(path.toString()))
                     return folderIcon[path.toString()];
-                else {
+                    else {
                     return dirConfIcon(QString(path.toString() + "/%1").arg(".directory"));
-                }
-
-            } else {
-#if defined Q_OS_ANDROID || defined Q_OS_MACOS || defined Q_OS_IOS || defined Q_OS_WIN
-                QMimeDatabase mime;
-                const auto type = mime.mimeTypeForFile(path.toString());
-                return type.iconName();
-#else
-                KFileItem mime(path);
-                return mime.iconName();
-#endif
-            }
         }
 
-        FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
-        {
-            return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
+        } else {
+        #ifdef KIO_AVAILABLE
+                    KFileItem mime(path);
+                    return mime.iconName();
+        #else
+                    QMimeDatabase mime;
+                    const auto type = mime.mimeTypeForFile(path.toString());
+                    return type.iconName();
+        #endif
+        }
+        }
+
+                    FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
+            {
+                    return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
         }
