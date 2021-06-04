@@ -71,13 +71,14 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
 
-option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" )
 
 if(ANDROID OR APPLE OR WIN32)
-    set(KIO_AVAILABLE OFF)
+    set(IS_KIO_AVAILABLE OFF)
 else()
-    set(KIO_AVAILABLE OFF)
+    set(IS_KIO_AVAILABLE ON)
 endif()
+
+option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ${IS_KIO_AVAILABLE})
 
 if(ANDROID)
     find_package(Qt5 REQUIRED COMPONENTS AndroidExtras)
@@ -95,7 +96,7 @@ endif()
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Concurrent Network REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n CoreAddons #[[FileMetaData]])
 find_package(MauiKit)
-    
+
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
