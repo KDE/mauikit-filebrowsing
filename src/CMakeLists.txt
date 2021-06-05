@@ -83,7 +83,9 @@ if(${KIO_AVAILABLE})
         KF5::KIOCore
         KF5::KIOFileWidgets
         )
-    add_definitions(-DKIO_AVAILABLE)
+        
+           add_definitions(-DKIO_AVAILABLE)
+    target_compile_definitions(MauiKitFileBrowsing PUBLIC KIO_AVAILABLE)
 endif()
 
 target_link_libraries(

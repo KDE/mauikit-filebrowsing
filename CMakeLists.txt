@@ -79,6 +79,7 @@ else()
 endif()
 
 option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ${IS_KIO_AVAILABLE})
+#option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ON)
 
 if(ANDROID)
     find_package(Qt5 REQUIRED COMPONENTS AndroidExtras)
