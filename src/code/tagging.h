@@ -24,13 +24,11 @@
 #include <QCoreApplication>
 #include <QThread>
 
-
 #include "tagdb.h"
 
 #include "filebrowsing_export.h"
 
 #define MAX_LIMIT 9999
-
 
 /**
  * @brief The Tagging class
