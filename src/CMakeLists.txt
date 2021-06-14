@@ -32,7 +32,6 @@ set(
     code/downloader.h
     code/fileloader.h
     code/thumbnailer.h
-    code/tag.h
     code/tagging.h
     code/tagdb.h
     code/tagslist.h
