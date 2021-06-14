@@ -64,7 +64,7 @@ Maui.Dialog
         Layout.fillWidth: true
         Layout.fillHeight: true
         spacing: 0
-        margins: 0
+        padding: 0
         model: Maui.BaseModel
         {
             id: _appsModel
