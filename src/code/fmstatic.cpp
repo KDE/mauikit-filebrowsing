@@ -6,6 +6,7 @@
 #include <QDirIterator>
 #include <QFileInfo>
 #include <QDateTime>
+#include <QSettings>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 #include <KConfig>

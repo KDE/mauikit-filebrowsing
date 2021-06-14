@@ -7,7 +7,6 @@
 #include <QMimeData>
 #include <QMimeDatabase>
 #include <QMimeType>
-#include <QSettings>
 #include <QStandardPaths>
 #include <QUrl>
 
@@ -24,7 +23,7 @@
 
 /**
  * @brief The FMStatic class
- * STatic file management methods, this class has a constructor only to register to QML, however all methods are static.
+ * Static file management methods, this class has a constructor only to register to QML, however all methods are static.
  */
 class FILEBROWSING_EXPORT FMStatic : public QObject
 {

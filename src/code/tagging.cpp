@@ -45,7 +45,7 @@ Tagging::Tagging()
     });
 }
 
-const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier)
+const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier) const
 {
     QVariantList mapList;
 
@@ -81,14 +81,14 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
     return mapList;
 }
 
-bool Tagging::tagExists(const QString &tag, const bool &strict)
+bool Tagging::tagExists(const QString &tag, const bool &strict) const
 {
     return !strict ? this->checkExistance(TAG::TABLEMAP[TAG::TABLE::TAGS], FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag)
             : this->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
             .arg(this->appOrg, tag));
 }
 
-bool Tagging::urlTagExists(const QString &url, const QString &tag)
+bool Tagging::urlTagExists(const QString &url, const QString &tag) const
 {
     return this->checkExistance(QString("select * from TAGS_URLS where url = '%1' and tag = '%2'").arg(url, tag));
 }
@@ -175,12 +175,12 @@ bool Tagging::updateUrlTags(const QString &url, const QStringList &tags, const b
     return true;
 }
 
-bool Tagging::updateUrl(const QString &url, const QString &newUrl)
+bool Tagging::updateUrl(const QString &url, const QString &newUrl) const
 {
     return this->update(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, newUrl}}, {{FMH::MODEL_NAME[FMH::MODEL_KEY::URL], url}});
 }
 
-QVariantList Tagging::getUrlsTags(const bool &strict) //all used tags, meaning, all tags that are used with an url in tags_url table
+QVariantList Tagging::getUrlsTags(const bool &strict) const //all used tags, meaning, all tags that are used with an url in tags_url table
 {
     const auto query = !strict ? QString("select distinct t.* from TAGS t inner join TAGS_URLS turl where t.tag = turl.tag") :
                                  QString("select distinct t.* from TAGS t inner join APP_TAGS at on at.tag = t.tag inner join TAGS_URLS turl on t.tag = turl.tag where at.org = '%1'").arg(this->appOrg);
@@ -194,14 +194,14 @@ bool Tagging::setTagIconName(QVariantMap &item)
     return true;
 }
 
-QVariantList Tagging::getAllTags(const bool &strict)
+QVariantList Tagging::getAllTags(const bool &strict) const
 {
     return !strict ? this->get("select * from tags", &setTagIconName)
                    : this->get(QString("select t.* from TAGS t inner join APP_TAGS at on t.tag = at.tag where at.org = '%1'").arg(this->appOrg),
                                &setTagIconName);
 }
 
-QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int &limit, const QString &mimeType, std::function<bool(QVariantMap &item)> modifier)
+QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int &limit, const QString &mimeType, std::function<bool(QVariantMap &item)> modifier) const
 {
     return !strict ? this->get(QString("select distinct * from TAGS_URLS where tag = '%1' and mime like '%2%' limit %3").arg(tag, mimeType, QString::number(limit)), modifier)
                    : this->get(QString("select distinct turl.*, t.color, t.comment as tagComment from TAGS t "
@@ -213,7 +213,7 @@ QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int 
                                modifier);
 }
 
-QVariantList Tagging::getUrlTags(const QString &url, const bool &strict)
+QVariantList Tagging::getUrlTags(const QString &url, const bool &strict) const
 {
     return !strict ? this->get(QString("select distinct turl.*, t.color, t.comment as tagComment from tags t inner join TAGS_URLS turl on turl.tag = t.tag where turl.url  = '%1'").arg(url))
                    : this->get(QString("select distinct t.* from TAGS t inner join APP_TAGS at on t.tag = at.tag inner join TAGS_URLS turl on turl.tag = t.tag "
@@ -231,15 +231,26 @@ bool Tagging::removeUrlTag(const QString &url, const QString &tag)
 {
     qDebug() << "Remove url tag" << url << tag;
     FMH::MODEL data {{FMH::MODEL_KEY::URL, url}, {FMH::MODEL_KEY::TAG, tag}};
-    return this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data);
+    if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data))
+    {
+        emit this->urlTagRemoved(tag, url);
+        return true;
+    }
+    
+    return false;
 }
 
 bool Tagging::removeUrl(const QString &url)
 {
-    return this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, url}});
+    if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, url}}))
+    {
+        emit this->urlRemoved(url);
+    }
+    
+    return false;
 }
 
-bool Tagging::app()
+bool Tagging::app() const
 {
     qDebug() << "REGISTER APP" << this->appName << this->appOrg << this->appComment;
     const QVariantMap app_map {
@@ -287,8 +298,8 @@ static bool doNameFilter(const QString &name, const QStringList &filters)
     }
     return false;
 }
-
-QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, const bool &strict, const int &limit, const QString &mime)
+ 
+ QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, const bool &strict, const int &limit, const QString &mime) const
 {
     QList<QUrl> urls;
     
@@ -309,7 +320,7 @@ QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, 
     return urls;
 }
 
-FMH::MODEL_LIST Tagging::getTags(const int &limit)
+FMH::MODEL_LIST Tagging::getTags(const int &limit) const
 {
     Q_UNUSED(limit);
     FMH::MODEL_LIST data;
@@ -329,40 +340,40 @@ FMH::MODEL_LIST Tagging::getTags(const int &limit)
 return data;
 }
 
-FMH::MODEL_LIST Tagging::getUrlTags(const QUrl &url)
+FMH::MODEL_LIST Tagging::getUrlTags(const QUrl &url) const
 {
-    return FMH::toModelList(getUrlTags(url.toString(), false));
+    return FMH::toModelList(this->getUrlTags(url.toString(), false));
 }
 
 bool Tagging::addTagToUrl(const QString tag, const QUrl &url)
 {
-    return tagUrl(url.toString(), tag);
+    return this->tagUrl(url.toString(), tag);
 }
 
 bool Tagging::removeTagToUrl(const QString tag, const QUrl &url)
 {
-    return removeUrlTag(url.toString(), tag);
+    return this->removeUrlTag(url.toString(), tag);
 }
 
 bool Tagging::toggleFav(const QUrl &url)
 {
-    if (isFav(url))
-        return unFav(url);
+    if (this->isFav(url))
+        return this->unFav(url);
     
-    return fav(url);
+    return this->fav(url);
 }
 
 bool Tagging::fav(const QUrl &url)
 {
-    return tagUrl(url.toString(), "fav", "#e91e63");
+    return this->tagUrl(url.toString(), "fav", "#e91e63");
 }
 
-bool Tagging::unFav(const QUrl &url)
+bool Tagging::unFav(const QUrl &url) 
 {
-    return removeUrlTag(url.toString(), "fav");
+    return this->removeUrlTag(url.toString(), "fav");
 }
 
-bool Tagging::isFav(const QUrl &url, const bool &strict)
+bool Tagging::isFav(const QUrl &url, const bool &strict) const
 {
     Q_UNUSED(strict)
     

@@ -118,13 +118,13 @@ void TAGDB::prepareCollectionDB() const
     file.close();
 }
 
-bool TAGDB::checkExistance(const QString &tableName, const QString &searchId, const QString &search)
+bool TAGDB::checkExistance(const QString &tableName, const QString &searchId, const QString &search) const
 {
     const auto queryStr = QString("SELECT %1 FROM %2 WHERE %3 = \"%4\"").arg(searchId, tableName, searchId, search);
     return this->checkExistance(queryStr);
 }
 
-bool TAGDB::checkExistance(const QString &queryStr)
+bool TAGDB::checkExistance(const QString &queryStr) const
 {
     qDebug() << "CHECKIGN QUERY TAG" << queryStr;
     auto query = this->getQuery(queryStr);
@@ -138,13 +138,13 @@ bool TAGDB::checkExistance(const QString &queryStr)
     return false;
 }
 
-QSqlQuery TAGDB::getQuery(const QString &queryTxt)
+QSqlQuery TAGDB::getQuery(const QString &queryTxt) const
 {
     QSqlQuery query(queryTxt, this->m_db);
     return query;
 }
 
-bool TAGDB::insert(const QString &tableName, const QVariantMap &insertData)
+bool TAGDB::insert(const QString &tableName, const QVariantMap &insertData) const
 {
     if (tableName.isEmpty()) {
         qDebug() << QStringLiteral("Fatal error on insert! The table name is empty!");
@@ -173,7 +173,7 @@ bool TAGDB::insert(const QString &tableName, const QVariantMap &insertData)
     return query.exec();
 }
 
-bool TAGDB::update(const QString &tableName, const FMH::MODEL &updateData, const QVariantMap &where)
+bool TAGDB::update(const QString &tableName, const FMH::MODEL &updateData, const QVariantMap &where) const
 {
     if (tableName.isEmpty()) {
         qDebug() << QStringLiteral("Fatal error on insert! The table name is empty!");
@@ -203,14 +203,14 @@ bool TAGDB::update(const QString &tableName, const FMH::MODEL &updateData, const
     return query.exec();
 }
 
-bool TAGDB::update(const QString &table, const QString &column, const QVariant &newValue, const QVariant &op, const QString &id)
+bool TAGDB::update(const QString &table, const QString &column, const QVariant &newValue, const QVariant &op, const QString &id) const
 {
     auto queryStr = QString("UPDATE %1 SET %2 = \"%3\" WHERE %4 = \"%5\"").arg(table, column, newValue.toString().replace("\"", "\"\""), op.toString(), id);
     auto query = this->getQuery(queryStr);
     return query.exec();
 }
 
-bool TAGDB::remove(const QString &tableName, const FMH::MODEL &removeData)
+bool TAGDB::remove(const QString &tableName, const FMH::MODEL &removeData) const
 {
     if (tableName.isEmpty()) {
         qDebug() << QStringLiteral("Fatal error on removing! The table name is empty!");

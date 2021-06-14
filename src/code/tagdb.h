@@ -30,9 +30,23 @@
 
 #include <MauiKit/Core/fmh.h>
 
-#include "tag.h"
+#include "fmstatic.h"
 
 #include "filebrowsing_export.h"
+
+namespace TAG
+{
+    enum class TABLE : uint8_t { APP_TAGS, TAGS, TAGS_URLS, APPS, NONE };
+    
+    static const QMap<TABLE, QString> TABLEMAP = {{TABLE::TAGS, "tags"},
+    {TABLE::TAGS_URLS, "tags_urls"},
+    {TABLE::APP_TAGS, "app_tags"},
+    {TABLE::APPS, "apps"}};
+    
+    static const QString TaggingPath = FMStatic::DataPath + "/maui/tagging/";
+    static const QString DBName = "tagging-v2.db";
+}
+
 
 /**
  * @brief The TAGDB class
@@ -53,14 +67,14 @@ public:
      * @param search
      * @return
      */
-    bool checkExistance(const QString &tableName, const QString &searchId, const QString &search);
+    bool checkExistance(const QString &tableName, const QString &searchId, const QString &search) const;
 
     /**
      * @brief checkExistance
      * @param queryStr
      * @return
      */
-    bool checkExistance(const QString &queryStr);
+    bool checkExistance(const QString &queryStr) const;
 
 protected:
     TAGDB();
@@ -71,7 +85,7 @@ protected:
      * @param queryTxt
      * @return
      */
-    QSqlQuery getQuery(const QString &queryTxt);
+    QSqlQuery getQuery(const QString &queryTxt) const;
 
     /**
      * @brief openDB
@@ -90,7 +104,7 @@ protected:
      * @param insertData
      * @return
      */
-    bool insert(const QString &tableName, const QVariantMap &insertData);
+    bool insert(const QString &tableName, const QVariantMap &insertData) const;
 
     /**
      * @brief update
@@ -99,7 +113,7 @@ protected:
      * @param where
      * @return
      */
-    bool update(const QString &tableName, const FMH::MODEL &updateData, const QVariantMap &where);
+    bool update(const QString &tableName, const FMH::MODEL &updateData, const QVariantMap &where) const;
 
     /**
      * @brief update
@@ -110,7 +124,7 @@ protected:
      * @param id
      * @return
      */
-    bool update(const QString &table, const QString &column, const QVariant &newValue, const QVariant &op, const QString &id);
+    bool update(const QString &table, const QString &column, const QVariant &newValue, const QVariant &op, const QString &id) const;
 
     /**
      * @brief remove
@@ -118,7 +132,7 @@ protected:
      * @param removeData
      * @return
      */
-    bool remove(const QString &tableName, const FMH::MODEL &removeData);
+    bool remove(const QString &tableName, const FMH::MODEL &removeData) const;
 };
 
 #endif // DB_H

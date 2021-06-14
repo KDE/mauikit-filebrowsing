@@ -6,7 +6,6 @@
 
 #include <MauiKit/Core/mauilist.h>
 #include <MauiKit/Core/fmh.h>
-#include "tag.h"
 
 /**
  * @brief The TagsList class

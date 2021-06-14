@@ -21,8 +21,10 @@
 #define TAGGING_H
 
 #include <QObject>
-#include <QCoreApplication>
 #include <QThread>
+#include <QDebug>
+
+#include <QCoreApplication>
 
 #include "tagdb.h"
 
@@ -73,7 +75,7 @@ public slots:
      * @return
      * The model
      */
-    Q_INVOKABLE const QVariantList get(const QString &query, std::function<bool(QVariantMap &item)> modifier = nullptr);
+    const QVariantList get(const QString &query, std::function<bool(QVariantMap &item)> modifier = nullptr) const;
     
     /**
      * @brief tagExists
@@ -84,7 +86,7 @@ public slots:
      * If the search should be strictly enforced. If strict is true then the tag should have been created by the app making the request, otherwise checks if the tag exists and could have been created by any other application.
      * @return
      */
-    Q_INVOKABLE bool tagExists(const QString &tag, const bool &strict = false);
+    bool tagExists(const QString &tag, const bool &strict = false) const;
     
     /**
      * @brief urlTagExists
@@ -97,7 +99,7 @@ public slots:
      * Strictly enforced check
      * @return
      */
-    Q_INVOKABLE bool urlTagExists(const QString &url, const QString &tag);
+    bool urlTagExists(const QString &url, const QString &tag) const;
     
     /* INSERTIIONS */
     /**
@@ -112,7 +114,7 @@ public slots:
      * @return
      * Returns if the operation was sucessfull, meaning the tag was created
      */
-    Q_INVOKABLE bool tag(const QString &tag, const QString &color = QString(), const QString &comment = QString());
+    bool tag(const QString &tag, const QString &color = QString(), const QString &comment = QString());
     
     /**
      * @brief tagUrl
@@ -127,7 +129,7 @@ public slots:
      * Optional comment
      * @return
      */
-    Q_INVOKABLE bool tagUrl(const QString &url, const QString &tag, const QString &color = QString(), const QString &comment = QString());
+    bool tagUrl(const QString &url, const QString &tag, const QString &color = QString(), const QString &comment = QString());
     
     /* UPDATES */
     /**
@@ -139,7 +141,7 @@ public slots:
      * New set of tags to be associated to the file URL
      * @return
      */
-    Q_INVOKABLE bool updateUrlTags(const QString &url, const QStringList &tags, const bool &strict = false);
+    bool updateUrlTags(const QString &url, const QStringList &tags, const bool &strict = false);
     
     /**
      * @brief updateUrl
@@ -150,7 +152,7 @@ public slots:
      * New file URL
      * @return
      */
-    Q_INVOKABLE bool updateUrl(const QString &url, const QString &newUrl);
+    bool updateUrl(const QString &url, const QString &newUrl) const;
     
     /* QUERIES */
     
@@ -160,7 +162,7 @@ public slots:
      * @param strict
      * @return
      */
-    Q_INVOKABLE QVariantList getUrlsTags(const bool &strict = false);
+    QVariantList getUrlsTags(const bool &strict = false) const;
     
     /**
      * @brief getAllTags
@@ -170,7 +172,7 @@ public slots:
      * @return
      * Model with the info of all the requested tags
      */
-    Q_INVOKABLE QVariantList getAllTags(const bool &strict = false);
+    QVariantList getAllTags(const bool &strict = false) const;
     
     /**
      * @brief getUrls
@@ -188,7 +190,7 @@ public slots:
      * A callback function that sends as an argument a reference to the current item being retrieved, which can be modified, and expects a boolean value to be returned to decide if such item should be added to the model or not
      * @return
      */
-    Q_INVOKABLE QVariantList getUrls(const QString &tag, const bool &strict = false, const int &limit = MAX_LIMIT, const QString &mimeType = "", std::function<bool(QVariantMap &item)> modifier = nullptr);
+    QVariantList getUrls(const QString &tag, const bool &strict = false, const int &limit = MAX_LIMIT, const QString &mimeType = "", std::function<bool(QVariantMap &item)> modifier = nullptr) const;
     
     /**
      * @brief getUrlTags
@@ -199,7 +201,7 @@ public slots:
      * Strictly enforced to only tags created by the application making the request
      * @return
      */
-    Q_INVOKABLE QVariantList getUrlTags(const QString &url, const bool &strict = false);
+    QVariantList getUrlTags(const QString &url, const bool &strict = false) const;
     
     /* DELETES */
     /**
@@ -210,7 +212,7 @@ public slots:
      * @return
      * If the operation was sucessfull
      */
-    Q_INVOKABLE bool removeUrlTags(const QString &url, const bool &strict = false);
+    bool removeUrlTags(const QString &url, const bool &strict = false);
     
     /**
      * @brief removeUrlTag
@@ -222,7 +224,7 @@ public slots:
      * @return
      * If the operation was sucessfull
      */
-    Q_INVOKABLE bool removeUrlTag(const QString &url, const QString &tag);
+    bool removeUrlTag(const QString &url, const QString &tag);
     
     /**
      * @brief removeUrl /todo
@@ -232,7 +234,7 @@ public slots:
      * @return
      * If the operation was sucessfull
      */
-    Q_INVOKABLE bool removeUrl(const QString &url);
+    bool removeUrl(const QString &url);
     
     bool removeTag(const QString &tag);
     
@@ -245,7 +247,7 @@ public slots:
      * Strictly check if the file has been marked as favorite by the app making the request or not
      * @return
      */
-    bool isFav(const QUrl &url, const bool &strict = false);
+    bool isFav(const QUrl &url, const bool &strict = false) const;
     
     /**
      * @brief unFav
@@ -292,7 +294,7 @@ public slots:
      * The mimetype filtering, for example, "image/\*" or "image/png", "audio/mp4"
      * @return
      */
-    QList<QUrl> getTagUrls(const QString &tag, const QStringList &filters, const bool &strict = false, const int &limit = 9999, const QString &mime = "");
+    QList<QUrl> getTagUrls(const QString &tag, const QStringList &filters, const bool &strict = false, const int &limit = 9999, const QString &mime = "") const;
     
     /**
      * @brief getTags
@@ -302,7 +304,7 @@ public slots:
      * @return
      * Model of tags
      */
-    FMH::MODEL_LIST getTags(const int &limit = 5); 
+    FMH::MODEL_LIST getTags(const int &limit = 5) const; 
     
     /**
      * @brief getUrlTags
@@ -312,7 +314,7 @@ public slots:
      * @return
      * Modle of the tags
      */
-    FMH::MODEL_LIST getUrlTags(const QUrl &url);
+    FMH::MODEL_LIST getUrlTags(const QUrl &url) const;
         
     /**
      * @brief addTagToUrl
@@ -353,8 +355,8 @@ private:
     QString appComment;
     QString appOrg;
 
-    //register the app
-    bool app();
+    //register the app to the db
+    bool app() const;
 
 protected:
     static bool setTagIconName(QVariantMap &item);
@@ -363,6 +365,8 @@ signals:
     void urlTagged(QString url, QString tag);
     void tagged(QVariantMap tag);
     void tagRemoved(QString tag);
+    void urlTagRemoved(QString tag, QString url);
+    void urlRemoved(QString url);
 };
 
 #endif // TAGGING_H

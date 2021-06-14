@@ -374,11 +374,11 @@ Maui.AltBrowser
             id: delegate
             readonly property string path : model.path
             
-           anchors.centerIn: parent
-                width: control.gridView.itemSize - Maui.Style.space.medium
-                height:control.gridView.itemHeight  - Maui.Style.space.medium
-
+            anchors.centerIn: parent
+            width: control.gridView.itemSize - Maui.Style.space.medium
+            height:control.gridView.itemHeight  - Maui.Style.space.medium
             
+//             template.labelSizeHint: 40
             iconSizeHint: height * 0.5
             imageSource: settings.showThumbnails ? model.thumbnail : ""
             template.fillMode: Image.PreserveAspectFit
