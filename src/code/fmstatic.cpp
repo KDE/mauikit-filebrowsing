@@ -131,15 +131,15 @@ bool FMStatic::fileExists(const QUrl &path)
     return FMH::fileExists(path);
 }
 
-QString FMStatic::fileDir(const QUrl &path) // the directory path of the file
+QUrl FMStatic::fileDir(const QUrl &path) // the directory path of the file
 {
-    QString res = path.toString();
+    QUrl res = path;
     if (path.isLocalFile()) {
         const QFileInfo file(path.toLocalFile());
         if (file.isDir())
-            res = path.toString();
+            res = path;
         else
-            res = QUrl::fromLocalFile(file.dir().absolutePath()).toString();
+            res = QUrl::fromLocalFile(file.dir().absolutePath());
     } else
         qWarning() << "The path is not a local one. FM::fileDir";
     

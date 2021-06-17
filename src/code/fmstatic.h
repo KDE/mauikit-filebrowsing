@@ -56,6 +56,7 @@ public:
                                                       "text/x-qml",
                                                       "text/x-python",
                                                       "text/*",
+                                                      "text/x-copying",
                                                       "application/xml",
                                                       "application/javascript",
                                                       "application/json",
@@ -484,7 +485,7 @@ public slots:
      * @return
      * The directory URL
      */
-    static QString fileDir(const QUrl &path);
+    static QUrl fileDir(const QUrl &path);
 
     //     /* SETTINGS */
     //     /**
