@@ -16,7 +16,7 @@
 
 #ifdef KIO_AVAILABLE
 #include <KFilePlacesModel>
-#include <KFileItem>
+class KFileItem;
 #endif
 
 #include "filebrowsing_export.h"

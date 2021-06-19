@@ -22,6 +22,7 @@
 #include <KIO/OpenUrlJob>
 #include <KApplicationTrader>
 #include <KIO/PreviewJob>
+#include <KFileItem>
 #endif
 
 FMStatic::FMStatic(QObject *parent)
