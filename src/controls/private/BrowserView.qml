@@ -327,7 +327,7 @@ Maui.AltBrowser
         
         ListView.onRemove:
         {
-            if(selectionBar && !FB.FM.fileExists(delegate.path))
+            if(selectionBar)
             {
                 selectionBar.removeAtUri(delegate.path)
             }
@@ -363,7 +363,7 @@ Maui.AltBrowser
         
         GridView.onRemove:
         {
-            if(selectionBar && !FB.FM.fileExists(delegate.path))
+            if(selectionBar)
             {
                 selectionBar.removeAtUri(delegate.path)
             }
