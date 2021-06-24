@@ -322,7 +322,7 @@ Maui.AltBrowser
         {
             _dropMenu.urls = drop.urls.join(",")
             _dropMenu.target = model.path
-            _dropMenu.open()
+            _dropMenu.show()
         }
         
         ListView.onRemove:
@@ -464,7 +464,7 @@ Maui.AltBrowser
             {
                 _dropMenu.urls = drop.urls.join(",")
                 _dropMenu.target = model.path
-                _dropMenu.open()
+                _dropMenu.show()
             }
             
             Connections
