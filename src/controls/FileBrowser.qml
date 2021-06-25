@@ -649,7 +649,6 @@ Maui.Page
         id: _stackView
         
         anchors.fill: parent
-        clip: true
         
         initialItem: DropArea
         {
@@ -674,7 +673,7 @@ Maui.Page
             
             Private.BrowserView
             {
-                id: _browser
+                id: _browser                
                 anchors.fill: parent
                 selectionMode: control.selectionMode
                 Binding on currentIndex

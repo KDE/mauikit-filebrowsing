@@ -56,7 +56,7 @@ Maui.Dialog
     defaultButtons: false
 
     page.title: i18n("Open with")
-    headBar.visible: true
+    headBar.visible: false
 
     stack: Maui.ListBrowser
     {

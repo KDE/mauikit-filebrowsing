@@ -384,7 +384,15 @@ void FMStatic::openUrl(const QUrl &url)
 void FMStatic::openLocation(const QStringList &urls)
 {
     for (const auto &url : qAsConst(urls))
-        QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(url).dir().absolutePath()));
+    {
+        if(isDir(url))
+        {
+            QDesktopServices::openUrl(url);
+        }else
+        {
+            QDesktopServices::openUrl(fileDir(url));
+        }
+    }
 }
 
 const QString FMStatic::dirConfIcon(const QUrl &path)

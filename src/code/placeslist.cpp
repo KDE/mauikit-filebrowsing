@@ -93,9 +93,9 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     if (type == FMStatic::PATHTYPE_KEY::QUICK_PATH) {
         res << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + "fav"}, {FMH::MODEL_KEY::ICON, "love"}, {FMH::MODEL_KEY::LABEL, "Favorite"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
 
-#ifdef KIO_AVAILABLE
-    res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
-#endif
+// #ifdef KIO_AVAILABLE
+//     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
+// #endif
 
     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "tags:///"}, {FMH::MODEL_KEY::ICON, "tag"}, {FMH::MODEL_KEY::LABEL, "Tags"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
 
@@ -104,16 +104,14 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
 
 if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
     res << FMStatic::getDefaultPaths();
+    return res;
 }
 
 #ifdef KIO_AVAILABLE
-const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type));
+const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PATHTYPE_KEY::PLACES_PATH : type));
 res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
     const QUrl url = model.url(index);
-    if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH && FMStatic::defaultPaths.contains(url.toString()))
-        return list;
-
-    if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH && url.isLocalFile() && !FMH::fileExists(url))
+    if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))
         return list;
 
     auto data = FMH::MODEL {{FMH::MODEL_KEY::PATH, url.toString()},
@@ -121,7 +119,7 @@ res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), 
     {FMH::MODEL_KEY::ICON, model.icon(index).name()},
     {FMH::MODEL_KEY::LABEL, model.text(index)},
     {FMH::MODEL_KEY::NAME, model.text(index)},
-    {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::PLACES_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
+                       {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
 
     if(model.isDevice(index))
     {
@@ -139,7 +137,7 @@ res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), 
 #else
 Q_UNUSED(model)
 switch (type) {
-    case (FMStatic::PATHTYPE_KEY::PLACES_PATH):
+    case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
         res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
         break;
     case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
@@ -168,6 +166,10 @@ void PlacesList::setList()
         switch (group) {
         case FMStatic::PATHTYPE_KEY::PLACES_PATH:
             this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
+            break;
+            
+        case FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH:
+            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH);
             break;
 
         case FMStatic::PATHTYPE_KEY::QUICK_PATH:
