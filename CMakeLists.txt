@@ -78,7 +78,7 @@ else()
     set(IS_KIO_AVAILABLE ON)
 endif()
 
-option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" OFF)
+option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" IS_KIO_AVAILABLE)
 #option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ON)
 
 if(ANDROID)
