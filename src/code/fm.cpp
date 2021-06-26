@@ -244,14 +244,14 @@ FM::FM(QObject *parent)
         emit this->pathContentItemsReady({dirUrl, packItems(items)});
     });
 
-    //    connect(dirLister, static_cast<void (KCoreDirLister::*)(const KFileItemList &items)>(&KCoreDirLister::newItems), [&](KFileItemList items)
-    //    {
-    //        qDebug()<< "MORE NEW ITEMS WERE ADDED";
-    //        for(const auto &item : items)
-    //            qDebug()<< "MORE <<" << item.url();
-    //
-    //        emit this->pathContentChanged(dirLister->url());
-    //    });
+//        connect(dirLister, static_cast<void (KCoreDirLister::*)(const KFileItemList &items)>(&KCoreDirLister::newItems), [&](KFileItemList items)
+//        {
+//            qDebug()<< "MORE NEW ITEMS WERE ADDED";
+//            for(const auto &item : items)
+//                qDebug()<< "MORE <<" << item.url();
+//     
+//            emit this->pathContentChanged(dirLister->url());
+//        });
 
     connect(dirLister, static_cast<void (KCoreDirLister::*)(const KFileItemList &items)>(&KCoreDirLister::itemsDeleted), this, [&](KFileItemList items) {
         qDebug() << "ITEMS WERE DELETED";

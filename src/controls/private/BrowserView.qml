@@ -18,7 +18,7 @@ Maui.AltBrowser
     
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.itemSize * 1.3
-    gridView.cacheBuffer: control.height * 10
+//     gridView.cacheBuffer: control.height * 10
     
     Binding on currentIndex
     {
@@ -152,12 +152,11 @@ Maui.AltBrowser
         browser: _commonFMList
     }
     
-    ProgressBar
+    Maui.ProgressIndicator
     {
         id: _scanningProgress
         width: parent.width
         anchors.bottom: parent.bottom
-        indeterminate: true
         visible: _commonFMList.status.code === FB.PathStatus.LOADING
     }
     
