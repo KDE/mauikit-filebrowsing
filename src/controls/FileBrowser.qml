@@ -458,7 +458,7 @@ Maui.Page
             if(index > -1)
             {
                 console.log("FOUDN TRYPIGN IDNEX", index)
-                control.currentIndex = index
+                control.currentIndex = control.currentFMModel.mappedFromSource(index)
             }
             
             typingQuery = ""

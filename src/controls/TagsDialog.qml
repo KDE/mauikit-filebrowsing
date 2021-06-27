@@ -183,7 +183,7 @@ Maui.Dialog
                     _listView.currentIndex = index
                     if(Maui.Handy.singleClick)
                     {
-                        tagListComposer.list.appendItem(_tagsList.get(_listView.currentIndex))
+                        tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
                 }
                 
@@ -192,7 +192,7 @@ Maui.Dialog
                     _listView.currentIndex = index
                     if(!Maui.Handy.singleClick)
                     {
-                        tagListComposer.list.appendItem(_tagsList.get(_listView.currentIndex))
+                        tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
                 }
                 
