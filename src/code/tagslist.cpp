@@ -4,6 +4,10 @@
 TagsList::TagsList(QObject *parent)
     : MauiList(parent)
 {
+//     TODO not working idk whyyyyy :(
+    connect(Tagging::getInstance(), &Tagging::tagged, this, &TagsList::appendItem);
+
+    connect(Tagging::getInstance(), &Tagging::tagRemoved, this, &TagsList::refresh);
 }
 
 void TagsList::setList()
@@ -202,9 +206,5 @@ void TagsList::componentComplete()
     connect(this, &TagsList::urlsChanged, this, &TagsList::setList);
     connect(this, &TagsList::strictChanged, this, &TagsList::setList);
 
-    //TODO not working idk whyyyyy :(
-    connect(Tagging::getInstance(), &Tagging::tagged, this, &TagsList::appendItem);
-
-    connect(Tagging::getInstance(), &Tagging::tagRemoved, this, &TagsList::refresh);
-    this->setList();
+       this->setList();
 }

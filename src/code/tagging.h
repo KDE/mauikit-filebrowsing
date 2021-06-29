@@ -344,6 +344,7 @@ private:
     static Tagging *m_instance;
     
     Tagging();
+    ~Tagging();
     Tagging(const Tagging &) = delete;
     Tagging &operator=(const Tagging &) = delete;
     Tagging(Tagging &&) = delete;

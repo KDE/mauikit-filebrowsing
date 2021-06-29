@@ -33,6 +33,10 @@
 
 Tagging *Tagging::m_instance = nullptr;
 
+Tagging::~Tagging()
+{
+}
+
 Tagging::Tagging()
     : TAGDB()
 {
