@@ -21,7 +21,7 @@ void OpenWithModel::componentComplete()
     connect(this, &OpenWithModel::urlsChanged, this, &OpenWithModel::setList);
 }
 
-const FMH::MODEL_LIST & OpenWithModel::items() const
+const FMH::MODEL_LIST &OpenWithModel::items() const
 {
     return m_list;
 }
