@@ -227,8 +227,8 @@ Maui.Dialog
                 Layout.fillHeight: true
 
                 headBar.visible: true
-//                altHeader: Kirigami.Settings.isMobile
 
+                headerColorSet: Kirigami.Theme.Header
                 headBar.farLeftContent: ToolButton
                 {
                     visible: pageRow.currentIndex === 1
