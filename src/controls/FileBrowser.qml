@@ -909,6 +909,7 @@ Maui.Page
         }
         
         control.currentPath = path
+        _browser.forceActiveFocus()
     }
     
     /**
