@@ -43,7 +43,7 @@ Maui.Dialog
 
     page.margins: Maui.Style.space.big
     
-    page.footerBackground.color: "transparent"
+    page.footBar.background: null
     footBar.leftContent: Maui.ColorsRow
     {
         id: _colorsRow
