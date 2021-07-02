@@ -7,8 +7,7 @@ using namespace FMH;
 
 std::function<FMH::MODEL(const QUrl &url)> FileLoader::informer = &FMStatic::getFileInfoModel;
 
-FileLoader::FileLoader(QObject *parent)
-    : QObject(parent)
+FileLoader::FileLoader(QObject *parent) : QObject(parent)
     , m_thread(new QThread)
 {
     qRegisterMetaType<QDir::Filters>("QDir::Filters");

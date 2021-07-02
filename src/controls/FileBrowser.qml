@@ -486,6 +486,7 @@ Maui.Page
             if((event.key === Qt.Key_F5))
             {
                 control.currentFMList.refresh()
+                event.accepted = true
             }
             
             // Shortcuts for renaming
@@ -493,12 +494,14 @@ Maui.Page
             {
                 dialogLoader.sourceComponent = renameDialogComponent
                 dialog.open()
+                event.accepted = true
             }
             
             // Shortcuts for selecting file
             if((event.key === Qt.Key_A) && (event.modifiers & Qt.ControlModifier))
             {
                 control.selectAll()
+                event.accepted = true
             }
             
             if((event.key === Qt.Key_Left || event.key === Qt.Key_Right || event.key === Qt.Key_Down || event.key === Qt.Key_Up) && (event.modifiers & Qt.ControlModifier) && (event.modifiers & Qt.ShiftModifier))
@@ -517,12 +520,14 @@ Maui.Page
             {
                 indexHistory.push(index)
                 control.openItem(index)
+                event.accepted = true
             }
             
             // Shortcut for pasting an item
             if((event.key == Qt.Key_V) && (event.modifiers & Qt.ControlModifier))
             {
                 control.paste(Maui.Handy.getClipboard().urls)
+                event.accepted = true
             }
             
             // Shortcut for cutting an item
@@ -530,6 +535,7 @@ Maui.Page
             {
                 const urls = filterSelection(control.currentPath, item.path)
                 control.cut(urls)
+                event.accepted = true
             }
             
             // Shortcut for copying an item
@@ -537,6 +543,7 @@ Maui.Page
             {
                 const urls = filterSelection(control.currentPath, item.path)
                 control.copy(urls)
+                event.accepted = true
             }
             
             // Shortcut for removing an item
@@ -544,6 +551,7 @@ Maui.Page
             {
                 const urls = filterSelection(control.currentPath, item.path)
                 control.remove(urls)
+                event.accepted = true
             }
             
             // Shortcut for going back in browsing history
@@ -557,22 +565,26 @@ Maui.Page
                 {
                     control.goBack()
                 }
+                event.accepted = true
             }
             
             // Shortcut for clearing selection and filtering
             if(event.key === Qt.Key_Escape) //TODO not working, the event is not catched or emitted or is being accepted else where?
             {
                 if(control.selectionBar && control.selectionBar.count > 0)
+                {
                     control.selectionBar.clear()
-                    
-                    control.view.filter = ""
+                }
+                
+                control.view.filter = ""
+                event.accepted = true
             }
             
             //Shortcut for opening filtering
             if((event.key === Qt.Key_F) && (event.modifiers & Qt.ControlModifier))
             {
-                control.settings.searchBarVisible = !control.settings.searchBarVisible
-                _searchField.forceActiveFocus()
+                control.toggleSearchBar()                
+                event.accepted = true
             }
             
             control.keyPress(event)
