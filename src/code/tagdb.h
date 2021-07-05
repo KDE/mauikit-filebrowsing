@@ -76,7 +76,7 @@ public:
      */
     bool checkExistance(const QString &queryStr) const;
 
-protected:
+
     TAGDB();
     ~TAGDB();
 

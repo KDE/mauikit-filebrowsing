@@ -88,7 +88,6 @@ private:
 #endif
 
 class Syncing;
-
 /**
  * @brief The FM class
  * File management methods with syncing and tagging integration if such components were enabled with COMPONENT_SYNCING and COMPONENT_TAGGING

@@ -30,6 +30,7 @@
 
 #include "tagging.h"
 #include "fmstatic.h"
+#include "tagdb.h"
 
 Tagging *Tagging::m_instance = nullptr;
 
@@ -37,23 +38,42 @@ Tagging::~Tagging()
 {
 }
 
-Tagging::Tagging()
-    : TAGDB()
+Tagging::Tagging() : QObject()
 {
     this->setApp();
-    connect(qApp, &QCoreApplication::aboutToQuit, []()
+    connect(qApp, &QCoreApplication::aboutToQuit, [this]()
     {
         qDebug() << "Lets remove Tagging singleton instance";
+        
+        qDeleteAll(m_dbs);
+        m_dbs.clear();
+        
         delete m_instance;
         m_instance = nullptr;
     });
 }
 
-const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier) const
+TAGDB * Tagging::db()
+{
+    if(m_dbs.contains(QThread::currentThreadId()))
+    {
+        qDebug() << "Using existing TAGGINGDB instance";
+        
+        return m_dbs[QThread::currentThreadId()];
+    }
+    
+    qDebug() << "Creating new TAGGINGDB instance";
+    
+    auto new_db = new TAGDB;
+    m_dbs.insert(QThread::currentThreadId(), new_db);
+    return new_db;
+}
+
+const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier) 
 {
     QVariantList mapList;
 
-    auto query = this->getQuery(queryTxt);
+    auto query = this->db()->getQuery(queryTxt);
 
     if (query.exec()) {
         const auto keys = FMH::MODEL_NAME.keys();
@@ -85,16 +105,16 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
     return mapList;
 }
 
-bool Tagging::tagExists(const QString &tag, const bool &strict) const
+bool Tagging::tagExists(const QString &tag, const bool &strict) 
 {
-    return !strict ? this->checkExistance(TAG::TABLEMAP[TAG::TABLE::TAGS], FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag)
-            : this->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
+    return !strict ? this->db()->checkExistance(TAG::TABLEMAP[TAG::TABLE::TAGS], FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag)
+    : this->db()->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
             .arg(this->appOrg, tag));
 }
 
-bool Tagging::urlTagExists(const QString &url, const QString &tag) const
+bool Tagging::urlTagExists(const QString &url, const QString &tag) 
 {
-    return this->checkExistance(QString("select * from TAGS_URLS where url = '%1' and tag = '%2'").arg(url, tag));
+    return this->db()->checkExistance(QString("select * from TAGS_URLS where url = '%1' and tag = '%2'").arg(url, tag));
 }
 
 void Tagging::setApp()
@@ -122,14 +142,14 @@ bool Tagging::tag(const QString &tag, const QString &color, const QString &comme
         {FMH::MODEL_NAME[FMH::MODEL_KEY::COMMENT], comment},
     };
     
-    this->insert(TAG::TABLEMAP[TAG::TABLE::TAGS], tag_map);
+    this->db()->insert(TAG::TABLEMAP[TAG::TABLE::TAGS], tag_map);
     
     const QVariantMap appTag_map {
         {FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag},
         {FMH::MODEL_NAME[FMH::MODEL_KEY::ORG], this->appOrg},
         {FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE], QDateTime::currentDateTime().toString(Qt::TextDate)}};
 
-    if (this->insert(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], appTag_map)) {
+        if (this->db()->insert(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], appTag_map)) {
         setTagIconName(tag_map);
         emit this->tagged(tag_map);
         return true;
@@ -153,7 +173,7 @@ bool Tagging::tagUrl(const QString &url, const QString &tag, const QString &colo
                              {FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE], QDateTime::currentDateTime()},
                              {FMH::MODEL_NAME[FMH::MODEL_KEY::COMMENT], comment}};
 
-    if(this->insert(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], tag_url_map))
+                             if(this->db()->insert(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], tag_url_map))
     {
         qDebug() << "tagging url" << url <<tag;
         emit this->urlTagged(url, myTag);
@@ -179,12 +199,12 @@ bool Tagging::updateUrlTags(const QString &url, const QStringList &tags, const b
     return true;
 }
 
-bool Tagging::updateUrl(const QString &url, const QString &newUrl) const
+bool Tagging::updateUrl(const QString &url, const QString &newUrl) 
 {
-    return this->update(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, newUrl}}, {{FMH::MODEL_NAME[FMH::MODEL_KEY::URL], url}});
+    return this->db()->update(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, newUrl}}, {{FMH::MODEL_NAME[FMH::MODEL_KEY::URL], url}});
 }
 
-QVariantList Tagging::getUrlsTags(const bool &strict) const //all used tags, meaning, all tags that are used with an url in tags_url table
+QVariantList Tagging::getUrlsTags(const bool &strict)  //all used tags, meaning, all tags that are used with an url in tags_url table
 {
     const auto query = !strict ? QString("select distinct t.* from TAGS t inner join TAGS_URLS turl where t.tag = turl.tag") :
                                  QString("select distinct t.* from TAGS t inner join APP_TAGS at on at.tag = t.tag inner join TAGS_URLS turl on t.tag = turl.tag where at.org = '%1'").arg(this->appOrg);
@@ -198,14 +218,14 @@ bool Tagging::setTagIconName(QVariantMap &item)
     return true;
 }
 
-QVariantList Tagging::getAllTags(const bool &strict) const
+QVariantList Tagging::getAllTags(const bool &strict) 
 {
     return !strict ? this->get("select * from tags", &setTagIconName)
                    : this->get(QString("select t.* from TAGS t inner join APP_TAGS at on t.tag = at.tag where at.org = '%1'").arg(this->appOrg),
                                &setTagIconName);
 }
 
-QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int &limit, const QString &mimeType, std::function<bool(QVariantMap &item)> modifier) const
+QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int &limit, const QString &mimeType, std::function<bool(QVariantMap &item)> modifier)
 {
     return !strict ? this->get(QString("select distinct * from TAGS_URLS where tag = '%1' and mime like '%2%' limit %3").arg(tag, mimeType, QString::number(limit)), modifier)
                    : this->get(QString("select distinct turl.*, t.color, t.comment as tagComment from TAGS t "
@@ -217,7 +237,7 @@ QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int 
                                modifier);
 }
 
-QVariantList Tagging::getUrlTags(const QString &url, const bool &strict) const
+QVariantList Tagging::getUrlTags(const QString &url, const bool &strict)
 {
     return !strict ? this->get(QString("select distinct turl.*, t.color, t.comment as tagComment from tags t inner join TAGS_URLS turl on turl.tag = t.tag where turl.url  = '%1'").arg(url))
                    : this->get(QString("select distinct t.* from TAGS t inner join APP_TAGS at on t.tag = at.tag inner join TAGS_URLS turl on turl.tag = t.tag "
@@ -235,7 +255,7 @@ bool Tagging::removeUrlTag(const QString &url, const QString &tag)
 {
     qDebug() << "Remove url tag" << url << tag;
     FMH::MODEL data {{FMH::MODEL_KEY::URL, url}, {FMH::MODEL_KEY::TAG, tag}};
-    if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data))
+    if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data))
     {
         emit this->urlTagRemoved(tag, url);
         return true;
@@ -246,7 +266,7 @@ bool Tagging::removeUrlTag(const QString &url, const QString &tag)
 
 bool Tagging::removeUrl(const QString &url)
 {
-    if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, url}}))
+    if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], {{FMH::MODEL_KEY::URL, url}}))
     {
         emit this->urlRemoved(url);
     }
@@ -254,7 +274,7 @@ bool Tagging::removeUrl(const QString &url)
     return false;
 }
 
-bool Tagging::app() const
+bool Tagging::app()
 {
     qDebug() << "REGISTER APP" << this->appName << this->appOrg << this->appComment;
     const QVariantMap app_map {
@@ -264,20 +284,20 @@ bool Tagging::app() const
         {FMH::MODEL_NAME[FMH::MODEL_KEY::COMMENT], this->appComment},
     };
 
-    return this->insert(TAG::TABLEMAP[TAG::TABLE::APPS], app_map);
+    return this->db()->insert(TAG::TABLEMAP[TAG::TABLE::APPS], app_map);
 }
 
 bool Tagging::removeTag(const QString& tag)
 {
     FMH::MODEL data1 {{FMH::MODEL_KEY::TAG, tag}};
     
-    if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data1))
+    if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data1))
     {
         FMH::MODEL data2 {{FMH::MODEL_KEY::TAG, tag}, {FMH::MODEL_KEY::ORG, this->appOrg}};
 
-        if(this->remove(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], data2))
+        if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], data2))
         {
-            if(this->remove(TAG::TABLEMAP[TAG::TABLE::TAGS], data1))
+            if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS], data1))
             {
                 emit this->tagRemoved(tag);
                 return true;
@@ -303,7 +323,7 @@ static bool doNameFilter(const QString &name, const QStringList &filters)
     return false;
 }
  
- QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, const bool &strict, const int &limit, const QString &mime) const
+ QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, const bool &strict, const int &limit, const QString &mime) 
 {
     QList<QUrl> urls;
     
@@ -324,7 +344,7 @@ static bool doNameFilter(const QString &name, const QStringList &filters)
     return urls;
 }
 
-FMH::MODEL_LIST Tagging::getTags(const int &limit) const
+FMH::MODEL_LIST Tagging::getTags(const int &limit)
 {
     Q_UNUSED(limit);
     FMH::MODEL_LIST data;
@@ -344,7 +364,7 @@ FMH::MODEL_LIST Tagging::getTags(const int &limit) const
 return data;
 }
 
-FMH::MODEL_LIST Tagging::getUrlTags(const QUrl &url) const
+FMH::MODEL_LIST Tagging::getUrlTags(const QUrl &url)
 {
     return FMH::toModelList(this->getUrlTags(url.toString(), false));
 }
@@ -377,7 +397,7 @@ bool Tagging::unFav(const QUrl &url)
     return this->removeUrlTag(url.toString(), "fav");
 }
 
-bool Tagging::isFav(const QUrl &url, const bool &strict) const
+bool Tagging::isFav(const QUrl &url, const bool &strict)
 {
     Q_UNUSED(strict)
     

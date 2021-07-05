@@ -480,6 +480,7 @@ Maui.Page
             {
                typingQuery += event.text
                 _typingTimer.restart()   
+                event.accepted = true
             }
             
             // Shortcuts for refreshing
@@ -513,6 +514,7 @@ Maui.Page
                 {
                     control.addToSelection(item)
                 }
+                //event.accepted = true
             }
             
             //shortcut for opening files
