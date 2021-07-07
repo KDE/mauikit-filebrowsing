@@ -17,7 +17,7 @@ Maui.AltBrowser
     enableLassoSelection: true
     
     gridView.itemSize : control.gridItemSize
-    gridView.itemHeight: gridView.itemSize * 1.3
+    gridView.itemHeight: Math.floor(control.gridView.itemSize*1.3)
 //     gridView.cacheBuffer: control.height * 10
     
     Binding on currentIndex
@@ -373,9 +373,11 @@ Maui.AltBrowser
             id: delegate
             readonly property string path : model.path
             
-            anchors.centerIn: parent
-            width: control.gridView.itemSize - Maui.Style.space.medium
-            height:control.gridView.itemHeight  - Maui.Style.space.medium
+            template.imageWidth: control.gridView.itemSize
+            template.imageHeight: control.gridView.itemSize
+            
+            anchors.fill: parent
+            anchors.margins: Kirigami.Settings.isMobile ? Maui.Style.space.small : Maui.Style.space.medium 
             
             template.labelSizeHint: 36
             iconSizeHint: height * 0.5
