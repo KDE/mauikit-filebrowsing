@@ -420,7 +420,6 @@ Maui.AltBrowser
             onClicked:
             {
                 control.currentIndex = index
-                control.currentView.forceActiveFocus()
                 
                 if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
                 {
@@ -434,7 +433,6 @@ Maui.AltBrowser
             onDoubleClicked:
             {
                 control.currentIndex = index
-                control.currentView.forceActiveFocus()
                 control.itemDoubleClicked(index)
             }
             
@@ -444,14 +442,12 @@ Maui.AltBrowser
                     return
                     
                     control.currentIndex = index
-                    control.currentView.forceActiveFocus()
                     control.itemRightClicked(index)
             }
             
             onRightClicked:
             {
                 control.currentIndex = index
-                control.currentView.forceActiveFocus()
                 control.itemRightClicked(index)
             }
             

@@ -660,7 +660,7 @@ Maui.Page
     StackView
     {
         id: _stackView
-        
+        focus: true
         anchors.fill: parent
         
         initialItem: DropArea
