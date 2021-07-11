@@ -19,7 +19,6 @@
 
 import QtQuick 2.14
 import QtQuick.Controls 2.14
-import QtQuick.Layouts 1.3
 
 import org.kde.kirigami 2.9 as Kirigami
 import org.mauikit.controls 1.2 as Maui
@@ -39,6 +38,8 @@ import "private"
 Item
 {
     id: control
+    focus: true
+    implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.tiny
     
     /**
      * listView : TagList
@@ -85,133 +86,94 @@ Item
      */
     signal tagsEdited(var tags)
     
-    implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.tiny
     
-    //    background: Rectangle
-    //    {
-    //        color: control.Kirigami.Theme.backgroundColor
-    
-    //        Maui.Separator
-    //        {
-    //            edge: Qt.TopEdge
-    //            anchors.top: parent.top
-    //            anchors.left: parent.left
-    //            anchors.right: parent.right
-    //        }
-    //    }
-    
-    
-    RowLayout
+    Maui.TextField
     {
+        id: editTagsEntry
+        focus: true
         anchors.fill: parent
-        TagList
+         activeFocusOnPress : true
+        visible: control.editMode
+        text: list.tags.join(",")
+        
+        onVisibleChanged:
         {
-            id: tagsList
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            visible: !control.editMode
-            showPlaceHolder: allowEditMode
-            showDeleteIcon: allowEditMode
-            onTagRemoved: tagRemovedClicked(index)
-            onTagClicked: control.tagClicked(tagsList.list.get(index).tag)
-            
-            onAreaClicked:
+            if(visible)
             {
-                if(allowEditMode)
-                {
-                    goEditMode()
-                }
+                editTagsEntry.forceActiveFocus()
             }
         }
         
-        Maui.TextField
+        onAccepted:
         {
-            id: editTagsEntry
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            visible: control.editMode
-            text: list.tags.join(",")
-            
-            onVisibleChanged:
+            control.tagsEdited(getTags())
+            control.closeEditMode()
+        }
+        
+        actions: Action
+        {
+            icon.name: "checkbox"
+            onTriggered: editTagsEntry.accepted()
+        }
+        
+        background: Rectangle
+        {
+            color: "transparent"
+        }
+        
+        function getTags()
+        {
+            if(!editTagsEntry.text.length > 0)
             {
-                if(visible)
-                {
-                    forceActiveFocus()
-                }
+                return
             }
             
-            onAccepted:
+            var tags = []
+            if(editTagsEntry.text.trim().length > 0)
             {
-                control.tagsEdited(getTags())
-                control.closeEditMode()
-            }
-            
-            actions: Action
-            {
-                icon.name: "checkbox"
-                onTriggered: editTagsEntry.accepted()
-            }
-            
-            background: Rectangle
-            {
-                color: "transparent"
-            }
-            
-            function getTags()
-            {
-                if(!editTagsEntry.text.length > 0)
-                {
-                    return
-                }
+                var list = editTagsEntry.text.split(",")
                 
-                var tags = []
-                if(editTagsEntry.text.trim().length > 0)
+                if(list.length > 0)
                 {
-                    var list = editTagsEntry.text.split(",")
-                    
-                    if(list.length > 0)
+                    for(var i in list)
                     {
-                        for(var i in list)
-                        {
-                            tags.push(list[i].trim())
-                            
-                        }
+                        tags.push(list[i].trim())
+                        
                     }
                 }
-                
-                return tags
             }
+            
+            return tags
         }
-        
     }
     
     
-    
-    
-    
-    //        MouseArea
-    //        {
-    //            visible: control.allowEditMode && tagsList.visible
-    //            hoverEnabled: true
-    //            onClicked: addClicked()
-    //            implicitHeight: implicitWidth
-    //            implicitWidth: Maui.Style.iconSizes.medium
-    
-    //            Maui.PlusSign
-    //            {
-    //                height: Maui.Style.iconSizes.tiny
-    //                width: height
-    //                anchors.centerIn: parent
-    //                color: parent.containsMouse || parent.containsPress ? Kirigami.Theme.highlightColor : Qt.tint(Kirigami.Theme.textColor, Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.7))
-    //            }
-    //        }
+    TagList
+    {
+        id: tagsList
+        anchors.fill: parent
+        visible: !control.editMode
+        showPlaceHolder: allowEditMode
+        showDeleteIcon: allowEditMode
+        onTagRemoved: tagRemovedClicked(index)
+        onTagClicked: control.tagClicked(tagsList.list.get(index).tag)
+        
+        onAreaClicked:
+        {
+            if(allowEditMode)
+            {
+                goEditMode()
+            }
+        }
+    }
     
     /**
      * 
      */
     function goEditMode()
     {
-        editMode = true
+        control.forceActiveFocus()
+        control.editMode = true
         editTagsEntry.forceActiveFocus()
     }
     
