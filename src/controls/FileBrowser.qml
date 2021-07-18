@@ -1106,4 +1106,9 @@ Maui.Page
         
         return res
     }
+    
+    function forceActiveFocus()
+    {
+        control.currentView.forceActiveFocus()
+    }
 }
