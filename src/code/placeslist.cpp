@@ -211,14 +211,6 @@ void PlacesList::setGroups(const QList<int> &value)
     emit this->groupsChanged();
 }
 
-QVariantMap PlacesList::get(const int &index) const
-{
-    if (index >= this->list.size() || index < 0)
-        return QVariantMap();
-
-    const auto model = this->list.at(index);
-    return FMH::toMap(model);
-}
 void PlacesList::removePlace(const int &index)
 {
     if (index >= this->list.size() || index < 0)
@@ -318,5 +310,3 @@ int PlacesList::indexOfPath(const QUrl &url) const
 {
     return this->indexOf(FMH::MODEL_KEY::PATH, url.toString());
 }
-
-

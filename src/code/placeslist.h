@@ -42,16 +42,6 @@ public:
 
     void componentComplete() override final;
 
-    /**
-     * @brief get
-     * Gets a item in the model.
-     * @param index
-     * Index of the item in the model. The given index is not mapped to a filtered or sorted model
-     * @return
-     * The data of the place
-     */
-    QVariantMap get(const int &index) const;
-
 protected:
     void setList();
 
