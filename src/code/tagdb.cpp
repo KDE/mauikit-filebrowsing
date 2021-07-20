@@ -144,6 +144,12 @@ QSqlQuery TAGDB::getQuery(const QString &queryTxt) const
     return query;
 }
 
+QSqlQuery TAGDB::getQuery() const
+{
+    QSqlQuery query(this->m_db);
+    return query;
+}
+
 bool TAGDB::insert(const QString &tableName, const QVariantMap &insertData) const
 {
     if (tableName.isEmpty()) {
@@ -238,4 +244,9 @@ bool TAGDB::remove(const QString &tableName, const FMH::MODEL &removeData) const
     qDebug() << sqlQueryString;
 
     return this->getQuery(sqlQueryString).exec();
+}
+
+const QSqlDatabase & TAGDB::db() const
+{
+    return this->m_db;
 }

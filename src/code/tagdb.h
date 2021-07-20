@@ -22,11 +22,11 @@
 
 
 #include <QObject>
-#include <QSqlDatabase>
 
 #include <QString>
 #include <QStringList>
 #include <QVariantMap>
+#include <QSqlDatabase>
 
 #include <MauiKit/Core/fmh.h>
 
@@ -87,6 +87,8 @@ public:
      */
     QSqlQuery getQuery(const QString &queryTxt) const;
 
+    QSqlQuery getQuery() const;
+
     /**
      * @brief openDB
      * @param name
@@ -133,6 +135,8 @@ public:
      * @return
      */
     bool remove(const QString &tableName, const FMH::MODEL &removeData) const;
+    
+   const QSqlDatabase& db() const;
 };
 
 #endif // DB_H

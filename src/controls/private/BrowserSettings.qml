@@ -18,13 +18,9 @@
  */
 
 import QtQml 2.1
-
-import org.mauikit.controls 1.0 as Maui
 import org.mauikit.filebrowsing 1.0 as FB
 
-import Qt.labs.settings 1.0
-
-Settings
+QtObject
 {
     /**
       *
