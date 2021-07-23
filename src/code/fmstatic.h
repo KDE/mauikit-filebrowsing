@@ -15,7 +15,6 @@
 #endif
 
 #ifdef KIO_AVAILABLE
-#include <KFilePlacesModel>
 class KFileItem;
 #endif
 
@@ -41,288 +40,272 @@ public:
     inline static const QStringList VIDEO_MIMETYPES = {"video/mp4", "video/x-matroska", "video/webm", "video/avi", "video/flv", "video/mpg", "video/wmv", "video/mov", "video/ogg", "video/mpeg", "video/jpeg"};
     
     inline static const QStringList TEXT_MIMETYPES = {"text/markdown",
-                                                      "text/x-chdr",
-                                                      "text/x-c++src",
-                                                      "text/x-c++hdr",
-                                                      "text/css",
-                                                      "text/html",
-                                                      "text/plain",
-                                                      "text/richtext",
-                                                      "text/scriptlet",
-                                                      "text/x-vcard",
-                                                      "text/x-go",
-                                                      "text/x-cmake",
-                                                      "text/x-makefile",
-                                                      "text/x-qml",
-                                                      "text/x-python",
-                                                      "text/*",
-                                                      "text/x-copying",
-                                                      "application/xml",
-                                                      "application/javascript",
-                                                      "application/json",
-                                                      "application/pgp-keys",
-                                                      "application/x-shellscript",
-                                                      "application/x-cmakecache",
-                                                      "application/x-yaml",
-                                                      "application/x-perl",
-                                                      "application/x-kdevelop",
-                                                      "application/x-kicad-project"};
-
-    inline static const QStringList IMAGE_MIMETYPES = {"image/bmp", "image/webp", "image/png", "image/gif", "image/jpeg", "image/web", "image/svg", "image/svg+xml"};
-
-    inline static const QStringList DOCUMENT_MIMETYPES = {"application/pdf", "application/rtf", "application/doc", "application/odf"};
-
-    inline static const QStringList COMPRESSED_MIMETYPES =
-    {"application/x-compress", "application/x-compressed", "application/x-xz-compressed-tar", "application/x-compressed-tar", "application/x-xz", "application/x-bzip", "application/x-gtar", "application/x-gzip", "application/zip"};
-
-    inline static const QStringList FONT_MIMETYPES = {"font/ttf", "font/otf"};
-
-    inline static const QMap<FILTER_TYPE, QStringList> SUPPORTED_MIMETYPES {{FILTER_TYPE::AUDIO, AUDIO_MIMETYPES},
-                                                                            {FILTER_TYPE::VIDEO, VIDEO_MIMETYPES},
-                                                                            {FILTER_TYPE::TEXT, TEXT_MIMETYPES},
-                                                                            {FILTER_TYPE::IMAGE, IMAGE_MIMETYPES},
-                                                                            {FILTER_TYPE::DOCUMENT, DOCUMENT_MIMETYPES},
-                                                                            {FILTER_TYPE::FONT, FONT_MIMETYPES},
-                                                                            {FILTER_TYPE::COMPRESSED, COMPRESSED_MIMETYPES}};
-
-    /**
+        "text/x-chdr",
+        "text/x-c++src",
+        "text/x-c++hdr",
+        "text/css",
+        "text/html",
+        "text/plain",
+        "text/richtext",
+        "text/scriptlet",
+        "text/x-vcard",
+        "text/x-go",
+        "text/x-cmake",
+        "text/x-makefile",
+        "text/x-qml",
+        "text/x-python",
+        "text/*",
+        "text/x-copying",
+        "application/xml",
+        "application/javascript",
+        "application/json",
+        "application/pgp-keys",
+        "application/x-shellscript",
+        "application/x-cmakecache",
+        "application/x-yaml",
+        "application/x-perl",
+        "application/x-kdevelop",
+        "application/x-kicad-project"};
+        
+        inline static const QStringList IMAGE_MIMETYPES = {"image/bmp", "image/webp", "image/png", "image/gif", "image/jpeg", "image/web", "image/svg", "image/svg+xml"};
+        
+        inline static const QStringList DOCUMENT_MIMETYPES = {"application/pdf", "application/rtf", "application/doc", "application/odf"};
+        
+        inline static const QStringList COMPRESSED_MIMETYPES =
+        {"application/x-compress", "application/x-compressed", "application/x-xz-compressed-tar", "application/x-compressed-tar", "application/x-xz", "application/x-bzip", "application/x-gtar", "application/x-gzip", "application/zip"};
+        
+        inline static const QStringList FONT_MIMETYPES = {"font/ttf", "font/otf"};
+        
+        inline static const QMap<FILTER_TYPE, QStringList> SUPPORTED_MIMETYPES {{FILTER_TYPE::AUDIO, AUDIO_MIMETYPES},
+        {FILTER_TYPE::VIDEO, VIDEO_MIMETYPES},
+        {FILTER_TYPE::TEXT, TEXT_MIMETYPES},
+        {FILTER_TYPE::IMAGE, IMAGE_MIMETYPES},
+        {FILTER_TYPE::DOCUMENT, DOCUMENT_MIMETYPES},
+        {FILTER_TYPE::FONT, FONT_MIMETYPES},
+        {FILTER_TYPE::COMPRESSED, COMPRESSED_MIMETYPES}};
+        
+        /**
          * @brief getMimeTypeSuffixes
          * @param type
          * @return
          */
-    inline static QStringList getMimeTypeSuffixes(const FILTER_TYPE &type, QString (*cb)(QString))
-    {
-        QStringList res;
-        QMimeDatabase mimedb;
-        for (const auto &mime : SUPPORTED_MIMETYPES[type]) {
-            if (cb) {
-                const auto suffixes = mimedb.mimeTypeForName(mime).suffixes();
-                for (const QString &_suffix : suffixes) {
-                    res << cb(_suffix);
+        inline static QStringList getMimeTypeSuffixes(const FILTER_TYPE &type, QString (*cb)(QString))
+        {
+            QStringList res;
+            QMimeDatabase mimedb;
+            for (const auto &mime : SUPPORTED_MIMETYPES[type]) {
+                if (cb) {
+                    const auto suffixes = mimedb.mimeTypeForName(mime).suffixes();
+                    for (const QString &_suffix : suffixes) {
+                        res << cb(_suffix);
+                    }
+                } else {
+                    res << mimedb.mimeTypeForName(mime).suffixes();
                 }
-            } else {
-                res << mimedb.mimeTypeForName(mime).suffixes();
             }
+            return res;
         }
-        return res;
-    }
-
-    inline static QHash<FILTER_TYPE, QStringList> FILTER_LIST = {{FILTER_TYPE::AUDIO,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::AUDIO,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::VIDEO,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::VIDEO,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::TEXT,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::TEXT,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::DOCUMENT,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::DOCUMENT,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::COMPRESSED,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::COMPRESSED,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::FONT,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::FONT,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::IMAGE,
-                                                                  getMimeTypeSuffixes(FILTER_TYPE::IMAGE,
-                                                                  [](QString suffix) -> QString {
-                                                                      return "*." + suffix;
-                                                                  })},
-                                                                 {FILTER_TYPE::NONE, QStringList()}};
-
-    /**
+        
+        inline static QHash<FILTER_TYPE, QStringList> FILTER_LIST = {{FILTER_TYPE::AUDIO,
+            getMimeTypeSuffixes(FILTER_TYPE::AUDIO,
+                                [](QString suffix) -> QString {
+                                    return "*." + suffix;
+                                })},
+                                {FILTER_TYPE::VIDEO,
+                                    getMimeTypeSuffixes(FILTER_TYPE::VIDEO,
+                                                        [](QString suffix) -> QString {
+                                                            return "*." + suffix;
+                                                        })},
+                                                        {FILTER_TYPE::TEXT,
+                                                            getMimeTypeSuffixes(FILTER_TYPE::TEXT,
+                                                                                [](QString suffix) -> QString {
+                                                                                    return "*." + suffix;
+                                                                                })},
+                                                                                {FILTER_TYPE::DOCUMENT,
+                                                                                    getMimeTypeSuffixes(FILTER_TYPE::DOCUMENT,
+                                                                                                        [](QString suffix) -> QString {
+                                                                                                            return "*." + suffix;
+                                                                                                        })},
+                                                                                                        {FILTER_TYPE::COMPRESSED,
+                                                                                                            getMimeTypeSuffixes(FILTER_TYPE::COMPRESSED,
+                                                                                                                                [](QString suffix) -> QString {
+                                                                                                                                    return "*." + suffix;
+                                                                                                                                })},
+                                                                                                                                {FILTER_TYPE::FONT,
+                                                                                                                                    getMimeTypeSuffixes(FILTER_TYPE::FONT,
+                                                                                                                                                        [](QString suffix) -> QString {
+                                                                                                                                                            return "*." + suffix;
+                                                                                                                                                        })},
+                                                                                                                                                        {FILTER_TYPE::IMAGE,
+                                                                                                                                                            getMimeTypeSuffixes(FILTER_TYPE::IMAGE,
+                                                                                                                                                                                [](QString suffix) -> QString {
+                                                                                                                                                                                    return "*." + suffix;
+                                                                                                                                                                                })},
+                                                                                                                                                                                {FILTER_TYPE::NONE, QStringList()}};
+                                                                                                                                                                                
+                                                                                                                                                                                /**
                                                                                                                                                                                  * @brief The PATH_CONTENT struct
                                                                                                                                                                                  */
-    struct PATH_CONTENT {
-        QUrl path; // the url holding all the content
-        FMH::MODEL_LIST content; // the content from the url
-    };
-
-    /**
-     * @brief The PATHTYPE_KEY enum
-     */
-#ifdef KIO_AVAILABLE
-    enum PATHTYPE_KEY : int {
-        PLACES_PATH = KFilePlacesModel::GroupType::PlacesType,
-        REMOTE_PATH = KFilePlacesModel::GroupType::RemoteType,
-        DRIVES_PATH = KFilePlacesModel::GroupType::DevicesType,
-        REMOVABLE_PATH = KFilePlacesModel::GroupType::RemovableDevicesType,
-        TAGS_PATH = KFilePlacesModel::GroupType::TagsType,
-        UNKNOWN_TYPE = KFilePlacesModel::GroupType::UnknownType,
-        APPS_PATH = 9,
-        TRASH_PATH = 10,
-        SEARCH_PATH = 11,
-        CLOUD_PATH = 12,
-        FISH_PATH = 13,
-        MTP_PATH = 14,
-        QUICK_PATH = 15,
-        BOOKMARKS_PATH = 16,
-        OTHER_PATH = 17
-    };
-#else
-    enum PATHTYPE_KEY : int {
-        PLACES_PATH,
-        REMOTE_PATH,
-        DRIVES_PATH,
-        REMOVABLE_PATH,
-        TAGS_PATH,
-        UNKNOWN_TYPE,
-        APPS_PATH,
-        TRASH_PATH,
-        SEARCH_PATH,
-        CLOUD_PATH,
-        FISH_PATH,
-        MTP_PATH,
-        QUICK_PATH,
-        BOOKMARKS_PATH,
-        OTHER_PATH,
-    };
-#endif
-    
-    inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_SCHEME = {{PATHTYPE_KEY::PLACES_PATH, "file"},
-                                                                        {PATHTYPE_KEY::BOOKMARKS_PATH, "file"},
-                                                                        {PATHTYPE_KEY::DRIVES_PATH, "drives"},
-                                                                        {PATHTYPE_KEY::APPS_PATH, "applications"},
-                                                                        {PATHTYPE_KEY::REMOTE_PATH, "remote"},
-                                                                        {PATHTYPE_KEY::REMOVABLE_PATH, "removable"},
-                                                                        {PATHTYPE_KEY::UNKNOWN_TYPE, "Unkown"},
-                                                                        {PATHTYPE_KEY::TRASH_PATH, "trash"},
-                                                                        {PATHTYPE_KEY::TAGS_PATH, "tags"},
-                                                                        {PATHTYPE_KEY::SEARCH_PATH, "search"},
-                                                                        {PATHTYPE_KEY::CLOUD_PATH, "cloud"},
-                                                                        {PATHTYPE_KEY::FISH_PATH, "fish"},
-                                                                        {PATHTYPE_KEY::MTP_PATH, "mtp"}};
-    
-    inline static const QHash<QString, PATHTYPE_KEY> PATHTYPE_SCHEME_NAME = {{PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH], PATHTYPE_KEY::PLACES_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::BOOKMARKS_PATH], PATHTYPE_KEY::BOOKMARKS_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::DRIVES_PATH], PATHTYPE_KEY::DRIVES_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::APPS_PATH], PATHTYPE_KEY::APPS_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::REMOTE_PATH], PATHTYPE_KEY::REMOTE_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::REMOVABLE_PATH], PATHTYPE_KEY::REMOVABLE_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::UNKNOWN_TYPE], PATHTYPE_KEY::UNKNOWN_TYPE},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::TRASH_PATH], PATHTYPE_KEY::TRASH_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::TAGS_PATH], PATHTYPE_KEY::TAGS_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::SEARCH_PATH], PATHTYPE_KEY::SEARCH_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::CLOUD_PATH], PATHTYPE_KEY::CLOUD_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::FISH_PATH], PATHTYPE_KEY::FISH_PATH},
-                                                                             {PATHTYPE_SCHEME[PATHTYPE_KEY::MTP_PATH], PATHTYPE_KEY::MTP_PATH}};
-    
-    inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_URI = {{PATHTYPE_KEY::PLACES_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::BOOKMARKS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::BOOKMARKS_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::DRIVES_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::DRIVES_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::APPS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::APPS_PATH] + ":///"},
-                                                                     {PATHTYPE_KEY::REMOTE_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::REMOTE_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::REMOVABLE_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::REMOVABLE_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::UNKNOWN_TYPE, PATHTYPE_SCHEME[PATHTYPE_KEY::UNKNOWN_TYPE] + "://"},
-                                                                     {PATHTYPE_KEY::TRASH_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::TRASH_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::TAGS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::TAGS_PATH] + ":///"},
-                                                                     {PATHTYPE_KEY::SEARCH_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::SEARCH_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::CLOUD_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::CLOUD_PATH] + ":///"},
-                                                                     {PATHTYPE_KEY::FISH_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::FISH_PATH] + "://"},
-                                                                     {PATHTYPE_KEY::MTP_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::MTP_PATH] + "://"}};
-    
-    inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
-                                                                       {PATHTYPE_KEY::BOOKMARKS_PATH, ("Bookmarks")},
-                                                                       {PATHTYPE_KEY::DRIVES_PATH, ("Drives")},
-                                                                       {PATHTYPE_KEY::APPS_PATH, ("Apps")},
-                                                                       {PATHTYPE_KEY::REMOTE_PATH, ("Remote")},
-                                                                       {PATHTYPE_KEY::REMOVABLE_PATH, ("Removable")},
-                                                                       {PATHTYPE_KEY::UNKNOWN_TYPE, ("Unknown")},
-                                                                       {PATHTYPE_KEY::TRASH_PATH, ("Trash")},
-                                                                       {PATHTYPE_KEY::TAGS_PATH, ("Tags")},
-                                                                       {PATHTYPE_KEY::SEARCH_PATH, ("Search")},
-                                                                       {PATHTYPE_KEY::CLOUD_PATH, ("Cloud")},
-                                                                       {PATHTYPE_KEY::FISH_PATH, ("Remote")},
-                                                                       {PATHTYPE_KEY::MTP_PATH, ("Drives")},
-                                                                       {PATHTYPE_KEY::OTHER_PATH, ("Others")},
-                                                                       {PATHTYPE_KEY::QUICK_PATH, ("Quick")}};
-    
-    /**
-     * @brief DataPath
-     */
-    inline static const QString DataPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
-    
-    /**
-     * @brief ConfigPath
-     */
-    inline static const QString ConfigPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)).toString();
-    
-    /**
-     * @brief CloudCachePath
-     */
-    inline static const QString CloudCachePath = DataPath + "/Cloud/";
-    
-    /**
-     * @brief DesktopPath
-     */
-    inline static const QString DesktopPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).toString();
-    
-    /**
-     * @brief AppsPath
-     */
-    inline static const QString AppsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation)).toString();
-    
-    /**
-     * @brief RootPath
-     */
-    inline static const QString RootPath = QUrl::fromLocalFile("/").toString();
-    
-
-    inline static const QString PicturesPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)).toString();
-    inline static const QString DownloadsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).toString();
-    inline static const QString DocumentsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString();
-    inline static const QString MusicPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MusicLocation)).toString();
-    inline static const QString VideosPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)).toString();
-
-
-#if defined(Q_OS_ANDROID)
-
-    inline static const QString HomePath = QUrl::fromLocalFile( MAUIAndroid::homePath()).toString();
-
-    inline static const QStringList defaultPaths = {HomePath, DocumentsPath, PicturesPath, MusicPath, VideosPath, DownloadsPath};
-
-#else
-
-    inline static const QString HomePath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)).toString();
-
-    inline static const QString TrashPath = QStringLiteral("trash:/");
-
-    inline static const QStringList defaultPaths = {
-        HomePath,
-        DesktopPath,
-        DocumentsPath,
-        DownloadsPath,   
-        MusicPath,        
-        PicturesPath,
-        VideosPath
-    };
-
-#endif
-    
-    inline static const QMap<QString, QString> folderIcon {{PicturesPath, "folder-pictures"},
-                                                           {DownloadsPath, "folder-download"},
-                                                           {DocumentsPath, "folder-documents"},
-                                                           {HomePath, "user-home"},
-                                                           {MusicPath, "folder-music"},
-                                                           {VideosPath, "folder-videos"},
-                                                           {DesktopPath, "user-desktop"},
-                                                           {AppsPath, "system-run"},
-                                                           {RootPath, "folder-root"}};
-
+                                                                                                                                                                                struct PATH_CONTENT {
+                                                                                                                                                                                    QUrl path; // the url holding all the content
+                                                                                                                                                                                    FMH::MODEL_LIST content; // the content from the url
+                                                                                                                                                                                };
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief The PATHTYPE_KEY enum
+                                                                                                                                                                                 */
+                                                                                                                                                                                enum PATHTYPE_KEY : int {
+                                                                                                                                                                                    PLACES_PATH,
+                                                                                                                                                                                    REMOTE_PATH,
+                                                                                                                                                                                    DRIVES_PATH,
+                                                                                                                                                                                    REMOVABLE_PATH,
+                                                                                                                                                                                    TAGS_PATH,
+                                                                                                                                                                                    UNKNOWN_TYPE,
+                                                                                                                                                                                    APPS_PATH,
+                                                                                                                                                                                    TRASH_PATH,
+                                                                                                                                                                                    SEARCH_PATH,
+                                                                                                                                                                                    CLOUD_PATH,
+                                                                                                                                                                                    FISH_PATH,
+                                                                                                                                                                                    MTP_PATH,
+                                                                                                                                                                                    QUICK_PATH,
+                                                                                                                                                                                    BOOKMARKS_PATH,
+                                                                                                                                                                                    OTHER_PATH,
+                                                                                                                                                                                };
+                                                                                                                                                                                
+                                                                                                                                                                                #ifdef KIO_AVAILABLE
+                                                                                                                                                                                static int mapPathType(const PATHTYPE_KEY &value);
+                                                                                                                                                                                #endif
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_SCHEME = {{PATHTYPE_KEY::PLACES_PATH, "file"},
+                                                                                                                                                                                {PATHTYPE_KEY::BOOKMARKS_PATH, "file"},
+                                                                                                                                                                                {PATHTYPE_KEY::DRIVES_PATH, "drives"},
+                                                                                                                                                                                {PATHTYPE_KEY::APPS_PATH, "applications"},
+                                                                                                                                                                                {PATHTYPE_KEY::REMOTE_PATH, "remote"},
+                                                                                                                                                                                {PATHTYPE_KEY::REMOVABLE_PATH, "removable"},
+                                                                                                                                                                                {PATHTYPE_KEY::UNKNOWN_TYPE, "Unkown"},
+                                                                                                                                                                                {PATHTYPE_KEY::TRASH_PATH, "trash"},
+                                                                                                                                                                                {PATHTYPE_KEY::TAGS_PATH, "tags"},
+                                                                                                                                                                                {PATHTYPE_KEY::SEARCH_PATH, "search"},
+                                                                                                                                                                                {PATHTYPE_KEY::CLOUD_PATH, "cloud"},
+                                                                                                                                                                                {PATHTYPE_KEY::FISH_PATH, "fish"},
+                                                                                                                                                                                {PATHTYPE_KEY::MTP_PATH, "mtp"}};
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QHash<QString, PATHTYPE_KEY> PATHTYPE_SCHEME_NAME = {{PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH], PATHTYPE_KEY::PLACES_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::BOOKMARKS_PATH], PATHTYPE_KEY::BOOKMARKS_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::DRIVES_PATH], PATHTYPE_KEY::DRIVES_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::APPS_PATH], PATHTYPE_KEY::APPS_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::REMOTE_PATH], PATHTYPE_KEY::REMOTE_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::REMOVABLE_PATH], PATHTYPE_KEY::REMOVABLE_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::UNKNOWN_TYPE], PATHTYPE_KEY::UNKNOWN_TYPE},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::TRASH_PATH], PATHTYPE_KEY::TRASH_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::TAGS_PATH], PATHTYPE_KEY::TAGS_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::SEARCH_PATH], PATHTYPE_KEY::SEARCH_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::CLOUD_PATH], PATHTYPE_KEY::CLOUD_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::FISH_PATH], PATHTYPE_KEY::FISH_PATH},
+                                                                                                                                                                                {PATHTYPE_SCHEME[PATHTYPE_KEY::MTP_PATH], PATHTYPE_KEY::MTP_PATH}};
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_URI = {{PATHTYPE_KEY::PLACES_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::BOOKMARKS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::BOOKMARKS_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::DRIVES_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::DRIVES_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::APPS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::APPS_PATH] + ":///"},
+                                                                                                                                                                                {PATHTYPE_KEY::REMOTE_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::REMOTE_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::REMOVABLE_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::REMOVABLE_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::UNKNOWN_TYPE, PATHTYPE_SCHEME[PATHTYPE_KEY::UNKNOWN_TYPE] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::TRASH_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::TRASH_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::TAGS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::TAGS_PATH] + ":///"},
+                                                                                                                                                                                {PATHTYPE_KEY::SEARCH_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::SEARCH_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::CLOUD_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::CLOUD_PATH] + ":///"},
+                                                                                                                                                                                {PATHTYPE_KEY::FISH_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::FISH_PATH] + "://"},
+                                                                                                                                                                                {PATHTYPE_KEY::MTP_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::MTP_PATH] + "://"}};
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
+                                                                                                                                                                                {PATHTYPE_KEY::BOOKMARKS_PATH, ("Bookmarks")},
+                                                                                                                                                                                {PATHTYPE_KEY::DRIVES_PATH, ("Drives")},
+                                                                                                                                                                                {PATHTYPE_KEY::APPS_PATH, ("Apps")},
+                                                                                                                                                                                {PATHTYPE_KEY::REMOTE_PATH, ("Remote")},
+                                                                                                                                                                                {PATHTYPE_KEY::REMOVABLE_PATH, ("Removable")},
+                                                                                                                                                                                {PATHTYPE_KEY::UNKNOWN_TYPE, ("Unknown")},
+                                                                                                                                                                                {PATHTYPE_KEY::TRASH_PATH, ("Trash")},
+                                                                                                                                                                                {PATHTYPE_KEY::TAGS_PATH, ("Tags")},
+                                                                                                                                                                                {PATHTYPE_KEY::SEARCH_PATH, ("Search")},
+                                                                                                                                                                                {PATHTYPE_KEY::CLOUD_PATH, ("Cloud")},
+                                                                                                                                                                                {PATHTYPE_KEY::FISH_PATH, ("Remote")},
+                                                                                                                                                                                {PATHTYPE_KEY::MTP_PATH, ("Drives")},
+                                                                                                                                                                                {PATHTYPE_KEY::OTHER_PATH, ("Others")},
+                                                                                                                                                                                {PATHTYPE_KEY::QUICK_PATH, ("Quick")}};
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief DataPath
+                                                                                                                                                                                 */
+                                                                                                                                                                                inline static const QString DataPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief ConfigPath
+                                                                                                                                                                                 */
+                                                                                                                                                                                inline static const QString ConfigPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation)).toString();
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief CloudCachePath
+                                                                                                                                                                                 */
+                                                                                                                                                                                inline static const QString CloudCachePath = DataPath + "/Cloud/";
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief DesktopPath
+                                                                                                                                                                                 */
+                                                                                                                                                                                inline static const QString DesktopPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)).toString();
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief AppsPath
+                                                                                                                                                                                 */
+                                                                                                                                                                                inline static const QString AppsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation)).toString();
+                                                                                                                                                                                
+                                                                                                                                                                                /**
+                                                                                                                                                                                 * @brief RootPath
+                                                                                                                                                                                 */
+                                                                                                                                                                                inline static const QString RootPath = QUrl::fromLocalFile("/").toString();
+                                                                                                                                                                                
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QString PicturesPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)).toString();
+                                                                                                                                                                                inline static const QString DownloadsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).toString();
+                                                                                                                                                                                inline static const QString DocumentsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString();
+                                                                                                                                                                                inline static const QString MusicPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MusicLocation)).toString();
+                                                                                                                                                                                inline static const QString VideosPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)).toString();
+                                                                                                                                                                                
+                                                                                                                                                                                
+                                                                                                                                                                                #if defined(Q_OS_ANDROID)
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QString HomePath = QUrl::fromLocalFile( MAUIAndroid::homePath()).toString();
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QStringList defaultPaths = {HomePath, DocumentsPath, PicturesPath, MusicPath, VideosPath, DownloadsPath};
+                                                                                                                                                                                
+                                                                                                                                                                                #else
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QString HomePath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)).toString();
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QString TrashPath = QStringLiteral("trash:/");
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QStringList defaultPaths = {
+                                                                                                                                                                                    HomePath,
+                                                                                                                                                                                    DesktopPath,
+                                                                                                                                                                                    DocumentsPath,
+                                                                                                                                                                                    DownloadsPath,   
+                                                                                                                                                                                    MusicPath,        
+                                                                                                                                                                                    PicturesPath,
+                                                                                                                                                                                    VideosPath
+                                                                                                                                                                                };
+                                                                                                                                                                                
+                                                                                                                                                                                #endif
+                                                                                                                                                                                
+                                                                                                                                                                                inline static const QMap<QString, QString> folderIcon {{PicturesPath, "folder-pictures"},
+                                                                                                                                                                                {DownloadsPath, "folder-download"},
+                                                                                                                                                                                {DocumentsPath, "folder-documents"},
+                                                                                                                                                                                {HomePath, "user-home"},
+                                                                                                                                                                                {MusicPath, "folder-music"},
+                                                                                                                                                                                {VideosPath, "folder-videos"},
+                                                                                                                                                                                {DesktopPath, "user-desktop"},
+                                                                                                                                                                                {AppsPath, "system-run"},
+                                                                                                                                                                                {RootPath, "folder-root"}};
+                                                                                                                                                                                
 public slots:
     /**
      * @brief search
@@ -341,7 +324,7 @@ public slots:
      * The search results are returned as a FMH::MODEL_LIST
      */
     static FMH::MODEL_LIST search(const QString &query, const QUrl &path, const bool &hidden = false, const bool &onlyDirs = false, const QStringList &filters = QStringList());
-
+    
     /**
      * @brief getDevices
      * Devices mounted to the file system
@@ -349,14 +332,14 @@ public slots:
      * Represented as a FMH::MODEL_LIST
      */
     static FMH::MODEL_LIST getDevices();
-
+    
     /**
      * @brief getDefaultPaths
      * A model list of the default paths in most systems, such as Home, Pictures, Video, Downloads, Music and Documents folders
      * @return
      */
     static FMH::MODEL_LIST getDefaultPaths();
-
+    
     /**
      * @brief packItems
      * Given a list of path URLs pack all the info of such files as a FMH::MODEL_LIST
@@ -367,7 +350,7 @@ public slots:
      * @return
      */
     static FMH::MODEL_LIST packItems(const QStringList &items, const QString &type);
-
+    
     /**
      * @brief copy
      * Perfom a copy of the files to the passed destination
@@ -379,7 +362,7 @@ public slots:
      * Return if the operation has been succesfull
      */
     static bool copy(const QList<QUrl> &urls, const QUrl &destinationDir);
-
+    
     /**
      * @brief cut
      * Perform a move/cut of a list of files to a destination. This function also moves the associated tags if the tags component has been enabled COMPONENT_TAGGING
@@ -391,7 +374,7 @@ public slots:
      * If the operation has been sucessfull
      */
     static bool cut(const QList<QUrl> &urls, const QUrl &where);
-
+    
     /**
      * @brief cut
      * @param urls
@@ -401,7 +384,7 @@ public slots:
      * @return
      */
     static bool cut(const QList<QUrl> &urls, const QUrl &where, const QString &name);
-
+    
     /**
      * @brief removeFiles
      * List of files to be removed completely. This function also removes the assciated tags to the files if the tagging component has been enabled COMPONENT_TAGGING
@@ -410,7 +393,7 @@ public slots:
      * If the operation has been sucessfull
      */
     static bool removeFiles(const QList<QUrl> &urls);
-
+    
     /**
      * @brief removeDir
      * Remove a directory recursively
@@ -420,14 +403,14 @@ public slots:
      * If the operation has been sucessfull
      */
     static bool removeDir(const QUrl &path);
-
+    
     /**
      * @brief homePath
      * The default home path in different systems
      * @return
      */
     static QString homePath();
-
+    
     /**
      * @brief parentDir
      * Given a file url return its parent directory
@@ -437,7 +420,7 @@ public slots:
      * The parent directory URL if it exists otherwise returns the passed URL
      */
     static QUrl parentDir(const QUrl &path);
-
+    
     /**
      * @brief isDefaultPath
      * Checks if a given path URL is a default path as in returned by the defaultPaths method
@@ -445,7 +428,7 @@ public slots:
      * @return
      */
     static bool isDefaultPath(const QString &path);
-
+    
     /**
      * @brief isDir
      * If a local file URL is a directory
@@ -454,7 +437,7 @@ public slots:
      * @return
      */
     static bool isDir(const QUrl &path);
-
+    
     /**
      * @brief isCloud
      * If a path is a URL server instead of a local file
@@ -462,7 +445,7 @@ public slots:
      * @return
      */
     static bool isCloud(const QUrl &path);
-
+    
     /**
      * @brief fileExists
      * Checks if a local file exists in the file system
@@ -472,7 +455,7 @@ public slots:
      * Existance
      */
     static bool fileExists(const QUrl &path);
-
+    
     /**
      * if the url is a file path then it returns its directory
      * and if it is a directory returns the same path
@@ -486,7 +469,7 @@ public slots:
      * The directory URL
      */
     static QUrl fileDir(const QUrl &path);
-
+    
     //     /* SETTINGS */
     //     /**
     //      * @brief saveSettings
@@ -499,7 +482,7 @@ public slots:
     //      * The group to which the key belongs
     //      */
     //     static void saveSettings(const QString &key, const QVariant &value, const QString &group);
-
+    
     //     /**
     //      * @brief loadSettings
     //      * Loads a setting value
@@ -513,8 +496,8 @@ public slots:
     //      * A QVariant holding the setting value
     //      */
     //     static QVariant loadSettings(const QString &key, const QString &group, const QVariant &defaultValue);
-
-
+    
+    
     /**
      * @brief setDirConf
      * Write a config key-value to the directory config file
@@ -524,7 +507,7 @@ public slots:
      * @param value
      */
     static void setDirConf(const QUrl &path, const QString &group, const QString &key, const QVariant &value);
-
+    
     /**
      * @brief checkFileType
      * Checks if a mimetype belongs to a file type, for example image/jpg belong to the type FMH::FILTER_TYPE
@@ -542,13 +525,13 @@ public slots:
      * @param urls
      */
     static void moveToTrash(const QList<QUrl> &urls);
-
+    
     /**
      * @brief emptyTrash
      * Empty the trash casn
      */
     static void emptyTrash();
-
+    
     /**
      * @brief rename
      * Rename a file to a new name
@@ -559,7 +542,7 @@ public slots:
      * @return
      */
     static bool rename(const QUrl &url, const QString &name);
-
+    
     /**
      * @brief createDir
      * Creates a directory given a base path and a directory name
@@ -571,7 +554,7 @@ public slots:
      * If the operation was sucessfull
      */
     static bool createDir(const QUrl &path, const QString &name);
-
+    
     /**
      * @brief createFile
      * Creates a file given the base directory path and a short file name
@@ -582,7 +565,7 @@ public slots:
      * @return
      */
     static bool createFile(const QUrl &path, const QString &name);
-
+    
     /**
      * @brief createSymlink
      * Creates a symlink
@@ -593,7 +576,7 @@ public slots:
      * @return
      */
     static bool createSymlink(const QUrl &path, const QUrl &where);
-
+    
     /**
      * @brief openUrl
      * Given a URL it tries to open it using the default app associated to it
@@ -602,14 +585,14 @@ public slots:
      * @return
      */
     static void openUrl(const QUrl &url);
-
+    
     /**
      * @brief openLocation
      * Open with the default file manager a list of URLs
      * @param urls
      */
     static void openLocation(const QStringList &urls);
-
+    
     /**
      * @brief bookmark
      * Add a URL to the places bookmarks
@@ -617,7 +600,7 @@ public slots:
      * The file URL to be bookmarked
      */
     static void bookmark(const QUrl &url);
-
+    
     /**
      * @brief nameFilters
      * Given a filter type return a list of associated name filters, as in suffixes.
@@ -625,7 +608,7 @@ public slots:
      * The filter type to be mapped to a FMH::FILTER_TYPE
      */
     static QStringList nameFilters(const int &type);
-
+    
     /**
      * @brief iconName
      * Get the icon name associated to the file or name.
@@ -633,8 +616,8 @@ public slots:
      * The file path or file name
      */
     static QString iconName(const QString &value);
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     /**
      * @brief getFileInfo
      * Get file info
@@ -643,7 +626,7 @@ public slots:
      * File info packed as a QVariantMap model
      */
     static const FMH::MODEL getFileInfo(const KFileItem &kfile);
-#endif
+    #endif
     
     /**
      * @brief getFileInfoModel
@@ -658,7 +641,7 @@ public slots:
      * @return
      */
     static const QVariantMap getFileInfo(const QUrl &path);
-
+    
     /**
      * @brief getIconName
      * Returns the icon name for certain file.
@@ -679,21 +662,21 @@ public slots:
      * @return
      */
     static const QString dirConfIcon(const QUrl &path);
-
+    
     /**
      * @brief getMime
      * @param path
      * @return
      */
     static const QString getMime(const QUrl &path);
-
+    
     /**
      * @brief getPathType
      * @param url
      * @return
      */
     static FMStatic::PATHTYPE_KEY getPathType(const QUrl &url);
-
+    
 };
 
 #endif // FMSTATIC_H

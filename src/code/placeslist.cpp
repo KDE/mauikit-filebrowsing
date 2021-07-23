@@ -108,7 +108,10 @@ if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
 }
 
 #ifdef KIO_AVAILABLE
-const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PATHTYPE_KEY::PLACES_PATH : type));
+auto mappedType = FMStatic::mapPathType(type);
+
+const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
+
 res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
     const QUrl url = model.url(index);
     if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))

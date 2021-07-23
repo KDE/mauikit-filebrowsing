@@ -23,6 +23,7 @@
 #include <KApplicationTrader>
 #include <KIO/PreviewJob>
 #include <KFileItem>
+#include <KFilePlacesModel>
 #endif
 
 FMStatic::FMStatic(QObject *parent)
@@ -574,24 +575,40 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             {
                     if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir()) {
                     if (folderIcon.contains(path.toString()))
-                    return folderIcon[path.toString()];
+                        return folderIcon[path.toString()];
                     else {
-                    return dirConfIcon(QString(path.toString() + "/%1").arg(".directory"));
-        }
-
-        } else {
-        #ifdef KIO_AVAILABLE
-                    KFileItem mime(path);
-                    return mime.iconName();
-        #else
-                    QMimeDatabase mime;
-                    const auto type = mime.mimeTypeForFile(path.toString());
-                    return type.iconName();
-        #endif
-        }
-        }
-
-                    FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
+                        return dirConfIcon(QString(path.toString() + "/%1").arg(".directory"));
+                    }
+                    
+                    } else {
+                        #ifdef KIO_AVAILABLE
+                        KFileItem mime(path);
+                        return mime.iconName();
+                        #else
+                        QMimeDatabase mime;
+                        const auto type = mime.mimeTypeForFile(path.toString());
+                        return type.iconName();
+                        #endif
+                    }
+            }
+            
+            FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
             {
-                    return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
-        }
+                return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
+            }
+            
+            int FMStatic::mapPathType(const FMStatic::PATHTYPE_KEY& value)
+            {
+                switch(value)
+                {
+                    case PLACES_PATH: return KFilePlacesModel::GroupType::PlacesType;
+                    case REMOTE_PATH: return KFilePlacesModel::GroupType::RemoteType;
+                    case DRIVES_PATH: return KFilePlacesModel::GroupType::DevicesType;
+                    case REMOVABLE_PATH: return KFilePlacesModel::GroupType::RemovableDevicesType;
+                    case TAGS_PATH: return KFilePlacesModel::GroupType::TagsType;
+                    case UNKNOWN_TYPE: return KFilePlacesModel::GroupType::UnknownType;
+                    default: return value;
+                }
+            }
+
+            
