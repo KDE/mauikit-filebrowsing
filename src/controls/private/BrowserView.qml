@@ -380,7 +380,7 @@ Maui.AltBrowser
             anchors.margins: Kirigami.Settings.isMobile ? Maui.Style.space.small : Maui.Style.space.medium 
             
             template.labelSizeHint: 36
-            iconSizeHint: height * 0.5
+            iconSizeHint: Maui.Style.mapToIconSizes(template.iconContainer.height)
             imageSource: settings.showThumbnails ? model.thumbnail : ""
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
