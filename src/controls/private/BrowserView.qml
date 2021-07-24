@@ -284,6 +284,16 @@ Maui.AltBrowser
             if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
             {
                 control.itemsSelected([index])
+            }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
+            {
+                var lastSelectedIndex = findLastSelectedIndex(control.listView.flickable, index)
+                
+                if(lastSelectedIndex < 0)
+                {
+                    return
+                }
+                control.itemsSelected(control.range(lastSelectedIndex, index))
+                
             }else
             {
                 control.itemClicked(index)
@@ -359,6 +369,7 @@ Maui.AltBrowser
     {
         height: GridView.view.cellHeight
         width: GridView.view.cellWidth
+        readonly property alias checked : delegate.checked
         
         GridView.onRemove:
         {
@@ -418,16 +429,25 @@ Maui.AltBrowser
             }
             
             onClicked:
-            {
-                control.currentIndex = index
-                
+            {                
                 if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
                 {
                     control.itemsSelected([index])
+                }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
+                {
+                    var lastSelectedIndex = findLastSelectedIndex(control.gridView.flickable, index)
+                                        
+                    if(lastSelectedIndex < 0)
+                    {
+                        return
+                    }
+                    control.itemsSelected(control.range(lastSelectedIndex, index))
+                    
                 }else
                 {
                     control.itemClicked(index)
                 }
+                control.currentIndex = index                
             }
             
             onDoubleClicked:
@@ -526,5 +546,32 @@ Maui.AltBrowser
         control.settings.viewType = FB.FMList.LIST_VIEW
         control.currentView.section.property = prop
         control.currentView.section.criteria = criteria
+    }
+    
+    function findLastSelectedIndex(view, limit)
+    {
+        var res = -1;
+        for(var i = 0; i < limit; i++)
+        {
+            if(view.itemAtIndex(i).checked)
+            {
+                res = i
+            }
+        }
+        
+        return res;
+    }
+    
+    function range(start, end)
+    {
+        const isReverse = (start > end);
+        const targetLength = isReverse ? (start - end) + 1 : (end - start ) + 1;
+        const arr = new Array(targetLength);
+        const b = Array.apply(null, arr);
+        const result = b.map((discard, n) => {
+            return (isReverse) ? n + end : n + start;
+        });
+        
+        return (isReverse) ? result.reverse() : result;
     }
 }
