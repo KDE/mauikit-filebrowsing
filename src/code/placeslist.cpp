@@ -33,6 +33,23 @@
 #endif
 
 #ifdef KIO_AVAILABLE
+int FMStatic::mapPathType(const FMStatic::PATHTYPE_KEY& value)
+{
+    switch(value)
+    {
+        case PLACES_PATH: return KFilePlacesModel::GroupType::PlacesType;
+        case REMOTE_PATH: return KFilePlacesModel::GroupType::RemoteType;
+        case DRIVES_PATH: return KFilePlacesModel::GroupType::DevicesType;
+        case REMOVABLE_PATH: return KFilePlacesModel::GroupType::RemovableDevicesType;
+        case TAGS_PATH: return KFilePlacesModel::GroupType::TagsType;
+        case UNKNOWN_TYPE: return KFilePlacesModel::GroupType::UnknownType;
+        default: return value;
+    }
+}
+#endif
+
+
+#ifdef KIO_AVAILABLE
 PlacesList::PlacesList(QObject *parent)
     : MauiList(parent)
     , model(new KFilePlacesModel(this))
