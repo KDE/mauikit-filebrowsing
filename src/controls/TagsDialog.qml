@@ -141,11 +141,10 @@ Maui.Dialog
             
             currentIndex: -1
             
-            holder.emoji: "qrc:/assets/Electricity.png"
+            holder.emoji: "qrc:/assets/tag.svg"
             holder.visible: _listView.count === 0
-            holder.isMask: false
-            holder.title : i18n("No tags!")
-            holder.body: i18n("Start by creating tags")
+            holder.title : i18n("No Tags!")
+            holder.body: i18n("Create new tags to organize your files.")
             holder.emojiSize: Maui.Style.iconSizes.huge
             
             model: Maui.BaseModel

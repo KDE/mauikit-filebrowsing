@@ -19,6 +19,7 @@ set(
     code/tagslist.cpp
     code/tagging.qrc
     code/openwithmodel.cpp
+    assets.qrc
     resources.qrc
     ${filebrowsing_QM_LOADER}
     )
