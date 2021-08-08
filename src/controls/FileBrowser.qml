@@ -23,7 +23,7 @@ import QtQml 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.3
 
-import org.kde.kirigami 2.8 as Kirigami
+import org.kde.kirigami 2.14 as Kirigami
 
 import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
@@ -42,6 +42,16 @@ This component functionality can be easily expanded to be more feature rich.
 Maui.Page
 {
     id: control
+    
+     onGoBackTriggered: control.goBack()
+    onGoForwardTriggered: control.goForward()
+    
+    title: view.title
+    focus: true
+    flickable: control.currentView.flickable
+    floatingFooter: false
+    
+    showTitle: false
     
     /*!
       \qmlproperty FileBrowser::currentPath
@@ -200,18 +210,7 @@ Maui.Page
       File URLS were dropped onto the file browser area.
     */
     signal urlsDropped(var urls)
-    
-    
-    //catch inherited signals from page
-    onGoBackTriggered: control.goBack()
-    onGoForwardTriggered: control.goForward()
-    
-    title: view.title
-    focus: true
-    flickable: control.currentView.flickable
-    floatingFooter: false
-    
-    showTitle: false
+        
     headBar.visible: control.settings.searchBarVisible
     headBar.leftContent: ToolButton
     {

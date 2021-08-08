@@ -390,19 +390,19 @@ Maui.AltBrowser
             anchors.fill: parent
             anchors.margins: Kirigami.Settings.isMobile ? Maui.Style.space.small : Maui.Style.space.medium 
             
-            template.labelSizeHint: 36
+            template.labelSizeHint: 42
             iconSizeHint: Maui.Style.mapToIconSizes(template.iconContainer.height)
             imageSource: settings.showThumbnails ? model.thumbnail : ""
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
             label1.text: model.label
-            label2.visible: delegate.height > 120 && model.mime
+            label2.visible: delegate.height > 160 && model.mime
             label2.font.pointSize: Maui.Style.fontSizes.tiny
             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
           
             padding: Maui.Style.space.tiny
             isCurrentItem: parent.GridView.isCurrentItem || checked
-            tooltipText: model.path
+            tooltipText: model.label
             checkable: control.selectionMode
             checked: (selectionBar ? selectionBar.contains(model.path) : false)
             draggable: true
