@@ -62,7 +62,7 @@ WebDAVReply *WebDAVClient::listDir(QString path, ListDepthEnum depth)
     connect(listDirReply, &QNetworkReply::finished, [=]() {
         reply->sendListDirResponseSignal(listDirReply, this->xmlHelper->parseListDirResponse(this, listDirReply->readAll()));
     });
-    connect(listDirReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(listDirReply, &QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 
@@ -103,7 +103,7 @@ WebDAVReply *WebDAVClient::downloadFrom(QString path, qint64 startByte, qint64 e
             reply->sendDownloadProgressResponseSignal(bytesReceived, bytesTotal);
         }
     });
-    connect(downloadReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(downloadReply, &QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 
@@ -122,7 +122,7 @@ WebDAVReply *WebDAVClient::uploadTo(QString path, QString filename, QIODevice *f
         reply->sendUploadFinishedResponseSignal(uploadReply);
     });
 
-    connect(uploadReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(uploadReply, &QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 
@@ -141,7 +141,7 @@ WebDAVReply *WebDAVClient::createDir(QString path, QString dirName)
         reply->sendDirCreatedResponseSignal(createDirReply);
     });
 
-    connect(createDirReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(createDirReply,&QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 
@@ -162,7 +162,7 @@ WebDAVReply *WebDAVClient::copy(QString source, QString destination)
         reply->sendCopyResponseSignal(copyReply);
     });
 
-    connect(copyReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(copyReply, &QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 
@@ -185,7 +185,7 @@ WebDAVReply *WebDAVClient::move(QString source, QString destination, bool overwr
         reply->sendMoveResponseSignal(moveReply);
     });
 
-    connect(moveReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(moveReply,&QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 
@@ -204,7 +204,7 @@ WebDAVReply *WebDAVClient::remove(QString path)
         reply->sendRemoveResponseSignal(removeReply);
     });
 
-    connect(removeReply, QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error), [=](QNetworkReply::NetworkError err) {
+    connect(removeReply, &QNetworkReply::errorOccurred, [=](QNetworkReply::NetworkError err) {
         this->errorReplyHandler(reply, err);
     });
 

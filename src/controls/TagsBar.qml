@@ -145,8 +145,7 @@ Item
             
             return tags
         }
-    }
-    
+    }    
     
     TagList
     {

@@ -1,9 +1,11 @@
 #include "syncing.h"
-// #include "fm.h"
+#include "fmstatic.h"
 
+#include <QDir>
 #include <QEventLoop>
-#include <QFile>
+#include <QFileInfo>
 #include <QTimer>
+#include <QDebug>
 
 #include "WebDAVClient.hpp"
 #include "WebDAVItem.hpp"
@@ -42,7 +44,7 @@ void Syncing::listDirOutputHandler(WebDAVReply *reply, const QStringList &filter
         for (WebDAVItem item : items) {
             const auto url = QUrl(item.getHref()).toString();
 
-            auto path = QString(FMH::PATHTYPE_URI[FMH::PATHTYPE_KEY::CLOUD_PATH] + this->user + "/") + QString(url).replace("/remote.php/webdav/", "");
+            auto path = QString(FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::CLOUD_PATH] + this->user + "/") + QString(url).replace("/remote.php/webdav/", "");
 
             auto displayName = item.getContentType().isEmpty() ? QString(url).replace("/remote.php/webdav/", "").replace("/", "") : QString(path).right(path.length() - path.lastIndexOf("/") - 1);
 
@@ -60,7 +62,7 @@ void Syncing::listDirOutputHandler(WebDAVReply *reply, const QStringList &filter
                                 {FMH::MODEL_KEY::DATE, item.getCreationDate().toString(Qt::TextDate)},
                                 {FMH::MODEL_KEY::MODIFIED, item.getLastModified()},
                                 {FMH::MODEL_KEY::MIME, item.getContentType().isEmpty() ? "inode/directory" : item.getContentType()},
-                                {FMH::MODEL_KEY::ICON, FMH::getIconName(url)},
+            {FMH::MODEL_KEY::ICON, FMStatic::getIconName(url)},
                                 {FMH::MODEL_KEY::SIZE, QString::number(item.getContentLength())},
                                 {FMH::MODEL_KEY::PATH, path},
                                 {FMH::MODEL_KEY::URL, url},
@@ -99,7 +101,7 @@ void Syncing::download(const QUrl &path)
             qDebug() << "\nDownload Success"
                      << "\nURL  :" << reply->url() << "\nSize :" << reply->size();
             auto file = reply->readAll();
-            const auto directory = FMH::CloudCachePath + "opendesktop/" + this->user;
+            const auto directory = FMStatic::CloudCachePath + "opendesktop/" + this->user;
 
             QDir dir(directory);
 
@@ -147,7 +149,7 @@ void Syncing::upload(const QUrl &path, const QUrl &filePath)
 
                 auto cachePath = this->saveToCache(filePath.toString(), path);
 
-                auto item = FMH::getFileInfoModel(cachePath);
+                auto item = FMStatic::getFileInfoModel(cachePath);
                 // 			item[FMH::MODEL_KEY::PATH] =  this->currentPath+"/"+QFileInfo(filePath).fileName()+"/";
 
                 emit this->uploadReady(item, this->currentPath);
@@ -311,13 +313,13 @@ void Syncing::saveTo(const QByteArray &array, const QUrl &path)
     file.write(array);
     file.close();
 
-    emit this->itemReady(FMH::getFileInfoModel(path), this->currentPath, this->signalType);
+    emit this->itemReady(FMStatic::getFileInfoModel(path), this->currentPath, this->signalType);
     // 	emit this->itemReady(FMH::getFileInfoModel(path));
 }
 
 QString Syncing::saveToCache(const QString &file, const QUrl &where)
 {
-    const auto directory = FMH::CloudCachePath + "opendesktop/" + this->user + "/" + where.toString();
+    const auto directory = FMStatic::CloudCachePath + "opendesktop/" + this->user + "/" + where.toString();
 
     QDir dir(directory);
 
@@ -340,7 +342,7 @@ void Syncing::resolveFile(const FMH::MODEL &item, const Syncing::SIGNAL_TYPE &si
     const auto file = this->getCacheFile(url);
 
     if (FMH::fileExists(file)) {
-        const auto cacheFile = FMH::getFileInfoModel(file);
+        const auto cacheFile = FMStatic::getFileInfoModel(file);
 
         const auto dateCacheFile = QDateTime::fromString(cacheFile[FMH::MODEL_KEY::DATE], Qt::TextDate);
         const auto dateCloudFile = QDateTime::fromString(QString(item[FMH::MODEL_KEY::MODIFIED]).replace("GMT", "").simplified(), "ddd, dd MMM yyyy hh:mm:ss");
@@ -381,5 +383,5 @@ void Syncing::setUploadQueue(const QStringList &list)
 
 QString Syncing::localToAbstractCloudPath(const QString &url)
 {
-    return QString(url).replace(FMH::CloudCachePath + "opendesktop", FMH::PATHTYPE_URI[FMH::PATHTYPE_KEY::CLOUD_PATH]);
+    return QString(url).replace(FMStatic::CloudCachePath + "opendesktop", FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::CLOUD_PATH]);
 }

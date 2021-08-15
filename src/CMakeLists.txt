@@ -4,6 +4,12 @@
 
 ecm_create_qm_loader(filebrowsing_QM_LOADER libfilebrowsingplugin_qt)
 
+  include_directories(
+        ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
+        ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
+        ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto
+        )
+        
 set(
     sources
     code/filebrowsing_plugin.cpp
@@ -43,6 +49,28 @@ set(
     pluginData
     controls/qmldir
     )
+    
+      set(syncing_SRCS
+       code/syncing.cpp
+       #code/syncinglist.cpp
+       code/libwebdavclient/lib/WebDAVClient.cpp
+        code/libwebdavclient/lib/dto/WebDAVItem.cpp
+       code/libwebdavclient/lib/utils/Environment.cpp
+       code/libwebdavclient/lib/utils/NetworkHelper.cpp
+      code/libwebdavclient/lib/utils/WebDAVReply.cpp
+       code/libwebdavclient/lib/utils/XMLHelper.cpp
+        )
+
+    set(syncing_HDRS
+        code/syncing.h
+               #code/syncinglist.h
+        code/libwebdavclient/lib/WebDAVClient.hpp
+        code/libwebdavclient/lib/dto/WebDAVItem.hpp
+        code/libwebdavclient/lib/utils/Environment.hpp
+        code/libwebdavclient/lib/utils/NetworkHelper.hpp
+        code/libwebdavclient/lib/utils/WebDAVReply.hpp
+        code/libwebdavclient/lib/utils/XMLHelper.hpp
+        )  
 
 ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
     DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
@@ -50,7 +78,7 @@ ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
 add_library(
     MauiKitFileBrowsing
     SHARED
-    ${sources} ${pluginData}
+    ${sources} ${pluginData} ${syncing_SRCS}
     )
 
 add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
@@ -105,6 +133,7 @@ install(TARGETS MauiKitFileBrowsing EXPORT MauiKitFileBrowsingTargets ${KDE_INST
 
 install(FILES
     ${headers}
+    ${syncing_HDRS}
     ${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_export.h
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)

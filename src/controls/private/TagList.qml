@@ -11,6 +11,7 @@ import "."
 Maui.ListBrowser
 {
     id: control
+    clip: false
     orientation: ListView.Horizontal
     spacing: Maui.Style.contentMargins
     implicitHeight: Maui.Style.toolBarHeight

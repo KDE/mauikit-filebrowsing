@@ -70,12 +70,12 @@ QString WebDAVItem::toString()
     QString s;
     QTextStream out(&s);
 
-    out << "HREF            : " << this->href << "," << endl
-        << "CREATION_DATE   : " << this->creationDate.toString() << "," << endl
-        << "LAST_MODIFIED   : " << this->lastModified << "," << endl
-        << "DISPLAY_NAME    : " << this->displayName << "," << endl
-        << "CONTENT_TYPE    : " << this->contentType << "," << endl
-        << "CONTENT_LENGTH  : " << this->contentLength << "," << endl
+    out << "HREF            : " << this->href << "," << Qt::endl
+    << "CREATION_DATE   : " << this->creationDate.toString() << "," << Qt::endl
+    << "LAST_MODIFIED   : " << this->lastModified << "," << Qt::endl
+    << "DISPLAY_NAME    : " << this->displayName << "," << Qt::endl
+    << "CONTENT_TYPE    : " << this->contentType << "," << Qt::endl
+    << "CONTENT_LENGTH  : " << this->contentLength << "," << Qt::endl
         << "IS_COLLECTION   : " << this->flagIsCollection;
 
     return s;

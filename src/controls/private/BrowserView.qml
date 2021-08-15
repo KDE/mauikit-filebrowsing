@@ -396,9 +396,9 @@ Maui.AltBrowser
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
             label1.text: model.label
-            label2.visible: delegate.height > 160 && model.mime
-            label2.font.pointSize: Maui.Style.fontSizes.tiny
-            label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+//             label2.visible: delegate.height > 160 && model.mime
+//             label2.font.pointSize: Maui.Style.fontSizes.tiny
+//             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
           
             padding: Maui.Style.space.tiny
             isCurrentItem: parent.GridView.isCurrentItem || checked

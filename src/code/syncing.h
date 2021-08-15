@@ -1,15 +1,16 @@
 #ifndef SYNCING_H
 #define SYNCING_H
 
-#include "fmh.h"
-#include <QNetworkReply>
 #include <QObject>
+#include <QNetworkReply>
 
-#include "mauikit_export.h"
+#include <QFile>
+
+#include <MauiKit/Core/fmh.h>
+#include "filebrowsing_export.h"
 
 class WebDAVClient;
 class WebDAVReply;
-
 /**
  * @brief The Syncing class
  */
