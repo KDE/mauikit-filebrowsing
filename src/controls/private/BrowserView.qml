@@ -17,7 +17,7 @@ Maui.AltBrowser
     enableLassoSelection: true
     
     gridView.itemSize : control.gridItemSize
-    gridView.itemHeight: Math.floor(control.gridView.itemSize*1.3)
+    gridView.itemHeight: Math.floor(control.gridView.itemSize*1.4)
 //     gridView.cacheBuffer: control.height * 10
     
     Binding on currentIndex
