@@ -388,7 +388,7 @@ Maui.AltBrowser
             template.imageHeight: control.gridView.itemSize
             
             anchors.fill: parent
-            anchors.margins: Kirigami.Settings.isMobile ? Maui.Style.space.small : Maui.Style.space.medium 
+            anchors.margins: Kirigami.Settings.isMobile ? Maui.Style.space.tiny : Maui.Style.space.medium 
             
             template.labelSizeHint: 42
             iconSizeHint: Maui.Style.mapToIconSizes(template.iconContainer.height)
