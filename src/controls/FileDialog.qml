@@ -23,7 +23,7 @@ import QtQuick.Layouts 1.3
 
 import org.kde.kirigami 2.7 as Kirigami
 
-import org.mauikit.controls 1.2 as Maui
+import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.0 as FB
 
 /**
@@ -211,6 +211,7 @@ Maui.Dialog
                 }
                 
                 list.groups:  [FB.FMList.PLACES_PATH,
+                FB.FMList.BOOKMARKS_PATH,
                 FB.FMList.REMOTE_PATH,
                 FB.FMList.CLOUD_PATH,
                 FB.FMList.DRIVES_PATH]
@@ -239,72 +240,159 @@ Maui.Dialog
                 }
                 
                 headBar.rightContent:[
+                
+                
                 ToolButton
                 {
-                    icon.name: "folder-new"
-                    onClicked: browser.newItem()
+                    id: searchButton
+                    icon.name: "edit-find"
+                    onClicked: browser.toggleSearchBar()
+                    checked: browser.headBar.visible
                 },
                 
                 Maui.ToolButtonMenu
                 {
-                    icon.name: "view-sort"
+                    id: _viewMenu
+                    icon.name: browser.settings.viewType === FB.FMList.LIST_VIEW ? "view-list-details" : "view-list-icons"
                     
-                    MenuItem
+                    Maui.MenuItemActionRow
                     {
-                        text: i18n("Show Folders First")
-                        checked: browser.currentFMList.foldersFirst
+                        Action
+                        {
+                            icon.name: "view-hidden"
+                            //                        text: i18n("Hidden Files")
+                            checkable: true
+                            checked: settings.showHiddenFiles
+                            onTriggered: settings.showHiddenFiles = !settings.showHiddenFiles
+                        }
+                        
+                        Action
+                        {
+                            icon.name: "folder-new"
+                            onTriggered: browser.newItem()
+                        }
+                    }
+                    
+                    Maui.LabelDelegate
+                    {
+                        width: parent.width
+                        isSection: true
+                        label: i18n("View type")
+                    }
+                    
+                    Action
+                    {
+                        text: i18n("List")
+                        icon.name: "view-list-details"
+                        checked: browser.settings.viewType === FB.FMList.LIST_VIEW
                         checkable: true
-                        onTriggered: browser.currentFMList.foldersFirst = !browser.currentFMList.foldersFirst
+                        onTriggered:
+                        {
+                            if(browser)
+                            {
+                                browser.settings.viewType = FB.FMList.LIST_VIEW
+                            }
+                        }
+                    }
+                    
+                    Action
+                    {
+                        text: i18n("Grid")
+                        icon.name: "view-list-icons"
+                        checked:  browser.settings.viewType === FB.FMList.ICON_VIEW
+                        checkable: true
+                        
+                        onTriggered:
+                        {
+                            if(browser)
+                            {
+                                browser.settings.viewType = FB.FMList.ICON_VIEW
+                            }
+                        }
                     }
                     
                     MenuSeparator {}
                     
-                    MenuItem
+                    Maui.LabelDelegate
+                    {
+                        width: parent.width
+                        isSection: true
+                        label: i18n("Sort by")
+                    }
+                    
+                    Action
                     {
                         text: i18n("Type")
-                        checked: browser.currentFMList.sortBy === FB.FMList.MIME
+                        checked: browser.settings.sortBy === FB.FMList.MIME
                         checkable: true
-                        onTriggered: browser.currentFMList.sortBy = FB.FMList.MIME
-                        autoExclusive: true
+                        
+                        onTriggered:
+                        {
+                            browser.settings.sortBy = FB.FMList.MIME
+                        }
                     }
                     
-                    MenuItem
+                    Action
                     {
                         text: i18n("Date")
-                        checked: browser.currentFMList.sortBy === FB.FMList.DATE
+                        checked: browser.settings.sortBy === FB.FMList.DATE
                         checkable: true
-                        onTriggered: browser.currentFMList.sortBy = FB.FMList.DATE
-                        autoExclusive: true
+                        
+                        onTriggered:
+                        {
+                            browser.settings.sortBy = FB.FMList.DATE
+                        }
                     }
                     
-                    MenuItem
+                    Action
                     {
                         text: i18n("Modified")
+                        checked: browser.settings.sortBy === FB.FMList.MODIFIED
                         checkable: true
-                        checked: browser.currentFMList.sortBy === FB.FMList.MODIFIED
-                        onTriggered: browser.currentFMList.sortBy = FB.FMList.MODIFIED
-                        autoExclusive: true
+                        
+                        onTriggered:
+                        {
+                            browser.settings.sortBy = FB.FMList.MODIFIED
+                        }
                     }
                     
-                    MenuItem
+                    Action
                     {
                         text: i18n("Size")
+                        checked: browser.settings.sortBy === FB.FMList.SIZE
                         checkable: true
-                        checked: browser.currentFMList.sortBy === FB.FMList.SIZE
-                        onTriggered: browser.currentFMList.sortBy = FB.FMList.SIZE
-                        autoExclusive: true
+                        
+                        onTriggered:
+                        {
+                            browser.settings.sortBy = FB.FMList.SIZE
+                        }
                     }
                     
-                    MenuItem
+                    Action
                     {
                         text: i18n("Name")
+                        checked:  browser.settings.sortBy === FB.FMList.LABEL
                         checkable: true
-                        checked: browser.currentFMList.sortBy === FB.FMList.LABEL
-                        onTriggered: browser.currentFMList.sortBy = FB.FMList.LABEL
-                        autoExclusive: true
+                        
+                        onTriggered:
+                        {
+                            browser.settings.sortBy = FB.FMList.LABEL
+                        }
                     }
                     
                     MenuSeparator{}
+                    
+                    MenuItem
+                    {
+                        text: i18n("Show Folders First")
+                        checked: browser.settings.foldersFirst
+                        checkable: true
+                        
+                        onTriggered:
+                        {
+                            browser.settings.foldersFirst = !browser.settings.foldersFirst
+                        }
+                    }
                     
                     MenuItem
                     {
@@ -317,15 +405,9 @@ Maui.Dialog
                             browser.settings.group = !browser.settings.group
                         }
                     }
-                },
-                
-                ToolButton
-                {
-                    id: searchButton
-                    icon.name: "edit-find"
-                    onClicked: browser.toggleSearchBar()
-                    checked: browser.headBar.visible
                 }
+                
+                               
                 ]
                 
                 headBar.leftContent: [
