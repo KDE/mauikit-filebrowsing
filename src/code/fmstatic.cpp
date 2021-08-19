@@ -216,6 +216,17 @@ bool FMStatic::copy(const QList<QUrl> &urls, const QUrl &destinationDir)
 #endif
 }
 
+bool FMStatic::group(const QList<QUrl>& urls, const QUrl& destinationDir, const QString &name)
+{
+    if(!FMStatic::fileExists(destinationDir.toString()+"/"+name))
+    {
+        QDir(destinationDir.toLocalFile()).mkdir(name);
+    }
+    
+   return FMStatic::cut(urls, destinationDir, name);
+}
+
+
 bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where)
 {
     return FMStatic::cut(urls, where, QString());
@@ -227,7 +238,7 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
     QUrl _where = where;
     if (!name.isEmpty())
         _where = QUrl(where.toString() + "/" + name);
-
+    
     auto job = KIO::move(urls, _where, KIO::HideProgressInfo);
     job->start();
 

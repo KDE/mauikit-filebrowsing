@@ -170,12 +170,7 @@ public:
                                                                                                                                                                                     QUICK_PATH,
                                                                                                                                                                                     BOOKMARKS_PATH,
                                                                                                                                                                                     OTHER_PATH,
-                                                                                                                                                                                };
-                                                                                                                                                                                
-                                                                                                                                                                                #ifdef KIO_AVAILABLE
-                                                                                                                                                                                static int mapPathType(const PATHTYPE_KEY &value);
-                                                                                                                                                                                #endif
-                                                                                                                                                                                
+                                                                                                                                                                                };                                                                                                                                                                               
                                                                                                                                                                                 inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_SCHEME = {{PATHTYPE_KEY::PLACES_PATH, "file"},
                                                                                                                                                                                 {PATHTYPE_KEY::BOOKMARKS_PATH, "file"},
                                                                                                                                                                                 {PATHTYPE_KEY::DRIVES_PATH, "drives"},
@@ -350,6 +345,19 @@ public slots:
      * @return
      */
     static FMH::MODEL_LIST packItems(const QStringList &items, const QString &type);
+    
+    
+    /**
+     * @brief group
+     * Perfom a move of the files to the passed destination
+     * @param urls
+     * List of URLs to be copy
+     * @param destinationDir
+     * Destination
+     * @return
+     * Return if the operation has been succesfull
+     */
+    static bool group(const QList<QUrl> &urls, const QUrl &destinationDir, const QString &name);
     
     /**
      * @brief copy

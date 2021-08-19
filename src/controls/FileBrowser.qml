@@ -716,7 +716,7 @@ Maui.Page
             {
                 id: _dropMenu
                 property string urls
-                enabled: FB.FM.getFileInfo(control.currentPath).isdir == "true"
+                //enabled: FB.FM.getFileInfo(control.currentPath).isdir == "true"
                 
                 MenuItem
                 {

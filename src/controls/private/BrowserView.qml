@@ -18,7 +18,7 @@ Maui.AltBrowser
     
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: Math.floor(control.gridView.itemSize*1.4)
-//     gridView.cacheBuffer: control.height * 10
+    //     gridView.cacheBuffer: control.height * 10
     
     Binding on currentIndex
     {
@@ -172,10 +172,49 @@ Maui.AltBrowser
         property string urls
         property url target
         
-        enabled: FB.FM.isDir(target) && !urls.includes(target.toString())
+        MenuItem
+        {            
+            Maui.NewDialog
+            {
+                id: _mergeDialog
+                property var urls
+                readonly property bool dirExists : FB.FM.fileExists(control.path.toString()+"/"+textEntry.text)
+                acceptButton.enabled: !dirExists
+                
+                onDirExistsChanged:
+                {
+                    if(dirExists)
+                    {
+                        _mergeDialog.alert(i18n("Directory already exists"), 2)
+                    }
+                }
+                
+                title: i18n("Merge %1 files", urls.length)
+                message:i18n("Give a name to the new directory where all files will be merge.")
+                
+                textEntry.placeholderText: i18n("Directory name")
+                
+                onFinished:
+                {                    
+                    FB.FM.group(_mergeDialog.urls, control.path, text)                    
+                }
+            }
+            
+            enabled: !FB.FM.isDir(_dropMenu.target)
+            text: i18n("Merge here")
+            icon.name: "edit-group"
+            onTriggered:
+            {
+                var urls = _dropMenu.urls.split(",")
+                urls.push(_dropMenu.target)
+                _mergeDialog.urls = urls
+                _mergeDialog.open()
+            }
+        }        
         
         MenuItem
         {
+            enabled: FB.FM.isDir(_dropMenu.target) 
             text: i18n("Copy here")
             icon.name: "edit-copy"
             onTriggered:
@@ -187,6 +226,7 @@ Maui.AltBrowser
         
         MenuItem
         {
+            enabled: FB.FM.isDir(_dropMenu.target)
             text: i18n("Move here")
             icon.name: "edit-move"
             onTriggered:
@@ -198,6 +238,7 @@ Maui.AltBrowser
         
         MenuItem
         {
+            enabled: FB.FM.isDir(_dropMenu.target)
             text: i18n("Link here")
             icon.name: "edit-link"
             onTriggered:
@@ -251,7 +292,7 @@ Maui.AltBrowser
         checkable: control.selectionMode
         imageSource: settings.showThumbnails && height > 64 ? model.thumbnail : ""
         checked: selectionBar ? selectionBar.contains(model.path) : false
-        opacity: model.hidden == "true" ? 0.5 : 1
+        template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
         draggable: true
         
         Drag.keys: ["text/uri-list"]
@@ -396,17 +437,17 @@ Maui.AltBrowser
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
             label1.text: model.label
-//             label2.visible: delegate.height > 160 && model.mime
-//             label2.font.pointSize: Maui.Style.fontSizes.tiny
-//             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
-          
+            //             label2.visible: delegate.height > 160 && model.mime
+            //             label2.font.pointSize: Maui.Style.fontSizes.tiny
+            //             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+            
             padding: Maui.Style.space.tiny
             isCurrentItem: parent.GridView.isCurrentItem || checked
             tooltipText: model.label
             checkable: control.selectionMode
             checked: (selectionBar ? selectionBar.contains(model.path) : false)
             draggable: true
-            opacity: model.hidden == "true" ? 0.5 : 1
+            template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
             
             Drag.keys: ["text/uri-list"]
             Drag.mimeData: Drag.active ?
@@ -436,7 +477,7 @@ Maui.AltBrowser
                 }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
                 {
                     var lastSelectedIndex = findLastSelectedIndex(control.gridView.flickable, index)
-                                        
+                    
                     if(lastSelectedIndex < 0)
                     {
                         return

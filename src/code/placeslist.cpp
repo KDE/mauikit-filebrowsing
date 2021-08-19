@@ -33,16 +33,16 @@
 #endif
 
 #ifdef KIO_AVAILABLE
-int FMStatic::mapPathType(const FMStatic::PATHTYPE_KEY& value)
+int mapPathType(const FMStatic::PATHTYPE_KEY& value)
 {
     switch(value)
     {
-        case PLACES_PATH: return KFilePlacesModel::GroupType::PlacesType;
-        case REMOTE_PATH: return KFilePlacesModel::GroupType::RemoteType;
-        case DRIVES_PATH: return KFilePlacesModel::GroupType::DevicesType;
-        case REMOVABLE_PATH: return KFilePlacesModel::GroupType::RemovableDevicesType;
-        case TAGS_PATH: return KFilePlacesModel::GroupType::TagsType;
-        case UNKNOWN_TYPE: return KFilePlacesModel::GroupType::UnknownType;
+        case FMStatic::PLACES_PATH: return KFilePlacesModel::GroupType::PlacesType;
+        case FMStatic::REMOTE_PATH: return KFilePlacesModel::GroupType::RemoteType;
+        case FMStatic::DRIVES_PATH: return KFilePlacesModel::GroupType::DevicesType;
+        case FMStatic::REMOVABLE_PATH: return KFilePlacesModel::GroupType::RemovableDevicesType;
+        case FMStatic::TAGS_PATH: return KFilePlacesModel::GroupType::TagsType;
+        case FMStatic::UNKNOWN_TYPE: return KFilePlacesModel::GroupType::UnknownType;
         default: return value;
     }
 }
@@ -125,9 +125,9 @@ if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
 }
 
 #ifdef KIO_AVAILABLE
-auto mappedType = FMStatic::mapPathType(type);
+auto mappedType = mapPathType(type);
 
-const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
+const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
 
 res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
     const QUrl url = model.url(index);
