@@ -684,7 +684,6 @@ public slots:
      * @return
      */
     static FMStatic::PATHTYPE_KEY getPathType(const QUrl &url);
-    
 };
 
 #endif // FMSTATIC_H

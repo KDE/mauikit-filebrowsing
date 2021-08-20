@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <QSettings>
+#include <QProcess>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
 #include <KConfig>
@@ -379,7 +380,12 @@ void FMStatic::openUrl(const QUrl &url)
 {
 #ifdef KIO_AVAILABLE
     KIO::OpenUrlJob *job = new KIO::OpenUrlJob(url);
-    job->setShowOpenOrExecuteDialog(true);
+    job->setRunExecutables(true);
+//     job->setShowOpenOrExecuteDialog(true);
+    connect(job, &KIO::OpenUrlJob::result, [job]()
+    {
+       qDebug() << "Launching appaimge or exec " << job->errorString(); 
+    });
     job->start();
 #else
 
@@ -606,5 +612,3 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             {
                     return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
         }
-
-
