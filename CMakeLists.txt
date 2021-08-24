@@ -74,7 +74,6 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
 
-
 if(ANDROID OR APPLE OR WIN32)
     set(IS_KIO_AVAILABLE OFF)
 else()
@@ -97,7 +96,7 @@ if(${KIO_AVAILABLE})
     find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS KIO)
 endif()
 
-find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Concurrent Network REQUIRED)
+find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Xml Concurrent Network REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n CoreAddons #[[FileMetaData]])
 find_package(MauiKit)
 

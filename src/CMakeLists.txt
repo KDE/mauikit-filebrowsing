@@ -48,8 +48,7 @@ set(
 set(
     pluginData
     controls/qmldir
-    )
-    
+    )    
       set(syncing_SRCS
        code/syncing.cpp
        #code/syncinglist.cpp
@@ -123,6 +122,7 @@ target_link_libraries(
     Qt5::Quick
     Qt5::Qml
     Qt5::Sql
+    Qt5::Xml
     Qt5::Concurrent
     Qt5::Network
     KF5::I18n
