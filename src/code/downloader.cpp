@@ -45,6 +45,7 @@ void FMH::Downloader::downloadFile(const QUrl &source, const QUrl &destination)
         return;
 
     QNetworkRequest request;
+    request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, true);
     request.setUrl(source);
     reply = manager->get(request);
 
