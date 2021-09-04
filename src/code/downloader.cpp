@@ -21,6 +21,15 @@ FMH::Downloader::~Downloader()
     this->array->clear();
 }
 
+void FMH::Downloader::stop()
+{
+    if(this->reply->isRunning())
+   {
+       this->reply->abort();
+       this->reply->close();
+   }
+}
+
 void FMH::Downloader::downloadFile(const QUrl &source, const QUrl &destination)
 {
 #ifdef KIO_COPYJOB_H

@@ -40,6 +40,8 @@ public:
      * @param headers
      */
     void getArray(const QUrl &fileURL, const QMap<QString, QString> &headers = {});
+    
+    void stop();
 
 private:
     QNetworkAccessManager *manager;
