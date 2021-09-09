@@ -1,13 +1,15 @@
 #ifndef DOWNLOADER_H
 #define DOWNLOADER_H
 
-#include <QFile>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
 #include <QObject>
 #include <QString>
+#include <QMap>
 
 #include "filebrowsing_export.h"
+
+class QNetworkAccessManager;
+class QNetworkReply;
+class QFile;
 
 namespace FMH
 {
@@ -18,6 +20,7 @@ namespace FMH
 class FILEBROWSING_EXPORT Downloader : public QObject
 {
     Q_OBJECT
+   
 public:
     Downloader(QObject *parent = nullptr);
 
@@ -48,10 +51,14 @@ private:
     QNetworkReply *reply;
     QFile *file;
     QByteArray *array;
-
+    
+    bool m_saveToFile = false;
+    void setConnections();
+    
 signals:
     void progress(int percent);
     void downloadReady();
+    void aborted();
     void fileSaved(QString path);
     void warning(QString warning);
     void dataReady(QByteArray array);
@@ -64,12 +71,6 @@ private slots:
      * @param bytesTotal
      */
     void onDownloadProgress(qint64 bytesRead, qint64 bytesTotal);
-
-    /**
-     * @brief onFinished
-     * @param reply
-     */
-    void onFinished(QNetworkReply *reply);
 
     /**
      * @brief onReadyRead
