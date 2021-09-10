@@ -45,6 +45,8 @@ public:
     void getArray(const QUrl &fileURL, const QMap<QString, QString> &headers = {});
     
     void stop();
+    bool isRunning() const;
+    bool isFinished() const;
 
 private:
     QNetworkAccessManager *manager;

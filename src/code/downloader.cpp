@@ -45,6 +45,27 @@ FMH::Downloader::~Downloader()
     this->array->clear();
 }
 
+bool FMH::Downloader::isFinished() const
+{
+    if(!reply)
+    {
+        return false;
+    }
+    
+   return reply->isFinished();
+}
+
+bool FMH::Downloader::isRunning() const
+{
+    if(!reply)
+    {
+        return false;
+    }
+    
+   return reply->isRunning();
+}
+
+
 void FMH::Downloader::stop()
 {
     if(!reply)
@@ -56,8 +77,19 @@ void FMH::Downloader::stop()
     {
         this->reply->abort();
         this->reply->close();
-        emit this->aborted();
-    }
+        emit this->aborted();        
+        
+        if(m_saveToFile)
+        {
+            if(this->file)
+            {
+                this->file->remove();
+            }
+        }else
+        {
+            this->array->clear();    
+        }
+    }    
 }
 
 void FMH::Downloader::downloadFile(const QUrl &source, const QUrl &destination)
