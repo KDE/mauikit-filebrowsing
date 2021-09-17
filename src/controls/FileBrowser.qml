@@ -79,6 +79,7 @@ Maui.Page
     */
     property alias view : _stackView.currentItem
     
+    property alias browser : _browser
     /*!
       \qmlproperty DropArea FileBrowser::dropArea
 
