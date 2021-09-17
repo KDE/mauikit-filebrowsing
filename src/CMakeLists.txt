@@ -4,12 +4,12 @@
 
 ecm_create_qm_loader(filebrowsing_QM_LOADER libfilebrowsingplugin_qt)
 
-  include_directories(
-        ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
-        ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
-        ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto
-        )
-        
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
+    ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
+    ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto
+    )
+
 set(
     sources
     code/filebrowsing_plugin.cpp
@@ -48,28 +48,29 @@ set(
 set(
     pluginData
     controls/qmldir
-    )    
-      set(syncing_SRCS
-       code/syncing.cpp
-       #code/syncinglist.cpp
-       code/libwebdavclient/lib/WebDAVClient.cpp
-        code/libwebdavclient/lib/dto/WebDAVItem.cpp
-       code/libwebdavclient/lib/utils/Environment.cpp
-       code/libwebdavclient/lib/utils/NetworkHelper.cpp
-      code/libwebdavclient/lib/utils/WebDAVReply.cpp
-       code/libwebdavclient/lib/utils/XMLHelper.cpp
-        )
+    )
 
-    set(syncing_HDRS
-        code/syncing.h
-               #code/syncinglist.h
-        code/libwebdavclient/lib/WebDAVClient.hpp
-        code/libwebdavclient/lib/dto/WebDAVItem.hpp
-        code/libwebdavclient/lib/utils/Environment.hpp
-        code/libwebdavclient/lib/utils/NetworkHelper.hpp
-        code/libwebdavclient/lib/utils/WebDAVReply.hpp
-        code/libwebdavclient/lib/utils/XMLHelper.hpp
-        )  
+set(syncing_SRCS
+    code/syncing.cpp
+    #code/syncinglist.cpp
+    code/libwebdavclient/lib/WebDAVClient.cpp
+    code/libwebdavclient/lib/dto/WebDAVItem.cpp
+    code/libwebdavclient/lib/utils/Environment.cpp
+    code/libwebdavclient/lib/utils/NetworkHelper.cpp
+    code/libwebdavclient/lib/utils/WebDAVReply.cpp
+    code/libwebdavclient/lib/utils/XMLHelper.cpp
+    )
+
+set(syncing_HDRS
+    code/syncing.h
+    #code/syncinglist.h
+    code/libwebdavclient/lib/WebDAVClient.hpp
+    code/libwebdavclient/lib/dto/WebDAVItem.hpp
+    code/libwebdavclient/lib/utils/Environment.hpp
+    code/libwebdavclient/lib/utils/NetworkHelper.hpp
+    code/libwebdavclient/lib/utils/WebDAVReply.hpp
+    code/libwebdavclient/lib/utils/XMLHelper.hpp
+    )
 
 ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
     DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
@@ -110,8 +111,8 @@ if(${KIO_AVAILABLE})
         KF5::KIOCore
         KF5::KIOFileWidgets
         )
-        
-           add_definitions(-DKIO_AVAILABLE)
+
+    add_definitions(-DKIO_AVAILABLE)
     target_compile_definitions(MauiKitFileBrowsing PUBLIC KIO_AVAILABLE)
 endif()
 
