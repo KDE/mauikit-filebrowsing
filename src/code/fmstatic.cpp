@@ -530,10 +530,10 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
         {FMH::MODEL_KEY::READABLE, QVariant(kfile.isReadable()).toString()},
         {FMH::MODEL_KEY::EXECUTABLE, QVariant(kfile.isDesktopFile()).toString()},
         {FMH::MODEL_KEY::MIME, kfile.mimetype()},
-        {FMH::MODEL_KEY::GROUP, kfile.group()},
+//         {FMH::MODEL_KEY::GROUP, kfile.group()},
         {FMH::MODEL_KEY::ICON, kfile.iconName()},
         {FMH::MODEL_KEY::SIZE, QString::number(kfile.size())},
-        {FMH::MODEL_KEY::OWNER, kfile.user()},
+//         {FMH::MODEL_KEY::OWNER, kfile.user()},
         {FMH::MODEL_KEY::COUNT, kfile.isLocalFile() && kfile.isDir() ? QString::number(QDir(kfile.localPath()).count()) : "0"}};
         }
 #endif
@@ -549,8 +549,8 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
                 return FMH::MODEL();
 
             const auto mime = FMStatic::getMime(path);
-            res = FMH::MODEL {{FMH::MODEL_KEY::GROUP, file.group()},
-            {FMH::MODEL_KEY::OWNER, file.owner()},
+//             res = FMH::MODEL {{FMH::MODEL_KEY::OWNER, file.owner()},
+//             {FMH::MODEL_KEY::GROUP, file.group()},
             {FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
             {FMH::MODEL_KEY::LABEL, /*file.isDir() ? file.baseName() :*/ path == HomePath ? QStringLiteral("Home") : file.fileName()},
             {FMH::MODEL_KEY::NAME, file.fileName()},
