@@ -549,7 +549,8 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
                 return FMH::MODEL();
 
             const auto mime = FMStatic::getMime(path);
-//             res = FMH::MODEL {{FMH::MODEL_KEY::OWNER, file.owner()},
+             res = FMH::MODEL {
+            //{FMH::MODEL_KEY::OWNER, file.owner()},
 //             {FMH::MODEL_KEY::GROUP, file.group()},
             {FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
             {FMH::MODEL_KEY::LABEL, /*file.isDir() ? file.baseName() :*/ path == HomePath ? QStringLiteral("Home") : file.fileName()},
