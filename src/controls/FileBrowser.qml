@@ -1046,7 +1046,7 @@ Maui.Page
     {
         openSearch()
         _searchField.text = query
-        _stackView.currentItem.title = i18n("Search: %1").arg(query)
+        _stackView.currentItem.title = i18n("Search: %1", query)
         _stackView.currentItem.currentFMList.search(query, _browser.currentFMList)
         _stackView.currentItem.forceActiveFocus()
     }
