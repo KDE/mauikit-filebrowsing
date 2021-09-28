@@ -298,7 +298,15 @@ QUrl FMList::getPath() const
 
 void FMList::setPath(const QUrl &path)
 {
-    QUrl path_ = QUrl::fromUserInput(path.toString().trimmed());
+    auto pathStr = path.toString().trimmed();
+    
+    if(pathStr.endsWith("/"))
+    {
+        pathStr.chop(1);
+    }
+    
+    QUrl path_ = QUrl::fromUserInput(pathStr);
+    
     if (this->path == path_)
         return;
 
@@ -528,14 +536,17 @@ void FMList::componentComplete()
         }       
     });
    
-    this->setList();
+    if(!this->path.isEmpty() && this->path.isValid())
+    {
+        this->setList();          
+    }
 }
 
 void FMList::search(const QString &query, const QUrl &path, const bool &hidden, const bool &onlyDirs, const QStringList &filters)
 {
     qDebug() << "SEARCHING FOR" << query << path;
 
-    if (!path.isLocalFile()) {
+    if (!path.isLocalFile()) { //if the path is not local then search will not be performed and instead will be filtered
         qWarning() << "URL recived is not a local file. So search will only filter the content" << path;
         this->filterContent(query, path);
         return;

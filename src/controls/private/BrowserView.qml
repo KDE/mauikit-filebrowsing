@@ -59,7 +59,7 @@ Maui.AltBrowser
     /**
      * 
      */
-    property url path
+    property alias path : _commonFMList.path
     
     /**
      * 

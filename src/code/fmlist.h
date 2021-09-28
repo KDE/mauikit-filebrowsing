@@ -326,7 +326,6 @@ public:
         
 private:
     FM *fm;
-
     void clear();
     void reset();
     void setList();
