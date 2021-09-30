@@ -83,6 +83,8 @@ endif()
 option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ${IS_KIO_AVAILABLE})
 #option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ON)
 
+option(QUICK_COMPILER "Use QtQuick compiler to improve performance" TRUE)
+
 if(ANDROID)
     find_package(Qt5 REQUIRED COMPONENTS AndroidExtras)
     find_package(Gradle REQUIRED)
@@ -99,6 +101,14 @@ endif()
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Xml Concurrent Network REQUIRED)
 find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n CoreAddons #[[FileMetaData]])
 find_package(MauiKit)
+
+if(QUICK_COMPILER)
+        find_package(Qt5QuickCompiler)
+        set_package_properties(Qt5QuickCompiler PROPERTIES
+                DESCRIPTION "Compile QML at build time"
+                TYPE OPTIONAL
+        )
+endif()
 
 add_subdirectory(src)
 

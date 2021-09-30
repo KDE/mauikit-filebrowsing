@@ -26,7 +26,7 @@ set(
     code/tagging.qrc
     code/openwithmodel.cpp
     assets.qrc
-    resources.qrc
+
     ${filebrowsing_QM_LOADER}
     )
 
@@ -72,13 +72,19 @@ set(syncing_HDRS
     code/libwebdavclient/lib/utils/XMLHelper.hpp
     )
 
+if(QUICK_COMPILER)
+        qtquick_compiler_add_resources(filebrowsing_QML_QRC resources.qrc)
+else()
+        qt5_add_resources(filebrowsing_QML_QRC resources.qrc)
+endif()
+
 ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
     DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
 
 add_library(
     MauiKitFileBrowsing
     SHARED
-    ${sources} ${pluginData} ${syncing_SRCS}
+    ${sources} ${pluginData} ${syncing_SRCS} ${filebrowsing_QML_QRC}
     )
 
 add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
@@ -114,6 +120,11 @@ if(${KIO_AVAILABLE})
 
     add_definitions(-DKIO_AVAILABLE)
     target_compile_definitions(MauiKitFileBrowsing PUBLIC KIO_AVAILABLE)
+endif()
+
+if(QUICK_COMPILER)
+    add_definitions(-DQUICK_COMPILER)
+    target_compile_definitions(MauiKitFileBrowsing PUBLIC QUICK_COMPILER)
 endif()
 
 target_link_libraries(
