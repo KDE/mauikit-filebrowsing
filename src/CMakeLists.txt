@@ -26,7 +26,6 @@ set(
     code/tagging.qrc
     code/openwithmodel.cpp
     assets.qrc
-
     ${filebrowsing_QM_LOADER}
     )
 
@@ -73,9 +72,9 @@ set(syncing_HDRS
     )
 
 if(QUICK_COMPILER)
-        qtquick_compiler_add_resources(filebrowsing_QML_QRC resources.qrc)
+    qtquick_compiler_add_resources(filebrowsing_QML_QRC resources.qrc)
 else()
-        qt5_add_resources(filebrowsing_QML_QRC resources.qrc)
+    qt5_add_resources(filebrowsing_QML_QRC resources.qrc)
 endif()
 
 ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}

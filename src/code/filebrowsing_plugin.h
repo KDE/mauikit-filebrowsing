@@ -16,7 +16,6 @@ public:
 private:
     void initializeEngine(QQmlEngine *engine, const char *uri) override;
     
-
     QString resolveFileUrl(const QString &filePath) const
     {
 #if defined(Q_OS_ANDROID)
