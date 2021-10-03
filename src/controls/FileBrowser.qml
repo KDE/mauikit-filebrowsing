@@ -31,19 +31,19 @@ import org.mauikit.filebrowsing 1.3 as FB
 import "private" as Private
 
 /*!
-A control to list and browse the file system, with convinient properties
-for filtering and sorting its contents
-
-There are three different possible ways to display the contents: Grid, List and Miller views.
-Some basic file item actions are implemented by default, like copy, cut, rename and remove.
-
-This component functionality can be easily expanded to be more feature rich.
-*/
+ * A control to list and browse the file system, with convinient properties
+ * for filtering and sorting its contents
+ * 
+ * There are three different possible ways to display the contents: Grid, List and Miller views.
+ * Some basic file item actions are implemented by default, like copy, cut, rename and remove.
+ * 
+ * This component functionality can be easily expanded to be more feature rich.
+ */
 Maui.Page
 {
     id: control
     
-     onGoBackTriggered: control.goBack()
+    onGoBackTriggered: control.goBack()
     onGoForwardTriggered: control.goForward()
     
     title: view.title
@@ -54,171 +54,175 @@ Maui.Page
     showTitle: false
     
     /*!
-      \qmlproperty FileBrowser::currentPath
-
-      The current path of the directory URL.
-      To list a directory path, or other location, use the right schemas,
-      some of them are file://, webdav://, trash:///, tags://
-    */
+     *      \qmlproperty FileBrowser::currentPath
+     * 
+     *      The current path of the directory URL.
+     *      To list a directory path, or other location, use the right schemas,
+     *      some of them are file://, webdav://, trash:///, tags://
+     */
     property alias currentPath : _browser.path
     onCurrentPathChanged : _searchField.clear()
     
     /*!
-      \qmlproperty BrowserSettings FileBrowser::settings
-
-      A group of properties for controlling the sorting, listing and behaviour of the file browser.
-      For more details check the BrowserSettings documentation.
-    */
+     *      \qmlproperty BrowserSettings FileBrowser::settings
+     * 
+     *      A group of properties for controlling the sorting, listing and behaviour of the file browser.
+     *      For more details check the BrowserSettings documentation.
+     */
     property alias settings : _browser.settings
     
     /*!
-      \qmlproperty Item FileBrowser::view
-
-      The browser can be in two different view states: the file browsing or the search view, this
-      property gives access to the current view in use.
-    */
+     *      \qmlproperty Item FileBrowser::view
+     * 
+     *      The browser can be in two different view states: the file browsing or the search view, this
+     *      property gives access to the current view in use.
+     */
     property alias view : _stackView.currentItem
     
     property alias browser : _browser
     /*!
-      \qmlproperty DropArea FileBrowser::dropArea
-
-      Drop area component, for dropping files.
-      By default sonme drop actions are handled, for other type of uris this property can be used to handle those.
-    */
+     *      \qmlproperty DropArea FileBrowser::dropArea
+     * 
+     *      Drop area component, for dropping files.
+     *      By default sonme drop actions are handled, for other type of uris this property can be used to handle those.
+     */
     property alias dropArea : _dropArea
     
     /*!
-      \qmlproperty int FileBrowser::currentIndex
-
-      Current index of the item selected in the file browser.
-    */
+     *      \qmlproperty int FileBrowser::currentIndex
+     * 
+     *      Current index of the item selected in the file browser.
+     */
     property int currentIndex  : -1
-
+    
     Binding on currentIndex
     {
         value: currentView.currentIndex
-//         restoreMode: Binding.RestoreBindingOrValue
+        //         restoreMode: Binding.RestoreBindingOrValue
     }
     
     /*!
-      \qmlproperty Item FileBrowser::currentView
-
-      Current view of the file browser. Possible views are List = ListBrowser
-      Grid = GridView
-      Miller = ListView
-    */
+     *      \qmlproperty Item FileBrowser::currentView
+     * 
+     *      Current view of the file browser. Possible views are List = ListBrowser
+     *      Grid = GridView
+     *      Miller = ListView
+     */
     readonly property QtObject currentView : _stackView.currentItem.browser
     
     /*!
-      The file browser model list controller being used. The List and Grid views use the same FMList, the
-      Miller columns use several different models, one for each column.
-    */
+     *      The file browser model list controller being used. The List and Grid views use the same FMList, the
+     *      Miller columns use several different models, one for each column.
+     */
     readonly property FB.FMList currentFMList : view.currentFMList
     
     /*!
-      The file browser data model being used. The List and Grid views use the same model, the
-      Miller columns use several different FMList controllers, one for each column.
-    */
+     *      The file browser data model being used. The List and Grid views use the same model, the
+     *      Miller columns use several different FMList controllers, one for each column.
+     */
     readonly property Maui.BaseModel currentFMModel : view.currentFMModel
     
     /*!
-      isSearchView : bool
-      If the file browser current view is the search view.
-    */
+     *      isSearchView : bool
+     *      If the file browser current view is the search view.
+     */
     readonly property bool isSearchView : _stackView.currentItem.objectName === "searchView"
     
     /*!
-      If the file browser enters selection mode, allowing the selection of multiple items.
-    */
+     *      If the file browser enters selection mode, allowing the selection of multiple items.
+     */
     property bool selectionMode: false
     
     /*!
-      \qmlproperty int FileBrowser::gridItemSize
-
-      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
-    */
+     *      \qmlproperty int FileBrowser::gridItemSize
+     * 
+     *      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
+     */
     property alias gridItemSize : _browser.gridItemSize
     
     /*!
-      \qmlproperty int FileBrowser::listItemSize
-
-      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
-    */
+     *      \qmlproperty int FileBrowser::listItemSize
+     * 
+     *      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
+     */
     property alias listItemSize : _browser.listItemSize
     
     /*!
-     \qmlproperty var FileBrowser::indexHistory
-
-     History of the items indexes.
-    */
+     *     \qmlproperty var FileBrowser::indexHistory
+     * 
+     *     History of the items indexes.
+     */
     property var indexHistory : []
     
     // need to be set by the implementation as features
     /*!
-
-    */
+     * 
+     */
     property Maui.SelectionBar selectionBar : null //TODO remove
-
-
+    
+    
     //access to the loaded the dialog components
     /*!
-      \qmlproperty Dialog FileBrowser::dialog
-      The message and action dialogs are loaded when needed.
-      This property gives access to the current dialog opened.
-    */
+     *      \qmlproperty Dialog FileBrowser::dialog
+     *      The message and action dialogs are loaded when needed.
+     *      This property gives access to the current dialog opened.
+     */
     property alias dialog : dialogLoader.item
     
-       
+    
     //signals
     /*!
-      An item was clicked.
-    */
+     *      An item was clicked.
+     */
     signal itemClicked(int index)
     
     /**
-     An item was double clicked.
-    */
+     *     An item was double clicked.
+     */
     signal itemDoubleClicked(int index)
     
     /*!
-      An item was right clicked, on mobile devices this is translated from a long press and relase.
-    */
+     *      An item was right clicked, on mobile devices this is translated from a long press and relase.
+     */
     signal itemRightClicked(int index)
     
     /*!
-      The left emblem of the item was clicked.
-    */
+     *      The left emblem of the item was clicked.
+     */
     signal itemLeftEmblemClicked(int index)
     
     /*!
-      The right emblem of the item was clicked.
-    */
+     *      The right emblem of the item was clicked.
+     */
     signal itemRightEmblemClicked(int index)
     
     /*!
-      The file browser empty area was right clicked.
-    */
+     *      The file browser empty area was right clicked.
+     */
     signal rightClicked()
     
     /*!
-      A key, physical or not, was pressed.
-      The event contains the relevant information.
-    */
+     *      A key, physical or not, was pressed.
+     *      The event contains the relevant information.
+     */
     signal keyPress(var event)
     
     /*!
-      File URLS were dropped onto the file browser area.
-    */
+     *      File URLS were dropped onto the file browser area.
+     */
     signal urlsDropped(var urls)
-        
+    
     headBar.visible: control.settings.searchBarVisible
-    headBar.leftContent: ToolButton
+    headBar.leftContent: Loader
     {
-        text: i18n("Back")
-        icon.name: "go-previous"
-        onClicked: control.quitSearch()
-        visible: control.isSearchView
+        asynchronous: true
+        sourceComponent: ToolButton
+        {
+            text: i18n("Back")
+            icon.name: "go-previous"
+            onClicked: control.quitSearch()
+            visible: control.isSearchView
+        }
     }
     
     headBar.middleContent: Maui.TextField
@@ -240,7 +244,7 @@ Maui.Page
                 control.search(text)
             }
         }
-
+        
         onCleared:
         {
             if(_filterButton.checked)
@@ -248,14 +252,14 @@ Maui.Page
                 control.view.filter = ""
             }
         }
-
+        
         onTextChanged:
         {
             if(_filterButton.checked)
                 _searchField.accepted()
                 
         }
-
+        
         Keys.enabled: _filterButton.checked
         Keys.onPressed:
         {
@@ -270,7 +274,7 @@ Maui.Page
         {
             id: _filterButton
             icon.name: "view-filter"
-//            text: i18n("Filter")
+            //            text: i18n("Filter")
             checkable: true
             checked: true
             onTriggered:
@@ -307,7 +311,7 @@ Maui.Page
         Maui.FileListingDialog
         {
             id: _removeDialog
-           property double freedSpace : calculateFreedSpace(urls)
+            property double freedSpace : calculateFreedSpace(urls)
             title:  i18n("Removing %1 files", urls.length)
             message: i18n("Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
             rejectButton.text: i18n("Delete")
@@ -413,7 +417,7 @@ Maui.Page
             onOpened:
             {
                 item = control.currentFMModel.get(control.currentIndex)
-
+                
                 if(_renameDialog.textEntry.text.lastIndexOf(".") >= 0)
                 {                    
                     _renameDialog.textEntry.select(0, _renameDialog.textEntry.text.lastIndexOf("."))
@@ -423,16 +427,22 @@ Maui.Page
                 }                
             }
             
-//             template.iconComponent: Maui.GridItemTemplate
-//             {
-//                 anchors.fill: parent
-//                 iconSource: _renameDialog.template.iconSource
-//                 imageSource: _renameDialog.template.imageSource
-//                 label1.text: _renameDialog.textEntry.text
-//             }
+            //             template.iconComponent: Maui.GridItemTemplate
+            //             {
+            //                 anchors.fill: parent
+            //                 iconSource: _renameDialog.template.iconSource
+            //                 imageSource: _renameDialog.template.imageSource
+            //                 label1.text: _renameDialog.textEntry.text
+            //             }
         }
     }
-
+    
+    Component
+    {
+        id: _newTagDialogComponent        
+        FB.NewTagDialog {}
+    }
+    
     property string typingQuery
     
     Maui.Chip
@@ -478,7 +488,7 @@ Maui.Page
             
             if(event.count === 1 && pat.test(event.text))
             {
-               typingQuery += event.text
+                typingQuery += event.text
                 _typingTimer.restart()   
                 event.accepted = true
             }
@@ -638,23 +648,23 @@ Maui.Page
             control.itemLeftEmblemClicked(index)
             control.currentView.forceActiveFocus()
         }
-
-
+        
+        
         function onAreaClicked(mouse)
         {
             if(!Kirigami.Settings.isMobile && mouse.button === Qt.RightButton)
             {
                 control.rightClicked()
             }
-
+            
             control.currentView.forceActiveFocus()
         }
-
-//        function onAreaRightClicked(mouse)
-//        {
-//            control.rightClicked()
-//            control.currentView.forceActiveFocus()
-//        }
+        
+        //        function onAreaRightClicked(mouse)
+        //        {
+        //            control.rightClicked()
+        //            control.currentView.forceActiveFocus()
+        //        }
     }   
     
     StackView
@@ -689,27 +699,33 @@ Maui.Page
                 id: _browser                
                 anchors.fill: parent
                 selectionMode: control.selectionMode
+                
                 Binding on currentIndex
                 {
                     value: control.currentIndex
                     restoreMode: Binding.RestoreBindingOrValue
                 }
                 
-                FB.NewTagDialog
+                Loader
                 {
-                    id: _newTagDialog
-                }
-                
-                Maui.FloatingButton
-                {
-                    visible: String(control.currentPath) === "tags:///"
+                    active: String(control.currentPath) === "tags://" ||  String(control.currentPath) === "tags:///"
+                    visible: active
+                    asynchronous: true
                     
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
-                    anchors.margins: Maui.Style.toolBarHeight
+                    anchors.rightMargin: Maui.Style.toolBarHeight
                     anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
-                    icon.name : "list-add"
-                    onClicked: _newTagDialog.open()
+                    
+                    sourceComponent: Maui.FloatingButton
+                    {
+                        icon.name : "list-add"
+                        onClicked: 
+                        {
+                            dialogLoader.sourceComponent = _newTagDialogComponent
+                            dialog.open()
+                        }
+                    }
                 }
             }
             
@@ -772,6 +788,7 @@ Maui.Page
             {
                 id: _searchBrowser
                 property alias browser : _searchBrowser
+                
                 Binding on currentIndex
                 {
                     value: control.currentIndex
@@ -789,8 +806,7 @@ Maui.Page
     Component.onCompleted:
     {
         control.currentView.forceActiveFocus()
-    }
-    
+    }    
     
     /**
      * 
@@ -1002,7 +1018,7 @@ Maui.Page
             FB.FM.bookmark(paths[i])
         }
     }    
-
+    
     function toggleSearchBar() //only opens the searchbar toolbar, not the search view page
     {
         if(control.settings.searchBarVisible)
@@ -1013,7 +1029,7 @@ Maui.Page
         }else
         {
             control.settings.searchBarVisible = true
-           _searchField.forceActiveFocus()
+            _searchField.forceActiveFocus()
         }
     }
     
@@ -1036,7 +1052,7 @@ Maui.Page
     function quitSearch()
     {
         _stackView.pop(StackView.Immediate)
-         _browser.forceActiveFocus()
+        _browser.forceActiveFocus()
     }
     
     /**
@@ -1060,9 +1076,9 @@ Maui.Page
         dialog.open()
         dialog.forceActiveFocus()
     }
-
+    
     /**
-     *
+     * 
      **/
     function renameItem()
     {
@@ -1070,9 +1086,9 @@ Maui.Page
         dialog.open()
         dialog.forceActiveFocus()
     }
-
+    
     /**
-     *
+     * 
      **/
     function removeItem()
     {

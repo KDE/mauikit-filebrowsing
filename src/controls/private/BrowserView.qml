@@ -154,7 +154,6 @@ Maui.AltBrowser
     
     Maui.ProgressIndicator
     {
-        id: _scanningProgress
         width: parent.width
         anchors.bottom: parent.bottom
         visible: _commonFMList.status.code === FB.PathStatus.LOADING
