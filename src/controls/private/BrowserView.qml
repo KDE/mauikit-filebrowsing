@@ -152,11 +152,13 @@ Maui.AltBrowser
         browser: _commonFMList
     }
     
-    Maui.ProgressIndicator
+    Loader
     {
         width: parent.width
         anchors.bottom: parent.bottom
-        visible: _commonFMList.status.code === FB.PathStatus.LOADING
+        active: _commonFMList.status.code === FB.PathStatus.LOADING
+        visible: active
+        sourceComponent: Maui.ProgressIndicator {}
     }
     
     holder.visible: _holder.visible
