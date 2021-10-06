@@ -300,12 +300,12 @@ void FMList::setPath(const QUrl &path)
 {
     auto pathStr = path.toString().trimmed();
     
-    if(pathStr.endsWith("/"))
-    {
-        pathStr.chop(1);
-    }
+//     if(pathStr.endsWith("/") && pathStr[pathStr.length()-2] != "/")
+//     {
+//         pathStr.chop(1);
+//     }
     
-    QUrl path_ = QUrl::fromUserInput(pathStr);
+    QUrl path_ = QUrl::fromUserInput(pathStr).adjusted(QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
     
     if (this->path == path_)
         return;
