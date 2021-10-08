@@ -158,8 +158,12 @@ if (BUILD_SHARED_LIBS)
         COMMAND ${CMAKE_COMMAND} -E
         copy $<TARGET_FILE:MauiKitFileBrowsing> ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
         )
-
+    
+if(QUICK_COMPILER)
+    install(FILES controls/qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+else()
     install(DIRECTORY controls/ DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+endif()
 
     #include(ECMGeneratePriFile)
     #ecm_generate_pri_file(BASE_NAME KQuickImageEditor LIB_NAME KQuickImageEditor DEPS "core qml quick svg" FILENAME_VAR PRI_FILENAME )
