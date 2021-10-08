@@ -212,16 +212,18 @@ Maui.Page
      */
     signal urlsDropped(var urls)
     
+    headBar.forceCenterMiddleContent: isWide
     headBar.visible: control.settings.searchBarVisible
     headBar.leftContent: Loader
     {
         asynchronous: true
+        active: control.isSearchView
+        visible: active
         sourceComponent: ToolButton
         {
             text: i18n("Back")
             icon.name: "go-previous"
             onClicked: control.quitSearch()
-            visible: control.isSearchView
         }
     }
     
@@ -301,7 +303,6 @@ Maui.Page
     Loader
     {
         id: dialogLoader
-        // 		active: item && item.visible
     }
     
     Component
