@@ -85,23 +85,26 @@ Item
      * tagsEdited :
      */
     signal tagsEdited(var tags)
-    
-    
-    Maui.TextField
+     
+    Loader
+    {
+         anchors.fill: parent
+           active: control.editMode
+           visible: active
+           asynchronous: true
+           
+          sourceComponent: Maui.TextField
     {
         id: editTagsEntry
         focus: true
-        anchors.fill: parent
+       
          activeFocusOnPress : true
-        visible: control.editMode
+      
         text: list.tags.join(",")
         
-        onVisibleChanged:
+        Component.onCompleted:
         {
-            if(visible)
-            {
-                editTagsEntry.forceActiveFocus()
-            }
+            editTagsEntry.forceActiveFocus()            
         }
         
         onAccepted:
@@ -145,8 +148,9 @@ Item
             
             return tags
         }
-    }    
-    
+    }
+    }
+  
     TagList
     {
         id: tagsList
@@ -173,13 +177,10 @@ Item
     {
         control.forceActiveFocus()
         control.editMode = true
-        editTagsEntry.forceActiveFocus()
     }
     
     function closeEditMode()
     {
         control.editMode = false
-        
-    }
-    
+    }    
 }

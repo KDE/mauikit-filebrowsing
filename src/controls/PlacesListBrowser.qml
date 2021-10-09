@@ -1,8 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 
-import QtQuick.Layouts 1.3
-import org.mauikit.controls 1.2 as Maui
+import org.mauikit.controls 1.3 as Maui
 import org.kde.kirigami 2.6 as Kirigami
 import org.mauikit.filebrowsing 1.0 as FB
 
@@ -80,7 +79,7 @@ Maui.ListBrowser
 
     onItemRightClicked: _menu.popup()
 
-    Menu
+    Maui.ContextualMenu
     {
         id: _menu
         property int index
@@ -103,16 +102,8 @@ Maui.ListBrowser
         }
     }
 
-    Rectangle
-    {
-        anchors.fill: parent
-        z: -1
-        color: Kirigami.Theme.backgroundColor
-    }
-
     delegate: Maui.ListDelegate
     {
-        id: itemDelegate
         width: ListView.view.width
         iconSize: control.iconSize
         template.headerSizeHint: iconSize + Maui.Style.space.small

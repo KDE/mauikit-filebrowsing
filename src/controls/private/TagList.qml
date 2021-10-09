@@ -58,15 +58,21 @@ Maui.ListBrowser
         }
     }
 
-    Label
+    Loader
     {
         anchors.fill: parent
         anchors.leftMargin: Maui.Style.space.medium
-        verticalAlignment: Qt.AlignVCenter
-        text: control.placeholderText
-        opacity: 0.7
-        visible: count === 0 && control.showPlaceHolder
-        color: Kirigami.Theme.textColor
+        asynchronous: true
+        active: count === 0 && control.showPlaceHolder
+        visible: active
+        
+        sourceComponent: Label
+        {      
+            verticalAlignment: Qt.AlignVCenter
+            text: control.placeholderText
+            opacity: 0.7
+            color: Kirigami.Theme.textColor
+        }
     }
 
     delegate: TagDelegate

@@ -18,13 +18,15 @@
  */
 
 import QtQuick 2.14
+import QtQml 2.14
+
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.3
 
 import org.kde.kirigami 2.7 as Kirigami
 
 import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.0 as FB
+import org.mauikit.filebrowsing 1.3 as FB
 
 /**
  * FileDialog
@@ -162,19 +164,7 @@ Maui.Dialog
             placeholderText: i18n("File name...")
             text: suggestedFileName
         }
-    }/*,
-    
-    FB.TagsBar
-    {
-    id: _tagsBar
-    visible: control.mode === modes.SAVE
-    width: parent.width
-    list.urls: [""]
-    list.strict: false
-    allowEditMode: true
-    Kirigami.Theme.textColor: control.Kirigami.Theme.textColor
-    Kirigami.Theme.backgroundColor: control.Kirigami.Theme.backgroundColor
-}*/
+    }
     ]
     
     Maui.Dialog
@@ -198,38 +188,47 @@ Maui.Dialog
         Layout.fillWidth: true
         
         separatorVisible: wideMode
-        initialPage: [sidebar, _browserLayout]
+        initialPage: [sidebarLoader, _browserLayout]
+        
         defaultColumnWidth: 200
             
-            FB.PlacesListBrowser
+            Loader
             {
-                id: sidebar
-                onPlaceClicked:
-                {
-                    pageRow.currentIndex = 1
-                    browser.openFolder(path)
-                }
+                id: sidebarLoader
+                asynchronous: true
                 
-                list.groups:  [FB.FMList.PLACES_PATH,
-                FB.FMList.BOOKMARKS_PATH,
-                FB.FMList.REMOTE_PATH,
-                FB.FMList.CLOUD_PATH,
-                FB.FMList.DRIVES_PATH]
+                sourceComponent: FB.PlacesListBrowser
+                {
+                    onPlaceClicked:
+                    {
+                        pageRow.currentIndex = 1
+                        browser.openFolder(path)
+                    }
+                    
+                    Binding on currentIndex
+                    {
+                        value: list.indexOfPath(browser.currentPath)
+                        restoreMode: Binding.RestoreBindingOrValue
+                    }
+                    
+                    list.groups:  [FB.FMList.PLACES_PATH,
+                    FB.FMList.BOOKMARKS_PATH,
+                    FB.FMList.REMOTE_PATH,
+                    FB.FMList.CLOUD_PATH,
+                    FB.FMList.DRIVES_PATH]
+                }
             }
             
             Maui.Page
             {
                 id: _browserLayout
                 
-                Layout.fillWidth: true
-                Layout.fillHeight: true
                 floatingFooter: true
                 flickable: browser.flickable
                 headBar.visible: true
                 headerColorSet: Kirigami.Theme.Header
                 headBar.farLeftContent: ToolButton
                 {
-                    visible: pageRow.currentIndex === 1
                     icon.name: checked ? "sidebar-collapse" : "sidebar-expand"
                     onClicked: pageRow.currentIndex = !pageRow.currentIndex
                     checked: pageRow.currentIndex === 0
@@ -240,7 +239,6 @@ Maui.Dialog
                 }
                 
                 headBar.rightContent:[
-                
                 
                 ToolButton
                 {
@@ -405,9 +403,7 @@ Maui.Dialog
                             browser.settings.group = !browser.settings.group
                         }
                     }
-                }
-                
-                               
+                } 
                 ]
                 
                 headBar.leftContent: [
@@ -429,7 +425,6 @@ Maui.Dialog
                         onTriggered : browser.goUp()
                     }
                     
-                    
                     Action
                     {
                         icon.name: "go-next"
@@ -438,7 +433,7 @@ Maui.Dialog
                 }
                 ]
                 
-                footer:  Maui.SelectionBar
+                footer: Maui.SelectionBar
                 {
                     id: _selectionBar
                     padding: Maui.Style.space.big
@@ -476,21 +471,7 @@ Maui.Dialog
                             performAction(index)
                         }
                     }
-                    
-                    onCurrentPathChanged:
-                    {
-                        sidebar.currentIndex = -1
-                        
-                        for(var i = 0; i < sidebar.count; i++)
-                        {
-                            if(String(browser.currentPath) === sidebar.list.get(i).path)
-                            {
-                                sidebar.currentIndex = i
-                                return;
-                            }
-                        }
-                    }
-                    
+                                        
                     function performAction(index)
                     {
                         if(currentFMModel.get(index).isdir == "true")
@@ -520,7 +501,7 @@ Maui.Dialog
     function closeIt()
     {
         _selectionBar.clear()
-        close()
+        control.close()
     }
     
     /**

@@ -84,12 +84,7 @@ Maui.Dialog
                 _tagsModel.filter = text
             }
         }
-        
-        FB.NewTagDialog
-        {
-            id: _newTagDialog
-        }
-        
+                
         Maui.Dialog
         {
             id: _deleteDialog
@@ -145,7 +140,6 @@ Maui.Dialog
             holder.visible: _listView.count === 0
             holder.title : i18n("No Tags!")
             holder.body: i18n("Create new tags to organize your files.")
-            holder.emojiSize: Maui.Style.iconSizes.huge
             
             model: Maui.BaseModel
             {

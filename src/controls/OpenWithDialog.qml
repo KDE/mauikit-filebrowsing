@@ -18,9 +18,6 @@
 
 import QtQuick 2.14
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.14
-
-import org.kde.kirigami 2.7 as Kirigami
 
 import org.mauikit.controls 1.2 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
@@ -56,15 +53,14 @@ Maui.Dialog
     defaultButtons: false
 
     page.title: i18n("Open with")
-    headBar.visible: false
-
+    headBar.visible: true
+    
     stack: Maui.ListBrowser
     {
         id: _list
         Layout.fillWidth: true
         Layout.fillHeight: true
-        spacing: 0
-        padding: 0
+        
         model: Maui.BaseModel
         {
             id: _appsModel
@@ -74,21 +70,16 @@ Maui.Dialog
             }
         }
         
-        delegate: Maui.AlternateListItem
+        delegate: Maui.ListBrowserDelegate
         {
             width: ListView.view.width
             height: Maui.Style.rowHeight * 2
             hoverEnabled: true
-    
-            Maui.ListItemTemplate
-            {
-                //isCurrentItem: parent.hovered
-                anchors.fill: parent
-                label1.text: model.label
+            
+            label1.text: model.label
                 label2.text: model.comment
                 iconSource: model.icon
                 iconSizeHint: Maui.Style.iconSizes.big
-            }
 
             onClicked:
             {

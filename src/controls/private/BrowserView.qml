@@ -164,7 +164,6 @@ Maui.AltBrowser
     holder.emoji: _holder.emoji
     holder.title: _holder.title
     holder.body: _holder.body
-    holder.emojiSize: _holder.emojiSize
     
     Maui.ContextualMenu
     {
