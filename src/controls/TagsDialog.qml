@@ -207,13 +207,14 @@ Maui.Dialog
         {            
             asynchronous: true
             active: tagListComposer.list.urls.length > 1
+            visible: active
             Layout.fillWidth: true
-            Layout.preferredHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
             
             sourceComponent: Maui.ListItemTemplate
             {
                 id: _info
-                
+                 implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
+
                 property var itemInfo : FB.FM.getFileInfo( tagListComposer.list.urls[0])
                 label1.text: i18n("Tagging %1 files", tagListComposer.list.urls.length)
                 label2.text: i18n("Add new tags for the selected files.")
