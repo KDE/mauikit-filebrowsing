@@ -2,13 +2,7 @@
 #include "tagging.h"
 
 TagsList::TagsList(QObject *parent)
-    : MauiList(parent)
-{
-//     TODO not working idk whyyyyy :(
-    connect(Tagging::getInstance(), &Tagging::tagged, this, &TagsList::appendItem);
-
-    connect(Tagging::getInstance(), &Tagging::tagRemoved, this, &TagsList::refresh);
-}
+    : MauiList(parent) {}
 
 void TagsList::setList()
 {
@@ -203,8 +197,11 @@ bool TagsList::contains(const QString &tag)
 
 void TagsList::componentComplete()
 {
+    connect(Tagging::getInstance(), &Tagging::tagged, this, &TagsList::appendItem);    
+    connect(Tagging::getInstance(), &Tagging::tagRemoved, this, &TagsList::refresh);
+    
     connect(this, &TagsList::urlsChanged, this, &TagsList::setList);
     connect(this, &TagsList::strictChanged, this, &TagsList::setList);
 
-       this->setList();
+    this->setList();
 }

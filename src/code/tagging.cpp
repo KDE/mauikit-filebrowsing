@@ -16,34 +16,34 @@
  *   Free Software Foundation, Inc.,
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+#include "tagging.h"
 
 #include <QMimeDatabase>
 
 #include <QFileInfo>
 #include <QDateTime>
+#include <QDebug>
+
+#include <QThread>
+#include <QCoreApplication>
 
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 
-#include <MauiKit/Core/fmh.h>
-
-#include "tagging.h"
 #include "fmstatic.h"
 #include "tagdb.h"
 
 Tagging *Tagging::m_instance = nullptr;
 
-Tagging::~Tagging()
-{
-}
+Tagging::~Tagging() {}
 
 Tagging::Tagging() : QObject()
 {
     this->setApp();
     connect(qApp, &QCoreApplication::aboutToQuit, [this]()
     {
-        qDebug() << "Lets remove Tagging singleton instance";
+        qDebug() << "Lets remove Tagging singleton instance and all opened Tagging DB connections.";
         
         qDeleteAll(m_dbs);
         m_dbs.clear();

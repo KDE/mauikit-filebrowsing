@@ -1,7 +1,6 @@
 #ifndef FM_H
 #define FM_H
 
-#include <QHash>
 #include <QObject>
 
 #include <QStringList>

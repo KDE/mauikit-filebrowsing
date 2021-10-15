@@ -20,7 +20,6 @@
 #ifndef TAGDB_H
 #define TAGDB_H
 
-
 #include <QObject>
 
 #include <QString>
@@ -46,7 +45,6 @@ namespace TAG
     static const QString TaggingPath = FMStatic::DataPath + "/maui/tagging/";
     static const QString DBName = "tagging-v2.db";
 }
-
 
 /**
  * @brief The TAGDB class

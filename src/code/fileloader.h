@@ -21,7 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FILELOADER_H
 
 #include <QDir>
-#include <QDirIterator>
 #include <QObject>
 #include <QThread>
 #include <QUrl>

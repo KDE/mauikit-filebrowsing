@@ -20,15 +20,11 @@
 #include "fm.h"
 #include "tagging.h"
 
-#include <MauiKit/Core/utils.h>
-
 #ifdef COMPONENT_SYNCING
-#include <MauiKit/syncing.h>
+#include "syncing.h"
 #endif
 
-#include <QHash>
 #include <QFuture>
-#include <QObject>
 #include <QThread>
 #include <QtConcurrent/QtConcurrentRun>
 #include <QtConcurrent>

@@ -21,13 +21,9 @@
 #define TAGGING_H
 
 #include <QObject>
-#include <QThread>
-#include <QDebug>
-
-#include <QCoreApplication>
-
 
 #include "filebrowsing_export.h"
+#include <MauiKit/Core/fmh.h>
 
 #define MAX_LIMIT 9999
 
@@ -48,14 +44,7 @@ public:
      * @return
      */
     static Tagging *getInstance()
-    {
-        qWarning() << "GETTIG TAGGING INSTANCE" << QThread::currentThread() << qApp->thread();
-
-//         if (QThread::currentThread() != qApp->thread()) {
-//             qWarning() << "Can not get Tagging instance from a thread different than the mian one  " << QThread::currentThread() << qApp->thread();
-//             return nullptr;
-//         }
-
+    {        
         if (m_instance)
             return m_instance;
 

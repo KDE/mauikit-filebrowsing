@@ -17,15 +17,13 @@
  */
 
 #include "placeslist.h"
-#include "fm.h"
 #include "tagging.h"
 
-#include <QEventLoop>
-#include <QIcon>
-#include <QTimer>
-
 #include <MauiKit/Core/utils.h>
-#include <MauiKit/Core/fmh.h>
+
+#include <QDir>
+#include <QDebug>
+#include <QIcon>
 
 #ifdef KIO_AVAILABLE
 #include <KFilePlacesModel>

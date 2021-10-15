@@ -3,12 +3,8 @@
 #ifdef KIO_AVAILABLE
 #include <KApplicationTrader>
 #include <KFileItem>
-#include <KLocalizedString>
-#include <KRun>
 #include <KIO/ApplicationLauncherJob>
 #include <KService>
-#include <KServiceGroup>
-#include <KToolInvocation>
 #endif
 
 OpenWithModel::OpenWithModel(QObject* parent) : MauiList(parent)

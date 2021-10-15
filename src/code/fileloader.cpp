@@ -2,6 +2,7 @@
 #include "fmstatic.h"
 
 #include <QDebug>
+#include <QDirIterator>
 
 using namespace FMH;
 

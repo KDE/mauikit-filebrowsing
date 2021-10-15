@@ -21,6 +21,8 @@
 
 #include <QObject>
 #include <QModelIndex>
+#include <QHash>
+
 #include "fmstatic.h"
 
 #include <MauiKit/Core/mauilist.h>
