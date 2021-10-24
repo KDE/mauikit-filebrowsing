@@ -6,6 +6,7 @@
 #include <QDirIterator>
 #include <QFileInfo>
 #include <QDateTime>
+#include <QDebug>
 #include <QSettings>
 
 #if defined Q_OS_LINUX && !defined Q_OS_ANDROID
@@ -27,8 +28,7 @@
 
 FMStatic::FMStatic(QObject *parent)
     : QObject(parent)
-{
-}
+{}
 
 FMH::MODEL_LIST FMStatic::packItems(const QStringList &items, const QString &type)
 {
