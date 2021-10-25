@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
 
+#include "filebrowsing_plugin.h"
+
 #include <QQmlEngine>
 #include <QResource>
-
-#include "filebrowsing_plugin.h"
 
 #include "thumbnailer.h"
 
@@ -25,9 +25,9 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     #endif
     
     //File Browsing components
+    qmlRegisterType<FMList>(uri, 1, 0, "FMList");
     qmlRegisterType<PlacesList>(uri, 1, 0, "PlacesList");
     qmlRegisterUncreatableType<PathStatus>(uri, 1, 0, "PathStatus", "cannot be created :: PathStatus"); 
-    qmlRegisterType<FMList>(uri, 1, 0, "FMList");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
     qmlRegisterType(resolveFileUrl(QStringLiteral("FileDialog.qml")), uri, 1, 0, "FileDialog");

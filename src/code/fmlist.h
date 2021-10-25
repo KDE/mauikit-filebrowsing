@@ -19,8 +19,8 @@
 #ifndef FMLIST_H
 #define FMLIST_H
 
-#include <MauiKit/Core/mauilist.h>
 #include <QObject>
+#include <MauiKit/Core/mauilist.h>
 
 #include "filebrowsing_export.h"
 

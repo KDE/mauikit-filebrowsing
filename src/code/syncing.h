@@ -14,7 +14,7 @@ class WebDAVReply;
 /**
  * @brief The Syncing class
  */
-class MAUIKIT_EXPORT Syncing : public QObject
+class FILEBROWSING_EXPORT Syncing : public QObject
 {
     Q_OBJECT
 

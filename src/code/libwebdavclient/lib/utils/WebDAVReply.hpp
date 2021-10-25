@@ -6,10 +6,10 @@
 #include <QObject>
 #include <QSslError>
 
-#include "mauikit_export.h"
+#include "filebrowsing_export.h"
 #include "../dto/WebDAVItem.hpp"
 
-class MAUIKIT_EXPORT WebDAVReply : public QObject
+class FILEBROWSING_EXPORT WebDAVReply : public QObject
  {
   Q_OBJECT
 
