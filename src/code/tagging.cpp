@@ -108,7 +108,7 @@ const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVar
 bool Tagging::tagExists(const QString &tag, const bool &strict) 
 {
     return !strict ? this->db()->checkExistance(TAG::TABLEMAP[TAG::TABLE::TAGS], FMH::MODEL_NAME[FMH::MODEL_KEY::TAG], tag)
-    : this->db()->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
+            : this->db()->checkExistance(QString("select t.tag from APP_TAGS where t.org = '%1' and t.tag = '%2'")
             .arg(this->appOrg, tag));
 }
 
@@ -149,7 +149,7 @@ bool Tagging::tag(const QString &tag, const QString &color, const QString &comme
         {FMH::MODEL_NAME[FMH::MODEL_KEY::ORG], this->appOrg},
         {FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE], QDateTime::currentDateTime().toString(Qt::TextDate)}};
 
-        if (this->db()->insert(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], appTag_map)) {
+    if (this->db()->insert(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], appTag_map)) {
         setTagIconName(tag_map);
         emit this->tagged(tag_map);
         return true;
@@ -173,7 +173,7 @@ bool Tagging::tagUrl(const QString &url, const QString &tag, const QString &colo
                              {FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE], QDateTime::currentDateTime()},
                              {FMH::MODEL_NAME[FMH::MODEL_KEY::COMMENT], comment}};
 
-                             if(this->db()->insert(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], tag_url_map))
+    if(this->db()->insert(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], tag_url_map))
     {
         qDebug() << "tagging url" << url <<tag;
         emit this->urlTagged(url, myTag);
@@ -287,23 +287,37 @@ bool Tagging::app()
     return this->db()->insert(TAG::TABLEMAP[TAG::TABLE::APPS], app_map);
 }
 
-bool Tagging::removeTag(const QString& tag)
-{
-    FMH::MODEL data1 {{FMH::MODEL_KEY::TAG, tag}};
-    
-    if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data1))
+bool Tagging::removeTag(const QString& tag, const bool &strict)
+{    
+    if(strict)
     {
-        FMH::MODEL data2 {{FMH::MODEL_KEY::TAG, tag}, {FMH::MODEL_KEY::ORG, this->appOrg}};
+        FMH::MODEL data0 {{FMH::MODEL_KEY::TAG, tag}, {FMH::MODEL_KEY::ORG, this->appOrg}};
 
-        if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], data2))
+        if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], data0))
         {
-            if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS], data1))
+            return true;
+        }
+
+    }else
+    {
+        FMH::MODEL data1 {{FMH::MODEL_KEY::TAG, tag}};
+
+        if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS_URLS], data1))
+        {
+            FMH::MODEL data2 {{FMH::MODEL_KEY::TAG, tag}, {FMH::MODEL_KEY::ORG, this->appOrg}};
+
+            if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::APP_TAGS], data2))
             {
-                emit this->tagRemoved(tag);
-                return true;
+                if(this->db()->remove(TAG::TABLEMAP[TAG::TABLE::TAGS], data1))
+                {
+                    emit this->tagRemoved(tag);
+                    return true;
+                }
             }
         }
     }
+
+
     
     return false;
 }
@@ -322,8 +336,8 @@ static bool doNameFilter(const QString &name, const QStringList &filters)
     }
     return false;
 }
- 
- QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, const bool &strict, const int &limit, const QString &mime) 
+
+QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, const bool &strict, const int &limit, const QString &mime)
 {
     QList<QUrl> urls;
     

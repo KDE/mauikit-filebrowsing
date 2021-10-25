@@ -96,7 +96,7 @@ class FILEBROWSING_EXPORT FMList : public MauiList
     Q_OBJECT
 
     // writable
-    Q_PROPERTY(QUrl path READ getPath WRITE setPath NOTIFY pathChanged)
+    Q_PROPERTY(QString path READ getPath WRITE setPath NOTIFY pathChanged)
     Q_PROPERTY(bool hidden READ getHidden WRITE setHidden NOTIFY hiddenChanged)
     Q_PROPERTY(bool onlyDirs READ getOnlyDirs WRITE setOnlyDirs NOTIFY onlyDirsChanged)
     Q_PROPERTY(bool foldersFirst READ getFoldersFirst WRITE setFoldersFirst NOTIFY foldersFirstChanged)
@@ -202,7 +202,7 @@ public:
      * @return
      * Directory URL
      */
-    QUrl getPath() const;
+    QString getPath() const;
 
     /**
      * @brief setPath
@@ -210,7 +210,7 @@ public:
      * @param path
      * Directory URL
      */
-    void setPath(const QUrl &path);
+    void setPath(const QString &path);
 
     /**
      * @brief getPathName

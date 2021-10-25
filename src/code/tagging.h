@@ -226,7 +226,7 @@ public slots:
      */
     bool removeUrl(const QString &url);
     
-    bool removeTag(const QString &tag);
+    bool removeTag(const QString &tag, const bool &strict = false);
     
     /**
      * @brief isFav

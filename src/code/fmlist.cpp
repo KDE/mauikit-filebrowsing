@@ -287,22 +287,15 @@ QString FMList::getPathName() const
     return this->pathName;
 }
 
-QUrl FMList::getPath() const
+QString FMList::getPath() const
 {
-    return this->path;
+    return this->path.toString();
 }
 
-void FMList::setPath(const QUrl &path)
+void FMList::setPath(const QString &path)
 {
-    auto pathStr = path.toString().trimmed();
-    
-//     if(pathStr.endsWith("/") && pathStr[pathStr.length()-2] != "/")
-//     {
-//         pathStr.chop(1);
-//     }
-    
-    QUrl path_ = QUrl::fromUserInput(pathStr).adjusted(QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
-    
+    QUrl path_ = QUrl::fromUserInput(path, "/", QUrl::AssumeLocalFile).adjusted(QUrl::PreferLocalFile | QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
+
     if (this->path == path_)
         return;
 
