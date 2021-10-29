@@ -94,7 +94,7 @@ private:
 class FILEBROWSING_EXPORT FMList : public MauiList
 {
     Q_OBJECT
-
+    Q_DISABLE_COPY(FMList)
     // writable
     Q_PROPERTY(QString path READ getPath WRITE setPath NOTIFY pathChanged)
     Q_PROPERTY(bool hidden READ getHidden WRITE setHidden NOTIFY hiddenChanged)

@@ -32,6 +32,8 @@ class KFilePlacesModel;
 class PlacesList : public MauiList
 {
     Q_OBJECT
+    Q_DISABLE_COPY(PlacesList)
+    
     Q_PROPERTY(QList<int> groups READ getGroups WRITE setGroups NOTIFY groupsChanged)
 
 public:

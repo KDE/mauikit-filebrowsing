@@ -27,6 +27,8 @@ class KFileItem;
 class FILEBROWSING_EXPORT FMStatic : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(FMStatic)
+    
 public:
     explicit FMStatic(QObject *parent = nullptr);
     

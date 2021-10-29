@@ -52,6 +52,8 @@ namespace TAG
 class FILEBROWSING_EXPORT TAGDB : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(TAGDB)
+    
 private:
     QString name;
     QSqlDatabase m_db;

@@ -17,7 +17,8 @@ class WebDAVReply;
 class FILEBROWSING_EXPORT Syncing : public QObject
 {
     Q_OBJECT
-
+    Q_DISABLE_COPY(Syncing)
+    
 public:
     enum SIGNAL_TYPE : uint_fast8_t { OPEN, DOWNLOAD, COPY, SAVE, CUT, DELETE, RENAME, MOVE, UPLOAD };
 

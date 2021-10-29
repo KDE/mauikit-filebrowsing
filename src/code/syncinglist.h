@@ -8,7 +8,8 @@ class FM;
 class SyncingList : public QObject
 {
     Q_OBJECT
-
+    Q_DISABLE_COPY(SyncingList)
+    
 public:
     explicit SyncingList(QObject *parent = nullptr);
     FMH::MODEL_LIST items() const;

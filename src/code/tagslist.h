@@ -13,7 +13,8 @@
 class TagsList : public MauiList
 {
     Q_OBJECT
-
+    Q_DISABLE_COPY(TagsList)
+    
     Q_PROPERTY(bool strict READ getStrict WRITE setStrict NOTIFY strictChanged)
     Q_PROPERTY(QStringList urls READ getUrls WRITE setUrls NOTIFY urlsChanged)
     Q_PROPERTY(QStringList tags READ getTags NOTIFY tagsChanged)

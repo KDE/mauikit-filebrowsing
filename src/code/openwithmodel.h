@@ -7,6 +7,8 @@
 class OpenWithModel : public MauiList
 {
   Q_OBJECT
+  Q_DISABLE_COPY(OpenWithModel)
+  
   Q_PROPERTY(QStringList urls READ urls WRITE setUrls NOTIFY urlsChanged)
   
 public:

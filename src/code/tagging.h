@@ -37,6 +37,8 @@ class TAGDB;
 class FILEBROWSING_EXPORT Tagging : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(Tagging)
+    
 public:
     /**
      * @brief getInstance
@@ -335,8 +337,7 @@ private:
     
     Tagging();
     ~Tagging();
-    Tagging(const Tagging &) = delete;
-    Tagging &operator=(const Tagging &) = delete;
+   
     Tagging(Tagging &&) = delete;
     Tagging &operator=(Tagging &&) = delete;
 

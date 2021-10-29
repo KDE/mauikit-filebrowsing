@@ -30,6 +30,8 @@ class FileLoader;
 class QDirLister : public QObject
 {
     Q_OBJECT
+    Q_DISABLE_COPY(QDirLister)
+    
 public:
     explicit QDirLister(QObject *parent = nullptr);
 
@@ -94,7 +96,8 @@ class Syncing;
 class FILEBROWSING_EXPORT FM : public QObject
 {
     Q_OBJECT
-
+    Q_DISABLE_COPY(FM)
+    
 public:
     FM(QObject *parent = nullptr);
 
