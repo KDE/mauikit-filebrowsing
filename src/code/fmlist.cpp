@@ -294,7 +294,7 @@ QString FMList::getPath() const
 
 void FMList::setPath(const QString &path)
 {
-    QUrl path_ = QUrl::fromUserInput(path, "/", QUrl::AssumeLocalFile).adjusted(QUrl::PreferLocalFile | QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
+    QUrl path_ = QUrl::fromUserInput(path.simplified(), "/", QUrl::AssumeLocalFile).adjusted(QUrl::PreferLocalFile | QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
 
     if (this->path == path_)
         return;

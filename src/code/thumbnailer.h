@@ -1,7 +1,6 @@
 #ifndef THUMBNAILER_H
 #define THUMBNAILER_H
 
-#include <QObject>
 #include <QString>
 #include <QQuickImageProvider>
 
