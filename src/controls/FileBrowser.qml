@@ -288,13 +288,13 @@ Maui.Page
         }
     }
     
-    footBar.visible: String(control.currentPath).startsWith("trash:/")
+    footBar.visible: control.currentPath.startsWith("trash:/")
     
     footerPositioning: ListView.InlineFooter
     
-    footBar.rightContent: ToolButton
+    footBar.rightContent: Button
     {
-        visible: String(control.currentPath).startsWith("trash:/")
+        visible: control.currentPath.startsWith("trash:/")
         icon.name: "trash-empty"
         text: i18n("Empty Trash")
         onClicked: FB.FM.emptyTrash()
@@ -365,8 +365,7 @@ Maui.Page
                 switch(_newActions.currentIndex)
                 {
                     case 0: control.currentFMList.createDir(text); break;
-                    case 1: FB.FM.createFile(control.currentPath, text); break;
-                    
+                    case 1: FB.FM.createFile(control.currentPath, text); break;                    
                 }
             }
             
@@ -709,7 +708,7 @@ Maui.Page
                 
                 Loader
                 {
-                    active: String(control.currentPath) === "tags://" ||  String(control.currentPath) === "tags:///"
+                    active: control.currentPath === "tags://" ||  control.currentPath === "tags:///"
                     visible: active
                     asynchronous: true
                     
@@ -1110,7 +1109,7 @@ Maui.Page
             const uris = selectionBar.uris
             for(var uri of uris)
             {
-                if(FB.FM.parentDir(uri) === currentPath)
+                if(String(FB.FM.parentDir(uri)) === currentPath)
                 {
                     res.push(uri)
                 }
