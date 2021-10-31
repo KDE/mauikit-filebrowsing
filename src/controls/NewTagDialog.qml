@@ -28,7 +28,7 @@ Maui.Dialog
     spacing: Maui.Style.space.big
     
     title: i18n("New tags")
-    message: i18n("Create new tags to organize your files. You can create multiple tags separate by a comma.")
+    message: i18n("Create new tags to organize your files. You can create multiple tags separated by a comma.")
 
     closeButtonVisible: false
     
