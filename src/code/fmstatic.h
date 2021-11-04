@@ -69,7 +69,7 @@ public:
         "application/x-kdevelop",
         "application/x-kicad-project"};
         
-        inline static const QStringList IMAGE_MIMETYPES = {"image/bmp", "image/webp", "image/png", "image/gif", "image/jpeg", "image/web", "image/svg", "image/svg+xml"};
+        inline static const QStringList IMAGE_MIMETYPES = {"image/bmp", "image/webp", "image/png", "image/gif", "image/jpeg", "image/web", "image/svg", "image/svg+xml", "application/x-krita", "image/x-xcf", "image/vnd.adobe.photoshop", "image/x-eps"};
         
         inline static const QStringList DOCUMENT_MIMETYPES = {"application/pdf", "application/rtf", "application/doc", "application/odf"};
         
