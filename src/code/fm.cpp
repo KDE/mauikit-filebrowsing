@@ -287,6 +287,7 @@ FM::FM(QObject *parent)
     connect(dirLister, &QDirLister::itemsAdded, this, [&](FMH::MODEL_LIST items, QUrl url) {
         qDebug() << "MORE ITEMS WERE ADDED";
         emit this->pathContentItemsReady({url, items});
+        emit this->pathContentReady(url); //emit this to force to sort on fmlist
     });
 
     connect(dirLister, &QDirLister::itemsDeleted, this, [&](FMH::MODEL_LIST items, QUrl url) {
