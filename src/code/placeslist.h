@@ -34,15 +34,15 @@ class PlacesList : public MauiList
     Q_OBJECT
     Q_DISABLE_COPY(PlacesList)
     
-    Q_PROPERTY(QList<int> groups READ getGroups WRITE setGroups NOTIFY groupsChanged)
+    Q_PROPERTY(QVariantList groups READ getGroups WRITE setGroups NOTIFY groupsChanged)
 
 public:
     PlacesList(QObject *parent = nullptr);
 
     const FMH::MODEL_LIST &items() const override;
 
-    QList<int> getGroups() const;
-    void setGroups(const QList<int> &value);
+    QVariantList getGroups() const;
+    void setGroups(const QVariantList &value);
 
     void componentComplete() override final;
 
@@ -79,12 +79,16 @@ public slots:
     static void addBookmark(const QUrl &url);
 
     int indexOfPath(const QUrl &url) const;
+    
+    void toggleSection(const int &section);
+    
+    bool containsGroup(const int &group);
 
 private:
     FMH::MODEL_LIST list;
     KFilePlacesModel *model;
 
-    QList<int> groups;
+    QVariantList groups;
 
     QHash<QString, QModelIndex> m_devices;
 

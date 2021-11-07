@@ -49,45 +49,45 @@ int mapPathType(const FMStatic::PATHTYPE_KEY& value)
 
 #ifdef KIO_AVAILABLE
 PlacesList::PlacesList(QObject *parent)
-    : MauiList(parent)
-    , model(new KFilePlacesModel(this))
-    #else
+: MauiList(parent)
+, model(new KFilePlacesModel(this))
+#else
 PlacesList::PlacesList(QObject *parent)
-    : MauiList(parent)
-    , model(nullptr)
-    #endif
+: MauiList(parent)
+, model(nullptr)
+#endif
 {
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     connect(this->model, &KFilePlacesModel::reloaded, this, &PlacesList::setList);
-
+    
     connect(this->model, &KFilePlacesModel::setupDone, this, &PlacesList::setList);
     
     connect(this->model, &KFilePlacesModel::rowsInserted, [this](const QModelIndex, int, int) {
         this->setList();
         emit this->bookmarksChanged();
-
+        
         /*emit this->preListChanged();
-
-        for (int i = first; i <= last; i++)
-        {
-            const QModelIndex index = model->index(i, 0);
-
-            if(this->groups.contains(model->groupType(index)))
-            {
-                this->list << getGroup(*this->model, static_cast<FMH::PATHTYPE_KEY>(model->groupType(index)));
-            }
-        }
-        emit this->postListChanged();	*/
+         * 
+         *        for (int i = first; i <= last; i++)
+         *        {
+         *            const QModelIndex index = model->index(i, 0);
+         * 
+         *            if(this->groups.contains(model->groupType(index)))
+         *            {
+         *                this->list << getGroup(*this->model, static_cast<FMH::PATHTYPE_KEY>(model->groupType(index)));
+    }
+    }
+    emit this->postListChanged();	*/
     }); // TODO improve the usage of the model
-#else
+    #else
     connect(&AppSettings::global(), &AppSettings::settingChanged, [this](const QUrl, const QString &key, const QVariant, const QString &group) {
         if (key == "BOOKMARKS" && group == "PREFERENCES") {
             this->setList();
             emit this->bookmarksChanged();
         }
     });
-#endif
+    #endif
 }
 
 void PlacesList::componentComplete()
@@ -104,127 +104,128 @@ const FMH::MODEL_LIST &PlacesList::items() const
 FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStatic::PATHTYPE_KEY &type)
 {
     FMH::MODEL_LIST res;
-
+    
     if (type == FMStatic::PATHTYPE_KEY::QUICK_PATH) {
         res << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + "fav"}, {FMH::MODEL_KEY::ICON, "love"}, {FMH::MODEL_KEY::LABEL, "Favorite"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
-
-// #ifdef KIO_AVAILABLE
-//     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
-// #endif
-
-    res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "tags:///"}, {FMH::MODEL_KEY::ICON, "tag"}, {FMH::MODEL_KEY::LABEL, "Tags"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
-
-    return res;
-}
-
-if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
-    res << FMStatic::getDefaultPaths();
-    return res;
-}
-
-#ifdef KIO_AVAILABLE
-auto mappedType = mapPathType(type);
-
-const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
-
-res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
-    const QUrl url = model.url(index);
-    if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))
-        return list;
-
-    auto data = FMH::MODEL {{FMH::MODEL_KEY::PATH, url.toString()},
-    {FMH::MODEL_KEY::URL, url.toString()},
-    {FMH::MODEL_KEY::ICON, model.icon(index).name()},
-    {FMH::MODEL_KEY::LABEL, model.text(index)},
-    {FMH::MODEL_KEY::NAME, model.text(index)},
-                       {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
-
-    if(model.isDevice(index))
-    {
-        const auto udi =  model.deviceForIndex(index).udi();
-        qDebug() << "DEVICE" << udi;
-
-        data.insert(FMH::MODEL_KEY::UDI, udi);
-        m_devices.insert(udi, index);
+        
+        // #ifdef KIO_AVAILABLE
+        //     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
+        // #endif
+        
+        res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "tags:///"}, {FMH::MODEL_KEY::ICON, "tag"}, {FMH::MODEL_KEY::LABEL, "Tags"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
+        
+        return res;
     }
-
-    list << data;
-    return list;
-});
-
-#else
-Q_UNUSED(model)
-switch (type) {
-    case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
-        res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
-        break;
-    case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
-        res = FMStatic::getDevices();
-        break;
-    default:
-        break;
-}
-
-#endif
-
-return res;
+    
+    if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
+        res << FMStatic::getDefaultPaths();
+        return res;
+    }
+    
+    #ifdef KIO_AVAILABLE
+    auto mappedType = mapPathType(type);
+    
+    const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
+    
+    res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
+        const QUrl url = model.url(index);
+        if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))
+            return list;
+        
+        auto data = FMH::MODEL {{FMH::MODEL_KEY::PATH, url.toString()},
+                           {FMH::MODEL_KEY::URL, url.toString()},
+                           {FMH::MODEL_KEY::ICON, model.icon(index).name()},
+                           {FMH::MODEL_KEY::LABEL, model.text(index)},
+                           {FMH::MODEL_KEY::NAME, model.text(index)},
+                           {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
+                           
+                           if(model.isDevice(index))
+                           {
+                               const auto udi =  model.deviceForIndex(index).udi();
+                               qDebug() << "DEVICE" << udi;
+                               
+                               data.insert(FMH::MODEL_KEY::UDI, udi);
+                               m_devices.insert(udi, index);
+                           }
+                           
+                           list << data;
+                           return list;
+    });
+    
+    #else
+    Q_UNUSED(model)
+    switch (type) {
+        case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
+            res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
+            break;
+        case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
+            res = FMStatic::getDevices();
+            break;
+        default:
+            break;
+    }
+    
+    #endif
+    
+    return res;
 }
 
 void PlacesList::setList()
 {
-    if (this->groups.isEmpty())
-        return;
-
+    this->list.clear();
+    
     qDebug() << "Setting PlacesList model" << groups;
     emit this->preListChanged();
-
-    this->list.clear();
-
-    for (const auto &group : qAsConst(this->groups)) {
-        switch (group) {
-        case FMStatic::PATHTYPE_KEY::PLACES_PATH:
-            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
-            break;
-            
-        case FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH:
-            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH);
-            break;
-
-        case FMStatic::PATHTYPE_KEY::QUICK_PATH:
-            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::QUICK_PATH);
-            break;
-
-        case FMStatic::PATHTYPE_KEY::DRIVES_PATH:
-            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::DRIVES_PATH);
-            break;
-
-        case FMStatic::PATHTYPE_KEY::REMOTE_PATH:
-            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOTE_PATH);
-            break;
-
-        case FMStatic::PATHTYPE_KEY::REMOVABLE_PATH:
-            this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOVABLE_PATH);
-            break;
-
-        case FMStatic::PATHTYPE_KEY::TAGS_PATH:
-            this->list << Tagging::getInstance()->getTags();
-            break;
+    
+    if (!this->groups.isEmpty())
+    {        
+        for (const auto &group : qAsConst(this->groups)) {
+            switch (group.toInt()) {
+                case FMStatic::PATHTYPE_KEY::PLACES_PATH:
+                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
+                    break;
+                    
+                case FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH:
+                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH);
+                    break;
+                    
+                case FMStatic::PATHTYPE_KEY::QUICK_PATH:
+                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::QUICK_PATH);
+                    break;
+                    
+                case FMStatic::PATHTYPE_KEY::DRIVES_PATH:
+                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::DRIVES_PATH);
+                    break;
+                    
+                case FMStatic::PATHTYPE_KEY::REMOTE_PATH:
+                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOTE_PATH);
+                    break;
+                    
+                case FMStatic::PATHTYPE_KEY::REMOVABLE_PATH:
+                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOVABLE_PATH);
+                    break;
+                    
+                case FMStatic::PATHTYPE_KEY::TAGS_PATH:
+                    this->list << Tagging::getInstance()->getTags();
+                    break;
+            }
         }
     }
-
+    
     emit this->postListChanged();
+    emit this->countChanged();
 }
 
-QList<int> PlacesList::getGroups() const
+QVariantList PlacesList::getGroups() const
 {
     return this->groups;
 }
 
-void PlacesList::setGroups(const QList<int> &value)
+void PlacesList::setGroups(const QVariantList &value)
 {
     if (this->groups == value)
         return;
-
+    
     this->groups = value;
     emit this->groupsChanged();
 }
@@ -233,17 +234,17 @@ void PlacesList::removePlace(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return;
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     emit this->preItemRemoved(index);
     this->model->removePlace(this->model->closestItem(this->list.at(index)[FMH::MODEL_KEY::PATH]));
     this->list.removeAt(index);
     emit this->postItemRemoved();
-#else
+    #else
     auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
     bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
     UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
-#endif
+    #endif
 }
 
 bool PlacesList::contains(const QUrl &path)
@@ -255,12 +256,12 @@ bool PlacesList::isDevice(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return false;
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     return m_devices.contains(item[FMH::MODEL_KEY::UDI]);
-#endif
-
+    #endif
+    
     return false;
 }
 
@@ -268,15 +269,15 @@ bool PlacesList::setupNeeded(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return false;
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
         return this->model->setupNeeded(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
-#endif
-
+    #endif
+    
     return false;
 }
 
@@ -284,47 +285,66 @@ void PlacesList::requestEject(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return;
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
         this->model->requestEject(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
-#endif
+    #endif
 }
 
 void PlacesList::requestSetup(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return;
-
-#ifdef KIO_AVAILABLE
+    
+    #ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
         this->model->requestSetup(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
-#endif
+    #endif
 }
 
 void PlacesList::addBookmark(const QUrl& url)
 {
-#ifdef KIO_AVAILABLE
+    #ifdef KIO_AVAILABLE
     KFilePlacesModel model;
     model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMStatic::getIconName(url));
-#else
+    #else
     // do android stuff until cmake works with android
     if (FMStatic::isDefaultPath(url.toString()))
         return;
-
+    
     auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
     bookmarks << url.toString();
     UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
-#endif
+    #endif
 }
 
 int PlacesList::indexOfPath(const QUrl &url) const
 {
     return this->indexOf(FMH::MODEL_KEY::PATH, url.toString());
 }
+
+void PlacesList::toggleSection(const int& section)
+{
+    if(this->groups.contains(section))
+    {
+        this->groups.removeAll(section);
+    }else
+    {
+        this->groups.append(section);
+    }
+    
+    emit this->groupsChanged();
+}
+
+bool PlacesList::containsGroup(const int& group)
+{
+    return this->groups.contains(group);
+}
+
