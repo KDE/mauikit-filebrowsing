@@ -37,11 +37,28 @@ public:
      */
     enum FILTER_TYPE : int { AUDIO, VIDEO, TEXT, IMAGE, DOCUMENT, COMPRESSED, FONT, NONE };
     
-    inline static const QStringList AUDIO_MIMETYPES = {"audio/mpeg", "audio/mp4", "audio/flac", "audio/ogg", "audio/wav"};
+    inline static const QStringList AUDIO_MIMETYPES = {
+        "audio/mpeg", 
+        "audio/mp4", 
+        "audio/flac", 
+        "audio/ogg", 
+        "audio/wav"};
     
-    inline static const QStringList VIDEO_MIMETYPES = {"video/mp4", "video/x-matroska", "video/webm", "video/avi", "video/flv", "video/mpg", "video/wmv", "video/mov", "video/ogg", "video/mpeg", "video/jpeg"};
+    inline static const QStringList VIDEO_MIMETYPES = {
+        "video/mp4",
+        "video/x-matroska", 
+        "video/webm", 
+        "video/avi", 
+        "video/flv",
+        "video/mpg",
+        "video/wmv",
+        "video/mov",
+        "video/ogg",
+        "video/mpeg", 
+        "video/jpeg"};
     
-    inline static const QStringList TEXT_MIMETYPES = {"text/markdown",
+    inline static const QStringList TEXT_MIMETYPES = {
+        "text/markdown",
         "text/x-chdr",
         "text/x-c++src",
         "text/x-c++hdr",
@@ -55,10 +72,13 @@ public:
         "text/x-cmake",
         "text/x-makefile",
         "text/x-qml",
+        "text/x-java",
+        "text/x-log",
         "text/x-python",
         "text/*",
         "text/x-copying",
         "application/xml",
+        "application/x-gitignore",
         "application/javascript",
         "application/json",
         "application/pgp-keys",
@@ -69,14 +89,42 @@ public:
         "application/x-kdevelop",
         "application/x-kicad-project"};
         
-        inline static const QStringList IMAGE_MIMETYPES = {"image/bmp", "image/webp", "image/png", "image/gif", "image/jpeg", "image/web", "image/svg", "image/svg+xml", "application/x-krita", "image/x-xcf", "image/vnd.adobe.photoshop", "image/x-eps", "image/jxl", "image/avif"};
+        inline static const QStringList IMAGE_MIMETYPES = {
+            "image/bmp", 
+            "image/webp",
+            "image/png",
+            "image/gif", 
+            "image/jpeg",
+            "image/web", 
+            "image/svg", 
+            "image/svg+xml", 
+            "application/x-krita", 
+            "image/x-xcf", 
+            "image/vnd.adobe.photoshop", 
+            "image/x-eps",
+            "image/jxl", 
+            "image/avif"};
         
-        inline static const QStringList DOCUMENT_MIMETYPES = {"application/pdf", "application/rtf", "application/doc", "application/odf"};
+        inline static const QStringList DOCUMENT_MIMETYPES = {
+            "application/pdf", 
+            "application/rtf",
+            "application/doc",
+            "application/odf"};
         
-        inline static const QStringList COMPRESSED_MIMETYPES =
-        {"application/x-compress", "application/x-compressed", "application/x-xz-compressed-tar", "application/x-compressed-tar", "application/x-xz", "application/x-bzip", "application/x-gtar", "application/x-gzip", "application/zip"};
+        inline static const QStringList COMPRESSED_MIMETYPES = {
+            "application/x-compress", 
+            "application/x-compressed",
+            "application/x-xz-compressed-tar",
+            "application/x-compressed-tar", 
+            "application/x-xz",
+            "application/x-bzip",
+            "application/x-gtar", 
+            "application/x-gzip",
+            "application/zip"};
         
-        inline static const QStringList FONT_MIMETYPES = {"font/ttf", "font/otf"};
+        inline static const QStringList FONT_MIMETYPES = {
+            "font/ttf", 
+            "font/otf"};
         
         inline static const QMap<FILTER_TYPE, QStringList> SUPPORTED_MIMETYPES {{FILTER_TYPE::AUDIO, AUDIO_MIMETYPES},
         {FILTER_TYPE::VIDEO, VIDEO_MIMETYPES},
