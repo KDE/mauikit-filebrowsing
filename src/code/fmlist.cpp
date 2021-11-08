@@ -128,6 +128,14 @@ FMList::FMList(QObject *parent)
             this->refresh();
         }
     });   
+    
+    connect(Tagging::getInstance(), &Tagging::tagRemoved, [this](QString)
+    {
+        if(this->pathType == PATHTYPE::TAGS_PATH)
+        {
+            this->refresh();
+        }
+    });   
 }
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
