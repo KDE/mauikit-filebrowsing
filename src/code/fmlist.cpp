@@ -45,6 +45,7 @@ FMList::FMList(QObject *parent)
         this->sortList();
         this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
         emit this->postListChanged();
+        emit this->countChanged();
     });
 
     connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
@@ -105,6 +106,7 @@ FMList::FMList(QObject *parent)
             emit this->preItemAppended();
             this->list << item;
             emit this->postItemAppended();
+            emit this->countChanged();
         }
     });
     
@@ -145,6 +147,7 @@ void FMList::assignList(const FMH::MODEL_LIST &list)
     this->sortList();
     this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
     emit this->postListChanged();
+    emit this->countChanged();
 }
 
 void FMList::appendToList(const FMH::MODEL_LIST &list)
@@ -152,6 +155,7 @@ void FMList::appendToList(const FMH::MODEL_LIST &list)
     emit this->preItemsAppended(list.size());
     this->list << list;
     emit this->postItemAppended();
+    emit this->countChanged();
 }
 
 void FMList::clear()
@@ -159,6 +163,7 @@ void FMList::clear()
     emit this->preListChanged();
     this->list.clear();
     emit this->postListChanged();
+    emit this->countChanged();
 }
 
 FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &filters)
@@ -508,6 +513,7 @@ void FMList::setFoldersFirst(const bool &value)
     this->sortList();
 
     emit this->postListChanged();
+    emit this->countChanged();
 }
 
 void FMList::search(const QString &query, const FMList *currentFMList)
@@ -530,6 +536,7 @@ void FMList::componentComplete()
             emit this->preListChanged();        
             this->sortList();        
             emit this->postListChanged();
+            emit this->countChanged();
         }       
     });
    
@@ -636,6 +643,7 @@ void FMList::remove(const int &index)
     emit this->preItemRemoved(index);
     this->list.remove(index);
     emit this->postItemRemoved();
+    emit this->countChanged();
 }
 
 int FMList::indexOfName(const QString& query)
