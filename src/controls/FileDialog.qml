@@ -441,6 +441,15 @@ Maui.Dialog
                     width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
                     maxListHeight: control.height - (Maui.Style.contentMargins*2)
                     
+                    listDelegate: Maui.ListBrowserDelegate
+                    {
+                        width: ListView.view.width
+                        iconSource: model.icon
+                        imageSource: model.thumbnail
+                        label1.text: model.label
+                        label2.text: model.url
+                    }
+                    
                     onExitClicked:
                     {
                         _selectionBar.clear()
