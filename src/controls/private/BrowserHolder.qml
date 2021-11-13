@@ -11,7 +11,7 @@ QtObject
     /**
       *
       */
-    property bool visible: (browser.status.code === FB.PathStatus.LOADING || browser.status.code === FB.PathStatus.ERROR || ( browser.status.code === FB.PathStatus.READY && browser.status.empty)) && browser.count <= 0
+    property bool visible: (browser.status.code === FB.PathStatus.ERROR || browser.status.empty) && browser.count <= 0
 
 
     /**

@@ -116,6 +116,7 @@ public:
             "application/x-compressed",
             "application/x-xz-compressed-tar",
             "application/x-compressed-tar", 
+//             "application/vnd.android.package-archive",
             "application/x-xz",
             "application/x-bzip",
             "application/x-gtar", 
