@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QSettings>
 
-#if defined Q_OS_LINUX && !defined Q_OS_ANDROID
+#if (defined Q_OS_LINUX || defined Q_OS_FREEBSD) && !defined Q_OS_ANDROID 
 #include <KConfig>
 #include <KConfigGroup>
 #endif

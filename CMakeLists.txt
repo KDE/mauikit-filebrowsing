@@ -91,7 +91,7 @@ if(ANDROID)
 endif()
 
 if(UNIX AND NOT ANDROID)
-find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS Config)
+    find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS Config)
 endif()
 
 if(${KIO_AVAILABLE})

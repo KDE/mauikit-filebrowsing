@@ -83,7 +83,10 @@ ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
 add_library(
     MauiKitFileBrowsing
     SHARED
-    ${sources} ${pluginData} ${syncing_SRCS} ${filebrowsing_QML_QRC}
+    ${sources}
+    ${pluginData}
+    ${syncing_SRCS}
+    ${filebrowsing_QML_QRC}
     )
 
 add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
