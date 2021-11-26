@@ -170,7 +170,7 @@ private:
     QDirLister *dirLister;
 #endif
 
-signals:
+Q_SIGNALS:
     void cloudServerContentReady(FMH::MODEL_LIST list, const QUrl &url);
     void cloudItemReady(FMH::MODEL item, QUrl path); // when a item is downloaded and ready
 

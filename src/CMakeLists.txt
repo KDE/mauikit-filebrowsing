@@ -77,8 +77,7 @@ else()
     qt5_add_resources(filebrowsing_QML_QRC resources.qrc)
 endif()
 
-ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION}
-    DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
 
 add_library(
     MauiKitFileBrowsing

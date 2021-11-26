@@ -443,7 +443,7 @@ public slots:
     
     int indexOfName(const QString &query);
     
-signals:
+Q_SIGNALS:
     void pathChanged();
     void pathNameChanged();
     void pathTypeChanged();
