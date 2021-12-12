@@ -55,6 +55,7 @@ public:
         "video/mov",
         "video/quicktime",
         "video/ogg",
+        "video/x-flv",
         "video/mpeg", 
         "video/jpeg"};
     
