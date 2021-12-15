@@ -5,7 +5,7 @@
 #include <QQuickImageProvider>
 #include "filebrowsing_export.h"
 
-class FILEBROWSING_EXPORT AsyncImageResponse : public QQuickImageResponse
+class AsyncImageResponse : public QQuickImageResponse
 {
 public:
     AsyncImageResponse(const QString &id, const QSize &requestedSize);
@@ -19,7 +19,7 @@ private:
     QString m_error;
 };
 
-class Thumbnailer : public QQuickAsyncImageProvider
+class FILEBROWSING_EXPORT Thumbnailer : public QQuickAsyncImageProvider
 {
 public:
     QQuickImageResponse *requestImageResponse(const QString &id, const QSize &requestedSize) override;
