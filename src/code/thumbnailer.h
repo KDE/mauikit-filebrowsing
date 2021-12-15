@@ -3,8 +3,9 @@
 
 #include <QString>
 #include <QQuickImageProvider>
+#include "filebrowsing_export.h"
 
-class AsyncImageResponse : public QQuickImageResponse
+class FILEBROWSING_EXPORT AsyncImageResponse : public QQuickImageResponse
 {
 public:
     AsyncImageResponse(const QString &id, const QSize &requestedSize);
