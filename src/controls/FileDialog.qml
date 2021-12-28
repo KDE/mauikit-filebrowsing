@@ -436,7 +436,7 @@ Maui.Dialog
                 footer: Maui.SelectionBar
                 {
                     id: _selectionBar
-                    padding: Maui.Style.space.big
+
                     anchors.horizontalCenter: parent.horizontalCenter
                     width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
                     maxListHeight: control.height - (Maui.Style.contentMargins*2)
