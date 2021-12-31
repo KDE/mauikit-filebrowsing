@@ -276,8 +276,7 @@ Maui.AltBrowser
         readonly property string path : model.path
         
         width: ListView.view.width
-        height: control.listItemSize
-        
+        template.headerSizeHint: control.listItemSize
         iconSource: model.icon
         
         label1.text: model.label ? model.label : ""

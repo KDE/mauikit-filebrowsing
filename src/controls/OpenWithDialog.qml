@@ -73,7 +73,7 @@ Maui.Dialog
         delegate: Maui.ListBrowserDelegate
         {
             width: ListView.view.width
-            height: Maui.Style.rowHeight * 2
+            //height: Maui.Style.rowHeight * 2
             hoverEnabled: true
             
             label1.text: model.label
