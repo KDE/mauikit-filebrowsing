@@ -227,12 +227,13 @@ Maui.Page
         }
     }
     
-    headBar.middleContent: Maui.TextField
+    headBar.middleContent: Maui.SearchField
     {
         id: _searchField
         focus: true
         Layout.fillWidth: true
         Layout.maximumWidth: 500
+        Layout.alignment: Qt.AlignCenter
         placeholderText: _filterButton.checked ? i18n("Filter") : ("Search")
         inputMethodHints: Qt.ImhNoAutoUppercase
         
