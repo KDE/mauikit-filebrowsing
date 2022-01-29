@@ -33,14 +33,14 @@ Maui.ListBrowser
       * iconSize : int
       */
     property int iconSize : Maui.Style.iconSizes.small
+    
+    property string currentPath
 
     /**
       * placeClicked :
       */
     signal placeClicked (string path)
-    signal itemClicked(int index)
-    signal itemDoubleClicked(int index)
-    signal itemRightClicked(int index)
+
     
     focus: true
     model: Maui.BaseModel
@@ -50,12 +50,13 @@ Maui.ListBrowser
         {
             id: placesList
             groups: [
-                FB.FMList.PLACES_PATH,
-                FB.FMList.APPS_PATH,
                 FB.FMList.BOOKMARKS_PATH,
                 FB.FMList.DRIVES_PATH]
         }
     }
+    
+                        currentIndex: placesList.indexOfPath(control.currentPath)
+
 
     section.property: "type"
     section.criteria: ViewSection.FullString
@@ -69,15 +70,6 @@ Maui.ListBrowser
         width: parent.width
         height: Maui.Style.toolBarHeightAlt
     }
-
-    onItemClicked:
-    {
-        var item = placesModel.get(index)
-        var path = item.path
-        placeClicked(path)
-    }
-
-    onItemRightClicked: _menu.popup()
 
     Maui.ContextualMenu
     {
@@ -101,6 +93,52 @@ Maui.ListBrowser
             onTriggered: list.removePlace(control.currentIndex)
         }
     }
+    
+    flickable.header: GridView
+                    {
+                        id: _quickSection
+                        width: parent.width
+                        implicitHeight: contentHeight + topMargin + bottomMargin
+                        leftMargin: 0
+                        rightMargin: 0
+//                        padding: 0
+                        cellWidth: Math.floor(parent.width/3)
+                        cellHeight: cellWidth
+                        interactive: false
+                        currentIndex: _quickPacesList.indexOfPath(control.currentPath)
+
+                        model: Maui.BaseModel
+                        {
+                            list: FB.PlacesList
+                            {
+                                id: _quickPacesList
+                                groups: [FB.FMList.QUICK_PATH, FB.FMList.PLACES_PATH]
+                            }
+                        }
+
+                        delegate: Item
+                        {
+                            height: GridView.view.cellHeight
+                            width: GridView.view.cellWidth
+
+                            Maui.GridBrowserDelegate
+                            {
+                                isCurrentItem: parent.GridView.isCurrentItem
+                                anchors.fill: parent
+                                anchors.margins: Maui.Style.space.tiny
+                                iconSource: model.icon +  (Qt.platform.os == "android" || Qt.platform.os == "osx" ? ("-sidebar") : "")
+                                iconSizeHint: Maui.Style.iconSizes.medium
+                                template.isMask: true
+                                label1.text: model.label
+                                labelsVisible: false
+                                tooltipText: model.label
+                                onClicked:
+                                {
+                                    placeClicked(model.path)
+                                }
+                            }
+                        }
+                    }
 
     delegate: Maui.ListDelegate
     {
@@ -115,20 +153,19 @@ Maui.ListBrowser
 
         onClicked:
         {
-            control.currentIndex = index
-            itemClicked(index)
+            placeClicked(model.path)
         }
 
         onRightClicked:
         {
-            control.currentIndex = index
-            itemRightClicked(index)
+            _menu.index = index
+            _menu.popup()
         }
 
         onPressAndHold:
         {
-            control.currentIndex = index
-            itemRightClicked(index)
+            _menu.index = index
+            _menu.popup()
         }
     }
 }

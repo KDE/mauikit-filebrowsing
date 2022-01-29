@@ -205,13 +205,9 @@ Maui.Dialog
                         browser.openFolder(path)
                     }
                     
-                    Binding on currentIndex
-                    {
-                        value: list.indexOfPath(browser.currentPath)
-                        restoreMode: Binding.RestoreBindingOrValue
-                    }
-                    
-                    list.groups:  [FB.FMList.PLACES_PATH,
+                    currentPath: browser.currentPath
+
+                    list.groups:  [
                     FB.FMList.BOOKMARKS_PATH,
                     FB.FMList.REMOTE_PATH,
                     FB.FMList.CLOUD_PATH,
