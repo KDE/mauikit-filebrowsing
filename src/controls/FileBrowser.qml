@@ -668,6 +668,56 @@ Maui.Page
         //        }
     }   
     
+    Maui.ContextualMenu
+    {
+        id: _dropMenu
+        property string urls
+        //enabled: FB.FM.getFileInfo(control.currentPath).isdir == "true"
+
+        MenuItem
+        {
+            text: i18n("Copy here")
+            icon.name: "edit-copy"
+            onTriggered:
+            {
+                const urls = _dropMenu.urls.split(",")
+                FB.FM.copy(urls, control.currentPath, false)
+            }
+        }
+
+        MenuItem
+        {
+            text: i18n("Move here")
+            icon.name: "edit-move"
+            onTriggered:
+            {
+                const urls = _dropMenu.urls.split(",")
+                FB.FM.cut(urls, control.currentPath)
+            }
+        }
+
+        MenuItem
+        {
+            text: i18n("Link here")
+            icon.name: "edit-link"
+            onTriggered:
+            {
+                const urls = _dropMenu.urls.split(",")
+                for(var i in urls)
+                    FB.FM.createSymlink(urls[i], control.currentPath)
+            }
+        }
+
+        MenuSeparator {}
+
+        MenuItem
+        {
+            text: i18n("Cancel")
+            icon.name: "dialog-cancel"
+            onTriggered: _dropMenu.close()
+        }
+    }
+
     StackView
     {
         id: _stackView
@@ -694,7 +744,7 @@ Maui.Page
             }
             
             opacity:  _dropArea.containsDrag ? 0.5 : 1
-            
+
             Private.BrowserView
             {
                 id: _browser                
@@ -729,57 +779,7 @@ Maui.Page
                     }
                 }
             }
-            
-            Maui.ContextualMenu
-            {
-                id: _dropMenu
-                property string urls
-                //enabled: FB.FM.getFileInfo(control.currentPath).isdir == "true"
-                
-                MenuItem
-                {
-                    text: i18n("Copy here")
-                    icon.name: "edit-copy"
-                    onTriggered:
-                    {
-                        const urls = _dropMenu.urls.split(",")
-                        FB.FM.copy(urls, control.currentPath, false)
-                    }
-                }
-                
-                MenuItem
-                {
-                    text: i18n("Move here")
-                    icon.name: "edit-move"
-                    onTriggered:
-                    {
-                        const urls = _dropMenu.urls.split(",")
-                        FB.FM.cut(urls, control.currentPath)
-                    }
-                }
-                
-                MenuItem
-                {
-                    text: i18n("Link here")
-                    icon.name: "edit-link"
-                    onTriggered:
-                    {
-                        const urls = _dropMenu.urls.split(",")
-                        for(var i in urls)
-                            FB.FM.createSymlink(urls[i], control.currentPath)
-                    }
-                }
-                
-                MenuSeparator {}
-                
-                MenuItem
-                {
-                    text: i18n("Cancel")
-                    icon.name: "dialog-cancel"
-                    onTriggered: _dropMenu.close()
-                }
-            }
-        }
+         }
         
         Component
         {
