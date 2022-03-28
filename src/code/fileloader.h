@@ -17,8 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
-#ifndef FILELOADER_H
-#define FILELOADER_H
+#pragma once
 
 #include <QDir>
 #include <QObject>
@@ -102,4 +101,3 @@ private:
 };
 }
 
-#endif // FILELOADER_H

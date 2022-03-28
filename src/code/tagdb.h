@@ -17,8 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef TAGDB_H
-#define TAGDB_H
+#pragma once
 
 #include <QObject>
 
@@ -139,4 +138,3 @@ public:
    const QSqlDatabase& db() const;
 };
 
-#endif // DB_H

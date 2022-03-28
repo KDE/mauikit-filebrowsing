@@ -1,6 +1,4 @@
-#ifndef TAGSLIST_H
-#define TAGSLIST_H
-
+#pragma once
 #include <QObject>
 #include <QStringList>
 
@@ -160,4 +158,3 @@ public slots:
 
 };
 
-#endif // TAGSLIST_H
