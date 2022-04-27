@@ -241,7 +241,14 @@ Maui.Page
         {
             if(_filterButton.checked)
             {
-                control.view.filter = text
+                if(text.includes(","))
+                {
+                    control.view.filters = text.split(",")
+                }else
+                {
+                    control.view.filter = text
+                }
+                
             }else
             {
                 control.search(text)
@@ -252,15 +259,14 @@ Maui.Page
         {
             if(_filterButton.checked)
             {
-                control.view.filter = ""
+                control.currentFMModel.clearFilters()
             }
         }
         
         onTextChanged:
         {
             if(_filterButton.checked)
-                _searchField.accepted()
-                
+                _searchField.accepted()                
         }
         
         Keys.enabled: _filterButton.checked
@@ -731,6 +737,7 @@ Maui.Page
             property alias currentFMList : _browser.currentFMList
             property alias currentFMModel: _browser.currentFMModel
             property alias filter: _browser.filter
+            property alias filters: _browser.filters
             property alias title : _browser.title
             
             onDropped:

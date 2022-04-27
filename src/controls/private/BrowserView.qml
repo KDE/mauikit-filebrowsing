@@ -50,7 +50,6 @@ Maui.AltBrowser
             foldersFirst: settings.foldersFirst
         }
         
-        filter: control.filter
         recursiveFilteringEnabled: true
         sortCaseSensitivity: Qt.CaseInsensitive
         filterCaseSensitivity: Qt.CaseInsensitive
@@ -82,13 +81,14 @@ Maui.AltBrowser
     /**
      * 
      */
-    readonly property alias currentFMModel : _browserModel
-    
+    readonly property alias currentFMModel : _browserModel    
     
     /**
      * 
      */
-    property string filter
+    property alias filter : _browserModel.filter
+    
+    property alias filters: _browserModel.filters
     
     signal itemClicked(int index)
     signal itemDoubleClicked(int index)
@@ -435,9 +435,9 @@ Maui.AltBrowser
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
             label1.text: model.label
-            //             label2.visible: delegate.height > 160 && model.mime
-            //             label2.font.pointSize: Maui.Style.fontSizes.tiny
-            //             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+                        label2.visible: delegate.height > 160 && model.mime
+                        label2.font.pointSize: Maui.Style.fontSizes.tiny
+                        label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
             
             padding: Maui.Style.space.tiny
             isCurrentItem: parent.GridView.isCurrentItem || checked
