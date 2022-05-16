@@ -724,10 +724,9 @@ Maui.Page
         }
     }
 
-    StackView
+    Maui.StackView
     {
         id: _stackView
-        focus: true
         anchors.fill: parent
         
         initialItem: DropArea
@@ -1048,7 +1047,7 @@ Maui.Page
     {
         if(!control.isSearchView)
         {
-            _stackView.push(_searchBrowserComponent, StackView.Immediate)
+            _stackView.push(_searchBrowserComponent)
         }
         control.settings.searchBarVisible = true
         _searchField.forceActiveFocus()
@@ -1059,7 +1058,7 @@ Maui.Page
      **/
     function quitSearch()
     {
-        _stackView.pop(StackView.Immediate)
+        _stackView.pop()
         _browser.forceActiveFocus()
     }
     
