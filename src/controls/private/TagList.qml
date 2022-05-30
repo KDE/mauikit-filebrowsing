@@ -71,14 +71,14 @@ Maui.ListBrowser
             verticalAlignment: Qt.AlignVCenter
             text: control.placeholderText
             opacity: 0.7
-            color: Kirigami.Theme.textColor
+            color: Maui.Theme.textColor
         }
     }
 
     delegate: TagDelegate
     {
         showCloseButton: control.showDeleteIcon
-        Kirigami.Theme.textColor: control.Kirigami.Theme.textColor
+        Maui.Theme.textColor: control.Maui.Theme.textColor
        
         ListView.onAdd:
         {

@@ -262,11 +262,8 @@ Maui.AltBrowser
     {
         id: delegate
         width: ListView.view.width
-        height: Maui.Style.toolBarHeightAlt
-        
-        label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section
-        labelTxt.font.pointSize: Maui.Style.fontSizes.big
-        
+        height: Maui.Style.toolBarHeightAlt        
+        label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section        
         isSection: true
     }
     
@@ -462,7 +459,7 @@ Maui.AltBrowser
                 visible: (model.issymlink == true) || (model.issymlink == "true")
                 
                 source: "link"
-                color: Kirigami.Theme.textColor
+                color: Maui.Theme.textColor
                 isMask: true
                 height: Maui.Style.iconSizes.small
             }

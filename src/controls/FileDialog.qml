@@ -222,7 +222,7 @@ Maui.Dialog
                 floatingFooter: true
                 flickable: browser.flickable
                 headBar.visible: true
-                headerColorSet: Kirigami.Theme.Header
+                headerColorSet: Maui.Theme.Header
                 headBar.farLeftContent: ToolButton
                 {
                     icon.name: checked ? "sidebar-collapse" : "sidebar-expand"

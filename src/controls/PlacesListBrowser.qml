@@ -89,7 +89,7 @@ Maui.ListBrowser
         MenuItem
         {
             text: i18n("Remove")
-            Kirigami.Theme.textColor: Kirigami.Theme.negativeTextColor
+            Maui.Theme.textColor: Maui.Theme.negativeTextColor
             onTriggered: list.removePlace(control.currentIndex)
         }
     }

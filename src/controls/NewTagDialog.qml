@@ -72,7 +72,7 @@ Maui.Dialog
             {
                 label.text: modelData
                 showCloseButton: false
-                Kirigami.Theme.backgroundColor: control.currentColor
+                Maui.Theme.backgroundColor: control.currentColor
                 iconSource: "tag"
             }
         }       
