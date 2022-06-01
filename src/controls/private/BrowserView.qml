@@ -20,6 +20,12 @@ Maui.AltBrowser
     gridView.itemHeight: Math.floor(control.gridView.itemSize*1.4)
     //     gridView.cacheBuffer: control.height * 10
     
+    property alias dialog :_dialogLoader.item
+    Loader
+    {
+        id: _dialogLoader
+    }
+    
     Binding on currentIndex
     {
         when: control.currentView
@@ -173,29 +179,33 @@ Maui.AltBrowser
         
         MenuItem
         {            
-            Maui.NewDialog
+            Component
             {
-                id: _mergeDialog
-                property var urls
-                readonly property bool dirExists : FB.FM.fileExists(control.path.toString()+"/"+textEntry.text)
-                acceptButton.enabled: !dirExists
-                
-                onDirExistsChanged:
+                id: _mergeDialogComponent
+                Maui.NewDialog
                 {
-                    if(dirExists)
+                    id: _mergeDialog
+                    property var urls
+                    readonly property bool dirExists : FB.FM.fileExists(control.path.toString()+"/"+textEntry.text)
+                    acceptButton.enabled: !dirExists
+                    
+                    onDirExistsChanged:
                     {
-                        _mergeDialog.alert(i18n("Directory already exists"), 2)
+                        if(dirExists)
+                        {
+                            _mergeDialog.alert(i18n("Directory already exists"), 2)
+                        }
                     }
-                }
-                
-                title: i18n("Merge %1 files", urls.length)
-                message:i18n("Give a name to the new directory where all files will be merge.")
-                
-                textEntry.placeholderText: i18n("Directory name")
-                
-                onFinished:
-                {                    
-                    FB.FM.group(_mergeDialog.urls, control.path, text)                    
+                    
+                    title: i18n("Merge %1 files", urls.length)
+                    message:i18n("Give a name to the new directory where all files will be merge.")
+                    
+                    textEntry.placeholderText: i18n("Directory name")
+                    
+                    onFinished:
+                    {                    
+                        FB.FM.group(_mergeDialog.urls, control.path, text)                    
+                    }
                 }
             }
             
@@ -206,8 +216,9 @@ Maui.AltBrowser
             {
                 var urls = _dropMenu.urls.split(",")
                 urls.push(_dropMenu.target)
-                _mergeDialog.urls = urls
-                _mergeDialog.open()
+                _dialogLoader.sourceComponent = _mergeDialogComponent
+                dialog.urls = urls
+                dialog.open()
             }
         }        
         
@@ -424,7 +435,7 @@ Maui.AltBrowser
             template.imageHeight: control.gridView.itemSize
             
             anchors.fill: parent
-            anchors.margins: Kirigami.Settings.isMobile ? Maui.Style.space.tiny : Maui.Style.space.medium 
+            anchors.margins: Maui.Handy.isMobile ? Maui.Style.space.tiny : Maui.Style.space.medium 
             
             template.labelSizeHint: 42
             iconSizeHint: Maui.Style.mapToIconSizes(template.iconContainer.height)
@@ -432,9 +443,9 @@ Maui.AltBrowser
             template.fillMode: Image.PreserveAspectFit
             iconSource: model.icon
             label1.text: model.label
-                        label2.visible: delegate.height > 160 && model.mime
-                        label2.font.pointSize: Maui.Style.fontSizes.tiny
-                        label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+            label2.visible: delegate.height > 160 && model.mime
+            label2.font.pointSize: Maui.Style.fontSizes.tiny
+            label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
             
             padding: Maui.Style.space.tiny
             isCurrentItem: parent.GridView.isCurrentItem || checked

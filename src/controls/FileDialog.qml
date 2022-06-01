@@ -44,7 +44,7 @@ Maui.Dialog
 {
     id: control
     
-    maxHeight: Kirigami.Settings.isMobile ? parent.height * 0.95 : 500
+    maxHeight: Maui.Handy.isMobile ? parent.height * 0.95 : 500
     maxWidth: 700
     
     hint: 1

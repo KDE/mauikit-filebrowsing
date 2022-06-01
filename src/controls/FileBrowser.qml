@@ -23,8 +23,6 @@ import QtQml 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Layouts 1.3
 
-import org.kde.kirigami 2.14 as Kirigami
-
 import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
 
@@ -659,7 +657,7 @@ Maui.Page
         
         function onAreaClicked(mouse)
         {
-            if(!Kirigami.Settings.isMobile && mouse.button === Qt.RightButton)
+            if(!Maui.Handy.isMobile && mouse.button === Qt.RightButton)
             {
                 control.rightClicked()
             }
