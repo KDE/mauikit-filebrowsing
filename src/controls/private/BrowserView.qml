@@ -291,6 +291,7 @@ Maui.AltBrowser
         label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
         label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
         
+        template.isMask: true
         iconSizeHint : Maui.Style.iconSizes.medium
         
         tooltipText: model.path
