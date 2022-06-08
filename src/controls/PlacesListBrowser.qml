@@ -41,6 +41,9 @@ Maui.ListBrowser
       */
     signal placeClicked (string path)
 
+    Maui.Theme.colorSet: Maui.Theme.View
+    Maui.Theme.inherit: false
+    
     
     focus: true
     model: Maui.BaseModel

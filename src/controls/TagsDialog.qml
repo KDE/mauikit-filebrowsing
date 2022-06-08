@@ -49,8 +49,6 @@ Maui.Dialog
         maxHeight: 500
         maxWidth: 400
         
-        page.margins: 0
-        
         acceptButton.text: i18n("Save")
         rejectButton.text: i18n("Cancel")
         

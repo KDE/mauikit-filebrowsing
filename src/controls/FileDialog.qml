@@ -181,43 +181,51 @@ Maui.Dialog
         onRejected: close()
     }
     
-    stack: Kirigami.PageRow
+    stack: RowLayout
     {
         id: pageRow
         Layout.fillHeight: true
         Layout.fillWidth: true
-        
-        separatorVisible: wideMode
-        initialPage: [sidebarLoader, _browserLayout]
-        
-        defaultColumnWidth: 200
-            
-            Loader
+        spacing: 0
+        Loader
+        {
+            id: sidebarLoader
+            asynchronous: true
+            Layout.maximumWidth: Maui.Style.units.gridUnit* 10
+            Layout.preferredWidth: Maui.Style.units.gridUnit* 10
+            Layout.minimumWidth: Maui.Style.units.gridUnit* 10
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            sourceComponent: FB.PlacesListBrowser
             {
-                id: sidebarLoader
-                asynchronous: true
-                
-                sourceComponent: FB.PlacesListBrowser
+                onPlaceClicked:
                 {
-                    onPlaceClicked:
-                    {
-                        pageRow.currentIndex = 1
-                        browser.openFolder(path)
-                    }
-                    
-                    currentPath: browser.currentPath
-
-                    list.groups:  [
-                    FB.FMList.BOOKMARKS_PATH,
-                    FB.FMList.REMOTE_PATH,
-                    FB.FMList.CLOUD_PATH,
-                    FB.FMList.DRIVES_PATH]
+                    //pageRow.currentIndex = 1
+                    browser.openFolder(path)
                 }
+                
+                currentPath: browser.currentPath
+                
+                list.groups:  [
+                FB.FMList.BOOKMARKS_PATH,
+                FB.FMList.REMOTE_PATH,
+                FB.FMList.CLOUD_PATH,
+                FB.FMList.DRIVES_PATH]
             }
+            
+            Maui.Separator
+            {
+                height: parent.height
+                anchors.right: parent.right
+            }
+        }
             
             Maui.Page
             {
                 id: _browserLayout
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.minimumWidth: Maui.Style.units.gridUnit* 15
                 
                 floatingFooter: true
                 flickable: browser.flickable
@@ -226,8 +234,8 @@ Maui.Dialog
                 headBar.farLeftContent: ToolButton
                 {
                     icon.name: checked ? "sidebar-collapse" : "sidebar-expand"
-                    onClicked: pageRow.currentIndex = !pageRow.currentIndex
-                    checked: pageRow.currentIndex === 0
+//                     onClicked: pageRow.currentIndex = !pageRow.currentIndex
+                    //checked: pageRow.currentIndex === 0
                     ToolTip.delay: 1000
                     ToolTip.timeout: 5000
                     ToolTip.visible: hovered
