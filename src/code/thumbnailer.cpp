@@ -6,6 +6,7 @@
 
 #include <QDebug>
 #include <QImage>
+#include <QGuiApplication>
 
 QQuickImageResponse *Thumbnailer::requestImageResponse(const QString &id, const QSize &requestedSize)
 {
@@ -18,6 +19,7 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
     , m_requestedSize(requestedSize)
 {
 #ifdef KIO_AVAILABLE
+    KIO::PreviewJob::setDefaultDevicePixelRatio(qApp->devicePixelRatio());
     QStringList plugins = KIO::PreviewJob::availablePlugins();
 //     qDebug() << plugins << KIO::PreviewJob::defaultPlugins();
     auto job = new KIO::PreviewJob(KFileItemList() << KFileItem(QUrl::fromUserInput(id)), requestedSize, &plugins);

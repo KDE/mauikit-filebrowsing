@@ -2,8 +2,6 @@ import QtQuick 2.9
 import QtQuick.Controls 2.9
 import QtQuick.Layouts 1.3
 
-import org.kde.kirigami 2.7 as Kirigami
-
 import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
 
@@ -314,7 +312,7 @@ Maui.AltBrowser
             Layout.preferredWidth: height
             visible: (model.issymlink == true) || (model.issymlink == "true")
             
-            Kirigami.Icon
+            Maui.Icon
             {
                 source: "link"
                 height: Maui.Style.iconSizes.small
@@ -442,6 +440,7 @@ Maui.AltBrowser
             iconSizeHint: Maui.Style.mapToIconSizes(template.iconContainer.height)
             imageSource: settings.showThumbnails ? model.thumbnail : ""
             template.fillMode: Image.PreserveAspectFit
+            template.maskRadius: 0
             iconSource: model.icon
             label1.text: model.label
             label2.visible: delegate.height > 160 && model.mime
@@ -462,7 +461,7 @@ Maui.AltBrowser
                 "text/uri-list":  filterSelection(control.path, model.path).join("\n")
             } : {}
             
-            Kirigami.Icon
+            Maui.Icon
             {
                 anchors.right: parent.right
                 anchors.top: parent.top
