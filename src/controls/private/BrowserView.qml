@@ -15,7 +15,7 @@ Maui.AltBrowser
     enableLassoSelection: true
     
     gridView.itemSize : control.gridItemSize
-    gridView.itemHeight: Math.floor(control.gridView.itemSize*1.4)
+    gridView.itemHeight: gridView.cellWidth
     //     gridView.cacheBuffer: control.height * 10
     
     property alias dialog :_dialogLoader.item
