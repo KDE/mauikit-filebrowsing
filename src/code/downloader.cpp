@@ -8,11 +8,12 @@
 // #include <KJob>
 // #endif
 
-QNetworkAccessManager *FMH::Downloader::manager = new QNetworkAccessManager(); 
+// QNetworkAccessManager *FMH::Downloader::manager = new QNetworkAccessManager(); 
 
 FMH::Downloader::Downloader(QObject *parent)
 : QObject(parent)    
 , reply(nullptr)
+, manager( new QNetworkAccessManager(this))
 , file(nullptr)
 , array(new QByteArray)
 {        

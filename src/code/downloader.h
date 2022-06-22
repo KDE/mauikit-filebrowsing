@@ -49,7 +49,7 @@ public:
     bool isFinished() const;
 
 private:
-    static QNetworkAccessManager *manager;
+    QNetworkAccessManager *manager;
     QNetworkReply *reply;
     QFile *file;
     QByteArray *array;
