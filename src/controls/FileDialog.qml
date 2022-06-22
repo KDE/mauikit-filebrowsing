@@ -179,21 +179,16 @@ Maui.Dialog
         onRejected: close()
     }
     
-    stack: RowLayout
+    stack: Maui.SideBarView
     {
         id: pageRow
         Layout.fillHeight: true
         Layout.fillWidth: true
-        spacing: 0
-        Loader
+        sideBarContent: Loader
         {
             id: sidebarLoader
             asynchronous: true
-            Layout.maximumWidth: Maui.Style.units.gridUnit* 10
-            Layout.preferredWidth: Maui.Style.units.gridUnit* 10
-            Layout.minimumWidth: Maui.Style.units.gridUnit* 10
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+           anchors.fill: parent
             sourceComponent: FB.PlacesListBrowser
             {
                 onPlaceClicked:
@@ -210,20 +205,12 @@ Maui.Dialog
                 FB.FMList.CLOUD_PATH,
                 FB.FMList.DRIVES_PATH]
             }
-            
-            Maui.Separator
-            {
-                height: parent.height
-                anchors.right: parent.right
-            }
         }
             
             Maui.Page
             {
                 id: _browserLayout
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.minimumWidth: Maui.Style.units.gridUnit* 15
+               anchors.fill: parent
                 
                 floatingFooter: true
                 flickable: browser.flickable
@@ -231,9 +218,9 @@ Maui.Dialog
                 headerColorSet: Maui.Theme.Header
                 headBar.farLeftContent: ToolButton
                 {
-                    icon.name: checked ? "sidebar-collapse" : "sidebar-expand"
-//                     onClicked: pageRow.currentIndex = !pageRow.currentIndex
-                    //checked: pageRow.currentIndex === 0
+                    icon.name: pageRow.sideBar.visible ? "sidebar-collapse" : "sidebar-expand"
+                    onClicked: pageRow.sideBar.toggle()
+                    checked: pageRow.sideBar.visible
                     ToolTip.delay: 1000
                     ToolTip.timeout: 5000
                     ToolTip.visible: hovered

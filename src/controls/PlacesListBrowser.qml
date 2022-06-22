@@ -99,12 +99,12 @@ Maui.ListBrowser
     flickable.header: GridView
                     {
                         id: _quickSection
-                        width: parent.width
+                        width: Math.min(parent.width, 180)
                         implicitHeight: contentHeight + topMargin + bottomMargin
                         leftMargin: 0
                         rightMargin: 0
 //                        padding: 0
-                        cellWidth: Math.floor(parent.width/3)
+                        cellWidth: Math.floor(width/3)
                         cellHeight: cellWidth
                         interactive: false
                         currentIndex: _quickPacesList.indexOfPath(control.currentPath)
@@ -129,7 +129,7 @@ Maui.ListBrowser
                                 anchors.fill: parent
                                 anchors.margins: Maui.Style.space.tiny
                                 iconSource: model.icon +  (Qt.platform.os == "android" || Qt.platform.os == "osx" ? ("-sidebar") : "")
-                                iconSizeHint: Maui.Style.iconSizes.medium
+                                iconSizeHint: Maui.Style.iconSize
                                 template.isMask: true
                                 label1.text: model.label
                                 labelsVisible: false
