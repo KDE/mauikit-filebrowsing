@@ -200,6 +200,12 @@ Maui.Page
     signal rightClicked()
     
     /*!
+     *      The file browser empty area was right clicked.
+     */
+    signal areaClicked(var mouse)
+    
+    
+    /*!
      *      A key, physical or not, was pressed.
      *      The event contains the relevant information.
      */
@@ -662,6 +668,7 @@ Maui.Page
                 control.rightClicked()
             }
             
+            control.areaClicked(mouse)
             control.currentView.forceActiveFocus()
         }
         
@@ -712,6 +719,17 @@ Maui.Page
             }
         }
 
+        MenuItem
+        {
+            text: i18n("Open here")
+            icon.name: "folder-open"
+            onTriggered:
+            {
+                const urls = _dropMenu.urls.split(",")
+                control.browser.path = urls[0]
+            }
+        }
+        
         MenuSeparator {}
 
         MenuItem

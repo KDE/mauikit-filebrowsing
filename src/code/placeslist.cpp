@@ -63,7 +63,8 @@ PlacesList::PlacesList(QObject *parent)
     
     connect(this->model, &KFilePlacesModel::setupDone, this, &PlacesList::setList);
     
-    connect(this->model, &KFilePlacesModel::rowsInserted, [this](const QModelIndex, int, int) {
+    connect(this->model, &KFilePlacesModel::rowsInserted, [this](const QModelIndex, int, int) 
+    {
         this->setList();
         emit this->bookmarksChanged();
         
@@ -105,7 +106,8 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
 {
     FMH::MODEL_LIST res;
     
-    if (type == FMStatic::PATHTYPE_KEY::QUICK_PATH) {
+    if (type == FMStatic::PATHTYPE_KEY::QUICK_PATH) 
+    {
         res << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + "fav"}, {FMH::MODEL_KEY::ICON, "love"}, {FMH::MODEL_KEY::LABEL, "Favorite"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
         
         // #ifdef KIO_AVAILABLE
@@ -117,7 +119,8 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
         return res;
     }
     
-    if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) {
+    if (type == FMStatic::PATHTYPE_KEY::PLACES_PATH) 
+    {
         res << FMStatic::getDefaultPaths();
         return res;
     }
@@ -127,7 +130,8 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     
     const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
     
-    res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST {
+    res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST 
+    {
         const QUrl url = model.url(index);
         if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))
             return list;
@@ -179,7 +183,8 @@ void PlacesList::setList()
     
     if (!this->groups.isEmpty())
     {        
-        for (const auto &group : qAsConst(this->groups)) {
+        for (const auto &group : qAsConst(this->groups)) 
+        {
             switch (group.toInt()) {
                 case FMStatic::PATHTYPE_KEY::PLACES_PATH:
                     this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);

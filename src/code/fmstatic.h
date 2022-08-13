@@ -339,7 +339,8 @@ public:
                                                                                                                                                                                     DownloadsPath,   
                                                                                                                                                                                     MusicPath,        
                                                                                                                                                                                     PicturesPath,
-                                                                                                                                                                                    VideosPath
+                                                                                                                                                                                    VideosPath,                                                                                                                                                                                   
+                                                                                                                                                                                    RootPath
                                                                                                                                                                                 };
                                                                                                                                                                                 
                                                                                                                                                                                 #endif

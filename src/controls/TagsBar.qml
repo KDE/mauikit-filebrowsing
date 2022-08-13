@@ -84,72 +84,72 @@ Item
      * tagsEdited :
      */
     signal tagsEdited(var tags)
-     
+    
     Loader
     {
-         anchors.fill: parent
-           active: control.editMode
-           visible: active
-           asynchronous: true
-           
-          sourceComponent: Maui.TextField
-    {
-        id: editTagsEntry
-        focus: true
-       
-         activeFocusOnPress : true
-      
-        text: list.tags.join(",")
+        anchors.fill: parent
+        active: control.editMode
+        visible: active
+        asynchronous: true
         
-        Component.onCompleted:
+        sourceComponent: Maui.TextField
         {
-            editTagsEntry.forceActiveFocus()            
-        }
-        
-        onAccepted:
-        {
-            control.tagsEdited(getTags())
-            control.closeEditMode()
-        }
-        
-        actions: Action
-        {
-            icon.name: "checkbox"
-            onTriggered: editTagsEntry.accepted()
-        }
-        
-        background: Rectangle
-        {
-            color: "transparent"
-        }
-        
-        function getTags()
-        {
-            if(!editTagsEntry.text.length > 0)
+            id: editTagsEntry
+            focus: true
+            
+            activeFocusOnPress : true
+            
+            text: list.tags.join(",")
+            
+            Component.onCompleted:
             {
-                return
+                editTagsEntry.forceActiveFocus()            
             }
             
-            var tags = []
-            if(editTagsEntry.text.trim().length > 0)
+            onAccepted:
             {
-                var list = editTagsEntry.text.split(",")
-                
-                if(list.length > 0)
+                control.tagsEdited(getTags())
+                control.closeEditMode()
+            }
+            
+            actions: Action
+            {
+                icon.name: "checkbox"
+                onTriggered: editTagsEntry.accepted()
+            }
+            
+            background: Rectangle
+            {
+                color: "transparent"
+            }
+            
+            function getTags()
+            {
+                if(!editTagsEntry.text.length > 0)
                 {
-                    for(var i in list)
+                    return
+                }
+                
+                var tags = []
+                if(editTagsEntry.text.trim().length > 0)
+                {
+                    var list = editTagsEntry.text.split(",")
+                    
+                    if(list.length > 0)
                     {
-                        tags.push(list[i].trim())
-                        
+                        for(var i in list)
+                        {
+                            tags.push(list[i].trim())
+                            
+                        }
                     }
                 }
+                
+                return tags
             }
-            
-            return tags
         }
     }
-    }
-  
+    
     TagList
     {
         id: tagsList

@@ -23,6 +23,12 @@ Maui.AltBrowser
     {
         id: _dialogLoader
     }
+    QtObject
+    {
+        id: _private
+        property int gridIconSize: Maui.Style.mapToIconSizes(control.gridItemSize)
+        property int listIconSize:  Maui.Style.mapToIconSizes(control.listItemSize)
+    }
     
     Binding on currentIndex
     {
@@ -282,15 +288,15 @@ Maui.AltBrowser
         readonly property string path : model.path
         
         width: ListView.view.width
-        template.headerSizeHint: control.listItemSize
+//         template.headerSizeHint: control.listItemSize
         iconSource: model.icon
         
         label1.text: model.label ? model.label : ""
         label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
         label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
         
-        template.isMask: true
-        iconSizeHint : Maui.Style.iconSizes.medium
+        template.isMask: iconSizeHint <= 22
+        iconSizeHint: _private.listIconSize
         
         tooltipText: model.path
         
@@ -437,7 +443,7 @@ Maui.AltBrowser
             anchors.margins: Maui.Handy.isMobile ? Maui.Style.space.tiny : Maui.Style.space.medium 
             
             template.labelSizeHint: 42
-            iconSizeHint: Maui.Style.mapToIconSizes(template.iconContainer.height)
+            iconSizeHint: _private.gridIconSize
             imageSource: settings.showThumbnails ? model.thumbnail : ""
             template.fillMode: Image.PreserveAspectFit
             template.maskRadius: 0
