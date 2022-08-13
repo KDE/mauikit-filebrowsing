@@ -453,7 +453,6 @@ Maui.AltBrowser
             label2.font.pointSize: Maui.Style.fontSizes.tiny
             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
             
-            padding: Maui.Style.space.tiny
             isCurrentItem: parent.GridView.isCurrentItem || checked
             tooltipText: model.label
             checkable: control.selectionMode
