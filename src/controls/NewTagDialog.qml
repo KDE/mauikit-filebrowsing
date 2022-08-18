@@ -22,8 +22,6 @@ Maui.Dialog
     property alias currentColor : _colorsRow.currentColor
     readonly property var defaultColors : ["#4DD0E1", "#9575CD", "#F06292", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
 
-    entryField: true
-    spacing: Maui.Style.space.big
     
     title: i18n("New tags")
     message: i18n("Create new tags to organize your files. You can create multiple tags separated by a comma.")
@@ -39,12 +37,19 @@ Maui.Dialog
         control.close()
     }
 
-    page.margins: Maui.Style.space.big
+    property alias textEntry: _textEntry
     
-    page.footBar.background: null
-    footBar.leftContent: Maui.ColorsRow
+    Maui.TextField
+    {
+        id: _textEntry
+        Layout.fillWidth: true
+    }
+    
+    Maui.ColorsRow
     {
         id: _colorsRow
+                Layout.fillWidth: true
+
         colors: control.defaultColors
         onColorPicked: currentColor = color
     }
@@ -70,7 +75,7 @@ Maui.Dialog
             {
                 label.text: modelData
                 showCloseButton: false
-                Maui.Theme.backgroundColor: control.currentColor
+                color: control.currentColor
                 iconSource: "tag"
             }
         }       
