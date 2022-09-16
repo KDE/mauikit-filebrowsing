@@ -740,7 +740,7 @@ Maui.Page
         }
     }
 
-    Maui.StackView
+    StackView
     {
         id: _stackView
         anchors.fill: parent

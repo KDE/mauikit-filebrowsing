@@ -209,7 +209,8 @@ Maui.Dialog
             sourceComponent: Maui.ListItemTemplate
             {
                 id: _info
-                 implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
+                // padding: _listView.padding
+                 // implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
 
                 property var itemInfo : FB.FM.getFileInfo( tagListComposer.list.urls[0])
                 label1.text: i18n("Tagging %1 files", tagListComposer.list.urls.length)
@@ -217,8 +218,8 @@ Maui.Dialog
                 label2.wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 iconSource : itemInfo.icon
                 imageSource: itemInfo.thumbnail
-                iconSizeHint: Maui.Style.iconSizes.huge
-                headerSizeHint: iconSizeHint + Maui.Style.space.big
+                // iconSizeHint: Maui.Style.iconSizes.huge
+                // headerSizeHint: iconSizeHint + Maui.Style.space.big
                 
                 iconComponent: Item
                 {
