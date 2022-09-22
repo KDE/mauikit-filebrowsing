@@ -74,7 +74,7 @@ Maui.AltBrowser
      * 
      */
     
-    property int gridItemSize :  Maui.Style.iconSizes.large * 1.7
+    property int gridItemSize : 140
     property int listItemSize : Maui.Style.rowHeight
     
     /**

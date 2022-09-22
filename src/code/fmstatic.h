@@ -113,7 +113,10 @@ public:
             "application/pdf", 
             "application/rtf",
             "application/doc",
-            "application/odf"};
+            "application/odf",
+            "application/vnd.comicbook+zip",         
+            "application/vnd.comicbook+rar"            
+        };
         
         inline static const QStringList COMPRESSED_MIMETYPES = {
             "application/x-compress", 
