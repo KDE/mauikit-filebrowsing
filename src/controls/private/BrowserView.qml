@@ -18,6 +18,8 @@ Maui.AltBrowser
     gridView.itemHeight: gridView.cellWidth
     //     gridView.cacheBuffer: control.height * 10
     
+    property Component delegateInjector : null
+    
     property alias dialog :_dialogLoader.item
     Loader
     {
@@ -329,6 +331,17 @@ Maui.AltBrowser
             }
         }
         
+        Loader
+        {
+            id: _injectorLoader
+            asynchronous: true
+            property var itemData : model
+            sourceComponent: control.delegateInjector
+            Layout.fillHeight: true
+            Layout.preferredWidth: height
+            active: control.delegateInjector
+        }        
+        
         onClicked:
         {
             control.currentIndex = index
@@ -478,6 +491,16 @@ Maui.AltBrowser
                 color: Maui.Theme.textColor
                 isMask: true
                 height: Maui.Style.iconSizes.small
+            }
+            
+            Loader
+            {
+                id: _injectorLoader
+                asynchronous: true
+                property var itemData : model
+                sourceComponent: control.delegateInjector
+                anchors.fill: parent
+                active: control.delegateInjector
             }
             
             onClicked:
