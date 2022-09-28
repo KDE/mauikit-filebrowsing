@@ -338,8 +338,9 @@ Maui.AltBrowser
             property var itemData : model
             sourceComponent: control.delegateInjector
             Layout.fillHeight: true
-            Layout.preferredWidth: height
+            Layout.preferredWidth: visible ? height : 0
             active: control.delegateInjector
+            visible: active
         }        
         
         onClicked:

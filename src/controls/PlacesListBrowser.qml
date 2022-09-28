@@ -146,8 +146,6 @@ Maui.ListBrowser
     {
         width: ListView.view.width
         iconSize: control.iconSize
-        template.headerSizeHint: iconSize + Maui.Style.space.small
-
         labelVisible: true
         iconVisible: true
         label: model.label

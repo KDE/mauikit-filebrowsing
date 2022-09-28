@@ -129,7 +129,7 @@ Maui.Dialog
             
             Layout.fillHeight: true
             Layout.fillWidth: true
-            
+            clip: true
             currentIndex: -1
             
             holder.emoji: "qrc:/assets/tag.svg"
