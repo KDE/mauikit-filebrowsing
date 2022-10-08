@@ -229,6 +229,20 @@ Maui.Page
             icon.name: "go-previous"
             onClicked: control.quitSearch()
         }
+    }    
+    
+    Maui.Dialog
+    {
+        id: _quitSearchDialog
+        title: i18n("Quit")
+        message: i18n("Are you sure you want to quit the current search in progress?")
+        onAccepted: 
+        {
+            _stackView.pop()
+            _browser.forceActiveFocus()
+        }
+        
+        onRejected: close()
     }
     
     headBar.middleContent: Maui.SearchField
@@ -812,6 +826,7 @@ Maui.Page
                 id: _searchBrowser
                 property alias browser : _searchBrowser
                 
+                path: control.currentPath
                 Binding on currentIndex
                 {
                     value: control.currentIndex
@@ -821,7 +836,14 @@ Maui.Page
                 objectName: "searchView"
                 gridItemSize: control.gridItemSize
                 listItemSize: control.listItemSize
+                
+                currentFMList.autoLoad: false
                 settings.viewType: control.settings.viewType 
+                settings.sortBy: control.settings.sortBy
+                settings.showHiddenFiles: control.settings.showHiddenFiles
+                settings.group: control.settings.group
+                settings.foldersFirst: control.settings.foldersFirst   
+                
             }
         }
     }
@@ -1074,6 +1096,12 @@ Maui.Page
      **/
     function quitSearch()
     {
+        if(control.currentView.loading)
+        {
+            _quitSearchDialog.open()
+            return
+        }
+        
         _stackView.pop()
         _browser.forceActiveFocus()
     }
@@ -1086,7 +1114,7 @@ Maui.Page
         openSearch()
         _searchField.text = query
         _stackView.currentItem.title = i18n("Search: %1", query)
-        _stackView.currentItem.currentFMList.search(query, _browser.currentFMList)
+        _stackView.currentItem.currentFMList.search(query, true)
         _stackView.currentItem.forceActiveFocus()
     }
     

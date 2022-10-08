@@ -84,6 +84,8 @@ Maui.AltBrowser
      */
     property alias settings : _settings
     
+    readonly property bool loading : currentFMList.status.code === FB.PathStatus.LOADING
+    
     
     /**
      * 
@@ -169,7 +171,7 @@ Maui.AltBrowser
         id: _scanningProgress
         width: parent.width
         anchors.bottom: parent.bottom
-        visible: _commonFMList.status.code === FB.PathStatus.LOADING
+        visible: control.loading
     }
     
     holder.visible: _holder.visible

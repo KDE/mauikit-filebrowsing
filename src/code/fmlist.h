@@ -36,7 +36,7 @@ struct PathStatus
 {
     Q_GADGET
 
-    Q_PROPERTY(STATUS_CODE code MEMBER m_code)
+    Q_PROPERTY(PathStatus::STATUS_CODE code MEMBER m_code)
     Q_PROPERTY(QString title MEMBER m_title)
     Q_PROPERTY(QString message MEMBER m_message)
     Q_PROPERTY(QString icon MEMBER m_icon)
@@ -44,7 +44,7 @@ struct PathStatus
     Q_PROPERTY(bool exists MEMBER m_exists)    
     
 public:
-    enum STATUS_CODE : uint_fast8_t { LOADING, ERROR, READY };
+    enum STATUS_CODE : int { LOADING, ERROR, READY };
     Q_ENUM(STATUS_CODE)
     
     STATUS_CODE m_code;
@@ -96,6 +96,7 @@ class FILEBROWSING_EXPORT FMList : public MauiList
     Q_OBJECT
     Q_DISABLE_COPY(FMList)
     // writable
+    Q_PROPERTY(bool autoLoad READ getAutoLoad WRITE setAutoLoad NOTIFY autoLoadChanged)
     Q_PROPERTY(QString path READ getPath WRITE setPath NOTIFY pathChanged)
     Q_PROPERTY(bool hidden READ getHidden WRITE setHidden NOTIFY hiddenChanged)
     Q_PROPERTY(bool onlyDirs READ getOnlyDirs WRITE setOnlyDirs NOTIFY onlyDirsChanged)
@@ -196,6 +197,13 @@ public:
      */
     void componentComplete() override final;
 
+    bool getAutoLoad() const;
+    
+    /**
+     * IF true then then path content gets filled immediately when the path is set, if not then it waits until a search() or fill() action is called manually
+     * */
+    void setAutoLoad(bool value);
+    
     /**
      * @brief getPath
      * Current path being watched and model
@@ -332,7 +340,6 @@ private:
     void assignList(const FMH::MODEL_LIST &list);
     void appendToList(const FMH::MODEL_LIST &list);
     void sortList();
-    void search(const QString &query, const QUrl &path, const bool &hidden = false, const bool &onlyDirs = false, const QStringList &filters = QStringList());
     void filterContent(const QString &query, const QUrl &path);
     void setStatus(const PathStatus &status);    
     
@@ -350,6 +357,7 @@ private:
 
     FMH::MODEL_LIST list = {{}};
 
+    bool m_autoLoad = true;
     QUrl path;
     QString pathName = QString();
     QStringList filters = {};
@@ -416,16 +424,9 @@ public slots:
      * @param index
      */
     void remove(const int &index);
-
-    /**
-     * @brief search
-     * Perform a search on the current directory. The search is perfrom in another model than the current one
-     * @param query
-     * Query for the search
-     * @param currentFMList
-     * The information of the model where the search is going to be performed
-     */
-    void search(const QString &query, const FMList *currentFMList);
+    
+    void search(const QString &query, bool recursive = true);
+    
 
     /**
      * @brief previousPath
@@ -455,11 +456,10 @@ Q_SIGNALS:
     void foldersFirstChanged();
     void statusChanged();
     void cloudDepthChanged();
+void autoLoadChanged();
 
     void warning(QString message);
     void progress(int percent);
-
-    void searchResultReady();    
 };
 
 #endif // FMLIST_H

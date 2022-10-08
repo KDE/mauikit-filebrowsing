@@ -41,11 +41,11 @@ FMList::FMList(QObject *parent)
     });
 
     connect(this->fm, &FM::pathContentReady, [this](QUrl) {
-        emit this->preListChanged();
+        Q_EMIT this->preListChanged();
         this->sortList();
         this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
-        emit this->postListChanged();
-        emit this->countChanged();
+        Q_EMIT this->postListChanged();
+        Q_EMIT this->countChanged();
     });
 
     connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
@@ -56,7 +56,7 @@ FMList::FMList(QObject *parent)
                 return;
 
             this->list[index] = item.second;
-            emit this->updateModel(index, FMH::modelRoles(item.second));
+            Q_EMIT this->updateModel(index, FMH::modelRoles(item.second));
         }
     });
 
@@ -87,11 +87,11 @@ FMList::FMList(QObject *parent)
     });
 
     connect(this->fm, &FM::warningMessage, [this](const QString &message) {
-        emit this->warning(message);
+        Q_EMIT this->warning(message);
     });
 
     connect(this->fm, &FM::loadProgress, [this](const int &percent) {
-        emit this->progress(percent);
+        Q_EMIT this->progress(percent);
     });
 
     connect(this->fm, &FM::pathContentChanged, [this](const QUrl &path) {
@@ -103,10 +103,10 @@ FMList::FMList(QObject *parent)
 
     connect(this->fm, &FM::newItem, [this](const FMH::MODEL &item, const QUrl &url) {
         if (this->path == url) {
-            emit this->preItemAppended();
+            Q_EMIT this->preItemAppended();
             this->list << item;
-            emit this->postItemAppended();
-            emit this->countChanged();
+            Q_EMIT this->postItemAppended();
+            Q_EMIT this->countChanged();
         }
     });
     
@@ -142,28 +142,28 @@ FMList::FMList(QObject *parent)
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
 {
-    emit this->preListChanged();
+    Q_EMIT this->preListChanged();
     this->list = list;
     this->sortList();
     this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
-    emit this->postListChanged();
-    emit this->countChanged();
+    Q_EMIT this->postListChanged();
+    Q_EMIT this->countChanged();
 }
 
 void FMList::appendToList(const FMH::MODEL_LIST &list)
 {
-    emit this->preItemsAppended(list.size());
+    Q_EMIT this->preItemsAppended(list.size());
     this->list << list;
-    emit this->postItemAppended();
-    emit this->countChanged();
+    Q_EMIT this->postItemAppended();
+    Q_EMIT this->countChanged();
 }
 
 void FMList::clear()
 {
-    emit this->preListChanged();
+    Q_EMIT this->preListChanged();
     this->list.clear();
-    emit this->postListChanged();
-    emit this->countChanged();
+    Q_EMIT this->postListChanged();
+    Q_EMIT this->countChanged();
 }
 
 FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &filters)
@@ -184,9 +184,16 @@ FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &fil
 void FMList::setList()
 {
     qDebug() << "PATHTYPE FOR URL" << pathType << this->path.toString() << this->filters << this;
+    
+    if(this->path.isEmpty() || !m_autoLoad)
+    {
+        return;
+    }
+    
     this->clear();
        
-    switch (this->pathType) {
+    switch (this->pathType) 
+    {
     case FMList::PATHTYPE::TAGS_PATH:
         this->assignList(getTagContent(this->path.fileName(), QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)]));
         break; // SYNC
@@ -228,7 +235,7 @@ void FMList::setSortBy(const FMList::SORTBY &key)
         return;
 
     this->sort = key;
-    emit this->sortByChanged();      
+    Q_EMIT this->sortByChanged();      
 }
 
 void FMList::sortList()
@@ -352,9 +359,9 @@ void FMList::setPath(const QString &path)
         this->pathType = FMList::PATHTYPE::OTHER_PATH;
     }
 
-    emit this->pathNameChanged();
-    emit this->pathTypeChanged();
-    emit this->pathChanged();   
+    Q_EMIT this->pathNameChanged();
+    Q_EMIT this->pathTypeChanged();
+    Q_EMIT this->pathChanged();   
 }
 
 FMList::PATHTYPE FMList::getPathType() const
@@ -374,7 +381,7 @@ void FMList::setFilters(const QStringList &filters)
 
     this->filters = filters;
 
-    emit this->filtersChanged();
+    Q_EMIT this->filtersChanged();
 }
 
 FMList::FILTER FMList::getFilterType() const
@@ -389,7 +396,7 @@ void FMList::setFilterType(const FMList::FILTER &type)
 
     this->filterType = type;
 
-    emit this->filterTypeChanged();
+    Q_EMIT this->filterTypeChanged();
 }
 
 bool FMList::getHidden() const
@@ -403,8 +410,7 @@ void FMList::setHidden(const bool &state)
         return;
 
     this->hidden = state;
-
-    emit this->hiddenChanged();
+    Q_EMIT this->hiddenChanged();
 }
 
 bool FMList::getOnlyDirs() const
@@ -419,12 +425,12 @@ void FMList::setOnlyDirs(const bool &state)
 
     this->onlyDirs = state;
 
-    emit this->onlyDirsChanged();
+    Q_EMIT this->onlyDirsChanged();
 }
 
 void FMList::refresh()
 {
-    emit this->pathChanged();
+    Q_EMIT this->pathChanged();
 }
 
 void FMList::createDir(const QString &name)
@@ -461,7 +467,7 @@ void FMList::setDirIcon(const int &index, const QString &iconName)
     FMStatic::setDirConf(path.toString() + "/.directory", "Desktop Entry", "Icon", iconName);
 
     this->list[index][FMH::MODEL_KEY::ICON] = iconName;
-    emit this->updateModel(index, QVector<int> {FMH::MODEL_KEY::ICON});
+    Q_EMIT this->updateModel(index, QVector<int> {FMH::MODEL_KEY::ICON});
 }
 
 const QUrl FMList::getParentPath()
@@ -504,21 +510,16 @@ void FMList::setFoldersFirst(const bool &value)
     if (this->foldersFirst == value)
         return;
 
-    emit this->preListChanged();
+    Q_EMIT this->preListChanged();
 
     this->foldersFirst = value;
 
-    emit this->foldersFirstChanged();
+    Q_EMIT this->foldersFirstChanged();
 
     this->sortList();
 
-    emit this->postListChanged();
-    emit this->countChanged();
-}
-
-void FMList::search(const QString &query, const FMList *currentFMList)
-{
-    this->search(query, currentFMList->getPath(), currentFMList->getHidden(), currentFMList->getOnlyDirs(), currentFMList->getFilters());
+    Q_EMIT this->postListChanged();
+    Q_EMIT this->countChanged();
 }
 
 void FMList::componentComplete()
@@ -533,10 +534,10 @@ void FMList::componentComplete()
     {    
         if(this->list.size() > 0)
         {
-            emit this->preListChanged();        
+            Q_EMIT this->preListChanged();        
             this->sortList();        
-            emit this->postListChanged();
-            emit this->countChanged();
+            Q_EMIT this->postListChanged();
+            Q_EMIT this->countChanged();
         }       
     });
    
@@ -546,13 +547,18 @@ void FMList::componentComplete()
     }
 }
 
-void FMList::search(const QString &query, const QUrl &path, const bool &hidden, const bool &onlyDirs, const QStringList &filters)
+void FMList::search(const QString &query, bool recursive)
 {
-    qDebug() << "SEARCHING FOR" << query << path;
+    if(this->path.isEmpty())
+    {
+        this->setStatus({PathStatus::ERROR, "Error", "No path to perform the search", "document-info", true, false});
+    }
+    qDebug() << "SEARCHING FOR" << query << this->path;
 
-    if (!path.isLocalFile()) { //if the path is not local then search will not be performed and instead will be filtered
-        qWarning() << "URL recived is not a local file. So search will only filter the content" << path;
-        this->filterContent(query, path);
+    if (!this->path.isLocalFile() || !recursive) 
+    { //if the path is not local then search will not be performed and instead will be filtered
+        qWarning() << "URL recived is not a local file. So search will only filter the content" << this->path;
+        this->filterContent(query, this->path);
         return;
     }
 
@@ -561,15 +567,13 @@ void FMList::search(const QString &query, const QUrl &path, const bool &hidden, 
         const auto res = watcher->future().result();
 
         this->assignList(res.content);
-        emit this->searchResultReady();
-
         watcher->deleteLater();
     });
 
     QFuture<FMStatic::PATH_CONTENT> t1 = QtConcurrent::run([=]() -> FMStatic::PATH_CONTENT {
         FMStatic::PATH_CONTENT res;
         res.path = path.toString();
-        res.content = FMStatic::search(query, path, hidden, onlyDirs, filters);
+        res.content = FMStatic::search(query, this->path, this->hidden, this->onlyDirs, this->filters);
         return res;
     });
     watcher->setFuture(t1);
@@ -587,8 +591,6 @@ void FMList::filterContent(const QString &query, const QUrl &path)
         const auto res = watcher->future().result();
 
         this->assignList(res.content);
-        emit this->searchResultReady();
-
         watcher->deleteLater();
     });
 
@@ -621,7 +623,7 @@ void FMList::setCloudDepth(const int &value)
 
     this->cloudDepth = value;
 
-    emit this->cloudDepthChanged();
+    Q_EMIT this->cloudDepthChanged();
 }
 
 PathStatus FMList::getStatus() const
@@ -632,7 +634,7 @@ PathStatus FMList::getStatus() const
 void FMList::setStatus(const PathStatus &status)
 {
     this->m_status = status;
-    emit this->statusChanged();
+    Q_EMIT this->statusChanged();
 }
 
 void FMList::remove(const int &index)
@@ -640,10 +642,10 @@ void FMList::remove(const int &index)
     if (index >= this->list.size() || index < 0)
         return;
 
-    emit this->preItemRemoved(index);
+    Q_EMIT this->preItemRemoved(index);
     this->list.remove(index);
-    emit this->postItemRemoved();
-    emit this->countChanged();
+    Q_EMIT this->postItemRemoved();
+    Q_EMIT this->countChanged();
 }
 
 int FMList::indexOfName(const QString& query)
@@ -657,4 +659,22 @@ int FMList::indexOfName(const QString& query)
     else
         return -1;
 }
+
+bool FMList::getAutoLoad() const
+{
+    return m_autoLoad;
+}
+
+void FMList::setAutoLoad(bool value)
+{
+    if(value == m_autoLoad)
+    {
+        return;
+    }
+    
+    m_autoLoad = value;
+    Q_EMIT autoLoadChanged();
+}
+
+
 
