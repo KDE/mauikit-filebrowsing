@@ -80,17 +80,17 @@ Maui.ListBrowser
 
         MenuItem
         {
-            text: i18n("Edit")
+            text: i18nd("mauikitfilebrowsing", "Edit")
         }
 
         MenuItem
         {
-            text: i18n("Hide")
+            text: i18nd("mauikitfilebrowsing", "Hide")
         }
 
         MenuItem
         {
-            text: i18n("Remove")
+            text: i18nd("mauikitfilebrowsing", "Remove")
             Maui.Theme.textColor: Maui.Theme.negativeTextColor
             onTriggered: list.removePlace(control.currentIndex)
         }

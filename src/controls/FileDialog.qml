@@ -130,8 +130,8 @@ Maui.Dialog
      */
     signal finished(var urls)
     
-    rejectButton.text: i18n("Cancel")
-    acceptButton.text: control.mode === modes.SAVE ? i18n("Save") : i18n("Open")
+    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
+    acceptButton.text: control.mode === modes.SAVE ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
     
     onRejected: control.close()
     
@@ -159,7 +159,7 @@ Maui.Dialog
         {
             id: _textField
             Layout.fillWidth: true
-            placeholderText: i18n("File name...")
+            placeholderText: i18nd("mauikitfilebrowsing", "File name...")
             text: suggestedFileName
         }
     }
@@ -169,11 +169,11 @@ Maui.Dialog
     {
         id: _confirmationDialog
         
-        acceptButton.text: i18n("Yes")
-        rejectButton.text: i18n("No")
+        acceptButton.text: i18nd("mauikitfilebrowsing", "Yes")
+        rejectButton.text: i18nd("mauikitfilebrowsing", "No")
         
-        title: i18n("A file named %1 already exists!").arg(textField.text)
-        message: i18n("This action will overwrite %1. Are you sure you want to do this?").arg(textField.text)
+        title: i18nd("mauikitfilebrowsing", "A file named %1 already exists!").arg(textField.text)
+        message: i18nd("mauikitfilebrowsing", "This action will overwrite %1. Are you sure you want to do this?").arg(textField.text)
         
         onAccepted: control.done()
         onRejected: close()
@@ -224,7 +224,7 @@ Maui.Dialog
                     ToolTip.delay: 1000
                     ToolTip.timeout: 5000
                     ToolTip.visible: hovered
-                    ToolTip.text: i18n("Toogle SideBar")
+                    ToolTip.text: i18nd("mauikitfilebrowsing", "Toogle SideBar")
                 }
                 
                 headBar.rightContent:[
@@ -247,7 +247,7 @@ Maui.Dialog
                         Action
                         {
                             icon.name: "view-hidden"
-                            //                        text: i18n("Hidden Files")
+                            //                        text: i18nd("mauikitfilebrowsing", "Hidden Files")
                             checkable: true
                             checked: settings.showHiddenFiles
                             onTriggered: settings.showHiddenFiles = !settings.showHiddenFiles
@@ -264,12 +264,12 @@ Maui.Dialog
                     {
                         width: parent.width
                         isSection: true
-                        label: i18n("View type")
+                        label: i18nd("mauikitfilebrowsing", "View type")
                     }
                     
                     Action
                     {
-                        text: i18n("List")
+                        text: i18nd("mauikitfilebrowsing", "List")
                         icon.name: "view-list-details"
                         checked: browser.settings.viewType === FB.FMList.LIST_VIEW
                         checkable: true
@@ -284,7 +284,7 @@ Maui.Dialog
                     
                     Action
                     {
-                        text: i18n("Grid")
+                        text: i18nd("mauikitfilebrowsing", "Grid")
                         icon.name: "view-list-icons"
                         checked:  browser.settings.viewType === FB.FMList.ICON_VIEW
                         checkable: true
@@ -304,12 +304,12 @@ Maui.Dialog
                     {
                         width: parent.width
                         isSection: true
-                        label: i18n("Sort by")
+                        label: i18nd("mauikitfilebrowsing", "Sort by")
                     }
                     
                     Action
                     {
-                        text: i18n("Type")
+                        text: i18nd("mauikitfilebrowsing", "Type")
                         checked: browser.settings.sortBy === FB.FMList.MIME
                         checkable: true
                         
@@ -321,7 +321,7 @@ Maui.Dialog
                     
                     Action
                     {
-                        text: i18n("Date")
+                        text: i18nd("mauikitfilebrowsing", "Date")
                         checked: browser.settings.sortBy === FB.FMList.DATE
                         checkable: true
                         
@@ -333,7 +333,7 @@ Maui.Dialog
                     
                     Action
                     {
-                        text: i18n("Modified")
+                        text: i18nd("mauikitfilebrowsing", "Modified")
                         checked: browser.settings.sortBy === FB.FMList.MODIFIED
                         checkable: true
                         
@@ -345,7 +345,7 @@ Maui.Dialog
                     
                     Action
                     {
-                        text: i18n("Size")
+                        text: i18nd("mauikitfilebrowsing", "Size")
                         checked: browser.settings.sortBy === FB.FMList.SIZE
                         checkable: true
                         
@@ -357,7 +357,7 @@ Maui.Dialog
                     
                     Action
                     {
-                        text: i18n("Name")
+                        text: i18nd("mauikitfilebrowsing", "Name")
                         checked:  browser.settings.sortBy === FB.FMList.LABEL
                         checkable: true
                         
@@ -371,7 +371,7 @@ Maui.Dialog
                     
                     MenuItem
                     {
-                        text: i18n("Show Folders First")
+                        text: i18nd("mauikitfilebrowsing", "Show Folders First")
                         checked: browser.settings.foldersFirst
                         checkable: true
                         
@@ -384,7 +384,7 @@ Maui.Dialog
                     MenuItem
                     {
                         id: groupAction
-                        text: i18n("Group")
+                        text: i18nd("mauikitfilebrowsing", "Group")
                         checkable: true
                         checked: browser.settings.group
                         onTriggered:

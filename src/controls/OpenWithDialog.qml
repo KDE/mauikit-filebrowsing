@@ -52,7 +52,7 @@ Maui.Dialog
 
     defaultButtons: false
 
-    page.title: i18n("Open with")
+    page.title: i18nd("mauikitfilebrowsing", "Open with")
     headBar.visible: true
     
     stack: Maui.ListBrowser

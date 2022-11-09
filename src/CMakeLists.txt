@@ -2,8 +2,6 @@
 #
 # SPDX-License-Identifier: BSD-2-Clause
 
-ecm_create_qm_loader(filebrowsing_QM_LOADER libfilebrowsingplugin_qt)
-
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
@@ -26,7 +24,6 @@ set(
     code/tagging.qrc
     code/openwithmodel.cpp
     assets.qrc
-    ${filebrowsing_QM_LOADER}
     )
 
 set(
@@ -88,6 +85,8 @@ add_library(
     ${filebrowsing_QML_QRC}
     )
 
+        ecm_create_qm_loader(MauiKitFileBrowsing MauiKitFileBrowsingPlugin)
+
 add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
 
 generate_export_header(MauiKitFileBrowsing BASE_NAME FileBrowsing)
@@ -138,7 +137,6 @@ target_link_libraries(
     Qt5::Xml
     Qt5::Concurrent
     Qt5::Network
-    KF5::I18n
     MauiKit
     )
 

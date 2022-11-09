@@ -201,14 +201,14 @@ Maui.AltBrowser
                     {
                         if(dirExists)
                         {
-                            _mergeDialog.alert(i18n("Directory already exists"), 2)
+                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Directory already exists"), 2)
                         }
                     }
                     
-                    title: i18n("Merge %1 files", urls.length)
-                    message:i18n("Give a name to the new directory where all files will be merge.")
+                    title: i18nd("mauikitfilebrowsing", "Merge %1 files", urls.length)
+                    message:i18nd("mauikitfilebrowsing", "Give a name to the new directory where all files will be merge.")
                     
-                    textEntry.placeholderText: i18n("Directory name")
+                    textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Directory name")
                     
                     onFinished:
                     {                    
@@ -218,7 +218,7 @@ Maui.AltBrowser
             }
             
             enabled: !FB.FM.isDir(_dropMenu.target)
-            text: i18n("Merge here")
+            text: i18nd("mauikitfilebrowsing", "Merge here")
             icon.name: "edit-group"
             onTriggered:
             {
@@ -233,7 +233,7 @@ Maui.AltBrowser
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) 
-            text: i18n("Copy here")
+            text: i18nd("mauikitfilebrowsing", "Copy here")
             icon.name: "edit-copy"
             onTriggered:
             {
@@ -245,7 +245,7 @@ Maui.AltBrowser
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target)
-            text: i18n("Move here")
+            text: i18nd("mauikitfilebrowsing", "Move here")
             icon.name: "edit-move"
             onTriggered:
             {
@@ -257,7 +257,7 @@ Maui.AltBrowser
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target)
-            text: i18n("Link here")
+            text: i18nd("mauikitfilebrowsing", "Link here")
             icon.name: "edit-link"
             onTriggered:
             {
@@ -271,7 +271,7 @@ Maui.AltBrowser
         
         MenuItem
         {
-            text: i18n("Cancel")
+            text: i18nd("mauikitfilebrowsing", "Cancel")
             icon.name: "dialog-cancel"
             onTriggered: _dropMenu.close()
         }
@@ -296,7 +296,7 @@ Maui.AltBrowser
         iconSource: model.icon
         
         label1.text: model.label ? model.label : ""
-        label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+        label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18nd("mauikitfilebrowsing", " items") : "") : Maui.Handy.formatSize(model.size)) : ""
         label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
         
         template.isMask: iconSizeHint <= 22
@@ -467,7 +467,7 @@ Maui.AltBrowser
             label1.text: model.label
             label2.visible: delegate.height > 160 && model.mime
             label2.font.pointSize: Maui.Style.fontSizes.tiny
-            label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18n(" items") : "") : Maui.Handy.formatSize(model.size)) : ""
+            label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18nd("mauikitfilebrowsing", " items") : "") : Maui.Handy.formatSize(model.size)) : ""
             
             isCurrentItem: parent.GridView.isCurrentItem || checked
             tooltipText: model.label

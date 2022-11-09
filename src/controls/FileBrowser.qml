@@ -225,7 +225,7 @@ Maui.Page
         visible: active
         sourceComponent: ToolButton
         {
-            text: i18n("Back")
+            text: i18nd("mauikitfilebrowsing", "Back")
             icon.name: "go-previous"
             onClicked: control.quitSearch()
         }
@@ -252,7 +252,7 @@ Maui.Page
         Layout.fillWidth: true
         Layout.maximumWidth: 500
         Layout.alignment: Qt.AlignCenter
-        placeholderText: _filterButton.checked ? i18n("Filter") : ("Search")
+        placeholderText: _filterButton.checked ? i18nd("mauikitfilebrowsing", "Filter") : ("Search")
         inputMethodHints: Qt.ImhNoAutoUppercase
         
         onAccepted:
@@ -301,7 +301,7 @@ Maui.Page
         {
             id: _filterButton
             icon.name: "view-filter"
-            //            text: i18n("Filter")
+            //            text: i18nd("mauikitfilebrowsing", "Filter")
             checkable: true
             checked: true
             onTriggered:
@@ -321,7 +321,7 @@ Maui.Page
     {
         visible: control.currentPath.startsWith("trash:/")
         icon.name: "trash-empty"
-        text: i18n("Empty Trash")
+        text: i18nd("mauikitfilebrowsing", "Empty Trash")
         onClicked: FB.FM.emptyTrash()
     }
     
@@ -338,15 +338,15 @@ Maui.Page
         {
             id: _removeDialog
             property double freedSpace : calculateFreedSpace(urls)
-            title:  i18n("Removing %1 files", urls.length)
-            message: i18n("Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
-            rejectButton.text: i18n("Delete")
-            acceptButton.text: i18n("Trash")
+            title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
+            message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
+            rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
+            acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
             acceptButton.visible: Maui.Handy.isLinux            
             
             actions: Action
             {
-                text: i18n("Cancel")
+                text: i18nd("mauikitfilebrowsing", "Cancel")
                 onTriggered: _removeDialog.close()
             }
             
@@ -382,9 +382,9 @@ Maui.Page
         Maui.NewDialog
         {
             id: _newDialog
-            title: i18n("New %1", _newActions.currentIndex === 0 ? "folder" : "file" )
-            message: i18n("Create a new folder or a file with a custom name")
-            acceptButton.text: i18n("Create")
+            title: i18nd("mauikitfilebrowsing", "New %1", _newActions.currentIndex === 0 ? "folder" : "file" )
+            message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name")
+            acceptButton.text: i18nd("mauikitfilebrowsing", "Create")
             onFinished:
             {
                 switch(_newActions.currentIndex)
@@ -394,7 +394,7 @@ Maui.Page
                 }
             }
             
-            textEntry.placeholderText: i18n("Name")
+            textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Name")
             
             Maui.ToolActions
             {
@@ -407,13 +407,13 @@ Maui.Page
                 Action
                 {
                     icon.name: "folder-new"
-                    text: i18n("Folder")
+                    text: i18nd("mauikitfilebrowsing", "Folder")
                 }
                 
                 Action
                 {
                     icon.name: "document-new"
-                    text: i18n("File")
+                    text: i18nd("mauikitfilebrowsing", "File")
                 }
             }
         }
@@ -427,17 +427,17 @@ Maui.Page
         {
             id: _renameDialog
             property var item : ({})
-            title: i18n("Rename")
-            message: i18n("Change the name of a file or folder")
+            title: i18nd("mauikitfilebrowsing", "Rename")
+            message: i18nd("mauikitfilebrowsing", "Change the name of a file or folder")
             template.iconSource: item.icon
             template.imageSource: item.thumbnail
             template.iconSizeHint: Maui.Style.iconSizes.huge
             textEntry.text: item.label
-            textEntry.placeholderText: i18n("New name")
+            textEntry.placeholderText: i18nd("mauikitfilebrowsing", "New name")
             onFinished: FB.FM.rename(item.path, textEntry.text)
             onRejected: close()
-            acceptButton.text: i18n("Rename")
-            rejectButton.text: i18n("Cancel")
+            acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
+            rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
             
             onOpened:
             {
@@ -701,7 +701,7 @@ Maui.Page
 
         MenuItem
         {
-            text: i18n("Copy here")
+            text: i18nd("mauikitfilebrowsing", "Copy here")
             icon.name: "edit-copy"
             onTriggered:
             {
@@ -712,7 +712,7 @@ Maui.Page
 
         MenuItem
         {
-            text: i18n("Move here")
+            text: i18nd("mauikitfilebrowsing", "Move here")
             icon.name: "edit-move"
             onTriggered:
             {
@@ -723,7 +723,7 @@ Maui.Page
 
         MenuItem
         {
-            text: i18n("Link here")
+            text: i18nd("mauikitfilebrowsing", "Link here")
             icon.name: "edit-link"
             onTriggered:
             {
@@ -735,7 +735,7 @@ Maui.Page
 
         MenuItem
         {
-            text: i18n("Open here")
+            text: i18nd("mauikitfilebrowsing", "Open here")
             icon.name: "folder-open"
             onTriggered:
             {
@@ -748,7 +748,7 @@ Maui.Page
 
         MenuItem
         {
-            text: i18n("Cancel")
+            text: i18nd("mauikitfilebrowsing", "Cancel")
             icon.name: "dialog-cancel"
             onTriggered: _dropMenu.close()
         }
@@ -1113,8 +1113,10 @@ Maui.Page
     {
         openSearch()
         _searchField.text = query
-        _stackView.currentItem.title = i18n("Search: %1", query)
-        _stackView.currentItem.currentFMList.search(query, true)
+
+        _stackView.currentItem.title = i18nd("mauikitfilebrowsing", "Search: %1", query)
+                _stackView.currentItem.currentFMList.search(query, true)
+
         _stackView.currentItem.forceActiveFocus()
     }
     

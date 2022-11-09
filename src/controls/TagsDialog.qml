@@ -47,8 +47,8 @@ Maui.Dialog
         maxHeight: 500
         maxWidth: 400
         
-        acceptButton.text: i18n("Save")
-        rejectButton.text: i18n("Cancel")
+        acceptButton.text: i18nd("mauikitfilebrowsing", "Save")
+        rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
         
         onAccepted: setTags()
         onRejected: close()
@@ -60,7 +60,7 @@ Maui.Dialog
             id: tagText
             Layout.fillWidth: true
             Layout.maximumWidth: 500
-            placeholderText: i18n("Filter or add a new tag")
+            placeholderText: i18nd("mauikitfilebrowsing", "Filter or add a new tag")
             //             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
             onAccepted:
             {
@@ -87,8 +87,8 @@ Maui.Dialog
             
             page.margins: Maui.Style.space.big
             property string tag
-            title: i18n("Delete %1", tag)
-            message: i18n("Are you sure you want to delete this tag? This action can not be undone.")
+            title: i18nd("mauikitfilebrowsing", "Delete %1", tag)
+            message: i18nd("mauikitfilebrowsing", "Are you sure you want to delete this tag? This action can not be undone.")
             template.iconSource: "tag"
             onAccepted:
             {
@@ -105,13 +105,13 @@ Maui.Dialog
             
             MenuItem
             {
-                text: i18n("Edit")
+                text: i18nd("mauikitfilebrowsing", "Edit")
                 icon.name: "document-edit"
             }
             
             MenuItem
             {
-                text: i18n("Delete")
+                text: i18nd("mauikitfilebrowsing", "Delete")
                 icon.name: "delete"
                 onTriggered:
                 {
@@ -134,8 +134,8 @@ Maui.Dialog
             
             holder.emoji: "qrc:/assets/tag.svg"
             holder.visible: _listView.count === 0
-            holder.title : i18n("No Tags!")
-            holder.body: i18n("Create new tags to organize your files.")
+            holder.title : i18nd("mauikitfilebrowsing", "No Tags!")
+            holder.body: i18nd("mauikitfilebrowsing", "Create new tags to organize your files.")
             
             model: Maui.BaseModel
             {
@@ -213,8 +213,8 @@ Maui.Dialog
                  // implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
 
                 property var itemInfo : FB.FM.getFileInfo( tagListComposer.list.urls[0])
-                label1.text: i18n("Tagging %1 files", tagListComposer.list.urls.length)
-                label2.text: i18n("Add new tags for the selected files.")
+                label1.text: i18nd("mauikitfilebrowsing", "Tagging %1 files", tagListComposer.list.urls.length)
+                label2.text: i18nd("mauikitfilebrowsing", "Add new tags for the selected files.")
                 label2.wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 iconSource : itemInfo.icon
                 imageSource: itemInfo.thumbnail
@@ -281,7 +281,7 @@ Maui.Dialog
             visible: count > 0
             
             onTagRemoved: list.remove(index)
-            placeholderText: i18n("No tags yet.")
+            placeholderText: i18nd("mauikitfilebrowsing", "No tags yet.")
         }
         
         onClosed:

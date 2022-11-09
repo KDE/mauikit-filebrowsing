@@ -23,13 +23,13 @@ Maui.Dialog
     readonly property var defaultColors : ["#4DD0E1", "#9575CD", "#F06292", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
 
     
-    title: i18n("New tags")
-    message: i18n("Create new tags to organize your files. You can create multiple tags separated by a comma.")
+    title: i18nd("mauikitfilebrowsing", "New tags")
+    message: i18nd("mauikitfilebrowsing", "Create new tags to organize your files. You can create multiple tags separated by a comma.")
 
     closeButtonVisible: false
     
-    acceptButton.text: i18n("Add")
-    rejectButton.text: i18n("Cancel")
+    acceptButton.text: i18nd("mauikitfilebrowsing", "Add")
+    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
 
     onAccepted: done()
     onRejected:
@@ -100,6 +100,6 @@ Maui.Dialog
         }
         
         control.close()
-        //control.alert(i18n("Tag could not be created. Check all fields are correct"))
+        //control.alert(i18nd("mauikitfilebrowsing", "Tag could not be created. Check all fields are correct"))
     }
 }

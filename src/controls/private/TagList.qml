@@ -20,7 +20,7 @@ Maui.ListBrowser
     /**
       *
       */
-    property string placeholderText: i18n("Add tags...")
+    property string placeholderText: i18nd("mauikitfilebrowsing", "Add tags...")
 
     /**
       *
