@@ -85,8 +85,6 @@ add_library(
     ${filebrowsing_QML_QRC}
     )
 
-        ecm_create_qm_loader(MauiKitFileBrowsing MauiKitFileBrowsingPlugin)
-
 add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
 
 generate_export_header(MauiKitFileBrowsing BASE_NAME FileBrowsing)
@@ -130,6 +128,7 @@ endif()
 target_link_libraries(
     MauiKitFileBrowsing
     PRIVATE
+    KF5::I18n
     Qt5::Core
     Qt5::Quick
     Qt5::Qml

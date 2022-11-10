@@ -64,7 +64,7 @@ if(${KIO_AVAILABLE})
 endif()
 
 find_package(Qt5 ${REQUIRED_QT_VERSION} COMPONENTS Core Quick Sql Xml Concurrent Network REQUIRED)
-find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS CoreAddons #[[FileMetaData]])
+find_package(KF5 ${REQUIRED_KF5_VERSION} REQUIRED COMPONENTS I18n CoreAddons #[[FileMetaData]])
 find_package(MauiKit)
 
 if(QUICK_COMPILER)
@@ -110,7 +110,8 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
     
-    ecm_install_po_files_as_qm(poqm)
+  add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
+    ki18n_install(po)
     
     file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
