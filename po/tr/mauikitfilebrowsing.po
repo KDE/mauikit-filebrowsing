@@ -1,52 +1,51 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-10 00:45+0000\n"
-"PO-Revision-Date: 2022-11-10 16:58+0200\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
-"Language: uk\n"
+"POT-Creation-Date: 2022-11-11 00:44+0000\n"
+"PO-Revision-Date: 2022-11-11 20:12+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 22.08.3\n"
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
 msgid "Back"
-msgstr "Назад"
+msgstr "Geri"
 
 #: src/controls/FileBrowser.qml:237
 #, kde-format
 msgid "Quit"
-msgstr "Вийти"
+msgstr "Çık"
 
 #: src/controls/FileBrowser.qml:238
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
-msgstr "Ви справді бажаєте припинити поточний пошук?"
+msgstr "Sürmekte olan aramadan çıkmak istediğinize emin misiniz?"
 
 #: src/controls/FileBrowser.qml:255
 #, kde-format
 msgid "Filter"
-msgstr "Фільтрувати"
+msgstr "Süzgeç"
 
 #: src/controls/FileBrowser.qml:324
 #, kde-format
 msgid "Empty Trash"
-msgstr "Спорожнити смітник"
+msgstr "Çöp Kutusunu Boşalt"
 
 #: src/controls/FileBrowser.qml:341
 #, kde-format
 msgid "Removing %1 files"
-msgstr "Вилучаємо %1 файлів"
+msgstr "%1 dosya kaldırılıyor"
 
 #: src/controls/FileBrowser.qml:342
 #, kde-format
@@ -54,18 +53,18 @@ msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
-"Вилучити %1  \n"
-"Загалом звільненого місця: %2"
+"Sil: %1  \n"
+"Toplam boşaltılan alan: %2"
 
 #: src/controls/FileBrowser.qml:343 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
-msgstr "Вилучити"
+msgstr "Sil"
 
 #: src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
-msgstr "Смітник"
+msgstr "Çöp Kutusu"
 
 #: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:440
 #: src/controls/FileBrowser.qml:751 src/controls/FileDialog.qml:133
@@ -73,173 +72,174 @@ msgstr "Смітник"
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
-msgstr "Скасувати"
+msgstr "İptal"
 
 #: src/controls/FileBrowser.qml:385
 #, kde-format
 msgid "New %1"
-msgstr "Створити %1"
+msgstr "Yeni %1"
 
 #: src/controls/FileBrowser.qml:386
 #, kde-format
 msgid "Create a new folder or a file with a custom name"
-msgstr "Створити теку або файл із нетиповою назвою"
+msgstr "Özel bir adlı yeni bir klasör veya dosya oluştur"
 
 #: src/controls/FileBrowser.qml:387
 #, kde-format
 msgid "Create"
-msgstr "Створити"
+msgstr "Oluştur"
 
 #: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:360
 #, kde-format
 msgid "Name"
-msgstr "Назва"
+msgstr "Ad"
 
 #: src/controls/FileBrowser.qml:410
 #, kde-format
 msgid "Folder"
-msgstr "Тека"
+msgstr "Klasör"
 
 #: src/controls/FileBrowser.qml:416
 #, kde-format
 msgid "File"
-msgstr "Файл"
+msgstr "Dosya"
 
 #: src/controls/FileBrowser.qml:430 src/controls/FileBrowser.qml:439
 #, kde-format
 msgid "Rename"
-msgstr "Перейменувати"
+msgstr "Yeniden Adlandır"
 
 #: src/controls/FileBrowser.qml:431
 #, kde-format
 msgid "Change the name of a file or folder"
-msgstr "Змінити назву файла або теки"
+msgstr "Bir dosya veya klasörün adını değiştir"
 
 #: src/controls/FileBrowser.qml:436
 #, kde-format
 msgid "New name"
-msgstr "Нова назва"
+msgstr "Yeni ad"
 
 #: src/controls/FileBrowser.qml:704 src/controls/private/BrowserView.qml:236
 #, kde-format
 msgid "Copy here"
-msgstr "Скопіювати сюди"
+msgstr "Buraya kopyala"
 
 #: src/controls/FileBrowser.qml:715 src/controls/private/BrowserView.qml:248
 #, kde-format
 msgid "Move here"
-msgstr "Пересунути сюди"
+msgstr "Buraya taşı"
 
 #: src/controls/FileBrowser.qml:726 src/controls/private/BrowserView.qml:260
 #, kde-format
 msgid "Link here"
-msgstr "Посилання сюди"
+msgstr "Buraya bağlantıla"
 
 #: src/controls/FileBrowser.qml:738
 #, kde-format
 msgid "Open here"
-msgstr "Відкрити тут"
+msgstr "Burada aç"
 
 #: src/controls/FileBrowser.qml:1117
 #, kde-format
 msgid "Search: %1"
-msgstr "Пошук: %1"
+msgstr "Ara: %1"
 
 #: src/controls/FileDialog.qml:134 src/controls/TagsDialog.qml:50
 #, kde-format
 msgid "Save"
-msgstr "Зберегти"
+msgstr "Kaydet"
 
 #: src/controls/FileDialog.qml:134
 #, kde-format
 msgid "Open"
-msgstr "Відкрити"
+msgstr "Aç"
 
 #: src/controls/FileDialog.qml:162
 #, kde-format
 msgid "File name..."
-msgstr "Назва файла…"
+msgstr "Dosya adı..."
 
 #: src/controls/FileDialog.qml:172
 #, kde-format
 msgid "Yes"
-msgstr "Так"
+msgstr "Evet"
 
 #: src/controls/FileDialog.qml:173
 #, kde-format
 msgid "No"
-msgstr "Ні"
+msgstr "Hayır"
 
 #: src/controls/FileDialog.qml:175
 #, kde-format
 msgid "A file named %1 already exists!"
-msgstr "Файл з назвою %1 вже існує."
+msgstr "%1 adlı bir dosya halihazırda var!"
 
 #: src/controls/FileDialog.qml:176
 #, kde-format
 msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgstr ""
-"У результаті виконання дії буде перезаписано %1. Ви справді цього хочете?"
+"Bu eylem, %1 dosyasının üzerine yazacaktır. Bunu yapmak istediğinize emin "
+"misiniz?"
 
 #: src/controls/FileDialog.qml:227
 #, kde-format
 msgid "Toogle SideBar"
-msgstr "Увімкнути чи вимкнути бічну панель"
+msgstr "Kenar Çubuğunu Aç/Kapat"
 
 #: src/controls/FileDialog.qml:267
 #, kde-format
 msgid "View type"
-msgstr "Тип перегляду"
+msgstr "Görünüm türü"
 
 #: src/controls/FileDialog.qml:272
 #, kde-format
 msgid "List"
-msgstr "Список"
+msgstr "Liste"
 
 #: src/controls/FileDialog.qml:287
 #, kde-format
 msgid "Grid"
-msgstr "Таблиця"
+msgstr "Izgara"
 
 #: src/controls/FileDialog.qml:307
 #, kde-format
 msgid "Sort by"
-msgstr "Критерій упорядковування"
+msgstr "Şuna göre sırala"
 
 #: src/controls/FileDialog.qml:312
 #, kde-format
 msgid "Type"
-msgstr "Тип"
+msgstr "Tür"
 
 #: src/controls/FileDialog.qml:324
 #, kde-format
 msgid "Date"
-msgstr "Дата"
+msgstr "Tarih"
 
 #: src/controls/FileDialog.qml:336
 #, kde-format
 msgid "Modified"
-msgstr "Змінено"
+msgstr "Değiştirilme"
 
 #: src/controls/FileDialog.qml:348
 #, kde-format
 msgid "Size"
-msgstr "Розмір"
+msgstr "Boyut"
 
 #: src/controls/FileDialog.qml:374
 #, kde-format
 msgid "Show Folders First"
-msgstr "Показувати теки першими"
+msgstr "Önce Klasörleri Göster"
 
 #: src/controls/FileDialog.qml:387
 #, kde-format
 msgid "Group"
-msgstr "Група"
+msgstr "Grup"
 
 #: src/controls/NewTagDialog.qml:26
 #, kde-format
 msgid "New tags"
-msgstr "Нові мітки"
+msgstr "Yeni etiketler"
 
 #: src/controls/NewTagDialog.qml:27
 #, kde-format
@@ -247,108 +247,107 @@ msgid ""
 "Create new tags to organize your files. You can create multiple tags "
 "separated by a comma."
 msgstr ""
-"Створіть мітки для упорядковування ваших файлів. Ви можете створити декілька "
-"міток, відокремивши їх комами."
+"Dosyalarınızı düzenlemek için yeni etiketler oluşturun. Virgülle ayrılmış "
+"birden çok etiket oluşturabilirsiniz."
 
 #: src/controls/NewTagDialog.qml:31
 #, kde-format
 msgid "Add"
-msgstr "Додати"
+msgstr "Ekle"
 
 #: src/controls/OpenWithDialog.qml:55
 #, kde-format
 msgid "Open with"
-msgstr "Відкрити за допомогою"
+msgstr "Birlikte aç"
 
 #: src/controls/PlacesListBrowser.qml:83 src/controls/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
-msgstr "Змінити"
+msgstr "Düzenle"
 
 #: src/controls/PlacesListBrowser.qml:88
 #, kde-format
 msgid "Hide"
-msgstr "Приховати"
+msgstr "Gizle"
 
 #: src/controls/PlacesListBrowser.qml:93
 #, kde-format
 msgid "Remove"
-msgstr "Вилучити"
+msgstr "Kaldır"
 
 #: src/controls/private/BrowserView.qml:204
 #, kde-format
 msgid "Directory already exists"
-msgstr "Каталог вже існує"
+msgstr "Dizin halihazırda var"
 
 #: src/controls/private/BrowserView.qml:208
 #, kde-format
 msgid "Merge %1 files"
-msgstr "Об'єднати %1 файлів"
+msgstr "%1 dosyayı birleştir"
 
 #: src/controls/private/BrowserView.qml:209
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
-msgstr "Надайте назву новому каталогу, де усі файли буде об'єднано."
+msgstr "Tüm dosyaların içinde birleştirileceği yeni dizine bir ad verin."
 
 #: src/controls/private/BrowserView.qml:211
 #, kde-format
 msgid "Directory name"
-msgstr "Назва каталогу"
+msgstr "Dizin adı"
 
 #: src/controls/private/BrowserView.qml:221
 #, kde-format
 msgid "Merge here"
-msgstr "Об'єднати сюди"
+msgstr "Burada birleştir"
 
 #: src/controls/private/BrowserView.qml:299
 #: src/controls/private/BrowserView.qml:470
 #, kde-format
 msgid " items"
-msgstr " записів"
+msgstr " öge"
 
 #: src/controls/private/TagList.qml:23
 #, kde-format
 msgid "Add tags..."
-msgstr "Додати мітки…"
+msgstr "Etiketler ekle..."
 
 #: src/controls/TagsDialog.qml:63
 #, kde-format
 msgid "Filter or add a new tag"
-msgstr "Фільтрувати або додати нову мітку"
+msgstr "Bir etiket ekle veya süz"
 
 #: src/controls/TagsDialog.qml:90
 #, kde-format
 msgid "Delete %1"
-msgstr "Вилучити %1"
+msgstr "Sil: %1"
 
 #: src/controls/TagsDialog.qml:91
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
-msgstr ""
-"Ви справді хочете вилучити цю мітку? Результат дії не можна буде скасувати."
+msgstr "Bu etiketi silmek istediğinize emin misiniz? Bu eylem geri alınamaz."
 
 #: src/controls/TagsDialog.qml:137
 #, kde-format
 msgid "No Tags!"
-msgstr "Немає міток!"
+msgstr "Etiket Yok!"
 
 #: src/controls/TagsDialog.qml:138
 #, kde-format
 msgid "Create new tags to organize your files."
-msgstr "Створіть нові мітки для упорядковування ваших файлів."
+msgstr "Dosyalarını düzenlemek için yeni etiketler oluşturun."
 
 #: src/controls/TagsDialog.qml:216
 #, kde-format
 msgid "Tagging %1 files"
-msgstr "Створення міток для %1 файлів"
+msgstr "%1 dosya etiketleniyor"
 
 #: src/controls/TagsDialog.qml:217
 #, kde-format
 msgid "Add new tags for the selected files."
-msgstr "Додайте нові мітки для позначених файлів."
+msgstr "Seçili dosyalara yeni etiketler ekleyin."
 
 #: src/controls/TagsDialog.qml:284
 #, kde-format
 msgid "No tags yet."
-msgstr "Міток ще немає."
+msgstr "Henüz bir etiket yok."
