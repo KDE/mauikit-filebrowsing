@@ -80,6 +80,7 @@ public:
         "text/*",
         "text/x-copying",
         "text/x-dbus-service",
+        "text/x-gettext-translation",
         "application/xml",
         "application/vnd.kde.knotificationrc",
         "application/x-gitignore",
