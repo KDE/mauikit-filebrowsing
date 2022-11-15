@@ -110,7 +110,6 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
     
-  add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
     ki18n_install(po)
     
     file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
