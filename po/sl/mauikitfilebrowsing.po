@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:44+0000\n"
+"POT-Creation-Date: 2022-11-16 00:45+0000\n"
 "PO-Revision-Date: 2022-11-12 09:05+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -17,6 +17,70 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Lokalize 22.08.1\n"
+
+#: src/code/fmstatic.h:281
+#, kde-format
+msgid "Bookmarks"
+msgstr ""
+
+#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#, kde-format
+msgid "Drives"
+msgstr ""
+
+#: src/code/fmstatic.h:283
+#, kde-format
+msgid "Apps"
+msgstr ""
+
+#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgid "Remote"
+msgstr "Odstrani"
+
+#: src/code/fmstatic.h:285
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgid "Removable"
+msgstr "Odstrani"
+
+#: src/code/fmstatic.h:286
+#, kde-format
+msgid "Unknown"
+msgstr ""
+
+#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#, kde-format
+msgid "Trash"
+msgstr "Smeti"
+
+#: src/code/fmstatic.h:288
+#, fuzzy, kde-format
+#| msgid "No Tags!"
+msgid "Tags"
+msgstr "Ni oznak!"
+
+#: src/code/fmstatic.h:289
+#, fuzzy, kde-format
+#| msgid "Search: %1"
+msgid "Search"
+msgstr "Poišči: %1"
+
+#: src/code/fmstatic.h:290
+#, kde-format
+msgid "Cloud"
+msgstr ""
+
+#: src/code/fmstatic.h:293
+#, kde-format
+msgid "Others"
+msgstr ""
+
+#: src/code/fmstatic.h:294
+#, kde-format
+msgid "Quick"
+msgstr ""
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
@@ -61,11 +125,6 @@ msgstr ""
 #, kde-format
 msgid "Delete"
 msgstr "Zbriši"
-
-#: src/controls/FileBrowser.qml:344
-#, kde-format
-msgid "Trash"
-msgstr "Smeti"
 
 #: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:440
 #: src/controls/FileBrowser.qml:751 src/controls/FileDialog.qml:133

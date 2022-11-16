@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:44+0000\n"
+"POT-Creation-Date: 2022-11-16 00:45+0000\n"
 "PO-Revision-Date: 2022-11-12 20:13+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -19,6 +19,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.08.3\n"
+
+#: src/code/fmstatic.h:281
+#, kde-format
+msgid "Bookmarks"
+msgstr ""
+
+#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#, kde-format
+msgid "Drives"
+msgstr ""
+
+#: src/code/fmstatic.h:283
+#, kde-format
+msgid "Apps"
+msgstr ""
+
+#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgid "Remote"
+msgstr "Kendu"
+
+#: src/code/fmstatic.h:285
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgid "Removable"
+msgstr "Kendu"
+
+#: src/code/fmstatic.h:286
+#, kde-format
+msgid "Unknown"
+msgstr ""
+
+#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#, kde-format
+msgid "Trash"
+msgstr "Zakarrontzia"
+
+#: src/code/fmstatic.h:288
+#, fuzzy, kde-format
+#| msgid "No Tags!"
+msgid "Tags"
+msgstr "Etiketarik ez!"
+
+#: src/code/fmstatic.h:289
+#, fuzzy, kde-format
+#| msgid "Search: %1"
+msgid "Search"
+msgstr "Bilatu: %1"
+
+#: src/code/fmstatic.h:290
+#, kde-format
+msgid "Cloud"
+msgstr ""
+
+#: src/code/fmstatic.h:293
+#, kde-format
+msgid "Others"
+msgstr ""
+
+#: src/code/fmstatic.h:294
+#, kde-format
+msgid "Quick"
+msgstr ""
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
@@ -63,11 +127,6 @@ msgstr ""
 #, kde-format
 msgid "Delete"
 msgstr "Ezabatu"
-
-#: src/controls/FileBrowser.qml:344
-#, kde-format
-msgid "Trash"
-msgstr "Zakarrontzia"
 
 #: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:440
 #: src/controls/FileBrowser.qml:751 src/controls/FileDialog.qml:133

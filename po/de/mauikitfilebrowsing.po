@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:44+0000\n"
+"POT-Creation-Date: 2022-11-16 00:45+0000\n"
 "PO-Revision-Date: 2022-11-11 10:24+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,6 +16,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/code/fmstatic.h:281
+#, kde-format
+msgid "Bookmarks"
+msgstr ""
+
+#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#, kde-format
+msgid "Drives"
+msgstr ""
+
+#: src/code/fmstatic.h:283
+#, kde-format
+msgid "Apps"
+msgstr ""
+
+#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#, kde-format
+msgid "Remote"
+msgstr ""
+
+#: src/code/fmstatic.h:285
+#, kde-format
+msgid "Removable"
+msgstr ""
+
+#: src/code/fmstatic.h:286
+#, kde-format
+msgid "Unknown"
+msgstr ""
+
+#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#, kde-format
+msgid "Trash"
+msgstr ""
+
+#: src/code/fmstatic.h:288
+#, kde-format
+msgid "Tags"
+msgstr ""
+
+#: src/code/fmstatic.h:289
+#, kde-format
+msgid "Search"
+msgstr ""
+
+#: src/code/fmstatic.h:290
+#, kde-format
+msgid "Cloud"
+msgstr ""
+
+#: src/code/fmstatic.h:293
+#, kde-format
+msgid "Others"
+msgstr ""
+
+#: src/code/fmstatic.h:294
+#, kde-format
+msgid "Quick"
+msgstr ""
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
@@ -57,11 +117,6 @@ msgstr ""
 #: src/controls/FileBrowser.qml:343 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
-msgstr ""
-
-#: src/controls/FileBrowser.qml:344
-#, kde-format
-msgid "Trash"
 msgstr ""
 
 #: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:440

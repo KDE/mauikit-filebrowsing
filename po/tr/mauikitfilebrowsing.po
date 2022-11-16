@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-11 00:44+0000\n"
+"POT-Creation-Date: 2022-11-16 00:45+0000\n"
 "PO-Revision-Date: 2022-11-11 20:12+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -16,6 +16,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 22.08.3\n"
+
+#: src/code/fmstatic.h:281
+#, kde-format
+msgid "Bookmarks"
+msgstr ""
+
+#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#, kde-format
+msgid "Drives"
+msgstr ""
+
+#: src/code/fmstatic.h:283
+#, kde-format
+msgid "Apps"
+msgstr ""
+
+#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgid "Remote"
+msgstr "Kaldır"
+
+#: src/code/fmstatic.h:285
+#, fuzzy, kde-format
+#| msgid "Remove"
+msgid "Removable"
+msgstr "Kaldır"
+
+#: src/code/fmstatic.h:286
+#, kde-format
+msgid "Unknown"
+msgstr ""
+
+#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#, kde-format
+msgid "Trash"
+msgstr "Çöp Kutusu"
+
+#: src/code/fmstatic.h:288
+#, fuzzy, kde-format
+#| msgid "No Tags!"
+msgid "Tags"
+msgstr "Etiket Yok!"
+
+#: src/code/fmstatic.h:289
+#, fuzzy, kde-format
+#| msgid "Search: %1"
+msgid "Search"
+msgstr "Ara: %1"
+
+#: src/code/fmstatic.h:290
+#, kde-format
+msgid "Cloud"
+msgstr ""
+
+#: src/code/fmstatic.h:293
+#, kde-format
+msgid "Others"
+msgstr ""
+
+#: src/code/fmstatic.h:294
+#, kde-format
+msgid "Quick"
+msgstr ""
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
@@ -60,11 +124,6 @@ msgstr ""
 #, kde-format
 msgid "Delete"
 msgstr "Sil"
-
-#: src/controls/FileBrowser.qml:344
-#, kde-format
-msgid "Trash"
-msgstr "Çöp Kutusu"
 
 #: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:440
 #: src/controls/FileBrowser.qml:751 src/controls/FileDialog.qml:133
