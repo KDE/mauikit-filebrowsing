@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-16 00:45+0000\n"
-"PO-Revision-Date: 2022-11-12 20:13+0100\n"
+"PO-Revision-Date: 2022-11-16 07:08+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -23,34 +23,32 @@ msgstr ""
 #: src/code/fmstatic.h:281
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "Laster-markak"
 
 #: src/code/fmstatic.h:282 src/code/fmstatic.h:292
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Unitateak"
 
 #: src/code/fmstatic.h:283
 #, kde-format
 msgid "Apps"
-msgstr ""
+msgstr "Aplikazioak"
 
 #: src/code/fmstatic.h:284 src/code/fmstatic.h:291
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Remote"
-msgstr "Kendu"
+msgstr "Urrutikoa"
 
 #: src/code/fmstatic.h:285
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Removable"
-msgstr "Kendu"
+msgstr "Aldagarria"
 
 #: src/code/fmstatic.h:286
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Ezezaguna"
 
 #: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
 #, kde-format
@@ -58,31 +56,29 @@ msgid "Trash"
 msgstr "Zakarrontzia"
 
 #: src/code/fmstatic.h:288
-#, fuzzy, kde-format
-#| msgid "No Tags!"
+#, kde-format
 msgid "Tags"
-msgstr "Etiketarik ez!"
+msgstr "Etiketak"
 
 #: src/code/fmstatic.h:289
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search"
-msgstr "Bilatu: %1"
+msgstr "Bilatu"
 
 #: src/code/fmstatic.h:290
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "Hodeia"
 
 #: src/code/fmstatic.h:293
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "Besteak"
 
 #: src/code/fmstatic.h:294
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "Azkar"
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-16 00:45+0000\n"
-"PO-Revision-Date: 2022-11-14 15:22+0100\n"
+"PO-Revision-Date: 2022-11-16 14:40+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -20,34 +20,32 @@ msgstr ""
 #: src/code/fmstatic.h:281
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "Bladwijzers"
 
 #: src/code/fmstatic.h:282 src/code/fmstatic.h:292
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Stations"
 
 #: src/code/fmstatic.h:283
 #, kde-format
 msgid "Apps"
-msgstr ""
+msgstr "Apps"
 
 #: src/code/fmstatic.h:284 src/code/fmstatic.h:291
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Remote"
-msgstr "Verwijderen"
+msgstr "Op afstand"
 
 #: src/code/fmstatic.h:285
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Removable"
-msgstr "Verwijderen"
+msgstr "Verwijderbaar"
 
 #: src/code/fmstatic.h:286
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 #: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
 #, kde-format
@@ -55,31 +53,29 @@ msgid "Trash"
 msgstr "Prullenbak"
 
 #: src/code/fmstatic.h:288
-#, fuzzy, kde-format
-#| msgid "No Tags!"
+#, kde-format
 msgid "Tags"
-msgstr "Geen tags!"
+msgstr "Tags"
 
 #: src/code/fmstatic.h:289
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search"
-msgstr "Zoeken: %1"
+msgstr "Zoeken"
 
 #: src/code/fmstatic.h:290
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "Wolk"
 
 #: src/code/fmstatic.h:293
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "Overig"
 
 #: src/code/fmstatic.h:294
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "Snel"
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
