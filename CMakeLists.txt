@@ -75,8 +75,10 @@ if(QUICK_COMPILER)
         )
 endif()
 
+      add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
+    ki18n_install(po)
+    
 add_subdirectory(src)
-
 
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/MauiKitFileBrowsing")
 
@@ -109,8 +111,6 @@ ecm_setup_version(${PROJECT_VERSION}
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
     COMPONENT Devel)
-    
-    ki18n_install(po)
     
     file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
