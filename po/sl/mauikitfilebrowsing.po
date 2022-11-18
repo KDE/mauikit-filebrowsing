@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-16 00:45+0000\n"
-"PO-Revision-Date: 2022-11-12 09:05+0100\n"
+"PO-Revision-Date: 2022-11-17 10:37+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,39 +16,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 22.08.2\n"
 
 #: src/code/fmstatic.h:281
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "Zaznamki"
 
 #: src/code/fmstatic.h:282 src/code/fmstatic.h:292
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Pogoni"
 
 #: src/code/fmstatic.h:283
 #, kde-format
 msgid "Apps"
-msgstr ""
+msgstr "Aplikacije"
 
 #: src/code/fmstatic.h:284 src/code/fmstatic.h:291
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Remote"
-msgstr "Odstrani"
+msgstr "Oddaljeni"
 
 #: src/code/fmstatic.h:285
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Removable"
-msgstr "Odstrani"
+msgstr "Odstranljivo"
 
 #: src/code/fmstatic.h:286
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Neznano"
 
 #: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
 #, kde-format
@@ -56,31 +54,29 @@ msgid "Trash"
 msgstr "Smeti"
 
 #: src/code/fmstatic.h:288
-#, fuzzy, kde-format
-#| msgid "No Tags!"
+#, kde-format
 msgid "Tags"
-msgstr "Ni oznak!"
+msgstr "Oznake"
 
 #: src/code/fmstatic.h:289
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search"
-msgstr "Poišči: %1"
+msgstr "Poišči"
 
 #: src/code/fmstatic.h:290
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "Oblak"
 
 #: src/code/fmstatic.h:293
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "Ostali"
 
 #: src/code/fmstatic.h:294
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "Hitri"
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
