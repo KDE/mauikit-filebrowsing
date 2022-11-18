@@ -125,8 +125,6 @@ if(QUICK_COMPILER)
     target_compile_definitions(MauiKitFileBrowsing PUBLIC QUICK_COMPILER)
 endif()
 
-  add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
-
 target_link_libraries(
     MauiKitFileBrowsing
     PRIVATE
