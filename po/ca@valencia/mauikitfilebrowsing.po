@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-11-16 00:45+0000\n"
-"PO-Revision-Date: 2022-11-11 13:29+0100\n"
+"PO-Revision-Date: 2022-11-16 09:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -22,34 +22,32 @@ msgstr ""
 #: src/code/fmstatic.h:281
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "Punts"
 
 #: src/code/fmstatic.h:282 src/code/fmstatic.h:292
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Unitats"
 
 #: src/code/fmstatic.h:283
 #, kde-format
 msgid "Apps"
-msgstr ""
+msgstr "Aplicacions"
 
 #: src/code/fmstatic.h:284 src/code/fmstatic.h:291
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Remote"
-msgstr "Elimina"
+msgstr "Remota"
 
 #: src/code/fmstatic.h:285
-#, fuzzy, kde-format
-#| msgid "Remove"
+#, kde-format
 msgid "Removable"
-msgstr "Elimina"
+msgstr "Extraïble"
 
 #: src/code/fmstatic.h:286
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Desconeguda"
 
 #: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
 #, kde-format
@@ -57,31 +55,29 @@ msgid "Trash"
 msgstr "Paperera"
 
 #: src/code/fmstatic.h:288
-#, fuzzy, kde-format
-#| msgid "No Tags!"
+#, kde-format
 msgid "Tags"
-msgstr "Sense etiquetes!"
+msgstr "Etiquetes"
 
 #: src/code/fmstatic.h:289
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#, kde-format
 msgid "Search"
-msgstr "Busca: %1"
+msgstr "Busca"
 
 #: src/code/fmstatic.h:290
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "Núvol"
 
 #: src/code/fmstatic.h:293
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "Altres"
 
 #: src/code/fmstatic.h:294
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "Ràpid"
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
