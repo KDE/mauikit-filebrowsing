@@ -10,8 +10,6 @@
 #include <QStandardPaths>
 #include <QUrl>
 
-#include <KLocalizedString>
-
 #ifdef Q_OS_ANDROID
 #include <MauiKit/Core/mauiandroid.h>
 #endif
@@ -277,21 +275,7 @@ public:
                                 
 /**
  *This is a user visible and translatable string, so it should not be used as a key anywhere
- **/                                                                                                                                                                                inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
-                                                                                                                                                                                {PATHTYPE_KEY::BOOKMARKS_PATH, i18n("Bookmarks")},
-                                                                                                                                                                                {PATHTYPE_KEY::DRIVES_PATH, i18n("Drives")},
-                                                                                                                                                                                {PATHTYPE_KEY::APPS_PATH, i18n("Apps")},
-                                                                                                                                                                                {PATHTYPE_KEY::REMOTE_PATH, i18n("Remote")},
-                                                                                                                                                                                {PATHTYPE_KEY::REMOVABLE_PATH, i18n("Removable")},
-                                                                                                                                                                                {PATHTYPE_KEY::UNKNOWN_TYPE, i18n("Unknown")},
-                                                                                                                                                                                {PATHTYPE_KEY::TRASH_PATH, i18n("Trash")},
-                                                                                                                                                                                {PATHTYPE_KEY::TAGS_PATH, i18n("Tags")},
-                                                                                                                                                                                {PATHTYPE_KEY::SEARCH_PATH, i18n("Search")},
-                                                                                                                                                                                {PATHTYPE_KEY::CLOUD_PATH, i18n("Cloud")},
-                                                                                                                                                                                {PATHTYPE_KEY::FISH_PATH, i18n("Remote")},
-                                                                                                                                                                                {PATHTYPE_KEY::MTP_PATH, i18n("Drives")},
-                                                                                                                                                                                {PATHTYPE_KEY::OTHER_PATH, i18n("Others")},
-                                                                                                                                                                                {PATHTYPE_KEY::QUICK_PATH, i18n("Quick")}};
+ **/                                                                                                                                                                                const static QHash<PATHTYPE_KEY, QString> PATHTYPE_LABEL;
                                                                                                                                                                                 
                                                                                                                                                                                 /**
                                                                                                                                                                                  * @brief DataPath

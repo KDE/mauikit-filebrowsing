@@ -9,6 +9,8 @@
 #include <QDebug>
 #include <QSettings>
 
+#include <KI18n/KLocalizedString>
+
 #if (defined Q_OS_LINUX || defined Q_OS_FREEBSD) && !defined Q_OS_ANDROID 
 #include <KConfig>
 #include <KConfigGroup>
@@ -25,6 +27,22 @@
 #include <KIO/PreviewJob>
 #include <KFileItem>
 #endif
+
+const QHash<FMStatic::PATHTYPE_KEY, QString> FMStatic::PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
+{PATHTYPE_KEY::BOOKMARKS_PATH, i18n("Bookmarks")},
+{PATHTYPE_KEY::DRIVES_PATH, i18n("Drives")},
+{PATHTYPE_KEY::APPS_PATH, i18n("Apps")},
+{PATHTYPE_KEY::REMOTE_PATH, i18n("Remote")},
+{PATHTYPE_KEY::REMOVABLE_PATH, i18n("Removable")},
+{PATHTYPE_KEY::UNKNOWN_TYPE, i18n("Unknown")},
+{PATHTYPE_KEY::TRASH_PATH, i18n("Trash")},
+{PATHTYPE_KEY::TAGS_PATH, i18n("Tags")},
+{PATHTYPE_KEY::SEARCH_PATH, i18n("Search")},
+{PATHTYPE_KEY::CLOUD_PATH, i18n("Cloud")},
+{PATHTYPE_KEY::FISH_PATH, i18n("Remote")},
+{PATHTYPE_KEY::MTP_PATH, i18n("Drives")},
+{PATHTYPE_KEY::OTHER_PATH, i18n("Others")},
+{PATHTYPE_KEY::QUICK_PATH, i18n("Quick")}};
 
 FMStatic::FMStatic(QObject *parent)
     : QObject(parent)
