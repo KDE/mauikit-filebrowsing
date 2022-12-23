@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:45+0000\n"
+"POT-Creation-Date: 2022-12-23 00:45+0000\n"
 "PO-Revision-Date: 2022-11-16 19:22+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -17,62 +17,62 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 22.08.3\n"
 
-#: src/code/fmstatic.h:281
+#: src/code/fmstatic.cpp:32
 #, kde-format
 msgid "Bookmarks"
 msgstr "Yer İmleri"
 
-#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#: src/code/fmstatic.cpp:33 src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Drives"
 msgstr "Sürücüler"
 
-#: src/code/fmstatic.h:283
+#: src/code/fmstatic.cpp:34
 #, kde-format
 msgid "Apps"
 msgstr "Uygulamalar"
 
-#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:42
 #, kde-format
 msgid "Remote"
 msgstr "Uzak"
 
-#: src/code/fmstatic.h:285
+#: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Removable"
 msgstr "Kaldırılabilir"
 
-#: src/code/fmstatic.h:286
+#: src/code/fmstatic.cpp:37
 #, kde-format
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:38 src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
 msgstr "Çöp Kutusu"
 
-#: src/code/fmstatic.h:288
+#: src/code/fmstatic.cpp:39
 #, kde-format
 msgid "Tags"
 msgstr "Etiketler"
 
-#: src/code/fmstatic.h:289
+#: src/code/fmstatic.cpp:40
 #, kde-format
 msgid "Search"
 msgstr "Ara"
 
-#: src/code/fmstatic.h:290
+#: src/code/fmstatic.cpp:41
 #, kde-format
 msgid "Cloud"
 msgstr "Bulut"
 
-#: src/code/fmstatic.h:293
+#: src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Others"
 msgstr "Diğerleri"
 
-#: src/code/fmstatic.h:294
+#: src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Quick"
 msgstr "Tez"

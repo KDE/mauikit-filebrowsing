@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:45+0000\n"
+"POT-Creation-Date: 2022-12-23 00:45+0000\n"
 "PO-Revision-Date: 2022-11-17 10:37+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -18,62 +18,62 @@ msgstr ""
 "%100==4 ? 3 : 0);\n"
 "X-Generator: Lokalize 22.08.2\n"
 
-#: src/code/fmstatic.h:281
+#: src/code/fmstatic.cpp:32
 #, kde-format
 msgid "Bookmarks"
 msgstr "Zaznamki"
 
-#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#: src/code/fmstatic.cpp:33 src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Drives"
 msgstr "Pogoni"
 
-#: src/code/fmstatic.h:283
+#: src/code/fmstatic.cpp:34
 #, kde-format
 msgid "Apps"
 msgstr "Aplikacije"
 
-#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:42
 #, kde-format
 msgid "Remote"
 msgstr "Oddaljeni"
 
-#: src/code/fmstatic.h:285
+#: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Removable"
 msgstr "Odstranljivo"
 
-#: src/code/fmstatic.h:286
+#: src/code/fmstatic.cpp:37
 #, kde-format
 msgid "Unknown"
 msgstr "Neznano"
 
-#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:38 src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
 msgstr "Smeti"
 
-#: src/code/fmstatic.h:288
+#: src/code/fmstatic.cpp:39
 #, kde-format
 msgid "Tags"
 msgstr "Oznake"
 
-#: src/code/fmstatic.h:289
+#: src/code/fmstatic.cpp:40
 #, kde-format
 msgid "Search"
 msgstr "Poišči"
 
-#: src/code/fmstatic.h:290
+#: src/code/fmstatic.cpp:41
 #, kde-format
 msgid "Cloud"
 msgstr "Oblak"
 
-#: src/code/fmstatic.h:293
+#: src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Others"
 msgstr "Ostali"
 
-#: src/code/fmstatic.h:294
+#: src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Quick"
 msgstr "Hitri"

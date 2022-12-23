@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:45+0000\n"
+"POT-Creation-Date: 2022-12-23 00:45+0000\n"
 "PO-Revision-Date: 2022-12-13 12:22\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -18,62 +18,62 @@ msgstr ""
 "pot\n"
 "X-Crowdin-File-ID: 41199\n"
 
-#: src/code/fmstatic.h:281
+#: src/code/fmstatic.cpp:32
 #, kde-format
 msgid "Bookmarks"
 msgstr ""
 
-#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#: src/code/fmstatic.cpp:33 src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Drives"
 msgstr ""
 
-#: src/code/fmstatic.h:283
+#: src/code/fmstatic.cpp:34
 #, kde-format
 msgid "Apps"
 msgstr ""
 
-#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
+#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:42
 #, kde-format
 msgid "Remote"
 msgstr ""
 
-#: src/code/fmstatic.h:285
+#: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Removable"
 msgstr ""
 
-#: src/code/fmstatic.h:286
+#: src/code/fmstatic.cpp:37
 #, kde-format
 msgid "Unknown"
 msgstr ""
 
-#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:38 src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
 msgstr ""
 
-#: src/code/fmstatic.h:288
+#: src/code/fmstatic.cpp:39
 #, kde-format
 msgid "Tags"
 msgstr ""
 
-#: src/code/fmstatic.h:289
+#: src/code/fmstatic.cpp:40
 #, kde-format
 msgid "Search"
 msgstr ""
 
-#: src/code/fmstatic.h:290
+#: src/code/fmstatic.cpp:41
 #, kde-format
 msgid "Cloud"
 msgstr ""
 
-#: src/code/fmstatic.h:293
+#: src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Others"
 msgstr ""
 
-#: src/code/fmstatic.h:294
+#: src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Quick"
 msgstr ""
