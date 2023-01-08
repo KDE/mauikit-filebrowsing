@@ -39,7 +39,7 @@ Maui.Dialog
 
     property alias textEntry: _textEntry
     
-    Maui.TextField
+    TextField
     {
         id: _textEntry
         Layout.fillWidth: true

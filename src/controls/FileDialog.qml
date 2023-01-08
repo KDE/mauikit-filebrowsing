@@ -155,7 +155,7 @@ Maui.Dialog
         width: parent.width
         position: ToolBar.Footer
         
-        middleContent: Maui.TextField
+        middleContent: TextField
         {
             id: _textField
             Layout.fillWidth: true

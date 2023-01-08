@@ -296,6 +296,7 @@ Maui.AltBrowser
         iconSource: model.icon
         
         label1.text: model.label ? model.label : ""
+        label2.text: control.objectName === "searchView" ? model.path : ""
         label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18nd("mauikitfilebrowsing", " items") : "") : Maui.Handy.formatSize(model.size)) : ""
         label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
         
