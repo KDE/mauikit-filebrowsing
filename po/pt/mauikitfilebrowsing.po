@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-12-23 00:45+0000\n"
+"POT-Creation-Date: 2023-01-09 00:54+0000\n"
 "PO-Revision-Date: 2022-11-16 09:42+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -354,8 +354,8 @@ msgstr "Nome da pasta"
 msgid "Merge here"
 msgstr "Reunir aqui"
 
-#: src/controls/private/BrowserView.qml:299
-#: src/controls/private/BrowserView.qml:470
+#: src/controls/private/BrowserView.qml:300
+#: src/controls/private/BrowserView.qml:471
 #, kde-format
 msgid " items"
 msgstr " itens"
