@@ -28,21 +28,29 @@
 #include <KFileItem>
 #endif
 
-const QHash<FMStatic::PATHTYPE_KEY, QString> FMStatic::PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
-{PATHTYPE_KEY::BOOKMARKS_PATH, i18n("Bookmarks")},
-{PATHTYPE_KEY::DRIVES_PATH, i18n("Drives")},
-{PATHTYPE_KEY::APPS_PATH, i18n("Apps")},
-{PATHTYPE_KEY::REMOTE_PATH, i18n("Remote")},
-{PATHTYPE_KEY::REMOVABLE_PATH, i18n("Removable")},
-{PATHTYPE_KEY::UNKNOWN_TYPE, i18n("Unknown")},
-{PATHTYPE_KEY::TRASH_PATH, i18n("Trash")},
-{PATHTYPE_KEY::TAGS_PATH, i18n("Tags")},
-{PATHTYPE_KEY::SEARCH_PATH, i18n("Search")},
-{PATHTYPE_KEY::CLOUD_PATH, i18n("Cloud")},
-{PATHTYPE_KEY::FISH_PATH, i18n("Remote")},
-{PATHTYPE_KEY::MTP_PATH, i18n("Drives")},
-{PATHTYPE_KEY::OTHER_PATH, i18n("Others")},
-{PATHTYPE_KEY::QUICK_PATH, i18n("Quick")}};
+
+
+const QString FMStatic::PathTypeLabel(const FMStatic::PATHTYPE_KEY& key)
+{
+   static const QHash<FMStatic::PATHTYPE_KEY, QString> PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
+    {PATHTYPE_KEY::BOOKMARKS_PATH, i18n("Bookmarks")},
+    {PATHTYPE_KEY::DRIVES_PATH, i18n("Drives")},
+    {PATHTYPE_KEY::APPS_PATH, i18n("Apps")},
+    {PATHTYPE_KEY::REMOTE_PATH, i18n("Remote")},
+    {PATHTYPE_KEY::REMOVABLE_PATH, i18n("Removable")},
+    {PATHTYPE_KEY::UNKNOWN_TYPE, i18n("Unknown")},
+    {PATHTYPE_KEY::TRASH_PATH, i18n("Trash")},
+    {PATHTYPE_KEY::TAGS_PATH, i18n("Tags")},
+    {PATHTYPE_KEY::SEARCH_PATH, i18n("Search")},
+    {PATHTYPE_KEY::CLOUD_PATH, i18n("Cloud")},
+    {PATHTYPE_KEY::FISH_PATH, i18n("Remote")},
+    {PATHTYPE_KEY::MTP_PATH, i18n("Drives")},
+    {PATHTYPE_KEY::OTHER_PATH, i18n("Others")},
+    {PATHTYPE_KEY::QUICK_PATH, i18n("Quick")}};
+    
+    return PATHTYPE_LABEL[key];
+}
+
 
 FMStatic::FMStatic(QObject *parent)
     : QObject(parent)
@@ -66,7 +74,7 @@ FMH::MODEL_LIST FMStatic::packItems(const QStringList &items, const QString &typ
 
 FMH::MODEL_LIST FMStatic::getDefaultPaths()
 {
-    return FMStatic::packItems(FMStatic::defaultPaths, FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::PLACES_PATH]);
+    return FMStatic::packItems(FMStatic::defaultPaths, PathTypeLabel(FMStatic::PATHTYPE_KEY::PLACES_PATH));
 }
 
 FMH::MODEL_LIST FMStatic::search(const QString &query, const QUrl &path, const bool &hidden, const bool &onlyDirs, const QStringList &filters)
@@ -105,7 +113,7 @@ FMH::MODEL_LIST FMStatic::getDevices()
     FMH::MODEL_LIST drives;
 
 #ifdef Q_OS_ANDROID
-    drives << packItems(MAUIAndroid::sdDirs(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::DRIVES_PATH]);
+    drives << packItems(MAUIAndroid::sdDirs(), PathTypeLabel(FMStatic::PATHTYPE_KEY::DRIVES_PATH));
     return drives;
 #endif
 

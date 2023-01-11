@@ -372,7 +372,7 @@ FMH::MODEL_LIST Tagging::getTags(const int &limit)
         {FMH::MODEL_KEY::MODIFIED, QDateTime::fromString(item.value(FMH::MODEL_NAME[FMH::MODEL_KEY::ADDDATE]).toString(), Qt::TextDate).toString()},
         {FMH::MODEL_KEY::IS_DIR, "true"},
         {FMH::MODEL_KEY::LABEL, label},
-        {FMH::MODEL_KEY::TYPE, FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::TAGS_PATH]}};
+        {FMH::MODEL_KEY::TYPE, FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::TAGS_PATH)}};
 }
 
 return data;

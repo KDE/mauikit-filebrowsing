@@ -275,7 +275,7 @@ public:
 
 /**
  *This is a user visible and translatable string, so it should not be used as a key anywhere
- **/                                                                                                                                                                                const static QHash<PATHTYPE_KEY, QString> PATHTYPE_LABEL;
+ **/                                                                                                                                                                                const static QString PathTypeLabel(const FMStatic::PATHTYPE_KEY &key);
 
 
                                                                                                                                                                                 /**
