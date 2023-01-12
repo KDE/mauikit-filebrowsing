@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-09 00:54+0000\n"
+"POT-Creation-Date: 2023-01-12 00:54+0000\n"
 "PO-Revision-Date: 2022-11-27 08:36+0100\n"
 "Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -17,62 +17,62 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.08.3\n"
 
-#: src/code/fmstatic.cpp:32
+#: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Bookmarks"
 msgstr "Segnalibri"
 
-#: src/code/fmstatic.cpp:33 src/code/fmstatic.cpp:43
+#: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:47
 #, kde-format
 msgid "Drives"
 msgstr "Unità"
 
-#: src/code/fmstatic.cpp:34
+#: src/code/fmstatic.cpp:38
 #, kde-format
 msgid "Apps"
 msgstr "Applicazioni"
 
-#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:42
+#: src/code/fmstatic.cpp:39 src/code/fmstatic.cpp:46
 #, kde-format
 msgid "Remote"
 msgstr "Remota"
 
-#: src/code/fmstatic.cpp:36
+#: src/code/fmstatic.cpp:40
 #, kde-format
 msgid "Removable"
 msgstr "Rimovibile"
 
-#: src/code/fmstatic.cpp:37
+#: src/code/fmstatic.cpp:41
 #, kde-format
 msgid "Unknown"
 msgstr "Sconosciuta"
 
-#: src/code/fmstatic.cpp:38 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
 msgstr "Cestino"
 
-#: src/code/fmstatic.cpp:39
+#: src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Tags"
 msgstr "Etichette"
 
-#: src/code/fmstatic.cpp:40
+#: src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Search"
 msgstr "Cerca"
 
-#: src/code/fmstatic.cpp:41
+#: src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Cloud"
 msgstr "Cloud"
 
-#: src/code/fmstatic.cpp:44
+#: src/code/fmstatic.cpp:48
 #, kde-format
 msgid "Others"
 msgstr "Altre"
 
-#: src/code/fmstatic.cpp:45
+#: src/code/fmstatic.cpp:49
 #, kde-format
 msgid "Quick"
 msgstr "Rapido"

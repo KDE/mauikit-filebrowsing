@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-09 00:54+0000\n"
+"POT-Creation-Date: 2023-01-12 00:54+0000\n"
 "PO-Revision-Date: 2022-11-16 18:45+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -18,62 +18,62 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: src/code/fmstatic.cpp:32
+#: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: src/code/fmstatic.cpp:33 src/code/fmstatic.cpp:43
+#: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:47
 #, kde-format
 msgid "Drives"
 msgstr "Диски"
 
-#: src/code/fmstatic.cpp:34
+#: src/code/fmstatic.cpp:38
 #, kde-format
 msgid "Apps"
 msgstr "Програми"
 
-#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:42
+#: src/code/fmstatic.cpp:39 src/code/fmstatic.cpp:46
 #, kde-format
 msgid "Remote"
 msgstr "Віддалене"
 
-#: src/code/fmstatic.cpp:36
+#: src/code/fmstatic.cpp:40
 #, kde-format
 msgid "Removable"
 msgstr "Портативний"
 
-#: src/code/fmstatic.cpp:37
+#: src/code/fmstatic.cpp:41
 #, kde-format
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: src/code/fmstatic.cpp:38 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
 msgstr "Смітник"
 
-#: src/code/fmstatic.cpp:39
+#: src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Tags"
 msgstr "Мітки"
 
-#: src/code/fmstatic.cpp:40
+#: src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Search"
 msgstr "Пошук"
 
-#: src/code/fmstatic.cpp:41
+#: src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Cloud"
 msgstr "Хмара"
 
-#: src/code/fmstatic.cpp:44
+#: src/code/fmstatic.cpp:48
 #, kde-format
 msgid "Others"
 msgstr "Інші"
 
-#: src/code/fmstatic.cpp:45
+#: src/code/fmstatic.cpp:49
 #, kde-format
 msgid "Quick"
 msgstr "Швидко"
