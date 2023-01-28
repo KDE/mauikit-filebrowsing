@@ -17,8 +17,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef TAGGING_H
-#define TAGGING_H
+#pragma once
 
 #include <QObject>
 
@@ -158,7 +157,7 @@ public slots:
     
     /**
      * @brief getAllTags
-     * Retruns a list model of all the tags. The model can be strictly enforced to only tags that were created by the application making the call
+     * Returns a list model of all the tags. The model can be strictly enforced to only tags that were created by the application making the call
      * @param strict
      * If true returns only tags created by the application making the request
      * @return
@@ -168,7 +167,7 @@ public slots:
     
     /**
      * @brief getUrls
-     * Returns a model of all the file URLs associated to a tag, the result can be strictly enforced to only file URLs associated to a tag created by the application making the request, restrinct it to a maximum limit, filter by the
+     * Returns a model of all the file URLs associated to a tag, the result can be strictly enforced to only file URLs associated to a tag created by the application making the request, restrict it to a maximum limit, filter by the
      * mimetype or just add a modifier function
      * @param tag
      * Tag name to perfrom the search
@@ -273,7 +272,7 @@ public slots:
     
     /**
      * @brief getTagUrls
-     * Shortcut for gettings a list of file URLs associated to a tag, the resulting list of URLs can be filtered by regular expression or by mimetype and limited
+     * Shortcut for getting a list of file URLs associated to a tag, the resulting list of URLs can be filtered by regular expression or by mimetype and limited
      * @param tag
      * The tag to look up
      * @param filters
@@ -290,7 +289,7 @@ public slots:
     
     /**
      * @brief getTags
-     * Get all the tags avaliable with detailed information packaged as a FMH::MODEL_LIST
+     * Get all the tags available with detailed information packaged as a FMH::MODEL_LIST
      * @param limit
      * Maximum numbers of tags
      * @return
@@ -364,4 +363,3 @@ signals:
     void urlRemoved(QString url);
 };
 
-#endif // TAGGING_H

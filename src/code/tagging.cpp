@@ -206,8 +206,8 @@ bool Tagging::updateUrl(const QString &url, const QString &newUrl)
 
 QVariantList Tagging::getUrlsTags(const bool &strict)  //all used tags, meaning, all tags that are used with an url in tags_url table
 {
-    const auto query = !strict ? QString("select distinct t.* from TAGS t inner join TAGS_URLS turl where t.tag = turl.tag order by t.adddate asc") :
-                                 QString("select distinct t.* from TAGS t inner join APP_TAGS at on at.tag = t.tag inner join TAGS_URLS turl on t.tag = turl.tag where at.org = '%1' order by t.adddate asc").arg(this->appOrg);
+    const auto query = !strict ? QString("select distinct t.* from TAGS t inner join TAGS_URLS turl where t.tag = turl.tag order by t.tag asc") :
+                                 QString("select distinct t.* from TAGS t inner join APP_TAGS at on at.tag = t.tag inner join TAGS_URLS turl on t.tag = turl.tag where at.org = '%1' order by t.tag asc").arg(this->appOrg);
 
     return this->get(query, &setTagIconName);
 }
