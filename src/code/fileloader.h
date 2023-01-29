@@ -65,7 +65,7 @@ private slots:
      * @param limit
      */
     void getFiles(QList<QUrl> paths, bool recursive, const QStringList &nameFilters, const QDir::Filters &filters, uint limit);
-
+   
 signals:
     /**
      * @brief finished

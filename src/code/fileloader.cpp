@@ -1,5 +1,6 @@
 #include "fileloader.h"
 #include "fmstatic.h"
+#include "tagging.h"
 
 #include <QDebug>
 #include <QDirIterator>
@@ -51,8 +52,40 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
     MODEL_LIST res;
     MODEL_LIST res_batch;
 
-    for (const auto &path : paths) {
-        if (QFileInfo(path.toLocalFile()).isDir() && path.isLocalFile() && fileExists(path)) {
+    for (const auto &path : paths)
+    {
+        if(FMStatic::getPathType(path) == FMStatic::PATHTYPE_KEY::TAGS_PATH)
+        {
+            for(const auto url : Tagging::getInstance()->getTagUrls(path.toString().replace("tags:///", ""), nameFilters, true, limit))
+            {
+                MODEL map = FileLoader::informer(url);
+                
+                if (map.isEmpty())
+                    continue;
+                
+                emit itemReady(map, paths);
+                res << map;
+                res_batch << map;
+                i++;
+                count++;
+                
+                if (i == m_batchCount) // send a batch
+                {
+                    emit itemsReady(res_batch, paths);
+                    res_batch.clear();
+                    batch++;
+                    i = 0;
+                }
+                
+                if (count == limit)
+                    break;
+            }
+            
+            continue;
+        }
+        
+        if (QFileInfo(path.toLocalFile()).isDir() && path.isLocalFile() && fileExists(path)) 
+        {
             QDirIterator it(path.toLocalFile(), nameFilters, filters, recursive ? QDirIterator::Subdirectories : QDirIterator::NoIteratorFlags);
 
             while (it.hasNext()) {
