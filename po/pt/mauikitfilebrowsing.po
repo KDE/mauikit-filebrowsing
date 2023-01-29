@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-12 00:54+0000\n"
+"POT-Creation-Date: 2023-01-29 00:56+0000\n"
 "PO-Revision-Date: 2022-11-16 09:42+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -309,7 +309,7 @@ msgstr ""
 msgid "Add"
 msgstr "Adicionar"
 
-#: src/controls/OpenWithDialog.qml:55
+#: src/controls/OpenWithDialog.qml:54
 #, kde-format
 msgid "Open with"
 msgstr "Abrir com"
