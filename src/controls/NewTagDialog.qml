@@ -61,7 +61,7 @@ Maui.Dialog
 //         implicitHeight: Math.min(200, contentHeight) + Maui.Style.space.big
 //         implicitHeight: Maui.Style.toolBarHeight * 1.2
 //         orientation: ListView.Horizontal
-        spacing: Maui.Style.space.medium
+        spacing: Maui.Style.defaultSpacing
         
 //         horizontalScrollBarPolicy: ScrollBar.AlwaysOff
         //snapMode: ListView.SnapOneItem

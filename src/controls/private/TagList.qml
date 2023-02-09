@@ -11,7 +11,8 @@ Maui.ListBrowser
     id: control
     clip: false
     orientation: ListView.Horizontal
-    spacing: Maui.Style.contentMargins
+    spacing: Maui.Style.defaultSpacing
+    
     implicitHeight: Maui.Style.toolBarHeight
     horizontalScrollBarPolicy: ScrollBar.AlwaysOff
     snapMode: ListView.SnapOneItem
