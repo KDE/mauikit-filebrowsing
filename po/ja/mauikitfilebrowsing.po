@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-29 00:56+0000\n"
+"POT-Creation-Date: 2023-02-10 00:57+0000\n"
 "PO-Revision-Date: 2022-11-14 22:56-0800\n"
 "Last-Translator: Japanese KDE translation team <kde-jp@kde.org>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -306,17 +306,17 @@ msgstr ""
 msgid "Open with"
 msgstr ""
 
-#: src/controls/PlacesListBrowser.qml:83 src/controls/TagsDialog.qml:108
+#: src/controls/PlacesListBrowser.qml:84 src/controls/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
 msgstr ""
 
-#: src/controls/PlacesListBrowser.qml:88
+#: src/controls/PlacesListBrowser.qml:89
 #, kde-format
 msgid "Hide"
 msgstr ""
 
-#: src/controls/PlacesListBrowser.qml:93
+#: src/controls/PlacesListBrowser.qml:94
 #, kde-format
 msgid "Remove"
 msgstr ""
@@ -352,7 +352,7 @@ msgstr ""
 msgid " items"
 msgstr ""
 
-#: src/controls/private/TagList.qml:23
+#: src/controls/private/TagList.qml:24
 #, kde-format
 msgid "Add tags..."
 msgstr ""

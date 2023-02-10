@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-01-29 00:56+0000\n"
+"POT-Creation-Date: 2023-02-10 00:57+0000\n"
 "PO-Revision-Date: 2022-11-16 09:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -315,17 +315,17 @@ msgstr "Afegeix"
 msgid "Open with"
 msgstr "Obre amb"
 
-#: src/controls/PlacesListBrowser.qml:83 src/controls/TagsDialog.qml:108
+#: src/controls/PlacesListBrowser.qml:84 src/controls/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
 msgstr "Edita"
 
-#: src/controls/PlacesListBrowser.qml:88
+#: src/controls/PlacesListBrowser.qml:89
 #, kde-format
 msgid "Hide"
 msgstr "Oculta"
 
-#: src/controls/PlacesListBrowser.qml:93
+#: src/controls/PlacesListBrowser.qml:94
 #, kde-format
 msgid "Remove"
 msgstr "Elimina"
@@ -361,7 +361,7 @@ msgstr "Fusiona aquí"
 msgid " items"
 msgstr " elements"
 
-#: src/controls/private/TagList.qml:23
+#: src/controls/private/TagList.qml:24
 #, kde-format
 msgid "Add tags..."
 msgstr "Afegeix etiquetes..."
