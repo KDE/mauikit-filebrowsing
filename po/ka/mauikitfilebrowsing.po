@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-10 00:57+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2022-11-25 23:51+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -147,7 +147,7 @@ msgstr "შექმენით ახალი საქაღალდე ა
 msgid "Create"
 msgstr "შექმნა"
 
-#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:360
+#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "სახელი"
@@ -237,57 +237,57 @@ msgstr "ფაილი სახელად %1 უკვე არსებო
 msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgstr "ქმედება თავზე გადააწერს %1-ს. გნებავთ, ქნათ ეს?"
 
-#: src/controls/FileDialog.qml:227
+#: src/controls/FileDialog.qml:230
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "გვერდითი პანელის გადართვა"
 
-#: src/controls/FileDialog.qml:267
+#: src/controls/FileDialog.qml:270
 #, kde-format
 msgid "View type"
 msgstr "ხედის ტიპი"
 
-#: src/controls/FileDialog.qml:272
+#: src/controls/FileDialog.qml:275
 #, kde-format
 msgid "List"
 msgstr "სია"
 
-#: src/controls/FileDialog.qml:287
+#: src/controls/FileDialog.qml:290
 #, kde-format
 msgid "Grid"
 msgstr "ბადე"
 
-#: src/controls/FileDialog.qml:307
+#: src/controls/FileDialog.qml:310
 #, kde-format
 msgid "Sort by"
 msgstr "Დალაგება"
 
-#: src/controls/FileDialog.qml:312
+#: src/controls/FileDialog.qml:315
 #, kde-format
 msgid "Type"
 msgstr "ტიპი"
 
-#: src/controls/FileDialog.qml:324
+#: src/controls/FileDialog.qml:327
 #, kde-format
 msgid "Date"
 msgstr "თარიღი"
 
-#: src/controls/FileDialog.qml:336
+#: src/controls/FileDialog.qml:339
 #, kde-format
 msgid "Modified"
 msgstr "შეცვლილია"
 
-#: src/controls/FileDialog.qml:348
+#: src/controls/FileDialog.qml:351
 #, kde-format
 msgid "Size"
 msgstr "ზომა"
 
-#: src/controls/FileDialog.qml:374
+#: src/controls/FileDialog.qml:377
 #, kde-format
 msgid "Show Folders First"
 msgstr "ჯერ საქაღალდეების ჩვენება"
 
-#: src/controls/FileDialog.qml:387
+#: src/controls/FileDialog.qml:390
 #, kde-format
 msgid "Group"
 msgstr "GROUP"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-10 00:57+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2022-11-17 10:37+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -145,7 +145,7 @@ msgstr "Ustvari novo mapo ali datoteko z imenom po meri"
 msgid "Create"
 msgstr "Ustvari"
 
-#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:360
+#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Ime"
@@ -235,57 +235,57 @@ msgstr "Datoteka z imenom %1 že obstaja!"
 msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgstr "To dejanje bo prepisalo %1. Ali ste prepričani, da želite to?"
 
-#: src/controls/FileDialog.qml:227
+#: src/controls/FileDialog.qml:230
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Preklopi stransko vrstico"
 
-#: src/controls/FileDialog.qml:267
+#: src/controls/FileDialog.qml:270
 #, kde-format
 msgid "View type"
 msgstr "Vrsta pogleda"
 
-#: src/controls/FileDialog.qml:272
+#: src/controls/FileDialog.qml:275
 #, kde-format
 msgid "List"
 msgstr "Seznam"
 
-#: src/controls/FileDialog.qml:287
+#: src/controls/FileDialog.qml:290
 #, kde-format
 msgid "Grid"
 msgstr "Mreža"
 
-#: src/controls/FileDialog.qml:307
+#: src/controls/FileDialog.qml:310
 #, kde-format
 msgid "Sort by"
 msgstr "Razvrsti po"
 
-#: src/controls/FileDialog.qml:312
+#: src/controls/FileDialog.qml:315
 #, kde-format
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/controls/FileDialog.qml:324
+#: src/controls/FileDialog.qml:327
 #, kde-format
 msgid "Date"
 msgstr "Datum"
 
-#: src/controls/FileDialog.qml:336
+#: src/controls/FileDialog.qml:339
 #, kde-format
 msgid "Modified"
 msgstr "Spremenjeno"
 
-#: src/controls/FileDialog.qml:348
+#: src/controls/FileDialog.qml:351
 #, kde-format
 msgid "Size"
 msgstr "Velikost"
 
-#: src/controls/FileDialog.qml:374
+#: src/controls/FileDialog.qml:377
 #, kde-format
 msgid "Show Folders First"
 msgstr "Prikaži najprej mape"
 
-#: src/controls/FileDialog.qml:387
+#: src/controls/FileDialog.qml:390
 #, kde-format
 msgid "Group"
 msgstr "Skupina"

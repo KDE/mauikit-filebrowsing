@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-02-10 00:57+0000\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
 "PO-Revision-Date: 2023-01-04 14:50+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -141,7 +141,7 @@ msgstr "Créer un nouveau dossier ou un fichier avec un nom personnalisé"
 msgid "Create"
 msgstr "Créer"
 
-#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:360
+#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nom"
@@ -231,57 +231,57 @@ msgstr "Un fichier nommé %1 existe déjà !"
 msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgstr "Cette action écrasera %1. Voulez-vous vraiment faire cela ?"
 
-#: src/controls/FileDialog.qml:227
+#: src/controls/FileDialog.qml:230
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Basculer la barre latérale"
 
-#: src/controls/FileDialog.qml:267
+#: src/controls/FileDialog.qml:270
 #, kde-format
 msgid "View type"
 msgstr "Type de vue"
 
-#: src/controls/FileDialog.qml:272
+#: src/controls/FileDialog.qml:275
 #, kde-format
 msgid "List"
 msgstr "Liste"
 
-#: src/controls/FileDialog.qml:287
+#: src/controls/FileDialog.qml:290
 #, kde-format
 msgid "Grid"
 msgstr "Grille"
 
-#: src/controls/FileDialog.qml:307
+#: src/controls/FileDialog.qml:310
 #, kde-format
 msgid "Sort by"
 msgstr "Trier par"
 
-#: src/controls/FileDialog.qml:312
+#: src/controls/FileDialog.qml:315
 #, kde-format
 msgid "Type"
 msgstr "Type"
 
-#: src/controls/FileDialog.qml:324
+#: src/controls/FileDialog.qml:327
 #, kde-format
 msgid "Date"
 msgstr "Date"
 
-#: src/controls/FileDialog.qml:336
+#: src/controls/FileDialog.qml:339
 #, kde-format
 msgid "Modified"
 msgstr "Modifié"
 
-#: src/controls/FileDialog.qml:348
+#: src/controls/FileDialog.qml:351
 #, kde-format
 msgid "Size"
 msgstr "Taille"
 
-#: src/controls/FileDialog.qml:374
+#: src/controls/FileDialog.qml:377
 #, kde-format
 msgid "Show Folders First"
 msgstr "Afficher les dossiers en premier"
 
-#: src/controls/FileDialog.qml:387
+#: src/controls/FileDialog.qml:390
 #, kde-format
 msgid "Group"
 msgstr "Grouper"
