@@ -43,6 +43,13 @@ include(CMakePackageConfigHelpers)
 include(KDEPackageAppTemplates)
 include(KDEClangFormat)
 
+ecm_setup_version(${PROJECT_VERSION}
+    VARIABLE_PREFIX FileBrowsing
+    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
+    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+)
+
 if(ANDROID OR APPLE OR WIN32)
     set(IS_KIO_AVAILABLE OFF)
 else()
@@ -104,13 +111,6 @@ install(EXPORT MauiKitFileBrowsingTargets
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     FILE MauiKitFileBrowsingTargets.cmake
     NAMESPACE MauiKit::)
-
-ecm_setup_version(${PROJECT_VERSION}
-    VARIABLE_PREFIX FileBrowsing
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
-    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-    )
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
