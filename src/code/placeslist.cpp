@@ -160,7 +160,7 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     Q_UNUSED(model)
     switch (type) {
         case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
-            res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
+            res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
             break;
         case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
             res = FMStatic::getDevices();

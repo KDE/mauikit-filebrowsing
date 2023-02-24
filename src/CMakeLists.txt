@@ -80,7 +80,6 @@ add_library(
     MauiKitFileBrowsing
     SHARED
     ${sources}
-    ${pluginData}
     ${syncing_SRCS}
     ${filebrowsing_QML_QRC}
     )
@@ -88,11 +87,6 @@ add_library(
 add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
 
 generate_export_header(MauiKitFileBrowsing BASE_NAME FileBrowsing)
-set_target_properties(MauiKitFileBrowsing PROPERTIES
-    VERSION ${FileBrowsing_VERSION_STRING}
-    SOVERSION ${FileBrowsing_SOVERSION}
-    EXPORT_NAME FileBrowsing
-    )
 
 target_include_directories(MauiKitFileBrowsing
     INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing>")
@@ -101,10 +95,6 @@ target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE
 
 if(ANDROID)
     target_link_libraries(MauiKitFileBrowsing PRIVATE Qt5::AndroidExtras)
-endif()
-
-if(UNIX AND NOT ANDROID)
-    target_link_libraries(MauiKitFileBrowsing  PRIVATE KF5::ConfigCore)
 endif()
 
 if(${KIO_AVAILABLE})
