@@ -42,13 +42,38 @@ include(CMakePackageConfigHelpers)
 include(KDEPackageAppTemplates)
 include(KDEClangFormat)
 
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/MauiKitFileBrowsing")
+
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/MauiKitFileBrowsingConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
+    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+    PATH_VARS CMAKE_INSTALL_PREFIX
+    )
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
+    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+    COMPONENT Devel
+    )
+
+install(EXPORT MauiKitFileBrowsingTargets
+    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+    FILE MauiKitFileBrowsingTargets.cmake
+    NAMESPACE MauiKit::)
+
+
 ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX FileBrowsing
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
     SOVERSION ${PROJECT_VERSION_MAJOR}
 )
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/MauiKitFileBrowsing")
+
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
+    COMPONENT Devel)
 
 if(ANDROID OR APPLE OR WIN32)
     set(IS_KIO_AVAILABLE OFF)
@@ -84,32 +109,10 @@ endif()
 
       add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
     ki18n_install(po)
-    
+
 add_subdirectory(src)
 
-configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/MauiKitFileBrowsingConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
-    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
-    PATH_VARS CMAKE_INSTALL_PREFIX
-    )
 
-install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfigVersion.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsingConfig.cmake"
-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    COMPONENT Devel
-    )
-
-install(EXPORT MauiKitFileBrowsingTargets
-    DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    FILE MauiKitFileBrowsingTargets.cmake
-    NAMESPACE MauiKit::)
-
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
-    COMPONENT Devel)
-    
     file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
