@@ -86,9 +86,15 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
         
         if (QFileInfo(path.toLocalFile()).isDir() && path.isLocalFile() && fileExists(path)) 
         {
-            QDirIterator it(path.toLocalFile(), nameFilters, filters, recursive ? QDirIterator::Subdirectories : QDirIterator::NoIteratorFlags);
+            QDir dir(path.toLocalFile());
+            dir.setNameFilters(nameFilters);
+            dir.setFilter(filters);
+            dir.setSorting(QDir::SortFlag::DirsFirst | QDir::SortFlag::Time);
+            
+            QDirIterator it(dir, recursive ? QDirIterator::Subdirectories : QDirIterator::NoIteratorFlags);
 
-            while (it.hasNext()) {
+            while (it.hasNext()) 
+            {
                 const auto url = QUrl::fromLocalFile(it.next());
                 MODEL map = FileLoader::informer(url);
 
