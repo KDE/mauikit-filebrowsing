@@ -32,22 +32,22 @@
 
 const QString FMStatic::PathTypeLabel(const FMStatic::PATHTYPE_KEY& key)
 {
-   static const QHash<FMStatic::PATHTYPE_KEY, QString> PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
-    {PATHTYPE_KEY::BOOKMARKS_PATH, i18n("Bookmarks")},
-    {PATHTYPE_KEY::DRIVES_PATH, i18n("Drives")},
-    {PATHTYPE_KEY::APPS_PATH, i18n("Apps")},
-    {PATHTYPE_KEY::REMOTE_PATH, i18n("Remote")},
-    {PATHTYPE_KEY::REMOVABLE_PATH, i18n("Removable")},
-    {PATHTYPE_KEY::UNKNOWN_TYPE, i18n("Unknown")},
-    {PATHTYPE_KEY::TRASH_PATH, i18n("Trash")},
-    {PATHTYPE_KEY::TAGS_PATH, i18n("Tags")},
-    {PATHTYPE_KEY::SEARCH_PATH, i18n("Search")},
-    {PATHTYPE_KEY::CLOUD_PATH, i18n("Cloud")},
-    {PATHTYPE_KEY::FISH_PATH, i18n("Remote")},
-    {PATHTYPE_KEY::MTP_PATH, i18n("Drives")},
-    {PATHTYPE_KEY::OTHER_PATH, i18n("Others")},
-    {PATHTYPE_KEY::QUICK_PATH, i18n("Quick")}};
-    
+    static const QHash<FMStatic::PATHTYPE_KEY, QString> PATHTYPE_LABEL = {{PATHTYPE_KEY::PLACES_PATH, ("Places")},
+                                                                          {PATHTYPE_KEY::BOOKMARKS_PATH, i18n("Bookmarks")},
+                                                                          {PATHTYPE_KEY::DRIVES_PATH, i18n("Drives")},
+                                                                          {PATHTYPE_KEY::APPS_PATH, i18n("Apps")},
+                                                                          {PATHTYPE_KEY::REMOTE_PATH, i18n("Remote")},
+                                                                          {PATHTYPE_KEY::REMOVABLE_PATH, i18n("Removable")},
+                                                                          {PATHTYPE_KEY::UNKNOWN_TYPE, i18n("Unknown")},
+                                                                          {PATHTYPE_KEY::TRASH_PATH, i18n("Trash")},
+                                                                          {PATHTYPE_KEY::TAGS_PATH, i18n("Tags")},
+                                                                          {PATHTYPE_KEY::SEARCH_PATH, i18n("Search")},
+                                                                          {PATHTYPE_KEY::CLOUD_PATH, i18n("Cloud")},
+                                                                          {PATHTYPE_KEY::FISH_PATH, i18n("Remote")},
+                                                                          {PATHTYPE_KEY::MTP_PATH, i18n("Drives")},
+                                                                          {PATHTYPE_KEY::OTHER_PATH, i18n("Others")},
+                                                                          {PATHTYPE_KEY::QUICK_PATH, i18n("Quick")}};
+
     return PATHTYPE_LABEL[key];
 }
 
@@ -249,7 +249,7 @@ bool FMStatic::group(const QList<QUrl>& urls, const QUrl& destinationDir, const 
         QDir(destinationDir.toLocalFile()).mkdir(name);
     }
     
-   return FMStatic::cut(urls, destinationDir, name);
+    return FMStatic::cut(urls, destinationDir, name);
 }
 
 
@@ -448,7 +448,7 @@ const QString FMStatic::dirConfIcon(const QUrl &path)
 #if defined Q_OS_ANDROID || defined Q_OS_WIN || defined Q_OS_MACOS || defined Q_OS_IOS
     QSettings file(path.toLocalFile(), QSettings::Format::NativeFormat);
     file.beginGroup(QString("Desktop Entry"));
-    icon = file.value("Icon").toString();
+    icon = file.value("Icon", icon).toString();
     file.endGroup();
 #else
     KConfig file(path.toLocalFile());
@@ -552,9 +552,9 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
         {FMH::MODEL_KEY::HIDDEN, QVariant(kfile.isHidden()).toString()},
         {FMH::MODEL_KEY::IS_DIR, QVariant(kfile.isDir()).toString()},
         {FMH::MODEL_KEY::IS_FILE, QVariant(kfile.isFile()).toString()},
-//         {FMH::MODEL_KEY::WRITABLE, QVariant(kfile.isWritable()).toString()},
-//         {FMH::MODEL_KEY::READABLE, QVariant(kfile.isReadable()).toString()},
-//         {FMH::MODEL_KEY::EXECUTABLE, QVariant(kfile.isDesktopFile()).toString()},
+        //         {FMH::MODEL_KEY::WRITABLE, QVariant(kfile.isWritable()).toString()},
+        //         {FMH::MODEL_KEY::READABLE, QVariant(kfile.isReadable()).toString()},
+        //         {FMH::MODEL_KEY::EXECUTABLE, QVariant(kfile.isDesktopFile()).toString()},
         {FMH::MODEL_KEY::MIME, kfile.mimetype()},
         {FMH::MODEL_KEY::ICON, kfile.iconName()},
         {FMH::MODEL_KEY::SIZE, QString::number(kfile.size())},
@@ -573,10 +573,7 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
                 return FMH::MODEL();
 
             const auto mime = FMStatic::getMime(path);
-             res = FMH::MODEL {
-            //{FMH::MODEL_KEY::OWNER, file.owner()},
-//             {FMH::MODEL_KEY::GROUP, file.group()},
-            {FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
+            res = FMH::MODEL {{FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
             {FMH::MODEL_KEY::LABEL, /*file.isDir() ? file.baseName() :*/ path == HomePath ? QStringLiteral("Home") : file.fileName()},
             {FMH::MODEL_KEY::NAME, file.fileName()},
             {FMH::MODEL_KEY::DATE, file.birthTime().toString(Qt::TextDate)},
@@ -588,46 +585,45 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             {FMH::MODEL_KEY::IS_FILE, QVariant(file.isFile()).toString()},
             {FMH::MODEL_KEY::HIDDEN, QVariant(file.isHidden()).toString()},
             {FMH::MODEL_KEY::IS_DIR, QVariant(file.isDir()).toString()},
-//             {FMH::MODEL_KEY::WRITABLE, QVariant(file.isWritable()).toString()},
-//             {FMH::MODEL_KEY::READABLE, QVariant(file.isReadable()).toString()},
-//             {FMH::MODEL_KEY::EXECUTABLE, QVariant(file.suffix().endsWith(".desktop")).toString()},
             {FMH::MODEL_KEY::ICON, getIconName(path)},
             {FMH::MODEL_KEY::SIZE, QString::number(file.size()) /*locale.formattedDataSize(file.size())*/},
             {FMH::MODEL_KEY::PATH, path.toString()},
             {FMH::MODEL_KEY::URL, path.toString()},
             {FMH::MODEL_KEY::THUMBNAIL, thumbnailUrl(path, mime).toString()},
             {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()) : "0"}};
-        #endif
-                    return res;
+#endif
+            return res;
         }
 
-                    const QVariantMap FMStatic::getFileInfo(const QUrl &path)
-            {
-                    return FMH::toMap(getFileInfoModel(path));
+        const QVariantMap FMStatic::getFileInfo(const QUrl &path)
+        {
+            return FMH::toMap(getFileInfoModel(path));
         }
 
-                    const QString FMStatic::getIconName(const QUrl &path)
+        const QString FMStatic::getIconName(const QUrl &path)
+        {
+            if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir())
             {
-                    if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir()) {
-                    if (folderIcon.contains(path.toString()))
+                if (folderIcon.contains(path.toString()))
                     return folderIcon[path.toString()];
-                    else {
+                else
+            {
                     return dirConfIcon(QString(path.toString() + "/%1").arg(".directory"));
-        }
-                    
-        } else {
-        #ifdef KIO_AVAILABLE
-                    KFileItem mime(path);
-                    return mime.iconName();
-        #else
-                    QMimeDatabase mime;
-                    const auto type = mime.mimeTypeForFile(path.toString());
-                    return type.iconName();
-        #endif
-        }
+                }
+
+            } else {
+#ifdef KIO_AVAILABLE
+                KFileItem mime(path);
+                return mime.iconName();
+#else
+                QMimeDatabase mime;
+                const auto type = mime.mimeTypeForFile(path.toString());
+                return type.iconName();
+#endif
+            }
         }
 
-                    FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
-            {
-                    return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
+        FMStatic::PATHTYPE_KEY FMStatic::getPathType(const QUrl &url)
+        {
+            return FMStatic::PATHTYPE_SCHEME_NAME[url.scheme()];
         }
