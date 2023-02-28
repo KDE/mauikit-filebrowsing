@@ -22,10 +22,6 @@ set(AUTOMOC_MOC_OPTIONS -Muri=org.mauikit.filebrowsing)
 
 project(FileBrowsing LANGUAGES CXX VERSION 2.2.2)
 
-if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-   message(FATAL_ERROR "MauiKit::FileBrowsing requires an out of source build. Please create a separate build directory and run 'cmake path_to_mauikit [options]' there.")
-endif()
-
 find_package(ECM ${KF5_VERSION} NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
