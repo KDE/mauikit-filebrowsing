@@ -55,7 +55,7 @@ Maui.Dialog
         
         headBar.visible: true
         
-        headBar.middleContent: Maui.TextField
+        headBar.middleContent: TextField
         {
             id: tagText
             Layout.fillWidth: true

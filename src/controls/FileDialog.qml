@@ -155,7 +155,7 @@ Maui.Dialog
         width: parent.width
         position: ToolBar.Footer
         
-        middleContent: Maui.TextField
+        middleContent: TextField
         {
             id: _textField
             Layout.fillWidth: true
@@ -184,6 +184,9 @@ Maui.Dialog
         id: pageRow
         Layout.fillHeight: true
         Layout.fillWidth: true
+
+sideBar.preferredWidth: 200
+sideBar.minimumWidth: 200
         sideBarContent: Loader
         {
             id: sidebarLoader

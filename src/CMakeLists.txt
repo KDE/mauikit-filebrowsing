@@ -80,7 +80,6 @@ add_library(
     MauiKitFileBrowsing
     SHARED
     ${sources}
-    ${pluginData}
     ${syncing_SRCS}
     ${filebrowsing_QML_QRC}
     )
@@ -101,10 +100,6 @@ target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE
 
 if(ANDROID)
     target_link_libraries(MauiKitFileBrowsing PRIVATE Qt5::AndroidExtras)
-endif()
-
-if(UNIX AND NOT ANDROID)
-    target_link_libraries(MauiKitFileBrowsing  PRIVATE KF5::ConfigCore)
 endif()
 
 if(${KIO_AVAILABLE})

@@ -141,7 +141,7 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
                            {FMH::MODEL_KEY::ICON, model.icon(index).name()},
                            {FMH::MODEL_KEY::LABEL, model.text(index)},
                            {FMH::MODEL_KEY::NAME, model.text(index)},
-                           {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH] : FMStatic::PATHTYPE_LABEL[type]}};
+                           {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH) : FMStatic::PathTypeLabel(type)}};
                            
                            if(model.isDevice(index))
                            {
@@ -160,7 +160,7 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     Q_UNUSED(model)
     switch (type) {
         case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
-            res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PATHTYPE_LABEL[FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH]);
+            res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
             break;
         case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
             res = FMStatic::getDevices();

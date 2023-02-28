@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-11-16 00:45+0000\n"
-"PO-Revision-Date: 2022-11-11 13:29+0100\n"
+"POT-Creation-Date: 2023-02-11 00:56+0000\n"
+"PO-Revision-Date: 2022-11-16 09:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -19,69 +19,65 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
-#: src/code/fmstatic.h:281
+#: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "Punts"
 
-#: src/code/fmstatic.h:282 src/code/fmstatic.h:292
+#: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:47
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Unitats"
 
-#: src/code/fmstatic.h:283
+#: src/code/fmstatic.cpp:38
 #, kde-format
 msgid "Apps"
-msgstr ""
+msgstr "Aplicacions"
 
-#: src/code/fmstatic.h:284 src/code/fmstatic.h:291
-#, fuzzy, kde-format
-#| msgid "Remove"
+#: src/code/fmstatic.cpp:39 src/code/fmstatic.cpp:46
+#, kde-format
 msgid "Remote"
-msgstr "Elimina"
+msgstr "Remota"
 
-#: src/code/fmstatic.h:285
-#, fuzzy, kde-format
-#| msgid "Remove"
+#: src/code/fmstatic.cpp:40
+#, kde-format
 msgid "Removable"
-msgstr "Elimina"
+msgstr "Extraïble"
 
-#: src/code/fmstatic.h:286
+#: src/code/fmstatic.cpp:41
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Desconeguda"
 
-#: src/code/fmstatic.h:287 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:344
 #, kde-format
 msgid "Trash"
 msgstr "Paperera"
 
-#: src/code/fmstatic.h:288
-#, fuzzy, kde-format
-#| msgid "No Tags!"
+#: src/code/fmstatic.cpp:43
+#, kde-format
 msgid "Tags"
-msgstr "Sense etiquetes!"
+msgstr "Etiquetes"
 
-#: src/code/fmstatic.h:289
-#, fuzzy, kde-format
-#| msgid "Search: %1"
+#: src/code/fmstatic.cpp:44
+#, kde-format
 msgid "Search"
-msgstr "Busca: %1"
+msgstr "Busca"
 
-#: src/code/fmstatic.h:290
+#: src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "Núvol"
 
-#: src/code/fmstatic.h:293
+#: src/code/fmstatic.cpp:48
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "Altres"
 
-#: src/code/fmstatic.h:294
+#: src/code/fmstatic.cpp:49
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "Ràpid"
 
 #: src/controls/FileBrowser.qml:228
 #, kde-format
@@ -150,7 +146,7 @@ msgstr "Crea una carpeta o fitxer nou amb un nom personalitzat"
 msgid "Create"
 msgstr "Crea"
 
-#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:360
+#: src/controls/FileBrowser.qml:397 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nom"
@@ -240,57 +236,57 @@ msgstr "Ja existix un fitxer anomenat %1!"
 msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgstr "Esta acció sobreescriurà %1. Segur que voleu fer-ho?"
 
-#: src/controls/FileDialog.qml:227
+#: src/controls/FileDialog.qml:230
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Alterna la barra lateral"
 
-#: src/controls/FileDialog.qml:267
+#: src/controls/FileDialog.qml:270
 #, kde-format
 msgid "View type"
 msgstr "Tipus de vista"
 
-#: src/controls/FileDialog.qml:272
+#: src/controls/FileDialog.qml:275
 #, kde-format
 msgid "List"
 msgstr "Llista"
 
-#: src/controls/FileDialog.qml:287
+#: src/controls/FileDialog.qml:290
 #, kde-format
 msgid "Grid"
 msgstr "Quadrícula"
 
-#: src/controls/FileDialog.qml:307
+#: src/controls/FileDialog.qml:310
 #, kde-format
 msgid "Sort by"
 msgstr "Ordena per"
 
-#: src/controls/FileDialog.qml:312
+#: src/controls/FileDialog.qml:315
 #, kde-format
 msgid "Type"
 msgstr "Tipus"
 
-#: src/controls/FileDialog.qml:324
+#: src/controls/FileDialog.qml:327
 #, kde-format
 msgid "Date"
 msgstr "Data"
 
-#: src/controls/FileDialog.qml:336
+#: src/controls/FileDialog.qml:339
 #, kde-format
 msgid "Modified"
 msgstr "Modificació"
 
-#: src/controls/FileDialog.qml:348
+#: src/controls/FileDialog.qml:351
 #, kde-format
 msgid "Size"
 msgstr "Mida"
 
-#: src/controls/FileDialog.qml:374
+#: src/controls/FileDialog.qml:377
 #, kde-format
 msgid "Show Folders First"
 msgstr "Mostra primer les carpetes"
 
-#: src/controls/FileDialog.qml:387
+#: src/controls/FileDialog.qml:390
 #, kde-format
 msgid "Group"
 msgstr "Agrupa"
@@ -314,22 +310,22 @@ msgstr ""
 msgid "Add"
 msgstr "Afig"
 
-#: src/controls/OpenWithDialog.qml:55
+#: src/controls/OpenWithDialog.qml:54
 #, kde-format
 msgid "Open with"
 msgstr "Obri amb"
 
-#: src/controls/PlacesListBrowser.qml:83 src/controls/TagsDialog.qml:108
+#: src/controls/PlacesListBrowser.qml:84 src/controls/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
 msgstr "Edita"
 
-#: src/controls/PlacesListBrowser.qml:88
+#: src/controls/PlacesListBrowser.qml:89
 #, kde-format
 msgid "Hide"
 msgstr "Oculta"
 
-#: src/controls/PlacesListBrowser.qml:93
+#: src/controls/PlacesListBrowser.qml:94
 #, kde-format
 msgid "Remove"
 msgstr "Elimina"
@@ -359,13 +355,13 @@ msgstr "Nom del directori"
 msgid "Merge here"
 msgstr "Fusiona ací"
 
-#: src/controls/private/BrowserView.qml:299
-#: src/controls/private/BrowserView.qml:470
+#: src/controls/private/BrowserView.qml:300
+#: src/controls/private/BrowserView.qml:471
 #, kde-format
 msgid " items"
 msgstr " elements"
 
-#: src/controls/private/TagList.qml:23
+#: src/controls/private/TagList.qml:24
 #, kde-format
 msgid "Add tags..."
 msgstr "Afig etiquetes..."

@@ -285,43 +285,44 @@ Maui.AltBrowser
         label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section        
         isSection: true
     }
-    
+
     listDelegate: Maui.ListBrowserDelegate
     {
         id: delegate
         readonly property string path : model.path
-        
+
         width: ListView.view.width
 //         template.headerSizeHint: control.listItemSize
         iconSource: model.icon
-        
+
         label1.text: model.label ? model.label : ""
+        label2.text: control.objectName === "searchView" ? model.path : ""
         label3.text : model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18nd("mauikitfilebrowsing", " items") : "") : Maui.Handy.formatSize(model.size)) : ""
         label4.text: model.modified ? Maui.Handy.formatDate(model.modified, "MM/dd/yyyy") : ""
-        
+
         template.isMask: iconSizeHint <= 22
         iconSizeHint: _private.listIconSize
-        
+
         tooltipText: model.path
-        
+
         checkable: control.selectionMode
         imageSource: settings.showThumbnails && height > 32 ? model.thumbnail : ""
         checked: selectionBar ? selectionBar.contains(model.path) : false
         template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
         draggable: true
-        
+
         Drag.keys: ["text/uri-list"]
         Drag.mimeData: Drag.active ?
         {
             "text/uri-list": filterSelection(control.path, model.path).join("\n")
         } : {}
-        
+
         Item
         {
             Layout.fillHeight: true
             Layout.preferredWidth: height
             visible: (model.issymlink == true) || (model.issymlink == "true")
-            
+
             Maui.Icon
             {
                 source: "link"
@@ -332,7 +333,7 @@ Maui.AltBrowser
                 color: label1.color
             }
         }
-        
+
         Loader
         {
             id: _injectorLoader
@@ -343,65 +344,65 @@ Maui.AltBrowser
             Layout.preferredWidth: visible ? height : 0
             active: control.delegateInjector
             visible: active
-        }        
-        
+        }
+
         onClicked:
         {
             control.currentIndex = index
-            
+
             if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
             {
                 control.itemsSelected([index])
             }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
             {
                 var lastSelectedIndex = findLastSelectedIndex(control.listView.flickable, index)
-                
+
                 if(lastSelectedIndex < 0)
                 {
                     return
                 }
                 control.itemsSelected(control.range(lastSelectedIndex, index))
-                
+
             }else
             {
                 control.itemClicked(index)
             }
         }
-        
+
         onDoubleClicked:
         {
             control.currentIndex = index
             control.itemDoubleClicked(index)
         }
-        
+
         onPressAndHold:
         {
             if(!Maui.Handy.isTouch)
                 return
-                
+
                 control.currentIndex = index
                 control.itemRightClicked(index)
         }
-        
+
         onRightClicked:
         {
             control.currentIndex = index
             control.itemRightClicked(index)
         }
-        
+
         onToggled:
         {
             control.currentIndex = index
             control.itemToggled(index, state)
         }
-        
+
         onContentDropped:
         {
             _dropMenu.urls = drop.urls.join(",")
             _dropMenu.target = model.path
             _dropMenu.show()
         }
-        
+
         ListView.onRemove:
         {
             if(selectionBar)
@@ -409,36 +410,36 @@ Maui.AltBrowser
                 selectionBar.removeAtUri(delegate.path)
             }
         }
-        
+
         Connections
         {
             target: selectionBar
-            
+
             function onUriRemoved(uri)
             {
                 if(uri === model.path)
                     delegate.checked = false
             }
-            
+
             function onUriAdded(uri)
             {
                 if(uri === model.path)
                     delegate.checked = true
             }
-            
+
             function onCleared()
             {
                 delegate.checked = false
             }
         }
     }
-    
+
     gridDelegate: Item
     {
         height: GridView.view.cellHeight
         width: GridView.view.cellWidth
         readonly property alias checked : delegate.checked
-        
+
         GridView.onRemove:
         {
             if(selectionBar)
@@ -446,18 +447,18 @@ Maui.AltBrowser
                 selectionBar.removeAtUri(delegate.path)
             }
         }
-        
+
         Maui.GridBrowserDelegate
         {
             id: delegate
             readonly property string path : model.path
-            
+
             template.imageWidth: control.gridView.itemSize
             template.imageHeight: control.gridView.itemSize
-            
+
             anchors.fill: parent
-            anchors.margins: Maui.Handy.isMobile ? Maui.Style.space.tiny : Maui.Style.space.medium 
-            
+            anchors.margins: Maui.Handy.isMobile ? Maui.Style.space.tiny : Maui.Style.space.medium
+
             template.labelSizeHint: 42
             iconSizeHint: _private.gridIconSize
             imageSource: settings.showThumbnails ? model.thumbnail : ""
@@ -468,34 +469,34 @@ Maui.AltBrowser
             label2.visible: delegate.height > 160 && model.mime
             label2.font.pointSize: Maui.Style.fontSizes.tiny
             label2.text: model.mime ? (model.mime === "inode/directory" ? (model.count ? model.count + i18nd("mauikitfilebrowsing", " items") : "") : Maui.Handy.formatSize(model.size)) : ""
-            
+
             isCurrentItem: parent.GridView.isCurrentItem || checked
             tooltipText: model.label
             checkable: control.selectionMode
             checked: (selectionBar ? selectionBar.contains(model.path) : false)
             draggable: true
             template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
-            
+
             Drag.keys: ["text/uri-list"]
             Drag.mimeData: Drag.active ?
             {
                 "text/uri-list":  filterSelection(control.path, model.path).join("\n")
             } : {}
-            
+
             Maui.Icon
             {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.margins: Maui.Style.space.medium
-                
+
                 visible: (model.issymlink == true) || (model.issymlink == "true")
-                
+
                 source: "link"
                 color: Maui.Theme.textColor
                 isMask: true
                 height: Maui.Style.iconSizes.small
             }
-            
+
             Loader
             {
                 id: _injectorLoader
@@ -505,79 +506,79 @@ Maui.AltBrowser
                 anchors.fill: parent
                 active: control.delegateInjector
             }
-            
+
             onClicked:
-            {                
+            {
                 if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
                 {
                     control.itemsSelected([index])
                 }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
                 {
                     var lastSelectedIndex = findLastSelectedIndex(control.gridView.flickable, index)
-                    
+
                     if(lastSelectedIndex < 0)
                     {
                         return
                     }
                     control.itemsSelected(control.range(lastSelectedIndex, index))
-                    
+
                 }else
                 {
                     control.itemClicked(index)
                 }
-                control.currentIndex = index                
+                control.currentIndex = index
             }
-            
+
             onDoubleClicked:
             {
                 control.currentIndex = index
                 control.itemDoubleClicked(index)
             }
-            
+
             onPressAndHold:
             {
                 if(!Maui.Handy.isTouch)
                     return
-                    
+
                     control.currentIndex = index
                     control.itemRightClicked(index)
             }
-            
+
             onRightClicked:
             {
                 control.currentIndex = index
                 control.itemRightClicked(index)
             }
-            
+
             onToggled:
             {
                 control.currentIndex = index
                 control.itemToggled(index, state)
             }
-            
+
             onContentDropped:
             {
                 _dropMenu.urls = drop.urls.join(",")
                 _dropMenu.target = model.path
                 _dropMenu.show()
             }
-            
+
             Connections
             {
                 target: selectionBar
-                
+
                 function onUriRemoved(uri)
                 {
                     if(uri === model.path)
                         delegate.checked = false
                 }
-                
+
                 function onUriAdded(uri)
                 {
                     if(uri === model.path)
                         delegate.checked = true
                 }
-                
+
                 function onCleared(uri)
                 {
                     delegate.checked = false
@@ -585,8 +586,8 @@ Maui.AltBrowser
             }
         }
     }
-    
-    
+
+
     /**
      * 
      */

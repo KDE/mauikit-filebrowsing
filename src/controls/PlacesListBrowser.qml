@@ -1,5 +1,6 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import QtQuick.Layouts 1.3
 
 import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.0 as FB
@@ -96,19 +97,18 @@ Maui.ListBrowser
         }
     }
     
-    flickable.header: GridView
+    flickable.header: GridLayout
                     {
                         id: _quickSection
+                        
                         width: Math.min(parent.width, 180)
-                        implicitHeight: contentHeight + topMargin + bottomMargin
-                        leftMargin: 0
-                        rightMargin: 0
-//                        padding: 0
-                        cellWidth: Math.floor(width/3)
-                        cellHeight: cellWidth
-                        interactive: false
-                        currentIndex: _quickPacesList.indexOfPath(control.currentPath)
+                        rows: 3
+                        columns: 3
+                        columnSpacing: Maui.Style.space.small
+                        rowSpacing: Maui.Style.space.small
 
+                        Repeater
+                        {
                         model: Maui.BaseModel
                         {
                             list: FB.PlacesList
@@ -118,16 +118,14 @@ Maui.ListBrowser
                             }
                         }
 
-                        delegate: Item
-                        {
-                            height: GridView.view.cellHeight
-                            width: GridView.view.cellWidth
-
-                            Maui.GridBrowserDelegate
+                        delegate: Maui.GridBrowserDelegate
                             {
-                                isCurrentItem: parent.GridView.isCurrentItem
-                                anchors.fill: parent
-                                anchors.margins: Maui.Style.space.tiny
+                                Layout.preferredHeight: Math.min(50, width)
+                                Layout.preferredWidth: 50
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                
+                                isCurrentItem: control.currentPath === model.path
                                 iconSource: model.icon +  (Qt.platform.os == "android" || Qt.platform.os == "osx" ? ("-sidebar") : "")
                                 iconSizeHint: Maui.Style.iconSize
                                 template.isMask: true
@@ -140,6 +138,7 @@ Maui.ListBrowser
                                 }
                             }
                         }
+                        
                     }
 
     delegate: Maui.ListDelegate

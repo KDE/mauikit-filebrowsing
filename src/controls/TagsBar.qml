@@ -92,7 +92,7 @@ Item
         visible: active
         asynchronous: true
         
-        sourceComponent: Maui.TextField
+        sourceComponent: TextField
         {
             id: editTagsEntry
             focus: true
