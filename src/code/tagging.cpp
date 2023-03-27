@@ -55,17 +55,17 @@ Tagging::Tagging() : QObject()
 
 TAGDB * Tagging::db()
 {
-    if(m_dbs.contains(QThread::currentThreadId()))
+    if(m_dbs.contains(QThread::currentThread()))
     {
         qDebug() << "Using existing TAGGINGDB instance";
         
-        return m_dbs[QThread::currentThreadId()];
+        return m_dbs[QThread::currentThread()];
     }
     
     qDebug() << "Creating new TAGGINGDB instance";
     
     auto new_db = new TAGDB;
-    m_dbs.insert(QThread::currentThreadId(), new_db);
+    m_dbs.insert(QThread::currentThread(), new_db);
     return new_db;
 }
 

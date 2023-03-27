@@ -459,7 +459,7 @@ sideBar.minimumWidth: 200
                     selectionMode: control.mode === modes.OPEN
                     onItemClicked:
                     {
-                        if(Maui.Handy.singleClick)
+                        if(Qt.styleHints.singleClickActivation)
                         {
                             performAction(index)
                         }
@@ -467,7 +467,7 @@ sideBar.minimumWidth: 200
                     
                     onItemDoubleClicked:
                     {
-                        if(!Maui.Handy.singleClick)
+                        if(!Qt.styleHints.singleClickActivation)
                         {
                             performAction(index)
                         }

@@ -7,8 +7,8 @@ Maui.Chip
     /**
      * 
      */
-    property int tagHeight: Maui.Style.rowHeightAlt
-    implicitHeight: tagHeight
+    // property int tagHeight: Maui.Style.rowHeightAlt
+    // implicitHeight: tagHeight
     
     /**
      * 

@@ -170,7 +170,7 @@ Maui.Dialog
                 onClicked:
                 {
                     _listView.currentIndex = index
-                    if(Maui.Handy.singleClick)
+                    if(Qt.styleHints.singleClickActivation)
                     {
                         tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
@@ -179,7 +179,7 @@ Maui.Dialog
                 onDoubleClicked:
                 {
                     _listView.currentIndex = index
-                    if(!Maui.Handy.singleClick)
+                    if(!Qt.styleHints.singleClickActivation)
                     {
                         tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
