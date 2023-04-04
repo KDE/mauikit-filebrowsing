@@ -653,4 +653,9 @@ Maui.AltBrowser
         
         return (isReverse) ? result.reverse() : result;
     }
+    
+    function forceActiveFocus()
+    {
+        control.currentView.forceActiveFocus()        
+    }
 }

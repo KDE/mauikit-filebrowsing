@@ -384,6 +384,8 @@ Maui.Page
             id: _newDialog
             title: i18nd("mauikitfilebrowsing", "New %1", _newActions.currentIndex === 0 ? "folder" : "file" )
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name")
+            template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
+            template.iconVisible: true
             acceptButton.text: i18nd("mauikitfilebrowsing", "Create")
             onFinished:
             {
