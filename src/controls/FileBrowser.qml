@@ -344,6 +344,7 @@ Maui.Page
             message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
            
             headBar.visible: false
+            scrollView.padding: Maui.Style.space.big
             
             rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
             acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
@@ -390,6 +391,8 @@ Maui.Page
             
             title: i18nd("mauikitfilebrowsing", "New %1", _newActions.currentIndex === 0 ? "folder" : "file" )
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
+            
+            scrollView.padding: Maui.Style.space.big
             
             headBar.visible: false
             
@@ -446,6 +449,7 @@ Maui.Page
             message: i18nd("mauikitfilebrowsing", "Change the name of a file or folder")
             
             headBar.visible: false
+            scrollView.padding: Maui.Style.space.big
             
             template.iconSource: item.icon
             template.imageSource: item.thumbnail
