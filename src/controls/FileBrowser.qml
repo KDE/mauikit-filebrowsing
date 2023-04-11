@@ -337,9 +337,14 @@ Maui.Page
         Maui.FileListingDialog
         {
             id: _removeDialog
+            
             property double freedSpace : calculateFreedSpace(urls)
+            
             title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
             message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
+           
+            headBar.visible: false
+            
             rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
             acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
             acceptButton.visible: Maui.Handy.isLinux            
@@ -382,11 +387,17 @@ Maui.Page
         Maui.NewDialog
         {
             id: _newDialog
+            
             title: i18nd("mauikitfilebrowsing", "New %1", _newActions.currentIndex === 0 ? "folder" : "file" )
-            message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name")
+            message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
+            
+            headBar.visible: false
+            
             template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
             template.iconVisible: true
+            
             acceptButton.text: i18nd("mauikitfilebrowsing", "Create")
+           
             onFinished:
             {
                 switch(_newActions.currentIndex)
@@ -428,16 +439,24 @@ Maui.Page
         Maui.NewDialog
         {
             id: _renameDialog
+            
             property var item : ({})
+            
             title: i18nd("mauikitfilebrowsing", "Rename")
             message: i18nd("mauikitfilebrowsing", "Change the name of a file or folder")
+            
+            headBar.visible: false
+            
             template.iconSource: item.icon
             template.imageSource: item.thumbnail
             template.iconSizeHint: Maui.Style.iconSizes.huge
+            
             textEntry.text: item.label
             textEntry.placeholderText: i18nd("mauikitfilebrowsing", "New name")
+            
             onFinished: FB.FM.rename(item.path, textEntry.text)
             onRejected: close()
+            
             acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
             rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
             
@@ -453,14 +472,6 @@ Maui.Page
                     _renameDialog.textEntry.selectAll()
                 }                
             }
-            
-            //             template.iconComponent: Maui.GridItemTemplate
-            //             {
-            //                 anchors.fill: parent
-            //                 iconSource: _renameDialog.template.iconSource
-            //                 imageSource: _renameDialog.template.imageSource
-            //                 label1.text: _renameDialog.textEntry.text
-            //             }
         }
     }
     
@@ -912,7 +923,7 @@ Maui.Page
             return
         }
         
-        dialogLoader.sourceComponent= removeDialogComponent
+        dialogLoader.sourceComponent = removeDialogComponent
         dialog.urls = urls
         dialog.open()
     }
