@@ -21,12 +21,11 @@ Maui.Dialog
 
     property alias currentColor : _colorsRow.currentColor
     readonly property var defaultColors : ["#4DD0E1", "#9575CD", "#F06292", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
-
     
     title: i18nd("mauikitfilebrowsing", "New tags")
     message: i18nd("mauikitfilebrowsing", "Create new tags to organize your files. You can create multiple tags separated by a comma.")
 
-    closeButtonVisible: false
+    headBar.visible: false
     
     acceptButton.text: i18nd("mauikitfilebrowsing", "Add")
     rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
@@ -43,6 +42,7 @@ Maui.Dialog
     {
         id: _textEntry
         Layout.fillWidth: true
+        placeholderText: i18n("New tags")
     }
     
     Maui.ColorsRow
@@ -56,16 +56,10 @@ Maui.Dialog
     
     Flow
     {
-        visible: control.textEntry.text.length
         Layout.fillWidth: true
-//         implicitHeight: Math.min(200, contentHeight) + Maui.Style.space.big
-//         implicitHeight: Maui.Style.toolBarHeight * 1.2
-//         orientation: ListView.Horizontal
-        spacing: Maui.Style.defaultSpacing
         
-//         horizontalScrollBarPolicy: ScrollBar.AlwaysOff
-        //snapMode: ListView.SnapOneItem
-//         verticalScrollBarPolicy: ScrollBar.AlwaysOff        
+        visible: control.textEntry.text.length
+        spacing: Maui.Style.defaultSpacing    
         
         Repeater
         {
