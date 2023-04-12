@@ -190,18 +190,27 @@ Maui.AltBrowser
             Component
             {
                 id: _mergeDialogComponent
+                
                 Maui.NewDialog
                 {
                     id: _mergeDialog
                     property var urls
-                    readonly property bool dirExists : FB.FM.fileExists(control.path.toString()+"/"+textEntry.text)
+                    
+                    headBar.visible: false
+                    
+                    readonly property bool dirExists : FB.FM.fileExists(control.path+"/"+textEntry.text)
                     acceptButton.enabled: !dirExists
                     
                     onDirExistsChanged:
                     {
+                        console.log("DIR EXISTS?", dirExists)
+                        
                         if(dirExists)
                         {
-                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Directory already exists"), 2)
+                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Directory already exists."), 2)
+                        }else
+                        {
+                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Looks good."), 0)                            
                         }
                     }
                     
