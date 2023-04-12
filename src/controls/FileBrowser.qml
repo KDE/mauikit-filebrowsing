@@ -576,7 +576,7 @@ Maui.Page
             // Shortcut for pasting an item
             if((event.key == Qt.Key_V) && (event.modifiers & Qt.ControlModifier))
             {
-                control.paste(Maui.Handy.getClipboard().urls)
+                control.paste()
                 event.accepted = true
             }
             
@@ -897,20 +897,7 @@ Maui.Page
      **/
     function paste()
     {
-        const data = Maui.Handy.getClipboard()
-        const urls = data.urls
-        
-        if(!urls)
-        {
-            return
-        }
-        if(data.cut)
-        {
-            control.currentFMList.cutInto(urls)
-        }else
-        {
-            control.currentFMList.copyInto(urls)
-        }
+         control.currentFMList.paste()
     }
     
     /**

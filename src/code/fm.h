@@ -1,5 +1,4 @@
-#ifndef FM_H
-#define FM_H
+#pragma once
 
 #include <QObject>
 
@@ -61,7 +60,7 @@ public slots:
      */
     void setShowingDotFiles(bool value);
 
-signals:
+Q_SIGNALS:
     void itemsReady(FMH::MODEL_LIST items, QUrl url);
     void itemReady(FMH::MODEL item, QUrl url);
     void completed(QUrl url);
@@ -186,7 +185,7 @@ Q_SIGNALS:
     void dirCreated(FMH::MODEL dir);
     void newItem(FMH::MODEL item, QUrl path); // when a new item is created
 
-public slots:
+public Q_SLOTS:
     void openCloudItem(const QVariantMap &item);
     void getCloudItem(const QVariantMap &item);
 
@@ -196,5 +195,3 @@ public slots:
 
     friend class FMStatic;
 };
-
-#endif // FM_H

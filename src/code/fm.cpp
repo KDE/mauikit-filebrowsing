@@ -282,7 +282,7 @@ FM::FM(QObject *parent)
     connect(dirLister, &QDirLister::refreshItems, this, [&](QVector<QPair<FMH::MODEL, FMH::MODEL>> items, QUrl) {
         qDebug() << "ITEMS WERE REFRESHED";
         emit this->pathContentItemsChanged(items);
-    });
+    }); 
 
     connect(dirLister, &QDirLister::itemsAdded, this, [&](FMH::MODEL_LIST items, QUrl url) {
         qDebug() << "MORE ITEMS WERE ADDED";

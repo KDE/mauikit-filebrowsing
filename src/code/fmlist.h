@@ -16,10 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FMLIST_H
-#define FMLIST_H
+#pragma once
 
 #include <QObject>
+#include <QImage>
+
 #include <MauiKit/Core/mauilist.h>
 
 #include "filebrowsing_export.h"
@@ -343,6 +344,8 @@ private:
     void filterContent(const QString &query, const QUrl &path);
     void setStatus(const PathStatus &status);    
     
+    bool saveImageFile(const QImage &image);
+    bool saveTextFile(const QString &data, const QString &format);
     /**
      * @brief getTagContent
      * Gets a model of the files associated with a tag
@@ -376,7 +379,7 @@ private:
 
     NavHistory m_navHistory;
 
-public slots:
+public Q_SLOTS:
 
     /**
      * @brief refresh
@@ -407,6 +410,12 @@ public slots:
      * List of files
      */
     void cutInto(const QStringList &urls);
+    
+    /**
+     * @brief paste
+     * Handle the paste action.
+     */
+    void paste();
 
     /**
      * @brief setDirIcon
@@ -462,4 +471,3 @@ void autoLoadChanged();
     void progress(int percent);
 };
 
-#endif // FMLIST_H

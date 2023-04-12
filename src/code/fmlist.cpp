@@ -29,6 +29,9 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QtConcurrent>
 
+#include <QClipboard>
+#include <QGuiApplication>
+
 FMList::FMList(QObject *parent)
     : MauiList(parent)
     , fm(new FM(this))
@@ -120,7 +123,6 @@ FMList::FMList(QObject *parent)
                 this->refresh();
             }
         }
-
     });
     
     connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap)
@@ -442,6 +444,77 @@ void FMList::createDir(const QString &name)
     } else {
         FMStatic::createDir(this->path, name);
     }
+}
+
+bool FMList::saveImageFile(const QImage& image)
+{
+    QString fileName = QString("%1/pasted_image-0.%2").arg(path.toLocalFile(), "png");
+   
+    int idx = 1;
+    while ( QFile::exists( fileName ) )
+    {
+        fileName = QString("%1/pasted_image-%2.%3").arg(path.toLocalFile(), QString::number(idx), "png");
+        idx++;
+    }    
+    
+    return image.save(fileName);
+}
+
+bool FMList::saveTextFile(const QString& data, const QString &format)
+{
+    QString fileName = QString("%1/pasted_text-0.%2").arg(path.toLocalFile(), format);
+       
+    int idx = 1;
+    while ( QFile::exists( fileName ) )
+    {
+        fileName = QString("%1/pasted_text-%2.%3").arg(path.toLocalFile(), QString::number(idx), format);
+        idx++;
+    }   
+    
+    QFile file(fileName);
+    
+        if (file.open(QIODevice::ReadWrite)) 
+        {
+            QTextStream out(&file);
+            out << data;    
+            file.close(); 
+            return true;
+        }
+   
+   return false;
+}
+
+void FMList::paste()
+{  
+    const QClipboard *clipboard = QGuiApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+    
+    if (mimeData->hasImage()) {
+        saveImageFile(qvariant_cast<QImage>(mimeData->imageData()));
+    } else if (mimeData->hasUrls())
+    {
+        const QByteArray a = mimeData->data(QStringLiteral("application/x-kde-cutselection"));        
+        const bool cut =  (!a.isEmpty() && a.at(0) == '1');
+       
+       if(cut)
+       {
+           cutInto(QUrl::toStringList(mimeData->urls()));
+    }else
+    {
+        copyInto(QUrl::toStringList(mimeData->urls()));
+    }       
+       
+    } else if (mimeData->hasHtml()) 
+    {
+        saveTextFile(mimeData->html(), "html");
+    } else if (mimeData->hasText()) 
+    {
+        saveTextFile(mimeData->text(), "txt");
+    } else 
+    {
+        qWarning() << "Unexpected mime type from clipboard content for performing a paste";
+    }
+    
 }
 
 void FMList::copyInto(const QStringList &urls)
