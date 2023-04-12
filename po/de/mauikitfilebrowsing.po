@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 00:46+0000\n"
+"POT-Creation-Date: 2023-04-12 00:48+0000\n"
 "PO-Revision-Date: 2023-03-12 16:43+0100\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 22.07.70\n"
 
 #: src/code/fmstatic.cpp:36
@@ -49,7 +49,7 @@ msgstr "Wechselbar"
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:350
 #, kde-format
 msgid "Trash"
 msgstr "Papierkorb"
@@ -104,97 +104,97 @@ msgstr "Filter"
 msgid "Empty Trash"
 msgstr "Papierkorb leeren"
 
-#: src/controls/FileBrowser.qml:341
+#: src/controls/FileBrowser.qml:343
 #, kde-format
 msgid "Removing %1 files"
 msgstr "%1 Dateien werden entfernt"
 
-#: src/controls/FileBrowser.qml:342
+#: src/controls/FileBrowser.qml:344
 #, kde-format
 msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
 
-#: src/controls/FileBrowser.qml:343 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:349 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:442
-#: src/controls/FileBrowser.qml:753 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:355 src/controls/FileBrowser.qml:465
+#: src/controls/FileBrowser.qml:768 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:32 src/controls/private/BrowserView.qml:274
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/controls/FileBrowser.qml:385
+#: src/controls/FileBrowser.qml:392
 #, kde-format
 msgid "New %1"
 msgstr ""
 
-#: src/controls/FileBrowser.qml:386
+#: src/controls/FileBrowser.qml:393
 #, kde-format
-msgid "Create a new folder or a file with a custom name"
+msgid "Create a new folder or a file with a custom name."
 msgstr ""
 
-#: src/controls/FileBrowser.qml:389
+#: src/controls/FileBrowser.qml:402
 #, kde-format
 msgid "Create"
 msgstr "Erstellen"
 
-#: src/controls/FileBrowser.qml:399 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:413 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Name"
 
-#: src/controls/FileBrowser.qml:412
+#: src/controls/FileBrowser.qml:426
 #, kde-format
 msgid "Folder"
 msgstr "Ordner"
 
-#: src/controls/FileBrowser.qml:418
+#: src/controls/FileBrowser.qml:432
 #, kde-format
 msgid "File"
 msgstr "Datei"
 
-#: src/controls/FileBrowser.qml:432 src/controls/FileBrowser.qml:441
+#: src/controls/FileBrowser.qml:448 src/controls/FileBrowser.qml:464
 #, kde-format
 msgid "Rename"
 msgstr "Umbenennen"
 
-#: src/controls/FileBrowser.qml:433
+#: src/controls/FileBrowser.qml:449
 #, kde-format
 msgid "Change the name of a file or folder"
 msgstr "Eine Datei oder einen Ordner umbenennen"
 
-#: src/controls/FileBrowser.qml:438
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid "New name"
 msgstr "Neuer Name"
 
-#: src/controls/FileBrowser.qml:706 src/controls/private/BrowserView.qml:236
+#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:236
 #, kde-format
 msgid "Copy here"
 msgstr "Hierher kopieren"
 
-#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:248
+#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:248
 #, kde-format
 msgid "Move here"
 msgstr "Hierher verschieben"
 
-#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:260
+#: src/controls/FileBrowser.qml:743 src/controls/private/BrowserView.qml:260
 #, kde-format
 msgid "Link here"
 msgstr "Hiermit verknüpfen"
 
-#: src/controls/FileBrowser.qml:740
+#: src/controls/FileBrowser.qml:755
 #, kde-format
 msgid "Open here"
 msgstr "Hier öffnen"
 
-#: src/controls/FileBrowser.qml:1119
+#: src/controls/FileBrowser.qml:1134
 #, kde-format
 msgid "Search: %1"
 msgstr "Suchen: %1"

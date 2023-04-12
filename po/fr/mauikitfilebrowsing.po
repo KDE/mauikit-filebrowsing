@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 00:46+0000\n"
+"POT-Creation-Date: 2023-04-12 00:48+0000\n"
 "PO-Revision-Date: 2023-01-04 14:50+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
@@ -44,7 +44,7 @@ msgstr "Amovible"
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:350
 #, kde-format
 msgid "Trash"
 msgstr "Corbeille"
@@ -99,12 +99,12 @@ msgstr "Filtrer"
 msgid "Empty Trash"
 msgstr "Vider la corbeille"
 
-#: src/controls/FileBrowser.qml:341
+#: src/controls/FileBrowser.qml:343
 #, kde-format
 msgid "Removing %1 files"
 msgstr "Suppression en cours de %1 fichiers"
 
-#: src/controls/FileBrowser.qml:342
+#: src/controls/FileBrowser.qml:344
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -113,85 +113,86 @@ msgstr ""
 "Supprimer %1\n"
 "Espace libre total %2"
 
-#: src/controls/FileBrowser.qml:343 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:349 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:442
-#: src/controls/FileBrowser.qml:753 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:355 src/controls/FileBrowser.qml:465
+#: src/controls/FileBrowser.qml:768 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:32 src/controls/private/BrowserView.qml:274
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/controls/FileBrowser.qml:385
+#: src/controls/FileBrowser.qml:392
 #, kde-format
 msgid "New %1"
 msgstr "Nouveau %1"
 
-#: src/controls/FileBrowser.qml:386
-#, kde-format
-msgid "Create a new folder or a file with a custom name"
+#: src/controls/FileBrowser.qml:393
+#, fuzzy, kde-format
+#| msgid "Create a new folder or a file with a custom name"
+msgid "Create a new folder or a file with a custom name."
 msgstr "Créer un nouveau dossier ou un fichier avec un nom personnalisé"
 
-#: src/controls/FileBrowser.qml:389
+#: src/controls/FileBrowser.qml:402
 #, kde-format
 msgid "Create"
 msgstr "Créer"
 
-#: src/controls/FileBrowser.qml:399 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:413 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nom"
 
-#: src/controls/FileBrowser.qml:412
+#: src/controls/FileBrowser.qml:426
 #, kde-format
 msgid "Folder"
 msgstr "Dossier"
 
-#: src/controls/FileBrowser.qml:418
+#: src/controls/FileBrowser.qml:432
 #, kde-format
 msgid "File"
 msgstr "Fichier"
 
-#: src/controls/FileBrowser.qml:432 src/controls/FileBrowser.qml:441
+#: src/controls/FileBrowser.qml:448 src/controls/FileBrowser.qml:464
 #, kde-format
 msgid "Rename"
 msgstr "Renommer"
 
-#: src/controls/FileBrowser.qml:433
+#: src/controls/FileBrowser.qml:449
 #, kde-format
 msgid "Change the name of a file or folder"
 msgstr "Changer le nom d'un fichier ou d'un dossier"
 
-#: src/controls/FileBrowser.qml:438
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid "New name"
 msgstr "Nouveau nom"
 
-#: src/controls/FileBrowser.qml:706 src/controls/private/BrowserView.qml:236
+#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:236
 #, kde-format
 msgid "Copy here"
 msgstr "Copier ici"
 
-#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:248
+#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:248
 #, kde-format
 msgid "Move here"
 msgstr "Déplacer ici"
 
-#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:260
+#: src/controls/FileBrowser.qml:743 src/controls/private/BrowserView.qml:260
 #, kde-format
 msgid "Link here"
 msgstr "Lier ici"
 
-#: src/controls/FileBrowser.qml:740
+#: src/controls/FileBrowser.qml:755
 #, kde-format
 msgid "Open here"
 msgstr "Ouvrir ici"
 
-#: src/controls/FileBrowser.qml:1119
+#: src/controls/FileBrowser.qml:1134
 #, kde-format
 msgid "Search: %1"
 msgstr "Recherche : %1"

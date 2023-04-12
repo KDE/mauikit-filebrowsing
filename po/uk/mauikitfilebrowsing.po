@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-05 00:46+0000\n"
+"POT-Creation-Date: 2023-04-12 00:48+0000\n"
 "PO-Revision-Date: 2022-11-16 18:45+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "Портативний"
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:344
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:350
 #, kde-format
 msgid "Trash"
 msgstr "Смітник"
@@ -103,12 +103,12 @@ msgstr "Фільтрувати"
 msgid "Empty Trash"
 msgstr "Спорожнити смітник"
 
-#: src/controls/FileBrowser.qml:341
+#: src/controls/FileBrowser.qml:343
 #, kde-format
 msgid "Removing %1 files"
 msgstr "Вилучаємо %1 файлів"
 
-#: src/controls/FileBrowser.qml:342
+#: src/controls/FileBrowser.qml:344
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -117,85 +117,86 @@ msgstr ""
 "Вилучити %1  \n"
 "Загалом звільненого місця: %2"
 
-#: src/controls/FileBrowser.qml:343 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:349 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/controls/FileBrowser.qml:349 src/controls/FileBrowser.qml:442
-#: src/controls/FileBrowser.qml:753 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:355 src/controls/FileBrowser.qml:465
+#: src/controls/FileBrowser.qml:768 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:32 src/controls/private/BrowserView.qml:274
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/controls/FileBrowser.qml:385
+#: src/controls/FileBrowser.qml:392
 #, kde-format
 msgid "New %1"
 msgstr "Створити %1"
 
-#: src/controls/FileBrowser.qml:386
-#, kde-format
-msgid "Create a new folder or a file with a custom name"
+#: src/controls/FileBrowser.qml:393
+#, fuzzy, kde-format
+#| msgid "Create a new folder or a file with a custom name"
+msgid "Create a new folder or a file with a custom name."
 msgstr "Створити теку або файл із нетиповою назвою"
 
-#: src/controls/FileBrowser.qml:389
+#: src/controls/FileBrowser.qml:402
 #, kde-format
 msgid "Create"
 msgstr "Створити"
 
-#: src/controls/FileBrowser.qml:399 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:413 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Назва"
 
-#: src/controls/FileBrowser.qml:412
+#: src/controls/FileBrowser.qml:426
 #, kde-format
 msgid "Folder"
 msgstr "Тека"
 
-#: src/controls/FileBrowser.qml:418
+#: src/controls/FileBrowser.qml:432
 #, kde-format
 msgid "File"
 msgstr "Файл"
 
-#: src/controls/FileBrowser.qml:432 src/controls/FileBrowser.qml:441
+#: src/controls/FileBrowser.qml:448 src/controls/FileBrowser.qml:464
 #, kde-format
 msgid "Rename"
 msgstr "Перейменувати"
 
-#: src/controls/FileBrowser.qml:433
+#: src/controls/FileBrowser.qml:449
 #, kde-format
 msgid "Change the name of a file or folder"
 msgstr "Змінити назву файла або теки"
 
-#: src/controls/FileBrowser.qml:438
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid "New name"
 msgstr "Нова назва"
 
-#: src/controls/FileBrowser.qml:706 src/controls/private/BrowserView.qml:236
+#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:236
 #, kde-format
 msgid "Copy here"
 msgstr "Скопіювати сюди"
 
-#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:248
+#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:248
 #, kde-format
 msgid "Move here"
 msgstr "Пересунути сюди"
 
-#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:260
+#: src/controls/FileBrowser.qml:743 src/controls/private/BrowserView.qml:260
 #, kde-format
 msgid "Link here"
 msgstr "Посилання сюди"
 
-#: src/controls/FileBrowser.qml:740
+#: src/controls/FileBrowser.qml:755
 #, kde-format
 msgid "Open here"
 msgstr "Відкрити тут"
 
-#: src/controls/FileBrowser.qml:1119
+#: src/controls/FileBrowser.qml:1134
 #, kde-format
 msgid "Search: %1"
 msgstr "Пошук: %1"
