@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
 # Automatically generated, 2022.
-# Eloy Cuadra <ecuadra@eloihr.net>, 2022.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 00:48+0000\n"
-"PO-Revision-Date: 2022-11-17 00:41+0100\n"
+"POT-Creation-Date: 2023-04-13 00:48+0000\n"
+"PO-Revision-Date: 2023-04-12 22:05+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 23.03.90\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -49,7 +49,7 @@ msgstr "Extraíble"
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:350
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:349
 #, kde-format
 msgid "Trash"
 msgstr "Papelera"
@@ -118,86 +118,87 @@ msgstr ""
 "Borrar %1  \n"
 "Total de espacio liberado %2"
 
-#: src/controls/FileBrowser.qml:349 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:348 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Borrar"
 
-#: src/controls/FileBrowser.qml:355 src/controls/FileBrowser.qml:465
-#: src/controls/FileBrowser.qml:768 src/controls/FileDialog.qml:133
-#: src/controls/NewTagDialog.qml:32 src/controls/private/BrowserView.qml:274
+#: src/controls/FileBrowser.qml:354 src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:764 src/controls/FileDialog.qml:133
+#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:283
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/controls/FileBrowser.qml:392
+#: src/controls/FileBrowser.qml:391
 #, kde-format
 msgid "New %1"
 msgstr "Nuevo %1"
 
-#: src/controls/FileBrowser.qml:393
-#, fuzzy, kde-format
-#| msgid "Create a new folder or a file with a custom name"
+#: src/controls/FileBrowser.qml:392
+#, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr "Crear una nueva carpeta o archivo con un nombre personalizado"
+msgstr "Crear una nueva carpeta o archivo con un nombre personalizado."
 
-#: src/controls/FileBrowser.qml:402
+#: src/controls/FileBrowser.qml:399
 #, kde-format
 msgid "Create"
 msgstr "Crear"
 
-#: src/controls/FileBrowser.qml:413 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:410 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nombre"
 
-#: src/controls/FileBrowser.qml:426
+#: src/controls/FileBrowser.qml:423
 #, kde-format
 msgid "Folder"
 msgstr "Carpeta"
 
-#: src/controls/FileBrowser.qml:432
+#: src/controls/FileBrowser.qml:429
 #, kde-format
 msgid "File"
 msgstr "Archivo"
 
-#: src/controls/FileBrowser.qml:448 src/controls/FileBrowser.qml:464
+#: src/controls/FileBrowser.qml:445 src/controls/FileBrowser.qml:460
 #, kde-format
 msgid "Rename"
 msgstr "Cambiar nombre"
 
-#: src/controls/FileBrowser.qml:449
+#: src/controls/FileBrowser.qml:446
 #, kde-format
-msgid "Change the name of a file or folder"
-msgstr "Cambiar el nombre de un archivo o carpeta"
+msgid ""
+"Change the name of a file or folder. Write a new name and click Rename to "
+"apply the change."
+msgstr ""
 
-#: src/controls/FileBrowser.qml:459
+#: src/controls/FileBrowser.qml:455
 #, kde-format
 msgid "New name"
 msgstr "Nuevo nombre"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:236
+#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:245
 #, kde-format
 msgid "Copy here"
 msgstr "Copiar aquí"
 
-#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:248
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:257
 #, kde-format
 msgid "Move here"
 msgstr "Mover aquí"
 
-#: src/controls/FileBrowser.qml:743 src/controls/private/BrowserView.qml:260
+#: src/controls/FileBrowser.qml:739 src/controls/private/BrowserView.qml:269
 #, kde-format
 msgid "Link here"
 msgstr "Enlazar aquí"
 
-#: src/controls/FileBrowser.qml:755
+#: src/controls/FileBrowser.qml:751
 #, kde-format
 msgid "Open here"
 msgstr "Abrir aquí"
 
-#: src/controls/FileBrowser.qml:1134
+#: src/controls/FileBrowser.qml:1130
 #, kde-format
 msgid "Search: %1"
 msgstr "Buscar: %1"
@@ -292,12 +293,12 @@ msgstr "Mostrar primero las carpetas"
 msgid "Group"
 msgstr "Grupo"
 
-#: src/controls/NewTagDialog.qml:26
+#: src/controls/NewTagDialog.qml:25 src/controls/NewTagDialog.qml:45
 #, kde-format
 msgid "New tags"
 msgstr "Nuevas etiquetas"
 
-#: src/controls/NewTagDialog.qml:27
+#: src/controls/NewTagDialog.qml:26
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
@@ -306,7 +307,7 @@ msgstr ""
 "Crear nuevas etiquetas para organizar sus archivos. Puede crear varias "
 "etiquetas separadas por comas."
 
-#: src/controls/NewTagDialog.qml:31
+#: src/controls/NewTagDialog.qml:30
 #, kde-format
 msgid "Add"
 msgstr "Añadir"
@@ -331,34 +332,40 @@ msgstr "Ocultar"
 msgid "Remove"
 msgstr "Eliminar"
 
-#: src/controls/private/BrowserView.qml:204
-#, kde-format
-msgid "Directory already exists"
+#: src/controls/private/BrowserView.qml:210
+#, fuzzy, kde-format
+#| msgid "Directory already exists"
+msgid "Directory already exists."
 msgstr "El directorio ya existe"
 
-#: src/controls/private/BrowserView.qml:208
+#: src/controls/private/BrowserView.qml:213
+#, kde-format
+msgid "Looks good."
+msgstr ""
+
+#: src/controls/private/BrowserView.qml:217
 #, kde-format
 msgid "Merge %1 files"
 msgstr "Fusionar %1 archivos"
 
-#: src/controls/private/BrowserView.qml:209
+#: src/controls/private/BrowserView.qml:218
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr ""
 "Indique el nombre de un nuevo directorio para fusionar todos los archivos."
 
-#: src/controls/private/BrowserView.qml:211
+#: src/controls/private/BrowserView.qml:220
 #, kde-format
 msgid "Directory name"
 msgstr "Nombre de directorio"
 
-#: src/controls/private/BrowserView.qml:221
+#: src/controls/private/BrowserView.qml:230
 #, kde-format
 msgid "Merge here"
 msgstr "Fusionar aquí"
 
-#: src/controls/private/BrowserView.qml:300
-#: src/controls/private/BrowserView.qml:471
+#: src/controls/private/BrowserView.qml:309
+#: src/controls/private/BrowserView.qml:480
 #, kde-format
 msgid " items"
 msgstr " elementos"
@@ -409,3 +416,6 @@ msgstr "Añadir nuevas etiquetas para los archivos seleccionados."
 #, kde-format
 msgid "No tags yet."
 msgstr "Todavía no hay etiquetas."
+
+#~ msgid "Change the name of a file or folder"
+#~ msgstr "Cambiar el nombre de un archivo o carpeta"

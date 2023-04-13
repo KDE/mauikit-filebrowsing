@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 00:48+0000\n"
+"POT-Creation-Date: 2023-04-13 00:48+0000\n"
 "PO-Revision-Date: 2022-11-16 09:42+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "Removível"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:350
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:349
 #, kde-format
 msgid "Trash"
 msgstr "Lixo"
@@ -117,86 +117,88 @@ msgstr ""
 "Apagar o %1\n"
 "Total de espaço libertado %2"
 
-#: src/controls/FileBrowser.qml:349 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:348 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Apagar"
 
-#: src/controls/FileBrowser.qml:355 src/controls/FileBrowser.qml:465
-#: src/controls/FileBrowser.qml:768 src/controls/FileDialog.qml:133
-#: src/controls/NewTagDialog.qml:32 src/controls/private/BrowserView.qml:274
+#: src/controls/FileBrowser.qml:354 src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:764 src/controls/FileDialog.qml:133
+#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:283
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/controls/FileBrowser.qml:392
+#: src/controls/FileBrowser.qml:391
 #, kde-format
 msgid "New %1"
 msgstr "Novo %1"
 
-#: src/controls/FileBrowser.qml:393
+#: src/controls/FileBrowser.qml:392
 #, fuzzy, kde-format
 #| msgid "Create a new folder or a file with a custom name"
 msgid "Create a new folder or a file with a custom name."
 msgstr "Cria uma nova pasta ou ficheiro com um nome personalizado"
 
-#: src/controls/FileBrowser.qml:402
+#: src/controls/FileBrowser.qml:399
 #, kde-format
 msgid "Create"
 msgstr "Criar"
 
-#: src/controls/FileBrowser.qml:413 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:410 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nome"
 
-#: src/controls/FileBrowser.qml:426
+#: src/controls/FileBrowser.qml:423
 #, kde-format
 msgid "Folder"
 msgstr "Pasta"
 
-#: src/controls/FileBrowser.qml:432
+#: src/controls/FileBrowser.qml:429
 #, kde-format
 msgid "File"
 msgstr "Ficheiro"
 
-#: src/controls/FileBrowser.qml:448 src/controls/FileBrowser.qml:464
+#: src/controls/FileBrowser.qml:445 src/controls/FileBrowser.qml:460
 #, kde-format
 msgid "Rename"
 msgstr "Mudar o Nome"
 
-#: src/controls/FileBrowser.qml:449
+#: src/controls/FileBrowser.qml:446
 #, kde-format
-msgid "Change the name of a file or folder"
-msgstr "Muda o nome de um ficheiro ou pasta"
+msgid ""
+"Change the name of a file or folder. Write a new name and click Rename to "
+"apply the change."
+msgstr ""
 
-#: src/controls/FileBrowser.qml:459
+#: src/controls/FileBrowser.qml:455
 #, kde-format
 msgid "New name"
 msgstr "Novo nome"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:236
+#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:245
 #, kde-format
 msgid "Copy here"
 msgstr "Copiar para aqui"
 
-#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:248
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:257
 #, kde-format
 msgid "Move here"
 msgstr "Mover para aqui"
 
-#: src/controls/FileBrowser.qml:743 src/controls/private/BrowserView.qml:260
+#: src/controls/FileBrowser.qml:739 src/controls/private/BrowserView.qml:269
 #, kde-format
 msgid "Link here"
 msgstr "Criar uma ligação aqui"
 
-#: src/controls/FileBrowser.qml:755
+#: src/controls/FileBrowser.qml:751
 #, kde-format
 msgid "Open here"
 msgstr "Abrir aqui"
 
-#: src/controls/FileBrowser.qml:1134
+#: src/controls/FileBrowser.qml:1130
 #, kde-format
 msgid "Search: %1"
 msgstr "Procurar: %1"
@@ -291,12 +293,12 @@ msgstr "Mostrar as Pastas Primeiro"
 msgid "Group"
 msgstr "Grupo"
 
-#: src/controls/NewTagDialog.qml:26
+#: src/controls/NewTagDialog.qml:25 src/controls/NewTagDialog.qml:45
 #, kde-format
 msgid "New tags"
 msgstr "Novas marcas"
 
-#: src/controls/NewTagDialog.qml:27
+#: src/controls/NewTagDialog.qml:26
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
@@ -305,7 +307,7 @@ msgstr ""
 "Cria novas marcas para organizar os seus ficheiros. Poderá criar várias "
 "marcas separadas por vírgulas."
 
-#: src/controls/NewTagDialog.qml:31
+#: src/controls/NewTagDialog.qml:30
 #, kde-format
 msgid "Add"
 msgstr "Adicionar"
@@ -330,33 +332,39 @@ msgstr "Esconder"
 msgid "Remove"
 msgstr "Remover"
 
-#: src/controls/private/BrowserView.qml:204
-#, kde-format
-msgid "Directory already exists"
+#: src/controls/private/BrowserView.qml:210
+#, fuzzy, kde-format
+#| msgid "Directory already exists"
+msgid "Directory already exists."
 msgstr "A pasta já existe"
 
-#: src/controls/private/BrowserView.qml:208
+#: src/controls/private/BrowserView.qml:213
+#, kde-format
+msgid "Looks good."
+msgstr ""
+
+#: src/controls/private/BrowserView.qml:217
 #, kde-format
 msgid "Merge %1 files"
 msgstr "Reunir os %1 ficheiros"
 
-#: src/controls/private/BrowserView.qml:209
+#: src/controls/private/BrowserView.qml:218
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "Atribui um nome à pasta nova onde serão reunidos todos os ficheiros."
 
-#: src/controls/private/BrowserView.qml:211
+#: src/controls/private/BrowserView.qml:220
 #, kde-format
 msgid "Directory name"
 msgstr "Nome da pasta"
 
-#: src/controls/private/BrowserView.qml:221
+#: src/controls/private/BrowserView.qml:230
 #, kde-format
 msgid "Merge here"
 msgstr "Reunir aqui"
 
-#: src/controls/private/BrowserView.qml:300
-#: src/controls/private/BrowserView.qml:471
+#: src/controls/private/BrowserView.qml:309
+#: src/controls/private/BrowserView.qml:480
 #, kde-format
 msgid " items"
 msgstr " itens"
@@ -407,3 +415,6 @@ msgstr "Adiciona marcas novas para os ficheiros seleccionados."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ainda sem marcas."
+
+#~ msgid "Change the name of a file or folder"
+#~ msgstr "Muda o nome de um ficheiro ou pasta"

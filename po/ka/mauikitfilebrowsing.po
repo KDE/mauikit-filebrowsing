@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-12 00:48+0000\n"
+"POT-Creation-Date: 2023-04-13 00:48+0000\n"
 "PO-Revision-Date: 2022-11-25 23:51+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "მოხსნადი"
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:350
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:349
 #, kde-format
 msgid "Trash"
 msgstr "ნაგავი"
@@ -119,86 +119,88 @@ msgstr ""
 "%1-ის წაშლა   \n"
 "გათავისუფლებული ადგილი %2"
 
-#: src/controls/FileBrowser.qml:349 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:348 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "წაშლა"
 
-#: src/controls/FileBrowser.qml:355 src/controls/FileBrowser.qml:465
-#: src/controls/FileBrowser.qml:768 src/controls/FileDialog.qml:133
-#: src/controls/NewTagDialog.qml:32 src/controls/private/BrowserView.qml:274
+#: src/controls/FileBrowser.qml:354 src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:764 src/controls/FileDialog.qml:133
+#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:283
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: src/controls/FileBrowser.qml:392
+#: src/controls/FileBrowser.qml:391
 #, kde-format
 msgid "New %1"
 msgstr "ახალი %1"
 
-#: src/controls/FileBrowser.qml:393
+#: src/controls/FileBrowser.qml:392
 #, fuzzy, kde-format
 #| msgid "Create a new folder or a file with a custom name"
 msgid "Create a new folder or a file with a custom name."
 msgstr "შექმენით ახალი საქაღალდე ან ფაილი ხელით მითითებული სახელით"
 
-#: src/controls/FileBrowser.qml:402
+#: src/controls/FileBrowser.qml:399
 #, kde-format
 msgid "Create"
 msgstr "შექმნა"
 
-#: src/controls/FileBrowser.qml:413 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:410 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "სახელი"
 
-#: src/controls/FileBrowser.qml:426
+#: src/controls/FileBrowser.qml:423
 #, kde-format
 msgid "Folder"
 msgstr "საქაღალდე"
 
-#: src/controls/FileBrowser.qml:432
+#: src/controls/FileBrowser.qml:429
 #, kde-format
 msgid "File"
 msgstr "ფაილი"
 
-#: src/controls/FileBrowser.qml:448 src/controls/FileBrowser.qml:464
+#: src/controls/FileBrowser.qml:445 src/controls/FileBrowser.qml:460
 #, kde-format
 msgid "Rename"
 msgstr "გადარქმევა"
 
-#: src/controls/FileBrowser.qml:449
+#: src/controls/FileBrowser.qml:446
 #, kde-format
-msgid "Change the name of a file or folder"
-msgstr "შეცვალეთ ფაილის ახნ საქაღალდის სახელი"
+msgid ""
+"Change the name of a file or folder. Write a new name and click Rename to "
+"apply the change."
+msgstr ""
 
-#: src/controls/FileBrowser.qml:459
+#: src/controls/FileBrowser.qml:455
 #, kde-format
 msgid "New name"
 msgstr "ახალი სახელი"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:236
+#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:245
 #, kde-format
 msgid "Copy here"
 msgstr "აქ ჩაკოპირება"
 
-#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:248
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:257
 #, kde-format
 msgid "Move here"
 msgstr "აქ გადმოტანა"
 
-#: src/controls/FileBrowser.qml:743 src/controls/private/BrowserView.qml:260
+#: src/controls/FileBrowser.qml:739 src/controls/private/BrowserView.qml:269
 #, kde-format
 msgid "Link here"
 msgstr "აქ ბმულის შექმნა"
 
-#: src/controls/FileBrowser.qml:755
+#: src/controls/FileBrowser.qml:751
 #, kde-format
 msgid "Open here"
 msgstr "აქ გახსნა"
 
-#: src/controls/FileBrowser.qml:1134
+#: src/controls/FileBrowser.qml:1130
 #, kde-format
 msgid "Search: %1"
 msgstr "ძებნა: %1"
@@ -293,12 +295,12 @@ msgstr "ჯერ საქაღალდეების ჩვენება"
 msgid "Group"
 msgstr "GROUP"
 
-#: src/controls/NewTagDialog.qml:26
+#: src/controls/NewTagDialog.qml:25 src/controls/NewTagDialog.qml:45
 #, kde-format
 msgid "New tags"
 msgstr "ახალი ჭდეები"
 
-#: src/controls/NewTagDialog.qml:27
+#: src/controls/NewTagDialog.qml:26
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
@@ -307,7 +309,7 @@ msgstr ""
 "შექმენით ახალი ჭდეები თქვენი ფაილების დასალაგებლად. შეგიძლიათ შექმნათ "
 "მრავალი ჭდე, მძიმით გამოყოფილი."
 
-#: src/controls/NewTagDialog.qml:31
+#: src/controls/NewTagDialog.qml:30
 #, kde-format
 msgid "Add"
 msgstr "დამატება"
@@ -332,33 +334,39 @@ msgstr "დამალვა"
 msgid "Remove"
 msgstr "წაშლა"
 
-#: src/controls/private/BrowserView.qml:204
-#, kde-format
-msgid "Directory already exists"
+#: src/controls/private/BrowserView.qml:210
+#, fuzzy, kde-format
+#| msgid "Directory already exists"
+msgid "Directory already exists."
 msgstr "საქაღალდე უკვე არსებობს"
 
-#: src/controls/private/BrowserView.qml:208
+#: src/controls/private/BrowserView.qml:213
+#, kde-format
+msgid "Looks good."
+msgstr ""
+
+#: src/controls/private/BrowserView.qml:217
 #, kde-format
 msgid "Merge %1 files"
 msgstr "%1 ფაილის შერწყმა"
 
-#: src/controls/private/BrowserView.qml:209
+#: src/controls/private/BrowserView.qml:218
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "ახალი საქაღალდის სახელი, სადაც ყველა ფაილის შერწყმა მოხდება."
 
-#: src/controls/private/BrowserView.qml:211
+#: src/controls/private/BrowserView.qml:220
 #, kde-format
 msgid "Directory name"
 msgstr "საქაღალდის სახელი"
 
-#: src/controls/private/BrowserView.qml:221
+#: src/controls/private/BrowserView.qml:230
 #, kde-format
 msgid "Merge here"
 msgstr "აქ შერწყმა"
 
-#: src/controls/private/BrowserView.qml:300
-#: src/controls/private/BrowserView.qml:471
+#: src/controls/private/BrowserView.qml:309
+#: src/controls/private/BrowserView.qml:480
 #, kde-format
 msgid " items"
 msgstr " ჩანაწერი"
@@ -409,3 +417,6 @@ msgstr "მონიშნულ ფაილებზე ჭდის დას
 #, kde-format
 msgid "No tags yet."
 msgstr "ჭდეების გარეშე."
+
+#~ msgid "Change the name of a file or folder"
+#~ msgstr "შეცვალეთ ფაილის ახნ საქაღალდის სახელი"
