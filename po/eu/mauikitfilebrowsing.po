@@ -1,16 +1,16 @@
 # Translation for mauikitfilebrowsing.po to Euskara/Basque (eu).
-# Copyright (C) 2022 This file is copyright:
+# Copyright (C) 2022-2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 # KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-13 00:48+0000\n"
-"PO-Revision-Date: 2022-11-16 07:08+0100\n"
+"PO-Revision-Date: 2023-04-13 23:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -138,10 +138,10 @@ msgid "New %1"
 msgstr "%1 berria"
 
 #: src/controls/FileBrowser.qml:392
-#, fuzzy, kde-format
-#| msgid "Create a new folder or a file with a custom name"
+#, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr "Sortu karpeta berri bat edo norberak finkatutako izeneko fitxategi bat"
+msgstr ""
+"Sortu karpeta berri bat edo neurrira ipinitako izena duen fitxategi bat."
 
 #: src/controls/FileBrowser.qml:399
 #, kde-format
@@ -174,6 +174,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"Aldatu fitxategi baten edo karpeta baten izena. Idatzi izen berri bat eta "
+"egin klik «Berrizendatu»n aldaketak erabiltzeko."
 
 #: src/controls/FileBrowser.qml:455
 #, kde-format
@@ -335,15 +337,14 @@ msgid "Remove"
 msgstr "Kendu"
 
 #: src/controls/private/BrowserView.qml:210
-#, fuzzy, kde-format
-#| msgid "Directory already exists"
+#, kde-format
 msgid "Directory already exists."
-msgstr "Direktorioa dagoeneko badago"
+msgstr "Direktorioa badago."
 
 #: src/controls/private/BrowserView.qml:213
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Itxura ona du."
 
 #: src/controls/private/BrowserView.qml:217
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-13 00:48+0000\n"
-"PO-Revision-Date: 2022-11-25 23:51+0100\n"
+"PO-Revision-Date: 2023-04-13 06:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -138,10 +138,9 @@ msgid "New %1"
 msgstr "ახალი %1"
 
 #: src/controls/FileBrowser.qml:392
-#, fuzzy, kde-format
-#| msgid "Create a new folder or a file with a custom name"
+#, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr "შექმენით ახალი საქაღალდე ან ფაილი ხელით მითითებული სახელით"
+msgstr "შექმენით ახალი საქაღალდე ან ფაილი ხელით მითითებული სახელით."
 
 #: src/controls/FileBrowser.qml:399
 #, kde-format
@@ -174,6 +173,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"ფაილის ან საქაღალდის სახელის შეცვლა. ცვლილების გადასატარებლად აკრიფეთ ახალი "
+"სახელი და გადარქმევას დააჭირეთ."
 
 #: src/controls/FileBrowser.qml:455
 #, kde-format
@@ -263,7 +264,7 @@ msgstr "ბადე"
 #: src/controls/FileDialog.qml:310
 #, kde-format
 msgid "Sort by"
-msgstr "Დალაგება"
+msgstr "დალაგება"
 
 #: src/controls/FileDialog.qml:315
 #, kde-format
@@ -335,15 +336,14 @@ msgid "Remove"
 msgstr "წაშლა"
 
 #: src/controls/private/BrowserView.qml:210
-#, fuzzy, kde-format
-#| msgid "Directory already exists"
+#, kde-format
 msgid "Directory already exists."
-msgstr "საქაღალდე უკვე არსებობს"
+msgstr "საქაღალდე უკვე არსებობს."
 
 #: src/controls/private/BrowserView.qml:213
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "არა უჭირს."
 
 #: src/controls/private/BrowserView.qml:217
 #, kde-format

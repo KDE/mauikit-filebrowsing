@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-12 12:18+0300\n"
+"PO-Revision-Date: 2023-04-13 12:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -170,6 +170,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"Bir dosyanın veya klasörün adını değiştirin. Yeni bir ad yazın ve "
+"değişikliği uygulamak için Yeniden Adlandır'a tıklayın."
 
 #: src/controls/FileBrowser.qml:455
 #, kde-format
@@ -333,15 +335,14 @@ msgid "Remove"
 msgstr "Kaldır"
 
 #: src/controls/private/BrowserView.qml:210
-#, fuzzy, kde-format
-#| msgid "Directory already exists"
+#, kde-format
 msgid "Directory already exists."
-msgstr "Dizin halihazırda var"
+msgstr "Dizin halihazırda var."
 
 #: src/controls/private/BrowserView.qml:213
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Güzel görünüyor."
 
 #: src/controls/private/BrowserView.qml:217
 #, kde-format

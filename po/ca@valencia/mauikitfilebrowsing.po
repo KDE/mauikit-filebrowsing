@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-13 00:48+0000\n"
-"PO-Revision-Date: 2023-04-12 16:50+0200\n"
+"PO-Revision-Date: 2023-04-13 10:40+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -172,6 +172,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"Canvia el nom d'un fitxer o carpeta. Escriviu un nom nou i feu clic en "
+"Canvia el nom per a aplicar el canvi."
 
 #: src/controls/FileBrowser.qml:455
 #, kde-format
@@ -333,15 +335,14 @@ msgid "Remove"
 msgstr "Elimina"
 
 #: src/controls/private/BrowserView.qml:210
-#, fuzzy, kde-format
-#| msgid "Directory already exists"
+#, kde-format
 msgid "Directory already exists."
-msgstr "El directori ja existix"
+msgstr "El directori ja existix."
 
 #: src/controls/private/BrowserView.qml:213
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Pareix correcte."
 
 #: src/controls/private/BrowserView.qml:217
 #, kde-format
@@ -414,6 +415,3 @@ msgstr "Afig etiquetes noves per als fitxers seleccionats."
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."
-
-#~ msgid "Change the name of a file or folder"
-#~ msgstr "Canvia el nom d'un fitxer o carpeta"
