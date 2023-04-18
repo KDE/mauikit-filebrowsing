@@ -411,6 +411,7 @@ public Q_SLOTS:
     void removeFiles(const QStringList &urls);
     void moveToTrash(const QStringList &urls);
     
+    bool clipboardHasContent() const;
     /**
      * @brief copyInto
      * Copy a list of file URls into the current directory

@@ -552,6 +552,7 @@ void FMList::paste()
        if(cut)
        {
            cutInto(QUrl::toStringList(mimeData->urls()));
+           // mimeData->clear();
     }else
     {
         copyInto(QUrl::toStringList(mimeData->urls()));
@@ -566,9 +567,23 @@ void FMList::paste()
     } else 
     {
         qWarning() << "Unexpected mime type from clipboard content for performing a paste";
-    }
-    
+    }    
 }
+
+bool FMList::clipboardHasContent() const
+{
+    const QClipboard *clipboard = QGuiApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+    
+    if(!mimeData)
+    {
+        qWarning() << "Could not get mime data from the clipboard";
+        return false;  
+    }  
+    
+    return mimeData->hasUrls() || mimeData->hasImage() || mimeData->hasText() || mimeData->hasHtml();
+}
+
 
 void FMList::copyInto(const QStringList &urls)
 {

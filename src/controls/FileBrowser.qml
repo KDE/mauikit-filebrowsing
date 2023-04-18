@@ -45,8 +45,11 @@ Maui.Page
     onGoForwardTriggered: control.goForward()
     
     title: view.title
+    
     focus: true
+    
     flickable: control.currentView.flickable
+    
     floatingFooter: false
     
     showTitle: false
@@ -692,6 +695,9 @@ Maui.Page
         
         function onAreaClicked(mouse)
         {
+            if(control.isSearchView)
+                return
+            
             if(!Maui.Handy.isMobile && mouse.button === Qt.RightButton)
             {
                 control.rightClicked()
@@ -706,6 +712,7 @@ Maui.Page
     {
         id: _dropMenu
         property string urls
+        enabled: !control.isSearchView
 
         MenuItem
         {
@@ -1128,6 +1135,9 @@ Maui.Page
      **/
     function newItem()
     {
+        if(control.isSearchView)
+            return;
+        
         dialogLoader.sourceComponent = newDialogComponent
         dialog.open()
         dialog.forceActiveFocus()
@@ -1138,6 +1148,9 @@ Maui.Page
      **/
     function renameItem()
     {
+        if(control.isSearchView)
+            return;
+        
         dialogLoader.sourceComponent= renameDialogComponent
         dialog.open()
         dialog.forceActiveFocus()
@@ -1148,6 +1161,9 @@ Maui.Page
      **/
     function removeItem()
     {
+        if(control.isSearchView)
+            return;
+        
         dialogLoader.sourceComponent= renameDialogComponent
         dialog.open()
         dialog.forceActiveFocus()
