@@ -437,6 +437,9 @@ void FMList::refresh()
 
 void FMList::createDir(const QString &name)
 {
+    if(m_readOnly)
+        return;
+    
     if (this->pathType == FMList::PATHTYPE::CLOUD_PATH) {
 #ifdef COMPONENT_SYNCING
         this->fm->createCloudDir(QString(this->path.toString()).replace(FMStatic::PATHTYPE_SCHEME[FMStatic::PATHTYPE_KEY::CLOUD_PATH] + "/" + this->fm->sync->getUser(), ""), name);
@@ -444,6 +447,46 @@ void FMList::createDir(const QString &name)
     } else {
         FMStatic::createDir(this->path, name);
     }
+}
+
+void FMList::createFile(const QString& name)
+{
+    if(m_readOnly)
+        return;
+    
+     FMStatic::createFile(this->path, name);
+}
+
+void FMList::renameFile(const QString& url, const QString& newName)
+{
+    if(m_readOnly)
+        return;
+    
+    FMStatic::rename(url, newName);
+}
+
+void FMList::moveToTrash(const QStringList& urls)
+{
+    if(m_readOnly)
+        return;
+    
+    FMStatic::moveToTrash(QUrl::fromStringList(urls));
+}
+
+void FMList::removeFiles(const QStringList& urls)
+{
+    if(m_readOnly)
+        return;
+    
+    FMStatic::removeFiles(QUrl::fromStringList(urls));
+}
+
+void FMList::createSymlink(const QString& url)
+{
+    if(m_readOnly)
+        return;
+    
+    FMStatic::createSymlink(url, this->path);
 }
 
 bool FMList::saveImageFile(const QImage& image)
@@ -486,10 +529,20 @@ bool FMList::saveTextFile(const QString& data, const QString &format)
 
 void FMList::paste()
 {  
+    if(m_readOnly)
+        return;
+    
     const QClipboard *clipboard = QGuiApplication::clipboard();
     const QMimeData *mimeData = clipboard->mimeData();
     
-    if (mimeData->hasImage()) {
+    if(!mimeData)
+    {
+        qWarning() << "Could not get mime data from the clipboard";
+         return;  
+    }  
+    
+    if (mimeData->hasImage()) 
+    {
         saveImageFile(qvariant_cast<QImage>(mimeData->imageData()));
     } else if (mimeData->hasUrls())
     {
@@ -519,11 +572,17 @@ void FMList::paste()
 
 void FMList::copyInto(const QStringList &urls)
 {
+    if(m_readOnly)
+        return;
+    
     this->fm->copy(QUrl::fromStringList(urls), this->path);
 }
 
 void FMList::cutInto(const QStringList &urls)
 {
+    if(m_readOnly)
+        return;
+    
     this->fm->cut(QUrl::fromStringList(urls), this->path);  
 }
 
@@ -749,5 +808,18 @@ void FMList::setAutoLoad(bool value)
     Q_EMIT autoLoadChanged();
 }
 
+bool FMList::readOnly() const
+{
+    return m_readOnly;
+}
+
+void FMList::setReadOnly(bool value)
+{
+    if(m_readOnly == value)
+        return;
+    
+    m_readOnly = value;
+    Q_EMIT readOnlyChanged();
+}
 
 

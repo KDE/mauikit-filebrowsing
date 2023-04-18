@@ -167,6 +167,8 @@ Maui.Page
      */
     property alias dialog : dialogLoader.item
     
+    property alias readOnly : _browser.readOnly
+    
     
     //signals
     /*!
@@ -357,13 +359,13 @@ Maui.Page
             
             onRejected:
             {
-                FB.FM.removeFiles(urls)
+                control.currentFMList.removeFiles(urls)
                 close()
             }
             
             onAccepted:
             {
-                FB.FM.moveToTrash(urls)
+                control.currentFMList.moveToTrash(urls)
                 close()
             }
             
@@ -403,7 +405,7 @@ Maui.Page
                 switch(_newActions.currentIndex)
                 {
                     case 0: control.currentFMList.createDir(text); break;
-                    case 1: FB.FM.createFile(control.currentPath, text); break;                    
+                    case 1: control.currentFMList.createFile(text); break;                    
                 }
             }
             
@@ -454,7 +456,7 @@ Maui.Page
             textEntry.text: item.label
             textEntry.placeholderText: i18nd("mauikitfilebrowsing", "New name")
             
-            onFinished: FB.FM.rename(item.path, textEntry.text)
+            onFinished: control.currentFMList.renameFile(item.path, textEntry.text)
             onRejected: close()
             
             acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
@@ -698,56 +700,54 @@ Maui.Page
             control.areaClicked(mouse)
             control.currentView.forceActiveFocus()
         }
-        
-        //        function onAreaRightClicked(mouse)
-        //        {
-        //            control.rightClicked()
-        //            control.currentView.forceActiveFocus()
-        //        }
     }   
     
     Maui.ContextualMenu
     {
         id: _dropMenu
         property string urls
-        //enabled: FB.FM.getFileInfo(control.currentPath).isdir == "true"
 
         MenuItem
         {
+            enabled: !control.readOnly
             text: i18nd("mauikitfilebrowsing", "Copy here")
             icon.name: "edit-copy"
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
-                FB.FM.copy(urls, control.currentPath, false)
+               control.currentFMList.copyInto(urls)
             }
         }
 
         MenuItem
         {
+            enabled: !control.readOnly
             text: i18nd("mauikitfilebrowsing", "Move here")
             icon.name: "edit-move"
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
-                FB.FM.cut(urls, control.currentPath)
+                control.currentFMList.cutInto(urls)
             }
         }
 
         MenuItem
         {
+            enabled: !control.readOnly
+            
             text: i18nd("mauikitfilebrowsing", "Link here")
             icon.name: "edit-link"
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
                 for(var i in urls)
-                    FB.FM.createSymlink(urls[i], control.currentPath)
+                    control.currentFMList.createSymlink(urls[i])
             }
         }
 
         MenuItem
         {
+            enabled: FB.FM.isDir(_dropMenu.urls.split(",")[0])
             text: i18nd("mauikitfilebrowsing", "Open here")
             icon.name: "folder-open"
             onTriggered:
@@ -799,7 +799,7 @@ Maui.Page
                 id: _browser                
                 anchors.fill: parent
                 selectionMode: control.selectionMode
-                
+                                
                 Binding on currentIndex
                 {
                     value: control.currentIndex
@@ -808,7 +808,7 @@ Maui.Page
                 
                 Loader
                 {
-                    active: control.currentPath === "tags://" ||  control.currentPath === "tags:///"
+                    active: (control.currentPath === "tags://" ||  control.currentPath === "tags:///") && !control.readOnly
                     visible: active
                     asynchronous: true
                     
@@ -818,7 +818,7 @@ Maui.Page
                     anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
                     
                     sourceComponent: Maui.FloatingButton
-                    {
+                    {                        
                         icon.name : "list-add"
                         onClicked: 
                         {
@@ -838,7 +838,7 @@ Maui.Page
             {
                 id: _searchBrowser
                 property alias browser : _searchBrowser
-                
+                readOnly: true
                 path: control.currentPath
                 Binding on currentIndex
                 {
@@ -884,6 +884,9 @@ Maui.Page
      **/
     function cut(urls)
     {
+        if(control.readOnly)
+            return
+            
         if(urls.length <= 0)
         {
             return
@@ -1125,7 +1128,7 @@ Maui.Page
      **/
     function newItem()
     {
-        dialogLoader.sourceComponent= newDialogComponent
+        dialogLoader.sourceComponent = newDialogComponent
         dialog.open()
         dialog.forceActiveFocus()
     }

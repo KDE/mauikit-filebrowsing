@@ -1,5 +1,5 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.9
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
 
 import org.mauikit.controls 1.3 as Maui
@@ -10,6 +10,7 @@ Maui.AltBrowser
     id: control
     
     headBar.visible: false
+    
     title: currentFMList.pathName
     selectionMode: control.selectionMode
     enableLassoSelection: true
@@ -86,7 +87,7 @@ Maui.AltBrowser
     
     readonly property bool loading : currentFMList.status.code === FB.PathStatus.LOADING
     
-    
+    property alias readOnly: _commonFMList.readOnly
     /**
      * 
      */
@@ -226,7 +227,7 @@ Maui.AltBrowser
                 }
             }
             
-            enabled: !FB.FM.isDir(_dropMenu.target)
+            enabled: !FB.FM.isDir(_dropMenu.target) && !control.readOnly
             text: i18nd("mauikitfilebrowsing", "Merge here")
             icon.name: "edit-group"
             onTriggered:
@@ -241,7 +242,7 @@ Maui.AltBrowser
         
         MenuItem
         {
-            enabled: FB.FM.isDir(_dropMenu.target) 
+            enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
             text: i18nd("mauikitfilebrowsing", "Copy here")
             icon.name: "edit-copy"
             onTriggered:
@@ -253,7 +254,7 @@ Maui.AltBrowser
         
         MenuItem
         {
-            enabled: FB.FM.isDir(_dropMenu.target)
+            enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
             text: i18nd("mauikitfilebrowsing", "Move here")
             icon.name: "edit-move"
             onTriggered:
@@ -265,7 +266,7 @@ Maui.AltBrowser
         
         MenuItem
         {
-            enabled: FB.FM.isDir(_dropMenu.target)
+            enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
             text: i18nd("mauikitfilebrowsing", "Link here")
             icon.name: "edit-link"
             onTriggered:

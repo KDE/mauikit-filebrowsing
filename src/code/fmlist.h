@@ -107,6 +107,8 @@ class FILEBROWSING_EXPORT FMList : public MauiList
     Q_PROPERTY(QStringList filters READ getFilters WRITE setFilters NOTIFY filtersChanged)
     Q_PROPERTY(FMList::FILTER filterType READ getFilterType WRITE setFilterType NOTIFY filterTypeChanged)
     Q_PROPERTY(FMList::SORTBY sortBy READ getSortBy WRITE setSortBy NOTIFY sortByChanged)
+    
+    Q_PROPERTY(bool readOnly READ readOnly WRITE setReadOnly NOTIFY readOnlyChanged)
   
     // readonly
     Q_PROPERTY(QString pathName READ getPathName NOTIFY pathNameChanged FINAL)
@@ -332,6 +334,9 @@ public:
      * @return
      */
     PathStatus getStatus() const;
+    
+    void setReadOnly(bool value);
+    bool readOnly() const;
         
 private:
     FM *fm;
@@ -378,6 +383,8 @@ private:
     FMList::PATHTYPE pathType = FMList::PATHTYPE::PLACES_PATH;
 
     NavHistory m_navHistory;
+    
+    bool m_readOnly = false;
 
 public Q_SLOTS:
 
@@ -395,6 +402,15 @@ public Q_SLOTS:
      */
     void createDir(const QString &name);
 
+    void createFile(const QString &name);
+    
+    void renameFile(const QString &url, const QString &newName);
+    
+    void createSymlink(const QString &url);
+    
+    void removeFiles(const QStringList &urls);
+    void moveToTrash(const QStringList &urls);
+    
     /**
      * @brief copyInto
      * Copy a list of file URls into the current directory
@@ -467,6 +483,7 @@ Q_SIGNALS:
     void cloudDepthChanged();
 void autoLoadChanged();
 
+void readOnlyChanged();
     void warning(QString message);
     void progress(int percent);
 };
