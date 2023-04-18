@@ -56,7 +56,7 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
     {
         if(FMStatic::getPathType(path) == FMStatic::PATHTYPE_KEY::TAGS_PATH)
         {
-            for(const auto url : Tagging::getInstance()->getTagUrls(path.toString().replace("tags:///", ""), nameFilters, true, limit))
+            for(const auto &url : Tagging::getInstance()->getTagUrls(path.toString().replace("tags:///", ""), nameFilters, true, limit))
             {
                 MODEL map = FileLoader::informer(url);
                 

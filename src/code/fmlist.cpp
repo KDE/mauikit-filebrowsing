@@ -558,9 +558,6 @@ void FMList::paste()
         copyInto(QUrl::toStringList(mimeData->urls()));
     }       
        
-    } else if (mimeData->hasHtml()) 
-    {
-        saveTextFile(mimeData->html(), "html");
     } else if (mimeData->hasText()) 
     {
         saveTextFile(mimeData->text(), "txt");
@@ -581,7 +578,7 @@ bool FMList::clipboardHasContent() const
         return false;  
     }  
     
-    return mimeData->hasUrls() || mimeData->hasImage() || mimeData->hasText() || mimeData->hasHtml();
+    return mimeData->hasUrls() || mimeData->hasImage() || mimeData->hasText();
 }
 
 
