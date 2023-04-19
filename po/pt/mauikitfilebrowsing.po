@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-13 00:48+0000\n"
+"POT-Creation-Date: 2023-04-19 00:48+0000\n"
 "PO-Revision-Date: 2023-04-17 17:03+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "Removível"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:349
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:354
 #, kde-format
 msgid "Trash"
 msgstr "Lixo"
@@ -78,37 +78,37 @@ msgstr "Outros"
 msgid "Quick"
 msgstr "Rápido"
 
-#: src/controls/FileBrowser.qml:228
+#: src/controls/FileBrowser.qml:233
 #, kde-format
 msgid "Back"
 msgstr "Recuar"
 
-#: src/controls/FileBrowser.qml:237
+#: src/controls/FileBrowser.qml:242
 #, kde-format
 msgid "Quit"
 msgstr "Sair"
 
-#: src/controls/FileBrowser.qml:238
+#: src/controls/FileBrowser.qml:243
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
 msgstr "Tem a certeza que deseja sair da pesquisa actualmente em curso?"
 
-#: src/controls/FileBrowser.qml:255
+#: src/controls/FileBrowser.qml:260
 #, kde-format
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/controls/FileBrowser.qml:324
+#: src/controls/FileBrowser.qml:329
 #, kde-format
 msgid "Empty Trash"
 msgstr "Esvaziar o Lixo"
 
-#: src/controls/FileBrowser.qml:343
+#: src/controls/FileBrowser.qml:348
 #, kde-format
 msgid "Removing %1 files"
 msgstr "A remover os %1 ficheiros"
 
-#: src/controls/FileBrowser.qml:344
+#: src/controls/FileBrowser.qml:349
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -117,55 +117,55 @@ msgstr ""
 "Apagar o %1\n"
 "Total de espaço libertado %2"
 
-#: src/controls/FileBrowser.qml:348 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:353 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Apagar"
 
-#: src/controls/FileBrowser.qml:354 src/controls/FileBrowser.qml:461
-#: src/controls/FileBrowser.qml:764 src/controls/FileDialog.qml:133
-#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:283
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:466
+#: src/controls/FileBrowser.qml:771 src/controls/FileDialog.qml:133
+#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/controls/FileBrowser.qml:391
+#: src/controls/FileBrowser.qml:396
 #, kde-format
 msgid "New %1"
 msgstr "Novo %1"
 
-#: src/controls/FileBrowser.qml:392
+#: src/controls/FileBrowser.qml:397
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr "Cria uma nova pasta ou ficheiro com um nome personalizado."
 
-#: src/controls/FileBrowser.qml:399
+#: src/controls/FileBrowser.qml:404
 #, kde-format
 msgid "Create"
 msgstr "Criar"
 
-#: src/controls/FileBrowser.qml:410 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nome"
 
-#: src/controls/FileBrowser.qml:423
+#: src/controls/FileBrowser.qml:428
 #, kde-format
 msgid "Folder"
 msgstr "Pasta"
 
-#: src/controls/FileBrowser.qml:429
+#: src/controls/FileBrowser.qml:434
 #, kde-format
 msgid "File"
 msgstr "Ficheiro"
 
-#: src/controls/FileBrowser.qml:445 src/controls/FileBrowser.qml:460
+#: src/controls/FileBrowser.qml:450 src/controls/FileBrowser.qml:465
 #, kde-format
 msgid "Rename"
 msgstr "Mudar o Nome"
 
-#: src/controls/FileBrowser.qml:446
+#: src/controls/FileBrowser.qml:451
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -174,32 +174,32 @@ msgstr ""
 "Muda o nome de um ficheiro ou pasta. Escreva um novo nome e carregue em "
 "Mudar o Nome para aplicar a alteração."
 
-#: src/controls/FileBrowser.qml:455
+#: src/controls/FileBrowser.qml:460
 #, kde-format
 msgid "New name"
 msgstr "Novo nome"
 
-#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:245
+#: src/controls/FileBrowser.qml:720 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "Copiar para aqui"
 
-#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:257
+#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "Mover para aqui"
 
-#: src/controls/FileBrowser.qml:739 src/controls/private/BrowserView.qml:269
+#: src/controls/FileBrowser.qml:745 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "Criar uma ligação aqui"
 
-#: src/controls/FileBrowser.qml:751
+#: src/controls/FileBrowser.qml:758
 #, kde-format
 msgid "Open here"
 msgstr "Abrir aqui"
 
-#: src/controls/FileBrowser.qml:1130
+#: src/controls/FileBrowser.qml:1127
 #, kde-format
 msgid "Search: %1"
 msgstr "Procurar: %1"
@@ -333,38 +333,38 @@ msgstr "Esconder"
 msgid "Remove"
 msgstr "Remover"
 
-#: src/controls/private/BrowserView.qml:210
+#: src/controls/private/BrowserView.qml:211
 #, kde-format
 msgid "Directory already exists."
 msgstr "A pasta já existe."
 
-#: src/controls/private/BrowserView.qml:213
+#: src/controls/private/BrowserView.qml:214
 #, kde-format
 msgid "Looks good."
 msgstr "Parece estar bem."
 
-#: src/controls/private/BrowserView.qml:217
+#: src/controls/private/BrowserView.qml:218
 #, kde-format
 msgid "Merge %1 files"
 msgstr "Reunir os %1 ficheiros"
 
-#: src/controls/private/BrowserView.qml:218
+#: src/controls/private/BrowserView.qml:219
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "Atribui um nome à pasta nova onde serão reunidos todos os ficheiros."
 
-#: src/controls/private/BrowserView.qml:220
+#: src/controls/private/BrowserView.qml:221
 #, kde-format
 msgid "Directory name"
 msgstr "Nome da pasta"
 
-#: src/controls/private/BrowserView.qml:230
+#: src/controls/private/BrowserView.qml:231
 #, kde-format
 msgid "Merge here"
 msgstr "Reunir aqui"
 
-#: src/controls/private/BrowserView.qml:309
-#: src/controls/private/BrowserView.qml:480
+#: src/controls/private/BrowserView.qml:310
+#: src/controls/private/BrowserView.qml:481
 #, kde-format
 msgid " items"
 msgstr " itens"

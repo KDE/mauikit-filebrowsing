@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-13 00:48+0000\n"
+"POT-Creation-Date: 2023-04-19 00:48+0000\n"
 "PO-Revision-Date: 2023-04-13 06:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -48,7 +48,7 @@ msgstr "მოხსნადი"
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:349
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:354
 #, kde-format
 msgid "Trash"
 msgstr "ნაგავი"
@@ -78,39 +78,39 @@ msgstr "სხვები"
 msgid "Quick"
 msgstr "სწრაფი"
 
-#: src/controls/FileBrowser.qml:228
+#: src/controls/FileBrowser.qml:233
 #, kde-format
 msgid "Back"
 msgstr "უკან"
 
-#: src/controls/FileBrowser.qml:237
+#: src/controls/FileBrowser.qml:242
 #, kde-format
 msgid "Quit"
 msgstr "დატოვება"
 
-#: src/controls/FileBrowser.qml:238
+#: src/controls/FileBrowser.qml:243
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
 msgstr ""
 "დარწმუნებული ბრძანდებით, რომ გნებავთ გახვიდეთ მაშინ, როცა მიმდინარე ძებნა "
 "ჯერ კიდევ მიმდინარეობს?"
 
-#: src/controls/FileBrowser.qml:255
+#: src/controls/FileBrowser.qml:260
 #, kde-format
 msgid "Filter"
 msgstr "ფილტრი"
 
-#: src/controls/FileBrowser.qml:324
+#: src/controls/FileBrowser.qml:329
 #, kde-format
 msgid "Empty Trash"
 msgstr "ნაგვის დაცარიელება"
 
-#: src/controls/FileBrowser.qml:343
+#: src/controls/FileBrowser.qml:348
 #, kde-format
 msgid "Removing %1 files"
 msgstr "%1 ფაილის წაშლა"
 
-#: src/controls/FileBrowser.qml:344
+#: src/controls/FileBrowser.qml:349
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -119,55 +119,55 @@ msgstr ""
 "%1-ის წაშლა   \n"
 "გათავისუფლებული ადგილი %2"
 
-#: src/controls/FileBrowser.qml:348 src/controls/TagsDialog.qml:114
+#: src/controls/FileBrowser.qml:353 src/controls/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "წაშლა"
 
-#: src/controls/FileBrowser.qml:354 src/controls/FileBrowser.qml:461
-#: src/controls/FileBrowser.qml:764 src/controls/FileDialog.qml:133
-#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:283
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:466
+#: src/controls/FileBrowser.qml:771 src/controls/FileDialog.qml:133
+#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: src/controls/FileBrowser.qml:391
+#: src/controls/FileBrowser.qml:396
 #, kde-format
 msgid "New %1"
 msgstr "ახალი %1"
 
-#: src/controls/FileBrowser.qml:392
+#: src/controls/FileBrowser.qml:397
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr "შექმენით ახალი საქაღალდე ან ფაილი ხელით მითითებული სახელით."
 
-#: src/controls/FileBrowser.qml:399
+#: src/controls/FileBrowser.qml:404
 #, kde-format
 msgid "Create"
 msgstr "შექმნა"
 
-#: src/controls/FileBrowser.qml:410 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "სახელი"
 
-#: src/controls/FileBrowser.qml:423
+#: src/controls/FileBrowser.qml:428
 #, kde-format
 msgid "Folder"
 msgstr "საქაღალდე"
 
-#: src/controls/FileBrowser.qml:429
+#: src/controls/FileBrowser.qml:434
 #, kde-format
 msgid "File"
 msgstr "ფაილი"
 
-#: src/controls/FileBrowser.qml:445 src/controls/FileBrowser.qml:460
+#: src/controls/FileBrowser.qml:450 src/controls/FileBrowser.qml:465
 #, kde-format
 msgid "Rename"
 msgstr "გადარქმევა"
 
-#: src/controls/FileBrowser.qml:446
+#: src/controls/FileBrowser.qml:451
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -176,32 +176,32 @@ msgstr ""
 "ფაილის ან საქაღალდის სახელის შეცვლა. ცვლილების გადასატარებლად აკრიფეთ ახალი "
 "სახელი და გადარქმევას დააჭირეთ."
 
-#: src/controls/FileBrowser.qml:455
+#: src/controls/FileBrowser.qml:460
 #, kde-format
 msgid "New name"
 msgstr "ახალი სახელი"
 
-#: src/controls/FileBrowser.qml:717 src/controls/private/BrowserView.qml:245
+#: src/controls/FileBrowser.qml:720 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "აქ ჩაკოპირება"
 
-#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:257
+#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "აქ გადმოტანა"
 
-#: src/controls/FileBrowser.qml:739 src/controls/private/BrowserView.qml:269
+#: src/controls/FileBrowser.qml:745 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "აქ ბმულის შექმნა"
 
-#: src/controls/FileBrowser.qml:751
+#: src/controls/FileBrowser.qml:758
 #, kde-format
 msgid "Open here"
 msgstr "აქ გახსნა"
 
-#: src/controls/FileBrowser.qml:1130
+#: src/controls/FileBrowser.qml:1127
 #, kde-format
 msgid "Search: %1"
 msgstr "ძებნა: %1"
@@ -335,38 +335,38 @@ msgstr "დამალვა"
 msgid "Remove"
 msgstr "წაშლა"
 
-#: src/controls/private/BrowserView.qml:210
+#: src/controls/private/BrowserView.qml:211
 #, kde-format
 msgid "Directory already exists."
 msgstr "საქაღალდე უკვე არსებობს."
 
-#: src/controls/private/BrowserView.qml:213
+#: src/controls/private/BrowserView.qml:214
 #, kde-format
 msgid "Looks good."
 msgstr "არა უჭირს."
 
-#: src/controls/private/BrowserView.qml:217
+#: src/controls/private/BrowserView.qml:218
 #, kde-format
 msgid "Merge %1 files"
 msgstr "%1 ფაილის შერწყმა"
 
-#: src/controls/private/BrowserView.qml:218
+#: src/controls/private/BrowserView.qml:219
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "ახალი საქაღალდის სახელი, სადაც ყველა ფაილის შერწყმა მოხდება."
 
-#: src/controls/private/BrowserView.qml:220
+#: src/controls/private/BrowserView.qml:221
 #, kde-format
 msgid "Directory name"
 msgstr "საქაღალდის სახელი"
 
-#: src/controls/private/BrowserView.qml:230
+#: src/controls/private/BrowserView.qml:231
 #, kde-format
 msgid "Merge here"
 msgstr "აქ შერწყმა"
 
-#: src/controls/private/BrowserView.qml:309
-#: src/controls/private/BrowserView.qml:480
+#: src/controls/private/BrowserView.qml:310
+#: src/controls/private/BrowserView.qml:481
 #, kde-format
 msgid " items"
 msgstr " ჩანაწერი"
