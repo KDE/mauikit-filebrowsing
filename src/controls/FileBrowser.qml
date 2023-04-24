@@ -388,7 +388,7 @@ Maui.Page
     Component
     {
         id: newDialogComponent
-        
+//         
         Maui.NewDialog
         {
             id: _newDialog
@@ -1060,7 +1060,7 @@ Maui.Page
             return
         }
         
-        selectIndexes([...Array( Math.min(control.currentFMList.count, 100)).keys()])
+        selectIndexes([...Array( control.currentFMList.count ).keys()])
     }
     
     /**
