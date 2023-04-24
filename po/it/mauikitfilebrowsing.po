@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# Paolo Zamponi <zapaolo@email.it>, 2022, 2023.
+# Paolo Zamponi <feus73@gmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-19 00:48+0000\n"
-"PO-Revision-Date: 2023-04-13 07:43+0200\n"
-"Last-Translator: Paolo Zamponi <zapaolo@email.it>\n"
+"PO-Revision-Date: 2023-04-16 09:27+0200\n"
+"Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -170,6 +170,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"Modifica il nome di un file o di una cartella. Scrivi un nuovo nome e fai "
+"clic su Rinomina per applicare la modifica."
 
 #: src/controls/FileBrowser.qml:460
 #, kde-format
@@ -331,15 +333,14 @@ msgid "Remove"
 msgstr "Rimuovi"
 
 #: src/controls/private/BrowserView.qml:211
-#, fuzzy, kde-format
-#| msgid "Directory already exists"
+#, kde-format
 msgid "Directory already exists."
-msgstr "La cartella esiste già"
+msgstr "La cartella esiste già."
 
 #: src/controls/private/BrowserView.qml:214
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Sembra buono."
 
 #: src/controls/private/BrowserView.qml:218
 #, kde-format
