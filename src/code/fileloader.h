@@ -55,7 +55,7 @@ public:
 
     static std::function<FMH::MODEL(const QUrl &url)> informer;
 
-private slots:
+private Q_SLOTS:
     /**
      * @brief getFiles
      * @param paths
@@ -66,7 +66,7 @@ private slots:
      */
     void getFiles(QList<QUrl> paths, bool recursive, const QStringList &nameFilters, const QDir::Filters &filters, uint limit);
    
-signals:
+Q_SIGNALS:
     /**
      * @brief finished
      * @param items

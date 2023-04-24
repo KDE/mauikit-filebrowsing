@@ -393,7 +393,7 @@ Maui.Page
         {
             id: _newDialog
             
-            title: i18nd("mauikitfilebrowsing", "New %1", _newActions.currentIndex === 0 ? "folder" : "file" )
+            title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
                        
             headBar.visible: false
