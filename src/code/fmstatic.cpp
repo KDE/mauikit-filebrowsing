@@ -558,7 +558,7 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
         {FMH::MODEL_KEY::MIME, kfile.mimetype()},
         {FMH::MODEL_KEY::ICON, kfile.iconName()},
         {FMH::MODEL_KEY::SIZE, QString::number(kfile.size())},
-        {FMH::MODEL_KEY::COUNT, kfile.isLocalFile() && kfile.isDir() ? QString::number(QDir(kfile.localPath()).count()) : "0"}};
+        {FMH::MODEL_KEY::COUNT, kfile.isLocalFile() && kfile.isDir() ? QString::number(QDir(kfile.localPath()).count()-2) : "0"}};
         }
 #endif
 
@@ -590,7 +590,7 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             {FMH::MODEL_KEY::PATH, path.toString()},
             {FMH::MODEL_KEY::URL, path.toString()},
             {FMH::MODEL_KEY::THUMBNAIL, thumbnailUrl(path, mime).toString()},
-            {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()) : "0"}};
+            {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()-2) : "0"}};
 #endif
             return res;
         }
