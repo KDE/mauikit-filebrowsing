@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
 "PO-Revision-Date: 2023-04-13 09:50+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -131,9 +131,16 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "Nova %1"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "Mapa"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "Novo ime"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -416,6 +423,9 @@ msgstr "Dodaj nove oznake za izbrane datoteke."
 #, kde-format
 msgid "No tags yet."
 msgstr "Še ni nobenih oznak."
+
+#~ msgid "New %1"
+#~ msgstr "Nova %1"
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Spremeni ime datoteke ali mape"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
 "PO-Revision-Date: 2023-04-13 23:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -133,9 +133,16 @@ msgid "Cancel"
 msgstr "Utzi"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "%1 berria"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "Karpeta"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "Izen berria"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -418,6 +425,9 @@ msgstr "Gehitu hautatutako fitxategietarako etiketa berriak."
 #, kde-format
 msgid "No tags yet."
 msgstr "Oraindik etiketarik ez."
+
+#~ msgid "New %1"
+#~ msgstr "%1 berria"
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Aldatu fitxategi edo karpeta baten izena"

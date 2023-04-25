@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
 "PO-Revision-Date: 2023-04-16 09:27+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -130,9 +130,16 @@ msgid "Cancel"
 msgstr "Annulla"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "Nuovo %1"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "Cartella"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "Nuovo nome"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -415,6 +422,9 @@ msgstr "Aggiungi delle nuove etichette ai file selezionati."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ancora nessuna etichetta."
+
+#~ msgid "New %1"
+#~ msgstr "Nuovo %1"
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Modifica il nome di un file o di una cartella"

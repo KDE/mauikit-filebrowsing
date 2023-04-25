@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
 "PO-Revision-Date: 2023-04-13 12:56+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -130,9 +130,16 @@ msgid "Cancel"
 msgstr "İptal"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "Yeni %1"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "Klasör"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "Yeni ad"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -415,6 +422,9 @@ msgstr "Seçili dosyalara yeni etiketler ekleyin."
 #, kde-format
 msgid "No tags yet."
 msgstr "Henüz bir etiket yok."
+
+#~ msgid "New %1"
+#~ msgstr "Yeni %1"
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Bir dosya veya klasörün adını değiştir"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
 "PO-Revision-Date: 2023-04-17 17:03+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -131,9 +131,16 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "Novo %1"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "Pasta"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "Novo nome"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -415,3 +422,6 @@ msgstr "Adiciona marcas novas para os ficheiros seleccionados."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ainda sem marcas."
+
+#~ msgid "New %1"
+#~ msgstr "Novo %1"

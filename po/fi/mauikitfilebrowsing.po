@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
-"PO-Revision-Date: 2023-01-17 15:59+0200\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
+"PO-Revision-Date: 2023-04-20 12:35+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -131,15 +131,21 @@ msgid "Cancel"
 msgstr "Peru"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "Uusi %1"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "Kansio"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "Uusi nimi"
 
 #: src/controls/FileBrowser.qml:397
-#, fuzzy, kde-format
-#| msgid "Create a new folder or a file with a custom name"
+#, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr "Luo uusi kansio tai tiedosto mukautetulla nimellä"
+msgstr "Luo uusi kansio tai mukautetun niminen tiedosto."
 
 #: src/controls/FileBrowser.qml:404
 #, kde-format
@@ -172,6 +178,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"Muuta tiedoston tai kansion nimeä. Kirjoita uusi nimi ja napsauta Muuta "
+"nimeä."
 
 #: src/controls/FileBrowser.qml:460
 #, kde-format
@@ -333,15 +341,14 @@ msgid "Remove"
 msgstr "Poista"
 
 #: src/controls/private/BrowserView.qml:211
-#, fuzzy, kde-format
-#| msgid "Directory already exists"
+#, kde-format
 msgid "Directory already exists."
-msgstr "Kansio on jo olemassa"
+msgstr "Kansio on jo olemassa."
 
 #: src/controls/private/BrowserView.qml:214
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Hyvältä näyttää."
 
 #: src/controls/private/BrowserView.qml:218
 #, kde-format
@@ -414,6 +421,9 @@ msgstr "Lisää valituille tiedostoille uusia luokituksia."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ei vielä luokituksia."
+
+#~ msgid "New %1"
+#~ msgstr "Uusi %1"
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Muuta tiedoston tai kansion nimeä"

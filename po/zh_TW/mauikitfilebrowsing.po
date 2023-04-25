@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-19 00:48+0000\n"
+"POT-Creation-Date: 2023-04-25 00:49+0000\n"
 "PO-Revision-Date: 2023-02-08 00:38+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -130,9 +130,16 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/controls/FileBrowser.qml:396
-#, kde-format
-msgid "New %1"
-msgstr "新增 %1"
+#, fuzzy, kde-format
+#| msgid "Folder"
+msgid "New folder"
+msgstr "資料夾"
+
+#: src/controls/FileBrowser.qml:396
+#, fuzzy, kde-format
+#| msgid "New name"
+msgid "New file"
+msgstr "新名稱"
 
 #: src/controls/FileBrowser.qml:397
 #, fuzzy, kde-format
@@ -411,6 +418,9 @@ msgstr "為已選檔案新增標籤。"
 #, kde-format
 msgid "No tags yet."
 msgstr "還沒有標籤。"
+
+#~ msgid "New %1"
+#~ msgstr "新增 %1"
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "變更檔案或資料夾的名稱"
