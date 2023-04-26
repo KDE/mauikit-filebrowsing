@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-25 00:49+0000\n"
-"PO-Revision-Date: 2023-04-13 10:40+0200\n"
+"PO-Revision-Date: 2023-04-25 10:15+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -132,16 +132,14 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "Folder"
+#, kde-format
 msgid "New folder"
-msgstr "Carpeta"
+msgstr "Carpeta nova"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "New name"
+#, kde-format
 msgid "New file"
-msgstr "Nom nou"
+msgstr "Fitxer nou"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -423,6 +421,3 @@ msgstr "Afegeix etiquetes noves per als fitxers seleccionats."
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."
-
-#~ msgid "New %1"
-#~ msgstr "%1 nou/va"

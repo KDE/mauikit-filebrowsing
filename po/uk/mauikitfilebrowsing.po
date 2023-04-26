@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-25 00:49+0000\n"
-"PO-Revision-Date: 2023-04-13 06:52+0300\n"
+"PO-Revision-Date: 2023-04-25 19:36+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -131,16 +131,14 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "Folder"
+#, kde-format
 msgid "New folder"
-msgstr "Тека"
+msgstr "Нова тека"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "New name"
+#, kde-format
 msgid "New file"
-msgstr "Нова назва"
+msgstr "Новий файл"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
