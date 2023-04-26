@@ -420,18 +420,19 @@ Maui.Page
                 expanded: true
                 autoExclusive: true
                 display: ToolButton.TextBesideIcon
-                currentIndex: String(_newDialog.textEntry.text).indexOf(".") > 0 ? 1 : 0
                 
                 Action
                 {
                     icon.name: "folder-new"
                     text: i18nd("mauikitfilebrowsing", "Folder")
+                    checked: String(_newDialog.textEntry.text).indexOf(".") < 0
                 }
                 
                 Action
                 {
                     icon.name: "document-new"
                     text: i18nd("mauikitfilebrowsing", "File")
+                    checked: String(_newDialog.textEntry.text).indexOf(".") >= 0
                 }
             }
         }
