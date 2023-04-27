@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-25 00:49+0000\n"
-"PO-Revision-Date: 2023-04-13 06:05+0200\n"
+"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"PO-Revision-Date: 2023-04-26 06:37+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -124,8 +124,8 @@ msgstr ""
 msgid "Delete"
 msgstr "წაშლა"
 
-#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:466
-#: src/controls/FileBrowser.qml:771 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
+#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
@@ -133,16 +133,14 @@ msgid "Cancel"
 msgstr "გაუქმება"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "Folder"
+#, kde-format
 msgid "New folder"
-msgstr "საქაღალდე"
+msgstr "ახალი საქაღალდე"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "New name"
+#, kde-format
 msgid "New file"
-msgstr "ახალი სახელი"
+msgstr "ახალი ფაილი"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -159,7 +157,7 @@ msgstr "შექმნა"
 msgid "Name"
 msgstr "სახელი"
 
-#: src/controls/FileBrowser.qml:428
+#: src/controls/FileBrowser.qml:427
 #, kde-format
 msgid "Folder"
 msgstr "საქაღალდე"
@@ -169,12 +167,12 @@ msgstr "საქაღალდე"
 msgid "File"
 msgstr "ფაილი"
 
-#: src/controls/FileBrowser.qml:450 src/controls/FileBrowser.qml:465
+#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
 #, kde-format
 msgid "Rename"
 msgstr "გადარქმევა"
 
-#: src/controls/FileBrowser.qml:451
+#: src/controls/FileBrowser.qml:452
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -183,32 +181,32 @@ msgstr ""
 "ფაილის ან საქაღალდის სახელის შეცვლა. ცვლილების გადასატარებლად აკრიფეთ ახალი "
 "სახელი და გადარქმევას დააჭირეთ."
 
-#: src/controls/FileBrowser.qml:460
+#: src/controls/FileBrowser.qml:461
 #, kde-format
 msgid "New name"
 msgstr "ახალი სახელი"
 
-#: src/controls/FileBrowser.qml:720 src/controls/private/BrowserView.qml:246
+#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "აქ ჩაკოპირება"
 
-#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:258
+#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "აქ გადმოტანა"
 
-#: src/controls/FileBrowser.qml:745 src/controls/private/BrowserView.qml:270
+#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "აქ ბმულის შექმნა"
 
-#: src/controls/FileBrowser.qml:758
+#: src/controls/FileBrowser.qml:759
 #, kde-format
 msgid "Open here"
 msgstr "აქ გახსნა"
 
-#: src/controls/FileBrowser.qml:1127
+#: src/controls/FileBrowser.qml:1128
 #, kde-format
 msgid "Search: %1"
 msgstr "ძებნა: %1"

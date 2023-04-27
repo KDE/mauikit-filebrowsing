@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-25 00:49+0000\n"
-"PO-Revision-Date: 2023-04-14 02:00+0200\n"
+"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"PO-Revision-Date: 2023-04-26 23:30+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -123,8 +123,8 @@ msgstr ""
 msgid "Delete"
 msgstr "Borrar"
 
-#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:466
-#: src/controls/FileBrowser.qml:771 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
+#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
@@ -132,16 +132,14 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "Folder"
+#, kde-format
 msgid "New folder"
-msgstr "Carpeta"
+msgstr "Nueva carpeta"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "New name"
+#, kde-format
 msgid "New file"
-msgstr "Nuevo nombre"
+msgstr "Nuevo archivo"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
@@ -158,7 +156,7 @@ msgstr "Crear"
 msgid "Name"
 msgstr "Nombre"
 
-#: src/controls/FileBrowser.qml:428
+#: src/controls/FileBrowser.qml:427
 #, kde-format
 msgid "Folder"
 msgstr "Carpeta"
@@ -168,12 +166,12 @@ msgstr "Carpeta"
 msgid "File"
 msgstr "Archivo"
 
-#: src/controls/FileBrowser.qml:450 src/controls/FileBrowser.qml:465
+#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
 #, kde-format
 msgid "Rename"
 msgstr "Cambiar nombre"
 
-#: src/controls/FileBrowser.qml:451
+#: src/controls/FileBrowser.qml:452
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -182,32 +180,32 @@ msgstr ""
 "Cambiar el nombre de un archivo o carpeta. Escriba un nuevo nombre y pulse "
 "«Cambiar nombre» para aplicar el cambio."
 
-#: src/controls/FileBrowser.qml:460
+#: src/controls/FileBrowser.qml:461
 #, kde-format
 msgid "New name"
 msgstr "Nuevo nombre"
 
-#: src/controls/FileBrowser.qml:720 src/controls/private/BrowserView.qml:246
+#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "Copiar aquí"
 
-#: src/controls/FileBrowser.qml:732 src/controls/private/BrowserView.qml:258
+#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "Mover aquí"
 
-#: src/controls/FileBrowser.qml:745 src/controls/private/BrowserView.qml:270
+#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "Enlazar aquí"
 
-#: src/controls/FileBrowser.qml:758
+#: src/controls/FileBrowser.qml:759
 #, kde-format
 msgid "Open here"
 msgstr "Abrir aquí"
 
-#: src/controls/FileBrowser.qml:1127
+#: src/controls/FileBrowser.qml:1128
 #, kde-format
 msgid "Search: %1"
 msgstr "Buscar: %1"
