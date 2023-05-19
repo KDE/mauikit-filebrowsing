@@ -386,6 +386,11 @@ void FMList::setFilters(const QStringList &filters)
     Q_EMIT this->filtersChanged();
 }
 
+void FMList::resetFilters()
+{
+    this->setFilters(QStringList());
+}
+
 FMList::FILTER FMList::getFilterType() const
 {
     return this->filterType;
@@ -399,6 +404,11 @@ void FMList::setFilterType(const FMList::FILTER &type)
     this->filterType = type;
 
     Q_EMIT this->filterTypeChanged();
+}
+
+void FMList::resetFilterType()
+{
+    this->setFilterType(FMList::FILTER::NONE);
 }
 
 bool FMList::getHidden() const
