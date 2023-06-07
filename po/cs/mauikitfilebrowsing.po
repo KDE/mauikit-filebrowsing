@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-27 00:47+0000\n"
-"PO-Revision-Date: 2023-04-14 21:54+0200\n"
+"PO-Revision-Date: 2023-04-17 15:23+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -128,21 +128,19 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "Folder"
+#, kde-format
 msgid "New folder"
-msgstr "Složka"
+msgstr "Nová složka"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "New name"
+#, kde-format
 msgid "New file"
-msgstr "Nový název"
+msgstr "Nový soubor"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr ""
+msgstr "Vytvořit novou složku nebo soubor s vlastním názvem."
 
 #: src/controls/FileBrowser.qml:404
 #, kde-format
@@ -341,7 +339,7 @@ msgstr "Adresář již existuje."
 #: src/controls/private/BrowserView.qml:214
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Vypadá to dobře."
 
 #: src/controls/private/BrowserView.qml:218
 #, kde-format
@@ -414,6 +412,3 @@ msgstr ""
 #, kde-format
 msgid "No tags yet."
 msgstr ""
-
-#~ msgid "New %1"
-#~ msgstr "Nov8 %1"
