@@ -1,0 +1,421 @@
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the mauikit-filebrowsing package.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikit-filebrowsing\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"PO-Revision-Date: 2023-06-11 14:20+0200\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 23.04.2\n"
+
+#: src/code/fmstatic.cpp:36
+#, kde-format
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:47
+#, kde-format
+msgid "Drives"
+msgstr "Dispositivos"
+
+#: src/code/fmstatic.cpp:38
+#, kde-format
+msgid "Apps"
+msgstr "Aplicacións"
+
+#: src/code/fmstatic.cpp:39 src/code/fmstatic.cpp:46
+#, kde-format
+msgid "Remote"
+msgstr "Remoto"
+
+#: src/code/fmstatic.cpp:40
+#, kde-format
+msgid "Removable"
+msgstr "Extraíbel"
+
+#: src/code/fmstatic.cpp:41
+#, kde-format
+msgid "Unknown"
+msgstr "Descoñecida"
+
+#: src/code/fmstatic.cpp:42 src/controls/FileBrowser.qml:354
+#, kde-format
+msgid "Trash"
+msgstr "Lixo"
+
+#: src/code/fmstatic.cpp:43
+#, kde-format
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: src/code/fmstatic.cpp:44
+#, kde-format
+msgid "Search"
+msgstr "Buscar"
+
+#: src/code/fmstatic.cpp:45
+#, kde-format
+msgid "Cloud"
+msgstr "Nube"
+
+#: src/code/fmstatic.cpp:48
+#, kde-format
+msgid "Others"
+msgstr "Outras"
+
+#: src/code/fmstatic.cpp:49
+#, kde-format
+msgid "Quick"
+msgstr "Rápido"
+
+#: src/controls/FileBrowser.qml:233
+#, kde-format
+msgid "Back"
+msgstr "Atrás"
+
+#: src/controls/FileBrowser.qml:242
+#, kde-format
+msgid "Quit"
+msgstr "Saír"
+
+#: src/controls/FileBrowser.qml:243
+#, kde-format
+msgid "Are you sure you want to quit the current search in progress?"
+msgstr "Seguro que queres saír da busca?"
+
+#: src/controls/FileBrowser.qml:260
+#, kde-format
+msgid "Filter"
+msgstr "Filtrar"
+
+#: src/controls/FileBrowser.qml:329
+#, kde-format
+msgid "Empty Trash"
+msgstr "Baleirar o lixo"
+
+#: src/controls/FileBrowser.qml:348
+#, kde-format
+msgid "Removing %1 files"
+msgstr "Eliminando %1 ficheiros"
+
+#: src/controls/FileBrowser.qml:349
+#, kde-format
+msgid ""
+"Delete %1  \n"
+"Total freed space %2"
+msgstr ""
+"Eliminar %1  \n"
+"Espazo liberado total %2"
+
+#: src/controls/FileBrowser.qml:353 src/controls/TagsDialog.qml:114
+#, kde-format
+msgid "Delete"
+msgstr "Eliminar"
+
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
+#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
+#: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
+#: src/controls/TagsDialog.qml:51
+#, kde-format
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/controls/FileBrowser.qml:396
+#, kde-format
+msgid "New folder"
+msgstr "Novo cartafol"
+
+#: src/controls/FileBrowser.qml:396
+#, kde-format
+msgid "New file"
+msgstr "Novo ficheiro"
+
+#: src/controls/FileBrowser.qml:397
+#, kde-format
+msgid "Create a new folder or a file with a custom name."
+msgstr "Crear un novo cartafol ou ficheiro cun nome personalizado."
+
+#: src/controls/FileBrowser.qml:404
+#, kde-format
+msgid "Create"
+msgstr "Crear"
+
+#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
+#, kde-format
+msgid "Name"
+msgstr "Nome"
+
+#: src/controls/FileBrowser.qml:427
+#, kde-format
+msgid "Folder"
+msgstr "Cartafol"
+
+#: src/controls/FileBrowser.qml:434
+#, kde-format
+msgid "File"
+msgstr "Ficheiro"
+
+#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
+#, kde-format
+msgid "Rename"
+msgstr "Renomear"
+
+#: src/controls/FileBrowser.qml:452
+#, kde-format
+msgid ""
+"Change the name of a file or folder. Write a new name and click Rename to "
+"apply the change."
+msgstr ""
+"Cambiar o nome dun ficheiro ou cartafol. Escriba un novo nome e prema "
+"Renomear para aplicar o cambio."
+
+#: src/controls/FileBrowser.qml:461
+#, kde-format
+msgid "New name"
+msgstr "Novo nome"
+
+#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
+#, kde-format
+msgid "Copy here"
+msgstr "Copiar aquí"
+
+#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
+#, kde-format
+msgid "Move here"
+msgstr "Mover para aquí"
+
+#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
+#, kde-format
+msgid "Link here"
+msgstr "Ligar aquí"
+
+#: src/controls/FileBrowser.qml:759
+#, kde-format
+msgid "Open here"
+msgstr "Abrir aquí"
+
+#: src/controls/FileBrowser.qml:1128
+#, kde-format
+msgid "Search: %1"
+msgstr "Buscar: %1"
+
+#: src/controls/FileDialog.qml:134 src/controls/TagsDialog.qml:50
+#, kde-format
+msgid "Save"
+msgstr "Gardar"
+
+#: src/controls/FileDialog.qml:134
+#, kde-format
+msgid "Open"
+msgstr "Abrir"
+
+#: src/controls/FileDialog.qml:162
+#, kde-format
+msgid "File name..."
+msgstr "Nome do ficheiro…"
+
+#: src/controls/FileDialog.qml:172
+#, kde-format
+msgid "Yes"
+msgstr "Si"
+
+#: src/controls/FileDialog.qml:173
+#, kde-format
+msgid "No"
+msgstr "Non"
+
+#: src/controls/FileDialog.qml:175
+#, kde-format
+msgid "A file named %1 already exists!"
+msgstr "Xa existe un ficheiro chamado %1."
+
+#: src/controls/FileDialog.qml:176
+#, kde-format
+msgid "This action will overwrite %1. Are you sure you want to do this?"
+msgstr "Esta acción substituirá «%1». Seguro que quere facelo?"
+
+#: src/controls/FileDialog.qml:230
+#, kde-format
+msgid "Toogle SideBar"
+msgstr "Conmutar a barra lateral"
+
+#: src/controls/FileDialog.qml:270
+#, kde-format
+msgid "View type"
+msgstr "Tipo de vista"
+
+#: src/controls/FileDialog.qml:275
+#, kde-format
+msgid "List"
+msgstr "Lista"
+
+#: src/controls/FileDialog.qml:290
+#, kde-format
+msgid "Grid"
+msgstr "Grade"
+
+#: src/controls/FileDialog.qml:310
+#, kde-format
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: src/controls/FileDialog.qml:315
+#, kde-format
+msgid "Type"
+msgstr "Tipo"
+
+#: src/controls/FileDialog.qml:327
+#, kde-format
+msgid "Date"
+msgstr "Data"
+
+#: src/controls/FileDialog.qml:339
+#, kde-format
+msgid "Modified"
+msgstr "Modificado"
+
+#: src/controls/FileDialog.qml:351
+#, kde-format
+msgid "Size"
+msgstr "Tamaño"
+
+#: src/controls/FileDialog.qml:377
+#, kde-format
+msgid "Show Folders First"
+msgstr "Mostrar primeiro os cartafoles"
+
+#: src/controls/FileDialog.qml:390
+#, kde-format
+msgid "Group"
+msgstr "Grupo"
+
+#: src/controls/NewTagDialog.qml:25 src/controls/NewTagDialog.qml:45
+#, kde-format
+msgid "New tags"
+msgstr "Novas etiquetas"
+
+#: src/controls/NewTagDialog.qml:26
+#, kde-format
+msgid ""
+"Create new tags to organize your files. You can create multiple tags "
+"separated by a comma."
+msgstr ""
+"Cree novas etiquetas para organizar os ficheiros. Pode crear varias "
+"separadas por unha coma."
+
+#: src/controls/NewTagDialog.qml:30
+#, kde-format
+msgid "Add"
+msgstr "Engadir"
+
+#: src/controls/OpenWithDialog.qml:54
+#, kde-format
+msgid "Open with"
+msgstr "Abrir con"
+
+#: src/controls/PlacesListBrowser.qml:84 src/controls/TagsDialog.qml:108
+#, kde-format
+msgid "Edit"
+msgstr "Editar"
+
+#: src/controls/PlacesListBrowser.qml:89
+#, kde-format
+msgid "Hide"
+msgstr "Agochar"
+
+#: src/controls/PlacesListBrowser.qml:94
+#, kde-format
+msgid "Remove"
+msgstr "Retirar"
+
+#: src/controls/private/BrowserView.qml:211
+#, kde-format
+msgid "Directory already exists."
+msgstr "O cartafol xa existe."
+
+#: src/controls/private/BrowserView.qml:214
+#, kde-format
+msgid "Looks good."
+msgstr "Pinta ben."
+
+#: src/controls/private/BrowserView.qml:218
+#, kde-format
+msgid "Merge %1 files"
+msgstr "Mesturar %1 ficheiros"
+
+#: src/controls/private/BrowserView.qml:219
+#, kde-format
+msgid "Give a name to the new directory where all files will be merge."
+msgstr "Dea un nome ao novo cartafol onde se mesturarán os ficheiros."
+
+#: src/controls/private/BrowserView.qml:221
+#, kde-format
+msgid "Directory name"
+msgstr "Nome do directorio"
+
+#: src/controls/private/BrowserView.qml:231
+#, kde-format
+msgid "Merge here"
+msgstr "Mesturar aquí"
+
+#: src/controls/private/BrowserView.qml:310
+#: src/controls/private/BrowserView.qml:481
+#, kde-format
+msgid " items"
+msgstr " elementos"
+
+#: src/controls/private/TagList.qml:24
+#, kde-format
+msgid "Add tags..."
+msgstr "Engadir etiquetas…"
+
+#: src/controls/TagsDialog.qml:63
+#, kde-format
+msgid "Filter or add a new tag"
+msgstr "Filtrar ou engadir unha nova etiqueta"
+
+#: src/controls/TagsDialog.qml:90
+#, kde-format
+msgid "Delete %1"
+msgstr "Eliminar %1"
+
+#: src/controls/TagsDialog.qml:91
+#, kde-format
+msgid ""
+"Are you sure you want to delete this tag? This action can not be undone."
+msgstr ""
+"Seguro que quere eliminar a etiqueta? Esta acción non se pode desfacer."
+
+#: src/controls/TagsDialog.qml:137
+#, kde-format
+msgid "No Tags!"
+msgstr "Non hai etiquetas."
+
+#: src/controls/TagsDialog.qml:138
+#, kde-format
+msgid "Create new tags to organize your files."
+msgstr "Cree novas etiquetas para organizar os ficheiros."
+
+#: src/controls/TagsDialog.qml:216
+#, kde-format
+msgid "Tagging %1 files"
+msgstr "Etiquetando %1 ficheiros."
+
+#: src/controls/TagsDialog.qml:217
+#, kde-format
+msgid "Add new tags for the selected files."
+msgstr "Engadir novas etiquetas aos ficheiros seleccionados."
+
+#: src/controls/TagsDialog.qml:284
+#, kde-format
+msgid "No tags yet."
+msgstr "Aínda non hai etiquetas."
