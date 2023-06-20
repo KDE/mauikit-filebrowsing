@@ -291,7 +291,7 @@ msgstr "Tamaño"
 #: src/controls/FileDialog.qml:377
 #, kde-format
 msgid "Show Folders First"
-msgstr "Mostrar primeiro os cartafoles"
+msgstr "Amosar primeiro os cartafoles"
 
 #: src/controls/FileDialog.qml:390
 #, kde-format
