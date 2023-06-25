@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-04-27 00:47+0000\n"
-"PO-Revision-Date: 2023-04-20 12:35+0300\n"
+"PO-Revision-Date: 2023-05-28 16:48+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -131,16 +131,14 @@ msgid "Cancel"
 msgstr "Peru"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "Folder"
+#, kde-format
 msgid "New folder"
-msgstr "Kansio"
+msgstr "Uusi kansio"
 
 #: src/controls/FileBrowser.qml:396
-#, fuzzy, kde-format
-#| msgid "New name"
+#, kde-format
 msgid "New file"
-msgstr "Uusi nimi"
+msgstr "Uusi tiedosto"
 
 #: src/controls/FileBrowser.qml:397
 #, kde-format
