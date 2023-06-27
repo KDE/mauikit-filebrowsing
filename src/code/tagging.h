@@ -22,7 +22,7 @@
 #include <QObject>
 
 #include "filebrowsing_export.h"
-#include <MauiKit/Core/fmh.h>
+#include <MauiKit3/Core/fmh.h>
 
 #define MAX_LIMIT 9999
 
@@ -54,7 +54,7 @@ public:
     }
 
     
-public slots:
+public Q_SLOTS:
     
     /**
      * @brief get
@@ -181,7 +181,7 @@ public slots:
      * A callback function that sends as an argument a reference to the current item being retrieved, which can be modified, and expects a boolean value to be returned to decide if such item should be added to the model or not
      * @return
      */
-    QVariantList getUrls(const QString &tag, const bool &strict = false, const int &limit = MAX_LIMIT, const QString &mimeType = "", std::function<bool(QVariantMap &item)> modifier = nullptr);
+    QVariantList getUrls(const QString &tag, const bool &strict = false, const int &limit = MAX_LIMIT, const QString &mimeType = QStringLiteral(""), std::function<bool(QVariantMap &item)> modifier = nullptr);
     
     /**
      * @brief getUrlTags
@@ -285,7 +285,7 @@ public slots:
      * The mimetype filtering, for example, "image/\*" or "image/png", "audio/mp4"
      * @return
      */
-    QList<QUrl> getTagUrls(const QString &tag, const QStringList &filters, const bool &strict = false, const int &limit = 9999, const QString &mime = "");
+    QList<QUrl> getTagUrls(const QString &tag, const QStringList &filters, const bool &strict = false, const int &limit = 9999, const QString &mime = QStringLiteral(""));
     
     /**
      * @brief getTags
@@ -355,7 +355,7 @@ private:
 protected:
     static bool setTagIconName(QVariantMap &item);
 
-signals:
+Q_SIGNALS:
     void urlTagged(QString url, QString tag);
     void tagged(QVariantMap tag);
     void tagRemoved(QString tag);

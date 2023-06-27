@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
+# SPDX-FileCopyrightText: 2020 Camilo Higuita <milo.h@aol.com>
 #
 # SPDX-License-Identifier: BSD-2-Clause
 
@@ -8,8 +8,10 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto
     )
 
-set(
-    sources
+ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} URI "org.mauikit.filebrowsing" VERSION 3.0 CLASSNAME FileBrowsingPlugin)
+
+
+set(sources
     code/filebrowsing_plugin.cpp
     code/fm.cpp
     code/fmstatic.cpp
@@ -26,8 +28,7 @@ set(
     assets.qrc
     )
 
-set(
-    headers
+set(headers
     code/fm.h
     code/fmstatic.h
     code/fmlist.h
@@ -41,8 +42,7 @@ set(
     code/openwithmodel.h
     )
 
-set(
-    pluginData
+set(pluginData
     controls/qmldir
     )
 
@@ -68,102 +68,98 @@ set(syncing_HDRS
     code/libwebdavclient/lib/utils/XMLHelper.hpp
     )
 
-if(QUICK_COMPILER)
-    qtquick_compiler_add_resources(filebrowsing_QML_QRC resources.qrc)
-else()
-    qt5_add_resources(filebrowsing_QML_QRC resources.qrc)
+if (QT_MAJOR_VERSION STREQUAL "5")
+    if(QUICK_COMPILER)
+        qtquick_compiler_add_resources(filebrowsing_QML_QRC resources.qrc)
+    else()
+        qt5_add_resources(filebrowsing_QML_QRC resources.qrc)
+    endif()
 endif()
 
-ecm_generate_qmltypes(org.mauikit.filebrowsing ${PROJECT_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SOURCES
 
-add_library(
-    MauiKitFileBrowsing
-    SHARED
+    controls.${QT_MAJOR_VERSION}/FileBrowser.qml
+    controls.${QT_MAJOR_VERSION}/FileDialog.qml
+    controls.${QT_MAJOR_VERSION}/NewTagDialog.qml
+    controls.${QT_MAJOR_VERSION}/PlacesListBrowser.qml
+    controls.${QT_MAJOR_VERSION}/TagsDialog.qml
+    controls.${QT_MAJOR_VERSION}/TagsBar.qml)
+
+
+ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PATH private SOURCES
+
+    controls.${QT_MAJOR_VERSION}/private/BrowserHolder.qml
+    controls.${QT_MAJOR_VERSION}/private/BrowserSettings.qml
+
+    controls.${QT_MAJOR_VERSION}/private/BrowserView.qml
+
+    controls.${QT_MAJOR_VERSION}/private/TagDelegate.qml
+    controls.${QT_MAJOR_VERSION}/private/TagList.qml)
+    
+target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+    PRIVATE
     ${sources}
-    ${syncing_SRCS}
-    ${filebrowsing_QML_QRC}
-    )
+    ${syncing_SRCS})
 
-add_library(MauiKit::FileBrowsing ALIAS MauiKitFileBrowsing)
+add_library(MauiKit${MAUI_MAJOR_VERSION}::FileBrowsing ALIAS MauiKitFileBrowsing${MAUI_MAJOR_VERSION})
 
-generate_export_header(MauiKitFileBrowsing BASE_NAME FileBrowsing)
-set_target_properties(MauiKitFileBrowsing PROPERTIES
-    VERSION ${FileBrowsing_VERSION_STRING}
-    SOVERSION ${FileBrowsing_SOVERSION}
-    EXPORT_NAME FileBrowsing
-    )
+if (QT_MAJOR_VERSION STREQUAL "5")
+    if(QUICK_COMPILER)
+        target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PRIVATE ${filebrowsing_QML_QRC})
 
-target_include_directories(MauiKitFileBrowsing
-    INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing>")
+        add_definitions(-DQUICK_COMPILER)
+        target_compile_definitions(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC QUICK_COMPILER)
+    endif()
+endif()
 
-target_include_directories(MauiKitFileBrowsing PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
+generate_export_header(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} BASE_NAME FileBrowsing)
+set_target_properties(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+    EXPORT_NAME "FileBrowsing")
+
+target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+    INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit${MAUI_MAJOR_VERSION}/FileBrowsing>")
+
+target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
 
 if(ANDROID)
-    target_link_libraries(MauiKitFileBrowsing PRIVATE Qt5::AndroidExtras)
+    target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PRIVATE Qt${QT_MAJOR_VERSION}::AndroidExtras)
 endif()
 
 if(${KIO_AVAILABLE})
-    target_link_libraries(
-        MauiKitFileBrowsing
+    target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
 
         PRIVATE
-        KF5::KIOCore
-        KF5::KIOFileWidgets
-        )
+        KF${KF_MAJOR_VERSION}::KIOCore
+        KF${KF_MAJOR_VERSION}::KIOFileWidgets)
 
     add_definitions(-DKIO_AVAILABLE)
-    target_compile_definitions(MauiKitFileBrowsing PUBLIC KIO_AVAILABLE)
+    target_compile_definitions(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC KIO_AVAILABLE)
 endif()
 
-if(QUICK_COMPILER)
-    add_definitions(-DQUICK_COMPILER)
-    target_compile_definitions(MauiKitFileBrowsing PUBLIC QUICK_COMPILER)
-endif()
-
-target_link_libraries(
-    MauiKitFileBrowsing
+target_link_libraries( MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     PRIVATE
-    KF5::I18n
-    Qt5::Core
-    Qt5::Quick
-    Qt5::Qml
-    Qt5::Sql
-    Qt5::Xml
-    Qt5::Concurrent
-    Qt5::Network
-    MauiKit
-    )
+    KF${KF_MAJOR_VERSION}::I18n
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Quick
+    Qt${QT_MAJOR_VERSION}::Qml
+    Qt${QT_MAJOR_VERSION}::Sql
+    Qt${QT_MAJOR_VERSION}::Xml
+    Qt${QT_MAJOR_VERSION}::Concurrent
+    Qt${QT_MAJOR_VERSION}::Network
+    MauiKit${MAUI_MAJOR_VERSION})
 
-install(TARGETS MauiKitFileBrowsing EXPORT MauiKitFileBrowsingTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ecm_finalize_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR})
+ecm_generate_qmltypes(org.mauikit.filebrowsing 3.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+
+install(TARGETS MauiKitFileBrowsing${MAUI_MAJOR_VERSION} EXPORT MauiKitFileBrowsing${MAUI_MAJOR_VERSION}Targets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES
     ${headers}
     ${syncing_HDRS}
     ${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_export.h
-    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit/FileBrowsing
+    DESTINATION ${KDE_INSTALL_INCLUDEDIR}/MauiKit${MAUI_MAJOR_VERSION}/FileBrowsing
     COMPONENT Devel)
 
-if (BUILD_SHARED_LIBS)
-    add_custom_target(copy_to_bin ALL
-        COMMAND ${CMAKE_COMMAND} -E
-        make_directory ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
-        COMMAND ${CMAKE_COMMAND} -E
-        copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/controls ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
-        COMMAND ${CMAKE_COMMAND} -E
-        copy $<TARGET_FILE:MauiKitFileBrowsing> ${CMAKE_BINARY_DIR}/bin/org/mauikit/filebrowsing/
-        )
 
-    if(QUICK_COMPILER AND NOT ANDROID )
-        install(FILES controls/qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
-    else()
-        install(DIRECTORY controls/ DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
-    endif()
-
-    #include(ECMGeneratePriFile)
-    #ecm_generate_pri_file(BASE_NAME KQuickImageEditor LIB_NAME KQuickImageEditor DEPS "core qml quick svg" FILENAME_VAR PRI_FILENAME )
-    #install(FILES ${PRI_FILENAME}
-    #DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
-
-endif()
-
-install(TARGETS MauiKitFileBrowsing DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing )

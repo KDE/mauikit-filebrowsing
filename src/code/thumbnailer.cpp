@@ -26,13 +26,13 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
 
     connect(job, &KIO::PreviewJob::gotPreview, [this](KFileItem, QPixmap pixmap) {
         m_image = pixmap.toImage();
-        emit this->finished();
+        Q_EMIT this->finished();
     });
 
     connect(job, &KIO::PreviewJob::failed, [this](KFileItem) {
-        m_error = "Thumbnail Previewer job failed";
+        m_error = QStringLiteral("Thumbnail Previewer job failed");
         this->cancel();
-        emit this->finished();
+        Q_EMIT this->finished();
     });
 
     job->start();

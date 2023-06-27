@@ -32,6 +32,8 @@
 #include <QClipboard>
 #include <QGuiApplication>
 
+#include <KI18n/KLocalizedString>
+
 FMList::FMList(QObject *parent)
     : MauiList(parent)
     , fm(new FM(this))
@@ -46,7 +48,7 @@ FMList::FMList(QObject *parent)
     connect(this->fm, &FM::pathContentReady, [this](QUrl) {
         Q_EMIT this->preListChanged();
         this->sortList();
-        this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
+        this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? i18n("Nothing here!") : QStringLiteral(""), this->list.isEmpty() ? i18n("This place seems to be empty") : QStringLiteral(""), this->list.isEmpty() ? QStringLiteral("folder-add") : QStringLiteral(""), this->list.isEmpty(), true});
         Q_EMIT this->postListChanged();
         Q_EMIT this->countChanged();
     });
@@ -75,7 +77,7 @@ FMList::FMList(QObject *parent)
             return;
 
         if (!FMH::fileExists(res.path)) {
-            this->setStatus({PathStatus::STATUS_CODE::ERROR, "Error", "This URL cannot be listed", "documentinfo", true, false});
+            this->setStatus({PathStatus::STATUS_CODE::ERROR, i18n("Error"), i18n("This URL cannot be listed"), QStringLiteral("documentinfo"), true, false});
             return;
         }
 
@@ -86,7 +88,7 @@ FMList::FMList(QObject *parent)
             this->remove(index);
         }
 
-        this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
+        this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? i18n("Nothing here!") : QStringLiteral(""), this->list.isEmpty() ? i18n("This place seems to be empty") : QStringLiteral(""), this->list.isEmpty() ? QStringLiteral("folder-add") : QStringLiteral(""), this->list.isEmpty(), true});
     });
 
     connect(this->fm, &FM::warningMessage, [this](const QString &message) {
@@ -131,7 +133,7 @@ FMList::FMList(QObject *parent)
         {
             this->refresh();
         }
-    });   
+    });
     
     connect(Tagging::getInstance(), &Tagging::tagRemoved, [this](QString)
     {
@@ -139,7 +141,7 @@ FMList::FMList(QObject *parent)
         {
             this->refresh();
         }
-    });   
+    });
 }
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
@@ -147,7 +149,7 @@ void FMList::assignList(const FMH::MODEL_LIST &list)
     Q_EMIT this->preListChanged();
     this->list = list;
     this->sortList();
-    this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? "Nothing here!" : "", this->list.isEmpty() ? "This place seems to be empty" : "", this->list.isEmpty() ? "folder-add" : "", this->list.isEmpty(), true});
+    this->setStatus({PathStatus::STATUS_CODE::READY, this->list.isEmpty() ? i18n("Nothing here!") : QStringLiteral(""), this->list.isEmpty() ? i18n("This place seems to be empty") : QStringLiteral(""), this->list.isEmpty() ? QStringLiteral("folder-add") : QStringLiteral(""), this->list.isEmpty(), true});
     Q_EMIT this->postListChanged();
     Q_EMIT this->countChanged();
 }
@@ -193,21 +195,21 @@ void FMList::setList()
     }
     
     this->clear();
-       
-    switch (this->pathType) 
+
+    switch (this->pathType)
     {
     case FMList::PATHTYPE::TAGS_PATH:
         this->assignList(getTagContent(this->path.fileName(), QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)]));
         break; // SYNC
 
     case FMList::PATHTYPE::CLOUD_PATH:
-        this->fm->getCloudServerContent(this->path.toString(), this->filters, this->cloudDepth);
+        this->fm->getCloudServerContent(this->path, this->filters, this->cloudDepth);
         break; // ASYNC
 
     default: {
         const bool exists = this->path.isLocalFile() ? FMH::fileExists(this->path) : true;
         if (!exists)
-            this->setStatus({PathStatus::STATUS_CODE::ERROR, "Error", "This URL cannot be listed", "documentinfo", this->list.isEmpty(), exists});
+            this->setStatus({PathStatus::STATUS_CODE::ERROR, i18n("Error"), i18n("This URL cannot be listed"), QStringLiteral("documentinfo"), this->list.isEmpty(), exists});
         else {
             this->fm->getPathContent(this->path, this->hidden, this->onlyDirs, QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)]);
         }
@@ -237,7 +239,7 @@ void FMList::setSortBy(const FMList::SORTBY &key)
         return;
 
     this->sort = key;
-    Q_EMIT this->sortByChanged();      
+    Q_EMIT this->sortByChanged();
 }
 
 void FMList::sortList()
@@ -248,49 +250,49 @@ void FMList::sortList()
     const auto sortFunc = [key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool
     {
         switch (key) {
-            case FMH::MODEL_KEY::SIZE: {
-                if (e1[key].toDouble() > e2[key].toDouble())
-                    return true;
-                break;
-            }
+        case FMH::MODEL_KEY::SIZE: {
+            if (e1[key].toDouble() > e2[key].toDouble())
+                return true;
+            break;
+        }
             
-            case FMH::MODEL_KEY::MODIFIED:
-            case FMH::MODEL_KEY::DATE: {
-                auto currentTime = QDateTime::currentDateTime();
-                
-                auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
-                auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
-                
-                if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
-                    return true;
-                
-                break;
-            }
+        case FMH::MODEL_KEY::MODIFIED:
+        case FMH::MODEL_KEY::DATE: {
+            auto currentTime = QDateTime::currentDateTime();
+
+            auto date1 = QDateTime::fromString(e1[key], Qt::TextDate);
+            auto date2 = QDateTime::fromString(e2[key], Qt::TextDate);
+
+            if (date1.secsTo(currentTime) < date2.secsTo(currentTime))
+                return true;
+
+            break;
+        }
             
-            case FMH::MODEL_KEY::LABEL: {
-                const auto str1 = QString(e1[key]).toLower();
-                const auto str2 = QString(e2[key]).toLower();
-                
-                if (str1 < str2)
-                    return true;
-                break;
-            }
+        case FMH::MODEL_KEY::LABEL: {
+            const auto str1 = QString(e1[key]).toLower();
+            const auto str2 = QString(e2[key]).toLower();
+
+            if (str1 < str2)
+                return true;
+            break;
+        }
             
-            default:
-                if (e1[key] < e2[key])
-                    return true;
+        default:
+            if (e1[key] < e2[key])
+                return true;
         }
         
         return false;
-    };    
+    };
 
-    if (this->foldersFirst) {         
+    if (this->foldersFirst) {
         
         it = std::partition(this->list.begin(),
-                                  this->list.end(),
-                                  [](const FMH::MODEL &e1) -> bool {
-                                      return e1[FMH::MODEL_KEY::MIME] == "inode/directory";
-                                  });
+                            this->list.end(),
+                            [](const FMH::MODEL &e1) -> bool {
+            return e1[FMH::MODEL_KEY::MIME] == QStringLiteral("inode/directory");
+        });
 
         if(this->list.begin() != it)
         {
@@ -301,7 +303,7 @@ void FMList::sortList()
     if(it != this->list.end())
     {
         std::sort(it, this->list.end(), sortFunc);
-    }    
+    }
 }
 
 QString FMList::getPathName() const
@@ -316,7 +318,7 @@ QString FMList::getPath() const
 
 void FMList::setPath(const QString &path)
 {
-    QUrl path_ = QUrl::fromUserInput(path.simplified(), "/", QUrl::AssumeLocalFile).adjusted(QUrl::PreferLocalFile | QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
+    QUrl path_ = QUrl::fromUserInput(path.simplified(), QStringLiteral("/"), QUrl::AssumeLocalFile).adjusted(QUrl::PreferLocalFile | QUrl::StripTrailingSlash | QUrl::NormalizePathSegments);
 
     if (this->path == path_)
         return;
@@ -324,7 +326,7 @@ void FMList::setPath(const QString &path)
     this->path = path_;
     m_navHistory.appendPath(this->path);
 
-    this->setStatus({PathStatus::STATUS_CODE::LOADING, "Loading content", "Almost ready!", "view-refresh", true, false});
+    this->setStatus({PathStatus::STATUS_CODE::LOADING, i18n("Loading content"), i18n("Almost ready!"), QStringLiteral("view-refresh"), true, false});
 
     const auto __scheme = this->path.scheme();
     this->pathName = QDir(this->path.toLocalFile()).dirName();
@@ -341,7 +343,7 @@ void FMList::setPath(const QString &path)
 
     } else if (__scheme == FMStatic::PATHTYPE_SCHEME[FMStatic::PATHTYPE_KEY::TRASH_PATH]) {
         this->pathType = FMList::PATHTYPE::TRASH_PATH;
-        this->pathName = "Trash";
+        this->pathName = QStringLiteral("Trash");
 
     } else if (__scheme == FMStatic::PATHTYPE_SCHEME[FMStatic::PATHTYPE_KEY::PLACES_PATH]) {
         this->pathType = FMList::PATHTYPE::PLACES_PATH;
@@ -363,7 +365,7 @@ void FMList::setPath(const QString &path)
 
     Q_EMIT this->pathNameChanged();
     Q_EMIT this->pathTypeChanged();
-    Q_EMIT this->pathChanged();   
+    Q_EMIT this->pathChanged();
 }
 
 FMList::PATHTYPE FMList::getPathType() const
@@ -454,7 +456,7 @@ void FMList::createFile(const QString& name)
     if(m_readOnly)
         return;
     
-     FMStatic::createFile(this->path, name);
+    FMStatic::createFile(this->path, name);
 }
 
 void FMList::renameFile(const QString& url, const QString& newName)
@@ -462,7 +464,7 @@ void FMList::renameFile(const QString& url, const QString& newName)
     if(m_readOnly)
         return;
     
-    FMStatic::rename(url, newName);
+    FMStatic::rename(QUrl(url), newName);
 }
 
 void FMList::moveToTrash(const QStringList& urls)
@@ -486,45 +488,45 @@ void FMList::createSymlink(const QString& url)
     if(m_readOnly)
         return;
     
-    FMStatic::createSymlink(url, this->path);
+    FMStatic::createSymlink(QUrl(url), this->path);
 }
 
 bool FMList::saveImageFile(const QImage& image)
 {
-    QString fileName = QString("%1/pasted_image-0.%2").arg(path.toLocalFile(), "png");
-   
+    QString fileName = QString(QStringLiteral("%1/pasted_image-0.%2")).arg(path.toLocalFile(), QStringLiteral("png"));
+
     int idx = 1;
     while ( QFile::exists( fileName ) )
     {
-        fileName = QString("%1/pasted_image-%2.%3").arg(path.toLocalFile(), QString::number(idx), "png");
+        fileName = QString(QStringLiteral("%1/pasted_image-%2.%3")).arg(path.toLocalFile(), QString::number(idx), QStringLiteral("png"));
         idx++;
-    }    
+    }
     
     return image.save(fileName);
 }
 
 bool FMList::saveTextFile(const QString& data, const QString &format)
 {
-    QString fileName = QString("%1/pasted_text-0.%2").arg(path.toLocalFile(), format);
-       
+    QString fileName = QString(QStringLiteral("%1/pasted_text-0.%2")).arg(path.toLocalFile(), format);
+
     int idx = 1;
     while ( QFile::exists( fileName ) )
     {
-        fileName = QString("%1/pasted_text-%2.%3").arg(path.toLocalFile(), QString::number(idx), format);
+        fileName = QString(QStringLiteral("%1/pasted_text-%2.%3")).arg(path.toLocalFile(), QString::number(idx), format);
         idx++;
-    }   
+    }
     
     QFile file(fileName);
     
-        if (file.open(QIODevice::ReadWrite)) 
-        {
-            QTextStream out(&file);
-            out << data;    
-            file.close(); 
-            return true;
-        }
-   
-   return false;
+    if (file.open(QIODevice::ReadWrite))
+    {
+        QTextStream out(&file);
+        out << data;
+        file.close();
+        return true;
+    }
+
+    return false;
 }
 
 void FMList::paste()
@@ -538,33 +540,33 @@ void FMList::paste()
     if(!mimeData)
     {
         qWarning() << "Could not get mime data from the clipboard";
-         return;  
-    }  
+        return;
+    }
     
-    if (mimeData->hasImage()) 
+    if (mimeData->hasImage())
     {
         saveImageFile(qvariant_cast<QImage>(mimeData->imageData()));
     } else if (mimeData->hasUrls())
     {
-        const QByteArray a = mimeData->data(QStringLiteral("application/x-kde-cutselection"));        
+        const QByteArray a = mimeData->data(QStringLiteral("application/x-kde-cutselection"));
         const bool cut =  (!a.isEmpty() && a.at(0) == '1');
-       
-       if(cut)
-       {
-           cutInto(QUrl::toStringList(mimeData->urls()));
-           // mimeData->clear();
-    }else
+
+        if(cut)
+        {
+            cutInto(QUrl::toStringList(mimeData->urls()));
+            // mimeData->clear();
+        }else
+        {
+            copyInto(QUrl::toStringList(mimeData->urls()));
+        }
+
+    } else if (mimeData->hasText())
     {
-        copyInto(QUrl::toStringList(mimeData->urls()));
-    }       
-       
-    } else if (mimeData->hasText()) 
-    {
-        saveTextFile(mimeData->text(), "txt");
-    } else 
+        saveTextFile(mimeData->text(), QStringLiteral("txt"));
+    } else
     {
         qWarning() << "Unexpected mime type from clipboard content for performing a paste";
-    }    
+    }
 }
 
 bool FMList::clipboardHasContent() const
@@ -575,8 +577,8 @@ bool FMList::clipboardHasContent() const
     if(!mimeData)
     {
         qWarning() << "Could not get mime data from the clipboard";
-        return false;  
-    }  
+        return false;
+    }
     
     return mimeData->hasUrls() || mimeData->hasImage() || mimeData->hasText();
 }
@@ -595,7 +597,7 @@ void FMList::cutInto(const QStringList &urls)
     if(m_readOnly)
         return;
     
-    this->fm->cut(QUrl::fromStringList(urls), this->path);  
+    this->fm->cut(QUrl::fromStringList(urls), this->path);
 }
 
 void FMList::setDirIcon(const int &index, const QString &iconName)
@@ -608,7 +610,7 @@ void FMList::setDirIcon(const int &index, const QString &iconName)
     if (!FMStatic::isDir(path))
         return;
 
-    FMStatic::setDirConf(path.toString() + "/.directory", "Desktop Entry", "Icon", iconName);
+    FMStatic::setDirConf(QUrl(path.toString() + QStringLiteral("/.directory")), QStringLiteral("Desktop Entry"), QStringLiteral("Icon"), iconName);
 
     this->list[index][FMH::MODEL_KEY::ICON] = iconName;
     Q_EMIT this->updateModel(index, QVector<int> {FMH::MODEL_KEY::ICON});
@@ -616,9 +618,10 @@ void FMList::setDirIcon(const int &index, const QString &iconName)
 
 const QUrl FMList::getParentPath()
 {
-    switch (this->pathType) {
+    switch (this->pathType)
+    {
     case FMList::PATHTYPE::PLACES_PATH:
-        return FMStatic::parentDir(this->path).toString();
+        return FMStatic::parentDir(this->path);
     default:
         return this->previousPath();
     }
@@ -675,19 +678,19 @@ void FMList::componentComplete()
     connect(this, &FMList::onlyDirsChanged, this, &FMList::setList);
     
     connect(this, &FMList::sortByChanged, [this]()
-    {    
+    {
         if(this->list.size() > 0)
         {
-            Q_EMIT this->preListChanged();        
-            this->sortList();        
+            Q_EMIT this->preListChanged();
+            this->sortList();
             Q_EMIT this->postListChanged();
             Q_EMIT this->countChanged();
-        }       
+        }
     });
-   
+
     if(!this->path.isEmpty() && this->path.isValid())
     {
-        this->setList();          
+        this->setList();
     }
 }
 
@@ -695,11 +698,12 @@ void FMList::search(const QString &query, bool recursive)
 {
     if(this->path.isEmpty())
     {
-        this->setStatus({PathStatus::ERROR, "Error", "No path to perform the search", "document-info", true, false});
+        this->setStatus({PathStatus::ERROR, i18n("Error"), i18n("No path to perform the search"), QStringLiteral("document-info"), true, false});
     }
+
     qDebug() << "SEARCHING FOR" << query << this->path;
 
-    if (!this->path.isLocalFile() || !recursive) 
+    if (!this->path.isLocalFile() || !recursive)
     { //if the path is not local then search will not be performed and instead will be filtered
         qWarning() << "URL recived is not a local file. So search will only filter the content" << this->path;
         this->filterContent(query, this->path);
@@ -716,7 +720,7 @@ void FMList::search(const QString &query, bool recursive)
 
     QFuture<FMStatic::PATH_CONTENT> t1 = QtConcurrent::run([=]() -> FMStatic::PATH_CONTENT {
         FMStatic::PATH_CONTENT res;
-        res.path = path.toString();
+        res.path = path;
         res.content = FMStatic::search(query, this->path, this->hidden, this->onlyDirs, this->filters);
         return res;
     });
@@ -742,13 +746,14 @@ void FMList::filterContent(const QString &query, const QUrl &path)
         FMH::MODEL_LIST m_content;
         FMStatic::PATH_CONTENT res;
 
-        for (const auto &item : qAsConst(this->list)) {
+        for (const auto &item : qAsConst(this->list))
+        {
             if (item[FMH::MODEL_KEY::LABEL].contains(query, Qt::CaseInsensitive) || item[FMH::MODEL_KEY::SUFFIX].contains(query, Qt::CaseInsensitive) || item[FMH::MODEL_KEY::MIME].contains(query, Qt::CaseInsensitive)) {
                 m_content << item;
             }
         }
 
-        res.path = path.toString();
+        res.path = path;
         res.content = m_content;
         return res;
     });
@@ -794,7 +799,7 @@ void FMList::remove(const int &index)
 
 int FMList::indexOfName(const QString& query)
 {
-     const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [query](const FMH::MODEL &item) -> bool {
+    const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [query](const FMH::MODEL &item) -> bool {
         return item[FMH::MODEL_KEY::LABEL].startsWith(query, Qt::CaseInsensitive);
     });
 

@@ -26,7 +26,7 @@
 #include <QVariantMap>
 #include <QSqlDatabase>
 
-#include <MauiKit/Core/fmh.h>
+#include <MauiKit3/Core/fmh.h>
 
 #include "fmstatic.h"
 
@@ -36,13 +36,13 @@ namespace TAG
 {
     enum class TABLE : uint8_t { APP_TAGS, TAGS, TAGS_URLS, APPS, NONE };
     
-    static const QMap<TABLE, QString> TABLEMAP = {{TABLE::TAGS, "tags"},
-    {TABLE::TAGS_URLS, "tags_urls"},
-    {TABLE::APP_TAGS, "app_tags"},
-    {TABLE::APPS, "apps"}};
+    static const QMap<TABLE, QString> TABLEMAP = {{TABLE::TAGS, QStringLiteral("tags")},
+    {TABLE::TAGS_URLS, QStringLiteral("tags_urls")},
+    {TABLE::APP_TAGS, QStringLiteral("app_tags")},
+    {TABLE::APPS, QStringLiteral("apps")}};
     
-    static const QString TaggingPath = FMStatic::DataPath + "/maui/tagging/";
-    static const QString DBName = "tagging-v2.db";
+    static const QString TaggingPath = FMStatic::DataPath + QStringLiteral("/maui/tagging/");
+    static const QString DBName = QStringLiteral("tagging-v2.db");
 }
 
 /**

@@ -36,28 +36,28 @@ WebDAVReply *WebDAVClient::listDir(QString path, ListDepthEnum depth)
 
     switch (depth) {
     case ListDepthEnum::Zero:
-        depthVal = "0";
+        depthVal = QStringLiteral("0");
         break;
 
     case ListDepthEnum::One:
-        depthVal = "1";
+        depthVal = QStringLiteral("1");
         break;
 
     case ListDepthEnum::Two:
-        depthVal = "2";
+        depthVal = QStringLiteral("2");
         break;
 
     case ListDepthEnum::Infinity:
-        depthVal = "infinity";
+        depthVal = QStringLiteral("infinity");
         break;
 
     default:
         break;
     }
 
-    headers.insert("Depth", depthVal);
+    headers.insert(QStringLiteral("Depth"), depthVal);
 
-    listDirReply = this->networkHelper->makeRequest(QString("PROPFIND"), path, headers);
+    listDirReply = this->networkHelper->makeRequest(QStringLiteral("PROPFIND"), path, headers);
 
     connect(listDirReply, &QNetworkReply::finished, [=]() {
         reply->sendListDirResponseSignal(listDirReply, this->xmlHelper->parseListDirResponse(this, listDirReply->readAll()));
@@ -84,17 +84,18 @@ WebDAVReply *WebDAVClient::downloadFrom(QString path, qint64 startByte, qint64 e
 
     stream << "bytes=" << startByte << "-" << endByte;
 
-    headers.insert("Range", rangeVal);
+    headers.insert(QStringLiteral("Range"), rangeVal);
 
-    downloadReply = this->networkHelper->makeRequest("GET", path, headers);
+    downloadReply = this->networkHelper->makeRequest(QStringLiteral("GET"), path, headers);
 
     connect(downloadReply, &QNetworkReply::finished, [=]() {
         reply->sendDownloadResponseSignal(downloadReply);
     });
+
     connect(downloadReply, &QNetworkReply::downloadProgress, [=](qint64 bytesReceived, qint64 bytesTotal) {
         if (bytesTotal == -1) {
-            QString contentRange = QString(downloadReply->rawHeader(QByteArray::fromStdString("Content-Range")));
-            QRegularExpression re("bytes (\\d*)-(\\d*)/(\\d*)");
+            QString contentRange = QString::fromStdString(downloadReply->rawHeader("Content-Range").toStdString());
+            QRegularExpression re(QStringLiteral("bytes (\\d*)-(\\d*)/(\\d*)"));
             QRegularExpressionMatch match = re.match(contentRange);
             qint64 contentSize = match.captured(2).toInt() - match.captured(1).toInt();
 
@@ -116,7 +117,7 @@ WebDAVReply *WebDAVClient::uploadTo(QString path, QString filename, QIODevice *f
     QMap<QString, QString> headers;
     QNetworkReply *uploadReply;
 
-    uploadReply = this->networkHelper->makePutRequest(path + "/" + filename, headers, file);
+    uploadReply = this->networkHelper->makePutRequest(path + QStringLiteral("/") + filename, headers, file);
 
     connect(uploadReply, &QNetworkReply::finished, [=]() {
         reply->sendUploadFinishedResponseSignal(uploadReply);
@@ -135,7 +136,7 @@ WebDAVReply *WebDAVClient::createDir(QString path, QString dirName)
     QMap<QString, QString> headers;
     QNetworkReply *createDirReply;
 
-    createDirReply = this->networkHelper->makeRequest("MKCOL", path + "/" + dirName, headers);
+    createDirReply = this->networkHelper->makeRequest(QStringLiteral("MKCOL"), path + QStringLiteral("/") + dirName, headers);
 
     connect(createDirReply, &QNetworkReply::finished, [=]() {
         reply->sendDirCreatedResponseSignal(createDirReply);
@@ -154,9 +155,9 @@ WebDAVReply *WebDAVClient::copy(QString source, QString destination)
     QMap<QString, QString> headers;
     QNetworkReply *copyReply;
 
-    headers.insert("Destination", destination);
+    headers.insert(QStringLiteral("Destination"), destination);
 
-    copyReply = this->networkHelper->makeRequest("COPY", source, headers);
+    copyReply = this->networkHelper->makeRequest(QStringLiteral("COPY"), source, headers);
 
     connect(copyReply, &QNetworkReply::finished, [=]() {
         reply->sendCopyResponseSignal(copyReply);
@@ -174,12 +175,12 @@ WebDAVReply *WebDAVClient::move(QString source, QString destination, bool overwr
     WebDAVReply *reply = new WebDAVReply();
     QMap<QString, QString> headers;
     QNetworkReply *moveReply;
-    QString overwriteVal = overwrite ? "T" : "F";
+    QString overwriteVal = overwrite ? QStringLiteral("T") : QStringLiteral("F");
 
-    headers.insert("Destination", destination);
-    headers.insert("Overwrite", overwriteVal);
+    headers.insert(QStringLiteral("Destination"), destination);
+    headers.insert(QStringLiteral("Overwrite"), overwriteVal);
 
-    moveReply = this->networkHelper->makeRequest("MOVE", source, headers);
+    moveReply = this->networkHelper->makeRequest(QStringLiteral("MOVE"), source, headers);
 
     connect(moveReply, &QNetworkReply::finished, [=]() {
         reply->sendMoveResponseSignal(moveReply);
@@ -198,7 +199,7 @@ WebDAVReply *WebDAVClient::remove(QString path)
     QMap<QString, QString> headers;
     QNetworkReply *removeReply;
 
-    removeReply = this->networkHelper->makeRequest("DELETE", path, headers);
+    removeReply = this->networkHelper->makeRequest(QStringLiteral("DELETE"), path, headers);
 
     connect(removeReply, &QNetworkReply::finished, [=]() {
         reply->sendRemoveResponseSignal(removeReply);

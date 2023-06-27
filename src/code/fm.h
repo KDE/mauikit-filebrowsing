@@ -7,7 +7,7 @@
 #include <QDirIterator>
 #include <QVector>
 
-#include <MauiKit/Core/fmh.h>
+#include <MauiKit3/Core/fmh.h>
 
 #include "fmstatic.h"
 #include "filebrowsing_export.h"

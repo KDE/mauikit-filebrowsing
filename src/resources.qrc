@@ -1,16 +1,16 @@
 <RCC>
     <qresource prefix="/mauikit/filebrowsing">
-        <file alias="FileBrowser.qml">controls/FileBrowser.qml</file>
-        <file alias="OpenWithDialog.qml">controls/OpenWithDialog.qml</file>
-        <file alias="FileDialog.qml">controls/FileDialog.qml</file>
-        <file alias="private/BrowserView.qml">controls/private/BrowserView.qml</file>
-        <file alias="private/BrowserHolder.qml">controls/private/BrowserHolder.qml</file>
-        <file alias="private/BrowserSettings.qml">controls/private/BrowserSettings.qml</file>
-        <file alias="NewTagDialog.qml">controls/NewTagDialog.qml</file>
-        <file alias="TagsBar.qml">controls/TagsBar.qml</file>
-        <file alias="TagsDialog.qml">controls/TagsDialog.qml</file>
-        <file alias="private/TagList.qml">controls/private/TagList.qml</file>
-        <file alias="private/TagDelegate.qml">controls/private/TagDelegate.qml</file>
-        <file alias="PlacesListBrowser.qml">controls/PlacesListBrowser.qml</file>
+        <file alias="FileBrowser.qml">controls.5/FileBrowser.qml</file>
+        <file alias="OpenWithDialog.qml">controls.5/OpenWithDialog.qml</file>
+        <file alias="FileDialog.qml">controls.5/FileDialog.qml</file>
+        <file alias="private/BrowserView.qml">controls.5/private/BrowserView.qml</file>
+        <file alias="private/BrowserHolder.qml">controls.5/private/BrowserHolder.qml</file>
+        <file alias="private/BrowserSettings.qml">controls.5/private/BrowserSettings.qml</file>
+        <file alias="NewTagDialog.qml">controls.5/NewTagDialog.qml</file>
+        <file alias="TagsBar.qml">controls.5/TagsBar.qml</file>
+        <file alias="TagsDialog.qml">controls.5/TagsDialog.qml</file>
+        <file alias="private/TagList.qml">controls.5/private/TagList.qml</file>
+        <file alias="private/TagDelegate.qml">controls.5/private/TagDelegate.qml</file>
+        <file alias="PlacesListBrowser.qml">controls.5/PlacesListBrowser.qml</file>
     </qresource>
 </RCC>

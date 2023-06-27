@@ -21,7 +21,7 @@
 #include <QObject>
 #include <QImage>
 
-#include <MauiKit/Core/mauilist.h>
+#include <MauiKit3/Core/mauilist.h>
 
 #include "filebrowsing_export.h"
 
