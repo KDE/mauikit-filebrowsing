@@ -396,20 +396,21 @@ Maui.Page
             title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
                        
-//            headBar.visible: false
-            
             template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
-            template.iconVisible: true
-            
-//            acceptButton.text: i18nd("mauikitfilebrowsing", "Create")
+            template.iconVisible: true                       
            
             onFinished:
             {
-                switch(_newActions.currentIndex)
+                if(_newDirOp.checked) 
                 {
-                    case 0: control.currentFMList.createDir(text); break;
-                    case 1: control.currentFMList.createFile(text); break;                    
+                    control.currentFMList.createDir(text)
+                    return
                 }
+                    if(_newFileOp.checked) 
+                    {
+                        control.currentFMList.createFile(text)                
+                        return
+                    }
             }
             
             textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Name")
@@ -423,6 +424,7 @@ Maui.Page
                 
                 Action
                 {
+                    id: _newDirOp
                     icon.name: "folder-new"
                     text: i18nd("mauikitfilebrowsing", "Folder")
                     checked: String(_newDialog.textEntry.text).indexOf(".") < 0
@@ -430,6 +432,7 @@ Maui.Page
                 
                 Action
                 {
+                    id: _newFileOp                    
                     icon.name: "document-new"
                     text: i18nd("mauikitfilebrowsing", "File")
                     checked: String(_newDialog.textEntry.text).indexOf(".") >= 0

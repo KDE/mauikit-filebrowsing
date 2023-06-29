@@ -108,8 +108,10 @@ class FILEBROWSING_EXPORT FMList : public MauiList
     Q_PROPERTY(bool foldersFirst READ getFoldersFirst WRITE setFoldersFirst NOTIFY foldersFirstChanged)
     Q_PROPERTY(int cloudDepth READ getCloudDepth WRITE setCloudDepth NOTIFY cloudDepthChanged)
 
-    Q_PROPERTY(QStringList filters READ getFilters WRITE setFilters NOTIFY filtersChanged)
-    Q_PROPERTY(FMList::FILTER filterType READ getFilterType WRITE setFilterType NOTIFY filterTypeChanged)
+    Q_PROPERTY(QStringList filters READ getFilters WRITE setFilters NOTIFY filtersChanged RESET resetFilters)
+    
+    Q_PROPERTY(FMList::FILTER filterType READ getFilterType WRITE setFilterType NOTIFY filterTypeChanged RESET resetFilterType)
+    
     Q_PROPERTY(FMList::SORTBY sortBy READ getSortBy WRITE setSortBy NOTIFY sortByChanged)
     
     Q_PROPERTY(bool readOnly READ readOnly WRITE setReadOnly NOTIFY readOnlyChanged)
@@ -257,6 +259,7 @@ public:
      */
     void setFilters(const QStringList &filters);
 
+    void resetFilters();
     /**
      * @brief getFilterType
      * Filter typebeing applied, for example, filtering by AUDIO or IMAGES etc...
@@ -270,6 +273,8 @@ public:
      * @param type
      */
     void setFilterType(const FMList::FILTER &type);
+    
+    void resetFilterType();
 
     /**
      * @brief getHidden
