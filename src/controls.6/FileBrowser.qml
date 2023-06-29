@@ -236,7 +236,7 @@ Maui.Page
         }
     }    
     
-    Maui.Dialog
+    Maui.InfoDialog
     {
         id: _quitSearchDialog
         title: i18n("Quit")
@@ -348,17 +348,17 @@ Maui.Page
             title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
             message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
            
-            headBar.visible: false
+//            headBar.visible: false
             
-            rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
-            acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
-            acceptButton.visible: Maui.Handy.isLinux            
+//            rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
+//            acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
+//            acceptButton.visible: Maui.Handy.isLinux
             
-            actions: Action
-            {
-                text: i18nd("mauikitfilebrowsing", "Cancel")
-                onTriggered: _removeDialog.close()
-            }
+//            actions: Action
+//            {
+//                text: i18nd("mauikitfilebrowsing", "Cancel")
+//                onTriggered: _removeDialog.close()
+//            }
             
             onRejected:
             {
@@ -389,19 +389,19 @@ Maui.Page
     {
         id: newDialogComponent
 //         
-        Maui.NewDialog
+        Maui.InputDialog
         {
             id: _newDialog
             
             title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
                        
-            headBar.visible: false
+//            headBar.visible: false
             
             template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
             template.iconVisible: true
             
-            acceptButton.text: i18nd("mauikitfilebrowsing", "Create")
+//            acceptButton.text: i18nd("mauikitfilebrowsing", "Create")
            
             onFinished:
             {
@@ -442,7 +442,7 @@ Maui.Page
     {
         id: renameDialogComponent
         
-        Maui.NewDialog
+        Maui.InputDialog
         {
             id: _renameDialog
             
@@ -451,7 +451,7 @@ Maui.Page
             title: i18nd("mauikitfilebrowsing", "Rename")
             message: i18nd("mauikitfilebrowsing", "Change the name of a file or folder. Write a new name and click Rename to apply the change.")
             
-            headBar.visible: false
+//            headBar.visible: false
             
             template.iconSource: item.icon
             template.imageSource: item.thumbnail
@@ -463,8 +463,8 @@ Maui.Page
             onFinished: control.currentFMList.renameFile(item.path, textEntry.text)
             onRejected: close()
             
-            acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
-            rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
+//            acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
+//            rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
             
             onOpened:
             {
