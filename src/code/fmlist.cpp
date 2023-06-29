@@ -32,7 +32,7 @@
 #include <QClipboard>
 #include <QGuiApplication>
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 FMList::FMList(QObject *parent)
     : MauiList(parent)

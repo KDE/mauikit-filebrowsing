@@ -23,6 +23,7 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include <QDebug>
+#include <QRegularExpression>
 
 #include <QThread>
 #include <QCoreApplication>
@@ -229,10 +230,10 @@ QVariantList Tagging::getUrls(const QString &tag, const bool &strict, const int 
 {
     return !strict ? this->get(QString(QStringLiteral("select distinct * from TAGS_URLS where tag = '%1' and mime like '%2%' limit %3")).arg(tag, mimeType, QString::number(limit)), modifier)
                    : this->get(QString(QStringLiteral("select distinct turl.*, t.color, t.comment as tagComment from TAGS t "
-                                       "inner join APP_TAGS at on t.tag = at.tag "
-                                       "inner join TAGS_URLS turl on turl.tag = t.tag "
-                                       "where at.org = '%1' and turl.mime like '%4%' "
-                                       "and t.tag = '%2' limit %3"))
+                                                      "inner join APP_TAGS at on t.tag = at.tag "
+                                                      "inner join TAGS_URLS turl on turl.tag = t.tag "
+                                                      "where at.org = '%1' and turl.mime like '%4%' "
+                                                      "and t.tag = '%2' limit %3"))
                                .arg(this->appOrg, tag, QString::number(limit), mimeType),
                                modifier);
 }
@@ -241,7 +242,7 @@ QVariantList Tagging::getUrlTags(const QString &url, const bool &strict)
 {
     return !strict ? this->get(QString(QStringLiteral("select distinct turl.*, t.color, t.comment as tagComment from tags t inner join TAGS_URLS turl on turl.tag = t.tag where turl.url  = '%1'")).arg(url))
                    : this->get(QString(QStringLiteral("select distinct t.* from TAGS t inner join APP_TAGS at on t.tag = at.tag inner join TAGS_URLS turl on turl.tag = t.tag "
-                                       "where at.org = '%1' and turl.url = '%2'"))
+                                                      "where at.org = '%1' and turl.url = '%2'"))
                                .arg(this->appOrg, url));
 }
 
@@ -324,13 +325,15 @@ bool Tagging::removeTag(const QString& tag, const bool &strict)
 
 static bool doNameFilter(const QString &name, const QStringList &filters)
 {
-    const auto filtersAccumulate = std::accumulate(filters.constBegin(), filters.constEnd(), QVector<QRegExp> {}, [](QVector<QRegExp> &res, const QString &filter) -> QVector<QRegExp> {
-            res.append(QRegExp(filter, Qt::CaseInsensitive, QRegExp::Wildcard));
+    const auto filtersAccumulate = std::accumulate(filters.constBegin(), filters.constEnd(), QVector<QRegularExpression> {}, [](QVector<QRegularExpression> &res, const QString &filter) -> QVector<QRegularExpression> {
+            QString wildcardExp = QRegularExpression::wildcardToRegularExpression(filter);
+            QRegularExpression reg(QRegularExpression::anchoredPattern(wildcardExp), QRegularExpression::CaseInsensitiveOption);
+            res.append(reg);
             return res;
 });
     
     for (const auto &filter : filtersAccumulate) {
-        if (filter.exactMatch(name)) {
+        if (filter.match(name).hasMatch()) {
             return true;
         }
     }

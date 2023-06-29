@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QSettings>
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 #if (defined Q_OS_LINUX || defined Q_OS_FREEBSD) && !defined Q_OS_ANDROID 
 #include <KConfig>
@@ -27,8 +27,6 @@
 #include <KIO/PreviewJob>
 #include <KFileItem>
 #endif
-
-
 
 QString FMStatic::PathTypeLabel(const FMStatic::PATHTYPE_KEY& key)
 {

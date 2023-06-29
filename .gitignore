@@ -51,6 +51,8 @@ CMakeLists.txt.user*
 
 # build folders and output
 build/
+build.5/
+build.6/
 
 *.kdev4
 *.*~

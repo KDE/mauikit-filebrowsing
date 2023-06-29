@@ -21,7 +21,7 @@ AsyncImageResponse::AsyncImageResponse(const QString &id, const QSize &requested
 #ifdef KIO_AVAILABLE
     KIO::PreviewJob::setDefaultDevicePixelRatio(qApp->devicePixelRatio());
     QStringList plugins = KIO::PreviewJob::availablePlugins();
-//     qDebug() << plugins << KIO::PreviewJob::defaultPlugins();
+    //     qDebug() << plugins << KIO::PreviewJob::defaultPlugins();
     auto job = new KIO::PreviewJob(KFileItemList() << KFileItem(QUrl::fromUserInput(id)), requestedSize, &plugins);
 
     connect(job, &KIO::PreviewJob::gotPreview, [this](KFileItem, QPixmap pixmap) {

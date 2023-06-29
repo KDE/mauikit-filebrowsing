@@ -11,7 +11,7 @@
 #include "WebDAVItem.hpp"
 #include "WebDAVReply.hpp"
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 Syncing::Syncing(QObject *parent) : QObject(parent)
 {

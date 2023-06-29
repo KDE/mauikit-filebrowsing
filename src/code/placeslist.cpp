@@ -19,7 +19,11 @@
 #include "placeslist.h"
 #include "tagging.h"
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <MauiKit3/Core/utils.h>
+#else
+#include <MauiKit4/Core/utils.h>
+#endif
 
 #include <QDir>
 #include <QDebug>
@@ -30,7 +34,7 @@
 #include <Solid/Device>
 #endif
 
-#include <KI18n/KLocalizedString>
+#include <KLocalizedString>
 
 #ifdef KIO_AVAILABLE
 int mapPathType(const FMStatic::PATHTYPE_KEY& value)

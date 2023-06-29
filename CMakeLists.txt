@@ -30,7 +30,6 @@ else()
     set(MAUI_MAJOR_VERSION 3)
 
     set(MAUIKIT_VERSION 3.0.1)
-
 endif()
 
 set(CMAKE_CXX_STANDARD 17)
@@ -63,7 +62,6 @@ include(ECMGenerateQmlTypes)
 include(ECMGenerateHeaders)
 include(ECMFindQmlModule)
 include(ECMQmlModule)
-
 
 if(ANDROID OR APPLE OR WIN32)
     set(IS_KIO_AVAILABLE OFF)

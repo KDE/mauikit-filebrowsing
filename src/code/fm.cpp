@@ -348,7 +348,12 @@ void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDi
 {
     qDebug() << "Getting async path contents";
     Q_UNUSED(iteratorFlags)
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     this->dirLister->setShowingDotFiles(hidden);
+#else
+    this->dirLister->setShowHiddenFiles(hidden);
+#endif
     this->dirLister->setDirOnlyMode(onlyDirs);
     this->dirLister->setNameFilter(filters.join(QStringLiteral(" ")));
 
