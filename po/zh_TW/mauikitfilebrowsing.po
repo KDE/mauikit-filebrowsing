@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"POT-Creation-Date: 2023-06-30 00:46+0000\n"
 "PO-Revision-Date: 2023-02-08 00:38+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -121,8 +121,8 @@ msgstr ""
 msgid "Delete"
 msgstr "刪除"
 
-#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
-#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:474
+#: src/controls/FileBrowser.qml:779 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
@@ -152,59 +152,59 @@ msgstr "用自訂名稱建立新資料夾或檔案"
 msgid "Create"
 msgstr "建立"
 
-#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:420 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "名稱"
 
-#: src/controls/FileBrowser.qml:427
+#: src/controls/FileBrowser.qml:433
 #, kde-format
 msgid "Folder"
 msgstr "資料夾"
 
-#: src/controls/FileBrowser.qml:434
+#: src/controls/FileBrowser.qml:441
 #, kde-format
 msgid "File"
 msgstr "檔案"
 
-#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
+#: src/controls/FileBrowser.qml:458 src/controls/FileBrowser.qml:473
 #, kde-format
 msgid "Rename"
 msgstr "重新命名"
 
-#: src/controls/FileBrowser.qml:452
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
 
-#: src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:468
 #, kde-format
 msgid "New name"
 msgstr "新名稱"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "複製到這裡"
 
-#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
+#: src/controls/FileBrowser.qml:740 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "移動到這裡"
 
-#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
+#: src/controls/FileBrowser.qml:753 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "連結到這裡"
 
-#: src/controls/FileBrowser.qml:759
+#: src/controls/FileBrowser.qml:766
 #, kde-format
 msgid "Open here"
 msgstr "在此開啟"
 
-#: src/controls/FileBrowser.qml:1128
+#: src/controls/FileBrowser.qml:1135
 #, kde-format
 msgid "Search: %1"
 msgstr "搜尋：%1"

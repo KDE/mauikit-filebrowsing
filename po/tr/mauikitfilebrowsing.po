@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"POT-Creation-Date: 2023-06-30 00:46+0000\n"
 "PO-Revision-Date: 2023-04-25 11:12+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -121,8 +121,8 @@ msgstr ""
 msgid "Delete"
 msgstr "Sil"
 
-#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
-#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:474
+#: src/controls/FileBrowser.qml:779 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
@@ -149,27 +149,27 @@ msgstr "Özel bir adla yeni bir klasör veya dosya oluşturun."
 msgid "Create"
 msgstr "Oluştur"
 
-#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:420 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Ad"
 
-#: src/controls/FileBrowser.qml:427
+#: src/controls/FileBrowser.qml:433
 #, kde-format
 msgid "Folder"
 msgstr "Klasör"
 
-#: src/controls/FileBrowser.qml:434
+#: src/controls/FileBrowser.qml:441
 #, kde-format
 msgid "File"
 msgstr "Dosya"
 
-#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
+#: src/controls/FileBrowser.qml:458 src/controls/FileBrowser.qml:473
 #, kde-format
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
-#: src/controls/FileBrowser.qml:452
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -178,32 +178,32 @@ msgstr ""
 "Bir dosyanın veya klasörün adını değiştirin. Yeni bir ad yazın ve "
 "değişikliği uygulamak için Yeniden Adlandır'a tıklayın."
 
-#: src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:468
 #, kde-format
 msgid "New name"
 msgstr "Yeni ad"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "Buraya kopyala"
 
-#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
+#: src/controls/FileBrowser.qml:740 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "Buraya taşı"
 
-#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
+#: src/controls/FileBrowser.qml:753 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "Buraya bağlantıla"
 
-#: src/controls/FileBrowser.qml:759
+#: src/controls/FileBrowser.qml:766
 #, kde-format
 msgid "Open here"
 msgstr "Burada aç"
 
-#: src/controls/FileBrowser.qml:1128
+#: src/controls/FileBrowser.qml:1135
 #, kde-format
 msgid "Search: %1"
 msgstr "Ara: %1"

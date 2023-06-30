@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"POT-Creation-Date: 2023-06-30 00:46+0000\n"
 "PO-Revision-Date: 2023-04-13 23:27+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -124,8 +124,8 @@ msgstr ""
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
-#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:474
+#: src/controls/FileBrowser.qml:779 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
@@ -155,27 +155,27 @@ msgstr ""
 msgid "Create"
 msgstr "Sortu"
 
-#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:420 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Izena"
 
-#: src/controls/FileBrowser.qml:427
+#: src/controls/FileBrowser.qml:433
 #, kde-format
 msgid "Folder"
 msgstr "Karpeta"
 
-#: src/controls/FileBrowser.qml:434
+#: src/controls/FileBrowser.qml:441
 #, kde-format
 msgid "File"
 msgstr "Fitxategia"
 
-#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
+#: src/controls/FileBrowser.qml:458 src/controls/FileBrowser.qml:473
 #, kde-format
 msgid "Rename"
 msgstr "Berrizendatu"
 
-#: src/controls/FileBrowser.qml:452
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -184,32 +184,32 @@ msgstr ""
 "Aldatu fitxategi baten edo karpeta baten izena. Idatzi izen berri bat eta "
 "egin klik «Berrizendatu»n aldaketak erabiltzeko."
 
-#: src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:468
 #, kde-format
 msgid "New name"
 msgstr "Izen berria"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "Kopiatu hemen"
 
-#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
+#: src/controls/FileBrowser.qml:740 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "Eraman hona"
 
-#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
+#: src/controls/FileBrowser.qml:753 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "Estekatu hemen"
 
-#: src/controls/FileBrowser.qml:759
+#: src/controls/FileBrowser.qml:766
 #, kde-format
 msgid "Open here"
 msgstr "Ireki hemen"
 
-#: src/controls/FileBrowser.qml:1128
+#: src/controls/FileBrowser.qml:1135
 #, kde-format
 msgid "Search: %1"
 msgstr "Bilatu: %1"

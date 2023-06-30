@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-04-27 00:47+0000\n"
+"POT-Creation-Date: 2023-06-30 00:46+0000\n"
 "PO-Revision-Date: 2023-04-26 16:50+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
@@ -118,8 +118,8 @@ msgstr ""
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:467
-#: src/controls/FileBrowser.qml:772 src/controls/FileDialog.qml:133
+#: src/controls/FileBrowser.qml:359 src/controls/FileBrowser.qml:474
+#: src/controls/FileBrowser.qml:779 src/controls/FileDialog.qml:133
 #: src/controls/NewTagDialog.qml:31 src/controls/private/BrowserView.qml:284
 #: src/controls/TagsDialog.qml:51
 #, kde-format
@@ -146,27 +146,27 @@ msgstr "Créer un nouveau dossier ou un fichier avec un nom personnalisé."
 msgid "Create"
 msgstr "Créer"
 
-#: src/controls/FileBrowser.qml:415 src/controls/FileDialog.qml:363
+#: src/controls/FileBrowser.qml:420 src/controls/FileDialog.qml:363
 #, kde-format
 msgid "Name"
 msgstr "Nom"
 
-#: src/controls/FileBrowser.qml:427
+#: src/controls/FileBrowser.qml:433
 #, kde-format
 msgid "Folder"
 msgstr "Dossier"
 
-#: src/controls/FileBrowser.qml:434
+#: src/controls/FileBrowser.qml:441
 #, kde-format
 msgid "File"
 msgstr "Fichier"
 
-#: src/controls/FileBrowser.qml:451 src/controls/FileBrowser.qml:466
+#: src/controls/FileBrowser.qml:458 src/controls/FileBrowser.qml:473
 #, kde-format
 msgid "Rename"
 msgstr "Renommer"
 
-#: src/controls/FileBrowser.qml:452
+#: src/controls/FileBrowser.qml:459
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -175,32 +175,32 @@ msgstr ""
 "Modifiez le nom d'un fichier ou d'un dossier. Veuillez saisir un nouveau nom "
 "et cliquer sur « Renommer » pour effectuer la modification."
 
-#: src/controls/FileBrowser.qml:461
+#: src/controls/FileBrowser.qml:468
 #, kde-format
 msgid "New name"
 msgstr "Nouveau nom"
 
-#: src/controls/FileBrowser.qml:721 src/controls/private/BrowserView.qml:246
+#: src/controls/FileBrowser.qml:728 src/controls/private/BrowserView.qml:246
 #, kde-format
 msgid "Copy here"
 msgstr "Copier ici"
 
-#: src/controls/FileBrowser.qml:733 src/controls/private/BrowserView.qml:258
+#: src/controls/FileBrowser.qml:740 src/controls/private/BrowserView.qml:258
 #, kde-format
 msgid "Move here"
 msgstr "Déplacer ici"
 
-#: src/controls/FileBrowser.qml:746 src/controls/private/BrowserView.qml:270
+#: src/controls/FileBrowser.qml:753 src/controls/private/BrowserView.qml:270
 #, kde-format
 msgid "Link here"
 msgstr "Lier ici"
 
-#: src/controls/FileBrowser.qml:759
+#: src/controls/FileBrowser.qml:766
 #, kde-format
 msgid "Open here"
 msgstr "Ouvrir ici"
 
-#: src/controls/FileBrowser.qml:1128
+#: src/controls/FileBrowser.qml:1135
 #, kde-format
 msgid "Search: %1"
 msgstr "Recherche : %1"
