@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2020 Camilo Higuita <milo.h@aol.com>
 #
-# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
@@ -9,7 +9,6 @@ include_directories(
     )
 
 ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} URI "org.mauikit.filebrowsing" VERSION 3.0 CLASSNAME FileBrowsingPlugin)
-
 
 set(sources
     code/filebrowsing_plugin.cpp
@@ -25,8 +24,7 @@ set(sources
     code/tagslist.cpp
     code/tagging.qrc
     code/openwithmodel.cpp
-    assets.qrc
-    )
+    assets.qrc)
 
 set(headers
     code/fm.h
@@ -39,12 +37,7 @@ set(headers
     code/tagging.h
     code/tagdb.h
     code/tagslist.h
-    code/openwithmodel.h
-    )
-
-set(pluginData
-    controls/qmldir
-    )
+    code/openwithmodel.h)
 
 set(syncing_SRCS
     code/syncing.cpp
@@ -54,8 +47,7 @@ set(syncing_SRCS
     code/libwebdavclient/lib/utils/Environment.cpp
     code/libwebdavclient/lib/utils/NetworkHelper.cpp
     code/libwebdavclient/lib/utils/WebDAVReply.cpp
-    code/libwebdavclient/lib/utils/XMLHelper.cpp
-    )
+    code/libwebdavclient/lib/utils/XMLHelper.cpp)
 
 set(syncing_HDRS
     code/syncing.h
@@ -65,8 +57,7 @@ set(syncing_HDRS
     code/libwebdavclient/lib/utils/Environment.hpp
     code/libwebdavclient/lib/utils/NetworkHelper.hpp
     code/libwebdavclient/lib/utils/WebDAVReply.hpp
-    code/libwebdavclient/lib/utils/XMLHelper.hpp
-    )
+    code/libwebdavclient/lib/utils/XMLHelper.hpp)
 
 if (QT_MAJOR_VERSION STREQUAL "5")
     if(QUICK_COMPILER)

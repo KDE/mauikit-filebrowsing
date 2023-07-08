@@ -17,24 +17,24 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.14
-import QtQml 2.14
+import QtQuick
+import QtQml
 
-import QtQuick.Controls 2.14
-import QtQuick.Layouts 1.3
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.3 as FB
+import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FB
 
 import "private" as Private
 
 /*!
  * A control to list and browse the file system, with convinient properties
  * for filtering and sorting its contents
- * 
+ *
  * There are three different possible ways to display the contents: Grid, List and Miller views.
  * Some basic file item actions are implemented by default, like copy, cut, rename and remove.
- * 
+ *
  * This component functionality can be easily expanded to be more feature rich.
  */
 Maui.Page
@@ -56,7 +56,7 @@ Maui.Page
     
     /*!
      *      \qmlproperty FileBrowser::currentPath
-     * 
+     *
      *      The current path of the directory URL.
      *      To list a directory path, or other location, use the right schemas,
      *      some of them are file://, webdav://, trash:///, tags://
@@ -66,7 +66,7 @@ Maui.Page
     
     /*!
      *      \qmlproperty BrowserSettings FileBrowser::settings
-     * 
+     *
      *      A group of properties for controlling the sorting, listing and behaviour of the file browser.
      *      For more details check the BrowserSettings documentation.
      */
@@ -74,7 +74,7 @@ Maui.Page
     
     /*!
      *      \qmlproperty Item FileBrowser::view
-     * 
+     *
      *      The browser can be in two different view states: the file browsing or the search view, this
      *      property gives access to the current view in use.
      */
@@ -83,7 +83,7 @@ Maui.Page
     property alias browser : _browser
     /*!
      *      \qmlproperty DropArea FileBrowser::dropArea
-     * 
+     *
      *      Drop area component, for dropping files.
      *      By default sonme drop actions are handled, for other type of uris this property can be used to handle those.
      */
@@ -91,7 +91,7 @@ Maui.Page
     
     /*!
      *      \qmlproperty int FileBrowser::currentIndex
-     * 
+     *
      *      Current index of the item selected in the file browser.
      */
     property int currentIndex  : -1
@@ -104,7 +104,7 @@ Maui.Page
     
     /*!
      *      \qmlproperty Item FileBrowser::currentView
-     * 
+     *
      *      Current view of the file browser. Possible views are List = ListBrowser
      *      Grid = GridView
      *      Miller = ListView
@@ -136,28 +136,28 @@ Maui.Page
     
     /*!
      *      \qmlproperty int FileBrowser::gridItemSize
-     * 
+     *
      *      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
      */
     property alias gridItemSize : _browser.gridItemSize
     
     /*!
      *      \qmlproperty int FileBrowser::listItemSize
-     * 
+     *
      *      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
      */
     property alias listItemSize : _browser.listItemSize
     
     /*!
      *     \qmlproperty var FileBrowser::indexHistory
-     * 
+     *
      *     History of the items indexes.
      */
     property var indexHistory : []
     
     // need to be set by the implementation as features
     /*!
-     * 
+     *
      */
     property Maui.SelectionBar selectionBar : null //TODO remove
     
@@ -234,14 +234,14 @@ Maui.Page
             icon.name: "go-previous"
             onClicked: control.quitSearch()
         }
-    }    
+    }
     
     Maui.InfoDialog
     {
         id: _quitSearchDialog
         title: i18n("Quit")
         message: i18n("Are you sure you want to quit the current search in progress?")
-        onAccepted: 
+        onAccepted:
         {
             _stackView.pop()
             _browser.forceActiveFocus()
@@ -289,7 +289,7 @@ Maui.Page
         onTextChanged:
         {
             if(_filterButton.checked)
-                _searchField.accepted()                
+                _searchField.accepted()
         }
         
         Keys.enabled: _filterButton.checked
@@ -346,19 +346,19 @@ Maui.Page
             property double freedSpace : calculateFreedSpace(urls)
             
             title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
-            message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace)) 
-           
-//            headBar.visible: false
+            message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace))
+
+            //            headBar.visible: false
             
-//            rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
-//            acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
-//            acceptButton.visible: Maui.Handy.isLinux
+            //            rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
+            //            acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
+            //            acceptButton.visible: Maui.Handy.isLinux
             
-//            actions: Action
-//            {
-//                text: i18nd("mauikitfilebrowsing", "Cancel")
-//                onTriggered: _removeDialog.close()
-//            }
+            //            actions: Action
+            //            {
+            //                text: i18nd("mauikitfilebrowsing", "Cancel")
+            //                onTriggered: _removeDialog.close()
+            //            }
             
             onRejected:
             {
@@ -388,29 +388,29 @@ Maui.Page
     Component
     {
         id: newDialogComponent
-//         
+        //
         Maui.InputDialog
         {
             id: _newDialog
             
             title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
-                       
+
             template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
-            template.iconVisible: true                       
-           
-            onFinished:
+            template.iconVisible: true
+
+            onFinished: (text) =>
             {
-                if(_newDirOp.checked) 
+                if(_newDirOp.checked)
                 {
                     control.currentFMList.createDir(text)
                     return
                 }
-                    if(_newFileOp.checked) 
-                    {
-                        control.currentFMList.createFile(text)                
-                        return
-                    }
+                if(_newFileOp.checked)
+                {
+                    control.currentFMList.createFile(text)
+                    return
+                }
             }
             
             textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Name")
@@ -432,7 +432,7 @@ Maui.Page
                 
                 Action
                 {
-                    id: _newFileOp                    
+                    id: _newFileOp
                     icon.name: "document-new"
                     text: i18nd("mauikitfilebrowsing", "File")
                     checked: String(_newDialog.textEntry.text).indexOf(".") >= 0
@@ -454,7 +454,7 @@ Maui.Page
             title: i18nd("mauikitfilebrowsing", "Rename")
             message: i18nd("mauikitfilebrowsing", "Change the name of a file or folder. Write a new name and click Rename to apply the change.")
             
-//            headBar.visible: false
+            //            headBar.visible: false
             
             template.iconSource: item.icon
             template.imageSource: item.thumbnail
@@ -466,27 +466,27 @@ Maui.Page
             onFinished: control.currentFMList.renameFile(item.path, textEntry.text)
             onRejected: close()
             
-//            acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
-//            rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
+            //            acceptButton.text: i18nd("mauikitfilebrowsing", "Rename")
+            //            rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
             
             onOpened:
             {
                 item = control.currentFMModel.get(control.currentIndex)
                 
                 if(_renameDialog.textEntry.text.lastIndexOf(".") >= 0)
-                {                    
+                {
                     _renameDialog.textEntry.select(0, _renameDialog.textEntry.text.lastIndexOf("."))
                 }else
-                {                    
+                {
                     _renameDialog.textEntry.selectAll()
-                }                
+                }
             }
         }
     }
     
     Component
     {
-        id: _newTagDialogComponent        
+        id: _newTagDialogComponent
         FB.NewTagDialog {}
     }
     
@@ -506,8 +506,8 @@ Maui.Page
     
     Timer
     {
-        id: _typingTimer        
-        interval: 250        
+        id: _typingTimer
+        interval: 250
         onTriggered:
         {
             const index = control.currentFMList.indexOfName(typingQuery)
@@ -529,14 +529,14 @@ Maui.Page
         function onKeyPress(event)
         {
             const index = control.currentIndex
-            const item = control.currentFMModel.get(index)            
+            const item = control.currentFMModel.get(index)
             
             var pat = /^([a-zA-Z0-9 _-]+)$/
             
             if(event.count === 1 && pat.test(event.text))
             {
                 typingQuery += event.text
-                _typingTimer.restart()   
+                _typingTimer.restart()
                 event.accepted = true
             }
             
@@ -642,7 +642,7 @@ Maui.Page
             //Shortcut for opening filtering
             if((event.key === Qt.Key_F) && (event.modifiers & Qt.ControlModifier))
             {
-                control.toggleSearchBar()                
+                control.toggleSearchBar()
                 event.accepted = true
             }
             
@@ -696,7 +696,6 @@ Maui.Page
             control.currentView.forceActiveFocus()
         }
         
-        
         function onAreaClicked(mouse)
         {
             if(control.isSearchView)
@@ -710,7 +709,7 @@ Maui.Page
             control.areaClicked(mouse)
             control.currentView.forceActiveFocus()
         }
-    }   
+    }
     
     Maui.ContextualMenu
     {
@@ -726,7 +725,7 @@ Maui.Page
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
-               control.currentFMList.copyInto(urls)
+                control.currentFMList.copyInto(urls)
             }
         }
 
@@ -807,10 +806,10 @@ Maui.Page
 
             Private.BrowserView
             {
-                id: _browser                
+                id: _browser
                 anchors.fill: parent
                 selectionMode: control.selectionMode
-                                
+
                 Binding on currentIndex
                 {
                     value: control.currentIndex
@@ -829,9 +828,9 @@ Maui.Page
                     anchors.bottomMargin: Maui.Style.toolBarHeight + control.flickable.bottomMargin
                     
                     sourceComponent: Maui.FloatingButton
-                    {                        
+                    {
                         icon.name : "list-add"
-                        onClicked: 
+                        onClicked:
                         {
                             dialogLoader.sourceComponent = _newTagDialogComponent
                             dialog.open()
@@ -839,7 +838,7 @@ Maui.Page
                     }
                 }
             }
-         }
+        }
         
         Component
         {
@@ -862,11 +861,11 @@ Maui.Page
                 listItemSize: control.listItemSize
                 
                 currentFMList.autoLoad: false
-                settings.viewType: control.settings.viewType 
+                settings.viewType: control.settings.viewType
                 settings.sortBy: control.settings.sortBy
                 settings.showHiddenFiles: control.settings.showHiddenFiles
                 settings.group: control.settings.group
-                settings.foldersFirst: control.settings.foldersFirst   
+                settings.foldersFirst: control.settings.foldersFirst
                 
             }
         }
@@ -875,10 +874,10 @@ Maui.Page
     Component.onCompleted:
     {
         control.currentView.forceActiveFocus()
-    }    
+    }
     
     /**
-     * 
+     *
      **/
     function copy(urls)
     {
@@ -891,13 +890,13 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function cut(urls)
     {
         if(control.readOnly)
             return
-            
+
         if(urls.length <= 0)
         {
             return
@@ -907,15 +906,15 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function paste()
     {
-         control.currentFMList.paste()
+        control.currentFMList.paste()
     }
     
     /**
-     * 
+     *
      **/
     function remove(urls)
     {
@@ -930,7 +929,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function openItem(index)
     {
@@ -939,43 +938,43 @@ Maui.Page
         
         switch(control.currentFMList.pathType)
         {
-            case FB.FMList.CLOUD_PATH: //TODO deprecrated and needs to be removed or clean up for 1.1
-                if(item.isdir === "true")
+        case FB.FMList.CLOUD_PATH: //TODO deprecrated and needs to be removed or clean up for 1.1
+            if(item.isdir === "true")
+            {
+                control.openFolder(path)
+            }
+            else
+            {
+                FB.FM.openCloudItem(item)
+            }
+            break;
+        default:
+            if(control.selectionMode && item.isdir == "false")
+            {
+                if(control.selectionBar && control.selectionBar.contains(item.path))
+                {
+                    control.selectionBar.removeAtPath(item.path)
+                }else
+                {
+                    control.addToSelection(item)
+                }
+            }
+            else
+            {
+                if(item.isdir == "true")
                 {
                     control.openFolder(path)
                 }
                 else
                 {
-                    FB.FM.openCloudItem(item)
+                    control.openFile(path)
                 }
-                break;
-            default:
-                if(control.selectionMode && item.isdir == "false")
-                {
-                    if(control.selectionBar && control.selectionBar.contains(item.path))
-                    {
-                        control.selectionBar.removeAtPath(item.path)
-                    }else
-                    {
-                        control.addToSelection(item)
-                    }
-                }
-                else
-                {
-                    if(item.isdir == "true")
-                    {
-                        control.openFolder(path)
-                    }
-                    else
-                    {
-                        control.openFile(path)
-                    }
-                }
+            }
         }
     }
     
     /**
-     * 
+     *
      **/
     function openFile(path)
     {
@@ -983,7 +982,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function openFolder(path)
     {
@@ -1002,7 +1001,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function goBack()
     {
@@ -1011,7 +1010,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function goForward()
     {
@@ -1019,7 +1018,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function goUp()
     {
@@ -1055,7 +1054,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function selectAll() //TODO for now dont select more than 100 items so things dont freeze or break
     {
@@ -1068,7 +1067,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function bookmarkFolder(paths) //multiple paths
     {
@@ -1076,7 +1075,7 @@ Maui.Page
         {
             FB.FM.bookmark(paths[i])
         }
-    }    
+    }
     
     function toggleSearchBar() //only opens the searchbar toolbar, not the search view page
     {
@@ -1093,7 +1092,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function openSearch() //opens the search view and focuses the search field
     {
@@ -1106,7 +1105,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function quitSearch()
     {
@@ -1121,7 +1120,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function search(query)
     {
@@ -1129,13 +1128,13 @@ Maui.Page
         _searchField.text = query
 
         _stackView.currentItem.title = i18nd("mauikitfilebrowsing", "Search: %1", query)
-                _stackView.currentItem.currentFMList.search(query, true)
+        _stackView.currentItem.currentFMList.search(query, true)
 
         _stackView.currentItem.forceActiveFocus()
     }
     
     /**
-     * 
+     *
      **/
     function newItem()
     {
@@ -1148,7 +1147,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function renameItem()
     {
@@ -1161,7 +1160,7 @@ Maui.Page
     }
     
     /**
-     * 
+     *
      **/
     function removeItem()
     {

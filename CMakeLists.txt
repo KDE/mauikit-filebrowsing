@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2020 Camilo Higuita <milo.h@aol.com>
 #
-# SPDX-License-Identifier: BSD-2-Clause
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 cmake_minimum_required(VERSION 3.16)
 
@@ -123,22 +123,19 @@ ecm_setup_version(${PROJECT_VERSION}
     VARIABLE_PREFIX FileBrowsing
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsing${MAUI_MAJOR_VERSION}ConfigVersion.cmake"
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-)
+    SOVERSION ${PROJECT_VERSION_MAJOR})
 
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/MauiKitFileBrowsingConfig.cmake.in.${QT_MAJOR_VERSION}"
     "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsing${MAUI_MAJOR_VERSION}Config.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
-    PATH_VARS CMAKE_INSTALL_PREFIX
-)
+    PATH_VARS CMAKE_INSTALL_PREFIX)
 
 install(FILES
     "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsing${MAUI_MAJOR_VERSION}ConfigVersion.cmake"
     "${CMAKE_CURRENT_BINARY_DIR}/MauiKitFileBrowsing${MAUI_MAJOR_VERSION}Config.cmake"
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    COMPONENT Devel
-)
+    COMPONENT Devel)
 
 install(EXPORT MauiKitFileBrowsing${MAUI_MAJOR_VERSION}Targets
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"

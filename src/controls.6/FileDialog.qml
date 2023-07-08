@@ -17,14 +17,14 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.14
-import QtQml 2.14
+import QtQuick
+import QtQml
 
-import QtQuick.Controls 2.14
-import QtQuick.Layouts 1.3
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.3 as FB
+import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FB
 
 /**
  * FileDialog
@@ -38,7 +38,7 @@ import org.mauikit.filebrowsing 1.3 as FB
  * and filtering content specific to a file type or arbitrary name filters.
  *
  */
-Maui.Dialog
+Maui.PopupPage
 {
     id: control
     
@@ -50,7 +50,7 @@ Maui.Dialog
     page.padding: 0
     closeButtonVisible: false
     headBar.visible: false
-    
+
     /**
      * currentPath : url
      * The current path of the directory URL.
@@ -129,49 +129,64 @@ Maui.Dialog
      * The selection has been done
      */
     signal finished(var urls)
-    
-    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
-    acceptButton.text: control.mode === modes.SAVE ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
-    
-    onRejected: control.close()
-    
-    onAccepted:
-    {
-        console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
-        if(control.mode === modes.SAVE && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
-        {
-            _confirmationDialog.open()
-        }else
-        {
-            done()
-        }
-    }
-    
+
+
     page.footerColumn: [
-    
-    Maui.ToolBar
-    {
-        visible: control.mode === modes.SAVE
-        width: parent.width
-        position: ToolBar.Footer
-        
-        middleContent: TextField
+
+        Maui.ToolBar
         {
-            id: _textField
-            Layout.fillWidth: true
-            placeholderText: i18nd("mauikitfilebrowsing", "File name...")
-            text: suggestedFileName
+            visible: control.mode === modes.SAVE
+            width: parent.width
+            position: ToolBar.Footer
+
+            middleContent: TextField
+            {
+                id: _textField
+                Layout.fillWidth: true
+                placeholderText: i18nd("mauikitfilebrowsing", "File name...")
+                text: suggestedFileName
+            }
+        },
+
+        ToolBar
+        {
+            width: parent.width
+            position: ToolBar.Footer
+
+            contentItem: RowLayout
+            {
+                spacing: Maui.Style.space.small
+                Button
+                {
+                    Layout.fillWidth: true
+                    text:  i18nd("mauikitfilebrowsing", "Cancel")
+                    onClicked: control.close()
+                }
+
+                Button
+                {
+                    Layout.fillWidth: true
+                    text: control.mode === modes.SAVE ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
+                    onClicked:
+                    {
+                        console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
+                        if(control.mode === modes.SAVE && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
+                        {
+                            _confirmationDialog.open()
+                        }else
+                        {
+                            done()
+                        }
+                    }
+                }
+            }
         }
-    }
     ]
     
-    Maui.Dialog
+    Maui.InfoDialog
     {
         id: _confirmationDialog
-        
-        acceptButton.text: i18nd("mauikitfilebrowsing", "Yes")
-        rejectButton.text: i18nd("mauikitfilebrowsing", "No")
-        
+
         title: i18nd("mauikitfilebrowsing", "A file named %1 already exists!").arg(textField.text)
         message: i18nd("mauikitfilebrowsing", "This action will overwrite %1. Are you sure you want to do this?").arg(textField.text)
         
@@ -182,16 +197,17 @@ Maui.Dialog
     stack: Maui.SideBarView
     {
         id: pageRow
+
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-sideBar.preferredWidth: 200
-sideBar.minimumWidth: 200
+        sideBar.preferredWidth: 200
+        sideBar.minimumWidth: 200
         sideBarContent: Loader
         {
             id: sidebarLoader
             asynchronous: true
-           anchors.fill: parent
+            anchors.fill: parent
             sourceComponent: FB.PlacesListBrowser
             {
                 onPlaceClicked:
@@ -203,34 +219,34 @@ sideBar.minimumWidth: 200
                 currentPath: browser.currentPath
                 
                 list.groups:  [
-                FB.FMList.BOOKMARKS_PATH,
-                FB.FMList.REMOTE_PATH,
-                FB.FMList.CLOUD_PATH,
-                FB.FMList.DRIVES_PATH]
+                    FB.FMList.BOOKMARKS_PATH,
+                    FB.FMList.REMOTE_PATH,
+                    FB.FMList.CLOUD_PATH,
+                    FB.FMList.DRIVES_PATH]
             }
         }
-            
-            Maui.Page
+
+        Maui.Page
+        {
+            id: _browserLayout
+            anchors.fill: parent
+
+            floatingFooter: true
+            flickable: browser.flickable
+            headBar.visible: true
+            headerColorSet: Maui.Theme.Header
+            headBar.farLeftContent: ToolButton
             {
-                id: _browserLayout
-               anchors.fill: parent
-                
-                floatingFooter: true
-                flickable: browser.flickable
-                headBar.visible: true
-                headerColorSet: Maui.Theme.Header
-                headBar.farLeftContent: ToolButton
-                {
-                    icon.name: pageRow.sideBar.visible ? "sidebar-collapse" : "sidebar-expand"
-                    onClicked: pageRow.sideBar.toggle()
-                    checked: pageRow.sideBar.visible
-                    ToolTip.delay: 1000
-                    ToolTip.timeout: 5000
-                    ToolTip.visible: hovered
-                    ToolTip.text: i18nd("mauikitfilebrowsing", "Toogle SideBar")
-                }
-                
-                headBar.rightContent:[
+                icon.name: pageRow.sideBar.visible ? "sidebar-collapse" : "sidebar-expand"
+                onClicked: pageRow.sideBar.toggle()
+                checked: pageRow.sideBar.visible
+                ToolTip.delay: 1000
+                ToolTip.timeout: 5000
+                ToolTip.visible: hovered
+                ToolTip.text: i18nd("mauikitfilebrowsing", "Toogle SideBar")
+            }
+
+            headBar.rightContent:[
                 
                 ToolButton
                 {
@@ -395,10 +411,10 @@ sideBar.minimumWidth: 200
                             browser.settings.group = !browser.settings.group
                         }
                     }
-                } 
-                ]
-                
-                headBar.leftContent: [
+                }
+            ]
+
+            headBar.leftContent: [
                 Maui.ToolActions
                 {
                     expanded: true
@@ -423,81 +439,81 @@ sideBar.minimumWidth: 200
                         onTriggered: browser.goNext()
                     }
                 }
-                ]
-                
-                footer: Maui.SelectionBar
-                {
-                    id: _selectionBar
+            ]
 
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
-                    maxListHeight: control.height - (Maui.Style.contentMargins*2)
-                    
-                    listDelegate: Maui.ListBrowserDelegate
+            footer: Maui.SelectionBar
+            {
+                id: _selectionBar
+
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
+                maxListHeight: control.height - (Maui.Style.contentMargins*2)
+
+                listDelegate: Maui.ListBrowserDelegate
+                {
+                    width: ListView.view.width
+                    iconSource: model.icon
+                    imageSource: model.thumbnail
+                    label1.text: model.label
+                    label2.text: model.url
+                }
+
+                onExitClicked:
+                {
+                    _selectionBar.clear()
+                }
+            }
+
+            FB.FileBrowser
+            {
+                id: browser
+                anchors.fill: parent
+
+                selectionBar: _selectionBar
+                settings.viewType: FB.FMList.LIST_VIEW
+                currentPath: FB.FM.homePath()
+                selectionMode: control.mode === modes.OPEN
+                onItemClicked:
+                {
+                    if(Qt.styleHints.singleClickActivation)
                     {
-                        width: ListView.view.width
-                        iconSource: model.icon
-                        imageSource: model.thumbnail
-                        label1.text: model.label
-                        label2.text: model.url
-                    }
-                    
-                    onExitClicked:
-                    {
-                        _selectionBar.clear()
+                        performAction(index)
                     }
                 }
-                
-                FB.FileBrowser
+
+                onItemDoubleClicked:
                 {
-                    id: browser
-                    anchors.fill: parent
-                    
-                    selectionBar: _selectionBar
-                    settings.viewType: FB.FMList.LIST_VIEW
-                    currentPath: FB.FM.homePath()
-                    selectionMode: control.mode === modes.OPEN
-                    onItemClicked:
+                    if(!Qt.styleHints.singleClickActivation)
                     {
-                        if(Qt.styleHints.singleClickActivation)
-                        {
-                            performAction(index)
-                        }
+                        performAction(index)
                     }
-                    
-                    onItemDoubleClicked:
+                }
+
+                function performAction(index)
+                {
+                    if(currentFMModel.get(index).isdir == "true")
                     {
-                        if(!Qt.styleHints.singleClickActivation)
-                        {
-                            performAction(index)
-                        }
+                        openItem(index)
                     }
-                                        
-                    function performAction(index)
+
+                    switch(control.mode)
                     {
-                        if(currentFMModel.get(index).isdir == "true")
-                        {
-                            openItem(index)
-                        }
-                        
-                        switch(control.mode)
-                        {
-                            case modes.OPEN :
-                                addToSelection(currentFMModel.get(index))
-                                break;
-                                
-                            case modes.SAVE:
-                                textField.text = currentFMModel.get(index).label
-                                break;
-                        }
+                    case modes.OPEN :
+                        addToSelection(currentFMModel.get(index))
+                        break;
+
+                    case modes.SAVE:
+                        textField.text = currentFMModel.get(index).label
+                        break;
                     }
                 }
             }
+        }
     }
     
     
     /**
-     * 
+     *
      */
     function closeIt()
     {
@@ -506,7 +522,7 @@ sideBar.minimumWidth: 200
     }
     
     /**
-     * 
+     *
      */
     function done()
     {
