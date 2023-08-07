@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-06-30 00:46+0000\n"
-"PO-Revision-Date: 2023-07-26 00:40+0200\n"
+"PO-Revision-Date: 2023-08-06 22:51+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -90,7 +90,7 @@ msgstr "끝내기"
 #: src/controls/FileBrowser.qml:243
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
-msgstr ""
+msgstr "현재 진행 중인 검색을 종료하시겠습니까?"
 
 #: src/controls/FileBrowser.qml:260
 #, kde-format
@@ -105,7 +105,7 @@ msgstr "휴지통 비우기"
 #: src/controls/FileBrowser.qml:348
 #, kde-format
 msgid "Removing %1 files"
-msgstr ""
+msgstr "파일 %1개 삭제 중"
 
 #: src/controls/FileBrowser.qml:349
 #, kde-format
@@ -113,6 +113,8 @@ msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
+"%1 삭제  \n"
+"총 비운 공간 %2"
 
 #: src/controls/FileBrowser.qml:353 src/controls/TagsDialog.qml:114
 #, kde-format
@@ -140,7 +142,7 @@ msgstr "새 파일"
 #: src/controls/FileBrowser.qml:397
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr ""
+msgstr "지정한 이름으로 새 폴더나 파일을 만듭니다."
 
 #: src/controls/FileBrowser.qml:404
 #, kde-format
@@ -173,6 +175,8 @@ msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
+"파일이나 폴더의 이름을 변경합니다. 새 이름을 입력하고 이름 바꾸기를 클릭하면 "
+"변경 사항이 적용됩니다."
 
 #: src/controls/FileBrowser.qml:468
 #, kde-format
@@ -237,7 +241,7 @@ msgstr "이름이 %1인 파일이 이미 존재합니다!"
 #: src/controls/FileDialog.qml:176
 #, kde-format
 msgid "This action will overwrite %1. Are you sure you want to do this?"
-msgstr ""
+msgstr "이 동작은 %1을(를) 덮어씁니다. 계속 진행하시겠습니까?"
 
 #: src/controls/FileDialog.qml:230
 #, kde-format
@@ -297,7 +301,7 @@ msgstr "그룹"
 #: src/controls/NewTagDialog.qml:25 src/controls/NewTagDialog.qml:45
 #, kde-format
 msgid "New tags"
-msgstr ""
+msgstr "새 태그"
 
 #: src/controls/NewTagDialog.qml:26
 #, kde-format
@@ -305,6 +309,8 @@ msgid ""
 "Create new tags to organize your files. You can create multiple tags "
 "separated by a comma."
 msgstr ""
+"새 태그를 만들어서 파일을 정리할 수 있습니다. 쉼표로 구분하여 여러 태그를 입"
+"력할 수 있습니다."
 
 #: src/controls/NewTagDialog.qml:30
 #, kde-format
@@ -334,22 +340,22 @@ msgstr "삭제"
 #: src/controls/private/BrowserView.qml:211
 #, kde-format
 msgid "Directory already exists."
-msgstr ""
+msgstr "디렉터리가 이미 존재합니다."
 
 #: src/controls/private/BrowserView.qml:214
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "좋습니다."
 
 #: src/controls/private/BrowserView.qml:218
 #, kde-format
 msgid "Merge %1 files"
-msgstr ""
+msgstr "파일 %1개 합치기"
 
 #: src/controls/private/BrowserView.qml:219
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
-msgstr ""
+msgstr "모든 파일을 합칠 디렉터리 이름을 입력하십시오."
 
 #: src/controls/private/BrowserView.qml:221
 #, kde-format
@@ -375,7 +381,7 @@ msgstr "태그 추가..."
 #: src/controls/TagsDialog.qml:63
 #, kde-format
 msgid "Filter or add a new tag"
-msgstr ""
+msgstr "필터 또는 새 태그 추가"
 
 #: src/controls/TagsDialog.qml:90
 #, kde-format
@@ -386,7 +392,7 @@ msgstr "%1 삭제"
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
-msgstr ""
+msgstr "이 태그를 삭제하시겠습니까? 실행 취소할 수 없습니다."
 
 #: src/controls/TagsDialog.qml:137
 #, kde-format
@@ -396,19 +402,19 @@ msgstr "태그 없음!"
 #: src/controls/TagsDialog.qml:138
 #, kde-format
 msgid "Create new tags to organize your files."
-msgstr ""
+msgstr "새 태그를 만들어서 파일을 정리할 수 있습니다."
 
 #: src/controls/TagsDialog.qml:216
 #, kde-format
 msgid "Tagging %1 files"
-msgstr ""
+msgstr "파일 %1개 태그 추가"
 
 #: src/controls/TagsDialog.qml:217
 #, kde-format
 msgid "Add new tags for the selected files."
-msgstr ""
+msgstr "선택한 파일에 새 태그를 추가합니다."
 
 #: src/controls/TagsDialog.qml:284
 #, kde-format
 msgid "No tags yet."
-msgstr ""
+msgstr "태그가 없습니다."
