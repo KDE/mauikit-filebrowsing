@@ -33,7 +33,7 @@ import org.mauikit.filebrowsing 1.3 as FB
  *
  *
  */
-Maui.Dialog
+Maui.PopupPage
 {
     id: control
 
@@ -48,8 +48,6 @@ Maui.Dialog
     maxHeight: Math.min(_list.contentHeight + (page.padding * 2.5) + headBar.height + Maui.Style.space.huge, 500)
     maxWidth: 350
     persistent: false
-
-    defaultButtons: false
 
     page.title: i18nd("mauikitfilebrowsing", "Open with")
     headBar.visible: true

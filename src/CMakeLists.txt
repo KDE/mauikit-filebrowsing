@@ -5,8 +5,7 @@
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
-    ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto
-    )
+    ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto)
 
 ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} URI "org.mauikit.filebrowsing" VERSION 3.0 CLASSNAME FileBrowsingPlugin)
 
@@ -75,7 +74,6 @@ ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SOURCES
     controls.${QT_MAJOR_VERSION}/PlacesListBrowser.qml
     controls.${QT_MAJOR_VERSION}/TagsDialog.qml
     controls.${QT_MAJOR_VERSION}/TagsBar.qml)
-
 
 ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PATH private SOURCES
 

@@ -41,87 +41,87 @@ Maui.Dialog
     
     closeButtonVisible: false
     defaultButtons: true
-        
-        hint: 1
-        
-        maxHeight: 500
-        maxWidth: 400
-        
-        acceptButton.text: i18nd("mauikitfilebrowsing", "Save")
-        rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
-        
-        onAccepted: setTags()
-        onRejected: close()
-        
-        headBar.visible: true
-        
-        headBar.middleContent: TextField
+
+    hint: 1
+
+    maxHeight: 500
+    maxWidth: 400
+
+    acceptButton.text: i18nd("mauikitfilebrowsing", "Save")
+    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
+
+    onAccepted: setTags()
+    onRejected: close()
+
+    headBar.visible: true
+
+    headBar.middleContent: TextField
+    {
+        id: tagText
+        Layout.fillWidth: true
+        Layout.maximumWidth: 500
+        placeholderText: i18nd("mauikitfilebrowsing", "Filter or add a new tag")
+        //             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
+        onAccepted:
         {
-            id: tagText
-            Layout.fillWidth: true
-            Layout.maximumWidth: 500
-            placeholderText: i18nd("mauikitfilebrowsing", "Filter or add a new tag")
-            //             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
-            onAccepted:
+            const tags = tagText.text.split(",")
+            for(var i in tags)
             {
-                const tags = tagText.text.split(",")
-                for(var i in tags)
-                {
-                    const myTag = tags[i].trim()
-                    _tagsList.insert(myTag)
-                    tagListComposer.list.append(myTag)
-                }
-                clear()
-                _tagsModel.filter = ""
+                const myTag = tags[i].trim()
+                _tagsList.insert(myTag)
+                tagListComposer.list.append(myTag)
             }
-            
-            onTextChanged:
+            clear()
+            _tagsModel.filter = ""
+        }
+
+        onTextChanged:
+        {
+            _tagsModel.filter = text
+        }
+    }
+
+    Maui.Dialog
+    {
+        id: _deleteDialog
+
+        page.margins: Maui.Style.space.big
+        property string tag
+        title: i18nd("mauikitfilebrowsing", "Delete %1", tag)
+        message: i18nd("mauikitfilebrowsing", "Are you sure you want to delete this tag? This action can not be undone.")
+        template.iconSource: "tag"
+        onAccepted:
+        {
+            FB.Tagging.removeTag(tag)
+            _deleteDialog.close()
+        }
+
+        onRejected: _deleteDialog.close()
+    }
+
+    Maui.ContextualMenu
+    {
+        id: _menu
+
+        MenuItem
+        {
+            text: i18nd("mauikitfilebrowsing", "Edit")
+            icon.name: "document-edit"
+        }
+
+        MenuItem
+        {
+            text: i18nd("mauikitfilebrowsing", "Delete")
+            icon.name: "delete"
+            onTriggered:
             {
-                _tagsModel.filter = text
+                _deleteDialog.tag = _tagsModel.get(_listView.currentIndex).tag
+                _deleteDialog.open()
             }
         }
-                
-        Maui.Dialog
-        {
-            id: _deleteDialog
-            
-            page.margins: Maui.Style.space.big
-            property string tag
-            title: i18nd("mauikitfilebrowsing", "Delete %1", tag)
-            message: i18nd("mauikitfilebrowsing", "Are you sure you want to delete this tag? This action can not be undone.")
-            template.iconSource: "tag"
-            onAccepted:
-            {
-                FB.Tagging.removeTag(tag)
-                _deleteDialog.close()
-            }
-            
-            onRejected: _deleteDialog.close()
-        }
-        
-        Maui.ContextualMenu
-        {
-            id: _menu
-            
-            MenuItem
-            {
-                text: i18nd("mauikitfilebrowsing", "Edit")
-                icon.name: "document-edit"
-            }
-            
-            MenuItem
-            {
-                text: i18nd("mauikitfilebrowsing", "Delete")
-                icon.name: "delete"
-                onTriggered:
-                {
-                    _deleteDialog.tag = _tagsModel.get(_listView.currentIndex).tag
-                    _deleteDialog.open()
-                }
-            }
-        }
-        
-        stack: [
+    }
+
+    stack: [
         
         Maui.ListBrowser
         {
@@ -200,7 +200,7 @@ Maui.Dialog
         },
         
         Loader
-        {            
+        {
             asynchronous: true
             active: tagListComposer.list.urls.length > 1
             visible: active
@@ -210,7 +210,7 @@ Maui.Dialog
             {
                 id: _info
                 // padding: _listView.padding
-                 // implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
+                // implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
 
                 property var itemInfo : FB.FM.getFileInfo( tagListComposer.list.urls[0])
                 label1.text: i18nd("mauikitfilebrowsing", "Tagging %1 files", tagListComposer.list.urls.length)
@@ -272,37 +272,37 @@ Maui.Dialog
                 }
             }
         }
-        ]
-        
-        page.footer: FB.TagList
-        {
-            id: tagListComposer
-            width: parent.width
-            visible: count > 0
-            
-            onTagRemoved: list.remove(index)
-            placeholderText: i18nd("mauikitfilebrowsing", "No tags yet.")
-        }
-        
-        onClosed:
-        {
-            composerList.urls = []
-            tagText.clear()
-            _tagsModel.filter = ""
-        }
-        
-        onOpened: tagText.forceActiveFocus()
-        
-        /**
-         * 
+    ]
+
+    page.footer: FB.TagList
+    {
+        id: tagListComposer
+        width: parent.width
+        visible: count > 0
+
+        onTagRemoved: list.remove(index)
+        placeholderText: i18nd("mauikitfilebrowsing", "No tags yet.")
+    }
+
+    onClosed:
+    {
+        composerList.urls = []
+        tagText.clear()
+        _tagsModel.filter = ""
+    }
+
+    onOpened: tagText.forceActiveFocus()
+
+    /**
+         *
          */
-        function setTags()
-        {
-            var tags = []
-            
-            for(var i = 0; i < tagListComposer.count; i++)
-                tags.push(tagListComposer.list.get(i).tag)
-                control.tagsReady(tags)
-                close()
-        }
+    function setTags()
+    {
+        var tags = []
+
+        for(var i = 0; i < tagListComposer.count; i++)
+            tags.push(tagListComposer.list.get(i).tag)
+        control.tagsReady(tags)
+        close()
+    }
 }
