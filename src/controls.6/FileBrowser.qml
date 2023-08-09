@@ -348,29 +348,33 @@ Maui.Page
             title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
             message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace))
 
-            //            headBar.visible: false
-            
-            //            rejectButton.text: i18nd("mauikitfilebrowsing", "Delete")
-            //            acceptButton.text: i18nd("mauikitfilebrowsing", "Trash")
-            //            acceptButton.visible: Maui.Handy.isLinux
-            
-            //            actions: Action
-            //            {
-            //                text: i18nd("mauikitfilebrowsing", "Cancel")
-            //                onTriggered: _removeDialog.close()
-            //            }
-            
-            onRejected:
-            {
-                control.currentFMList.removeFiles(urls)
-                close()
-            }
-            
-            onAccepted:
-            {
-                control.currentFMList.moveToTrash(urls)
-                close()
-            }
+            actions: [
+                Action
+                {
+                    text: i18nd("mauikitfilebrowsing", "Cancel")
+                    onTriggered: _removeDialog.close()
+                },
+
+                Action
+                {
+                    text: i18nd("mauikitfilebrowsing", "Delete")
+                    onTriggered:
+                    {
+                        control.currentFMList.removeFiles(urls)
+                        close()
+                    }
+                },
+                Action
+                {
+                    text: i18nd("mauikitfilebrowsing", "Trash")
+                    enabled: Maui.Handy.isLinux
+                    onTriggered:
+                    {
+                        control.currentFMList.moveToTrash(urls)
+                        close()
+                    }
+                }
+            ]
             
             function calculateFreedSpace(urls)
             {
