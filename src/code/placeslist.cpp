@@ -19,7 +19,11 @@
 #include "placeslist.h"
 #include "tagging.h"
 
-#include <MauiKit/Core/utils.h>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <MauiKit3/Core/utils.h>
+#else
+#include <MauiKit4/Core/utils.h>
+#endif
 
 #include <QDir>
 #include <QDebug>
@@ -29,6 +33,8 @@
 #include <KFilePlacesModel>
 #include <Solid/Device>
 #endif
+
+#include <KLocalizedString>
 
 #ifdef KIO_AVAILABLE
 int mapPathType(const FMStatic::PATHTYPE_KEY& value)
@@ -66,9 +72,9 @@ PlacesList::PlacesList(QObject *parent)
     connect(this->model, &KFilePlacesModel::rowsInserted, [this](const QModelIndex, int, int) 
     {
         this->setList();
-        emit this->bookmarksChanged();
+        Q_EMIT this->bookmarksChanged();
         
-        /*emit this->preListChanged();
+        /*Q_EMIT this->preListChanged();
          * 
          *        for (int i = first; i <= last; i++)
          *        {
@@ -79,13 +85,13 @@ PlacesList::PlacesList(QObject *parent)
          *                this->list << getGroup(*this->model, static_cast<FMH::PATHTYPE_KEY>(model->groupType(index)));
     }
     }
-    emit this->postListChanged();	*/
+    Q_EMIT this->postListChanged();	*/
     }); // TODO improve the usage of the model
     #else
     connect(&AppSettings::global(), &AppSettings::settingChanged, [this](const QUrl, const QString &key, const QVariant, const QString &group) {
         if (key == "BOOKMARKS" && group == "PREFERENCES") {
             this->setList();
-            emit this->bookmarksChanged();
+            Q_EMIT this->bookmarksChanged();
         }
     });
     #endif
@@ -108,13 +114,13 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     
     if (type == FMStatic::PATHTYPE_KEY::QUICK_PATH) 
     {
-        res << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + "fav"}, {FMH::MODEL_KEY::ICON, "love"}, {FMH::MODEL_KEY::LABEL, "Favorite"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
+        res << FMH::MODEL {{FMH::MODEL_KEY::PATH, FMStatic::PATHTYPE_URI[FMStatic::PATHTYPE_KEY::TAGS_PATH] + QStringLiteral("fav")}, {FMH::MODEL_KEY::ICON, QStringLiteral("love")}, {FMH::MODEL_KEY::LABEL, i18n("Favorite")}, {FMH::MODEL_KEY::TYPE, QStringLiteral("Quick")}};
         
         // #ifdef KIO_AVAILABLE
         //     res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "recentdocuments:///"}, {FMH::MODEL_KEY::ICON, "view-media-recent"}, {FMH::MODEL_KEY::LABEL, "Recent"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
         // #endif
         
-        res << FMH::MODEL {{FMH::MODEL_KEY::PATH, "tags:///"}, {FMH::MODEL_KEY::ICON, "tag"}, {FMH::MODEL_KEY::LABEL, "Tags"}, {FMH::MODEL_KEY::TYPE, "Quick"}};
+        res << FMH::MODEL {{FMH::MODEL_KEY::PATH, QStringLiteral("tags:///")}, {FMH::MODEL_KEY::ICON, QStringLiteral("tag")}, {FMH::MODEL_KEY::LABEL, i18n("Tags")}, {FMH::MODEL_KEY::TYPE, QStringLiteral("Quick")}};
         
         return res;
     }
@@ -179,7 +185,7 @@ void PlacesList::setList()
     this->list.clear();
     
     qDebug() << "Setting PlacesList model" << groups;
-    emit this->preListChanged();
+    Q_EMIT this->preListChanged();
     
     if (!this->groups.isEmpty())
     {        
@@ -217,8 +223,8 @@ void PlacesList::setList()
         }
     }
     
-    emit this->postListChanged();
-    emit this->countChanged();
+    Q_EMIT this->postListChanged();
+    Q_EMIT this->countChanged();
 }
 
 QVariantList PlacesList::getGroups() const
@@ -232,7 +238,7 @@ void PlacesList::setGroups(const QVariantList &value)
         return;
     
     this->groups = value;
-    emit this->groupsChanged();
+    Q_EMIT this->groupsChanged();
 }
 
 void PlacesList::removePlace(const int &index)
@@ -241,10 +247,10 @@ void PlacesList::removePlace(const int &index)
         return;
     
     #ifdef KIO_AVAILABLE
-    emit this->preItemRemoved(index);
-    this->model->removePlace(this->model->closestItem(this->list.at(index)[FMH::MODEL_KEY::PATH]));
+    Q_EMIT this->preItemRemoved(index);
+    this->model->removePlace(this->model->closestItem(QUrl(this->list.at(index)[FMH::MODEL_KEY::PATH])));
     this->list.removeAt(index);
-    emit this->postItemRemoved();
+    Q_EMIT this->postItemRemoved();
     #else
     auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
     bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
@@ -345,7 +351,7 @@ void PlacesList::toggleSection(const int& section)
         this->groups.append(section);
     }
     
-    emit this->groupsChanged();
+    Q_EMIT this->groupsChanged();
 }
 
 bool PlacesList::containsGroup(const int& group)

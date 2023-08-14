@@ -7,45 +7,45 @@
 
 void WebDAVReply::sendListDirResponseSignal(QNetworkReply *listDirReply, QList<WebDAVItem> items)
 {
-    emit listDirResponse(listDirReply, items);
+    Q_EMIT listDirResponse(listDirReply, items);
 }
 
 void WebDAVReply::sendDownloadResponseSignal(QNetworkReply *downloadReply)
 {
-    emit downloadResponse(downloadReply);
+    Q_EMIT downloadResponse(downloadReply);
 }
 
 void WebDAVReply::sendDownloadProgressResponseSignal(qint64 bytesReceived, qint64 bytesTotal)
 {
-    emit downloadProgressResponse(bytesReceived, bytesTotal);
+    Q_EMIT downloadProgressResponse(bytesReceived, bytesTotal);
 }
 
 void WebDAVReply::sendUploadFinishedResponseSignal(QNetworkReply *uploadReply)
 {
-    emit uploadFinished(uploadReply);
+    Q_EMIT uploadFinished(uploadReply);
 }
 
 void WebDAVReply::sendDirCreatedResponseSignal(QNetworkReply *createDirReply)
 {
-    emit createDirFinished(createDirReply);
+    Q_EMIT createDirFinished(createDirReply);
 }
 
 void WebDAVReply::sendCopyResponseSignal(QNetworkReply *copyReply)
 {
-    emit copyFinished(copyReply);
+    Q_EMIT copyFinished(copyReply);
 }
 
 void WebDAVReply::sendMoveResponseSignal(QNetworkReply *moveReply)
 {
-    emit moveFinished(moveReply);
+    Q_EMIT moveFinished(moveReply);
 }
 
 void WebDAVReply::sendRemoveResponseSignal(QNetworkReply *removeReply)
 {
-    emit removeFinished(removeReply);
+    Q_EMIT removeFinished(removeReply);
 }
 
 void WebDAVReply::sendError(QNetworkReply::NetworkError err)
 {
-    emit error(err);
+    Q_EMIT error(err);
 }

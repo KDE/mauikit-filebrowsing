@@ -1,5 +1,4 @@
-#ifndef UTILS_XMLHELPER_HPP
-#define UTILS_XMLHELPER_HPP
+#pragma once
 
 #include <QByteArray>
 #include <QList>
@@ -14,4 +13,3 @@ class XMLHelper {
                                          QByteArray xml);
 };
 
-#endif

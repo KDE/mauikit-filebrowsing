@@ -32,12 +32,12 @@ void FMH::Downloader::setConnections()
     connect(reply, &QNetworkReply::finished, this, &Downloader::onReplyFinished);
     connect(reply, &QNetworkReply::errorOccurred, [this](QNetworkReply::NetworkError)
     {
-        emit this->warning(reply->errorString());
+        Q_EMIT this->warning(reply->errorString());
     });
     
     //     connect(reply, &QNetworkReply::sslErrors, [this](const QList<QSslError> &errors)
     //     {
-    //         emit this->warning(reply->sslErrors().);
+    //         Q_EMIT this->warning(reply->sslErrors().);
     //     });
 }
 
@@ -79,7 +79,7 @@ void FMH::Downloader::stop()
     {
         this->reply->abort();
         this->reply->close();
-        emit this->aborted();        
+        Q_EMIT this->aborted();        
         
         if(m_saveToFile)
         {
@@ -102,18 +102,18 @@ void FMH::Downloader::downloadFile(const QUrl &source, const QUrl &destination)
     connect(downloadJob, &KIO::CopyJob::warning, [=](KJob *job, QString message)
     {
         Q_UNUSED(job)
-        emit this->warning(message);
+        Q_EMIT this->warning(message);
     });
     
     connect(downloadJob, &KIO::CopyJob::processedSize, [=](KJob *job, qulonglong size)
     {
-        emit this->progress(size, job->percent());
+        Q_EMIT this->progress(size, job->percent());
     });
     
     connect(downloadJob, &KIO::CopyJob::finished, [=](KJob *job) 
     {
-        emit this->downloadReady();
-        emit this->done();
+        Q_EMIT this->downloadReady();
+        Q_EMIT this->done();
     });
     
     #else
@@ -130,7 +130,7 @@ void FMH::Downloader::downloadFile(const QUrl &source, const QUrl &destination)
     file->setFileName(destination.toLocalFile());
     if (!file->open(QIODevice::WriteOnly))
     {
-        emit this->warning("Can not open file to write download");
+        Q_EMIT this->warning(QStringLiteral("Can not open file to write download"));
         return;
     }
     
@@ -167,7 +167,7 @@ void FMH::Downloader::onDownloadProgress(qint64 bytesRead, qint64 bytesTotal)
     }
     
     qDebug() << "DOWNLOAD PROGRESS" << ((bytesRead * 100) / bytesTotal);
-    emit this->progress((bytesRead * 100) / bytesTotal);
+    Q_EMIT this->progress((bytesRead * 100) / bytesTotal);
 }
 
 void FMH::Downloader::onReadyRead()
@@ -191,7 +191,7 @@ void FMH::Downloader::onReadyRead()
         default: 
         {
             qDebug() << reply->errorString();
-            emit this->warning(reply->errorString());
+            Q_EMIT this->warning(reply->errorString());
         }
     }
 }
@@ -209,22 +209,22 @@ void FMH::Downloader::onReplyFinished()
                    file->close();            
                }   
                
-               emit this->fileSaved(this->file->fileName());        
+               Q_EMIT this->fileSaved(this->file->fileName());        
                file->deleteLater();
                
            }else
            {
-               emit this->dataReady(*this->array);
+               Q_EMIT this->dataReady(*this->array);
            }
            
-           emit this->done();           
-           emit this->downloadReady();
+           Q_EMIT this->done();           
+           Q_EMIT this->downloadReady();
            break;
        }
        
        default:
        {
-           emit this->warning(reply->errorString());
+           Q_EMIT this->warning(reply->errorString());
        }
    }    
 }

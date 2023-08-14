@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLACESLIST_H
-#define PLACESLIST_H
+#pragma once
 
 #include <QObject>
 #include <QModelIndex>
@@ -25,7 +24,11 @@
 
 #include "fmstatic.h"
 
-#include <MauiKit/Core/mauilist.h>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <MauiKit3/Core/mauilist.h>
+#else
+#include <MauiKit4/Core/mauilist.h>
+#endif
 
 class KFilePlacesModel;
 
@@ -49,7 +52,7 @@ public:
 protected:
     void setList();
 
-public slots:
+public Q_SLOTS:
     /**
      * @brief removePlace
      * Removes a place from the model and if the data at the given index is a file URL bookmark then it gets removed from the bookmarks.
@@ -94,8 +97,7 @@ private:
 
     FMH::MODEL_LIST getGroup(const KFilePlacesModel &model, const FMStatic::PATHTYPE_KEY &type);
 
-signals:
+Q_SIGNALS:
     void groupsChanged();
     void bookmarksChanged();
 };
-#endif // PLACESLIST_H

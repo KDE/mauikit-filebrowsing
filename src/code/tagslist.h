@@ -2,7 +2,11 @@
 #include <QObject>
 #include <QStringList>
 
-#include <MauiKit/Core/mauilist.h>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <MauiKit3/Core/mauilist.h>
+#else
+#include <MauiKit4/Core/mauilist.h>
+#endif
 
 /**
  * @brief The TagsList class
@@ -47,12 +51,12 @@ private:
      */
     void append(const FMH::MODEL &tag);
 
-signals:
+Q_SIGNALS:
     void strictChanged();
     void urlsChanged();
     void tagsChanged();
 
-public slots:
+public Q_SLOTS:
 
     /**
      * @brief append
