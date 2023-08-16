@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-04-25 19:36+0300\n"
+"PO-Revision-Date: 2023-08-15 13:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -19,45 +19,44 @@ msgstr ""
 "X-Generator: Lokalize 20.12.0\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "Посилання сюди"
+msgstr "Тут нічого немає!"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "Здається, це місце є порожнім"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "Цю адресу неможливо додати до списку"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "Завантажуємо дані"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "Майже готово!"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "Немає шляху для виконання пошуку"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Місця"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -123,7 +122,7 @@ msgstr "Швидко"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Улюблене"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -131,13 +130,16 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"Для обслуговування даних віддалений сервер потребує проходження "
+"розпізнавання, але надані реєстраційні дані (якщо такі було надано) не було "
+"прийнято"
 
 #: src/code/syncing.cpp:211
 #, kde-format
 msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
-msgstr ""
+msgstr "віддалений сервер відмовив у з'єднанні (сервер не приймає запитів)"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -145,16 +147,19 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"віддалений сервер передчасно завершив з'єднання, до отримання і обробки "
+"усієї відповіді"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "не знайдено назви віддаленого вузла (некоректна назва вузла)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
 msgstr ""
+"перевищено час очікування на встановлення з'єднання із віддаленим сервером"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -162,6 +167,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"дію було скасовано за допомогою виклику abort() або close() до завершення "
+"дії."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -169,6 +176,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"не вдалося підтвердити зв'язок SSL/TLS, отже не вдалося встановити "
+"шифрований канал. Мало бути видано сигнал sslErrors()."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -178,6 +187,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"з'єднання було розірвано через від'єднання від мережі, втім, система "
+"ініціювала з'єднання із іншою точкою доступу. Запит має бути подано "
+"повторно, його буде оброблено, щойно з'єднання буде повторно встановлено."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -185,11 +197,13 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"з'єднання було розірвано через від'єднання від мережі або неможливість "
+"запустити мережу."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
-msgstr ""
+msgstr "фоновий запит зараз не дозволено правилами платформи."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -198,6 +212,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"перевищено максимальне обмеження під час переходу за переспрямуваннями. "
+"Типово встановлено обмеження у 50 або значення QNetworkRequest::"
+"setMaxRedirectsAllowed(). (Це значення було впроваджено у 5.6.)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -205,6 +222,9 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"під час переходу за переспрямуваннями програмним інтерфейсом доступу до "
+"мережі виявлено переспрямування з шифрованого протоколу (https) на "
+"нешифрований (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -212,6 +232,7 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"відмовлено у з'єднанні із проксі-сервером (проксі-сервер не приймає запитів)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -219,11 +240,13 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"проксі-сервер передчасно завершив з'єднання, до отримання і обробки усієї "
+"відповіді"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "не знайдено назви проксі-вузла (некоректна назва проксі-вузла)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -231,6 +254,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"перевищено час очікування на з'єднання із проксі-сервером або проксі-сервер "
+"не відповів на надісланий запит вчасно"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -238,22 +263,25 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"проксі-сервер потребує проходження розпізнавання з метою задоволення запиту, "
+"але не приймає жодних надісланих реєстраційних даних (якщо такі було "
+"надіслано)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "відмовлено у доступу до віддалених даних (подібно до помилки HTTP 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "заборонено дію із віддаленими даними, щодо якої надійшов запит"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
-msgstr ""
+msgstr "на сервері не знайдено віддалених даних (подібне до помилки HTTP 404)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -261,11 +289,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"запит мало бути надіслано знову, але при цьому сталася помилка, наприклад, "
+"через те, що вивантажені дані не вдалося прочитати удруге."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "цього разу серверу не вдалося обробити запит."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -273,6 +303,7 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Сталася невідома помилка з віддаленим сервером або вашим інтернет-з'єднанням."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format

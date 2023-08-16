@@ -4,61 +4,61 @@
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023.
+# Antoni Bella Pérez <antonibella5@yahoo.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-04-25 10:15+0200\n"
-"Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
+"PO-Revision-Date: 2023-08-15 15:35+0200\n"
+"Last-Translator: Antoni Bella Pérez <antonibella5@yahoo.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "Enllaça ací"
+msgstr "Res ací!"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "Este lloc pareix que està buit"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "S'ha produït un error"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "Este URL no es pot llistar"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "S'està carregant el contingut"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "Quasi llest!"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "No hi ha cap camí per a efectuar la busca"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Llocs"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -124,7 +124,7 @@ msgstr "Ràpid"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Preferit"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -132,6 +132,8 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"El servidor remot requerix autenticació per a subministrar el contingut, "
+"però les credencials proporcionades no s'han acceptat (si n'hi havia)"
 
 #: src/code/syncing.cpp:211
 #, kde-format
@@ -139,6 +141,7 @@ msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
 msgstr ""
+"El servidor remot ha rebutjat la connexió (el servidor no accepta peticions)"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -146,16 +149,18 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"El servidor remot ha tancat la connexió prematurament, abans s'ha rebut i "
+"processat completament la resposta"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "No s'ha trobat el nom del servidor remot (nom de servidor no vàlid)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "La connexió amb el servidor remot ha exhaurit el temps"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -163,6 +168,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"L'operació s'ha cancel·lada mitjançant crides «abort()» o «close()» abans de "
+"finalitzar."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -170,6 +177,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"Ha fallat la conformitat de connexió SSL/TLS i no s'ha pogut establir el "
+"canal encriptat. S'hauria d'haver emés el senyal «sslErrors()»."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -179,6 +188,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"La connexió s'ha trencat a causa de la desconnexió de la xarxa, però el "
+"sistema ha iniciat la itinerància a un altre punt d'accés. La sol·licitud "
+"s'ha de tornar a presentar i es tramitarà quan es restablisca la connexió."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -186,12 +198,17 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"La connexió s'ha trencat a causa de la desconnexió de la xarxa o a la "
+"fallada en iniciar la xarxa."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
 msgstr ""
+"La sol·licitud en segon pla no està permesa actualment a causa de la "
+"política de la plataforma."
 
+# skip-rule: punctuation-period-no
 #: src/code/syncing.cpp:248
 #, kde-format
 msgid ""
@@ -199,6 +216,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"Mentre se seguien les redireccions, s'ha assolit el límit màxim. El límit "
+"s'establix de manera predeterminada a 50 o com s'establix a QNetworkRequest::"
+"setMaxRedirectsAllowed() (este valor es va introduir a la 5.6)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -206,6 +226,8 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"Mentre se seguien les redireccions, l'API d'accés a la xarxa ha detectat una "
+"redirecció des d'un protocol encriptat (https) a un sense encriptar (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -213,6 +235,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"S'ha rebutjat la connexió amb el servidor intermediari (el servidor "
+"intermediari no accepta peticions)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -220,11 +244,15 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"el servidor intermediari ha tancat la connexió prematurament, abans s'ha "
+"rebut i processat completament la resposta"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
 msgstr ""
+"no s'ha trobat el nom del servidor intermediari (nom de servidor "
+"intermediari no vàlid)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -232,6 +260,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"La connexió amb el servidor intermediari ha excedit el temps límit o el "
+"servidor intermediari no ha respost a temps a la petició enviada"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -239,22 +269,25 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"El servidor intermediari requerix autenticació per tal de complir la "
+"petició, però no accepta les credencials oferides (si n'hi ha)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "S'ha denegat l'accés al contingut remot (similar a l'error HTTP 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "No es permet l'operació sol·licitada sobre el contingut remot"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"No s'ha trobat el contingut remot al servidor (similar a l'error 404 d'HTTP)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -262,11 +295,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"Cal tornar a enviar la sol·licitud, però açò ha fallat, per exemple, perquè "
+"les dades de pujada no s'han pogut llegir una segona vegada."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "El servidor no pot gestionar la sol·licitud en este moment."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -274,6 +309,8 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"S'ha produït un error desconegut amb el servidor remot o la vostra connexió "
+"amb Internet."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
@@ -621,15 +658,3 @@ msgstr "Afig etiquetes noves per als fitxers seleccionats."
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."
-
-#~ msgid "Create"
-#~ msgstr "Crea"
-
-#~ msgid "Yes"
-#~ msgstr "Sí"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Add"
-#~ msgstr "Afig"

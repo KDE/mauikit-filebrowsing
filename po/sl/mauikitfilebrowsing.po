@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-04-26 08:11+0200\n"
+"PO-Revision-Date: 2023-08-15 10:29+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,48 +16,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "Poveži sem"
+msgstr "Tu ni ničesar!"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "Ta prostor je videti prazen"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Napaka"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "Ta URL ni mogoče dati v seznam"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "Nalaganje vsebine"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "Skoraj pripravljen!"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "Ni poti za izvajanje iskanja"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Mesta"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -123,7 +122,7 @@ msgstr "Hitri"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Priljubljen"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -131,13 +130,15 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"Oddaljeni strežnik zahteva preverjanje pristnosti za dobavljanje vsebine, "
+"vendar posredovane poverilnice niso bile sprejete (če sploh obstajajo)"
 
 #: src/code/syncing.cpp:211
 #, kde-format
 msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
-msgstr ""
+msgstr "oddaljeni strežnik je zavrnil povezavo (strežnik ne sprejema zahtev"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -145,16 +146,18 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"oddaljeni strežnik je predčasno prekinil povezavo, preden je bil prejet in "
+"obdelan celoten odgovor"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "ime oddaljenega gostitelja ni bilo najdeno (neveljavno ime gostitelja)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "povezava z oddaljenim strežnikom je potekla"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -162,6 +165,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"operacija je bila preklicana prek klicev abort() ali close(), še preden je "
+"bila končana."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -169,6 +174,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"rokovanje SSL/TLS ni uspelo in šifriranega kanala ni bilo mogoče "
+"vzpostaviti. Oddan bi moral biti signal sslErrors()."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -178,6 +185,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"povezava je bila prekinjena zaradi prekinitve povezave z omrežjem, vendar je "
+"sistem sprožil gostovanje na drugi dostopni točki. Zahtevo je treba ponovno "
+"oddati in bo obdelana takoj, ko bo povezava znova vzpostavljena."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -185,11 +195,13 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"povezava je bila prekinjena zaradi prekinitve povezave z omrežjem ali "
+"neuspešnega zagona omrežja."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
-msgstr ""
+msgstr "zahteva v ozadju trenutno ni dovoljena zaradi politike platforme."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -198,6 +210,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"med sledenjem preusmeritvam je bila dosežena omejitev. Omejitev je privzeto "
+"nastavljena na 50 ali kot jo nastavi QNetworkRequest::"
+"setMaxRedirectsAllowed(). (Ta vrednost je bila uvedena v 5.6.)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -205,6 +220,8 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"med sledenjem preusmeritvam je API za dostop do omrežja zaznal preusmeritev "
+"iz šifriranega protokola (https) na nešifriranega (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -212,6 +229,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"povezava s posredniškim strežnikom je bila zavrnjena (posredniški strežnik "
+"ne sprejema zahtev)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -219,11 +238,15 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"posredniški strežnik je predčasno prekinil povezavo, preden je bil prejet in "
+"obdelan celoten odgovor"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
 msgstr ""
+"imena posredniškega gostitelja ni bilo mogoče najti (neveljavno ime "
+"posrednika)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -231,6 +254,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"povezava s posrednikom je potekla ali pa posrednik ni pravočasno odgovoril "
+"na poslano zahtevo"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -238,22 +263,25 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"posrednik zahteva preverjanje pristnosti, da izpolni zahtevo, vendar ni "
+"sprejel nobene ponujene poverilnice (če obstaja)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "dostop do oddaljene vsebine je bil zavrnjen (podobno napaki HTTP 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "zahtevana operacija na oddaljeni vsebini ni dovoljena"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"oddaljene vsebine ni bilo najdene na strežniku (podobno napaki HTTP 404)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -261,11 +289,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"zahtevo je bilo treba znova poslati, vendar to ni uspelo, na primer ker "
+"podatkov o nalaganju ni bilo mogoče prebrati drugič."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "strežnik trenutno ne more obravnavati zahteve."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -273,6 +303,8 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Prišlo je do neznane napake z oddaljenim strežnikom ali z vašo internetno "
+"povezavo."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
