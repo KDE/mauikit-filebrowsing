@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-04-26 06:37+0200\n"
+"PO-Revision-Date: 2023-08-16 06:07+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,48 +16,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "აქ ბმულის შექმნა"
+msgstr "აქ არაფერია!"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "როგორც ჩანს, ეს ადგილი ცარიელია"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "შეცდომა"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "ამ ბმულის ჩამოთვლა შეუძლებელია"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "შემცველობის ჩატვირთვა"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "თითქმის მზადაა!"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "ძებნისთვის ბილიკი მითითებული არაა"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "ადგილები"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -123,7 +122,7 @@ msgstr "სწრაფი"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "რჩეული"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -149,12 +148,12 @@ msgstr ""
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "დაშორებული ჰოსტის სახელი ვერ ვიპოვე (არასწორი ჰოსტის სახელი)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "დაშორებულ სერვერთან მიერთების მოლოდინის ვადა ამოიწურა"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -189,7 +188,7 @@ msgstr ""
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
-msgstr ""
+msgstr "ფონის მოთხოვნა ამჟამად დაუშვებელია, პლატფორმის პოლიტიკის გამო."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -247,7 +246,7 @@ msgstr ""
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "დაშორებულ შემცველობაზე მოთხოვნილი ოპერაცია დაშვებული არაა"
 
 #: src/code/syncing.cpp:284
 #, kde-format
@@ -265,14 +264,14 @@ msgstr ""
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "სერვერს ამჟამად მოთხოვნის დამუშავება არ შეუძლია."
 
 #: src/code/syncing.cpp:296
 #, kde-format
 msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
-msgstr ""
+msgstr "დაშორებული სერვერის ან თქვენი ინტერნეტკავშირის უცნობი შეცდომა."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
