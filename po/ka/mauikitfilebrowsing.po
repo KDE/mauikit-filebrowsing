@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-08-16 06:07+0200\n"
+"PO-Revision-Date: 2023-08-19 05:19+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -218,11 +218,13 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"პროქსი სერვერმა კავშირი საჭიროზე ადრე, მანამდე, სანამ პასუხს მივიღებდი და "
+"დავამუშავებდი, დახურა"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "პროქსის ჰოსტის სახელი ვერ ვიპოვე (არასწორი პროქსის ჰოსტის სახელი)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -230,6 +232,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"პროქსისთან მიერთების ვადა ამოიწურა ან პროქსიმ მისთვის გაგზავნილ მოთხოვნას არ "
+"უპასუხა"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -237,11 +241,14 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"პროქსი მოთხოვნის დასამუშავებლად ავთენტიკაციას მოითხოვს, მაგრამ გადაცემული "
+"ავტორიზაციის დეტალებს არ ეთანხმება"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
 msgstr ""
+"დაშორებულ შემცველობასთან წვდომა აკრძალულია (HTTP შეცდომა 403 ან მსგავსი)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
@@ -252,7 +259,7 @@ msgstr "დაშორებულ შემცველობაზე მო�
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
-msgstr ""
+msgstr "დაშორებული შემცველობა აღმოჩენილი არაა (HTTP შეცდომა 404 ან მსგავსი)"
 
 #: src/code/syncing.cpp:288
 #, kde-format

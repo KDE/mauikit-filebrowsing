@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-08-15 16:50+0200\n"
+"PO-Revision-Date: 2023-08-19 10:32+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -186,6 +186,10 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"de verbinding was verbroken vanwege afkoppeling van het netwerk, het systeem "
+"heeft roaming geïnitieerd naar een ander toegangspunt. Het verzoek zou "
+"opnieuw ingediend moeten worden en zal verwerkt worden zodra de verbinding "
+"weer is gemaakt."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -200,6 +204,8 @@ msgstr ""
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
 msgstr ""
+"het verzoek in de achtergrond is nu niet toegestaan vanwege beleid op het "
+"platform."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -208,6 +214,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"tijdens het volgen van doorverwijzingen is de maximale limiet bereikt. De "
+"limiet is standaard ingesteld op 50 of zoals gezet dor QNetworkRequest::"
+"setMaxRedirectsAllowed(). (Deze waarde is in 5.6 geïntroduceerd)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -215,6 +224,9 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"tijdens het volgen van doorverwijzingen, detecteerde de toegang-API van het "
+"netwerk een doorverwijzing van een versleuteld protocol (https) naar een "
+"niet versleutelde (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -222,6 +234,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"de verbinding naar de proxyserver is geweigerd (de proxyserver accepteert "
+"geen verzoeken)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -229,11 +243,13 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"de proxyserver heeft de verbinding te vroeg gesloten, voordat het gehele "
+"antwoord was ontvangen en verwerkt"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "De proxy-hostnaam is niet gevonden (ongeldige proxy-hostnaam)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -241,6 +257,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"de tijdslimiet van de verbinding naar de proxy verliep of de proxy gaf niet "
+"op tijd het antwoord op het verzonden verzoek"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -248,22 +266,26 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"de proxy vereist authenticatie om het verzoek te honoreren maar accepteerde "
+"geen aangeboden credentials (indien aangeboden)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
 msgstr ""
+"de toegang tot de inhoud op afstand was geweigerd (gelijk aan HTTP fout 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "de gevraagde bewerking op de inhoud op afstand is niet toegestaan"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"de inhoud op afstand is niet gevonden op de server (gelijk aan HTTP fout 404)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -271,11 +293,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"het verzoek moest opnieuw worden verzonden, maar dit mislukte bijvoorbeeld "
+"omdat de te versturen gegevens niet nogmaals gelezen konden worden."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "se server kan het verzoek deze keer niet behandelen."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -283,6 +307,8 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Er deed zich een onbekende fout voor met de server op afstand of de "
+"internetverbinding."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
