@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-08-15 18:54+0200\n"
+"PO-Revision-Date: 2023-08-20 16:22+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -131,6 +131,8 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"El servidor remoto requiere autenticación para servir el contenido, pero no "
+"se han aceptado las credenciales proporcionadas (si procede)"
 
 #: src/code/syncing.cpp:211
 #, kde-format
@@ -138,6 +140,8 @@ msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
 msgstr ""
+"El servidor remoto ha rechazado la conexión (el servidor no acepta "
+"peticiones)"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -145,16 +149,20 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"El servidor remoto ha cerrado la conexión prematuramente antes de que se "
+"haya recibido y procesado la respuesta completa"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
 msgstr ""
+"El nombre de la máquina remota no se ha encontrado (nombre de máquina no "
+"válido)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "Se ha agotado el tiempo de la conexión con el servidor remoto"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -162,6 +170,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"La operación ha sido cancelada mediante llamadas a «abort()» o a «close()» "
+"antes de haber finalizado."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -169,6 +179,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"La negociación SSL/TLS ha fallado y no se ha podido establecer el canal "
+"cifrado. Debería haberse emitido la señal «sslErrors()»."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -178,6 +190,10 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"La conexión se ha interrumpido a causa de una desconexión de la red, aunque "
+"el sistema ha iniciado la itinerancia de datos a otro punto de acceso. La "
+"solicitud debería volver a enviarse y será procesada en cuanto se "
+"restablezca la conexión."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -185,11 +201,15 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"La conexión se ha interrumpido a causa de una desconexión de la red o por un "
+"fallo al iniciar la red."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
 msgstr ""
+"La solicitud en segundo plano no está permitida actualmente debido a la "
+"política de la plataforma."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -198,6 +218,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"Al seguir redireccionamientos, se ha alcanzado el límite máximo. Este límite "
+"es 50 de forma predeterminada o el valor definido por «QNetworkRequest::"
+"setMaxRedirectsAllowed()». (Este valor se introdujo en la versión 5.6)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -205,6 +228,8 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"Al seguir redireccionamientos, la API de acceso de la red ha detectado un "
+"redireccionamiento de un protocolo cifrado (https) a otro sin cifrar (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -212,6 +237,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"La conexión al servidor proxy ha sido rechazada (el servidor proxy no está "
+"aceptando solicitudes)."
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -219,11 +246,15 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"El servidor proxy ha cerrado la conexión prematuramente antes de que se "
+"recibiera y procesara la respuesta completa."
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
 msgstr ""
+"El nombre de la máquina proxy no se ha encontrado (nombre de máquina proxy "
+"no válido)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -231,6 +262,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"Se ha agotado el tiempo de la conexión con el proxy o este no ha respondido "
+"a tiempo a la solicitud enviada"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -238,22 +271,27 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"El proxy necesita autenticación para cumplir la solicitud, pero no ha "
+"aceptado las credenciales ofrecidas (si procede)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
 msgstr ""
+"Se ha denegado el acceso al contenido remoto (similar al error 403 de HTTP)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "La operación solicitada sobre el contenido remoto no está permitida"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"El contenido remoto no se ha encontrado en el servidor (similar al error 404 "
+"de HTTP)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -261,11 +299,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"La solicitud debía enviarse de nuevo, aunque este proceso ha fallado, tal "
+"vez porque los datos a enviar no se han podido leer la segunda vez."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "El servidor no puede tratar la solicitud en este momento."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -273,6 +313,8 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Ha ocurrido un error desconocido con el servidor remoto o con su conexión a "
+"internet."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-08-19 05:19+0200\n"
+"PO-Revision-Date: 2023-08-20 07:40+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -130,13 +130,15 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"დაშორებული სერვერი შემცველობის გადმოსაცემად ავთენტიკაციას მოითხოვს, მაგრამ "
+"მითითებული ავტორიზაციის დეტალები(თუ გადაცემულია) მიღებული არ იქნა"
 
 #: src/code/syncing.cpp:211
 #, kde-format
 msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
-msgstr ""
+msgstr "დაშორებულმა სერვერმა დაკავშირება უარჰყო (სერვერი კავშირებს არ იღებს"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -144,6 +146,8 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"დაშორებულმა სერვერმა კავშირი საჭიროზე ადრე, სანამ პასუხს მივიღებდი და "
+"დავამუშავებდი, დახურა"
 
 #: src/code/syncing.cpp:219
 #, kde-format
@@ -160,7 +164,7 @@ msgstr "დაშორებულ სერვერთან მიერთ�
 msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
-msgstr ""
+msgstr "ოპერაცია, სანამ დასრულდებოდა, abort() ან close() ფუნქციის გაუქმდა."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -168,6 +172,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"'SSL/TLS' კავშირი ჩავარდა და ამიტომ დაშიფრული არხის დამყარება შეუძლებელია. "
+"გაშვებულია sslErrors() სიგნალი."
 
 #: src/code/syncing.cpp:236
 #, kde-format
