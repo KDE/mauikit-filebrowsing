@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-08-20 07:40+0200\n"
+"PO-Revision-Date: 2023-08-21 08:50+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -183,13 +183,16 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"მიერთება გაწყდა ქსელთან კავშირის დაკარგვის გამო, მაგრამ სისტემამ სხვა "
+"წვდომის წერტილზე გადასვლა დაიწყო. მოთხოვნა თავიდან უნდა გადასცეთ და ის "
+"დამუშავდება მაშინვე, როცა კავშირი აღდგება."
 
 #: src/code/syncing.cpp:240
 #, kde-format
 msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
-msgstr ""
+msgstr "კავშირი გაწყდა ქსელიდან გამოერთების ან ქსელის გაშვების ჩავარდნის გამო."
 
 #: src/code/syncing.cpp:244
 #, kde-format
@@ -203,6 +206,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"გადამისამართებების მიყოლისას მიღწეულია მათი ზღვარი. ლიმიტი ნაგულისხმევად 50-"
+"ია, ან, რასაც QNetworkRequest::setMaxRedirectsAllowed() დააყენებს. (ეს "
+"მნიშვნელობა 5.6-ში გამოჩნდა)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -210,6 +216,8 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"გადამისამართებების მიყოლისას ქსელური წვდომის API-მა დაშიფრული(https) "
+"პროტოკოლიდან დაუშიფრავზე(http) გადართვა აღმოაჩინა."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -217,6 +225,7 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"პროქსი სერვერთან კავშირი უარყოფილია (პროქსი სერვერი მოთხოვნებს არ პასუხობს)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -273,6 +282,8 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"საჭირო იყო მოთხოვნის თავიდან გაგზავნა, მაგრამ ეს ჩავარდა, მაგალითად, იმიტომ, "
+"რომ ატვირთული მონაცემების მეორედ წაკითხვა შეუძლებელია."
 
 #: src/code/syncing.cpp:292
 #, kde-format
