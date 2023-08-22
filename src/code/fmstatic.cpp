@@ -223,12 +223,12 @@ bool FMStatic::copy(const QList<QUrl> &urls, const QUrl &destinationDir)
     for (const auto &url : std::as_const(urls)) {
         QFileInfo srcFileInfo(url.toLocalFile());
         if (!srcFileInfo.isDir() && srcFileInfo.isFile()) {
-            const auto _destination = QUrl(destinationDir.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
+            const auto _destination = QUrl(destinationDir.toString() + QStringLiteral("/") + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
             if (!QFile::copy(url.toLocalFile(), _destination.toLocalFile())) {
                 continue;
             }
         } else {
-            const auto _destination = QUrl(destinationDir.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
+            const auto _destination = QUrl(destinationDir.toString() + QStringLiteral("/") + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
             QDir destDir(_destination.toLocalFile());
             if (!destDir.exists())
                 destDir.mkdir(_destination.toLocalFile());
@@ -278,9 +278,9 @@ bool FMStatic::cut(const QList<QUrl> &urls, const QUrl &where, const QString &na
     for (const auto &url : std::as_const(urls)) {
         QUrl _where;
         if (name.isEmpty())
-            _where = QUrl(where.toString() + "/" + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
+            _where = QUrl(where.toString() + QStringLiteral("/") + FMStatic::getFileInfoModel(url)[FMH::MODEL_KEY::LABEL]);
         else
-            _where = QUrl(where.toString() + "/" + name);
+            _where = QUrl(where.toString() + QStringLiteral("/") + name);
 
         QFile file(url.toLocalFile());
         file.rename(_where.toLocalFile());
@@ -398,7 +398,7 @@ bool FMStatic::createSymlink(const QUrl &path, const QUrl &where)
     job->start();
     return true;
 #else
-    return QFile::link(path.toLocalFile(), where.toLocalFile() + "/" + QFileInfo(path.toLocalFile()).fileName());
+    return QFile::link(path.toLocalFile(), where.toLocalFile() + QStringLiteral("/") + QFileInfo(path.toLocalFile()).fileName());
 #endif
 }
 
@@ -411,7 +411,7 @@ void FMStatic::openUrl(const QUrl &url)
 #else
 
 #if defined Q_OS_ANDROID
-    MAUIAndroid::openUrl(url.toString());
+    MAUIAndroid::openUrl(url);
 #else
     QDesktopServices::openUrl(url);
 #endif
@@ -448,8 +448,8 @@ const QString FMStatic::dirConfIcon(const QUrl &path)
     
 #if defined Q_OS_ANDROID || defined Q_OS_WIN || defined Q_OS_MACOS || defined Q_OS_IOS
     QSettings file(path.toLocalFile(), QSettings::Format::NativeFormat);
-    file.beginGroup(QString("Desktop Entry"));
-    icon = file.value("Icon", icon).toString();
+    file.beginGroup(QStringLiteral("Desktop Entry"));
+    icon = file.value(QStringLiteral("Icon"), icon).toString();
     file.endGroup();
 #else
     KConfig file(path.toLocalFile());
@@ -540,7 +540,8 @@ static const QUrl thumbnailUrl(const QUrl &url, const QString &mimetype)
 #ifdef KIO_AVAILABLE
 const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
 {
-    return FMH::MODEL {{FMH::MODEL_KEY::LABEL, kfile.name()},
+    return FMH::MODEL {
+        {FMH::MODEL_KEY::LABEL, kfile.name()},
         {FMH::MODEL_KEY::NAME, kfile.name()},
         {FMH::MODEL_KEY::DATE, kfile.time(KFileItem::FileTimes::CreationTime).toString(Qt::TextDate)},
         {FMH::MODEL_KEY::MODIFIED, kfile.time(KFileItem::FileTimes::ModificationTime).toString(Qt::TextDate)},
@@ -553,9 +554,6 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
         {FMH::MODEL_KEY::HIDDEN, QVariant(kfile.isHidden()).toString()},
         {FMH::MODEL_KEY::IS_DIR, QVariant(kfile.isDir()).toString()},
         {FMH::MODEL_KEY::IS_FILE, QVariant(kfile.isFile()).toString()},
-        //         {FMH::MODEL_KEY::WRITABLE, QVariant(kfile.isWritable()).toString()},
-        //         {FMH::MODEL_KEY::READABLE, QVariant(kfile.isReadable()).toString()},
-        //         {FMH::MODEL_KEY::EXECUTABLE, QVariant(kfile.isDesktopFile()).toString()},
         {FMH::MODEL_KEY::MIME, kfile.mimetype()},
         {FMH::MODEL_KEY::ICON, kfile.iconName()},
         {FMH::MODEL_KEY::SIZE, QString::number(kfile.size())},
@@ -574,8 +572,9 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
                 return FMH::MODEL();
 
             const auto mime = FMStatic::getMime(path);
-            res = FMH::MODEL {{FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
-            {FMH::MODEL_KEY::LABEL, /*file.isDir() ? file.baseName() :*/ path == HomePath ? QStringLiteral("Home") : file.fileName()},
+            res = FMH::MODEL {
+            {FMH::MODEL_KEY::SUFFIX, file.completeSuffix()},
+            {FMH::MODEL_KEY::LABEL, path.toString() == HomePath ? QStringLiteral("Home") : file.fileName()},
             {FMH::MODEL_KEY::NAME, file.fileName()},
             {FMH::MODEL_KEY::DATE, file.birthTime().toString(Qt::TextDate)},
             {FMH::MODEL_KEY::MODIFIED, file.lastModified().toString(Qt::TextDate)},
@@ -586,15 +585,17 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
             {FMH::MODEL_KEY::IS_FILE, QVariant(file.isFile()).toString()},
             {FMH::MODEL_KEY::HIDDEN, QVariant(file.isHidden()).toString()},
             {FMH::MODEL_KEY::IS_DIR, QVariant(file.isDir()).toString()},
-            {FMH::MODEL_KEY::ICON, getIconName(path)},
             {FMH::MODEL_KEY::SIZE, QString::number(file.size()) /*locale.formattedDataSize(file.size())*/},
             {FMH::MODEL_KEY::PATH, path.toString()},
             {FMH::MODEL_KEY::URL, path.toString()},
             {FMH::MODEL_KEY::THUMBNAIL, thumbnailUrl(path, mime).toString()},
-            {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()) : "0"}};
+            {FMH::MODEL_KEY::COUNT, file.isDir() ? QString::number(QDir(path.toLocalFile()).count()) : QStringLiteral("0")}};
         #endif
+
+                    res[FMH::MODEL_KEY::ICON] = getIconName(path); //to control what icon is shown
                     return res;
         }
+
 
                     const QVariantMap FMStatic::getFileInfo(const QUrl &path)
             {
@@ -603,6 +604,11 @@ const FMH::MODEL FMStatic::getFileInfo(const KFileItem &kfile)
 
                     const QString FMStatic::getIconName(const QUrl &path)
             {
+                    if(FMStatic::getPathType(path) == FMStatic::PATHTYPE_KEY::TAGS_PATH)
+            {
+                    return QStringLiteral("tag");
+        }
+
                     if (path.isLocalFile() && QFileInfo(path.toLocalFile()).isDir())
             {
                     if (folderIcon.contains(path.toString()))

@@ -169,7 +169,7 @@ public:
         return res;
     }
 
-    static constexpr auto func = [](QString suffix) -> QString {
+    inline static auto func = [](QString suffix) -> QString {
         return QStringLiteral("*.") + suffix;
     };
     inline static QHash<FILTER_TYPE, QStringList> FILTER_LIST = {{FILTER_TYPE::AUDIO,

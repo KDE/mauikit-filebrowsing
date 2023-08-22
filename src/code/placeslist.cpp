@@ -89,7 +89,7 @@ PlacesList::PlacesList(QObject *parent)
     }); // TODO improve the usage of the model
     #else
     connect(&AppSettings::global(), &AppSettings::settingChanged, [this](const QUrl, const QString &key, const QVariant, const QString &group) {
-        if (key == "BOOKMARKS" && group == "PREFERENCES") {
+        if (key == QStringLiteral("BOOKMARKS") && group == QStringLiteral("PREFERENCES")) {
             this->setList();
             Q_EMIT this->bookmarksChanged();
         }
@@ -166,7 +166,7 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     Q_UNUSED(model)
     switch (type) {
         case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
-            res << FMStatic::packItems(UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList(), FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
+            res << FMStatic::packItems(UTIL::loadSettings(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}, true).toStringList(), FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
             break;
         case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
             res = FMStatic::getDevices();
@@ -252,9 +252,9 @@ void PlacesList::removePlace(const int &index)
     this->list.removeAt(index);
     Q_EMIT this->postItemRemoved();
     #else
-    auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
+    auto bookmarks = UTIL::loadSettings(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}, true).toStringList();
     bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
-    UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
+    UTIL::saveSettings(QStringLiteral("BOOKMARKS"), bookmarks, QStringLiteral("PREFERENCES"), true);
     #endif
 }
 
@@ -330,9 +330,9 @@ void PlacesList::addBookmark(const QUrl& url)
     if (FMStatic::isDefaultPath(url.toString()))
         return;
     
-    auto bookmarks = UTIL::loadSettings("BOOKMARKS", "PREFERENCES", {}, true).toStringList();
+    auto bookmarks = UTIL::loadSettings(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}, true).toStringList();
     bookmarks << url.toString();
-    UTIL::saveSettings("BOOKMARKS", bookmarks, "PREFERENCES", true);
+    UTIL::saveSettings(QStringLiteral("BOOKMARKS"), bookmarks, QStringLiteral("PREFERENCES"), true);
     #endif
 }
 

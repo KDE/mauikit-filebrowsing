@@ -326,14 +326,17 @@ bool Tagging::removeTag(const QString& tag, const bool &strict)
 static bool doNameFilter(const QString &name, const QStringList &filters)
 {
     const auto filtersAccumulate = std::accumulate(filters.constBegin(), filters.constEnd(), QVector<QRegularExpression> {}, [](QVector<QRegularExpression> &res, const QString &filter) -> QVector<QRegularExpression> {
-            QString wildcardExp = QRegularExpression::wildcardToRegularExpression(filter);
-            QRegularExpression reg(QRegularExpression::anchoredPattern(wildcardExp), QRegularExpression::CaseInsensitiveOption);
+            QString wildcardExp = QRegularExpression::wildcardToRegularExpression(filter).replace(QStringLiteral("[^/]"), QStringLiteral("."));
+            QRegularExpression reg(wildcardExp, QRegularExpression::CaseInsensitiveOption);
             res.append(reg);
             return res;
 });
     
     for (const auto &filter : filtersAccumulate) {
+        qDebug() << "trying to match" << name << filter;
         if (filter.match(name).hasMatch()) {
+            qDebug() << "trying to match" << true;
+
             return true;
         }
     }
@@ -347,17 +350,22 @@ QList<QUrl> Tagging::getTagUrls(const QString &tag, const QStringList &filters, 
     std::function<bool(QVariantMap & item)> filter = nullptr;
     
     if (!filters.isEmpty())
-        filter = [filters](QVariantMap &item) -> bool {
+    {
+        filter = [filters](QVariantMap &item) -> bool
+        {
             return doNameFilter(FMH::mapValue(item, FMH::MODEL_KEY::URL), filters);
         };
+    }
     
     const auto tagUrls = getUrls(tag, strict, limit, mime, filter);
-    for (const auto &data : tagUrls) {
+    for (const auto &data : tagUrls)
+    {
         const auto url = QUrl(data.toMap()[FMH::MODEL_NAME[FMH::MODEL_KEY::URL]].toString());
         if (url.isLocalFile() && !FMH::fileExists(url))
             continue;
         urls << url;
     }
+
     return urls;
 }
 

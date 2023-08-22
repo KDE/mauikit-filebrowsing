@@ -69,6 +69,7 @@ endif()
 ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SOURCES
 
     controls.${QT_MAJOR_VERSION}/FileBrowser.qml
+    controls.${QT_MAJOR_VERSION}/OpenWithDialog.qml
     controls.${QT_MAJOR_VERSION}/FileDialog.qml
     controls.${QT_MAJOR_VERSION}/NewTagDialog.qml
     controls.${QT_MAJOR_VERSION}/PlacesListBrowser.qml

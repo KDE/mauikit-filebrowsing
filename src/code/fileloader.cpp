@@ -52,12 +52,21 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
     MODEL_LIST res;
     MODEL_LIST res_batch;
 
+    if (!FileLoader::informer)
+    {
+        qWarning() << "FileLoader Informaer can not be nullptr";
+        return;
+    }
+
     for (const auto &path : paths)
     {
         if(FMStatic::getPathType(path) == FMStatic::PATHTYPE_KEY::TAGS_PATH)
         {
-            for(const auto &url : Tagging::getInstance()->getTagUrls(path.toString().replace(QStringLiteral("tags:///"), QStringLiteral("")), nameFilters, true, limit))
-            {
+            for(const auto &url : Tagging::getInstance()->getTagUrls(path.toString().replace(QStringLiteral("tags:///"), QStringLiteral("")),
+                                                                     nameFilters,
+                                                                     true,
+                                                                     limit))
+            {               
                 MODEL map = FileLoader::informer(url);
                 
                 if (map.isEmpty())

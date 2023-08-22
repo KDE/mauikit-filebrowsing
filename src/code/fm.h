@@ -39,7 +39,7 @@ class QDirLister : public QObject
 public:
     explicit QDirLister(QObject *parent = nullptr);
 
-public slots:
+public Q_SLOTS:
     /**
      * @brief openUrl
      * @param url

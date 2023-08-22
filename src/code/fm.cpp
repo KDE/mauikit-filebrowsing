@@ -142,7 +142,7 @@ void QDirLister::reviewChanges()
     if (m_showDotFiles)
         dirFilter = dirFilter | QDir::Hidden | QDir::System;
 
-    checkLoader->requestPath({this->m_url}, false, m_nameFilters.isEmpty() ? QStringList() : m_nameFilters.split(" "), dirFilter);
+    checkLoader->requestPath({this->m_url}, false, m_nameFilters.isEmpty() ? QStringList() : m_nameFilters.split(QStringLiteral(" ")), dirFilter);
 }
 
 bool QDirLister::includes(const QUrl &url)
@@ -183,7 +183,7 @@ bool QDirLister::openUrl(const QUrl &url)
             dirFilter = dirFilter | QDir::Hidden;
         }
 
-        m_loader->requestPath({this->m_url}, false, m_nameFilters.isEmpty() ? QStringList() : m_nameFilters.split(" "), dirFilter);
+        m_loader->requestPath({this->m_url}, false, m_nameFilters.isEmpty() ? QStringList() : m_nameFilters.split(QStringLiteral(" ")), dirFilter);
 
     } else
         return false;
