@@ -198,7 +198,7 @@ msgid ""
 "to start the network."
 msgstr ""
 "de verbinding was verbroken vanwege verbinding verbreken vanuit het netwerk "
-"of mislukken va het starten van het netwerk."
+"of mislukken van het starten van het netwerk."
 
 #: src/code/syncing.cpp:244
 #, kde-format
