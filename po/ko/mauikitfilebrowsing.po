@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-15 00:44+0000\n"
-"PO-Revision-Date: 2023-08-06 22:51+0200\n"
+"PO-Revision-Date: 2023-08-25 23:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -18,45 +18,44 @@ msgstr ""
 "X-Generator: Lokalize 22.12.3\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "여기로 링크"
+msgstr "아무것도 없습니다!"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "여기는 비어 있는 것 같습니다"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "오류"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "이 URL의 목록을 표시할 수 없습니다"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "내용을 불러오는 중"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "거의 준비되었습니다!"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "검색할 경로가 지정되지 않았음"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "위치"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -122,7 +121,7 @@ msgstr "빠름"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "책갈피"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -130,37 +129,39 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"원격 서버에서 내용을 제공하려면 인증이 필요하나 입력한 인증 정보가 수락되지 "
+"않았음"
 
 #: src/code/syncing.cpp:211
 #, kde-format
 msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
-msgstr ""
+msgstr "원격 서버에서 연결을 거부함(서버에서 요청을 받아들이지 않음)"
 
 #: src/code/syncing.cpp:215
 #, kde-format
 msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
-msgstr ""
+msgstr "서버에서 답변을 수신하고 처리하기 전에 연결을 예상하지 못하게 닫음"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "원격 호스트 이름을 찾을 수 없음(잘못된 호스트 이름)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "원격 서버 연결 시간이 초과됨"
 
 #: src/code/syncing.cpp:227
 #, kde-format
 msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
-msgstr ""
+msgstr "작업이 완료되기 전에 abort()나 close() 호출로 작업이 취소됨"
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -168,6 +169,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"SSL/TLS 핸드셰이크가 실패하여 암호화 채널을 수립할 수 없습니다. sslErrors() "
+"시그널이 송신되었어야 합니다."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -177,6 +180,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"네트워크에서 연결이 끊어져서 연결이 깨졌으나, 시스템에서 다른 액세스 포인트"
+"로 로밍을 시도했습니다. 연결이 다시 수립된 후에 요청이 다시 전송되고 처리됩니"
+"다."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -184,11 +190,12 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"네트워크에서 연결이 끊어졌거나 네트워크를 시작할 수 없어서 연결이 깨졌습니다."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
-msgstr ""
+msgstr "플랫폼 정책 때문에 백그라운드 요청이 허용되지 않았습니다."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -197,6 +204,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"리디렉션을 따라가는 중 최대 횟수에 도달했습니다. 기본값은 50회이며 "
+"QNetworkRequest::setMaxRedirectsAllowed() 함수 호출로 변경할 수 있습니다(Qt "
+"5.6에 도입됨)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -204,13 +214,15 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"리디렉션을 따라가는 중 네트워크 접근 API에서 암호화된 프로토콜(https)에서 암"
+"호화되지 않은 프로토콜(http)로의 리디렉션을 감지했습니다."
 
 #: src/code/syncing.cpp:256
 #, kde-format
 msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
-msgstr ""
+msgstr "프록시 서버에서 연결을 거부함(프록시 서버에서 요청을 받아들이지 않음)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -218,11 +230,12 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"프록시 서버에서 답변을 수신하고 처리하기 전에 연결을 예상하지 못하게 닫음"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "프록시 호스트 이름을 찾을 수 없음(잘못된 호스트 이름)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -230,6 +243,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"프록시 연결 시간이 초과되었거나 프록시에서 전송된 요청을 시간 내에 응답하지 "
+"않음"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -237,22 +252,24 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"요청을 처리하려면 프록시에서 인증이 필요하지만 제공한 인증 정보를 수락하지 않"
+"았음"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "원격 콘텐츠에 접근이 거부됨(HTTP 오류 403과 유사함)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "원격 콘텐츠에 요청한 작업이 허용되지 않음"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
-msgstr ""
+msgstr "서버에서 원격 콘텐츠를 찾을 수 없음(HTTP 오류 404와 유사함)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -260,18 +277,20 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"요청을 다시 전송해야 하지만 업로드된 데이터를 두 번 읽을 수 없는 등의 이유로 "
+"실패함"
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "서버에서 현재 요청을 처리할 수 없습니다."
 
 #: src/code/syncing.cpp:296
 #, kde-format
 msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
-msgstr ""
+msgstr "원격 서버나 인터넷 연결에서 알 수 없는 오류가 발생했습니다."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
@@ -572,7 +591,7 @@ msgstr "여기에 병합"
 #: src/controls.6/private/BrowserView.qml:480
 #, kde-format
 msgid " items"
-msgstr ""
+msgstr "개 항목"
 
 #: src/controls.5/private/TagList.qml:24 src/controls.6/private/TagList.qml:24
 #, kde-format
