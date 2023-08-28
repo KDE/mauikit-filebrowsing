@@ -25,7 +25,7 @@ const FMH::MODEL_LIST &OpenWithModel::items() const
 void OpenWithModel::setUrls(const QStringList& urls)
 {
     m_urls = urls;
-    emit urlsChanged();
+    Q_EMIT urlsChanged();
 }
 
 QStringList OpenWithModel::urls() const
@@ -52,10 +52,10 @@ static FMH::MODEL createActionItem(const QExplicitlySharedDataPointer< KService 
 {
     FMH::MODEL map
     {
-        {FMH::MODEL_KEY::LABEL, service->name().replace('&', "&&")},
+        {FMH::MODEL_KEY::LABEL, service->name().replace(QStringLiteral("&"), QStringLiteral("&&"))},
         {FMH::MODEL_KEY::ICON, service->icon()},
         {FMH::MODEL_KEY::COMMENT, service->comment()},
-        {FMH::MODEL_KEY::ID, "_kicker_fileItem_openWith"},
+        {FMH::MODEL_KEY::ID, QStringLiteral("_kicker_fileItem_openWith")},
         {FMH::MODEL_KEY::EXECUTABLE, service->entryPath()}
         //         item["serviceExec"] = service->exec();
     };
@@ -78,7 +78,7 @@ void OpenWithModel::setList()
     }
     
     m_list.clear();
-    emit this->preListChanged();
+    Q_EMIT this->preListChanged();
 
 #ifdef KIO_AVAILABLE
     KFileItem fileItem(url);
@@ -88,6 +88,6 @@ void OpenWithModel::setList()
         m_list << createActionItem(service);
     }
     
-    emit postListChanged();
+    Q_EMIT postListChanged();
 #endif
 }

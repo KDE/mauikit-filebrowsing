@@ -1,5 +1,4 @@
-#ifndef DOWNLOADER_H
-#define DOWNLOADER_H
+#pragma once
 
 #include <QObject>
 #include <QString>
@@ -57,7 +56,7 @@ private:
     bool m_saveToFile = false;
     void setConnections();
     
-signals:
+Q_SIGNALS:
     void progress(int percent);
     void downloadReady();
     void aborted();
@@ -66,7 +65,7 @@ signals:
     void dataReady(QByteArray array);
     void done();
 
-private slots:
+private Q_SLOTS:
     /**
      * @brief onDownloadProgress
      * @param bytesRead
@@ -84,7 +83,4 @@ private slots:
      */
     void onReplyFinished();
 };
-
 }
-
-#endif // DOWNLOADER_H

@@ -1,8 +1,13 @@
-#ifndef OPENWITHMODEL_H
-#define OPENWITHMODEL_H
+#pragma once
 
 #include <QObject>
-#include <MauiKit/Core/mauilist.h>
+#include <MauiKit3/Core/mauilist.h>
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <MauiKit3/Core/mauilist.h>
+#else
+#include <MauiKit4/Core/mauilist.h>
+#endif
 
 class OpenWithModel : public MauiList
 {
@@ -20,7 +25,7 @@ public:
     void setUrls(const QStringList &urls);
     QStringList urls() const;
     
-public slots:
+public Q_SLOTS:
     void openWith(const int &index);
     
 private:
@@ -29,8 +34,7 @@ private:
     FMH::MODEL_LIST m_list;
     QStringList m_urls;
     
-signals:
+Q_SIGNALS:
     void urlsChanged();
 };
 
-#endif

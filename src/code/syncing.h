@@ -1,12 +1,16 @@
-#ifndef SYNCING_H
-#define SYNCING_H
+#pragma once
 
 #include <QObject>
 #include <QNetworkReply>
 
 #include <QFile>
 
-#include <MauiKit/Core/fmh.h>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <MauiKit3/Core/fmh.h>
+#else
+#include <MauiKit4/Core/fmh.h>
+#endif
+
 #include "filebrowsing_export.h"
 
 class WebDAVClient;
@@ -109,9 +113,9 @@ public:
 
 private:
     WebDAVClient *client;
-    QString host = "https://cloud.opendesktop.cc/remote.php/webdav/";
-    QString user = "mauitest";
-    QString password = "mauitest";
+    QString host = QStringLiteral("https://cloud.opendesktop.cc/remote.php/webdav/");
+    QString user = QStringLiteral("mauitest");
+    QString password = QStringLiteral("mauitest");
     void listDirOutputHandler(WebDAVReply *reply, const QStringList &filters = QStringList());
 
     void saveTo(const QByteArray &array, const QUrl &path);
@@ -127,7 +131,7 @@ private:
 
     QFile mFile;
 
-signals:
+Q_SIGNALS:
     /**
      * @brief listReady
      * @param data
@@ -169,5 +173,3 @@ signals:
      */
     void progress(int percent);
 };
-
-#endif // SYNCING_H

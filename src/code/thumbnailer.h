@@ -1,6 +1,4 @@
-#ifndef THUMBNAILER_H
-#define THUMBNAILER_H
-
+#pragma once
 #include <QString>
 #include <QQuickImageProvider>
 #include "filebrowsing_export.h"
@@ -25,4 +23,3 @@ public:
     QQuickImageResponse *requestImageResponse(const QString &id, const QSize &requestedSize) override;
 };
 
-#endif // THUMBNAILER_H

@@ -15,7 +15,7 @@ import org.mauikit.filebrowsing 1.3 as FB
  *
  *
  */
-Maui.Dialog
+Maui.InputDialog
 {
     id: control
 
@@ -25,10 +25,10 @@ Maui.Dialog
     title: i18nd("mauikitfilebrowsing", "New tags")
     message: i18nd("mauikitfilebrowsing", "Create new tags to organize your files. You can create multiple tags separated by a comma.")
 
-    headBar.visible: false
+//    headBar.visible: false
     
-    acceptButton.text: i18nd("mauikitfilebrowsing", "Add")
-    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
+//    acceptButton.text: i18nd("mauikitfilebrowsing", "Add")
+//    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
 
     onAccepted: done()
     onRejected:

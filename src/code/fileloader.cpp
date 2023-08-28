@@ -10,7 +10,7 @@ using namespace FMH;
 std::function<FMH::MODEL(const QUrl &url)> FileLoader::informer = &FMStatic::getFileInfoModel;
 
 FileLoader::FileLoader(QObject *parent) : QObject(parent)
-    , m_thread(new QThread)
+  , m_thread(new QThread)
 {
     qRegisterMetaType<QDir::Filters>("QDir::Filters");
     qRegisterMetaType<FMH::MODEL>("FMH::MODEL");
@@ -40,7 +40,7 @@ uint FileLoader::batchCount() const
 void FileLoader::requestPath(const QList<QUrl> &urls, const bool &recursive, const QStringList &nameFilters, const QDir::Filters &filters, const uint &limit)
 {
     qDebug() << "FROM file loader" << urls;
-    emit this->start(urls, recursive, nameFilters, filters, limit);
+    Q_EMIT this->start(urls, recursive, nameFilters, filters, limit);
 }
 
 void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &nameFilters, const QDir::Filters &filters, uint limit)
@@ -52,18 +52,27 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
     MODEL_LIST res;
     MODEL_LIST res_batch;
 
+    if (!FileLoader::informer)
+    {
+        qWarning() << "FileLoader Informaer can not be nullptr";
+        return;
+    }
+
     for (const auto &path : paths)
     {
         if(FMStatic::getPathType(path) == FMStatic::PATHTYPE_KEY::TAGS_PATH)
         {
-            for(const auto &url : Tagging::getInstance()->getTagUrls(path.toString().replace("tags:///", ""), nameFilters, true, limit))
-            {
+            for(const auto &url : Tagging::getInstance()->getTagUrls(path.toString().replace(QStringLiteral("tags:///"), QStringLiteral("")),
+                                                                     nameFilters,
+                                                                     true,
+                                                                     limit))
+            {               
                 MODEL map = FileLoader::informer(url);
                 
                 if (map.isEmpty())
                     continue;
                 
-                emit itemReady(map, paths);
+                Q_EMIT itemReady(map, paths);
                 res << map;
                 res_batch << map;
                 i++;
@@ -71,7 +80,7 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
                 
                 if (i == m_batchCount) // send a batch
                 {
-                    emit itemsReady(res_batch, paths);
+                    Q_EMIT itemsReady(res_batch, paths);
                     res_batch.clear();
                     batch++;
                     i = 0;
@@ -84,7 +93,7 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
             continue;
         }
         
-        if (QFileInfo(path.toLocalFile()).isDir() && path.isLocalFile() && fileExists(path)) 
+        if (QFileInfo(path.toLocalFile()).isDir() && path.isLocalFile() && fileExists(path))
         {
             QDir dir(path.toLocalFile());
             dir.setNameFilters(nameFilters);
@@ -93,7 +102,7 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
             
             QDirIterator it(dir, recursive ? QDirIterator::Subdirectories : QDirIterator::NoIteratorFlags);
 
-            while (it.hasNext()) 
+            while (it.hasNext())
             {
                 const auto url = QUrl::fromLocalFile(it.next());
                 MODEL map = FileLoader::informer(url);
@@ -101,7 +110,7 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
                 if (map.isEmpty())
                     continue;
 
-                emit itemReady(map, paths);
+                Q_EMIT itemReady(map, paths);
                 res << map;
                 res_batch << map;
                 i++;
@@ -109,7 +118,7 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
 
                 if (i == m_batchCount) // send a batch
                 {
-                    emit itemsReady(res_batch, paths);
+                    Q_EMIT itemsReady(res_batch, paths);
                     res_batch.clear();
                     batch++;
                     i = 0;
@@ -123,6 +132,6 @@ void FileLoader::getFiles(QList<QUrl> paths, bool recursive, const QStringList &
         if (count == limit)
             break;
     }
-    emit itemsReady(res_batch, paths);
-    emit finished(res, paths);
+    Q_EMIT itemsReady(res_batch, paths);
+    Q_EMIT finished(res, paths);
 }

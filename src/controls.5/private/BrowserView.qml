@@ -192,15 +192,14 @@ Maui.AltBrowser
             {
                 id: _mergeDialogComponent
                 
-                Maui.NewDialog
+                Maui.InputDialog
                 {
                     id: _mergeDialog
                     property var urls
-                    
-                    headBar.visible: false
-                    
+                                       
                     readonly property bool dirExists : FB.FM.fileExists(control.path+"/"+textEntry.text)
-                    acceptButton.enabled: !dirExists
+
+//                    acceptButton.enabled: !dirExists
                     
                     onDirExistsChanged:
                     {

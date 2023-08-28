@@ -6,7 +6,7 @@ TagsList::TagsList(QObject *parent)
 
 void TagsList::setList()
 {
-    emit this->preListChanged();
+    Q_EMIT this->preListChanged();
     
     if (this->m_urls.isEmpty()) {
         this->list = FMH::toModelList(Tagging::getInstance()->getAllTags(this->strict));
@@ -22,8 +22,8 @@ void TagsList::setList()
     });
     }
     
-    emit this->tagsChanged();
-    emit this->postListChanged();
+    Q_EMIT this->tagsChanged();
+    Q_EMIT this->postListChanged();
 }
 
 void TagsList::refresh()
@@ -101,10 +101,10 @@ bool TagsList::remove(const int &index)
     if (index >= this->list.size() || index < 0)
         return false;
 
-    emit this->preItemRemoved(index);
+    Q_EMIT this->preItemRemoved(index);
     this->list.removeAt(index);
-    emit this->tagsChanged();
-    emit this->postItemRemoved();
+    Q_EMIT this->tagsChanged();
+    Q_EMIT this->postItemRemoved();
 
     return true;
 }
@@ -139,7 +139,7 @@ void TagsList::setStrict(const bool &value)
         return;
 
     this->strict = value;
-    emit this->strictChanged();
+    Q_EMIT this->strictChanged();
 }
 
 QStringList TagsList::getTags() const
@@ -158,7 +158,7 @@ void TagsList::setUrls(const QStringList &value)
         return;
 
     this->m_urls = value;
-    emit this->urlsChanged();
+    Q_EMIT this->urlsChanged();
 }
 
 void TagsList::append(const QString &tag)
@@ -176,10 +176,10 @@ void TagsList::append(const FMH::MODEL &tag)
     if (this->exists(FMH::MODEL_KEY::TAG, tag[FMH::MODEL_KEY::TAG]))
         return;
 
-    emit this->preItemAppended();
+    Q_EMIT this->preItemAppended();
     this->list << tag;
-    emit this->postItemAppended();
-    emit this->tagsChanged();
+    Q_EMIT this->postItemAppended();
+    Q_EMIT this->tagsChanged();
 }
 
 void TagsList::append(const QStringList &tags)
