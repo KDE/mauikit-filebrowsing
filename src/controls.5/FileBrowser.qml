@@ -437,11 +437,7 @@ Maui.Page
                 
                 Action
                 {
-                    <<<<<<< HEAD:src/controls/FileBrowser.qml
                     id: _newFileOp
-                        =======
-                        id: _newFileOp
-                        >>>>>>> master:src/controls.5/FileBrowser.qml
                     icon.name: "document-new"
                     text: i18nd("mauikitfilebrowsing", "File")
                     checked: String(_newDialog.textEntry.text).indexOf(".") >= 0
