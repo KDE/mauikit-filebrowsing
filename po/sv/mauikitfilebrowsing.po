@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-08-15 00:44+0000\n"
+"POT-Creation-Date: 2023-08-29 00:44+0000\n"
 "PO-Revision-Date: 2023-08-15 06:48+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -341,7 +341,7 @@ msgstr ""
 "Ta bort %1  \n"
 "Totalt frigjort utrymme %2"
 
-#: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:779
+#: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
 #: src/controls.5/FileDialog.qml:138 src/controls.5/private/BrowserView.qml:283
 #: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:354
 #: src/controls.6/FileBrowser.qml:778 src/controls.6/FileDialog.qml:162
@@ -371,28 +371,28 @@ msgstr "Ny fil"
 msgid "Create a new folder or a file with a custom name."
 msgstr "Skapa en ny katalog eller en fil med ett eget namn."
 
-#: src/controls.5/FileBrowser.qml:420 src/controls.5/FileDialog.qml:371
+#: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:371
 #: src/controls.6/FileBrowser.qml:420 src/controls.6/FileDialog.qml:379
 #, kde-format
 msgid "Name"
 msgstr "Namn"
 
-#: src/controls.5/FileBrowser.qml:433 src/controls.6/FileBrowser.qml:433
+#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:433
 #, kde-format
 msgid "Folder"
 msgstr "Katalog"
 
-#: src/controls.5/FileBrowser.qml:441 src/controls.6/FileBrowser.qml:441
+#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:441
 #, kde-format
 msgid "File"
 msgstr "Fil"
 
-#: src/controls.5/FileBrowser.qml:458 src/controls.6/FileBrowser.qml:458
+#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:458
 #, kde-format
 msgid "Rename"
 msgstr "Byt namn"
 
-#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:459
+#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:459
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -401,12 +401,12 @@ msgstr ""
 "Byt namn på en fil eller katalog. Skriv in ett nytt namn och klicka på Byt "
 "namn för att verkställa ändringen."
 
-#: src/controls.5/FileBrowser.qml:468 src/controls.6/FileBrowser.qml:468
+#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:468
 #, kde-format
 msgid "New name"
 msgstr "Nytt namn"
 
-#: src/controls.5/FileBrowser.qml:728
+#: src/controls.5/FileBrowser.qml:729
 #: src/controls.5/private/BrowserView.qml:245
 #: src/controls.6/FileBrowser.qml:727
 #: src/controls.6/private/BrowserView.qml:245
@@ -414,7 +414,7 @@ msgstr "Nytt namn"
 msgid "Copy here"
 msgstr "Kopiera hit"
 
-#: src/controls.5/FileBrowser.qml:740
+#: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
 #: src/controls.6/FileBrowser.qml:739
 #: src/controls.6/private/BrowserView.qml:257
@@ -422,7 +422,7 @@ msgstr "Kopiera hit"
 msgid "Move here"
 msgstr "Flytta hit"
 
-#: src/controls.5/FileBrowser.qml:753
+#: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
 #: src/controls.6/FileBrowser.qml:752
 #: src/controls.6/private/BrowserView.qml:269
@@ -430,12 +430,12 @@ msgstr "Flytta hit"
 msgid "Link here"
 msgstr "Länka hit"
 
-#: src/controls.5/FileBrowser.qml:766 src/controls.6/FileBrowser.qml:765
+#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:765
 #, kde-format
 msgid "Open here"
 msgstr "Öppna här"
 
-#: src/controls.5/FileBrowser.qml:1135 src/controls.6/FileBrowser.qml:1134
+#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1134
 #, kde-format
 msgid "Search: %1"
 msgstr "Sök: %1"
