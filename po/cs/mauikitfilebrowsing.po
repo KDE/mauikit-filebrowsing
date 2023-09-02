@@ -18,10 +18,9 @@ msgstr ""
 "X-Generator: Lokalize 22.12.3\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "Odkaz sem"
+msgstr "Zde nic není."
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -31,7 +30,7 @@ msgstr ""
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
@@ -46,7 +45,7 @@ msgstr ""
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "´"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
@@ -56,7 +55,7 @@ msgstr ""
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Místa"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -122,7 +121,7 @@ msgstr "Rychle"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Oblíbené"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -613,15 +612,3 @@ msgstr ""
 #, kde-format
 msgid "No tags yet."
 msgstr ""
-
-#~ msgid "Create"
-#~ msgstr "Vytvořit"
-
-#~ msgid "Yes"
-#~ msgstr "Ano"
-
-#~ msgid "No"
-#~ msgstr "Ne"
-
-#~ msgid "Add"
-#~ msgstr "Přidat"

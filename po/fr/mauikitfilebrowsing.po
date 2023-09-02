@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-29 00:44+0000\n"
-"PO-Revision-Date: 2023-08-24 14:07+0200\n"
+"PO-Revision-Date: 2023-08-31 15:15+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.90\n"
+"X-Generator: Lokalize 23.08.0\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -133,6 +133,8 @@ msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
 msgstr ""
+"Le serveur distant a refusé la connexion (Le serveur n'accepte pas les "
+"demandes)."
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -144,12 +146,12 @@ msgstr ""
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "Il a été impossible de trouver le nom d’hôte (Nom d’hôte non valable)."
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "La tentative de connexion au serveur distant a expirée."
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -185,6 +187,8 @@ msgstr ""
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
 msgstr ""
+"La requête en tâche de fond n'est actuellement pas autorisé à cause de la "
+"politique de la plate-forme."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -219,6 +223,8 @@ msgstr ""
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
 msgstr ""
+"Il a été impossible de trouver le nom du serveur mandataire (Nom d'hôte du "
+"serveur mandataire non valable)."
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -238,17 +244,20 @@ msgstr ""
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
 msgstr ""
+"L'accès au contenu distant a été refusé (Similaire à l'erreur « HTTP 403 »)."
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "L'opération demandé sur le contenu distant n'est pas autorisée."
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"Il a été impossible de trouver le contenu distant sur le serveur (Similaire "
+"à l'erreur « HTTP 404 »)."
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -260,7 +269,7 @@ msgstr ""
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "Le serveur est incapable de gérer la requête en ce moment."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -268,6 +277,8 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Il y a eu une erreur inconnue avec le serveur distant ou avec votre "
+"connexion Internet"
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
