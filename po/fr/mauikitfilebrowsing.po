@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-29 00:44+0000\n"
-"PO-Revision-Date: 2023-09-06 16:55+0200\n"
+"PO-Revision-Date: 2023-09-14 19:38+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -126,6 +126,9 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"Le serveur distant nécessite une authentification pour fournir du contenu, "
+"mais les informations d'identification fournies n'ont pas été acceptées (le "
+"cas échéant)."
 
 #: src/code/syncing.cpp:211
 #, kde-format
@@ -170,6 +173,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"La poignée de main « SSL / TLS » a échoué et le canal chiffré n'a pas pu "
+"être établi.Le signal« sslErrors()  » aurait dû être émis."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -179,6 +184,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"La connexion a été rompue en raison de la déconnexion du réseau, mais le "
+"système a démarré l'itinérance vers un autre point d'accès. La demande doit "
+"être soumise à nouveau et sera traitée dès que la connexion sera rétablie."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -203,6 +211,10 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"Pendant les redirections suivantes, la limite maximale a été atteinte. La "
+"limite est par défaut définie à 50 ou comme définie par le paramètre "
+"« qnetworkRequest::setMaxRedirectSallowed () »(Cette valeur a été introduite "
+"en version 5.6.)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -210,6 +222,9 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"Pendant les redirections suivantes, l'API d'accès au réseau a détecté une "
+"redirection d'un protocole chiffré (HTTPS) vers un protocole crypté (HTTPS) "
+"vers un protocole non chiffré (HTTP)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -280,6 +295,8 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"La demande devait être envoyée à nouveau, mais cela a échoué, par exemple, "
+"car les données envoyées n'ont pas pu être lues une deuxième fois."
 
 #: src/code/syncing.cpp:292
 #, kde-format
