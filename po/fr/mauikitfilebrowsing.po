@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-29 00:44+0000\n"
-"PO-Revision-Date: 2023-09-14 19:38+0200\n"
+"PO-Revision-Date: 2023-10-25 14:04+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -32,7 +32,7 @@ msgstr "Erreur"
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr "Il est impossible de lister cet URL"
+msgstr "Il est impossible de lister cette URL."
 
 #: src/code/fmlist.cpp:329
 #, kde-format
@@ -127,8 +127,7 @@ msgid ""
 "credentials provided were not accepted (if any)"
 msgstr ""
 "Le serveur distant nécessite une authentification pour fournir du contenu, "
-"mais les informations d'identification fournies n'ont pas été acceptées (le "
-"cas échéant)."
+"mais les identifiants fournis n'ont pas été acceptées (le cas échéant)."
 
 #: src/code/syncing.cpp:211
 #, kde-format
@@ -151,7 +150,7 @@ msgstr ""
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr "Il a été impossible de trouver le nom d’hôte (Nom d’hôte non valable)."
+msgstr "Il a été impossible de trouver le nom d'hôte (Nom d'hôte non valable)."
 
 #: src/code/syncing.cpp:223
 #, kde-format
@@ -164,8 +163,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
-"L’opération a été annulée par des appels aux fonctions « abort()  » ou "
-"« close() » avant qu’elle ne soit terminée."
+"L'opération a été annulée par des appels aux fonctions « abort()  » ou "
+"« close() » avant qu'elle ne soit terminée."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -174,7 +173,7 @@ msgid ""
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
 "La poignée de main « SSL / TLS » a échoué et le canal chiffré n'a pas pu "
-"être établi.Le signal« sslErrors()  » aurait dû être émis."
+"être établi. Le signal « sslErrors()  » aurait dû être émis."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -195,7 +194,7 @@ msgid ""
 "to start the network."
 msgstr ""
 "La connexion a été interrompue en raison d'une déconnexion au réseau ou de "
-"l’échec du démarrage du réseau."
+"l'échec du démarrage du réseau."
 
 #: src/code/syncing.cpp:244
 #, kde-format
@@ -214,7 +213,7 @@ msgstr ""
 "Pendant les redirections suivantes, la limite maximale a été atteinte. La "
 "limite est par défaut définie à 50 ou comme définie par le paramètre "
 "« qnetworkRequest::setMaxRedirectSallowed () »(Cette valeur a été introduite "
-"en version 5.6.)."
+"en version 5.6)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -223,7 +222,7 @@ msgid ""
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
 "Pendant les redirections suivantes, l'API d'accès au réseau a détecté une "
-"redirection d'un protocole chiffré (HTTPS) vers un protocole crypté (HTTPS) "
+"redirection d'un protocole chiffré (HTTPS) vers un protocole chiffré (HTTPS) "
 "vers un protocole non chiffré (HTTP)."
 
 #: src/code/syncing.cpp:256
@@ -233,7 +232,7 @@ msgid ""
 "accepting requests)"
 msgstr ""
 "La connexion au serveur mandataire a été refusée (Le serveur mandataire "
-"n’accepte pas les demandes)."
+"n'accepte pas les demandes)."
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -257,7 +256,7 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
-"La connexion au serveur mandataire a expiré ou ce dernier n’a pas répondu "
+"La connexion au serveur mandataire a expiré ou ce dernier n'a pas répondu "
 "dans le temps imparti à la demande envoyée."
 
 #: src/code/syncing.cpp:272
@@ -267,8 +266,8 @@ msgid ""
 "accept any credentials offered (if any)"
 msgstr ""
 "Le serveur mandataire nécessite une authentification afin de respecter la "
-"demande, mais n’a pas accepté les informations d’identification présentées "
-"(Si ceux-ci ont été fournis)."
+"demande, mais n'a pas accepté les identifiants présentés (Si ceux-ci ont été "
+"fournis)."
 
 #: src/code/syncing.cpp:276
 #, kde-format
