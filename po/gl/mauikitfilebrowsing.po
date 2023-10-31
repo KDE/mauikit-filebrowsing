@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2023.
+# SPDX-FileCopyrightText: 2023 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-08-29 00:44+0000\n"
-"PO-Revision-Date: 2023-06-11 14:20+0200\n"
+"PO-Revision-Date: 2023-10-30 19:28+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -15,48 +15,47 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.2\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
-msgstr "Ligar aquí"
+msgstr "Aquí non hai nada."
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "Este lugar parece estar baleiro."
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "Este URL non pode listarse."
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "Cargando o contido"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "Xa case está!"
 
 #: src/code/fmlist.cpp:711
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "Non hai unha ruta na que realizar a busca"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Lugares"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -122,7 +121,7 @@ msgstr "Rápido"
 #: src/code/placeslist.cpp:117
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Favorita"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -130,6 +129,8 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"O servidor remoto require autenticación para servir contido pero non se "
+"aceptaron os credenciais fornecidos (se se forneceron)."
 
 #: src/code/syncing.cpp:211
 #, kde-format
@@ -137,6 +138,7 @@ msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
 msgstr ""
+"O servidor remoto rexeitou a conexión (o servidor non acepta solicitudes)."
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -144,16 +146,19 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"O servidor remoto pechou a conexión de forma prematura, antes de que se "
+"recibise e procesase a resposta completa."
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
 msgstr ""
+"Non se atopou o nome de servidor remoto (o nome de servidor non é válido)."
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "A conexión ao servidor remoto superou o tempo límite."
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -161,6 +166,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"A operación cancelouse mediante chamadas a «abort()» ou «close()» antes de "
+"rematar."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -168,6 +175,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"O saúdo de SSL/TLS fallou e non foi posíbel estabelecer a canle cifrada. O "
+"sinal «sslErrors()» debía emitirse."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -177,18 +186,23 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"A conexión rompeuse por desconexión da rede, pero o sistema iniciou o cambio "
+"a outro punto de acceso. Debería entregarse de novo a solicitude e "
+"procesarase en canto se estabeleza de novo a conexión."
 
 #: src/code/syncing.cpp:240
 #, kde-format
 msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
-msgstr ""
+msgstr "A conexión rompeu por desconexión da rede ou fallo ao iniciar a rede."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
 msgstr ""
+"A solicitude en segundo plano non está permitida nestes momentos por "
+"política da plataforma."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -197,6 +211,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"Acadouse o límite de seguimento de redireccións seguidas. O límite "
+"predeterminado é 50, pero pode cambiarse con QNetworkRequest::"
+"setMaxRedirectsAllowed() (o valor engadiuse na versión 5.6)."
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -204,6 +221,8 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"Ao seguir redireccións, a API de acceso á rede detectou unha redirección dun "
+"protocolo cifrado (https) a un non cifrado (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -211,6 +230,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"Rexeitouse a conexión ao servidor mandatario (o servidor mandatario non "
+"acepta solicitudes)."
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -218,11 +239,15 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"O servidor mandatario pechou a conexión de forma prematura, antes de que se "
+"recibise e procesase a resposta completa."
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
 msgstr ""
+"Non se atopou o nome de servidor de mandatario (o nome de servidor de "
+"mandatario non é válido)."
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -230,6 +255,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"A conexión ao mandatario superou o tempo límite ou o mandatario non "
+"respondeu a tempo á solicitude enviada."
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -237,22 +264,25 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"O mandatario require autenticación para cumprir a solicitude pero non "
+"aceptou ningunha das credenciais ofrecidas (se se ofreceron)."
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "Denegouse o acceso ao contido remoto (similar ao erro 403 de HTTP)."
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "Non se permite a operación solicitada sobre o contido remoto."
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"Non se atopou o contido remoto no servidor (similar ao erro 404 de HTTP)."
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -260,11 +290,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"Facía falla enviar de novo a solicitude, pero fallou, por exemplo porque os "
+"datos de envío non se puideron ler unha segunda vez."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "O servidor non pode xestionara solicitude neste momento."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -272,6 +304,8 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Produciuse un erro descoñecido co servidor remoto ou a súa conexión a "
+"Internet."
 
 #: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
 #, kde-format
