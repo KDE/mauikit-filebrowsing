@@ -1,5 +1,5 @@
 maintainer: milohr
-fancyname: MauiKit File Browsing
+fancyname: File Browsing
 description: QtQuick plugin for file browsing components
 platforms:
     - name: Linux

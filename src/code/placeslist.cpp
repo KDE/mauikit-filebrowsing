@@ -19,15 +19,10 @@
 #include "placeslist.h"
 #include "tagging.h"
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <MauiKit3/Core/utils.h>
-#else
-#include <MauiKit4/Core/utils.h>
-#endif
-
 #include <QDir>
 #include <QDebug>
 #include <QIcon>
+#include <QSettings>
 
 #ifdef KIO_AVAILABLE
 #include <KFilePlacesModel>
@@ -62,8 +57,7 @@ PlacesList::PlacesList(QObject *parent)
 : MauiList(parent)
 , model(nullptr)
 #endif
-{
-    
+{    
     #ifdef KIO_AVAILABLE
     connect(this->model, &KFilePlacesModel::reloaded, this, &PlacesList::setList);
     
@@ -87,13 +81,6 @@ PlacesList::PlacesList(QObject *parent)
     }
     Q_EMIT this->postListChanged();	*/
     }); // TODO improve the usage of the model
-    #else
-    connect(&AppSettings::global(), &AppSettings::settingChanged, [this](const QUrl, const QString &key, const QVariant, const QString &group) {
-        if (key == QStringLiteral("BOOKMARKS") && group == QStringLiteral("PREFERENCES")) {
-            this->setList();
-            Q_EMIT this->bookmarksChanged();
-        }
-    });
     #endif
 }
 
@@ -166,8 +153,16 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
     Q_UNUSED(model)
     switch (type) {
         case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
-            res << FMStatic::packItems(UTIL::loadSettings(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}, true).toStringList(), FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
+        {
+    QSettings settings(QStringLiteral("org.mauikit.filebrowsing")) ;
+            settings.beginGroup(QStringLiteral("PREFERENCES"));
+            auto bookmarks = settings.value(QStringLiteral("BOOKMARKS"), {}).toStringList();           
+            settings.endGroup();
+            
+            res << FMStatic::packItems(bookmarks, FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
+            
             break;
+        }
         case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
             res = FMStatic::getDevices();
             break;
@@ -252,10 +247,14 @@ void PlacesList::removePlace(const int &index)
     this->list.removeAt(index);
     Q_EMIT this->postItemRemoved();
     #else
-    auto bookmarks = UTIL::loadSettings(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}, true).toStringList();
+    QSettings settings (QStringLiteral("org.mauikit.filebrowsing"));
+    settings.beginGroup(QStringLiteral("PREFERENCES"));
+    auto bookmarks = settings.value(QStringLiteral("BOOKMARKS"), {}).toStringList();
     bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
-    UTIL::saveSettings(QStringLiteral("BOOKMARKS"), bookmarks, QStringLiteral("PREFERENCES"), true);
+    settings.setValue(QStringLiteral("BOOKMARKS"), bookmarks);
+    settings.endGroup();    
     #endif
+    Q_EMIT bookmarksChanged();
 }
 
 bool PlacesList::contains(const QUrl &path)
@@ -330,9 +329,12 @@ void PlacesList::addBookmark(const QUrl& url)
     if (FMStatic::isDefaultPath(url.toString()))
         return;
     
-    auto bookmarks = UTIL::loadSettings(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}, true).toStringList();
+    QSettings settings(QStringLiteral("org.mauikit.filebrowsing")) ;
+    settings.beginGroup(QStringLiteral("PREFERENCES"));
+    auto bookmarks = settings.value("BOOKMARKS", {}).toStringList();
     bookmarks << url.toString();
-    UTIL::saveSettings(QStringLiteral("BOOKMARKS"), bookmarks, QStringLiteral("PREFERENCES"), true);
+    settings.setValue(QStringLiteral("BOOKMARKS"), bookmarks);
+    settings.endGroup();
     #endif
 }
 

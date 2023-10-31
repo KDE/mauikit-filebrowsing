@@ -11,16 +11,12 @@
 
 
 @subsection overview Introduction
-MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components for file handling and browsing.
+MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing.
 
 @image html index_app.jpg "App using the FileBrowsing controls"
 
 @subsection tutorial Tutorial
-A tutorial for getting started on creating a MauiKit application is available on <a href="https://develop.kde.org/docs/getting-started/mauikit/">our developer platform</a>.
-
-It is possible to make short mockups using QtQuick and MauiKit Controls and briefly test individual QML files using the <a href="https://doc.qt.io/qt-6/qtquick-qml-runtime.html">qml tool</a>. Notice that for it to work correctly you also need to export the enviroment variable `QT_QUICK_CONTROLS_STYLE=QtQuick.Controls.Maui`. This will make sure the Maui style is being used.
-
-A list of additional QML learning resources is available in the <a href="https://community.kde.org/Get_Involved/development/Learn#QtQuick/QML">Community Wiki</a>. If you are not familiar with QML at all, the <a href="https://www.qt.io/product/qt6/qml-book">QML book</a> should be a good head start.
+Using the components is simple.
 
 If you have any questions about MauiKit, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
 
