@@ -169,8 +169,18 @@ public:
     };
     Q_ENUM(PATHTYPE)
 
+    /**
+     * @brief The possible view types for listing the entries in the FileBrowser visual control.
+     */
     enum VIEW_TYPE : uint_fast8_t {
+        /**
+         * Display the file system entries in a grid view.
+         */
         ICON_VIEW,
+        
+        /**
+         * Display the file system entries in a list, with more information details visible.
+         */
         LIST_VIEW
     };
     Q_ENUM(VIEW_TYPE)

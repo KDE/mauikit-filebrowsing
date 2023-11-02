@@ -11,17 +11,17 @@
 
 
 @subsection overview Introduction
-MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing.
+MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing. The visiual controls integrate well with the MauiKit controls and the Maui HIG.
 
 @image html index_app.jpg "App using the FileBrowsing controls"
 
 @subsection tutorial Tutorial
 Using the components is simple.
 
-If you have any questions about MauiKit, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
+If you have any questions about MauiKit File Browsing, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
 
 @section component Components
-The MauiKit Controls could be divided into a few sections: there are the container views, the browsers, the delegates, and the common elements, such as buttons, cards, etc.
+MauiKit File Browsing components are the following:
 
 @subsection views Main Views Components
 
@@ -31,100 +31,51 @@ The MauiKit Controls could be divided into a few sections: there are the contain
 - @link TabView TabView @endlink
 - @link Page Page  @endlink
 - @link PageLayout Page  @endlink
-
-Another views include:
-- @link SplitView  SplitView @endlink
-
-@subsection browsers Browsing Views
-
-- @link GridBrowser  GridBrowser @endlink
-- @link ListBrowser ListBrowser @endlink
-- @link AltBrowser AltBrowser @endlink
-- @link ScrollColumn ScrollColumn @endlink
-
-@subsection delegates Delegates & Templates
-
-- @link ListBrowserDelegate  ListBrowserDelegate @endlink
-- @link GridBrowserDelegate GridBrowserDelegate @endlink
-- @link GalleryRollItem GalleryRollItem @endlink
-- @link ListItemTemplate ListItemTemplate @endlink
-- @link GridItemTemplate GridItemTemplate @endlink
-
-@subsection common Common Controls
-
-- @link ToolActions  ToolActions @endlink
-- @link ContextualMenu ContextualMenu @endlink
-- @link Holder Holder @endlink
-- @link PopupPage PopupPage @endlink
-- @link TextFieldPopup TextFieldPopup @endlink
-- @link InfoDialog InfoDialog @endlink
-- @link MenuItemActionRow MenuItemActionRow @endlink
-
-
 @subsection example Minimal Example
 
 @code
 import QtQuick
 import QtQuick.Controls
 import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FB
 
 Maui.ApplicationWindow
 {
     id: root
-    
-    Maui.SideBarView
+
+    Maui.Page
     {
+        Maui.Controls.showCSD: true
         anchors.fill: parent
-        
-        sideBarContent: Maui.Page
-        {
-            Maui.Theme.colorSet: Maui.Theme.Window
-            anchors.fill: parent
-            
-            headBar.leftContent: Maui.ToolButtonMenu
-            {
-                icon.name: "application-menu"
-                MenuItem
-                {
-                    text: "About"
-                    icon.name: "info-dialog"
-                    onTriggered: root.about()
-                }
-            }
-            
-            headBar.rightContent: ToolButton
-            {
-                icon.name: "love"
-            }
-        }
-        
-        Maui.Page
+
+        FB.FileBrowser
         {
             anchors.fill: parent
-            showCSDControls: true
+            currentPath: FB.FM.homePath()
+            settings.viewType: FB.FMList.GRID_VIEW
         }
     }
 }
 @endcode
 
-@image html ApplicationWindow/minimal_dark.png "Minimal application setup"
+@image html filebrowser.png "FileBrowser component"
 
 @section deployment Deployment
 
 @subsection building Building
-For building MauiKit from source, you will need to be familiar with some basic shell commands, with a terminal emulator and your distribution package manager.
+For building MauiKit FIle Browsing from source, you will need to be familiar with some basic shell commands, with a terminal emulator and your distribution package manager.
 
-Before building MauiKit, make sure you have all the dependencies already installed with its development files.
+Before building it, make sure you have all the dependencies already installed with its development files.
 
-`git cmake make kf6-ki18n kf6-kcoreaddons qt6-svg qt6-base mauiman ...`
+`git cmake make kf6-ki18n kf6-kcoreaddons qt6-svg qt6-base mauiman4 mauikit4 kf6-kio...`
 
 Then you can clone the project to your machine.
 
-`git clone https://invent.kde.org/maui/mauikit.git`
+`git clone https://invent.kde.org/maui/mauikit-filebrowsing.git`
 
-Now that you have the sources, go into the `mauikit` folder and start the building process.
+Now that you have the sources, go into the `mauikit-filebrowsing` folder and start the building process.
 
-`cd mauikit`
+`cd mauikit-filebrowsing`
 
 Let's build the project into a separate directory
 
@@ -153,11 +104,11 @@ If you don't want to build it from source, you can also look for it in your dist
 
 For example, to install it on Arch based distributions:
 
-`sudo pacman install mauikit4`
+`sudo pacman install mauikit-filebrowsing4`
 
 Debian based distros:
 
-`sudo apt install mauikit4`
+`sudo apt install mauikit-filebrowsing4`
 
 
 For Android, you will need to build it from source and install it at your Qt for Android root directory. 

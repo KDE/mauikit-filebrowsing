@@ -1,9 +1,9 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.3
+import QtQuick 
+import QtQuick.Controls
+import QtQuick.Layouts 
 
-import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.3 as FB
+import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FB
 
 Maui.AltBrowser
 {
@@ -12,7 +12,7 @@ Maui.AltBrowser
     headBar.visible: false
     
     title: currentFMList.pathName
-    selectionMode: control.selectionMode
+
     enableLassoSelection: true
     
     gridView.itemSize : control.gridItemSize
@@ -26,6 +26,7 @@ Maui.AltBrowser
     {
         id: _dialogLoader
     }
+    
     QtObject
     {
         id: _private
@@ -291,7 +292,7 @@ Maui.AltBrowser
         id: delegate
         width: ListView.view.width
         height: Maui.Style.toolBarHeightAlt        
-        label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section        
+        text: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section        
         isSection: true
     }
 
@@ -301,7 +302,7 @@ Maui.AltBrowser
         readonly property string path : model.path
 
         width: ListView.view.width
-//         template.headerSizeHint: control.listItemSize
+
         iconSource: model.icon
 
         label1.text: model.label ? model.label : ""
@@ -355,7 +356,7 @@ Maui.AltBrowser
             visible: active
         }
 
-        onClicked:
+        onClicked: (mouse) =>
         {
             control.currentIndex = index
 
@@ -399,13 +400,13 @@ Maui.AltBrowser
             control.itemRightClicked(index)
         }
 
-        onToggled:
+        onToggled: (state) =>
         {
             control.currentIndex = index
             control.itemToggled(index, state)
         }
 
-        onContentDropped:
+        onContentDropped: (drop) =>
         {
             _dropMenu.urls = drop.urls.join(",")
             _dropMenu.target = model.path
@@ -516,7 +517,7 @@ Maui.AltBrowser
                 active: control.delegateInjector
             }
 
-            onClicked:
+            onClicked: (mouse) =>
             {
                 if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
                 {
@@ -559,13 +560,14 @@ Maui.AltBrowser
                 control.itemRightClicked(index)
             }
 
-            onToggled:
+            onToggled: (state) =>
             {
                 control.currentIndex = index
+                
                 control.itemToggled(index, state)
             }
 
-            onContentDropped:
+            onContentDropped: (drop) =>
             {
                 _dropMenu.urls = drop.urls.join(",")
                 _dropMenu.target = model.path

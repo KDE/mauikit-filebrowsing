@@ -23,19 +23,82 @@ import QtQml
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import org.mauikit.controls as Maui
-import org.mauikit.filebrowsing as FB
+import org.mauikit.controls 1.3 as Maui
+import org.mauikit.filebrowsing 1.3 as FB
 
 import "private" as Private
 
-/*!
- * A control to list and browse the file system, with convinient properties
- * for filtering and sorting its contents
+/**
+ * @inherit MauiKit::Controls::Page
+ * @brief This control displays the file system entries in a given directory and allows subsequent browsing of the file hierarchy.  
+ * 
+ * This controls inherits from MauiKit Page, to checkout its inherited properties refer to the docs.
+ * @see MauiKit::Page
+ * 
+ * This controls exposes a series of convenient properties and functions for filtering and sorting, for creating new entries, perform searches, and modify the entries.
+ * 
+ * @image html filebrowser2.png "The FileBrowser"
+ * 
+ * @section features Features
  *
- * There are three different possible ways to display the contents: Grid, List and Miller views.
- * Some basic file item actions are implemented by default, like copy, cut, rename and remove.
+ * There are two different possible ways to display the contents: Grid and List, using the `settings.viewType` property.
+ * @see FMList::VIEW_TYPE
+ * 
+ * More browsing properties can be tweaked via the exposed `settings` property.
+ * @see settings
+ * 
+ * Some basic file item actions are implemented by default, like copy, cut, rename and remove, and exposed as methods.
+ * @see copy
+ * @see cut
+ * @see paste
+ * @see remove
  *
- * This component functionality can be easily expanded to be more feature rich.
+ * @note This component functionality can be easily expanded to be more feature rich, see for example the Maui Index application.
+ * 
+ * This controls allows to perform recursive searches, or simply filter elements in the current location by using the search bar. Besides these two, the user can quickly start typing within the browser, to jump quickly to a matching entry.
+ * 
+ * @subsection shorcuts Shortcuts
+ * This control supports multiple keyboard shortcuts, for selecting multiple elements, creating new entries, copying, deleting and renaming files.
+ * 
+ * The supported keyboard shortcuts are:
+ * 
+ * - `Ctrl + N`  =>  Create a new entry
+ * - `Ctrl + F`  =>  Open the search bar
+ * - `F5`  =>  Refresh/reload the content
+ * - `F2`  =>  Rename an entry
+ * - `Ctrl + A`  =>  Select all the entries
+ * - `Ctrl + N`  =>  Create a new entry
+ * - `Ctrl + Shift + ← ↑ → ↓`  =>  Select items in any direction
+ * - `Ctrl + Return`  =>  Open an entry
+ * - `Ctrl + V`  =>  Paste element in the clipboard to the current location
+ * - `Ctrl + X`  =>  Cut an entry
+ * - `Ctrl + C`  =>  Copy an entry
+ * - `Ctrl + Delete`  =>  Remove an entry
+ * - `Ctrl + Backspace`  =>  Clear selection/Go back to previous location
+ * - `Ctrl + Esc`  =>  Clear the selection/Clear the filter
+ * 
+ * 
+ * @section structure Structure
+ * 
+ * This control inherits from MauiKit Page, so it has a header and footer. The header bar has a search field for performing searches, by default it is hidden.
+ * 
+ * The footer bar by default has contextual buttons, depending on the current location. For example, for the trash location, it has contextual actions for emptying the trash can, etc.
+ * 
+ * @warning It is recommended to not add elements to the footer or header bars, instead, if needed, wrap this control in a Mauikit Page, and use utilize its toolbars.
+ * 
+ * @code  
+ * FB.FileBrowser
+ * {
+ *    Maui.Controls.showCSD: true
+ *    headBar.visible: true
+ *    anchors.fill: parent
+ *    currentPath: FB.FM.homePath()
+ *    settings.viewType: FB.FMList.GRID_VIEW
+ * }
+ * @endcode
+ * 
+ * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/FileBrowser.qml">You can find a more complete example at this link.</a>
+ * 
  */
 Maui.Page
 {
@@ -54,170 +117,229 @@ Maui.Page
     
     showTitle: false
     
-    /*!
-     *      \qmlproperty FileBrowser::currentPath
-     *
-     *      The current path of the directory URL.
-     *      To list a directory path, or other location, use the right schemas,
-     *      some of them are file://, webdav://, trash:///, tags://
+    /**
+     * @brief The current URL path for the directory or location.
+     * To list a directory path, or other location, use the right schema, some of them are `file://`, `webdav://`, `trash://`/, `tags://`, `fish://`.
+     * By default a URL without a well defined schema will be assumed as a local file path.
+     * 
+     * @note KDE KIO is used as the back-end technology, so any of the supported plugins by KIO will also work here.
+     * 
+     * @property string FileBrowser::currentPath
      */
     property alias currentPath : _browser.path
     onCurrentPathChanged : _searchField.clear()
     
-    /*!
-     *      \qmlproperty BrowserSettings FileBrowser::settings
-     *
-     *      A group of properties for controlling the sorting, listing and behaviour of the file browser.
-     *      For more details check the BrowserSettings documentation.
+    /**
+     * @brief A group of properties for controlling the sorting, listing and other behaviour of the browser.
+     * For more details check the BrowserSettings documentation.
+     * @see BrowserSettings
+     * 
+     * @code
+     * settings.onlyDirs: true
+     * settings.sortBy: FB.FMList.LABEL
+     * settings.showThumbnails: false
+     * @endcode
+     * 
+     * @property BrowserSettings FileBrowser::settings
      */
-    property alias settings : _browser.settings
+    readonly property alias settings : _browser.settings
     
-    /*!
-     *      \qmlproperty Item FileBrowser::view
-     *
-     *      The browser can be in two different view states: the file browsing or the search view, this
-     *      property gives access to the current view in use.
+    /**
+     * @brief The browser could be in two different view states: [1]the file browsing or [2]the search view.
+     * This property gives access to the current view in use.
      */
-    property alias view : _stackView.currentItem
+    readonly property alias view : _stackView.currentItem
     
-    property alias browser : _browser
-    /*!
-     *      \qmlproperty DropArea FileBrowser::dropArea
-     *
-     *      Drop area component, for dropping files.
-     *      By default sonme drop actions are handled, for other type of uris this property can be used to handle those.
+    /**
+     * @brief An alias to the control listing the entries.
+     * This component is handled by a Mauikit AltBrowser
+     * @property MauiKit::AltBrowser FileBrowser::browser
+     */ 
+    readonly property alias browser : _browser
+    
+    /**
+     * @brief Drop area component, for dropping files.
+     * By default some of the drop actions are handled, for other type of URIs this alias can be used to handle those.
+     * 
+     * The urlsDropped signal is emitted once one or multiple valid file URLs are dropped, and a popup contextual menu is opened with the supported default actions.
+     * @property DropArea FileBrowser::dropArea
      */
-    property alias dropArea : _dropArea
+    readonly property alias dropArea : _dropArea
     
-    /*!
-     *      \qmlproperty int FileBrowser::currentIndex
-     *
-     *      Current index of the item selected in the file browser.
+    /**
+     * @brief Current index of the item selected in the file browser. 
      */
     property int currentIndex  : -1
     
     Binding on currentIndex
     {
         value: currentView.currentIndex
-        //         restoreMode: Binding.RestoreBindingOrValue
     }
     
-    /*!
-     *      \qmlproperty Item FileBrowser::currentView
-     *
-     *      Current view of the file browser. Possible views are List = ListBrowser
-     *      Grid = GridView
-     *      Miller = ListView
+    /**
+     *  @brief Current view of the file browser. Possible views are:
+     * - List = MauiKit::ListBrowser
+     * - Grid = MauiKit::GridBrowser
+     * @property Item FileBrowser::currentView
      */
     readonly property QtObject currentView : _stackView.currentItem.browser
     
-    /*!
-     *      The file browser model list controller being used. The List and Grid views use the same FMList, the
-     *      Miller columns use several different models, one for each column.
+    /**
+     * @brief The file browser model list. 
+     * The List and Grid views use the same FMList.
+     * @see FMList
      */
     readonly property FB.FMList currentFMList : view.currentFMList
     
-    /*!
-     *      The file browser data model being used. The List and Grid views use the same model, the
-     *      Miller columns use several different FMList controllers, one for each column.
+    /**
+     * @brief The file browser model controller. This is the controller which allows for filtering, index mapping, and sorting.
+     * @see MauiModel
      */
     readonly property Maui.BaseModel currentFMModel : view.currentFMModel
     
-    /*!
-     *      isSearchView : bool
-     *      If the file browser current view is the search view.
+    /**
+     * @brief Whether the file browser current view is the search view.
      */
     readonly property bool isSearchView : _stackView.currentItem.objectName === "searchView"
     
-    /*!
-     *      If the file browser enters selection mode, allowing the selection of multiple items.
+    /**
+     * @brief Whether the file browser enters selection mode, allowing the selection of multiple items.
+     * This will make all the browsing entries checkable.
+     * @property bool FileBrowser::selectionMode
      */
-    property bool selectionMode: false
+    property alias selectionMode: _browser.selectionMode
     
-    /*!
-     *      \qmlproperty int FileBrowser::gridItemSize
-     *
-     *      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
+    /**
+     * @brief Size of the items in the grid view. 
+     * The size is for the combined thumbnail/icon and the title label.
+     * 
+     * @property int FileBrowser::gridItemSize
      */
     property alias gridItemSize : _browser.gridItemSize
     
-    /*!
-     *      \qmlproperty int FileBrowser::listItemSize
-     *
-     *      Size of the items in the grid view. The size is for the combined thumbnail/icon and the title label.
+    /**
+     * @brief Size of the items in the list view. 
+     * @note The size is actually taken as the size of the icon thumbnail. And it is mapped to the nearest size of the standard icon sizes.
+     * @property int FileBrowser::listItemSize 
      */
     property alias listItemSize : _browser.listItemSize
     
-    /*!
-     *     \qmlproperty var FileBrowser::indexHistory
-     *
-     *     History of the items indexes.
+    /**
+     * @brief The SelectionBar to be used for adding items to the selected group.
+     * This is optional, but if it is not set, then some feature will not work, such as selection mode, selection shortcuts etc.
+     * 
+     * @see MauiKit::SelectionBar
+     * 
+     * @code
+     *  Maui.Page
+     *    {
+     *        Maui.Controls.showCSD: true
+     *        anchors.fill: parent
+     *        floatingFooter: true
+     * 
+     *        FB.FileBrowser
+     *        {
+     *            Maui.Controls.showCSD: true
+     * 
+     *            anchors.fill: parent
+     *            currentPath: FB.FM.homePath()
+     *            settings.viewType: FB.FMList.GRID_VIEW
+     *            selectionBar: _selectionBar
+}
+
+footer: Maui.SelectionBar
+{
+id: _selectionBar
+anchors.horizontalCenter: parent.horizontalCenter
+width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
+maxListHeight: root.height - (Maui.Style.contentMargins*2)
+
+Action
+{
+icon.name: "love"
+onTriggered: console.log(_selectionBar.getSelectedUrisString())
+}
+
+Action
+{
+icon.name: "folder"
+}
+
+Action
+{
+icon.name: "list-add"
+}
+
+onExitClicked: clear()
+}
+}
+* @endcode
+*/
+    property Maui.SelectionBar selectionBar : null 
+    
+    
+    
+    /**
+     * @brief An alias to the currently loaded dialog, if not dialog is loaded then null.
+     *  
+     * @property Dialog FileBrowser::dialog
      */
-    property var indexHistory : []
+    readonly property alias dialog : dialogLoader.item
     
-    // need to be set by the implementation as features
-    /*!
-     *
+    /**
+     * @brief Whether the browser is on a read only mode, and modifications are now allowed, such as pasting, moving, removing or renaming.
+     * @property bool FileBrowser::readOnly
      */
-    property Maui.SelectionBar selectionBar : null //TODO remove
-    
-    
-    //access to the loaded the dialog components
-    /*!
-     *      \qmlproperty Dialog FileBrowser::dialog
-     *      The message and action dialogs are loaded when needed.
-     *      This property gives access to the current dialog opened.
-     */
-    property alias dialog : dialogLoader.item
-    
     property alias readOnly : _browser.readOnly
     
     
-    //signals
-    /*!
-     *      An item was clicked.
+    /**
+     * @brief Emitted when an item has been clicked.
+     * @param index the index position of the item
      */
     signal itemClicked(int index)
     
     /**
-     *     An item was double clicked.
+     * @brief Emitted when an item has been double clicked.
+     * @param index the index position of the item
      */
     signal itemDoubleClicked(int index)
     
-    /*!
-     *      An item was right clicked, on mobile devices this is translated from a long press and relase.
+    /**
+     * @brief Emitted when an item has been right clicked. On mobile devices this is translated from a long press and release.
+     * @param index the index position of the item
      */
     signal itemRightClicked(int index)
     
-    /*!
-     *      The left emblem of the item was clicked.
+    /**
+     * @brief Emitted when an item left emblem badge has been clicked.
+     * This is actually a signal to checkable item being toggled.
+     * @param index the index position of the item
      */
     signal itemLeftEmblemClicked(int index)
     
-    /*!
-     *      The right emblem of the item was clicked.
-     */
-    signal itemRightEmblemClicked(int index)
     
-    /*!
-     *      The file browser empty area was right clicked.
+    /**
+     * @brief Emitted when an empty area of the browser has been right clicked.
      */
     signal rightClicked()
     
-    /*!
-     *      The file browser empty area was right clicked.
+    /**
+     * @brief Emitted when an empty area of the browser has been clicked.
+     * @param mouse the object with the event information
      */
     signal areaClicked(var mouse)
     
     
-    /*!
-     *      A key, physical or not, was pressed.
-     *      The event contains the relevant information.
+    /**
+     * @brief A key, physical or not, has been pressed.
+     *  @param event the event object contains the relevant information
      */
     signal keyPress(var event)
     
-    /*!
-     *      File URLS were dropped onto the file browser area.
+    /**
+     * @brief Emitted when a list of file URLS has been dropped onto the file browser area.
+     * @param urls the list of URLs of the files dropped
      */
     signal urlsDropped(var urls)
     
@@ -234,20 +356,6 @@ Maui.Page
             icon.name: "go-previous"
             onClicked: control.quitSearch()
         }
-    }
-    
-    Maui.InfoDialog
-    {
-        id: _quitSearchDialog
-        title: i18n("Quit")
-        message: i18n("Are you sure you want to quit the current search in progress?")
-        onAccepted:
-        {
-            _stackView.pop()
-            _browser.forceActiveFocus()
-        }
-        
-        onRejected: close()
     }
     
     headBar.middleContent: Maui.SearchField
@@ -337,6 +445,24 @@ Maui.Page
     
     Component
     {
+        id: _quitSearchDialogComponent
+        
+        Maui.InfoDialog
+        {
+            title: i18n("Quit")
+            message: i18n("Are you sure you want to quit the current search in progress?")
+            onAccepted:
+            {
+                _stackView.pop()
+                _browser.forceActiveFocus()
+            }
+            
+            onRejected: close()
+        }
+    }
+    
+    Component
+    {
         id: removeDialogComponent
         
         Maui.FileListingDialog
@@ -347,14 +473,14 @@ Maui.Page
             
             title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
             message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace))
-
+            
             actions: [
                 Action
                 {
                     text: i18nd("mauikitfilebrowsing", "Cancel")
                     onTriggered: _removeDialog.close()
                 },
-
+                
                 Action
                 {
                     text: i18nd("mauikitfilebrowsing", "Delete")
@@ -399,10 +525,10 @@ Maui.Page
             
             title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
-
+            
             template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
             template.iconVisible: true
-
+            
             onFinished: (text) =>
             {
                 if(_newDirOp.checked)
@@ -581,7 +707,6 @@ Maui.Page
             //shortcut for opening files
             if(event.key === Qt.Key_Return)
             {
-                indexHistory.push(index)
                 control.openItem(index)
                 event.accepted = true
             }
@@ -665,7 +790,6 @@ Maui.Page
         function onItemClicked(index)
         {
             control.currentIndex = index
-            indexHistory.push(index)
             control.itemClicked(index)
             control.currentView.forceActiveFocus()
         }
@@ -673,7 +797,6 @@ Maui.Page
         function onItemDoubleClicked(index)
         {
             control.currentIndex = index
-            indexHistory.push(index)
             control.itemDoubleClicked(index)
             control.currentView.forceActiveFocus()
         }
@@ -704,14 +827,14 @@ Maui.Page
         {
             if(control.isSearchView)
                 return
-            
-            if(!Maui.Handy.isMobile && mouse.button === Qt.RightButton)
-            {
-                control.rightClicked()
-            }
-            
-            control.areaClicked(mouse)
-            control.currentView.forceActiveFocus()
+                
+                if(!Maui.Handy.isMobile && mouse.button === Qt.RightButton)
+                {
+                    control.rightClicked()
+                }
+                
+                control.areaClicked(mouse)
+                control.currentView.forceActiveFocus()
         }
     }
     
@@ -720,7 +843,7 @@ Maui.Page
         id: _dropMenu
         property string urls
         enabled: !control.isSearchView
-
+        
         MenuItem
         {
             enabled: !control.readOnly
@@ -732,7 +855,7 @@ Maui.Page
                 control.currentFMList.copyInto(urls)
             }
         }
-
+        
         MenuItem
         {
             enabled: !control.readOnly
@@ -744,7 +867,7 @@ Maui.Page
                 control.currentFMList.cutInto(urls)
             }
         }
-
+        
         MenuItem
         {
             enabled: !control.readOnly
@@ -758,7 +881,7 @@ Maui.Page
                     control.currentFMList.createSymlink(urls[i])
             }
         }
-
+        
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.urls.split(",")[0])
@@ -772,7 +895,7 @@ Maui.Page
         }
         
         MenuSeparator {}
-
+        
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Cancel")
@@ -780,7 +903,7 @@ Maui.Page
             onTriggered: _dropMenu.close()
         }
     }
-
+    
     StackView
     {
         id: _stackView
@@ -789,12 +912,13 @@ Maui.Page
         initialItem: DropArea
         {
             id: _dropArea
-            property alias browser : _browser
-            property alias currentFMList : _browser.currentFMList
-            property alias currentFMModel: _browser.currentFMModel
+            
+            readonly property alias browser : _browser
+            readonly property alias currentFMList : _browser.currentFMList
+            readonly property alias currentFMModel: _browser.currentFMModel
             property alias filter: _browser.filter
             property alias filters: _browser.filters
-            property alias title : _browser.title
+            readonly property alias title : _browser.title
             
             onDropped:
             {
@@ -807,13 +931,12 @@ Maui.Page
             }
             
             opacity:  _dropArea.containsDrag ? 0.5 : 1
-
+            
             Private.BrowserView
             {
                 id: _browser
                 anchors.fill: parent
-                selectionMode: control.selectionMode
-
+                
                 Binding on currentIndex
                 {
                     value: control.currentIndex
@@ -881,7 +1004,8 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Copy the given file URLs to the clipboard
+     * @param urls the set of URLs to be copied
      **/
     function copy(urls)
     {
@@ -894,23 +1018,24 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Add the given URLs to the clipboard and mark them as a cut operation
+     * @param urls the set of URLs to cut
      **/
     function cut(urls)
     {
         if(control.readOnly)
             return
-
-        if(urls.length <= 0)
-        {
-            return
-        }
-        
-        Maui.Handy.copyToClipboard({"urls": urls}, true)
+            
+            if(urls.length <= 0)
+            {
+                return
+            }
+            
+            Maui.Handy.copyToClipboard({"urls": urls}, true)
     }
     
     /**
-     *
+     * Paste the contents of the clipboard into the current location, if supported.
      **/
     function paste()
     {
@@ -918,7 +1043,8 @@ Maui.Page
     }
     
     /**
-     *
+     * Remove the given URLs.Array()this will launch a dialog to confirm this action.
+     * @param urls the set of URLs to be removed
      **/
     function remove(urls)
     {
@@ -933,7 +1059,8 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Given an index position of a element, try to open it, it can be a directory, a file or an executable.
+     * 
      **/
     function openItem(index)
     {
@@ -942,43 +1069,44 @@ Maui.Page
         
         switch(control.currentFMList.pathType)
         {
-        case FB.FMList.CLOUD_PATH: //TODO deprecrated and needs to be removed or clean up for 1.1
-            if(item.isdir === "true")
-            {
-                control.openFolder(path)
-            }
-            else
-            {
-                FB.FM.openCloudItem(item)
-            }
-            break;
-        default:
-            if(control.selectionMode && item.isdir == "false")
-            {
-                if(control.selectionBar && control.selectionBar.contains(item.path))
-                {
-                    control.selectionBar.removeAtPath(item.path)
-                }else
-                {
-                    control.addToSelection(item)
-                }
-            }
-            else
-            {
-                if(item.isdir == "true")
+            case FB.FMList.CLOUD_PATH: //TODO deprecrated and needs to be removed or clean up for 1.1
+                if(item.isdir === "true")
                 {
                     control.openFolder(path)
                 }
                 else
                 {
-                    control.openFile(path)
+                    FB.FM.openCloudItem(item)
                 }
-            }
+                break;
+            default:
+                if(control.selectionMode && item.isdir == "false")
+                {
+                    if(control.selectionBar && control.selectionBar.contains(item.path))
+                    {
+                        control.selectionBar.removeAtPath(item.path)
+                    }else
+                    {
+                        control.addToSelection(item)
+                    }
+                }
+                else
+                {
+                    if(item.isdir == "true")
+                    {
+                        control.openFolder(path)
+                    }
+                    else
+                    {
+                        control.openFile(path)
+                    }
+                }
         }
     }
     
     /**
-     *
+     * @brief Open a file of the given path URL in the dedicated application
+     * @param path The URL of the file
      **/
     function openFile(path)
     {
@@ -986,7 +1114,8 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Open a folder location
+     * @param path the URL of the folder location
      **/
     function openFolder(path)
     {
@@ -1005,16 +1134,15 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Go back to the previous location
      **/
     function goBack()
     {
         openFolder(control.currentFMList.previousPath())
-        //        control.currentIndex = indexHistory.pop()
     }
     
     /**
-     *
+     * @brief Go forward to the location before going back
      **/
     function goForward()
     {
@@ -1022,7 +1150,7 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Go to the location parent directory
      **/
     function goUp()
     {
@@ -1030,7 +1158,10 @@ Maui.Page
     }
     
     /**
-     * For this to work the implementation needs to have passed a selectionBar
+     * @brief Add an item to the selection
+     * @param item the item object/map representing the file to be added to the selection
+     * @warning For this to work the implementation needs to have passed a `selectionBar`
+     * @see selectionBar
      **/
     function addToSelection(item)
     {
@@ -1040,11 +1171,11 @@ Maui.Page
         }
         
         control.selectionBar.append(item.path, item)
-    }
-    
+    }    
     
     /**
-     * Given a list of indexes add them to the selectionBar
+     * @brief Given a list of indexes add them to the selection
+     * @param indexes list of index positions
      **/
     function selectIndexes(indexes)
     {
@@ -1058,7 +1189,9 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Forces to select all the entries
+     * 
+     * @bug If there are too many entries, this could freeze the UI
      **/
     function selectAll() //TODO for now dont select more than 100 items so things dont freeze or break
     {
@@ -1071,7 +1204,8 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Add a bookmark to a given list of paths
+     * @param paths a group of directory URLs to be bookmarked
      **/
     function bookmarkFolder(paths) //multiple paths
     {
@@ -1081,6 +1215,9 @@ Maui.Page
         }
     }
     
+    /**
+     * @brief Open/close the search bar
+     */
     function toggleSearchBar() //only opens the searchbar toolbar, not the search view page
     {
         if(control.settings.searchBarVisible)
@@ -1096,7 +1233,7 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Forces to open the search view and start a search.
      **/
     function openSearch() //opens the search view and focuses the search field
     {
@@ -1109,13 +1246,14 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Forces to close the search view, and return to the browsing view.
      **/
     function quitSearch()
     {
         if(control.currentView.loading)
         {
-            _quitSearchDialog.open()
+            dialogLoader.sourceComponent = _quitSearchDialogComponent
+            control.dialog.open()
             return
         }
         
@@ -1124,21 +1262,23 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Perform a recursive search starting form the current location and down to all the children directories.
+     * @param query the text query to match against
      **/
     function search(query)
     {
         openSearch()
         _searchField.text = query
-
+        
         _stackView.currentItem.title = i18nd("mauikitfilebrowsing", "Search: %1", query)
         _stackView.currentItem.currentFMList.search(query, true)
-
+        
         _stackView.currentItem.forceActiveFocus()
     }
     
     /**
-     *
+     * @brief Opens a dialog for typing the name of the new item.
+     * The new item can be a file or directory.
      **/
     function newItem()
     {
@@ -1151,7 +1291,8 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Opens a dialog for typing the new name of the item
+     * This will target the current selected item in the browser view
      **/
     function renameItem()
     {
@@ -1164,7 +1305,8 @@ Maui.Page
     }
     
     /**
-     *
+     * @brief Opens a dialog to confirm this operation
+     * This will target the current selected item in the browser view
      **/
     function removeItem()
     {
@@ -1177,7 +1319,13 @@ Maui.Page
     }
     
     /**
-     * Filters the content of the selection to the current path. The currentPath must be a directory, so the selection can be compared if it is its parent directory. The itemPath is a default item path in case the selectionBar is empty
+     * @brief Filters the contents of the selection to the current path. 
+     * @note Keep in mind that the selection bar can have entries from multiple different locations. With this method only the entries which are inside the `currentPath` will be returned.
+     * 
+     * @param currentPath The currentPath must be a directory, so the selection entries can be compared as its parent directory. 
+     * @param itemPath The itemPath is a default item path in case the selectionBar is empty
+     * 
+     * @return the list of entries in the selection that match the currentPath as their parent directory
      **/
     function filterSelection(currentPath, itemPath)
     {
@@ -1200,8 +1348,11 @@ Maui.Page
         }
         
         return res
-    }
+    }    
     
+    /**
+     * @brief Forces to focus the current view.
+     */
     function forceActiveFocus()
     {
         control.currentView.forceActiveFocus()
