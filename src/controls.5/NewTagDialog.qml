@@ -25,25 +25,15 @@ Maui.InputDialog
     title: i18nd("mauikitfilebrowsing", "New tags")
     message: i18nd("mauikitfilebrowsing", "Create new tags to organize your files. You can create multiple tags separated by a comma.")
 
-//    headBar.visible: false
-    
-//    acceptButton.text: i18nd("mauikitfilebrowsing", "Add")
-//    rejectButton.text: i18nd("mauikitfilebrowsing", "Cancel")
-
-    onAccepted: done()
-    onRejected:
+    onFinished: 
     {
-        control.close()
+        for(var tag of text.split(","))
+        {
+             FB.Tagging.tag(tag, control.currentColor, "")
+        }    
     }
-
-    property alias textEntry: _textEntry
-    
-    TextField
-    {
-        id: _textEntry
-        Layout.fillWidth: true
-        placeholderText: i18n("New tags")
-    }
+  
+    textEntry.placeholderText: i18n("New tags")    
     
     Maui.ColorsRow
     {
@@ -77,23 +67,6 @@ Maui.InputDialog
     
     onClosed:
     {
-        control.clear()
-    }
-
-    function clear()
-    {
-        control.currentColor = ""
-        textEntry.clear()
-    }
-    
-    function done()
-    {
-        for(var tag of textEntry.text.split(","))
-        {
-             FB.Tagging.tag(tag, control.currentColor, "")
-        }
-        
-        control.close()
-        //control.alert(i18nd("mauikitfilebrowsing", "Tag could not be created. Check all fields are correct"))
+         control.currentColor = ""
     }
 }

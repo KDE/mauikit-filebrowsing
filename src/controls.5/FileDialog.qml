@@ -146,6 +146,9 @@ Maui.PopupPage
             onTriggered:
             {
                 console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
+                if(textField.text.length === 0)
+                            return
+                            
                 if(control.mode === modes.SAVE && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
                 {
                     _confirmationDialog.open()
@@ -179,8 +182,11 @@ Maui.PopupPage
     {
         id: _confirmationDialog
 
-        title: i18nd("mauikitfilebrowsing", "A file named %1 already exists!").arg(textField.text)
-        message: i18nd("mauikitfilebrowsing", "This action will overwrite %1. Are you sure you want to do this?").arg(textField.text)
+        title: i18nd("mauikitfilebrowsing", "Error")
+        message: i18nd("mauikitfilebrowsing", "A file named '%1' already exists!\n This action will overwrite '%1'. Are you sure you want to do this?", control.textField.text)
+        template.iconSource: "dialog-warning"
+        
+            standardButtons: Dialog.Ok | Dialog.Cancel
 
         onAccepted: control.done()
         onRejected: close()

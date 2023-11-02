@@ -16,15 +16,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.14
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Layouts 
 
-import org.mauikit.controls 1.2 as Maui
+import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
 
 
 /**
- * OpenWithDialog
+ * @inherit org::mauikit::control::PopupPage
  * A dialog with a list of services associated to the list of URLs.
  *
  * The services listed can open the file type of the file URLs.
@@ -33,13 +33,12 @@ import org.mauikit.filebrowsing 1.3 as FB
  *
  *
  */
-Maui.Dialog
+Maui.PopupPage
 {
     id: control
 
     /**
-      * urls : var
-      * List of file URLs to look for associated services.
+      * @brief List of file URLs to look for associated services.
       */
     property alias urls : _openWithList.urls
 
@@ -48,8 +47,6 @@ Maui.Dialog
     maxHeight: Math.min(_list.contentHeight + (page.padding * 2.5) + headBar.height + Maui.Style.space.huge, 500)
     maxWidth: 350
     persistent: false
-
-    defaultButtons: false
 
     page.title: i18nd("mauikitfilebrowsing", "Open with")
     headBar.visible: true
@@ -89,7 +86,8 @@ Maui.Dialog
     }  
 
     /**
-      *
+      * @brief
+      * @param index
       */
     function triggerService(index)
     {

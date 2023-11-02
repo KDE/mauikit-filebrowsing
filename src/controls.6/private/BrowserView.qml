@@ -2,9 +2,16 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts 
 
-import org.mauikit.controls as Maui
-import org.mauikit.filebrowsing as FB
+import org.mauikit.controls 1.3 as Maui
+import org.mauikit.filebrowsing 1.3 as FB
 
+/**
+ * @inherit org::mauikit::controls::AltBrowser
+ * @brief The browser view implementation for the FileBrowser.
+ * 
+ * @warning This control is only exposed for tweaking its properties. It can not be instanciated.
+ * 
+ */
 Maui.AltBrowser
 {
     id: control
@@ -17,11 +24,16 @@ Maui.AltBrowser
     
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.cellWidth
-    //     gridView.cacheBuffer: control.height * 10
-    
+
+    /**
+     * @brief
+     */
     property Component delegateInjector : null
     
-    property alias dialog :_dialogLoader.item
+    /**
+     * @brief
+     */
+    readonly property alias dialog :_dialogLoader.item
     Loader
     {
         id: _dialogLoader
@@ -70,49 +82,93 @@ Maui.AltBrowser
     }
     
     /**
-     * 
+     * @brief
      */
     property alias path : _commonFMList.path
     
     /**
-     * 
+     * @brief
      */
-    
     property int gridItemSize : 140
+    
+    /**
+     * @brief
+     */
     property int listItemSize : Maui.Style.rowHeight
     
     /**
-     * 
+     * @brief
      */
-    property alias settings : _settings
+    readonly property alias settings : _settings
     
+    /**
+     * @brief
+     */
     readonly property bool loading : currentFMList.status.code === FB.PathStatus.LOADING
     
-    property alias readOnly: _commonFMList.readOnly
     /**
-     * 
+     * @brief
+     */
+    property alias readOnly: _commonFMList.readOnly
+    
+    /**
+     * @brief
      */
     readonly property alias currentFMList : _commonFMList
     
     /**
-     * 
+     * @brief
      */
     readonly property alias currentFMModel : _browserModel    
     
     /**
-     * 
+     * @brief
      */
     property alias filter : _browserModel.filter
     
+    /**
+     * @brief
+     */
     property alias filters: _browserModel.filters
     
+    /**
+     * @brief
+     */
     signal itemClicked(int index)
+    
+    /**
+     * @brief
+     */
     signal itemDoubleClicked(int index)
+    
+    /**
+     * @brief
+     */
     signal itemRightClicked(int index)
+    
+    /**
+     * @brief
+     */
     signal itemToggled(int index, bool state)
+    
+    /**
+     * @brief
+     */
     signal itemsSelected(var indexes)
+    
+    /**
+     * @brief
+     */
     signal keyPress(var event)
+    
+    /**
+     * @brief
+     */
     signal areaClicked(var mouse)
+    
+    /**
+     * @brief
+     */
     signal areaRightClicked(var mouse)
     
     Connections
@@ -199,8 +255,6 @@ Maui.AltBrowser
                     property var urls
                                        
                     readonly property bool dirExists : FB.FM.fileExists(control.path+"/"+textEntry.text)
-
-//                    acceptButton.enabled: !dirExists
                     
                     onDirExistsChanged:
                     {
@@ -315,7 +369,7 @@ Maui.AltBrowser
 
         tooltipText: model.path
 
-        checkable: control.selectionMode
+        checkable: control.selectionMode || checked
         imageSource: settings.showThumbnails && height > 32 ? model.thumbnail : ""
         checked: selectionBar ? selectionBar.contains(model.path) : false
         template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
@@ -482,7 +536,7 @@ Maui.AltBrowser
 
             isCurrentItem: parent.GridView.isCurrentItem || checked
             tooltipText: model.label
-            checkable: control.selectionMode
+            checkable: control.selectionMode || checked
             checked: (selectionBar ? selectionBar.contains(model.path) : false)
             draggable: true
             template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
@@ -598,9 +652,8 @@ Maui.AltBrowser
         }
     }
 
-
     /**
-     * 
+     * @brief
      */
     function groupBy()
     {
@@ -638,6 +691,9 @@ Maui.AltBrowser
         control.currentView.section.criteria = criteria
     }
     
+    /**
+     * @brief
+     */
     function findLastSelectedIndex(view, limit)
     {
         var res = -1;
@@ -652,6 +708,9 @@ Maui.AltBrowser
         return res;
     }
     
+    /**
+     * @brief
+     */
     function range(start, end)
     {
         const isReverse = (start > end);
@@ -665,6 +724,9 @@ Maui.AltBrowser
         return (isReverse) ? result.reverse() : result;
     }
     
+    /**
+     * @brief
+     */
     function forceActiveFocus()
     {
         control.currentView.forceActiveFocus()        

@@ -23,20 +23,76 @@ import QtQml
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import org.mauikit.controls as Maui
-import org.mauikit.filebrowsing as FB
+import org.mauikit.controls 1.3 as Maui
+import org.mauikit.filebrowsing 1.3 as FB
 
 /**
- * FileDialog
- * A file dialog to quickly open or save files.
+ * @inherit org::mauikit::controls::PopupPage 
+ * 
+ * @brief A dialog to quickly select files for opening or saving.
  *
- * This component makes use of the FileBrowser.
+ * @note This component makes use of the FileBrowser.
  *
  * The FileDialog can be in two modes, one for Opening and other for Saving files.
  *
  * The file dialog allows to have multiple or single selection,
  * and filtering content specific to a file type or arbitrary name filters.
+ * 
+ * @code
+ * Maui.Page
+    {
+        Maui.Controls.showCSD: true
+        anchors.fill: parent
+        
+        Column
+        {
+            width: 100
+            anchors.centerIn: parent            
+            
+            Button
+            {
+                text: "Open"
+                onClicked:
+                {
+                    _dialog.mode = FB.FileDialog.Modes.Open
+                    _dialog.callback = (paths) =>
+                            {
+                        console.log("Selected Paths", paths)
+                        _text.text = paths.join("\n")
+                    }
+                    _dialog.open()
+                }
+            }
+            
+            Button
+            {
+                text: "Save"
+                onClicked:
+                {
+                    _dialog.mode = FB.FileDialog.Modes.Save
+                    _dialog.callback = (paths) =>
+                            {
+                        console.log("Save to", paths)
+                        _text.text = paths.join("\n")
+                    }
+                    _dialog.open()
+                }
+            }
+            
+            Text
+            {
+                id: _text
+            }            
+        }
+    }
+    
+    FB.FileDialog
+    {
+        id: _dialog
+    }
+ * @endcode
  *
+ * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/FileDialog.qml">You can find a more complete example at this link.</a>
  */
 Maui.PopupPage
 {
@@ -52,90 +108,121 @@ Maui.PopupPage
     headBar.visible: false
 
     /**
-     * currentPath : url
-     * The current path of the directory URL.
+     * @brief The current path of the directory URL.
      * To list a directory path, or other location, use the right schemas,
      * some of them are file://, webdav://, trash:///, tags://
      */
     property alias currentPath : browser.currentPath
     
     /**
-     * browser : FileBrowser
-     * The FileBrowser used to listing.
+     * @brief The FileBrowser used to listing.
      * For more details on how it works check its documentation.
+     * @property FileBrowser FileDialog::browser
      */
-    readonly property alias browser : browser
+    readonly property alias browser : _browser
     
     /**
-     * selectionBar : SelectionBar
+     * @see FileBrowser::selectionBar
+     * This control already has a predefined SelectionBar, and can be accessed via this alias.
+     * @property MauiKit::SelectionBar FileDialog::selectionBar
      */
     readonly property alias selectionBar: _selectionBar
     
     /**
-     * singleSelection : bool
-     * If true then only one item can be selected, either for saving or for opening.
+     * @brief If true then only one item can be selected, either for saving or for opening.
+     * @property bool FileDialog::singleSelection
      */
     property alias singleSelection : _selectionBar.singleSelection
     
     /**
-     * suggestedFileName : string
-     * On save mode a text field is visible and this property is used to assign its default text value.
+     * @brief On save mode a text field is visible and this property is used to assign its default text value.
+     * By default this is set to empty string
      */
     property string suggestedFileName : ""
     
     /**
-     * settings : BrowserSettings
-     * A group of properties for controlling the sorting, listing and behaviour of the file browser.
+     * @brief A group of properties for controlling the sorting, listing and behaviour of the file browser.
      * For more details check the BrowserSettings documentation.
+     * @see FileBrowser::settings
+     * @see BrowserSettings
+     * @property BrowserSettings FileDialog::settings
      */
     readonly property alias settings : browser.settings
     
     /**
-     * searchBar : bool
-     * Show the search bar to enter a search query.
+     * @brief Show the search bar to enter a search query.
      */
     property bool searchBar : false
     onSearchBarChanged: if(!searchBar) browser.quitSearch()
     
     /**
-     * modes : var
-     * There are two modes: Save : 1, to save files with a given file name or
-     * Open : 0 to open one or multiple files.
+     * @brief The two different modes to use with this dialog.
      */
-    readonly property var modes : ({OPEN: 0, SAVE: 1})
+    enum Modes
+    {
+        Open,
+        Save
+    }
     
     /**
-     * mode : int
-     * The current mode in use. By default the Open : 0 mode is used.
+     * @brief The current mode in use. By default the Open : 0 mode is used.
+     * @see Modes
      */
-    property int mode : modes.OPEN
+    property int mode : FileDialog.Modes.Open
     
+    /**
+     * @brief
+     */
     property var callback
     
     /**
-     * textField : TextField
-     * On Save mode a text field is visible, this property gives access to it.
+     * @brief On Save mode a text field is visible, this property gives access to it.
      */
-    property alias textField: _textField
+    readonly property alias textField: _textField
     
     /**
-     * urlsSelected :
-     * Triggered once the urls have been selected.
+     * @brief Triggered once the urls have been selected.
      */
     signal urlsSelected(var urls)
     
     /**
-     * finished :
-     * The selection has been done
+     * @brief The selection has been done
      */
     signal finished(var urls)
 
+    actions:
+    [
+         Action
+                {
+                    text: i18nd("mauikitfilebrowsing", "Cancel")
+                    onTriggered: control.close()
+                },
+
+                Action
+                {
+                    text: control.mode === FileDialog.Modes.Save ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
+                    onTriggered:
+                    {
+                        console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
+                        if(textField.text.length === 0)
+                            return
+                        
+                        if(control.mode === FileDialog.Modes.Save && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
+                        {
+                            _confirmationDialog.open()
+                        }else
+                        {
+                            done()
+                        }
+                    }
+                }
+                ]
 
     page.footerColumn: [
 
         Maui.ToolBar
         {
-            visible: control.mode === modes.SAVE
+            visible: control.mode === FileDialog.Modes.Save
             width: parent.width
             position: ToolBar.Footer
 
@@ -146,40 +233,6 @@ Maui.PopupPage
                 placeholderText: i18nd("mauikitfilebrowsing", "File name...")
                 text: suggestedFileName
             }
-        },
-
-        ToolBar
-        {
-            width: parent.width
-            position: ToolBar.Footer
-
-            contentItem: RowLayout
-            {
-                spacing: Maui.Style.space.small
-                Button
-                {
-                    Layout.fillWidth: true
-                    text:  i18nd("mauikitfilebrowsing", "Cancel")
-                    onClicked: control.close()
-                }
-
-                Button
-                {
-                    Layout.fillWidth: true
-                    text: control.mode === modes.SAVE ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
-                    onClicked:
-                    {
-                        console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
-                        if(control.mode === modes.SAVE && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
-                        {
-                            _confirmationDialog.open()
-                        }else
-                        {
-                            done()
-                        }
-                    }
-                }
-            }
         }
     ]
     
@@ -187,9 +240,12 @@ Maui.PopupPage
     {
         id: _confirmationDialog
 
-        title: i18nd("mauikitfilebrowsing", "A file named %1 already exists!").arg(textField.text)
-        message: i18nd("mauikitfilebrowsing", "This action will overwrite %1. Are you sure you want to do this?").arg(textField.text)
+        title: i18nd("mauikitfilebrowsing", "Error")
+        message: i18nd("mauikitfilebrowsing", "A file named '%1' already exists!\n This action will overwrite '%1'. Are you sure you want to do this?", control.textField.text)
+        template.iconSource: "dialog-warning"
         
+            standardButtons: Dialog.Ok | Dialog.Cancel
+            
         onAccepted: control.done()
         onRejected: close()
     }
@@ -283,7 +339,7 @@ Maui.PopupPage
                     {
                         width: parent.width
                         isSection: true
-                        label: i18nd("mauikitfilebrowsing", "View type")
+                        text: i18nd("mauikitfilebrowsing", "View type")
                     }
                     
                     Action
@@ -323,7 +379,7 @@ Maui.PopupPage
                     {
                         width: parent.width
                         isSection: true
-                        label: i18nd("mauikitfilebrowsing", "Sort by")
+                        text: i18nd("mauikitfilebrowsing", "Sort by")
                     }
                     
                     Action
@@ -466,14 +522,14 @@ Maui.PopupPage
 
             FB.FileBrowser
             {
-                id: browser
+                id: _browser
                 anchors.fill: parent
 
                 selectionBar: _selectionBar
                 settings.viewType: FB.FMList.LIST_VIEW
                 currentPath: FB.FM.homePath()
-                selectionMode: control.mode === modes.OPEN
-                onItemClicked:
+                selectionMode: control.mode === FileDialog.Modes.Open
+                onItemClicked: (index) =>
                 {
                     if(Qt.styleHints.singleClickActivation)
                     {
@@ -481,7 +537,7 @@ Maui.PopupPage
                     }
                 }
 
-                onItemDoubleClicked:
+                onItemDoubleClicked: (index) =>
                 {
                     if(!Qt.styleHints.singleClickActivation)
                     {
@@ -498,11 +554,11 @@ Maui.PopupPage
 
                     switch(control.mode)
                     {
-                    case modes.OPEN :
+                    case FileDialog.Modes.Open :
                         addToSelection(currentFMModel.get(index))
                         break;
 
-                    case modes.SAVE:
+                    case FileDialog.Modes.Save:
                         textField.text = currentFMModel.get(index).label
                         break;
                     }
@@ -528,7 +584,7 @@ Maui.PopupPage
     {
         var paths = browser.selectionBar && browser.selectionBar.visible ? browser.selectionBar.uris : [browser.currentPath]
         
-        if(control.mode === modes.SAVE)
+        if(control.mode === FileDialog.Modes.Save)
         {
             for(var i in paths)
             {

@@ -66,8 +66,7 @@ Maui.ListBrowser
     section.delegate: Maui.LabelDelegate
     {
         id: delegate
-        label: section
-        labelTxt.font.pointSize: Maui.Style.fontSizes.big
+        text: section
 
         isSection: true
         width: parent.width
