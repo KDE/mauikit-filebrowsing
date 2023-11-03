@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 00:41+0000\n"
+"POT-Creation-Date: 2023-11-03 00:41+0000\n"
 "PO-Revision-Date: 2023-08-25 23:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -28,6 +28,7 @@ msgid "This place seems to be empty"
 msgstr "여기는 비어 있는 것 같습니다"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
+#: src/controls.5/FileDialog.qml:185 src/controls.6/FileDialog.qml:243
 #, kde-format
 msgid "Error"
 msgstr "오류"
@@ -88,7 +89,7 @@ msgid "Unknown"
 msgstr "알 수 없음"
 
 #: src/code/fmstatic.cpp:40 src/controls.5/FileBrowser.qml:369
-#: src/controls.6/FileBrowser.qml:369
+#: src/controls.6/FileBrowser.qml:495
 #, kde-format
 msgid "Trash"
 msgstr "휴지통"
@@ -292,37 +293,37 @@ msgid ""
 "connection."
 msgstr "원격 서버나 인터넷 연결에서 알 수 없는 오류가 발생했습니다."
 
-#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
+#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:355
 #, kde-format
 msgid "Back"
 msgstr "뒤로"
 
-#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:242
+#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:452
 #, kde-format
 msgid "Quit"
 msgstr "끝내기"
 
-#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:243
+#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:453
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
 msgstr "현재 진행 중인 검색을 종료하시겠습니까?"
 
-#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:260
+#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:368
 #, kde-format
 msgid "Filter"
 msgstr "필터"
 
-#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:329
+#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:437
 #, kde-format
 msgid "Empty Trash"
 msgstr "휴지통 비우기"
 
-#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:348
+#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:474
 #, kde-format
 msgid "Removing %1 files"
 msgstr "파일 %1개 삭제 중"
 
-#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:349
+#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:475
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -333,56 +334,56 @@ msgstr ""
 
 #: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
 #: src/controls.5/FileDialog.qml:138 src/controls.5/private/BrowserView.qml:283
-#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:354
-#: src/controls.6/FileBrowser.qml:778 src/controls.6/FileDialog.qml:162
-#: src/controls.6/private/BrowserView.qml:283 src/controls.6/TagsDialog.qml:51
+#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:480
+#: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:197
+#: src/controls.6/private/BrowserView.qml:338 src/controls.6/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "취소"
 
 #: src/controls.5/FileBrowser.qml:360 src/controls.5/TagsDialog.qml:121
-#: src/controls.6/FileBrowser.qml:360 src/controls.6/TagsDialog.qml:114
+#: src/controls.6/FileBrowser.qml:486 src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "삭제"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:400
+#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "New folder"
 msgstr "새 폴더"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:400
+#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "New file"
 msgstr "새 파일"
 
-#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:401
+#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:527
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr "지정한 이름으로 새 폴더나 파일을 만듭니다."
 
-#: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:371
-#: src/controls.6/FileBrowser.qml:420 src/controls.6/FileDialog.qml:379
+#: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:377
+#: src/controls.6/FileBrowser.qml:546 src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Name"
 msgstr "이름"
 
-#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:433
+#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:559
 #, kde-format
 msgid "Folder"
 msgstr "폴더"
 
-#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:441
+#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:567
 #, kde-format
 msgid "File"
 msgstr "파일"
 
-#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:458
+#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid "Rename"
 msgstr "이름 바꾸기"
 
-#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:459
+#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:585
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -391,133 +392,131 @@ msgstr ""
 "파일이나 폴더의 이름을 변경합니다. 새 이름을 입력하고 이름 바꾸기를 클릭하면 "
 "변경 사항이 적용됩니다."
 
-#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:468
+#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:594
 #, kde-format
 msgid "New name"
 msgstr "새 이름"
 
 #: src/controls.5/FileBrowser.qml:729
 #: src/controls.5/private/BrowserView.qml:245
-#: src/controls.6/FileBrowser.qml:727
-#: src/controls.6/private/BrowserView.qml:245
+#: src/controls.6/FileBrowser.qml:850
+#: src/controls.6/private/BrowserView.qml:300
 #, kde-format
 msgid "Copy here"
 msgstr "여기로 복사"
 
 #: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
-#: src/controls.6/FileBrowser.qml:739
-#: src/controls.6/private/BrowserView.qml:257
+#: src/controls.6/FileBrowser.qml:862
+#: src/controls.6/private/BrowserView.qml:312
 #, kde-format
 msgid "Move here"
 msgstr "여기로 이동"
 
 #: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
-#: src/controls.6/FileBrowser.qml:752
-#: src/controls.6/private/BrowserView.qml:269
+#: src/controls.6/FileBrowser.qml:875
+#: src/controls.6/private/BrowserView.qml:324
 #, kde-format
 msgid "Link here"
 msgstr "여기로 링크"
 
-#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:765
+#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
 #, kde-format
 msgid "Open here"
 msgstr "여기에 열기"
 
-#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1134
+#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
 #, kde-format
 msgid "Search: %1"
 msgstr "검색: %1"
 
 #: src/controls.5/FileDialog.qml:145 src/controls.5/TagsDialog.qml:53
-#: src/controls.6/FileDialog.qml:169 src/controls.6/TagsDialog.qml:50
+#: src/controls.6/FileDialog.qml:203 src/controls.6/TagsDialog.qml:50
 #, kde-format
 msgid "Save"
 msgstr "저장"
 
-#: src/controls.5/FileDialog.qml:145 src/controls.6/FileDialog.qml:169
+#: src/controls.5/FileDialog.qml:145 src/controls.6/FileDialog.qml:203
 #, kde-format
 msgid "Open"
 msgstr "열기"
 
-#: src/controls.5/FileDialog.qml:172 src/controls.6/FileDialog.qml:146
+#: src/controls.5/FileDialog.qml:175 src/controls.6/FileDialog.qml:233
 #, kde-format
 msgid "File name..."
 msgstr "파일 이름..."
 
-#: src/controls.5/FileDialog.qml:182 src/controls.6/FileDialog.qml:190
-#, kde-format
-msgid "A file named %1 already exists!"
-msgstr "이름이 %1인 파일이 이미 존재합니다!"
-
-#: src/controls.5/FileDialog.qml:183 src/controls.6/FileDialog.qml:191
-#, kde-format
-msgid "This action will overwrite %1. Are you sure you want to do this?"
+#: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:244
+#, fuzzy, kde-format
+#| msgid "This action will overwrite %1. Are you sure you want to do this?"
+msgid ""
+"A file named '%1' already exists!\n"
+" This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr "이 동작은 %1을(를) 덮어씁니다. 계속 진행하시겠습니까?"
 
-#: src/controls.5/FileDialog.qml:238 src/controls.6/FileDialog.qml:246
+#: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:302
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "사이드바 전환"
 
-#: src/controls.5/FileDialog.qml:278 src/controls.6/FileDialog.qml:286
+#: src/controls.5/FileDialog.qml:284 src/controls.6/FileDialog.qml:342
 #, kde-format
 msgid "View type"
 msgstr "보기 형식"
 
-#: src/controls.5/FileDialog.qml:283 src/controls.6/FileDialog.qml:291
+#: src/controls.5/FileDialog.qml:289 src/controls.6/FileDialog.qml:347
 #, kde-format
 msgid "List"
 msgstr "목록"
 
-#: src/controls.5/FileDialog.qml:298 src/controls.6/FileDialog.qml:306
+#: src/controls.5/FileDialog.qml:304 src/controls.6/FileDialog.qml:362
 #, kde-format
 msgid "Grid"
 msgstr "격자"
 
-#: src/controls.5/FileDialog.qml:318 src/controls.6/FileDialog.qml:326
+#: src/controls.5/FileDialog.qml:324 src/controls.6/FileDialog.qml:382
 #, kde-format
 msgid "Sort by"
 msgstr "정렬 순서"
 
-#: src/controls.5/FileDialog.qml:323 src/controls.6/FileDialog.qml:331
+#: src/controls.5/FileDialog.qml:329 src/controls.6/FileDialog.qml:387
 #, kde-format
 msgid "Type"
 msgstr "종류"
 
-#: src/controls.5/FileDialog.qml:335 src/controls.6/FileDialog.qml:343
+#: src/controls.5/FileDialog.qml:341 src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Date"
 msgstr "날짜"
 
-#: src/controls.5/FileDialog.qml:347 src/controls.6/FileDialog.qml:355
+#: src/controls.5/FileDialog.qml:353 src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Modified"
 msgstr "수정됨"
 
-#: src/controls.5/FileDialog.qml:359 src/controls.6/FileDialog.qml:367
+#: src/controls.5/FileDialog.qml:365 src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Size"
 msgstr "크기"
 
-#: src/controls.5/FileDialog.qml:385 src/controls.6/FileDialog.qml:393
+#: src/controls.5/FileDialog.qml:391 src/controls.6/FileDialog.qml:449
 #, kde-format
 msgid "Show Folders First"
 msgstr "폴더 먼저 표시"
 
-#: src/controls.5/FileDialog.qml:398 src/controls.6/FileDialog.qml:406
+#: src/controls.5/FileDialog.qml:404 src/controls.6/FileDialog.qml:462
 #, kde-format
 msgid "Group"
 msgstr "그룹"
 
-#: src/controls.5/NewTagDialog.qml:25 src/controls.5/NewTagDialog.qml:45
-#: src/controls.6/NewTagDialog.qml:25 src/controls.6/NewTagDialog.qml:45
+#: src/controls.5/NewTagDialog.qml:25 src/controls.5/NewTagDialog.qml:36
+#: src/controls.6/NewTagDialog.qml:32 src/controls.6/NewTagDialog.qml:35
 #, kde-format
 msgid "New tags"
 msgstr "새 태그"
 
-#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:26
+#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:33
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
@@ -526,69 +525,69 @@ msgstr ""
 "새 태그를 만들어서 파일을 정리할 수 있습니다. 쉼표로 구분하여 여러 태그를 입"
 "력할 수 있습니다."
 
-#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:54
+#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:51
 #, kde-format
 msgid "Open with"
 msgstr "다음으로 열기"
 
 #: src/controls.5/PlacesListBrowser.qml:84 src/controls.5/TagsDialog.qml:115
-#: src/controls.6/PlacesListBrowser.qml:84 src/controls.6/TagsDialog.qml:108
+#: src/controls.6/PlacesListBrowser.qml:83 src/controls.6/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
 msgstr "편집"
 
 #: src/controls.5/PlacesListBrowser.qml:89
-#: src/controls.6/PlacesListBrowser.qml:89
+#: src/controls.6/PlacesListBrowser.qml:88
 #, kde-format
 msgid "Hide"
 msgstr "숨기기"
 
 #: src/controls.5/PlacesListBrowser.qml:94
-#: src/controls.6/PlacesListBrowser.qml:94
+#: src/controls.6/PlacesListBrowser.qml:93
 #, kde-format
 msgid "Remove"
 msgstr "삭제"
 
 #: src/controls.5/private/BrowserView.qml:210
-#: src/controls.6/private/BrowserView.qml:210
+#: src/controls.6/private/BrowserView.qml:265
 #, kde-format
 msgid "Directory already exists."
 msgstr "디렉터리가 이미 존재합니다."
 
 #: src/controls.5/private/BrowserView.qml:213
-#: src/controls.6/private/BrowserView.qml:213
+#: src/controls.6/private/BrowserView.qml:268
 #, kde-format
 msgid "Looks good."
 msgstr "좋습니다."
 
 #: src/controls.5/private/BrowserView.qml:217
-#: src/controls.6/private/BrowserView.qml:217
+#: src/controls.6/private/BrowserView.qml:272
 #, kde-format
 msgid "Merge %1 files"
 msgstr "파일 %1개 합치기"
 
 #: src/controls.5/private/BrowserView.qml:218
-#: src/controls.6/private/BrowserView.qml:218
+#: src/controls.6/private/BrowserView.qml:273
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "모든 파일을 합칠 디렉터리 이름을 입력하십시오."
 
 #: src/controls.5/private/BrowserView.qml:220
-#: src/controls.6/private/BrowserView.qml:220
+#: src/controls.6/private/BrowserView.qml:275
 #, kde-format
 msgid "Directory name"
 msgstr "디렉터리 이름"
 
 #: src/controls.5/private/BrowserView.qml:230
-#: src/controls.6/private/BrowserView.qml:230
+#: src/controls.6/private/BrowserView.qml:285
 #, kde-format
 msgid "Merge here"
 msgstr "여기에 병합"
 
 #: src/controls.5/private/BrowserView.qml:309
 #: src/controls.5/private/BrowserView.qml:480
-#: src/controls.6/private/BrowserView.qml:309
-#: src/controls.6/private/BrowserView.qml:480
+#: src/controls.6/private/BrowserView.qml:364
+#: src/controls.6/private/BrowserView.qml:535
 #, kde-format
 msgid " items"
 msgstr "개 항목"
@@ -638,6 +637,9 @@ msgstr "선택한 파일에 새 태그를 추가합니다."
 #, kde-format
 msgid "No tags yet."
 msgstr "태그가 없습니다."
+
+#~ msgid "A file named %1 already exists!"
+#~ msgstr "이름이 %1인 파일이 이미 존재합니다!"
 
 #~ msgid "Create"
 #~ msgstr "만들기"

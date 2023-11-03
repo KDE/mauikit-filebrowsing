@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-01 00:41+0000\n"
+"POT-Creation-Date: 2023-11-03 00:41+0000\n"
 "PO-Revision-Date: 2023-04-25 21:19+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -30,6 +30,7 @@ msgid "This place seems to be empty"
 msgstr ""
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
+#: src/controls.5/FileDialog.qml:185 src/controls.6/FileDialog.qml:243
 #, kde-format
 msgid "Error"
 msgstr ""
@@ -90,7 +91,7 @@ msgid "Unknown"
 msgstr "Desconhecido"
 
 #: src/code/fmstatic.cpp:40 src/controls.5/FileBrowser.qml:369
-#: src/controls.6/FileBrowser.qml:369
+#: src/controls.6/FileBrowser.qml:495
 #, kde-format
 msgid "Trash"
 msgstr "Lixo"
@@ -274,37 +275,37 @@ msgid ""
 "connection."
 msgstr ""
 
-#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:233
+#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:355
 #, kde-format
 msgid "Back"
 msgstr "Recuar"
 
-#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:242
+#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:452
 #, kde-format
 msgid "Quit"
 msgstr "Sair"
 
-#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:243
+#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:453
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
 msgstr "Tem a certeza que deseja sair da pesquisa actualmente em curso?"
 
-#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:260
+#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:368
 #, kde-format
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:329
+#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:437
 #, kde-format
 msgid "Empty Trash"
 msgstr "Esvaziar o Lixo"
 
-#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:348
+#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:474
 #, kde-format
 msgid "Removing %1 files"
 msgstr "A remover os %1 ficheiros"
 
-#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:349
+#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:475
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -315,56 +316,56 @@ msgstr ""
 
 #: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
 #: src/controls.5/FileDialog.qml:138 src/controls.5/private/BrowserView.qml:283
-#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:354
-#: src/controls.6/FileBrowser.qml:778 src/controls.6/FileDialog.qml:162
-#: src/controls.6/private/BrowserView.qml:283 src/controls.6/TagsDialog.qml:51
+#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:480
+#: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:197
+#: src/controls.6/private/BrowserView.qml:338 src/controls.6/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/controls.5/FileBrowser.qml:360 src/controls.5/TagsDialog.qml:121
-#: src/controls.6/FileBrowser.qml:360 src/controls.6/TagsDialog.qml:114
+#: src/controls.6/FileBrowser.qml:486 src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Apagar"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:400
+#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "New folder"
 msgstr "Nova pasta"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:400
+#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "New file"
 msgstr "Novo ficheiro"
 
-#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:401
+#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:527
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr "Cria uma nova pasta ou ficheiro com um nome personalizado."
 
-#: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:371
-#: src/controls.6/FileBrowser.qml:420 src/controls.6/FileDialog.qml:379
+#: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:377
+#: src/controls.6/FileBrowser.qml:546 src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Name"
 msgstr "Nome"
 
-#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:433
+#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:559
 #, kde-format
 msgid "Folder"
 msgstr "Pasta"
 
-#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:441
+#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:567
 #, kde-format
 msgid "File"
 msgstr "Ficheiro"
 
-#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:458
+#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid "Rename"
 msgstr "Mudar o Nome"
 
-#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:459
+#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:585
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -373,133 +374,131 @@ msgstr ""
 "Muda o nome de um ficheiro ou pasta. Escreva um novo nome e carregue em "
 "Mudar o Nome para aplicar a alteração."
 
-#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:468
+#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:594
 #, kde-format
 msgid "New name"
 msgstr "Novo nome"
 
 #: src/controls.5/FileBrowser.qml:729
 #: src/controls.5/private/BrowserView.qml:245
-#: src/controls.6/FileBrowser.qml:727
-#: src/controls.6/private/BrowserView.qml:245
+#: src/controls.6/FileBrowser.qml:850
+#: src/controls.6/private/BrowserView.qml:300
 #, kde-format
 msgid "Copy here"
 msgstr "Copiar para aqui"
 
 #: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
-#: src/controls.6/FileBrowser.qml:739
-#: src/controls.6/private/BrowserView.qml:257
+#: src/controls.6/FileBrowser.qml:862
+#: src/controls.6/private/BrowserView.qml:312
 #, kde-format
 msgid "Move here"
 msgstr "Mover para aqui"
 
 #: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
-#: src/controls.6/FileBrowser.qml:752
-#: src/controls.6/private/BrowserView.qml:269
+#: src/controls.6/FileBrowser.qml:875
+#: src/controls.6/private/BrowserView.qml:324
 #, kde-format
 msgid "Link here"
 msgstr "Criar uma ligação aqui"
 
-#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:765
+#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
 #, kde-format
 msgid "Open here"
 msgstr "Abrir aqui"
 
-#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1134
+#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
 #, kde-format
 msgid "Search: %1"
 msgstr "Procurar: %1"
 
 #: src/controls.5/FileDialog.qml:145 src/controls.5/TagsDialog.qml:53
-#: src/controls.6/FileDialog.qml:169 src/controls.6/TagsDialog.qml:50
+#: src/controls.6/FileDialog.qml:203 src/controls.6/TagsDialog.qml:50
 #, kde-format
 msgid "Save"
 msgstr "Gravar"
 
-#: src/controls.5/FileDialog.qml:145 src/controls.6/FileDialog.qml:169
+#: src/controls.5/FileDialog.qml:145 src/controls.6/FileDialog.qml:203
 #, kde-format
 msgid "Open"
 msgstr "Abrir"
 
-#: src/controls.5/FileDialog.qml:172 src/controls.6/FileDialog.qml:146
+#: src/controls.5/FileDialog.qml:175 src/controls.6/FileDialog.qml:233
 #, kde-format
 msgid "File name..."
 msgstr "Nome do ficheiro..."
 
-#: src/controls.5/FileDialog.qml:182 src/controls.6/FileDialog.qml:190
-#, kde-format
-msgid "A file named %1 already exists!"
-msgstr "Já existe um ficheiro chamado %1!"
-
-#: src/controls.5/FileDialog.qml:183 src/controls.6/FileDialog.qml:191
-#, kde-format
-msgid "This action will overwrite %1. Are you sure you want to do this?"
+#: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:244
+#, fuzzy, kde-format
+#| msgid "This action will overwrite %1. Are you sure you want to do this?"
+msgid ""
+"A file named '%1' already exists!\n"
+" This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr "Esta acção irá substituir o %1. Tem a certeza que deseja fazer isto?"
 
-#: src/controls.5/FileDialog.qml:238 src/controls.6/FileDialog.qml:246
+#: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:302
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Comutar a Barra Lateral"
 
-#: src/controls.5/FileDialog.qml:278 src/controls.6/FileDialog.qml:286
+#: src/controls.5/FileDialog.qml:284 src/controls.6/FileDialog.qml:342
 #, kde-format
 msgid "View type"
 msgstr "Tipo de visualização"
 
-#: src/controls.5/FileDialog.qml:283 src/controls.6/FileDialog.qml:291
+#: src/controls.5/FileDialog.qml:289 src/controls.6/FileDialog.qml:347
 #, kde-format
 msgid "List"
 msgstr "Lista"
 
-#: src/controls.5/FileDialog.qml:298 src/controls.6/FileDialog.qml:306
+#: src/controls.5/FileDialog.qml:304 src/controls.6/FileDialog.qml:362
 #, kde-format
 msgid "Grid"
 msgstr "Grelha"
 
-#: src/controls.5/FileDialog.qml:318 src/controls.6/FileDialog.qml:326
+#: src/controls.5/FileDialog.qml:324 src/controls.6/FileDialog.qml:382
 #, kde-format
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: src/controls.5/FileDialog.qml:323 src/controls.6/FileDialog.qml:331
+#: src/controls.5/FileDialog.qml:329 src/controls.6/FileDialog.qml:387
 #, kde-format
 msgid "Type"
 msgstr "Tipo"
 
-#: src/controls.5/FileDialog.qml:335 src/controls.6/FileDialog.qml:343
+#: src/controls.5/FileDialog.qml:341 src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Date"
 msgstr "Data"
 
-#: src/controls.5/FileDialog.qml:347 src/controls.6/FileDialog.qml:355
+#: src/controls.5/FileDialog.qml:353 src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Modified"
 msgstr "Modificado"
 
-#: src/controls.5/FileDialog.qml:359 src/controls.6/FileDialog.qml:367
+#: src/controls.5/FileDialog.qml:365 src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Size"
 msgstr "Tamanho"
 
-#: src/controls.5/FileDialog.qml:385 src/controls.6/FileDialog.qml:393
+#: src/controls.5/FileDialog.qml:391 src/controls.6/FileDialog.qml:449
 #, kde-format
 msgid "Show Folders First"
 msgstr "Mostrar as Pastas Primeiro"
 
-#: src/controls.5/FileDialog.qml:398 src/controls.6/FileDialog.qml:406
+#: src/controls.5/FileDialog.qml:404 src/controls.6/FileDialog.qml:462
 #, kde-format
 msgid "Group"
 msgstr "Grupo"
 
-#: src/controls.5/NewTagDialog.qml:25 src/controls.5/NewTagDialog.qml:45
-#: src/controls.6/NewTagDialog.qml:25 src/controls.6/NewTagDialog.qml:45
+#: src/controls.5/NewTagDialog.qml:25 src/controls.5/NewTagDialog.qml:36
+#: src/controls.6/NewTagDialog.qml:32 src/controls.6/NewTagDialog.qml:35
 #, kde-format
 msgid "New tags"
 msgstr "Novas marcas"
 
-#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:26
+#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:33
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
@@ -508,69 +507,69 @@ msgstr ""
 "Cria novas marcas para organizar os seus ficheiros. Poderá criar várias "
 "marcas separadas por vírgulas."
 
-#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:54
+#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:51
 #, kde-format
 msgid "Open with"
 msgstr "Abrir com"
 
 #: src/controls.5/PlacesListBrowser.qml:84 src/controls.5/TagsDialog.qml:115
-#: src/controls.6/PlacesListBrowser.qml:84 src/controls.6/TagsDialog.qml:108
+#: src/controls.6/PlacesListBrowser.qml:83 src/controls.6/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
 msgstr "Editar"
 
 #: src/controls.5/PlacesListBrowser.qml:89
-#: src/controls.6/PlacesListBrowser.qml:89
+#: src/controls.6/PlacesListBrowser.qml:88
 #, kde-format
 msgid "Hide"
 msgstr "Esconder"
 
 #: src/controls.5/PlacesListBrowser.qml:94
-#: src/controls.6/PlacesListBrowser.qml:94
+#: src/controls.6/PlacesListBrowser.qml:93
 #, kde-format
 msgid "Remove"
 msgstr "Remover"
 
 #: src/controls.5/private/BrowserView.qml:210
-#: src/controls.6/private/BrowserView.qml:210
+#: src/controls.6/private/BrowserView.qml:265
 #, kde-format
 msgid "Directory already exists."
 msgstr "A pasta já existe."
 
 #: src/controls.5/private/BrowserView.qml:213
-#: src/controls.6/private/BrowserView.qml:213
+#: src/controls.6/private/BrowserView.qml:268
 #, kde-format
 msgid "Looks good."
 msgstr "Parece estar bem."
 
 #: src/controls.5/private/BrowserView.qml:217
-#: src/controls.6/private/BrowserView.qml:217
+#: src/controls.6/private/BrowserView.qml:272
 #, kde-format
 msgid "Merge %1 files"
 msgstr "Reunir os %1 ficheiros"
 
 #: src/controls.5/private/BrowserView.qml:218
-#: src/controls.6/private/BrowserView.qml:218
+#: src/controls.6/private/BrowserView.qml:273
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "Atribui um nome à pasta nova onde serão reunidos todos os ficheiros."
 
 #: src/controls.5/private/BrowserView.qml:220
-#: src/controls.6/private/BrowserView.qml:220
+#: src/controls.6/private/BrowserView.qml:275
 #, kde-format
 msgid "Directory name"
 msgstr "Nome da pasta"
 
 #: src/controls.5/private/BrowserView.qml:230
-#: src/controls.6/private/BrowserView.qml:230
+#: src/controls.6/private/BrowserView.qml:285
 #, kde-format
 msgid "Merge here"
 msgstr "Reunir aqui"
 
 #: src/controls.5/private/BrowserView.qml:309
 #: src/controls.5/private/BrowserView.qml:480
-#: src/controls.6/private/BrowserView.qml:309
-#: src/controls.6/private/BrowserView.qml:480
+#: src/controls.6/private/BrowserView.qml:364
+#: src/controls.6/private/BrowserView.qml:535
 #, kde-format
 msgid " items"
 msgstr " itens"
@@ -621,6 +620,9 @@ msgstr "Adiciona marcas novas para os ficheiros seleccionados."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ainda sem marcas."
+
+#~ msgid "A file named %1 already exists!"
+#~ msgstr "Já existe um ficheiro chamado %1!"
 
 #~ msgid "Create"
 #~ msgstr "Criar"
