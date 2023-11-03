@@ -17,57 +17,78 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQml 2.1
+import QtQml
 import org.mauikit.filebrowsing 1.0 as FB
 
+/**
+ * @inherit QtQml.QtObject
+ * @brief A group of properties to tweak the browser in the FileBrowser component.
+ * 
+ * @warning This control is private and only exposed as part of the FileBrowser implementation. Can not be instantiated.
+ */
 QtObject
 {
-    /**
-      *
-      */
-    property var filters : []
-
-    /**
-      *
-      */
-    property int filterType : FB.FMList.NONE
-
-    /**
-      *
-      */
-    property bool onlyDirs : false
-
-    /**
-      *
-      */
-    property int sortBy : FB.FMList.LABEL
-
-    /**
-      *
-      */
-    property bool showThumbnails: true
-
-    /**
-      *
-      */
-    property bool showHiddenFiles: false
-
-    /**
-      *
-      */
-    property bool group : false
-
-    /**
-      *
-      */
-    property int viewType : 0
-
-    /**
-      *
-      */
-    property bool foldersFirst: true
-    
-    
-    property bool searchBarVisible : false    
+  /**
+   * @brief A list of string text to filter the current location entries.
+   */
+  property var filters : []
+  
+  /**
+   * @brief Filter the content by mime type. 
+   * By default this is set to `FMList.NONE`, so there is not any type of mimetype filtering
+   * @see FMList::FILTER
+   */
+  property int filterType : FB.FMList.NONE
+  
+  /**
+   * @brief Whether only directories should be listed.
+   * By default this is set to `false`
+   */
+  property bool onlyDirs : false
+  
+  /**
+   * @brief The sorting field.
+   * By default this is set to `FMList.LABEL`, which will sort the entries alphabetically by their file names. 
+   * @see FMList::SORTBY
+   */
+  property int sortBy : FB.FMList.LABEL
+  
+  /**
+   * @brief Whether to show the thumbnail previews of images, videos, text files, and other supported types.
+   * By default this is set to `true`
+   */
+  property bool showThumbnails: true
+  
+  /**
+   * @brief Whether to show the hidden file entries.
+   * By default this is set to `false`
+   */
+  property bool showHiddenFiles: false
+  
+  /**
+   * @brief Whether to group the entries by the sort type
+   * @see sortBy
+   * By default this is set to `false`. Grouping the entries will make thew view go to the list view type.
+   */
+  property bool group : false
+  
+  /**
+   * @brief The preferred view type, Can be a list or a grid.
+   * By default this is set to `FMList.ICON_VIEW`
+   * @see FMList::VIEW_TYPE
+   */
+  property int viewType : 0
+  
+  /**
+   * @brief Whether the folders should be sorted first and then the files.
+   * By default this is set to `true`
+   */
+  property bool foldersFirst: true
+  
+  /**
+   * @brief Whether the search bar should be visible
+   * By default this is set to `false`
+   */
+  property bool searchBarVisible : false    
 }
 

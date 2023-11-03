@@ -13,7 +13,7 @@
 @subsection overview Introduction
 MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing. The visiual controls integrate well with the MauiKit controls and the Maui HIG.
 
-@image html index_app.jpg "App using the FileBrowsing controls"
+@image html index_app.png "App using the FileBrowsing controls"
 
 @subsection tutorial Tutorial
 Using the components is simple.

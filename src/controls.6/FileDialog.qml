@@ -30,6 +30,9 @@ import org.mauikit.filebrowsing 1.3 as FB
  * @inherit org::mauikit::controls::PopupPage 
  * 
  * @brief A dialog to quickly select files for opening or saving.
+ * 
+ * This controls inherits from MauiKit PopupPage, to checkout its inherited properties refer to the docs.
+ * @see MauiKit::PopupPage
  *
  * @note This component makes use of the FileBrowser.
  *
@@ -38,58 +41,60 @@ import org.mauikit.filebrowsing 1.3 as FB
  * The file dialog allows to have multiple or single selection,
  * and filtering content specific to a file type or arbitrary name filters.
  * 
+ * @image html filedialog.png
+ * 
  * @code
  * Maui.Page
-    {
-        Maui.Controls.showCSD: true
-        anchors.fill: parent
-        
-        Column
-        {
-            width: 100
-            anchors.centerIn: parent            
-            
-            Button
-            {
-                text: "Open"
-                onClicked:
-                {
-                    _dialog.mode = FB.FileDialog.Modes.Open
-                    _dialog.callback = (paths) =>
-                            {
-                        console.log("Selected Paths", paths)
-                        _text.text = paths.join("\n")
-                    }
-                    _dialog.open()
-                }
-            }
-            
-            Button
-            {
-                text: "Save"
-                onClicked:
-                {
-                    _dialog.mode = FB.FileDialog.Modes.Save
-                    _dialog.callback = (paths) =>
-                            {
-                        console.log("Save to", paths)
-                        _text.text = paths.join("\n")
-                    }
-                    _dialog.open()
-                }
-            }
-            
-            Text
-            {
-                id: _text
-            }            
-        }
-    }
-    
-    FB.FileDialog
-    {
-        id: _dialog
-    }
+ *    {
+ *        Maui.Controls.showCSD: true
+ *        anchors.fill: parent
+ *        
+ *        Column
+ *        {
+ *            width: 100
+ *            anchors.centerIn: parent            
+ *            
+ *            Button
+ *            {
+ *                text: "Open"
+ *                onClicked:
+ *                {
+ *                    _dialog.mode = FB.FileDialog.Modes.Open
+ *                    _dialog.callback = (paths) =>
+ *                            {
+ *                        console.log("Selected Paths", paths)
+ *                        _text.text = paths.join("\n")
+ *                    }
+ *                    _dialog.open()
+ *                }
+ *            }
+ *            
+ *            Button
+ *            {
+ *                text: "Save"
+ *                onClicked:
+ *                {
+ *                    _dialog.mode = FB.FileDialog.Modes.Save
+ *                    _dialog.callback = (paths) =>
+ *                            {
+ *                        console.log("Save to", paths)
+ *                        _text.text = paths.join("\n")
+ *                    }
+ *                    _dialog.open()
+ *                }
+ *            }
+ *            
+ *            Text
+ *            {
+ *                id: _text
+ *            }            
+ *        }
+ *    }
+ *    
+ *    FB.FileDialog
+ *    {
+ *        id: _dialog
+ *    }
  * @endcode
  *
  * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/FileDialog.qml">You can find a more complete example at this link.</a>
@@ -106,16 +111,15 @@ Maui.PopupPage
     page.padding: 0
     closeButtonVisible: false
     headBar.visible: false
-
-    /**
-     * @brief The current path of the directory URL.
-     * To list a directory path, or other location, use the right schemas,
-     * some of them are file://, webdav://, trash:///, tags://
-     */
-    property alias currentPath : browser.currentPath
     
     /**
-     * @brief The FileBrowser used to listing.
+     * @brief The current path of the directory URL.
+     * @see FileBrowser::currentPath
+     */
+    property alias currentPath : _browser.currentPath
+    
+    /**
+     * @brief The FileBrowser used for listing.
      * For more details on how it works check its documentation.
      * @property FileBrowser FileDialog::browser
      */
@@ -147,31 +151,42 @@ Maui.PopupPage
      * @see BrowserSettings
      * @property BrowserSettings FileDialog::settings
      */
-    readonly property alias settings : browser.settings
+    readonly property alias settings : _browser.settings
     
     /**
      * @brief Show the search bar to enter a search query.
      */
     property bool searchBar : false
-    onSearchBarChanged: if(!searchBar) browser.quitSearch()
+    onSearchBarChanged: if(!searchBar) _browser.quitSearch()
     
     /**
      * @brief The two different modes to use with this dialog.
      */
     enum Modes
     {
+        /**
+         * To use this dialog for selecting one or multiple entries for opening.
+         */
         Open,
+        
+        /**
+         * To use this dialog to select a single directory where to save a file entry with a given name.
+         */
         Save
     }
     
     /**
-     * @brief The current mode in use. By default the Open : 0 mode is used.
+     * @brief The current mode in use. 
+     * By default this is set to `FileDialog.Modes.Open`
      * @see Modes
      */
     property int mode : FileDialog.Modes.Open
     
     /**
-     * @brief
+     * @brief A callback function that will be invoked once the user is done selecting the files.
+     * This is useful when the file dialog is going to be used for multiple purposes.
+     * Otherwise you might want to use the `urlsSelected` signal.
+     * @see urlsSelected
      */
     property var callback
     
@@ -181,51 +196,53 @@ Maui.PopupPage
     readonly property alias textField: _textField
     
     /**
-     * @brief Triggered once the urls have been selected.
+     * @brief Emitted once the URLs have been selected.
+     * @param urls the selected list of URLs
      */
     signal urlsSelected(var urls)
     
     /**
-     * @brief The selection has been done
+     * @brief Emitted once the selection has been done.
+     * @param urls the selected list of URLs
      */
     signal finished(var urls)
-
+    
     actions:
     [
-         Action
-                {
-                    text: i18nd("mauikitfilebrowsing", "Cancel")
-                    onTriggered: control.close()
-                },
-
-                Action
-                {
-                    text: control.mode === FileDialog.Modes.Save ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
-                    onTriggered:
+        Action
+        {
+            text: i18nd("mauikitfilebrowsing", "Cancel")
+            onTriggered: control.close()
+        },
+        
+        Action
+        {
+            text: control.mode === FileDialog.Modes.Save ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
+            onTriggered:
+            {
+                console.log("CURRENT PATHb", _browser.currentPath+"/"+textField.text)
+                if(textField.text.length === 0)
+                    return
+                    
+                    if(control.mode === FileDialog.Modes.Save && FB.FM.fileExists(_browser.currentPath+"/"+textField.text))
                     {
-                        console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
-                        if(textField.text.length === 0)
-                            return
-                        
-                        if(control.mode === FileDialog.Modes.Save && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
-                        {
-                            _confirmationDialog.open()
-                        }else
-                        {
-                            done()
-                        }
+                        _confirmationDialog.open()
+                    }else
+                    {
+                        done()
                     }
-                }
-                ]
-
+            }
+        }
+    ]
+    
     page.footerColumn: [
-
+        
         Maui.ToolBar
         {
             visible: control.mode === FileDialog.Modes.Save
             width: parent.width
             position: ToolBar.Footer
-
+            
             middleContent: TextField
             {
                 id: _textField
@@ -239,13 +256,13 @@ Maui.PopupPage
     Maui.InfoDialog
     {
         id: _confirmationDialog
-
+        
         title: i18nd("mauikitfilebrowsing", "Error")
         message: i18nd("mauikitfilebrowsing", "A file named '%1' already exists!\n This action will overwrite '%1'. Are you sure you want to do this?", control.textField.text)
         template.iconSource: "dialog-warning"
         
-            standardButtons: Dialog.Ok | Dialog.Cancel
-            
+        standardButtons: Dialog.Ok | Dialog.Cancel
+        
         onAccepted: control.done()
         onRejected: close()
     }
@@ -253,10 +270,10 @@ Maui.PopupPage
     stack: Maui.SideBarView
     {
         id: pageRow
-
+        
         Layout.fillHeight: true
         Layout.fillWidth: true
-
+        
         sideBar.preferredWidth: 200
         sideBar.minimumWidth: 200
         sideBarContent: Loader
@@ -269,10 +286,10 @@ Maui.PopupPage
                 onPlaceClicked:
                 {
                     //pageRow.currentIndex = 1
-                    browser.openFolder(path)
+                    _browser.openFolder(path)
                 }
                 
-                currentPath: browser.currentPath
+                currentPath: _browser.currentPath
                 
                 list.groups:  [
                     FB.FMList.BOOKMARKS_PATH,
@@ -281,14 +298,14 @@ Maui.PopupPage
                     FB.FMList.DRIVES_PATH]
             }
         }
-
+        
         Maui.Page
         {
             id: _browserLayout
             anchors.fill: parent
-
+            
             floatingFooter: true
-            flickable: browser.flickable
+            flickable: _browser.flickable
             headBar.visible: true
             headerColorSet: Maui.Theme.Header
             headBar.farLeftContent: ToolButton
@@ -301,21 +318,21 @@ Maui.PopupPage
                 ToolTip.visible: hovered
                 ToolTip.text: i18nd("mauikitfilebrowsing", "Toogle SideBar")
             }
-
+            
             headBar.rightContent:[
                 
                 ToolButton
                 {
                     id: searchButton
                     icon.name: "edit-find"
-                    onClicked: browser.toggleSearchBar()
-                    checked: browser.headBar.visible
+                    onClicked: _browser.toggleSearchBar()
+                    checked: _browser.headBar.visible
                 },
                 
                 Maui.ToolButtonMenu
                 {
                     id: _viewMenu
-                    icon.name: browser.settings.viewType === FB.FMList.LIST_VIEW ? "view-list-details" : "view-list-icons"
+                    icon.name: _browser.settings.viewType === FB.FMList.LIST_VIEW ? "view-list-details" : "view-list-icons"
                     
                     Maui.MenuItemActionRow
                     {
@@ -331,7 +348,7 @@ Maui.PopupPage
                         Action
                         {
                             icon.name: "folder-new"
-                            onTriggered: browser.newItem()
+                            onTriggered: _browser.newItem()
                         }
                     }
                     
@@ -346,14 +363,11 @@ Maui.PopupPage
                     {
                         text: i18nd("mauikitfilebrowsing", "List")
                         icon.name: "view-list-details"
-                        checked: browser.settings.viewType === FB.FMList.LIST_VIEW
+                        checked: _browser.settings.viewType === FB.FMList.LIST_VIEW
                         checkable: true
                         onTriggered:
                         {
-                            if(browser)
-                            {
-                                browser.settings.viewType = FB.FMList.LIST_VIEW
-                            }
+                            _browser.settings.viewType = FB.FMList.LIST_VIEW                            
                         }
                     }
                     
@@ -361,15 +375,12 @@ Maui.PopupPage
                     {
                         text: i18nd("mauikitfilebrowsing", "Grid")
                         icon.name: "view-list-icons"
-                        checked:  browser.settings.viewType === FB.FMList.ICON_VIEW
+                        checked:  _browser.settings.viewType === FB.FMList.ICON_VIEW
                         checkable: true
                         
                         onTriggered:
                         {
-                            if(browser)
-                            {
-                                browser.settings.viewType = FB.FMList.ICON_VIEW
-                            }
+                            _browser.settings.viewType = FB.FMList.ICON_VIEW                        
                         }
                     }
                     
@@ -385,60 +396,60 @@ Maui.PopupPage
                     Action
                     {
                         text: i18nd("mauikitfilebrowsing", "Type")
-                        checked: browser.settings.sortBy === FB.FMList.MIME
+                        checked: _browser.settings.sortBy === FB.FMList.MIME
                         checkable: true
                         
                         onTriggered:
                         {
-                            browser.settings.sortBy = FB.FMList.MIME
+                            _browser.settings.sortBy = FB.FMList.MIME
                         }
                     }
                     
                     Action
                     {
                         text: i18nd("mauikitfilebrowsing", "Date")
-                        checked: browser.settings.sortBy === FB.FMList.DATE
+                        checked: _browser.settings.sortBy === FB.FMList.DATE
                         checkable: true
                         
                         onTriggered:
                         {
-                            browser.settings.sortBy = FB.FMList.DATE
+                            _browser.settings.sortBy = FB.FMList.DATE
                         }
                     }
                     
                     Action
                     {
                         text: i18nd("mauikitfilebrowsing", "Modified")
-                        checked: browser.settings.sortBy === FB.FMList.MODIFIED
+                        checked: _browser.settings.sortBy === FB.FMList.MODIFIED
                         checkable: true
                         
                         onTriggered:
                         {
-                            browser.settings.sortBy = FB.FMList.MODIFIED
+                            _browser.settings.sortBy = FB.FMList.MODIFIED
                         }
                     }
                     
                     Action
                     {
                         text: i18nd("mauikitfilebrowsing", "Size")
-                        checked: browser.settings.sortBy === FB.FMList.SIZE
+                        checked: _browser.settings.sortBy === FB.FMList.SIZE
                         checkable: true
                         
                         onTriggered:
                         {
-                            browser.settings.sortBy = FB.FMList.SIZE
+                            _browser.settings.sortBy = FB.FMList.SIZE
                         }
                     }
                     
                     Action
                     {
                         text: i18nd("mauikitfilebrowsing", "Name")
-                        checked:  browser.settings.sortBy === FB.FMList.LABEL
+                        checked: _browser.settings.sortBy === FB.FMList.LABEL
                         checkable: true
                         
                         onTriggered:
                         {
-                            browser.settings.sortBy = FB.FMList.LABEL
+                            _browser.settings.sortBy = FB.FMList.LABEL
                         }
                     }
                     
@@ -447,12 +458,12 @@ Maui.PopupPage
                     MenuItem
                     {
                         text: i18nd("mauikitfilebrowsing", "Show Folders First")
-                        checked: browser.settings.foldersFirst
+                        checked: _browser.settings.foldersFirst
                         checkable: true
                         
                         onTriggered:
                         {
-                            browser.settings.foldersFirst = !browser.settings.foldersFirst
+                            _browser.settings.foldersFirst = !_browser.settings.foldersFirst
                         }
                     }
                     
@@ -461,15 +472,15 @@ Maui.PopupPage
                         id: groupAction
                         text: i18nd("mauikitfilebrowsing", "Group")
                         checkable: true
-                        checked: browser.settings.group
+                        checked: _browser.settings.group
                         onTriggered:
                         {
-                            browser.settings.group = !browser.settings.group
+                            _browser.settings.group = !_browser.settings.group
                         }
                     }
                 }
             ]
-
+            
             headBar.leftContent: [
                 Maui.ToolActions
                 {
@@ -480,31 +491,31 @@ Maui.PopupPage
                     Action
                     {
                         icon.name: "go-previous"
-                        onTriggered : browser.goBack()
+                        onTriggered : _browser.goBack()
                     }
                     
                     Action
                     {
                         icon.name: "go-up"
-                        onTriggered : browser.goUp()
+                        onTriggered : _browser.goUp()
                     }
                     
                     Action
                     {
                         icon.name: "go-next"
-                        onTriggered: browser.goNext()
+                        onTriggered: _browser.goNext()
                     }
                 }
             ]
-
+            
             footer: Maui.SelectionBar
             {
                 id: _selectionBar
-
+                
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
                 maxListHeight: control.height - (Maui.Style.contentMargins*2)
-
+                
                 listDelegate: Maui.ListBrowserDelegate
                 {
                     width: ListView.view.width
@@ -513,18 +524,18 @@ Maui.PopupPage
                     label1.text: model.label
                     label2.text: model.url
                 }
-
+                
                 onExitClicked:
                 {
                     _selectionBar.clear()
                 }
             }
-
+            
             FB.FileBrowser
             {
                 id: _browser
                 anchors.fill: parent
-
+                
                 selectionBar: _selectionBar
                 settings.viewType: FB.FMList.LIST_VIEW
                 currentPath: FB.FM.homePath()
@@ -536,7 +547,7 @@ Maui.PopupPage
                         performAction(index)
                     }
                 }
-
+                
                 onItemDoubleClicked: (index) =>
                 {
                     if(!Qt.styleHints.singleClickActivation)
@@ -544,45 +555,40 @@ Maui.PopupPage
                         performAction(index)
                     }
                 }
-
+                
                 function performAction(index)
                 {
                     if(currentFMModel.get(index).isdir == "true")
                     {
                         openItem(index)
                     }
-
+                    
                     switch(control.mode)
                     {
-                    case FileDialog.Modes.Open :
-                        addToSelection(currentFMModel.get(index))
-                        break;
-
-                    case FileDialog.Modes.Save:
-                        textField.text = currentFMModel.get(index).label
-                        break;
+                        case FileDialog.Modes.Open :
+                            addToSelection(currentFMModel.get(index))
+                            break;
+                            
+                        case FileDialog.Modes.Save:
+                            textField.text = currentFMModel.get(index).label
+                            break;
                     }
                 }
             }
         }
     }
     
-    
-    /**
-     *
-     */
-    function closeIt()
+    onClosed:
     {
         _selectionBar.clear()
-        control.close()
     }
     
     /**
-     *
+     * @private
      */
     function done()
     {
-        var paths = browser.selectionBar && browser.selectionBar.visible ? browser.selectionBar.uris : [browser.currentPath]
+        var paths = _browser.selectionBar && _browser.selectionBar.visible ? _browser.selectionBar.uris : [_browser.currentPath]
         
         if(control.mode === FileDialog.Modes.Save)
         {
@@ -609,6 +615,6 @@ Maui.PopupPage
         }
         
         control.urlsSelected(paths)
-        control.closeIt()
+        control.close()
     }
 }
