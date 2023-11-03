@@ -27,27 +27,48 @@ import org.mauikit.filebrowsing 1.3 as FB
  * @inherit org::mauikit::control::PopupPage
  * A dialog with a list of services associated to the list of URLs.
  *
+ * This control inherits from MauiKit PopupPage, to checkout its inherited properties refer to docs.
+ * 
  * The services listed can open the file type of the file URLs.
- *
- *
- *
+ * 
+ * @image html openwithdialog.png "Example"
+ * 
+ * @code
+ * Maui.Page
+ * {
+ *    Maui.Controls.showCSD: true
+ *    anchors.fill: parent
+ * 
+ *    Button
+ *    {
+ *        anchors.centerIn: parent
+ *        text: "Open"
+ *        onClicked: _dialog.open()
+ *    }
+ * 
+ *    FB.OpenWithDialog
+ *    {
+ *        id: _dialog
+ *        urls: ["/home/camiloh/Pictures/blend_by_rashadisrazzi_d8ttd59/2K.png"]
+ *    }
+ * }
+ * @endcode
  *
  */
 Maui.PopupPage
 {
     id: control
-
+    
     /**
-      * @brief List of file URLs to look for associated services.
-      */
+     * @brief List of file URLs to look for associated services.
+     * @property var OpenWithDialog::urls
+     */
     property alias urls : _openWithList.urls
-
+    
     widthHint: 0.9
-    page.padding: 0
-    maxHeight: Math.min(_list.contentHeight + (page.padding * 2.5) + headBar.height + Maui.Style.space.huge, 500)
     maxWidth: 350
     persistent: false
-
+    
     page.title: i18nd("mauikitfilebrowsing", "Open with")
     headBar.visible: true
     
@@ -59,7 +80,6 @@ Maui.PopupPage
         
         model: Maui.BaseModel
         {
-            id: _appsModel
             list: FB.OpenWithModel
             {
                 id: _openWithList
@@ -69,29 +89,20 @@ Maui.PopupPage
         delegate: Maui.ListBrowserDelegate
         {
             width: ListView.view.width
-            //height: Maui.Style.rowHeight * 2
             hoverEnabled: true
             
             label1.text: model.label
-                label2.text: model.comment
-                iconSource: model.icon
-                iconSizeHint: Maui.Style.iconSizes.big
-
+            label2.text: model.comment
+            
+            iconSource: model.icon
+            iconSizeHint: Maui.Style.iconSizes.big
+            
             onClicked:
             {
                 _list.currentIndex = index
-                triggerService(index)
+                _openWithList.openWith(index)
+                close()
             }
         }
     }  
-
-    /**
-      * @brief
-      * @param index
-      */
-    function triggerService(index)
-    {
-        _openWithList.openWith(index)
-        close()
-    }
 }

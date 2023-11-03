@@ -1,54 +1,88 @@
-import QtQuick 2.14
-import QtQuick.Controls 2.14
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.0 as FB
+import org.mauikit.filebrowsing 1.3 as FB
 
 /**
- * PlacesListBrowser
- * A global sidebar for the application window that can be collapsed.
+ * @inherit org::mauikit::controls::ListBrowser
+ * @brief A browsing list of the system locations, such as common standard places, bookmarks and others as removable devices and network.
+ * 
+ * This control inherits from MauiKit ListBrowser, to checkout its inherited properties refer to docs.
+ * 
+ * Most of the properties to control the behaviour is handled by the PlacesList model, which is exposed via the `list` property.
+ * @see list
+ * 
+ * @image html placeslistbrowser.png
  *
- *
- *
- *
- *
+ * @code
+ * Maui.SideBarView
+ * {
+ *    anchors.fill: parent
+ * 
+ *    sideBar.content: Pane
+ *    {
+ *        Maui.Theme.colorSet: Maui.Theme.Window
+ *        anchors.fill: parent
+ *        FB.PlacesListBrowser
+ *        {
+ *            anchors.fill: parent
+ *        }
+ *    }
+ * 
+ *    Maui.Page
+ *    {
+ *        Maui.Controls.showCSD: true
+ *        anchors.fill: parent
+ *    }
+ * }
+ *  @endcode
  *
  */
 Maui.ListBrowser
 {
     id: control
-
+    
     /**
-      * list : PlacesList
-      */
-    property alias list : placesList
-
+     * @brief The model list of the places.
+     * @property PlacesList PlacesListBrowser::list
+     */
+    readonly property alias list : placesList
+    
     /**
-      * itemMenu : Menu
-      */
-    property alias itemMenu : _menu
-
+     * @brief The contextual menu for the entries.
+     * @note The menu has an extra property `index`, which refers to the index position of the entry where the menu was invoked at.
+     * 
+     * To add more entries, use the `itemMenu.data` property, or append/push methods.
+     * @property Menu PlacesListBrowser::itemMenu
+     */
+    readonly property alias itemMenu : _menu
+    
     /**
-      * iconSize : int
-      */
+     * @brief The preferred size of the icon for the places delegates.
+     * By default this is set to `Style.iconSizes.small`
+     * @see Style::iconSizes
+     */
     property int iconSize : Maui.Style.iconSizes.small
     
-    property string currentPath
-
     /**
-      * placeClicked :
-      */
-    signal placeClicked (string path)
-
-    Maui.Theme.colorSet: Maui.Theme.View
-    Maui.Theme.inherit: false
+     * @brief The path of the current place selected.
+     */
+    property string currentPath
     
+    /**
+     * @brief Emitted when a entry has been clicked.
+     * @param path the URL path of the entry 
+     */
+    signal placeClicked (string path)
+    
+    Maui.Theme.colorSet: Maui.Theme.View
+    Maui.Theme.inherit: false    
     
     focus: true
     model: Maui.BaseModel
     {
-        id: placesModel
         list: FB.PlacesList
         {
             id: placesList
@@ -58,36 +92,35 @@ Maui.ListBrowser
         }
     }
     
-                        currentIndex: placesList.indexOfPath(control.currentPath)
-
-
+    currentIndex: placesList.indexOfPath(control.currentPath)    
+    
     section.property: "type"
     section.criteria: ViewSection.FullString
     section.delegate: Maui.LabelDelegate
     {
         id: delegate
         text: section
-
+        
         isSection: true
         width: parent.width
         height: Maui.Style.toolBarHeightAlt
     }
-
+    
     Maui.ContextualMenu
     {
         id: _menu
         property int index
-
+        
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Edit")
         }
-
+        
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Hide")
         }
-
+        
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Remove")
@@ -97,49 +130,48 @@ Maui.ListBrowser
     }
     
     flickable.header: GridLayout
-                    {
-                        id: _quickSection
-                        
-                        width: Math.min(parent.width, 180)
-                        rows: 3
-                        columns: 3
-                        columnSpacing: Maui.Style.space.small
-                        rowSpacing: Maui.Style.space.small
-
-                        Repeater
-                        {
-                        model: Maui.BaseModel
-                        {
-                            list: FB.PlacesList
-                            {
-                                id: _quickPacesList
-                                groups: [FB.FMList.QUICK_PATH, FB.FMList.PLACES_PATH]
-                            }
-                        }
-
-                        delegate: Maui.GridBrowserDelegate
-                            {
-                                Layout.preferredHeight: Math.min(50, width)
-                                Layout.preferredWidth: 50
-                                Layout.fillWidth: true
-                                Layout.fillHeight: true
-                                
-                                isCurrentItem: control.currentPath === model.path
-                                iconSource: model.icon +  (Qt.platform.os == "android" || Qt.platform.os == "osx" ? ("-sidebar") : "")
-                                iconSizeHint: Maui.Style.iconSize
-                                template.isMask: true
-                                label1.text: model.label
-                                labelsVisible: false
-                                tooltipText: model.label
-                                onClicked:
-                                {
-                                    placeClicked(model.path)
-                                }
-                            }
-                        }
-                        
-                    }
-
+    {
+        id: _quickSection
+        
+        width: Math.min(parent.width, 180)
+        rows: 3
+        columns: 3
+        columnSpacing: Maui.Style.space.small
+        rowSpacing: Maui.Style.space.small
+        
+        Repeater
+        {
+            model: Maui.BaseModel
+            {
+                list: FB.PlacesList
+                {
+                    id: _quickPacesList
+                    groups: [FB.FMList.QUICK_PATH, FB.FMList.PLACES_PATH]
+                }
+            }
+            
+            delegate: Maui.GridBrowserDelegate
+            {
+                Layout.preferredHeight: Math.min(50, width)
+                Layout.preferredWidth: 50
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                flat: false
+                isCurrentItem: control.currentPath === model.path
+                iconSource: model.icon +  (Qt.platform.os == "android" || Qt.platform.os == "osx" ? ("-sidebar") : "")
+                iconSizeHint: Maui.Style.iconSize
+                template.isMask: true
+                label1.text: model.label
+                labelsVisible: false
+                tooltipText: model.label
+                onClicked:
+                {
+                    placeClicked(model.path)
+                }
+            }
+        }        
+    }
+    
     delegate: Maui.ListDelegate
     {
         width: ListView.view.width
@@ -148,18 +180,18 @@ Maui.ListBrowser
         iconVisible: true
         label: model.label
         iconName: model.icon
-
+        
         onClicked:
         {
             placeClicked(model.path)
         }
-
+        
         onRightClicked:
         {
             _menu.index = index
             _menu.popup()
         }
-
+        
         onPressAndHold:
         {
             _menu.index = index

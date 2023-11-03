@@ -143,16 +143,7 @@ Maui.PopupPage
      * By default this is set to empty string
      */
     property string suggestedFileName : ""
-    
-    /**
-     * @brief A group of properties for controlling the sorting, listing and behaviour of the file browser.
-     * For more details check the BrowserSettings documentation.
-     * @see FileBrowser::settings
-     * @see BrowserSettings
-     * @property BrowserSettings FileDialog::settings
-     */
-    readonly property alias settings : _browser.settings
-    
+       
     /**
      * @brief Show the search bar to enter a search query.
      */

@@ -1,6 +1,6 @@
 /*
  * <one line to give the program's name and a brief idea of what it does.>
- * Copyright (C) 2018  camilo <email>
+ * Copyright (C) 2018  camilo <milo.h@aol.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,21 +32,34 @@
 
 class KFilePlacesModel;
 
+/**
+ * @brief The list of the system locations, such as bookmarks, standard places, networks and devices.
+ */
 class PlacesList : public MauiList
 {
     Q_OBJECT
     Q_DISABLE_COPY(PlacesList)
     
+    /**
+     * The groups to be listed.
+     * The possible list of groups are defined at FMStatic::PATHTYPE_KEY
+     */
     Q_PROPERTY(QVariantList groups READ getGroups WRITE setGroups NOTIFY groupsChanged)
 
 public:
     PlacesList(QObject *parent = nullptr);
 
+    /**
+     * @private
+     */
     const FMH::MODEL_LIST &items() const override;
 
     QVariantList getGroups() const;
     void setGroups(const QVariantList &value);
 
+    /**
+     * @private
+     */
     void componentComplete() override final;
 
 protected:
@@ -54,37 +67,68 @@ protected:
 
 public Q_SLOTS:
     /**
-     * @brief removePlace
-     * Removes a place from the model and if the data at the given index is a file URL bookmark then it gets removed from the bookmarks.
-     * @param index
-     * Index of the item to be removed in the model
+     * @brief Removes a place from the model and if the data at the given index is a file URL bookmark then it gets removed from the bookmarks.
+     * @param index index of the item to be removed in the model
      */
     void removePlace(const int &index);
 
     /**
-     * @brief contains
-     * Checks of a file URL exists in the places model
-     * @param path
-     * File URL to be checked
-     * @return
-     * True if it exists otherwise false
+     * @brief Checks of a file URL exists in the places model
+     * @param path file URL to be checked
+     * @return Whether it exists
      */
     bool contains(const QUrl &path);
 
+    /**
+     * @brief Check if a entry at the given index is a device
+     * @param index index position of the entry in the list
+     * @return whether it is a device type
+     */
     bool isDevice(const int &index);
 
+    /**
+     * @brief Check if a device type entry needs to be setup, as in mounted.
+     * @param index the index position of the entry
+     * @return whether it needs to be setup
+     */
     bool setupNeeded(const int &index);
 
+    /**
+     * @brief Request to eject a removable device type at the given index
+     * @param index the index position of the entry
+     */
     void requestEject (const int &index);
 
+    /**
+     * @brief Request to setup or mount the device type entry at the given index
+     * @param index index position of the entry
+     */
     void requestSetup (const int &index);
     
+    /**
+     * @brief Add a location to the bookmarks sections
+     * @param url The URL path of the location or directory
+     */
     static void addBookmark(const QUrl &url);
 
+    /**
+     * @brief Given an URL path, if it exists in the places list return its index position
+     * @param url The URL path to be checked
+     * @return the index position if it exists otherwise `-1`
+     */
     int indexOfPath(const QUrl &url) const;
     
+    /**
+     * @brief Hide/show a section
+     * @param The section type to be toggle. The possible values are defined in FMStatic::PATHTYPE_KEY. 
+     */
     void toggleSection(const int &section);
     
+    /**
+     * @brief Whether the current listing contains a group type. The possible values are defined in FMStatic::PATHTYPE_KEY
+     * @param group the group type
+     * @return whether it is being listed
+     */
     bool containsGroup(const int &group);
 
 private:
@@ -99,5 +143,9 @@ private:
 
 Q_SIGNALS:
     void groupsChanged();
+    
+    /**
+     * @brief Emitted when a new bookmark entry has been added
+     */
     void bookmarksChanged();
 };

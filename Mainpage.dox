@@ -10,20 +10,15 @@
 /** @mainpage mauikit-filebrowsing
 
 
-@subsection overview Introduction
-MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing. The visiual controls integrate well with the MauiKit controls and the Maui HIG.
+@section overview Introduction
+MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing. The visual controls are designed to integrate well with the rest of MauiKit controls and the Maui HIG.
 
 @image html index_app.png "App using the FileBrowsing controls"
 
-@subsection tutorial Tutorial
-Using the components is simple.
-
-If you have any questions about MauiKit File Browsing, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
-
 @section component Components
-MauiKit File Browsing components are the following:
+MauiKit File Browsing has a set of visual controls and a helper classes. Some of the visual controls are a graphical representation of the classes.
 
-@subsection views Main Views Components
+@subsection views Visual Controls
 
 - @link ApplicationWindow  ApplicationWindow @endlink
 - @link AppViews AppViews @endlink
@@ -31,7 +26,16 @@ MauiKit File Browsing components are the following:
 - @link TabView TabView @endlink
 - @link Page Page  @endlink
 - @link PageLayout Page  @endlink
-@subsection example Minimal Example
+
+@subsection classes Classes
+The helper classes are models or controllers for interfacing with the file system.
+
+- Tagging
+- PlacesList
+- FMList
+- FMStatic
+
+@section example Minimal Example
 
 @code
 import QtQuick
@@ -57,6 +61,11 @@ Maui.ApplicationWindow
     }
 }
 @endcode
+
+@subsection tutorial Tutorial
+Using the components is simple.
+
+If you have any questions about MauiKit File Browsing, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
 
 @image html filebrowser.png "FileBrowser component"
 

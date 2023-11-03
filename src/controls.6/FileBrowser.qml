@@ -62,20 +62,20 @@ import "private" as Private
  * 
  * The supported keyboard shortcuts are:
  * 
- * - `Ctrl + N`  =>  Create a new entry
- * - `Ctrl + F`  =>  Open the search bar
- * - `F5`  =>  Refresh/reload the content
- * - `F2`  =>  Rename an entry
- * - `Ctrl + A`  =>  Select all the entries
- * - `Ctrl + N`  =>  Create a new entry
- * - `Ctrl + Shift + ← ↑ → ↓`  =>  Select items in any direction
- * - `Ctrl + Return`  =>  Open an entry
- * - `Ctrl + V`  =>  Paste element in the clipboard to the current location
- * - `Ctrl + X`  =>  Cut an entry
- * - `Ctrl + C`  =>  Copy an entry
- * - `Ctrl + Delete`  =>  Remove an entry
- * - `Ctrl + Backspace`  =>  Clear selection/Go back to previous location
- * - `Ctrl + Esc`  =>  Clear the selection/Clear the filter
+ * - `Ctrl + N` Create a new entry
+ * - `Ctrl + F` Open the search bar
+ * - `F5`  Refresh/reload the content
+ * - `F2` Rename an entry
+ * - `Ctrl + A` Select all the entries
+ * - `Ctrl + N` Create a new entry
+ * - `Ctrl + Shift + ← ↑ → ↓` Select items in any direction
+ * - `Ctrl + Return` Open an entry
+ * - `Ctrl + V` Paste element in the clipboard to the current location
+ * - `Ctrl + X` Cut an entry
+ * - `Ctrl + C` Copy an entry
+ * - `Ctrl + Delete` Remove an entry
+ * - `Ctrl + Backspace` Clear selection/Go back to previous location
+ * - `Ctrl + Esc` Clear the selection/Clear the filter
  * 
  * 
  * @section structure Structure
@@ -130,21 +130,6 @@ Maui.Page
     onCurrentPathChanged : _searchField.clear()
     
     /**
-     * @brief A group of properties for controlling the sorting, listing and other behaviour of the browser.
-     * For more details check the BrowserSettings documentation.
-     * @see BrowserSettings
-     * 
-     * @code
-     * settings.onlyDirs: true
-     * settings.sortBy: FB.FMList.LABEL
-     * settings.showThumbnails: false
-     * @endcode
-     * 
-     * @property BrowserSettings FileBrowser::settings
-     */
-    readonly property alias settings : _browser.settings
-    
-    /**
      * @brief The browser could be in two different view states: [1]the file browsing or [2]the search view.
      * This property gives access to the current view in use.
      */
@@ -152,8 +137,8 @@ Maui.Page
     
     /**
      * @brief An alias to the control listing the entries.
-     * This component is handled by a Mauikit AltBrowser
-     * @property MauiKit::AltBrowser FileBrowser::browser
+     * This component is handled by BrowserView, and exposed for fine tuning its properties
+     * @property BrowserView FileBrowser::browser
      */ 
     readonly property alias browser : _browser
     
@@ -231,53 +216,51 @@ Maui.Page
      * @see MauiKit::SelectionBar
      * 
      * @code
-     *  Maui.Page
-     *    {
-     *        Maui.Controls.showCSD: true
-     *        anchors.fill: parent
-     *        floatingFooter: true
-     * 
-     *        FB.FileBrowser
-     *        {
-     *            Maui.Controls.showCSD: true
-     * 
-     *            anchors.fill: parent
-     *            currentPath: FB.FM.homePath()
-     *            settings.viewType: FB.FMList.GRID_VIEW
-     *            selectionBar: _selectionBar
-}
-
-footer: Maui.SelectionBar
+     * Maui.Page
 {
-id: _selectionBar
-anchors.horizontalCenter: parent.horizontalCenter
-width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
-maxListHeight: root.height - (Maui.Style.contentMargins*2)
-
-Action
-{
-icon.name: "love"
-onTriggered: console.log(_selectionBar.getSelectedUrisString())
-}
-
-Action
-{
-icon.name: "folder"
-}
-
-Action
-{
-icon.name: "list-add"
-}
-
-onExitClicked: clear()
-}
-}
-* @endcode
-*/
-    property Maui.SelectionBar selectionBar : null 
+    Maui.Controls.showCSD: true
+    anchors.fill: parent
+    floatingFooter: true
     
+    FB.FileBrowser
+    {
+        Maui.Controls.showCSD: true
+        
+        anchors.fill: parent
+        currentPath: FB.FM.homePath()
+        settings.viewType: FB.FMList.GRID_VIEW
+        selectionBar: _selectionBar
+    }
     
+    footer: Maui.SelectionBar
+    {
+        id: _selectionBar
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
+        maxListHeight: root.height - (Maui.Style.contentMargins*2)
+        
+        Action
+        {
+            icon.name: "love"
+            onTriggered: console.log(_selectionBar.getSelectedUrisString())
+        }
+        
+        Action
+        {
+            icon.name: "folder"
+        }
+        
+        Action
+        {
+            icon.name: "list-add"
+        }
+        
+        onExitClicked: clear()
+    }
+}     
+     * @endcode
+     */
+    property Maui.SelectionBar selectionBar : null        
     
     /**
      * @brief An alias to the currently loaded dialog, if not dialog is loaded then null.
@@ -620,6 +603,9 @@ onExitClicked: clear()
         FB.NewTagDialog {}
     }
     
+    /**
+     * @private
+     */
     property string typingQuery
     
     Maui.Chip

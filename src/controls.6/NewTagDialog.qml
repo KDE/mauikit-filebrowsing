@@ -7,29 +7,32 @@ import org.mauikit.filebrowsing 1.3 as FB
 
 /**
  * @inherit org::mauikit::controls::InputDialog
- * @brief A global sidebar for the application window that can be collapsed.
+ * @brief An input dialog to create one or multiple new tags.
  *
- *
+ * This control inherits from MauiKit InputDialog, to checkout its inherited properties refer to docs.
+ * 
+ * @note Multiple tags can be created at once by separating the entries by a comma.
+ * 
  *@image html newtagdialog.png
  *
  * @code
- *  Maui.Page
-    {
-        Maui.Controls.showCSD: true
-        anchors.fill: parent
-
-        Button
-        {
-            anchors.centerIn: parent
-            text: "New tag"
-            onClicked: _tagDialog.open()
-        }
-
-        FB.NewTagDialog
-        {
-            id: _tagDialog
-        }
-    }
+ * Maui.Page
+ * {
+ *    Maui.Controls.showCSD: true
+ *    anchors.fill: parent
+ * 
+ *    Button
+ *    {
+ *        anchors.centerIn: parent
+ *        text: "New tag"
+ *        onClicked: _tagDialog.open()
+ *    }
+ * 
+ *    FB.NewTagDialog
+ *    {
+ *        id: _tagDialog
+ *    }
+ * }
  * @endcode
  *
  */
@@ -38,12 +41,14 @@ Maui.InputDialog
     id: control
     
     /**
-     * @brief
+     * @brief The current colors picked for the new tags.
+     * @property color NewTagDialog::currentColor
      */
-    property alias currentColor : _colorsRow.currentColor
+    readonly property alias currentColor : _colorsRow.currentColor
     
     /**
-     * @brief
+     * @brief The list of the default colors used for the Tagging system.
+     * `["#4DD0E1", "#9575CD", "#F06292", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]`
      */
     readonly property var defaultColors : ["#4DD0E1", "#9575CD", "#F06292", "#DCE775", "#FFD54F", "#FF8A65", "#90A4AE"]
     

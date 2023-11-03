@@ -17,22 +17,16 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.14
-import QtQuick.Controls 2.14
+import QtQuick
+import QtQuick.Controls 
 
-import org.mauikit.controls 1.2 as Maui
+import org.mauikit.controls 1.3 as Maui
 
 import "private"
 
 /**
- * TagsBar
- * A global sidebar for the application window that can be collapsed.
- *
- *
- *
- *
- *
- *
+ * @inherit QtQuick.Item
+ * @brief A bar to list and add or remove tags for a given set of files.
  */
 Item
 {
@@ -43,12 +37,12 @@ Item
     /**
      * listView : TagList
      */
-    property alias listView : tagsList
+    readonly property alias listView : tagsList
     
     /**
      * count : int
      */
-    property alias count : tagsList.count
+    readonly property alias count : tagsList.count
     
     /**
      * editMode : bool
@@ -63,7 +57,7 @@ Item
     /**
      * list : TagsList
      */
-    property alias list : tagsList.list
+    readonly property alias list : tagsList.list
     
     /**
      * addClicked :
@@ -170,7 +164,7 @@ Item
     }
     
     /**
-     * 
+     * @brief
      */
     function goEditMode()
     {
@@ -178,6 +172,9 @@ Item
         control.editMode = true
     }
     
+    /**
+     * @brief
+     */
     function closeEditMode()
     {
         control.editMode = false
