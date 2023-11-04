@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-03 00:41+0000\n"
-"PO-Revision-Date: 2023-08-18 23:49+0100\n"
+"POT-Creation-Date: 2023-11-04 00:41+0000\n"
+"PO-Revision-Date: 2023-11-03 23:58+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -29,7 +29,7 @@ msgid "This place seems to be empty"
 msgstr "Tiu loko ŝajnas esti malplena"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:711
-#: src/controls.5/FileDialog.qml:185 src/controls.6/FileDialog.qml:243
+#: src/controls.5/FileDialog.qml:185 src/controls.6/FileDialog.qml:251
 #, kde-format
 msgid "Error"
 msgstr "Eraro"
@@ -90,7 +90,7 @@ msgid "Unknown"
 msgstr "Nekonata"
 
 #: src/code/fmstatic.cpp:40 src/controls.5/FileBrowser.qml:369
-#: src/controls.6/FileBrowser.qml:495
+#: src/controls.6/FileBrowser.qml:478
 #, kde-format
 msgid "Trash"
 msgstr "Rubujo"
@@ -123,7 +123,7 @@ msgstr "Rapide"
 #: src/code/placeslist.cpp:104
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Ŝatata"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -131,13 +131,15 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"La fora servilo postulas aŭtentikigon por servi la enhavon sed la "
+"akreditaĵoj provizitaj ne estis akceptitaj (se ekzistas)"
 
 #: src/code/syncing.cpp:211
 #, kde-format
 msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
-msgstr ""
+msgstr "la fora servilo rifuzis la konekton (la servilo ne akceptas petojn"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -145,16 +147,18 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"la fora servilo fermis la konekton antaŭtempe, antaŭ ol la tuta respondo "
+"estis ricevita kaj prilaborita"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "la fora gastiga nomo ne estis trovita (nevalida gastiga nomo)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "la konekto al la fora servilo finiĝis"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -162,6 +166,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"la operacio estis nuligita per vokoj al abort() aŭ close() antaŭ ol ĝi estis "
+"finita."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -169,6 +175,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"la SSL/TLS manpremo malsukcesis kaj la ĉifrita kanalo ne povis esti "
+"establita. La signalo sslErrors() devus esti elsendita."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -178,6 +186,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"la konekto estis rompita pro malkonekto de la reto, tamen la sistemo "
+"komencis vagadon al alia alirpunkto. La peto estu resendita kaj estos "
+"procesita tuj kiam la konekto estos restarigita."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -185,11 +196,13 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"la konekto estis rompita pro malkonekto de la reto aŭ malsukceso komenci la "
+"reton."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
-msgstr ""
+msgstr "la fona peto ne estas nuntempe permesita pro platformpolitiko."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -198,6 +211,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"sekvante alidirektilojn, la maksimuma limo estis atingita. La limo estas "
+"defaŭlte agordita al 50 aŭ kiel agordita de QNetworkRequest::"
+"setMaxRedirectsAllowed(). (Ĉi tiu valoro estis enkondukita en 5.6.)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -205,6 +221,8 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"sekvante alidirektilojn, la retalira API detektis alidirektilon de ĉifrita "
+"protokolo (https) al neĉifrita (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -212,6 +230,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"la konekto al la prokura servilo estis rifuzita (la prokurilo ne akceptas "
+"petojn)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -219,11 +239,14 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"la prokura servilo fermis la konekton antaŭtempe, antaŭ ol la tuta respondo "
+"estis ricevita kaj prilaborita"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
 msgstr ""
+"la prokura gastiga nomo ne estis trovita (nevalida prokura gastiga nomo)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -231,6 +254,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"la konekto al la prokurilo eltempiĝis aŭ la prokurilo ne respondis "
+"ĝustatempe al la sendita peto"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -238,22 +263,25 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"la prokurilo postulas aŭtentikigon por honori la peton sed ne akceptis iujn "
+"ajn akreditaĵojn proponitajn (se ekzistas)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "la aliro al la fora enhavo estis rifuzita (simila al HTTP-eraro 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "la operacio petita sur la fora enhavo ne estas permesita"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"la fora enhavo ne estis trovita ĉe la servilo (simila al HTTP-eraro 404)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -261,50 +289,52 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"la peto devis esti sendita denove, sed ĉi tio malsukcesis ekzemple ĉar la "
+"alŝutaj datumoj ne estis legitaj duan fojon."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "la servilo ne kapablas trakti la peton nuntempe."
 
 #: src/code/syncing.cpp:296
 #, kde-format
 msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
-msgstr ""
+msgstr "Okazis nekonata eraro kun la fora servilo aŭ via interreta konekto."
 
-#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:355
+#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:338
 #, kde-format
 msgid "Back"
 msgstr "Reen"
 
-#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:452
+#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:435
 #, kde-format
 msgid "Quit"
 msgstr "Forlasi"
 
-#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:453
+#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:436
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
 msgstr "Ĉu vi certas, ke vi volas forlasi la nunan serĉon en progreso?"
 
-#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:368
+#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:351
 #, kde-format
 msgid "Filter"
 msgstr "Filtrilo"
 
-#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:437
+#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:420
 #, kde-format
 msgid "Empty Trash"
 msgstr "Malplenigi Rubujon"
 
-#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:474
+#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:457
 #, kde-format
 msgid "Removing %1 files"
 msgstr "Forigante %1 dosierojn"
 
-#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:475
+#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:458
 #, kde-format
 msgid ""
 "Delete %1  \n"
@@ -315,56 +345,56 @@ msgstr ""
 
 #: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
 #: src/controls.5/FileDialog.qml:138 src/controls.5/private/BrowserView.qml:283
-#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:480
-#: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:197
+#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:463
+#: src/controls.6/FileBrowser.qml:887 src/controls.6/FileDialog.qml:205
 #: src/controls.6/private/BrowserView.qml:338 src/controls.6/TagsDialog.qml:51
 #, kde-format
 msgid "Cancel"
 msgstr "Nuligi"
 
 #: src/controls.5/FileBrowser.qml:360 src/controls.5/TagsDialog.qml:121
-#: src/controls.6/FileBrowser.qml:486 src/controls.6/TagsDialog.qml:114
+#: src/controls.6/FileBrowser.qml:469 src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Delete"
 msgstr "Forigi"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:526
+#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:509
 #, kde-format
 msgid "New folder"
 msgstr "Nova dosierujo"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:526
+#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:509
 #, kde-format
 msgid "New file"
 msgstr "Nova dosiero"
 
-#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:527
+#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:510
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr "Krei novan dosierujon aŭ dosieron kun propra nomo."
 
 #: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:377
-#: src/controls.6/FileBrowser.qml:546 src/controls.6/FileDialog.qml:435
+#: src/controls.6/FileBrowser.qml:529 src/controls.6/FileDialog.qml:437
 #, kde-format
 msgid "Name"
 msgstr "Nomo"
 
-#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:559
+#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:542
 #, kde-format
 msgid "Folder"
 msgstr "Dosierujo"
 
-#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:567
+#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:550
 #, kde-format
 msgid "File"
 msgstr "Dosiero"
 
-#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:584
+#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:567
 #, kde-format
 msgid "Rename"
 msgstr "Alinomi"
 
-#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:585
+#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:568
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
@@ -373,14 +403,14 @@ msgstr ""
 "Ŝanĝu la nomon de dosiero aŭ dosierujo. Skribu novan nomon kaj alklaku "
 "Alinomi por apliki la ŝanĝon."
 
-#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:594
+#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:577
 #, kde-format
 msgid "New name"
 msgstr "Nova nomo"
 
 #: src/controls.5/FileBrowser.qml:729
 #: src/controls.5/private/BrowserView.qml:245
-#: src/controls.6/FileBrowser.qml:850
+#: src/controls.6/FileBrowser.qml:836
 #: src/controls.6/private/BrowserView.qml:300
 #, kde-format
 msgid "Copy here"
@@ -388,7 +418,7 @@ msgstr "Kopii ĉi tien"
 
 #: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
-#: src/controls.6/FileBrowser.qml:862
+#: src/controls.6/FileBrowser.qml:848
 #: src/controls.6/private/BrowserView.qml:312
 #, kde-format
 msgid "Move here"
@@ -396,108 +426,109 @@ msgstr "Movi ĉi tien"
 
 #: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
-#: src/controls.6/FileBrowser.qml:875
+#: src/controls.6/FileBrowser.qml:861
 #: src/controls.6/private/BrowserView.qml:324
 #, kde-format
 msgid "Link here"
 msgstr "Ligi ĉi tien"
 
-#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
+#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:874
 #, kde-format
 msgid "Open here"
 msgstr "Malfermi ĉi tie"
 
-#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
+#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1259
 #, kde-format
 msgid "Search: %1"
 msgstr "Serĉi: %1"
 
 #: src/controls.5/FileDialog.qml:145 src/controls.5/TagsDialog.qml:53
-#: src/controls.6/FileDialog.qml:203 src/controls.6/TagsDialog.qml:50
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:50
 #, kde-format
 msgid "Save"
 msgstr "Savi"
 
-#: src/controls.5/FileDialog.qml:145 src/controls.6/FileDialog.qml:203
+#: src/controls.5/FileDialog.qml:145 src/controls.6/FileDialog.qml:211
 #, kde-format
 msgid "Open"
 msgstr "Malfermi"
 
-#: src/controls.5/FileDialog.qml:175 src/controls.6/FileDialog.qml:233
+#: src/controls.5/FileDialog.qml:175 src/controls.6/FileDialog.qml:241
 #, kde-format
 msgid "File name..."
 msgstr "Dosiernomo..."
 
-#: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:244
-#, fuzzy, kde-format
-#| msgid "This action will overwrite %1. Are you sure you want to do this?"
+#: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
+#, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
-msgstr "Ĉi tiu ago anstataŭigos %1. Ĉu vi certas, ke vi volas fari ĉi tion?"
+msgstr ""
+"Dosiero nomita '%1' jam ekzistas!\n"
+" Ĉi tiu ago anstataŭigos '%1'. Ĉu vi certas, ke vi volas fari ĉi tion?"
 
-#: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:302
+#: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:310
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Baskuligi Flankbaron"
 
-#: src/controls.5/FileDialog.qml:284 src/controls.6/FileDialog.qml:342
+#: src/controls.5/FileDialog.qml:284 src/controls.6/FileDialog.qml:350
 #, kde-format
 msgid "View type"
 msgstr "Vidspeco"
 
-#: src/controls.5/FileDialog.qml:289 src/controls.6/FileDialog.qml:347
+#: src/controls.5/FileDialog.qml:289 src/controls.6/FileDialog.qml:355
 #, kde-format
 msgid "List"
 msgstr "Listo"
 
-#: src/controls.5/FileDialog.qml:304 src/controls.6/FileDialog.qml:362
+#: src/controls.5/FileDialog.qml:304 src/controls.6/FileDialog.qml:367
 #, kde-format
 msgid "Grid"
 msgstr "Krado"
 
-#: src/controls.5/FileDialog.qml:324 src/controls.6/FileDialog.qml:382
+#: src/controls.5/FileDialog.qml:324 src/controls.6/FileDialog.qml:384
 #, kde-format
 msgid "Sort by"
 msgstr "Ordigi laŭ"
 
-#: src/controls.5/FileDialog.qml:329 src/controls.6/FileDialog.qml:387
+#: src/controls.5/FileDialog.qml:329 src/controls.6/FileDialog.qml:389
 #, kde-format
 msgid "Type"
 msgstr "Tipo"
 
-#: src/controls.5/FileDialog.qml:341 src/controls.6/FileDialog.qml:399
+#: src/controls.5/FileDialog.qml:341 src/controls.6/FileDialog.qml:401
 #, kde-format
 msgid "Date"
 msgstr "Dato"
 
-#: src/controls.5/FileDialog.qml:353 src/controls.6/FileDialog.qml:411
+#: src/controls.5/FileDialog.qml:353 src/controls.6/FileDialog.qml:413
 #, kde-format
 msgid "Modified"
 msgstr "Modifita"
 
-#: src/controls.5/FileDialog.qml:365 src/controls.6/FileDialog.qml:423
+#: src/controls.5/FileDialog.qml:365 src/controls.6/FileDialog.qml:425
 #, kde-format
 msgid "Size"
 msgstr "Grandeco"
 
-#: src/controls.5/FileDialog.qml:391 src/controls.6/FileDialog.qml:449
+#: src/controls.5/FileDialog.qml:391 src/controls.6/FileDialog.qml:451
 #, kde-format
 msgid "Show Folders First"
 msgstr "Montri Dosierujojn Unue"
 
-#: src/controls.5/FileDialog.qml:404 src/controls.6/FileDialog.qml:462
+#: src/controls.5/FileDialog.qml:404 src/controls.6/FileDialog.qml:464
 #, kde-format
 msgid "Group"
 msgstr "Grupo"
 
 #: src/controls.5/NewTagDialog.qml:25 src/controls.5/NewTagDialog.qml:36
-#: src/controls.6/NewTagDialog.qml:32 src/controls.6/NewTagDialog.qml:35
+#: src/controls.6/NewTagDialog.qml:55 src/controls.6/NewTagDialog.qml:58
 #, kde-format
 msgid "New tags"
 msgstr "Novaj etikedoj"
 
-#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:33
+#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:56
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
@@ -506,25 +537,25 @@ msgstr ""
 "Kreu novajn etikedojn por organizi viajn dosierojn. Vi povas krei plurajn "
 "etikedojn apartigitajn per komo."
 
-#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:51
+#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:72
 #, kde-format
 msgid "Open with"
 msgstr "Malfermi kun"
 
 #: src/controls.5/PlacesListBrowser.qml:84 src/controls.5/TagsDialog.qml:115
-#: src/controls.6/PlacesListBrowser.qml:83 src/controls.6/TagsDialog.qml:108
+#: src/controls.6/PlacesListBrowser.qml:116 src/controls.6/TagsDialog.qml:108
 #, kde-format
 msgid "Edit"
 msgstr "Redakti"
 
 #: src/controls.5/PlacesListBrowser.qml:89
-#: src/controls.6/PlacesListBrowser.qml:88
+#: src/controls.6/PlacesListBrowser.qml:121
 #, kde-format
 msgid "Hide"
 msgstr "Kaŝi"
 
 #: src/controls.5/PlacesListBrowser.qml:94
-#: src/controls.6/PlacesListBrowser.qml:93
+#: src/controls.6/PlacesListBrowser.qml:126
 #, kde-format
 msgid "Remove"
 msgstr "Forigi"
@@ -620,6 +651,3 @@ msgstr "Aldoni novajn etikedojn por la elektitaj dosieroj."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ankoraŭ neniuj etikedoj."
-
-#~ msgid "A file named %1 already exists!"
-#~ msgstr "Dosiero nomita %1 jam ekzistas!"
