@@ -559,6 +559,7 @@ public Q_SLOTS:
      * @param index the index of the found file entry otherwise `-1`
      */
     int indexOfName(const QString &query);
+    int indexOfFile(const QString &url);
     
 Q_SIGNALS:
     void pathChanged();

@@ -851,4 +851,17 @@ void FMList::setReadOnly(bool value)
     Q_EMIT readOnlyChanged();
 }
 
+int FMList::indexOfFile(const QString& url)
+{
+    const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [url](const FMH::MODEL &item) -> bool {
+        return item[FMH::MODEL_KEY::URL] == url;
+    });
+    
+    if (it != this->items().constEnd())
+        return (std::distance(this->items().constBegin(), it));
+    else
+        return -1;
+}
+
+
 
