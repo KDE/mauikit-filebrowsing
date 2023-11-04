@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 00:41+0000\n"
-"PO-Revision-Date: 2023-08-21 08:50+0200\n"
+"PO-Revision-Date: 2023-11-04 06:39+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -455,12 +455,13 @@ msgid "File name..."
 msgstr "ფაილის სახელი..."
 
 #: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
-#, fuzzy, kde-format
-#| msgid "This action will overwrite %1. Are you sure you want to do this?"
+#, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
-msgstr "ქმედება თავზე გადააწერს %1-ს. გნებავთ, ქნათ ეს?"
+msgstr ""
+"ფაილი სახელით '%1' უკვე არსებობს\n"
+"ქმედება თავზე გადააწერს %1-ს. გნებავთ, ქნათ ეს?"
 
 #: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:310
 #, kde-format
