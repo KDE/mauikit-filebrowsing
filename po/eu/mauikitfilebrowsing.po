@@ -1,7 +1,7 @@
 # Translation for mauikitfilebrowsing.po to Euskara/Basque (eu).
 # Copyright (C) 2022-2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2023 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2022, 2023.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-04 00:41+0000\n"
-"PO-Revision-Date: 2023-08-19 11:33+0200\n"
+"PO-Revision-Date: 2023-11-04 19:32+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -468,12 +468,14 @@ msgid "File name..."
 msgstr "Fitxategi-izena..."
 
 #: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
-msgstr "Ekintza honek %1 gainidatziko du. Ziur zaude hori egin nahi duzula?"
+msgstr ""
+"Badago \"%1\" izeneko fitxategi bat!\n"
+"Ekintza honek %1 gainidatziko du. Ziur zaude hori egin nahi duzula?"
 
 #: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:310
 #, kde-format
@@ -679,3 +681,4 @@ msgstr "Oraindik etiketarik ez."
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Aldatu fitxategi edo karpeta baten izena"
+
