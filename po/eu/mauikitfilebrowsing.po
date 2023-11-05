@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 00:41+0000\n"
+"POT-Creation-Date: 2023-11-05 12:29+0000\n"
 "PO-Revision-Date: 2023-11-04 19:32+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -469,7 +469,6 @@ msgstr "Fitxategi-izena..."
 
 #: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
 #, kde-format
-#| msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
@@ -681,4 +680,3 @@ msgstr "Oraindik etiketarik ez."
 
 #~ msgid "Change the name of a file or folder"
 #~ msgstr "Aldatu fitxategi edo karpeta baten izena"
-

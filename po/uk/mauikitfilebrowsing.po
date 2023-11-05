@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-04 00:41+0000\n"
+"POT-Creation-Date: 2023-11-05 12:29+0000\n"
 "PO-Revision-Date: 2023-11-03 08:24+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -203,8 +203,7 @@ msgstr ""
 
 #: src/code/syncing.cpp:244
 #, kde-format
-msgid ""
-"the background request is not currently allowed due to platform policy."
+msgid "the background request is not currently allowed due to platform policy."
 msgstr "фоновий запит зараз не дозволено правилами платформи."
 
 #: src/code/syncing.cpp:248
@@ -271,10 +270,8 @@ msgstr ""
 
 #: src/code/syncing.cpp:276
 #, kde-format
-msgid ""
-"the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
-"відмовлено у доступу до віддалених даних (подібно до помилки HTTP 403)"
+msgid "the access to the remote content was denied (similar to HTTP error 403)"
+msgstr "відмовлено у доступу до віддалених даних (подібно до помилки HTTP 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
@@ -465,7 +462,6 @@ msgstr "Назва файла…"
 
 #: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
 #, kde-format
-#| msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
