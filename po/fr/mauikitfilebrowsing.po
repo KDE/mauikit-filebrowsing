@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:29+0000\n"
-"PO-Revision-Date: 2023-10-25 14:04+0200\n"
+"PO-Revision-Date: 2023-11-05 19:07+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -467,12 +467,13 @@ msgid "File name..."
 msgstr "Nom du fichier ..."
 
 #: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
-#, fuzzy, kde-format
-#| msgid "This action will overwrite %1. Are you sure you want to do this?"
+#, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
-msgstr "Cette action écrasera %1. Voulez-vous vraiment faire cela ?"
+msgstr ""
+"Un fichier nommé « %1 » existe déjà ! \n"
+"Cette action écrasera « %1 ». Voulez-vous vraiment effectuer cette action ?"
 
 #: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:310
 #, kde-format
