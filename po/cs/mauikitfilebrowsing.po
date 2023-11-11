@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# Vit Pelcak <vit@pelcak.org>, 2023.
+# SPDX-FileCopyrightText: 2023 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-05 12:29+0000\n"
-"PO-Revision-Date: 2023-04-17 15:23+0200\n"
+"PO-Revision-Date: 2023-11-07 09:26+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -41,7 +41,7 @@ msgstr ""
 #: src/code/fmlist.cpp:329
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "Načítám obsah"
 
 #: src/code/fmlist.cpp:329
 #, kde-format
@@ -309,6 +309,8 @@ msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
+"Smazat %1  \n"
+"Celkové uvolněné místo %2"
 
 #: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
 #: src/controls.5/FileDialog.qml:138 src/controls.5/private/BrowserView.qml:283
@@ -429,6 +431,8 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
+"Soubor s názvem '%1' již existuje.\n"
+"Tato činnost jej přepíše \"%1\". Opravdu to chcete udělat?"
 
 #: src/controls.5/FileDialog.qml:244 src/controls.6/FileDialog.qml:310
 #, kde-format
@@ -610,6 +614,3 @@ msgstr ""
 #, kde-format
 msgid "No tags yet."
 msgstr ""
-
-#~ msgid "A file named %1 already exists!"
-#~ msgstr "Soubor pojmenovaný %1 již existuje."
