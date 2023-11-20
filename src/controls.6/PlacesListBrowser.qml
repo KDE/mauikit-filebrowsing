@@ -7,11 +7,11 @@ import org.mauikit.filebrowsing 1.3 as FB
 
 /**
  * @inherit org::mauikit::controls::ListBrowser
- * @brief A browsing list of the system locations, such as common standard places, bookmarks and others as removable devices and network.
+ * @brief A browsing list of the system locations, such as common standard places, bookmarks and others as removable devices and networks.
  * 
  * This control inherits from MauiKit ListBrowser, to checkout its inherited properties refer to docs.
  * 
- * Most of the properties to control the behaviour is handled by the PlacesList model, which is exposed via the `list` property.
+ * Most of the properties to control the behaviour is handled via the PlacesList model, which is exposed via the `list` property.
  * @see list
  * 
  * @image html placeslistbrowser.png
@@ -38,7 +38,8 @@ import org.mauikit.filebrowsing 1.3 as FB
  *    }
  * }
  *  @endcode
- *
+ * 
+ * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/PlacesListBrowser.qml">You can find a more complete example at this link.</a>
  */
 Maui.ListBrowser
 {

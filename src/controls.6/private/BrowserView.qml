@@ -7,9 +7,9 @@ import org.mauikit.filebrowsing 1.3 as FB
 
 /**
  * @inherit org::mauikit::controls::AltBrowser
- * @brief The browser view implementation for the FileBrowser.
+ * @brief The browsing view implementation for the FileBrowser control.
  * 
- * @warning This control is only exposed for tweaking its properties. It can not be instanciated.
+ * @warning This control is private and only exposed for tweaking its properties. It can not be instantiated manually.
  * 
  */
 Maui.AltBrowser
@@ -26,12 +26,14 @@ Maui.AltBrowser
     gridView.itemHeight: gridView.cellWidth
 
     /**
-     * @brief
+     * @brief It is possible to insert an arbitrary element for each entry. The component here declared will be drawn on top of the entry delegate in the grid view, and on the far right side in the list view.
+     * The entry element model details are accessible via the `model` property. For example `model.name`, `model.url`, etc.
      */
     property Component delegateInjector : null
     
     /**
-     * @brief
+     * @brief An alias to the current popup dialog being shown.
+     * @property Item BrowserView::dialog
      */
     readonly property alias dialog :_dialogLoader.item
     Loader
@@ -60,7 +62,7 @@ Maui.AltBrowser
         control.currentView.forceActiveFocus()
     }
     
-    model: Maui.BaseModel
+    model: Maui.MauiModel
     {
         id: _browserModel
         list: FB.FMList
@@ -82,92 +84,118 @@ Maui.AltBrowser
     }
     
     /**
-     * @brief
+     * @brief The current location path.
+     * @see FMList::path
+     * @property string BrowserView::path 
      */
     property alias path : _commonFMList.path
     
     /**
-     * @brief
+     * @brief The size of the items in the grid. This is the total sum of the thumbnail icon and the name label.
+     * The icon size is calculated to match always a standard icon size.
+     * By default this is set to `140`
      */
     property int gridItemSize : 140
     
     /**
-     * @brief
+     * @brief The height size of the list elements.
+     * By default this is set to `Style.rowHeight`
      */
     property int listItemSize : Maui.Style.rowHeight
     
     /**
-     * @brief
+     * @brief An alias to access the grouped setting preferences for tweaking the file listing properties.
+     * @see BrowserSettings
+     * @property BrowserSettings BrowserView::settings
      */
     readonly property alias settings : _settings
     
     /**
-     * @brief
+     * @brief Whether the listing of the location contents is still loading. This can be false if the contents are ready or have failed, to check those other conditions refer to the FMList::status property.
+     * @see FMList::status::code
      */
     readonly property bool loading : currentFMList.status.code === FB.PathStatus.LOADING
     
     /**
-     * @brief
+     * @see FMList::readOnly
+     * @property bool BrowserView::readOnly
      */
     property alias readOnly: _commonFMList.readOnly
     
     /**
-     * @brief
+     * @brief An alias to the FMList model list and controller for listing the location contents and exposing the browsing management action methods.
+     * @note The sorting of the location contents is done via this object properties, and not using the MauiKit MauiModel wrapper.
+     * @see currentFMModel
+     * 
+     * @property FMList BrowserView::currentFMList
      */
     readonly property alias currentFMList : _commonFMList
     
     /**
-     * @brief
+     * @brief An alias to the MauiKit MauiModel, wrapping the currentFMList.
+     * @property MauiKit::MauiModel BrowserView::currentFMModel
      */
     readonly property alias currentFMModel : _browserModel    
     
     /**
-     * @brief
+     * @brief The string value to filter the location contents.
+     * @see MauiKit::MauiModel::filter BrowserView::filter
      */
     property alias filter : _browserModel.filter
     
     /**
-     * @brief
+     * @brief The list of strings values to filter the location contents.
+     * @see MauiKit::MauiModel::filter BrowserView::filters
      */
     property alias filters: _browserModel.filters
     
     /**
-     * @brief
+     * @brief Emitted when an entry item has been clicked.
+     * @param index the index position of the item
+     * @note To correctly map and index position to the actual item entry in the model use the `currentFMModel.get()` method, this will take care of correctly mapping the indexes in case the content has been filtered or sorted.
      */
     signal itemClicked(int index)
     
     /**
-     * @brief
+     * @brief Emitted when an entry has been double clicked.
+     * @param index the index position of the item
      */
     signal itemDoubleClicked(int index)
     
     /**
-     * @brief
+     * @brief Emitted when an entry has been right clicked.
+     * @param index the index position of the item
      */
     signal itemRightClicked(int index)
     
     /**
-     * @brief
+     * @brief Emitted when an entry selection has been toggled.
+     * @param index the index position of the item
+     * @param state the checked state
      */
     signal itemToggled(int index, bool state)
     
     /**
-     * @brief
+     * @brief Emitted when a set of entries has been selected by using the lasso selection.
+     * @param indexes the list of indexes positions selected
      */
     signal itemsSelected(var indexes)
     
     /**
-     * @brief
+     * @brief Emitted when a keyboard key has been pressed
+     * @param event the object with the event information
      */
     signal keyPress(var event)
     
     /**
-     * @brief
+     * @brief Emitted when the background area has been clicked
+     * @param mouse the object with the event information
      */
     signal areaClicked(var mouse)
     
     /**
-     * @brief
+     * @brief Emitted when the background area has been right clicked. This can be consumed for launching a contextual menu.
+     * @param mouse the object with the event information
      */
     signal areaRightClicked(var mouse)
     
@@ -653,7 +681,8 @@ Maui.AltBrowser
     }
 
     /**
-     * @brief
+     * @brief Forces the view to re-organize the content entries into subgroups, that will depend on the current sorting key o group the entries by name, size, or date, etc.
+     * @note When this is invoked the view will go into the list mode - grouping is not supported in the grid view mode.
      */
     function groupBy()
     {
@@ -692,7 +721,7 @@ Maui.AltBrowser
     }
     
     /**
-     * @brief
+     * @private
      */
     function findLastSelectedIndex(view, limit)
     {
@@ -709,7 +738,7 @@ Maui.AltBrowser
     }
     
     /**
-     * @brief
+     * @private
      */
     function range(start, end)
     {
@@ -725,7 +754,7 @@ Maui.AltBrowser
     }
     
     /**
-     * @brief
+     * @brief Forces to focus the current browsing view first element.
      */
     function forceActiveFocus()
     {

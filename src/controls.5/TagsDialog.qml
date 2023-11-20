@@ -62,7 +62,7 @@ Maui.PopupPage
     ]
 
     headBar.visible: true
-
+ headBar.forceCenterMiddleContent: false
     headBar.middleContent: TextField
     {
         id: tagText

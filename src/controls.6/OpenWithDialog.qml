@@ -25,7 +25,8 @@ import org.mauikit.filebrowsing 1.3 as FB
 
 /**
  * @inherit org::mauikit::control::PopupPage
- * A dialog with a list of services associated to the list of URLs.
+ * A dialog with a list of services -that can handled the associated list of URLs.
+ * @see urls
  *
  * This control inherits from MauiKit PopupPage, to checkout its inherited properties refer to docs.
  * 
@@ -54,6 +55,7 @@ import org.mauikit.filebrowsing 1.3 as FB
  * }
  * @endcode
  *
+ * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/OpenWithDialog.qml">You can find a more complete example at this link.</a>
  */
 Maui.PopupPage
 {

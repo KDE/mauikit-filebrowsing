@@ -22,60 +22,108 @@ import QtQuick.Controls
 
 import org.mauikit.controls 1.3 as Maui
 
-import "private"
+import "private" as Private
 
 /**
  * @inherit QtQuick.Item
- * @brief A bar to list and add or remove tags for a given set of files.
+ * @brief A bar to list, add or remove tags for a given set of files.
+ * @see TagsList::urls
+ * @see list
+ * 
+ * The retrieved file tags can be restricted to only tags created/associated by the app itself or by any app, this can be tweaked via the `list.strict` property.
+ * @see list
+ * 
+ * @image html tagsbar.png "Example using TagsBar and FileBrowser controls"
+ * 
+ * @code
+ * Maui.Page
+ * {
+ *    id: _tagPreviewPage
+ *    Maui.Controls.showCSD: true
+ *    anchors.fill: parent
+ * 
+ *    property var fileItem //A map object representing some properties from a file, such as its name, icon, url, etc.
+ * 
+ *    Maui.Holder
+ *    {
+ *        anchors.fill: parent
+ *        emojiSize: 100
+ *        imageSource: _tagPreviewPage.fileItem.thumbnail
+ *        title: _tagPreviewPage.fileItem.name
+ *    }
+ * 
+ *    footer: FB.TagsBar
+ *    {
+ *        list.strict: false
+ *        list.urls: [_tagPreviewPage.fileItem.url]
+ *        width: parent.width
+ * 
+ *        onTagsEdited: (tags) => list.updateToUrls(tags)
+ *    }
+ * }
+ * }
+ * @endcode
+ * 
+ * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/TagsBar.qml">You can find a more complete example at this link.</a>
  */
 Item
 {
     id: control
+    
     focus: true
     implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.tiny
     
     /**
-     * listView : TagList
+     * @brief An alias to the flickable element listing the tag buttons.
+     * It is exposed to fine tune more of this control properties.
+     * @property Taglist TagsBar::listView
      */
     readonly property alias listView : tagsList
     
     /**
-     * count : int
+     * @brief The total amount of tag elements
+     * @property int TagsBar::count
      */
     readonly property alias count : tagsList.count
     
     /**
-     * editMode : bool
+     * @brief Whether the bar should be in edit mode or not. This can be also triggered by the user using the attached action buttons in the right side of the bar.
+     * In edit mode the bar exposes a text field, where all the tag elements are plain text divided by comma. The text can be edited to remove tags or add more.
+     * @see allowEditMode
+     * By default this is set to `false`.
      */
     property bool editMode : false
     
     /**
-     * allowEditMode : bool
+     * @brief Whether the bar exposes to the user the action buttons that allow to go into edit mode, or to remove the tag elements manually.
+     * By default this is set to `false`
      */
     property bool allowEditMode : false
     
     /**
-     * list : TagsList
+     * @see TagList::list
+     * @brief To associate a one or a group of file URLs, use `list.urls`, or to disable the strict mode use `list.strict: false`, etc. Read more about the available properties in the TagsListModel documentation page.
+     * @property TagsListModel TagsBar::list
      */
     readonly property alias list : tagsList.list
     
     /**
-     * addClicked :
-     */
-    signal addClicked()
-    
-    /**
-     * tagRemovedClicked :
+     * Emitted when the close/dismiss button of a tag element has been clicked.
+     * @param index the index position of the tag element
+     * 
+     * @note To retrieve information of the tag given the index position, use the alias property function`list.get(index)`
      */
     signal tagRemovedClicked(int index)
     
     /**
-     * tagClicked :
+     * Emitted when a tag element has been clicked.
+     * @param tag the name of the tag element
      */
     signal tagClicked(string tag)
     
     /**
-     * tagsEdited :
+     * @brief Emitted when the tags have been manually edited by the user via the text field input.
+     * @param tags the list of tags entered in the text field.
      */
     signal tagsEdited(var tags)
     
@@ -89,6 +137,7 @@ Item
         sourceComponent: TextField
         {
             id: editTagsEntry
+            
             focus: true
             
             activeFocusOnPress : true
@@ -144,15 +193,19 @@ Item
         }
     }
     
-    TagList
+    Private.TagList
     {
         id: tagsList
         anchors.fill: parent
+        
         visible: !control.editMode
+        
         showPlaceHolder: allowEditMode
         showDeleteIcon: allowEditMode
-        onTagRemoved: tagRemovedClicked(index)
-        onTagClicked: control.tagClicked(tagsList.list.get(index).tag)
+        
+        onTagRemoved: (index) => tagRemovedClicked(index)
+        
+        onTagClicked: (index) => control.tagClicked(tagsList.list.get(index).tag)
         
         onAreaClicked:
         {
@@ -164,7 +217,7 @@ Item
     }
     
     /**
-     * @brief
+     * @brief Force the bar to go into editing mode.
      */
     function goEditMode()
     {
@@ -173,7 +226,7 @@ Item
     }
     
     /**
-     * @brief
+     * @brief Force to exit the editing mode.
      */
     function closeEditMode()
     {

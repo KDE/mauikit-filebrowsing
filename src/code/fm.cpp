@@ -299,7 +299,7 @@ FM::FM(QObject *parent)
 
 #ifdef COMPONENT_SYNCING
     connect(this->sync, &Syncing::listReady, [this](const FMH::MODEL_LIST &list, const QUrl &url) {
-        Q_EMIT this->cloudServerContentReady(list, url);
+        Q_EMIT this->cloudServerContentReady({url, list});
     });
 
     connect(this->sync, &Syncing::itemReady, [this](const FMH::MODEL &item, const QUrl &url, const Syncing::SIGNAL_TYPE &signalType) {
@@ -350,7 +350,7 @@ void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDi
     Q_UNUSED(iteratorFlags)
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    this->dirLister->setShowingDotFiles(hidden);
+    this->dirLister->setShowHiddenFiles(hidden);
 #else
     this->dirLister->setShowHiddenFiles(hidden);
 #endif
@@ -411,12 +411,7 @@ void FM::openCloudItem(const QVariantMap &item)
     Q_UNUSED(item)
     
 #ifdef COMPONENT_SYNCING
-    FMH::MODEL data;
-    const auto keys = item.keys();
-    for (const auto &key : keys)
-        data.insert(FMH::MODEL_NAME_KEY[key], item[key].toString());
-
-    this->sync->resolveFile(data, Syncing::SIGNAL_TYPE::OPEN);
+    this->sync->resolveFile(FMH::toModel(item), Syncing::SIGNAL_TYPE::OPEN);
 #endif
 }
 

@@ -502,11 +502,6 @@ QStringList FMStatic::nameFilters(const int &type)
     return FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(type)];
 }
 
-QString FMStatic::iconName(const QString &value)
-{
-    return FMStatic::getIconName(QUrl(value));
-}
-
 const QString FMStatic::getMime(const QUrl &path)
 {
     if (!path.isLocalFile()) {

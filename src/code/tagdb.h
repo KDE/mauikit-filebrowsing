@@ -36,6 +36,9 @@
 
 #include "filebrowsing_export.h"
 
+/**
+ * @private
+ */
 namespace TAG
 {
     enum class TABLE : uint8_t { APP_TAGS, TAGS, TAGS_URLS, APPS, NONE };
@@ -50,7 +53,8 @@ namespace TAG
 }
 
 /**
- * @brief The TAGDB class
+ * @brief The TAGDB class exposes methods to add, remove and modify tags in the MauiKit FileBrowsing Tagging system.
+ * @warning This class should not be used- use the Tagging object instead, which already wraps this class and exposes most of the functionality needed. In case some functionality is missing, instead of using this class, open a merge request to add the missing functionality to the Tagging class.
  */
 class FILEBROWSING_EXPORT TAGDB : public QObject
 {
@@ -59,75 +63,73 @@ class FILEBROWSING_EXPORT TAGDB : public QObject
     
 private:
     QString name;
-    QSqlDatabase m_db;
+    QSqlDatabase m_db;    
+    
+    void openDB(const QString &name);
 
-public:
-    /* utils*/
+    void prepareCollectionDB() const;
+
+   const QSqlDatabase& db() const;
+   
+public:    
+
+    TAGDB();
+    ~TAGDB();
+    
+    //Utils
     /**
-     * @brief checkExistance
-     * @param tableName
-     * @param searchId
-     * @param search
-     * @return
+     * @brief Check for the existence of an entry
+     * @param tableName the name of the table
+     * @param searchId the search query
+     * @param search the search value
+     * @return whether the entry exists
      */
     bool checkExistance(const QString &tableName, const QString &searchId, const QString &search) const;
 
     /**
-     * @brief checkExistance
-     * @param queryStr
-     * @return
+     * @brief Check if a entry exists given a query
+     * @param queryStr the plain string query
+     * @return whether the entry exists
      */
     bool checkExistance(const QString &queryStr) const;
 
-
-    TAGDB();
-    ~TAGDB();
-
     /**
-     * @brief getQuery
-     * @param queryTxt
-     * @return
+     * @brief Retrieve the database query object of a performed a query
+     * @param queryTxt the query to perform
+     * @return the results
      */
     QSqlQuery getQuery(const QString &queryTxt) const;
 
+    /**
+     * @brief Return an empty query object to use arbitrary with any query.
+     */
     QSqlQuery getQuery() const;
 
     /**
-     * @brief openDB
-     * @param name
-     */
-    void openDB(const QString &name);
-
-    /**
-     * @brief prepareCollectionDB
-     */
-    void prepareCollectionDB() const;
-
-    /**
-     * @brief insert
-     * @param tableName
-     * @param insertData
-     * @return
+     * @brief Insert data into the given table
+     * @param tableName table name
+     * @param insertData the data map to be inserted
+     * @return whether the operation was successful
      */
     bool insert(const QString &tableName, const QVariantMap &insertData) const;
 
     /**
-     * @brief update
-     * @param tableName
-     * @param updateData
-     * @param where
-     * @return
+     * @brief Update data in the database
+     * @param tableName the table name
+     * @param updateData the updated data 
+     * @param where the key-value to match in the database
+     * @return whether the operation was successful
      */
     bool update(const QString &tableName, const FMH::MODEL &updateData, const QVariantMap &where) const;
 
     /**
-     * @brief update
-     * @param table
-     * @param column
-     * @param newValue
-     * @param op
-     * @param id
-     * @return
+     * @brief Update data in the database
+     * @param table table name
+     * @param column the column name
+     * @param newValue the new value
+     * @param op the operation to match
+     * @param id the value of the operation `op`
+     * @return whether the operation was successful
      */
     bool update(const QString &table, const QString &column, const QVariant &newValue, const QVariant &op, const QString &id) const;
 
@@ -139,6 +141,5 @@ public:
      */
     bool remove(const QString &tableName, const FMH::MODEL &removeData) const;
     
-   const QSqlDatabase& db() const;
 };
 

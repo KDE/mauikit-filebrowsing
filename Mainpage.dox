@@ -9,22 +9,23 @@
 
 /** @mainpage mauikit-filebrowsing
 
-
 @section overview Introduction
-MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes for file handling and browsing. The visual controls are designed to integrate well with the rest of MauiKit controls and the Maui HIG.
+MauiKit File Browsing is a set of <a href="https://doc.qt.io/qt-6/qtquick-index.html">QtQuick</a> components and classes meant for making easy the handling and browsing of the file system. The visual controls are designed to integrate well with the rest of MauiKit controls and the Maui HIG. 
 
-@image html index_app.png "App using the FileBrowsing controls"
+You can think of this - and other - MauiKit Frameworks as KDE's KParts, where each module accomplishes a specific function and when plug together you can quickly assemble a more powerful app. Components like this one are usually used and shared among multiple Maui Applications.
+
+@image html index_app.png "Index app using the FileBrowsing controls"
 
 @section component Components
-MauiKit File Browsing has a set of visual controls and a helper classes. Some of the visual controls are a graphical representation of the classes.
+MauiKit File Browsing has a set of visual controls and set helper classes. Some of the visual controls are a graphical representation of the classes or wrappers that consume the API models.
 
 @subsection views Visual Controls
 
-- @link ApplicationWindow  ApplicationWindow @endlink
-- @link AppViews AppViews @endlink
-- @link SideBarView SideBarView @endlink
-- @link TabView TabView @endlink
-- @link Page Page  @endlink
+- @link FileBrowser  FileBrowser @endlink
+- @link FileDialog FileDialog @endlink
+- @link NewTagDialog NewTagDialog @endlink
+- @link PlacesListBrowser PlacesListBrowser @endlink
+- @link TagsDialog TagsDialog  @endlink
 - @link PageLayout Page  @endlink
 
 @subsection classes Classes
@@ -63,16 +64,20 @@ Maui.ApplicationWindow
 @endcode
 
 @subsection tutorial Tutorial
-Using the components is simple.
+To use this framework components, you can import the module using QML as `import org.mauikit.filebrowsing`, or include the headers and link to the target library for C++.
+
+Examples for every control can be found in the examples directory.
 
 If you have any questions about MauiKit File Browsing, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
+
+A complete run trhought on how to set up and create an application using the MauiKit File browsing controls can be found here [quickstart](@ref quickstart).
 
 @image html filebrowser.png "FileBrowser component"
 
 @section deployment Deployment
 
 @subsection building Building
-For building MauiKit FIle Browsing from source, you will need to be familiar with some basic shell commands, with a terminal emulator and your distribution package manager.
+For building MauiKit File Browsing from source, you will need to be familiar with some basic shell commands, with a console aka terminal emulator and your distribution package manager.
 
 Before building it, make sure you have all the dependencies already installed with its development files.
 
@@ -107,7 +112,7 @@ Once the project has been built from source - as explained in the previous secti
 
 `sudo make install`
 
-This step will install the QML plugin to the right location, the Maui Style and a few other items, such as the CSD styles.
+This step will install the QML plugin to the right location.
 
 If you don't want to build it from source, you can also look for it in your distribution packages.
 
@@ -139,7 +144,7 @@ Once MauiKit has been installed you can start using it in your QML files. Checko
 @subsection contributing Contributing
 
 If you find any syntax errors, missing documentation, or not working code snippets or examples, please consider reporting the issue at 
-<a href="https://invent.kde.org/maui/mauikit/-/issues">MauiKit</a> issues page, with the **documentation** tag.
+<a href="https://invent.kde.org/maui/mauikit-filebrowsing/-/issues">MauiKit File Browsing</a> issues page, with the **documentation** tag.
 
 If you want to contribute with the documentation efforts, you can contact the Maui Project at Telegram [at]mauiproject.
 

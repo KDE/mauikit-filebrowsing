@@ -34,23 +34,66 @@
 class FM;
 
 /**
- * @brief The PathStatus class
- * Represents the status of a directory, be it non existance, loading or empty.
+ * @brief Represents the status of a directory listing, be it non existence location, loading or empty.
+ * 
+ * The status object is divided into different properties for convenience, such as error label, message, icon, code, etc.
  */
 struct PathStatus
 {
     Q_GADGET
-
+    
+    /**
+     * The status code. More details are exposed with the other properties.
+     */
     Q_PROPERTY(PathStatus::STATUS_CODE code MEMBER m_code)
+    
+    /**
+     * The status title.
+     */
     Q_PROPERTY(QString title MEMBER m_title)
+    
+    /**
+     * The message details of the status.
+     */
     Q_PROPERTY(QString message MEMBER m_message)
+    
+    /**
+     * An associated icon name for the status.
+     */
     Q_PROPERTY(QString icon MEMBER m_icon)
+    
+    /**
+     * Whether the location is empty and there is nothing for listing.
+     */
     Q_PROPERTY(bool empty MEMBER m_empty)
+    
+    /**
+     * Whether the location can be accessed and exists.
+     */
     Q_PROPERTY(bool exists MEMBER m_exists)    
     
 public:
-    enum STATUS_CODE : int { LOADING, ERROR, READY };
-    Q_ENUM(STATUS_CODE)
+    /**
+     * @brief The different status that can occur.
+     */
+    enum STATUS_CODE : int 
+    { 
+        /**
+         * The content is still loading its contents
+         */
+        LOADING, 
+        
+        /**
+         * The listing of the contents has failed. For knowing the reason check the other properties, such as `title`, `exists`, etc.
+         */
+        ERROR,
+        
+        /**
+         * The listing has finished successfully
+         */
+        READY 
+        
+    }; Q_ENUM(STATUS_CODE)
     
     STATUS_CODE m_code;
     QString m_title;
@@ -61,32 +104,35 @@ public:
 };
 Q_DECLARE_METATYPE(PathStatus)
 
+/**
+ * @private
+ */
 struct NavHistory {
     void appendPath(const QUrl &path)
     {
         this->prev_history.append(path);
     }
-
+    
     QUrl getPosteriorPath()
     {
         if (this->post_history.isEmpty())
             return QUrl();
-
+        
         return this->post_history.takeLast();
     }
-
+    
     QUrl getPreviousPath()
     {
         if (this->prev_history.isEmpty())
             return QUrl();
-
+        
         if (this->prev_history.length() < 2)
             return this->prev_history.at(0);
-
+        
         this->post_history.append(this->prev_history.takeLast());
         return this->prev_history.takeLast();
     }
-
+    
 private:
     QVector<QUrl> prev_history;
     QVector<QUrl> post_history;
@@ -94,63 +140,184 @@ private:
 
 /**
  * @brief The FMList class
- * Model for listing the file system files and directories and perfom relevant actions upon it
+ * Model for listing the file system files and directories and perform relevant actions upon it
  */
 class FILEBROWSING_EXPORT FMList : public MauiList
 {
     Q_OBJECT
     Q_DISABLE_COPY(FMList)
+    
     // writable
+    
+    /**
+     * Whether to auto load the content entries when the path property is modified. Otherwise explicitly call the load method.
+     * @see search
+     * @see fill
+     */
     Q_PROPERTY(bool autoLoad READ getAutoLoad WRITE setAutoLoad NOTIFY autoLoadChanged)
+    
+    /**
+     * The URL to location path to proceed listing all of its file entries.
+     * There is support for multiple type of location depending on the scheme, for example local file system uses `file://`, while you can browser networks using `ftp://` or `fish://`. Support for those locations depends on KIO and its slaves - to know more about it read the KIO slaves documentation.
+     */
     Q_PROPERTY(QString path READ getPath WRITE setPath NOTIFY pathChanged)
+    
+    /**
+     * Whether to list the hidden entries.
+     * By default this is set to `false`.
+     */
     Q_PROPERTY(bool hidden READ getHidden WRITE setHidden NOTIFY hiddenChanged)
+    
+    /**
+     * Whether only directories should be listed.
+     * By default this is set to `false`.
+     */
     Q_PROPERTY(bool onlyDirs READ getOnlyDirs WRITE setOnlyDirs NOTIFY onlyDirsChanged)
+    
+    /**
+     * Whether the folders should be sorted first and then the files.
+     * By default this is set to `true`.
+     */
     Q_PROPERTY(bool foldersFirst READ getFoldersFirst WRITE setFoldersFirst NOTIFY foldersFirstChanged)
+    
+    /**
+     * When the location if a remote cloud directory, this allows to define the depth of the levels for listing the contents.
+     * By default this is set to `1`, which will only lists the entries in the current location, a bigger depth will start listing sub-directories too.
+     * @deprecated
+     */
     Q_PROPERTY(int cloudDepth READ getCloudDepth WRITE setCloudDepth NOTIFY cloudDepthChanged)
-
+    
+    /**
+     * The list of string values to filter the listing. For example to only list PNG and JPG images: `filters: ["*.png", "*.jpg"]`.
+     * To reset or clear the filters you can set the property to `undefined`
+     */
     Q_PROPERTY(QStringList filters READ getFilters WRITE setFilters NOTIFY filtersChanged RESET resetFilters)
     
+    /**
+     * A convenient way to filter the location contents by a file type (mimetype). 
+     * By default this is set to `FILTER_TYPE::NONE`.
+     */
     Q_PROPERTY(FMList::FILTER filterType READ getFilterType WRITE setFilterType NOTIFY filterTypeChanged RESET resetFilterType)
     
+    /**
+     * The sorting value.
+     * By default this is set to `SORTBY::MODIFIED`.
+     */
     Q_PROPERTY(FMList::SORTBY sortBy READ getSortBy WRITE setSortBy NOTIFY sortByChanged)
     
+    /**
+     * Whether destructive actions or modifications can be done to the current location contents, such as deleting, renaming, pasting, adding, etc.
+     * This only protects the location contents if using this API action methods.
+     */
     Q_PROPERTY(bool readOnly READ readOnly WRITE setReadOnly NOTIFY readOnlyChanged)
-  
+    
     // readonly
+    /**
+     * The title name of the current location.
+     */
     Q_PROPERTY(QString pathName READ getPathName NOTIFY pathNameChanged FINAL)
+    
+    /**
+     * The known type of the current location.
+     */
     Q_PROPERTY(FMList::PATHTYPE pathType READ getPathType NOTIFY pathTypeChanged FINAL)
-
+    
+    /**
+     * The current status of the location contents listing. This is a group of properties.
+     */
     Q_PROPERTY(PathStatus status READ getStatus NOTIFY statusChanged)
-
+    
+    /**
+     * The location of the parent directory of this current location.
+     */
     Q_PROPERTY(QUrl parentPath READ getParentPath NOTIFY pathChanged)
-
+    
 public:
+    /**
+     * @brief The possible values to sort the location contents
+     */
     enum SORTBY : uint_fast8_t {
+        /**
+         * The size of the file entry
+         */
         SIZE = FMH::MODEL_KEY::SIZE,
+        
+        /**
+         * The last modified date of the entry file
+         */
         MODIFIED = FMH::MODEL_KEY::MODIFIED,
+        
+        /**
+         * The creation date of the file entry
+         */
         DATE = FMH::MODEL_KEY::DATE,
+        
+        /**
+         * The name or title of the file entry
+         */
         LABEL = FMH::MODEL_KEY::LABEL,
+        
+        /**
+         * The file type of the entry. Deduced from its file suffix name
+         */
         MIME = FMH::MODEL_KEY::MIME,
-        ADDDATE = FMH::MODEL_KEY::MIME,
-        TITLE = FMH::MODEL_KEY::TITLE,
-        PLACE = FMH::MODEL_KEY::PLACE,
-        FORMAT = FMH::MODEL_KEY::FORMAT
-
+        
+        /**
+         * The date when the file entry was added
+         */
+        ADDDATE = FMH::MODEL_KEY::ADDDATE
     };
     Q_ENUM(SORTBY)
-
+    
+    /**
+     * @brief The possible values to filter the a location content by a mime-type.
+     */
     enum FILTER : uint_fast8_t {
+        /**
+         * Audio file types. Such as MP3, WAV, FLAC, MP4, etc.
+         */
         AUDIO = FMStatic::FILTER_TYPE::AUDIO,
+        
+        /**
+         * Video file types
+         */
         VIDEO = FMStatic::FILTER_TYPE::VIDEO,
+        
+        /**
+         * Plain text file types
+         */
         TEXT = FMStatic::FILTER_TYPE::TEXT,
+        
+        /**
+         * Image file types
+         */
         IMAGE = FMStatic::FILTER_TYPE::IMAGE,
+        
+        /**
+         * PDF, EBooks and comic books file types
+         */
         DOCUMENT = FMStatic::FILTER_TYPE::DOCUMENT,
+        
+        /**
+         * Compressed archives
+         */
         COMPRESSED = FMStatic::FILTER_TYPE::COMPRESSED,
+        
+        /**
+         * Font file types
+         */
         FONT = FMStatic::FILTER_TYPE::FONT,
+        
+        /**
+         * Any file type
+         */
         NONE = FMStatic::FILTER_TYPE::NONE
     };
     Q_ENUM(FILTER)
-
+    
+    /**
+     * @brief The different location or places types.
+     */
     enum PATHTYPE : uint_fast8_t {
         PLACES_PATH = FMStatic::PATHTYPE_KEY::PLACES_PATH,
         FISH_PATH = FMStatic::PATHTYPE_KEY::FISH_PATH,
@@ -165,10 +332,10 @@ public:
         CLOUD_PATH = FMStatic::PATHTYPE_KEY::CLOUD_PATH,
         QUICK_PATH = FMStatic::PATHTYPE_KEY::QUICK_PATH,
         OTHER_PATH = FMStatic::PATHTYPE_KEY::OTHER_PATH
-
+        
     };
     Q_ENUM(PATHTYPE)
-
+    
     /**
      * @brief The possible view types for listing the entries in the FileBrowser visual control.
      */
@@ -184,179 +351,64 @@ public:
         LIST_VIEW
     };
     Q_ENUM(VIEW_TYPE)
-/*
-    enum STATUS : uint_fast8_t { LOADING = STATUS_CODE::LOADING, ERROR = STATUS_CODE::ERROR, READY = STATUS_CODE::READY };*/
-
+    
     /**
      * @brief FMList
      * @param parent
      */
     FMList(QObject *parent = nullptr);
-
+    
     /**
      * @brief items
      * @return
      */
     const FMH::MODEL_LIST &items() const final override;
-
-    /**
-     * @brief getSortBy
-     * @return
-     */
+    
     FMList::SORTBY getSortBy() const;
-
-    /**
-     * @brief setSortBy
-     * @param key
-     */
     void setSortBy(const FMList::SORTBY &key);
-
+    
     /**
-     * @brief componentComplete
+     * @private
      */
     void componentComplete() override final;
-
-    bool getAutoLoad() const;
     
-    /**
-     * IF true then then path content gets filled immediately when the path is set, if not then it waits until a search() or fill() action is called manually
-     * */
-    void setAutoLoad(bool value);
+    bool getAutoLoad() const;    
+    void setAutoLoad(bool value);    
     
-    /**
-     * @brief getPath
-     * Current path being watched and model
-     * @return
-     * Directory URL
-     */
     QString getPath() const;
-
-    /**
-     * @brief setPath
-     * Set the directory path to be model
-     * @param path
-     * Directory URL
-     */
     void setPath(const QString &path);
-
-    /**
-     * @brief getPathName
-     * The short name of the current directory
-     * @return
-     */
-    QString getPathName() const;
-
-    /**
-     * @brief getPathType
-     * The type of the current path, be it LOCAl, TAGS, CLOUD, APPS, DEVICE or others
-     * @return
-     * Path type value
-     */
-    FMList::PATHTYPE getPathType() const;
-
-    /**
-     * @brief getFilters
-     * The filters being applied to the current directory
-     * @return
-     * List of filters
-     */
-    QStringList getFilters() const;
-
-    /**
-     * @brief setFilters
-     * FIlters to be applied as regular expressions
-     * @param filters
-     */
-    void setFilters(const QStringList &filters);
-
-    void resetFilters();
-    /**
-     * @brief getFilterType
-     * Filter typebeing applied, for example, filtering by AUDIO or IMAGES etc...
-     * @return
-     */
-    FMList::FILTER getFilterType() const;
-
-    /**
-     * @brief setFilterType
-     * Apply a filter type, this a quick shortcut for applying a filter on a file type such as AUDIO, IMAGE, DOCUMENT
-     * @param type
-     */
-    void setFilterType(const FMList::FILTER &type);
     
-    void resetFilterType();
-
-    /**
-     * @brief getHidden
-     * Returns if the current model is including hidden files
-     * @return
-     */
+    QString getPathName() const;
+    
+    FMList::PATHTYPE getPathType() const;
+    
+    QStringList getFilters() const;
+    void setFilters(const QStringList &filters);
+    void resetFilters();    
+    
+    FMList::FILTER getFilterType() const;
+    void setFilterType(const FMList::FILTER &type);    
+    void resetFilterType();    
+    
     bool getHidden() const;
-
-    /**
-     * @brief setHidden
-     * List hidden files in the model
-     * @param state
-     */
     void setHidden(const bool &state);
-
-    /**
-     * @brief getOnlyDirs
-     * Returns if the current model is including only directories or not
-     * @return
-     */
+    
     bool getOnlyDirs() const;
-
-    /**
-     * @brief setOnlyDirs
-     * Only list directories when modeling a directory
-     * @param state
-     */
     void setOnlyDirs(const bool &state);
-
-    /**
-     * @brief getParentPath
-     * Returns a URL to the parent directory of the current directory being modeled or the previous directory if the current URL is not a local file
-     * @return
-     */
+    
     const QUrl getParentPath();
-
-    /**
-     * @brief getFoldersFirst
-     * Returns whether directories are listed first before other files
-     * @return
-     */
+    
     bool getFoldersFirst() const;
-
-    /**
-     * @brief setFoldersFirst
-     * List directories first
-     * @param value
-     */
     void setFoldersFirst(const bool &value);
-
-    /**
-     * @brief getCloudDepth
-     * @return
-     */
+    
     int getCloudDepth() const;
-
-    /**
-     * @brief setCloudDepth
-     * @param value
-     */
-    void setCloudDepth(const int &value);
-
-    /**
-     * @brief getStatus
-     * Get the current status of the current path
-     * @return
-     */
+    void setCloudDepth(const int &value);    
+    
     PathStatus getStatus() const;
     
     void setReadOnly(bool value);
     bool readOnly() const;
-        
+    
 private:
     FM *fm;
     void clear();
@@ -371,122 +423,141 @@ private:
     bool saveImageFile(const QImage &image);
     bool saveTextFile(const QString &data, const QString &format);
     /**
-     * @brief getTagContent
-     * Gets a model of the files associated with a tag
-     * @param tag
-     * The lookup tag
-     * @param filters
-     * Filters as regular expression
-     * @return
-     * Model of files associated
+     * @brief Gets a model of the files associated with a tag
+     * @param tag The lookup tag
+     * @param filters Filters as regular expression
+     * @return Model of files associated
      */
     FMH::MODEL_LIST getTagContent(const QString &tag, const QStringList &filters = {});
-
+    
     FMH::MODEL_LIST list = {{}};
-
+    
     bool m_autoLoad = true;
     QUrl path;
     QString pathName = QString();
     QStringList filters = {};
-
+    
     bool onlyDirs = false;
     bool hidden = false;
     
     bool foldersFirst = false;
     int cloudDepth = 1;
-
+    
     PathStatus m_status;
-
+    
     FMList::SORTBY sort = FMList::SORTBY::MODIFIED;
     FMList::FILTER filterType = FMList::FILTER::NONE;
     FMList::PATHTYPE pathType = FMList::PATHTYPE::PLACES_PATH;
-
+    
     NavHistory m_navHistory;
     
     bool m_readOnly = false;
-
+    
 public Q_SLOTS:
-
+    
     /**
-     * @brief refresh
-     * Refresh the model for new changes
+     * @brief Refresh the model for new changes. h content listing ill be regenerated.
      */
     void refresh();
-
+    
     /**
-     * @brief createDir
-     * Create a new directory within the current directory
-     * @param name
-     * Name of the directory
+     * @brief Create a new directory within the current directory.
+     * @param name the name of the directory
      */
     void createDir(const QString &name);
-
+    
+    /**
+     * @brief Create a new file.
+     * @note To create a custom file, please supply with the correct suffix.
+     * @param name the name of the new file, for example `new.txt`
+     */
     void createFile(const QString &name);
     
+    /**
+     * @brief Rename a file with from a given URL to the a new name provided
+     * @param url the file URL to be renamed
+     * @param newName the new name for the file
+     */
     void renameFile(const QString &url, const QString &newName);
     
+    /**
+     * @brief Create a symbolic link to the given URL in the current location.
+     * @param url the file URL to create the link from
+     */
     void createSymlink(const QString &url);
     
+    /**
+     * @brief Completely remove the set of file URLs provided. This action can not be undone
+     * @param urls the list of file URLS to be removed
+     */
     void removeFiles(const QStringList &urls);
+    
+    /**
+     * @brief Remove and move to the trash the provided set of file URLs
+     * @param urls the list of file URLS to be removed
+     */
     void moveToTrash(const QStringList &urls);
     
-    bool clipboardHasContent() const;
     /**
-     * @brief copyInto
-     * Copy a list of file URls into the current directory
-     * @param urls
-     * List of files
+     * @brief Whether the clipboard has a supported type of content.
+     * @return whether the clipboard content is a supported file URL or a text or image raw data.
+     */
+    bool clipboardHasContent() const;
+    
+    /**
+     * @brief Copy a list of file URLs into the current directory
+     * @param urls list of files
      */
     void copyInto(const QStringList &urls);
-
+    
     /**
-     * @brief cutInto
-     * Cut/move a list of file URLs to the current directory
-     * @param urls
-     * List of files
+     * @brief Cut/move a list of file URLs to the current directory
+     * @param urls list of files
      */
     void cutInto(const QStringList &urls);
     
     /**
-     * @brief paste
-     * Handle the paste action.
+     * @brief Handle the paste action.
+     * This allows to quickly paste into the current location any file URL in the clipboard, and raw image data and text snippets into a new file.
      */
     void paste();
-
+    
     /**
-     * @brief setDirIcon
-     * Changes the icon of a directory by making use of the directory config file
-     * @param index
-     * Index of the directory in the model
-     * @param iconName
-     * Name of the new icon
+     * @brief Changes the icon of a directory by making use of the directory config file
+     * @param index the index position of the directory in the model
+     * @param iconName then name of the new icon
      */
     void setDirIcon(const int &index, const QString &iconName);
-
+    
     /**
-     * @brief remove
-     * Remove an item from the model, this does not remove the file from the file system
-     * @param index
+     * @brief Remove an item from the model, this does not remove the file from the file system
+     * @param index the index position of the file entry
      */
     void remove(const int &index);
     
-    void search(const QString &query, bool recursive = true);
-    
-
     /**
-     * @brief previousPath
-     * Inmediate previous path
-     * @return
+     * @brief Start a search - starting from the current location - for a given name query.
+     * @param query the search query name
+     * @param recursive whether the search should be recursive and look into the subsequent sub-directories structure. By default this is set to `false`.
+     */
+    void search(const QString &query, bool recursive = true);    
+    
+    /**
+     * @brief The immediate previous path location that was navigated
+     * @return the path URL location
      */
     const QUrl previousPath();
-
+    
     /**
-     * @brief posteriorPath
-     * Inmediate posterior path
-     * @return
+     * @brief The immediate posterior path location that was navigated
+     * @return the path URL location
      */
     const QUrl posteriorPath();
     
+    /**
+     * @brief Given a file name query find if it exists in the current location 
+     * @param index the index of the found file entry otherwise `-1`
+     */
     int indexOfName(const QString &query);
     
 Q_SIGNALS:
@@ -501,10 +572,19 @@ Q_SIGNALS:
     void foldersFirstChanged();
     void statusChanged();
     void cloudDepthChanged();
-void autoLoadChanged();
-
-void readOnlyChanged();
+    void autoLoadChanged();    
+    void readOnlyChanged();
+    
+    /**
+     * @brief Emitted when the listing process has any error message that needs to be notified.
+     * @param message the warning message text
+     */
     void warning(QString message);
+    
+    /**
+     * @brief Emitted while the file listing is still in progress.
+     * @param percent the loading progress - it goes from 0 to 100.
+     */
     void progress(int percent);
 };
 

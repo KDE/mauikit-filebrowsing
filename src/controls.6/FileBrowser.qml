@@ -30,21 +30,21 @@ import "private" as Private
 
 /**
  * @inherit MauiKit::Controls::Page
- * @brief This control displays the file system entries in a given directory and allows subsequent browsing of the file hierarchy.  
+ * @brief This control displays the file system entries in a given directory, allows subsequent browsing of the file hierarchy and exposes basic file handling functionality.  
  * 
  * This controls inherits from MauiKit Page, to checkout its inherited properties refer to the docs.
  * @see MauiKit::Page
- * 
- * This controls exposes a series of convenient properties and functions for filtering and sorting, for creating new entries, perform searches, and modify the entries.
- * 
- * @image html filebrowser2.png "The FileBrowser"
+ *  
+ * @image html filebrowser2.png "FileBrowser control"
  * 
  * @section features Features
- *
+ * 
+ * This control exposes a series of convenient properties and functions for filtering and sorting, for creating new entries, perform searches, and modify the entries.
+ * 
  * There are two different possible ways to display the contents: Grid and List, using the `settings.viewType` property.
  * @see FMList::VIEW_TYPE
  * 
- * More browsing properties can be tweaked via the exposed `settings` property.
+ * More browsing properties can be tweaked via the exposed `settings` alias property.
  * @see settings
  * 
  * Some basic file item actions are implemented by default, like copy, cut, rename and remove, and exposed as methods.
@@ -55,7 +55,7 @@ import "private" as Private
  *
  * @note This component functionality can be easily expanded to be more feature rich, see for example the Maui Index application.
  * 
- * This controls allows to perform recursive searches, or simply filter elements in the current location by using the search bar. Besides these two, the user can quickly start typing within the browser, to jump quickly to a matching entry.
+ * This control allows to perform recursive searches, or simple filtering of elements in the current location by using the search bar. Besides these two, the user can quickly start fly-typing within the browser, to jump quickly to a matching entry.
  * 
  * @subsection shorcuts Shortcuts
  * This control supports multiple keyboard shortcuts, for selecting multiple elements, creating new entries, copying, deleting and renaming files.
@@ -75,8 +75,7 @@ import "private" as Private
  * - `Ctrl + C` Copy an entry
  * - `Ctrl + Delete` Remove an entry
  * - `Ctrl + Backspace` Clear selection/Go back to previous location
- * - `Ctrl + Esc` Clear the selection/Clear the filter
- * 
+ * - `Ctrl + Esc` Clear the selection/Clear the filter 
  * 
  * @section structure Structure
  * 
@@ -84,7 +83,7 @@ import "private" as Private
  * 
  * The footer bar by default has contextual buttons, depending on the current location. For example, for the trash location, it has contextual actions for emptying the trash can, etc.
  * 
- * @warning It is recommended to not add elements to the footer or header bars, instead, if needed, wrap this control in a Mauikit Page, and use utilize its toolbars.
+ * @warning It is recommended to not add elements to the footer or header bars, instead - if needed - wrap this control into a MauiKit Page, and utilize its toolbars.
  * 
  * @code  
  * FB.FileBrowser
@@ -129,6 +128,21 @@ Maui.Page
     property alias currentPath : _browser.path
     onCurrentPathChanged : _searchField.clear()
     
+    /**
+     * @brief A group of properties for controlling the sorting, listing and other behaviour of the browser.
+     * For more details check the BrowserSettings documentation.
+     * @see BrowserSettings
+     * 
+     * @code
+     * settings.onlyDirs: true
+     * settings.sortBy: FB.FMList.LABEL
+     * settings.showThumbnails: false
+     * @endcode
+     * 
+     * @property BrowserSettings FileBrowser::settings
+     */
+    readonly property alias settings : _browser.settings
+
     /**
      * @brief The browser could be in two different view states: [1]the file browsing or [2]the search view.
      * This property gives access to the current view in use.

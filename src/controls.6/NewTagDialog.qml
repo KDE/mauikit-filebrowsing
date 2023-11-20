@@ -35,6 +35,7 @@ import org.mauikit.filebrowsing 1.3 as FB
  * }
  * @endcode
  *
+ * <a href="https://invent.kde.org/maui/mauikit-filebrowser/examples/NewTagDialog.qml">You can find a more complete example at this link.</a>
  */
 Maui.InputDialog
 {

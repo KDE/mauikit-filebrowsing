@@ -39,9 +39,9 @@ FMList::FMList(QObject *parent)
     , fm(new FM(this))
 {
     qRegisterMetaType<FMList *>("const FMList*"); // this is needed for QML to know of FMList in the search method
-    connect(this->fm, &FM::cloudServerContentReady, [this](const FMH::MODEL_LIST &list, const QUrl &url) {
-        if (this->path == url) {
-            this->assignList(list);
+    connect(this->fm, &FM::cloudServerContentReady, [this](FMStatic::PATH_CONTENT res) {
+        if (this->path == res.path) {
+            this->assignList(res.content);
         }
     });
 
@@ -256,6 +256,7 @@ void FMList::sortList()
             break;
         }
             
+        case FMH::MODEL_KEY::ADDDATE:
         case FMH::MODEL_KEY::MODIFIED:
         case FMH::MODEL_KEY::DATE: {
             auto currentTime = QDateTime::currentDateTime();
@@ -269,6 +270,7 @@ void FMList::sortList()
             break;
         }
             
+        case FMH::MODEL_KEY::MIME:
         case FMH::MODEL_KEY::LABEL: {
             const auto str1 = QString(e1[key]).toLower();
             const auto str2 = QString(e2[key]).toLower();
