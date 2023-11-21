@@ -1,11 +1,11 @@
-#ifndef UTILS_ENVIRONMENT_HPP
-#define UTILS_ENVIRONMENT_HPP
+#pragma once
 
 #include <QString>
 
+/**
+    * @private
+    */
 class Environment {
 public:
   static QString get(QString key);
 };
-
-#endif

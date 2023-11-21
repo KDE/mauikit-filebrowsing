@@ -10,6 +10,12 @@ import org.mauikit.filebrowsing 1.3 as FB
  * @brief A popup dialog for selecting between all the available tags to associate to a given set of file URLs.
  * 
  * This popup page also allows to create new tags, edit existing ones and removing.
+ * 
+ * To associate the set of file URLs, use the exposed property `composerList.urls`, which is an alias to TagsList::urls.
+ * @see composerList
+ * @see TagsList::urls
+ * The `composerList` property exposes most of the available properties for tweaking the behaviour, and also contains the methods to perform any modifications to the tags.
+ * 
  * @image html tagsdialog.png "Example using the TagsDialog control"
  * 
  * @code
@@ -60,8 +66,9 @@ Maui.PopupPage
     readonly property alias listView: _listView
     
     /**
-     * @brief An alias to the TagsList element listing the associated tags to the given set of URLs.
+     * @brief An alias to the TagsList controller and model.
      * This property is exposed to set the file URLs to which perform any new assignment or removal of tags.
+     * Refer to its documentation for more details on the available actions.
      * @property TagsList TagsDialog::composerList
      */
     readonly property alias composerList: tagListComposer.list

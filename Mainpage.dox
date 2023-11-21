@@ -26,14 +26,15 @@ MauiKit File Browsing has a set of visual controls and set helper classes. Some 
 - @link NewTagDialog NewTagDialog @endlink
 - @link PlacesListBrowser PlacesListBrowser @endlink
 - @link TagsDialog TagsDialog  @endlink
-- @link PageLayout Page  @endlink
+- @link TagsBar TagsBar  @endlink
 
 @subsection classes Classes
-The helper classes are models or controllers for interfacing with the file system.
+The helper classes contain models andcontrollers for interfacing with the file system.
 
 - Tagging
 - PlacesList
 - FMList
+- FM
 - FMStatic
 
 @section example Minimal Example
@@ -70,7 +71,7 @@ Examples for every control can be found in the examples directory.
 
 If you have any questions about MauiKit File Browsing, feel free to drop by the Maui Project group on Telegram as `[at]mauiproject`.
 
-A complete run trhought on how to set up and create an application using the MauiKit File browsing controls can be found here [quickstart](@ref quickstart).
+A complete guide on how to set up and create an application using the MauiKit File Browsing controls can be found here [quickstart](@ref quickstart).
 
 @image html filebrowser.png "FileBrowser component"
 

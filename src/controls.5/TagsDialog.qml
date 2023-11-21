@@ -40,29 +40,29 @@ Maui.PopupPage
     signal tagsReady(var tags)
     
     closeButtonVisible: false
-
+    
     hint: 1
-
+    
     maxHeight: 500
     maxWidth: 400
-
+    
     actions: [
-
+        
         Action
         {
             text: i18nd("mauikitfilebrowsing", "Save")
             onTriggered: setTags()
         },
-
+        
         Action
         {
             text: i18nd("mauikitfilebrowsing", "Cancel")
             onTriggered: control.close()
         }
     ]
-
+    
     headBar.visible: true
- headBar.forceCenterMiddleContent: false
+    headBar.forceCenterMiddleContent: false
     headBar.middleContent: TextField
     {
         id: tagText
@@ -82,17 +82,17 @@ Maui.PopupPage
             clear()
             _tagsModel.filter = ""
         }
-
+        
         onTextChanged:
         {
             _tagsModel.filter = text
         }
     }
-
+    
     Maui.InfoDialog
     {
         id: _deleteDialog
-
+        
         property string tag
         title: i18nd("mauikitfilebrowsing", "Delete %1", tag)
         message: i18nd("mauikitfilebrowsing", "Are you sure you want to delete this tag? This action can not be undone.")
@@ -102,20 +102,20 @@ Maui.PopupPage
             FB.Tagging.removeTag(tag)
             _deleteDialog.close()
         }
-
+        
         onRejected: _deleteDialog.close()
     }
-
+    
     Maui.ContextualMenu
     {
         id: _menu
-
+        
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Edit")
             icon.name: "document-edit"
         }
-
+        
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Delete")
@@ -127,7 +127,7 @@ Maui.PopupPage
             }
         }
     }
-
+    
     stack: [
         
         Maui.ListBrowser
@@ -218,7 +218,7 @@ Maui.PopupPage
                 id: _info
                 // padding: _listView.padding
                 // implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.huge
-
+                
                 property var itemInfo : FB.FM.getFileInfo( tagListComposer.list.urls[0])
                 label1.text: i18nd("mauikitfilebrowsing", "Tagging %1 files", tagListComposer.list.urls.length)
                 label2.text: i18nd("mauikitfilebrowsing", "Add new tags for the selected files.")
@@ -280,36 +280,36 @@ Maui.PopupPage
             }
         }
     ]
-
+    
     page.footer: FB.TagList
     {
         id: tagListComposer
         width: parent.width
         visible: count > 0
-
+        
         onTagRemoved: list.remove(index)
         placeholderText: i18nd("mauikitfilebrowsing", "No tags yet.")
     }
-
+    
     onClosed:
     {
         composerList.urls = []
         tagText.clear()
         _tagsModel.filter = ""
     }
-
+    
     onOpened: tagText.forceActiveFocus()
-
+    
     /**
-         *
-         */
+     * 
+     */
     function setTags()
     {
         var tags = []
-
+        
         for(var i = 0; i < tagListComposer.count; i++)
             tags.push(tagListComposer.list.get(i).tag)
-        control.tagsReady(tags)
-        close()
+            control.tagsReady(tags)
+            close()
     }
 }

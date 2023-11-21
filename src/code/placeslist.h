@@ -33,7 +33,9 @@
 class KFilePlacesModel;
 
 /**
- * @brief The list of the system locations, such as bookmarks, standard places, networks and devices.
+ * @brief The list model of the system locations, such as bookmarks, standard places, networks and devices.
+ * 
+ * A graphical interface for this controller functionality is available for quick usage as PlacesListBrowser.
  */
 class PlacesList : public MauiList
 {
@@ -42,7 +44,11 @@ class PlacesList : public MauiList
     
     /**
      * The groups to be listed.
-     * The possible list of groups are defined at FMStatic::PATHTYPE_KEY
+     * The possible list of groups are defined at FMList::PATHTYPE
+     * To set it from QML:
+     * @code
+     * list.groups:  [FMList.BOOKMARKS_PATH, FMList.REMOTE_PATH, FMList.CLOUD_PATH, FMList.DRIVES_PATH]
+     * @endcode
      */
     Q_PROPERTY(QVariantList groups READ getGroups WRITE setGroups NOTIFY groupsChanged)
 

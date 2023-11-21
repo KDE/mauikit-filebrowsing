@@ -3,6 +3,9 @@
 #include <QQuickImageProvider>
 #include "filebrowsing_export.h"
 
+/**
+ * @private
+ */
 class AsyncImageResponse : public QQuickImageResponse
 {
 public:

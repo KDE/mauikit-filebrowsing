@@ -1,5 +1,4 @@
-#ifndef UTILS_NETWORKHELPER_HPP
-#define UTILS_NETWORKHELPER_HPP
+#pragma once
 
 #include <QIODevice>
 #include <QMap>
@@ -8,6 +7,9 @@
 #include <QObject>
 #include <QString>
 
+/**
+ * @private
+ */
 class NetworkHelper : public QObject {
   Q_OBJECT
 
@@ -29,5 +31,3 @@ class NetworkHelper : public QObject {
   QNetworkReply* makePutRequest(QString path, QMap<QString, QString> headers,
                                 QIODevice* file);
 };
-
-#endif

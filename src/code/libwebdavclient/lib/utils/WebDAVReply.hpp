@@ -8,6 +8,9 @@
 #include "filebrowsing_export.h"
 #include "../dto/WebDAVItem.hpp"
 
+/**
+ * @brief Wraps the available actions for a remote item
+ */
 class FILEBROWSING_EXPORT WebDAVReply : public QObject
 {
     Q_OBJECT
