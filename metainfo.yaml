@@ -28,7 +28,7 @@ public_source_dirs:  # optional, default to src, must be a list
 public_example_dirs: examples
 libraries:
     - cmake: MauiKit4::FileBrowsing
-cmakename: MauiKit4FileBrowsing
+cmakename: MauiKitFileBrowsing4
 
 group_info:
     name: mauikit

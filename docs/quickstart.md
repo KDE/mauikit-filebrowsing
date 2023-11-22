@@ -119,7 +119,7 @@ The next steps will take care of loading our main QML file `main.qml`:
     }
 
 ## The App Requirements 
-Next step will be to stablish what is the application role and what building blocks it needs top achieve its main task.
+Next step will be to stablish what is the application roles and what building blocks it needs top achieve its main tasks.
 
 The requirements for this demo app are:
 - Add, edit and remove tags to any image file selected
