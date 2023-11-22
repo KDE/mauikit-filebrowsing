@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-21 00:41+0000\n"
+"POT-Creation-Date: 2023-11-22 00:41+0000\n"
 "PO-Revision-Date: 2023-08-25 23:11+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -336,13 +336,13 @@ msgstr ""
 #: src/controls.5/FileDialog.qml:138 src/controls.5/private/BrowserView.qml:283
 #: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:477
 #: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:205
-#: src/controls.6/private/BrowserView.qml:366 src/controls.6/TagsDialog.qml:92
+#: src/controls.6/private/BrowserView.qml:366 src/controls.6/TagsDialog.qml:99
 #, kde-format
 msgid "Cancel"
 msgstr "취소"
 
 #: src/controls.5/FileBrowser.qml:360 src/controls.5/TagsDialog.qml:121
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:154
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:161
 #, kde-format
 msgid "Delete"
 msgstr "삭제"
@@ -432,7 +432,7 @@ msgid "Search: %1"
 msgstr "검색: %1"
 
 #: src/controls.5/FileDialog.qml:145 src/controls.5/TagsDialog.qml:53
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:86
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:93
 #, kde-format
 msgid "Save"
 msgstr "저장"
@@ -531,7 +531,7 @@ msgid "Open with"
 msgstr "다음으로 열기"
 
 #: src/controls.5/PlacesListBrowser.qml:84 src/controls.5/TagsDialog.qml:115
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:148
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:155
 #, kde-format
 msgid "Edit"
 msgstr "편집"
@@ -597,43 +597,43 @@ msgstr "개 항목"
 msgid "Add tags..."
 msgstr "태그 추가..."
 
-#: src/controls.5/TagsDialog.qml:71 src/controls.6/TagsDialog.qml:104
+#: src/controls.5/TagsDialog.qml:71 src/controls.6/TagsDialog.qml:111
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "필터 또는 새 태그 추가"
 
-#: src/controls.5/TagsDialog.qml:97 src/controls.6/TagsDialog.qml:130
+#: src/controls.5/TagsDialog.qml:97 src/controls.6/TagsDialog.qml:137
 #, kde-format
 msgid "Delete %1"
 msgstr "%1 삭제"
 
-#: src/controls.5/TagsDialog.qml:98 src/controls.6/TagsDialog.qml:131
+#: src/controls.5/TagsDialog.qml:98 src/controls.6/TagsDialog.qml:138
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "이 태그를 삭제하시겠습니까? 실행 취소할 수 없습니다."
 
-#: src/controls.5/TagsDialog.qml:144 src/controls.6/TagsDialog.qml:177
+#: src/controls.5/TagsDialog.qml:144 src/controls.6/TagsDialog.qml:184
 #, kde-format
 msgid "No Tags!"
 msgstr "태그 없음!"
 
-#: src/controls.5/TagsDialog.qml:145 src/controls.6/TagsDialog.qml:178
+#: src/controls.5/TagsDialog.qml:145 src/controls.6/TagsDialog.qml:185
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "새 태그를 만들어서 파일을 정리할 수 있습니다."
 
-#: src/controls.5/TagsDialog.qml:223 src/controls.6/TagsDialog.qml:254
+#: src/controls.5/TagsDialog.qml:223 src/controls.6/TagsDialog.qml:261
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "파일 %1개 태그 추가"
 
-#: src/controls.5/TagsDialog.qml:224 src/controls.6/TagsDialog.qml:255
+#: src/controls.5/TagsDialog.qml:224 src/controls.6/TagsDialog.qml:262
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "선택한 파일에 새 태그를 추가합니다."
 
-#: src/controls.5/TagsDialog.qml:291 src/controls.6/TagsDialog.qml:322
+#: src/controls.5/TagsDialog.qml:291 src/controls.6/TagsDialog.qml:329
 #, kde-format
 msgid "No tags yet."
 msgstr "태그가 없습니다."
