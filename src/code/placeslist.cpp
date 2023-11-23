@@ -331,7 +331,7 @@ void PlacesList::addBookmark(const QUrl& url)
     
     QSettings settings(QStringLiteral("org.mauikit.filebrowsing")) ;
     settings.beginGroup(QStringLiteral("PREFERENCES"));
-    auto bookmarks = settings.value("BOOKMARKS", {}).toStringList();
+    auto bookmarks = settings.value(QStringLiteral("BOOKMARKS"), {}).toStringList();
     bookmarks << url.toString();
     settings.setValue(QStringLiteral("BOOKMARKS"), bookmarks);
     settings.endGroup();

@@ -350,7 +350,7 @@ void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDi
     Q_UNUSED(iteratorFlags)
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    this->dirLister->setShowHiddenFiles(hidden);
+    this->dirLister->setShowingDotFiles(hidden);
 #else
     this->dirLister->setShowHiddenFiles(hidden);
 #endif
