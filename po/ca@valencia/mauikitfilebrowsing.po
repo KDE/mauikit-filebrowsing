@@ -261,8 +261,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
-"La connexió amb el servidor intermediari ha excedit el temps límit o el "
-"servidor intermediari no ha respost a temps a la petició enviada"
+"La connexió amb el servidor intermediari ha excedit el temps o el servidor "
+"intermediari no ha respost a temps a la petició enviada"
 
 #: src/code/syncing.cpp:272
 #, kde-format
