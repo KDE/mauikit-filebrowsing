@@ -130,7 +130,6 @@ Maui.PopupPage
      */
     signal finished(var urls)
 
-
     actions: [
         Action
         {
@@ -146,9 +145,10 @@ Maui.PopupPage
             onTriggered:
             {
                 console.log("CURRENT PATHb", browser.currentPath+"/"+textField.text)
-                if(textField.text.length === 0)
-                            return
-                            
+
+                if(control.mode === modes.SAVE && textField.text.length === 0)
+                    return
+
                 if(control.mode === modes.SAVE && FB.FM.fileExists(browser.currentPath+"/"+textField.text))
                 {
                     _confirmationDialog.open()
@@ -186,7 +186,7 @@ Maui.PopupPage
         message: i18nd("mauikitfilebrowsing", "A file named '%1' already exists!\n This action will overwrite '%1'. Are you sure you want to do this?", control.textField.text)
         template.iconSource: "dialog-warning"
         
-            standardButtons: Dialog.Ok | Dialog.Cancel
+        standardButtons: Dialog.Ok | Dialog.Cancel
 
         onAccepted: control.done()
         onRejected: close()
@@ -203,7 +203,6 @@ Maui.PopupPage
         sideBar.minimumWidth: 200
         sideBarContent: Loader
         {
-            id: sidebarLoader
             asynchronous: true
             anchors.fill: parent
             sourceComponent: FB.PlacesListBrowser
@@ -254,190 +253,196 @@ Maui.PopupPage
                     checked: browser.headBar.visible
                 },
 
-                Maui.ToolButtonMenu
+                Loader
                 {
-                    id: _viewMenu
-                    icon.name: browser.settings.viewType === FB.FMList.LIST_VIEW ? "view-list-details" : "view-list-icons"
-
-                    Maui.MenuItemActionRow
+                    asynchronous: true
+                    sourceComponent: Maui.ToolButtonMenu
                     {
+                        icon.name: browser.settings.viewType === FB.FMList.LIST_VIEW ? "view-list-details" : "view-list-icons"
+
+                        Maui.MenuItemActionRow
+                        {
+                            Action
+                            {
+                                icon.name: "view-hidden"
+                                //                        text: i18nd("mauikitfilebrowsing", "Hidden Files")
+                                checkable: true
+                                checked: settings.showHiddenFiles
+                                onTriggered: settings.showHiddenFiles = !settings.showHiddenFiles
+                            }
+
+                            Action
+                            {
+                                icon.name: "folder-new"
+                                onTriggered: browser.newItem()
+                            }
+                        }
+
+                        Maui.LabelDelegate
+                        {
+                            width: parent.width
+                            isSection: true
+                            label: i18nd("mauikitfilebrowsing", "View type")
+                        }
+
                         Action
                         {
-                            icon.name: "view-hidden"
-                            //                        text: i18nd("mauikitfilebrowsing", "Hidden Files")
+                            text: i18nd("mauikitfilebrowsing", "List")
+                            icon.name: "view-list-details"
+                            checked: browser.settings.viewType === FB.FMList.LIST_VIEW
                             checkable: true
-                            checked: settings.showHiddenFiles
-                            onTriggered: settings.showHiddenFiles = !settings.showHiddenFiles
+                            onTriggered:
+                            {
+                                if(browser)
+                                {
+                                    browser.settings.viewType = FB.FMList.LIST_VIEW
+                                }
+                            }
                         }
 
                         Action
                         {
-                            icon.name: "folder-new"
-                            onTriggered: browser.newItem()
-                        }
-                    }
+                            text: i18nd("mauikitfilebrowsing", "Grid")
+                            icon.name: "view-list-icons"
+                            checked:  browser.settings.viewType === FB.FMList.ICON_VIEW
+                            checkable: true
 
-                    Maui.LabelDelegate
-                    {
-                        width: parent.width
-                        isSection: true
-                        label: i18nd("mauikitfilebrowsing", "View type")
-                    }
-
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "List")
-                        icon.name: "view-list-details"
-                        checked: browser.settings.viewType === FB.FMList.LIST_VIEW
-                        checkable: true
-                        onTriggered:
-                        {
-                            if(browser)
+                            onTriggered:
                             {
-                                browser.settings.viewType = FB.FMList.LIST_VIEW
+                                if(browser)
+                                {
+                                    browser.settings.viewType = FB.FMList.ICON_VIEW
+                                }
                             }
                         }
-                    }
 
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Grid")
-                        icon.name: "view-list-icons"
-                        checked:  browser.settings.viewType === FB.FMList.ICON_VIEW
-                        checkable: true
+                        MenuSeparator {}
 
-                        onTriggered:
+                        Maui.LabelDelegate
                         {
-                            if(browser)
+                            width: parent.width
+                            isSection: true
+                            label: i18nd("mauikitfilebrowsing", "Sort by")
+                        }
+
+                        Action
+                        {
+                            text: i18nd("mauikitfilebrowsing", "Type")
+                            checked: browser.settings.sortBy === FB.FMList.MIME
+                            checkable: true
+
+                            onTriggered:
                             {
-                                browser.settings.viewType = FB.FMList.ICON_VIEW
+                                browser.settings.sortBy = FB.FMList.MIME
                             }
                         }
-                    }
 
-                    MenuSeparator {}
-
-                    Maui.LabelDelegate
-                    {
-                        width: parent.width
-                        isSection: true
-                        label: i18nd("mauikitfilebrowsing", "Sort by")
-                    }
-
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Type")
-                        checked: browser.settings.sortBy === FB.FMList.MIME
-                        checkable: true
-
-                        onTriggered:
+                        Action
                         {
-                            browser.settings.sortBy = FB.FMList.MIME
+                            text: i18nd("mauikitfilebrowsing", "Date")
+                            checked: browser.settings.sortBy === FB.FMList.DATE
+                            checkable: true
+
+                            onTriggered:
+                            {
+                                browser.settings.sortBy = FB.FMList.DATE
+                            }
                         }
-                    }
 
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Date")
-                        checked: browser.settings.sortBy === FB.FMList.DATE
-                        checkable: true
-
-                        onTriggered:
+                        Action
                         {
-                            browser.settings.sortBy = FB.FMList.DATE
+                            text: i18nd("mauikitfilebrowsing", "Modified")
+                            checked: browser.settings.sortBy === FB.FMList.MODIFIED
+                            checkable: true
+
+                            onTriggered:
+                            {
+                                browser.settings.sortBy = FB.FMList.MODIFIED
+                            }
                         }
-                    }
 
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Modified")
-                        checked: browser.settings.sortBy === FB.FMList.MODIFIED
-                        checkable: true
-
-                        onTriggered:
+                        Action
                         {
-                            browser.settings.sortBy = FB.FMList.MODIFIED
+                            text: i18nd("mauikitfilebrowsing", "Size")
+                            checked: browser.settings.sortBy === FB.FMList.SIZE
+                            checkable: true
+
+                            onTriggered:
+                            {
+                                browser.settings.sortBy = FB.FMList.SIZE
+                            }
                         }
-                    }
 
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Size")
-                        checked: browser.settings.sortBy === FB.FMList.SIZE
-                        checkable: true
-
-                        onTriggered:
+                        Action
                         {
-                            browser.settings.sortBy = FB.FMList.SIZE
+                            text: i18nd("mauikitfilebrowsing", "Name")
+                            checked:  browser.settings.sortBy === FB.FMList.LABEL
+                            checkable: true
+
+                            onTriggered:
+                            {
+                                browser.settings.sortBy = FB.FMList.LABEL
+                            }
                         }
-                    }
 
-                    Action
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Name")
-                        checked:  browser.settings.sortBy === FB.FMList.LABEL
-                        checkable: true
+                        MenuSeparator{}
 
-                        onTriggered:
+                        MenuItem
                         {
-                            browser.settings.sortBy = FB.FMList.LABEL
+                            text: i18nd("mauikitfilebrowsing", "Show Folders First")
+                            checked: browser.settings.foldersFirst
+                            checkable: true
+
+                            onTriggered:
+                            {
+                                browser.settings.foldersFirst = !browser.settings.foldersFirst
+                            }
                         }
-                    }
 
-                    MenuSeparator{}
-
-                    MenuItem
-                    {
-                        text: i18nd("mauikitfilebrowsing", "Show Folders First")
-                        checked: browser.settings.foldersFirst
-                        checkable: true
-
-                        onTriggered:
+                        MenuItem
                         {
-                            browser.settings.foldersFirst = !browser.settings.foldersFirst
-                        }
-                    }
-
-                    MenuItem
-                    {
-                        id: groupAction
-                        text: i18nd("mauikitfilebrowsing", "Group")
-                        checkable: true
-                        checked: browser.settings.group
-                        onTriggered:
-                        {
-                            browser.settings.group = !browser.settings.group
+                            id: groupAction
+                            text: i18nd("mauikitfilebrowsing", "Group")
+                            checkable: true
+                            checked: browser.settings.group
+                            onTriggered:
+                            {
+                                browser.settings.group = !browser.settings.group
+                            }
                         }
                     }
                 }
             ]
 
-            headBar.leftContent: [
-                Maui.ToolActions
+            headBar.leftContent: Loader
                 {
-                    expanded: true
-                    autoExclusive: false
-                    checkable: false
-
-                    Action
+                    asynchronous: true
+                    sourceComponent: Maui.ToolActions
                     {
-                        icon.name: "go-previous"
-                        onTriggered : browser.goBack()
-                    }
+                        expanded: true
+                        autoExclusive: false
+                        checkable: false
 
-                    Action
-                    {
-                        icon.name: "go-up"
-                        onTriggered : browser.goUp()
-                    }
+                        Action
+                        {
+                            icon.name: "go-previous"
+                            onTriggered : browser.goBack()
+                        }
 
-                    Action
-                    {
-                        icon.name: "go-next"
-                        onTriggered: browser.goNext()
+                        Action
+                        {
+                            icon.name: "go-up"
+                            onTriggered : browser.goUp()
+                        }
+
+                        Action
+                        {
+                            icon.name: "go-next"
+                            onTriggered: browser.goNext()
+                        }
                     }
                 }
-            ]
+
 
             footer: Maui.SelectionBar
             {
@@ -473,7 +478,7 @@ Maui.PopupPage
                 selectionMode: control.mode === modes.OPEN
                 onItemClicked:
                 {
-                    if(Qt.styleHints.singleClickActivation)
+                    if(Maui.Handy.singleClick)
                     {
                         performAction(index)
                     }
@@ -481,7 +486,7 @@ Maui.PopupPage
 
                 onItemDoubleClicked:
                 {
-                    if(!Qt.styleHints.singleClickActivation)
+                    if(!Maui.Handy.singleClick)
                     {
                         performAction(index)
                     }

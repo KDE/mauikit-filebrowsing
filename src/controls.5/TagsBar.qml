@@ -19,6 +19,7 @@
 
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import QtQuick.Layouts 1.12
 
 import org.mauikit.controls 1.2 as Maui
 
@@ -34,12 +35,12 @@ import "private"
  *
  *
  */
-Item
+Control
 {
     id: control
     focus: true
-    implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.tiny
-    
+    implicitHeight: Maui.Style.toolBarHeight + topPadding + bottomPadding
+    padding: Maui.Style.defaultPadding
     /**
      * listView : TagList
      */
@@ -85,9 +86,13 @@ Item
      */
     signal tagsEdited(var tags)
     
+    contentItem: RowLayout
+{
+    id: _layout
     Loader
     {
-        anchors.fill: parent
+        Layout.fillWidth: true
+        Layout.fillHeight: true
         active: control.editMode
         visible: active
         asynchronous: true
@@ -153,7 +158,8 @@ Item
     TagList
     {
         id: tagsList
-        anchors.fill: parent
+        Layout.fillWidth: true
+        Layout.fillHeight: true
         visible: !control.editMode
         showPlaceHolder: allowEditMode
         showDeleteIcon: allowEditMode
@@ -162,13 +168,24 @@ Item
         
         onAreaClicked:
         {
+            console.log("AREA CLICKED ON TAGS ABAR AREA");
             if(allowEditMode)
             {
                 goEditMode()
             }
         }
     }
-    
+
+    ToolButton
+    {
+        visible: Maui.Handy.isMobile && control.allowEditMode
+        icon.name: "edit-entry"
+        onClicked: goEditMode()
+    }
+}
+
+    background: null
+
     /**
      * 
      */

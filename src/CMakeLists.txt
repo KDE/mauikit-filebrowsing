@@ -23,6 +23,7 @@ set(sources
     code/tagslist.cpp
     code/tagging.qrc
     code/openwithmodel.cpp
+    code/moduleinfo.cpp
     assets.qrc)
 
 set(headers
@@ -36,6 +37,7 @@ set(headers
     code/tagging.h
     code/tagdb.h
     code/tagslist.h
+    code/moduleinfo.h
     code/openwithmodel.h)
 
 set(syncing_SRCS
