@@ -1,5 +1,5 @@
 #include "moduleinfo.h"
-#include "filebrowsing_version.h"
+#include "../filebrowsing_version.h"
 #include <KI18n/KLocalizedString>
 
 QString MauiKitFileBrowsing::versionString()
