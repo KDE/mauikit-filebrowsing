@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-28 00:40+0000\n"
-"PO-Revision-Date: 2023-11-03 09:29+0100\n"
+"PO-Revision-Date: 2023-11-28 13:08+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -125,7 +125,7 @@ msgstr "Ràpid"
 #: src/code/moduleinfo.cpp:18
 #, kde-format
 msgid "File browsing and management components."
-msgstr ""
+msgstr "Navegació de fitxers i gestió de components."
 
 #: src/code/placeslist.cpp:104
 #, kde-format

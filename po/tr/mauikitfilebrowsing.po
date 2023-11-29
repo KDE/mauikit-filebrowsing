@@ -2,12 +2,13 @@
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
 # SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-11-28 00:40+0000\n"
-"PO-Revision-Date: 2023-11-03 13:18+0300\n"
+"PO-Revision-Date: 2023-11-28 20:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -122,7 +123,7 @@ msgstr "Tez"
 #: src/code/moduleinfo.cpp:18
 #, kde-format
 msgid "File browsing and management components."
-msgstr ""
+msgstr "Dosya tarama ve yönetme bileşenleri."
 
 #: src/code/placeslist.cpp:104
 #, kde-format
