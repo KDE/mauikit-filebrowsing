@@ -8,19 +8,19 @@ import org.mauikit.filebrowsing 1.3 as FB
 Maui.AltBrowser
 {
     id: control
-    
+
     headBar.visible: false
-    
+
     title: currentFMList.pathName
     selectionMode: control.selectionMode
     enableLassoSelection: true
-    
+
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.cellWidth
     //     gridView.cacheBuffer: control.height * 10
-    
+
     property Component delegateInjector : null
-    
+
     property alias dialog :_dialogLoader.item
     Loader
     {
@@ -32,21 +32,21 @@ Maui.AltBrowser
         property int gridIconSize: Maui.Style.mapToIconSizes(control.gridItemSize)
         property int listIconSize:  Maui.Style.mapToIconSizes(control.listItemSize)
     }
-    
+
     Binding on currentIndex
     {
         when: control.currentView
         value: control.currentView.currentIndex
     }
-    
+
     viewType: settings.viewType === FB.FMList.ICON_VIEW ? Maui.AltBrowser.ViewType.Grid : Maui.AltBrowser.ViewType.List
-    
+
     onPathChanged:
     {
         control.currentIndex = 0
         control.currentView.forceActiveFocus()
     }
-    
+
     model: Maui.BaseModel
     {
         id: _browserModel
@@ -62,49 +62,49 @@ Maui.AltBrowser
             hidden: settings.showHiddenFiles
             foldersFirst: settings.foldersFirst
         }
-        
+
         recursiveFilteringEnabled: true
         sortCaseSensitivity: Qt.CaseInsensitive
         filterCaseSensitivity: Qt.CaseInsensitive
     }
-    
+
     /**
-     * 
+     *
      */
     property alias path : _commonFMList.path
-    
+
     /**
-     * 
+     *
      */
-    
+
     property int gridItemSize : 140
     property int listItemSize : Maui.Style.rowHeight
-    
+
     /**
-     * 
+     *
      */
     property alias settings : _settings
-    
+
     readonly property bool loading : currentFMList.status.code === FB.PathStatus.LOADING
-    
+
     property alias readOnly: _commonFMList.readOnly
     /**
-     * 
+     *
      */
     readonly property alias currentFMList : _commonFMList
-    
+
     /**
-     * 
+     *
      */
-    readonly property alias currentFMModel : _browserModel    
-    
+    readonly property alias currentFMModel : _browserModel
+
     /**
-     * 
+     *
      */
     property alias filter : _browserModel.filter
-    
+
     property alias filters: _browserModel.filters
-    
+
     signal itemClicked(int index)
     signal itemDoubleClicked(int index)
     signal itemRightClicked(int index)
@@ -113,38 +113,38 @@ Maui.AltBrowser
     signal keyPress(var event)
     signal areaClicked(var mouse)
     signal areaRightClicked(var mouse)
-    
+
     Connections
     {
         target: control.currentView
         ignoreUnknownSignals: true
-        
+
         function onKeyPress(event)
         {
             control.keyPress(event)
         }
-        
+
         function onItemsSelected(indexes)
         {
             control.itemsSelected(indexes)
         }
-        
+
         function onAreaClicked(mouse)
         {
             console.log("Area clicked")
             control.currentView.forceActiveFocus()
             control.areaClicked(mouse)
         }
-        
+
         function onAreRightClicked(mouse)
         {
             console.log("Area right clicked")
-            
+
             control.currentView.forceActiveFocus()
             control.areaRightClicked(mouse)
         }
     }
-    
+
     BrowserSettings
     {
         id: _settings
@@ -160,13 +160,13 @@ Maui.AltBrowser
             }
         }
     }
-    
+
     BrowserHolder
     {
         id: _holder
         browser: _commonFMList
     }
-    
+
     Maui.ProgressIndicator
     {
         id: _scanningProgress
@@ -174,60 +174,60 @@ Maui.AltBrowser
         anchors.bottom: parent.bottom
         visible: control.loading
     }
-    
+
     holder.visible: _holder.visible
     holder.emoji: _holder.emoji
     holder.title: _holder.title
     holder.body: _holder.body
-    
+
     Maui.ContextualMenu
     {
         id: _dropMenu
         property string urls
         property url target
-        
+
         MenuItem
-        {            
+        {
             Component
             {
                 id: _mergeDialogComponent
-                
+
                 Maui.InputDialog
                 {
                     id: _mergeDialog
                     property var urls
-                                       
+
                     readonly property bool dirExists : FB.FM.fileExists(control.path+"/"+textEntry.text)
 
 //                    acceptButton.enabled: !dirExists
-                    
+
                     onDirExistsChanged:
                     {
                         console.log("DIR EXISTS?", dirExists)
-                        
+
                         if(dirExists)
                         {
                             _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Directory already exists."), 2)
                         }else
                         {
-                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Looks good."), 0)                            
+                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Looks good."), 0)
                         }
                     }
-                    
+
                     title: i18nd("mauikitfilebrowsing", "Merge %1 files", urls.length)
                     message:i18nd("mauikitfilebrowsing", "Give a name to the new directory where all files will be merge.")
-                    
+
                     textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Directory name")
-                    
+
                     onFinished:
-                    {                    
-                        FB.FM.group(_mergeDialog.urls, control.path, text)                    
+                    {
+                        FB.FM.group(_mergeDialog.urls, control.path, text)
                     }
                 }
             }
-            
+
             enabled: !FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Merge here")
+            text: i18nd("mauikitfilebrowsing", "Merge Here")
             icon.name: "edit-group"
             onTriggered:
             {
@@ -237,12 +237,12 @@ Maui.AltBrowser
                 dialog.urls = urls
                 dialog.open()
             }
-        }        
-        
+        }
+
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Copy here")
+            text: i18nd("mauikitfilebrowsing", "Copy Here")
             icon.name: "edit-copy"
             onTriggered:
             {
@@ -250,11 +250,11 @@ Maui.AltBrowser
                 FB.FM.copy(urls, _dropMenu.target, false)
             }
         }
-        
+
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Move here")
+            text: i18nd("mauikitfilebrowsing", "Move Here")
             icon.name: "edit-move"
             onTriggered:
             {
@@ -262,11 +262,11 @@ Maui.AltBrowser
                 FB.FM.cut(urls, _dropMenu.target)
             }
         }
-        
+
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Link here")
+            text: i18nd("mauikitfilebrowsing", "Link Here")
             icon.name: "edit-link"
             onTriggered:
             {
@@ -275,9 +275,9 @@ Maui.AltBrowser
                     FB.FM.createSymlink(url[i], _dropMenu.target)
             }
         }
-        
+
         MenuSeparator {}
-        
+
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Cancel")
@@ -285,13 +285,13 @@ Maui.AltBrowser
             onTriggered: _dropMenu.close()
         }
     }
-    
+
     listView.section.delegate: Maui.LabelDelegate
     {
         id: delegate
         width: ListView.view.width
-        height: Maui.Style.toolBarHeightAlt        
-        label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section        
+        height: Maui.Style.toolBarHeightAlt
+        label: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section
         isSection: true
     }
 
@@ -598,13 +598,13 @@ Maui.AltBrowser
 
 
     /**
-     * 
+     *
      */
     function groupBy()
     {
         var prop = ""
         var criteria = ViewSection.FullString
-        
+
         switch(control.currentFMList.sortBy)
         {
             case FB.FMList.LABEL:
@@ -624,18 +624,18 @@ Maui.AltBrowser
                 prop = "modified"
                 break;
         }
-        
+
         if(!prop)
         {
             control.currentView.section.property = ""
             return
         }
-        
+
         control.settings.viewType = FB.FMList.LIST_VIEW
         control.currentView.section.property = prop
         control.currentView.section.criteria = criteria
     }
-    
+
     function findLastSelectedIndex(view, limit)
     {
         var res = -1;
@@ -646,10 +646,10 @@ Maui.AltBrowser
                 res = i
             }
         }
-        
+
         return res;
     }
-    
+
     function range(start, end)
     {
         const isReverse = (start > end);
@@ -659,12 +659,12 @@ Maui.AltBrowser
         const result = b.map((discard, n) => {
             return (isReverse) ? n + end : n + start;
         });
-        
+
         return (isReverse) ? result.reverse() : result;
     }
-    
+
     function forceActiveFocus()
     {
-        control.currentView.forceActiveFocus()        
+        control.currentView.forceActiveFocus()
     }
 }

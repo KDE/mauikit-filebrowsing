@@ -1,6 +1,6 @@
-import QtQuick 
+import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts 
+import QtQuick.Layouts
 
 import org.mauikit.controls 1.3 as Maui
 import org.mauikit.filebrowsing 1.3 as FB
@@ -8,20 +8,20 @@ import org.mauikit.filebrowsing 1.3 as FB
 /**
  * @inherit org::mauikit::controls::AltBrowser
  * @brief The browsing view implementation for the FileBrowser control.
- * 
+ *
  * @warning This control is private and only exposed for tweaking its properties. It can not be instantiated manually.
- * 
+ *
  */
 Maui.AltBrowser
 {
     id: control
-    
+
     headBar.visible: false
-    
+
     title: currentFMList.pathName
 
     enableLassoSelection: true
-    
+
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.cellWidth
 
@@ -30,7 +30,7 @@ Maui.AltBrowser
      * The entry element model details are accessible via the `model` property. For example `model.name`, `model.url`, etc.
      */
     property Component delegateInjector : null
-    
+
     /**
      * @brief An alias to the current popup dialog being shown.
      * @property Item BrowserView::dialog
@@ -40,28 +40,28 @@ Maui.AltBrowser
     {
         id: _dialogLoader
     }
-    
+
     QtObject
     {
         id: _private
         property int gridIconSize: Maui.Style.mapToIconSizes(control.gridItemSize)
         property int listIconSize:  Maui.Style.mapToIconSizes(control.listItemSize)
     }
-    
+
     Binding on currentIndex
     {
         when: control.currentView
         value: control.currentView.currentIndex
     }
-    
+
     viewType: settings.viewType === FB.FMList.ICON_VIEW ? Maui.AltBrowser.ViewType.Grid : Maui.AltBrowser.ViewType.List
-    
+
     onPathChanged:
     {
         control.currentIndex = 0
         control.currentView.forceActiveFocus()
     }
-    
+
     model: Maui.MauiModel
     {
         id: _browserModel
@@ -77,159 +77,159 @@ Maui.AltBrowser
             hidden: settings.showHiddenFiles
             foldersFirst: settings.foldersFirst
         }
-        
+
         recursiveFilteringEnabled: true
         sortCaseSensitivity: Qt.CaseInsensitive
         filterCaseSensitivity: Qt.CaseInsensitive
     }
-    
+
     /**
      * @brief The current location path.
      * @see FMList::path
-     * @property string BrowserView::path 
+     * @property string BrowserView::path
      */
     property alias path : _commonFMList.path
-    
+
     /**
      * @brief The size of the items in the grid. This is the total sum of the thumbnail icon and the name label.
      * The icon size is calculated to match always a standard icon size.
      * By default this is set to `140`
      */
     property int gridItemSize : 140
-    
+
     /**
      * @brief The height size of the list elements.
      * By default this is set to `Style.rowHeight`
      */
     property int listItemSize : Maui.Style.rowHeight
-    
+
     /**
      * @brief An alias to access the grouped setting preferences for tweaking the file listing properties.
      * @see BrowserSettings
      * @property BrowserSettings BrowserView::settings
      */
     readonly property alias settings : _settings
-    
+
     /**
      * @brief Whether the listing of the location contents is still loading. This can be false if the contents are ready or have failed, to check those other conditions refer to the FMList::status property.
      * @see FMList::status::code
      */
     readonly property bool loading : currentFMList.status.code === FB.PathStatus.LOADING
-    
+
     /**
      * @see FMList::readOnly
      * @property bool BrowserView::readOnly
      */
     property alias readOnly: _commonFMList.readOnly
-    
+
     /**
      * @brief An alias to the FMList model list and controller for listing the location contents and exposing the browsing management action methods.
      * @note The sorting of the location contents is done via this object properties, and not using the MauiKit MauiModel wrapper.
      * @see currentFMModel
-     * 
+     *
      * @property FMList BrowserView::currentFMList
      */
     readonly property alias currentFMList : _commonFMList
-    
+
     /**
      * @brief An alias to the MauiKit MauiModel, wrapping the currentFMList.
      * @property MauiKit::MauiModel BrowserView::currentFMModel
      */
-    readonly property alias currentFMModel : _browserModel    
-    
+    readonly property alias currentFMModel : _browserModel
+
     /**
      * @brief The string value to filter the location contents.
      * @see MauiKit::MauiModel::filter BrowserView::filter
      */
     property alias filter : _browserModel.filter
-    
+
     /**
      * @brief The list of strings values to filter the location contents.
      * @see MauiKit::MauiModel::filter BrowserView::filters
      */
     property alias filters: _browserModel.filters
-    
+
     /**
      * @brief Emitted when an entry item has been clicked.
      * @param index the index position of the item
      * @note To correctly map and index position to the actual item entry in the model use the `currentFMModel.get()` method, this will take care of correctly mapping the indexes in case the content has been filtered or sorted.
      */
     signal itemClicked(int index)
-    
+
     /**
      * @brief Emitted when an entry has been double clicked.
      * @param index the index position of the item
      */
     signal itemDoubleClicked(int index)
-    
+
     /**
      * @brief Emitted when an entry has been right clicked.
      * @param index the index position of the item
      */
     signal itemRightClicked(int index)
-    
+
     /**
      * @brief Emitted when an entry selection has been toggled.
      * @param index the index position of the item
      * @param state the checked state
      */
     signal itemToggled(int index, bool state)
-    
+
     /**
      * @brief Emitted when a set of entries has been selected by using the lasso selection.
      * @param indexes the list of indexes positions selected
      */
     signal itemsSelected(var indexes)
-    
+
     /**
      * @brief Emitted when a keyboard key has been pressed
      * @param event the object with the event information
      */
     signal keyPress(var event)
-    
+
     /**
      * @brief Emitted when the background area has been clicked
      * @param mouse the object with the event information
      */
     signal areaClicked(var mouse)
-    
+
     /**
      * @brief Emitted when the background area has been right clicked. This can be consumed for launching a contextual menu.
      * @param mouse the object with the event information
      */
     signal areaRightClicked(var mouse)
-    
+
     Connections
     {
         target: control.currentView
         ignoreUnknownSignals: true
-        
+
         function onKeyPress(event)
         {
             control.keyPress(event)
         }
-        
+
         function onItemsSelected(indexes)
         {
             control.itemsSelected(indexes)
         }
-        
+
         function onAreaClicked(mouse)
         {
             console.log("Area clicked")
             control.currentView.forceActiveFocus()
             control.areaClicked(mouse)
         }
-        
+
         function onAreRightClicked(mouse)
         {
             console.log("Area right clicked")
-            
+
             control.currentView.forceActiveFocus()
             control.areaRightClicked(mouse)
         }
     }
-    
+
     BrowserSettings
     {
         id: _settings
@@ -245,13 +245,13 @@ Maui.AltBrowser
             }
         }
     }
-    
+
     BrowserHolder
     {
         id: _holder
         browser: _commonFMList
     }
-    
+
     Maui.ProgressIndicator
     {
         id: _scanningProgress
@@ -259,58 +259,58 @@ Maui.AltBrowser
         anchors.bottom: parent.bottom
         visible: control.loading
     }
-    
+
     holder.visible: _holder.visible
     holder.emoji: _holder.emoji
     holder.title: _holder.title
     holder.body: _holder.body
-    
+
     Maui.ContextualMenu
     {
         id: _dropMenu
         property string urls
         property url target
-        
+
         MenuItem
-        {            
+        {
             Component
             {
                 id: _mergeDialogComponent
-                
+
                 Maui.InputDialog
                 {
                     id: _mergeDialog
                     property var urls
-                                       
+
                     readonly property bool dirExists : FB.FM.fileExists(control.path+"/"+textEntry.text)
-                    
+
                     onDirExistsChanged:
                     {
                         console.log("DIR EXISTS?", dirExists)
-                        
+
                         if(dirExists)
                         {
                             _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Directory already exists."), 2)
                         }else
                         {
-                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Looks good."), 0)                            
+                            _mergeDialog.alert(i18nd("mauikitfilebrowsing", "Looks good."), 0)
                         }
                     }
-                    
+
                     title: i18nd("mauikitfilebrowsing", "Merge %1 files", urls.length)
                     message:i18nd("mauikitfilebrowsing", "Give a name to the new directory where all files will be merge.")
-                    
+
                     textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Directory name")
-                    
+
                     onFinished:
-                    {                    
-                        FB.FM.group(_mergeDialog.urls, control.path, text)                    
+                    {
+                        FB.FM.group(_mergeDialog.urls, control.path, text)
                     }
                 }
             }
-            
+
             enabled: !FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Merge here")
+            text: i18nd("mauikitfilebrowsing", "Merge Here")
             icon.name: "edit-group"
             onTriggered:
             {
@@ -320,12 +320,12 @@ Maui.AltBrowser
                 dialog.urls = urls
                 dialog.open()
             }
-        }        
-        
+        }
+
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Copy here")
+            text: i18nd("mauikitfilebrowsing", "Copy Here")
             icon.name: "edit-copy"
             onTriggered:
             {
@@ -333,11 +333,11 @@ Maui.AltBrowser
                 FB.FM.copy(urls, _dropMenu.target, false)
             }
         }
-        
+
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Move here")
+            text: i18nd("mauikitfilebrowsing", "Move Here")
             icon.name: "edit-move"
             onTriggered:
             {
@@ -345,11 +345,11 @@ Maui.AltBrowser
                 FB.FM.cut(urls, _dropMenu.target)
             }
         }
-        
+
         MenuItem
         {
             enabled: FB.FM.isDir(_dropMenu.target) && !control.readOnly
-            text: i18nd("mauikitfilebrowsing", "Link here")
+            text: i18nd("mauikitfilebrowsing", "Link Here")
             icon.name: "edit-link"
             onTriggered:
             {
@@ -358,9 +358,9 @@ Maui.AltBrowser
                     FB.FM.createSymlink(url[i], _dropMenu.target)
             }
         }
-        
+
         MenuSeparator {}
-        
+
         MenuItem
         {
             text: i18nd("mauikitfilebrowsing", "Cancel")
@@ -368,13 +368,13 @@ Maui.AltBrowser
             onTriggered: _dropMenu.close()
         }
     }
-    
+
     listView.section.delegate: Maui.LabelDelegate
     {
         id: delegate
         width: ListView.view.width
-        height: Maui.Style.toolBarHeightAlt        
-        text: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section        
+        height: Maui.Style.toolBarHeightAlt
+        text: control.listView.section.property == "date" || control.listView.section.property === "modified" ?  Qt.formatDateTime(new Date(section), "d MMM yyyy") : section
         isSection: true
     }
 
@@ -645,7 +645,7 @@ Maui.AltBrowser
             onToggled: (state) =>
             {
                 control.currentIndex = index
-                
+
                 control.itemToggled(index, state)
             }
 
@@ -688,7 +688,7 @@ Maui.AltBrowser
     {
         var prop = ""
         var criteria = ViewSection.FullString
-        
+
         switch(control.currentFMList.sortBy)
         {
             case FB.FMList.LABEL:
@@ -708,18 +708,18 @@ Maui.AltBrowser
                 prop = "modified"
                 break;
         }
-        
+
         if(!prop)
         {
             control.currentView.section.property = ""
             return
         }
-        
+
         control.settings.viewType = FB.FMList.LIST_VIEW
         control.currentView.section.property = prop
         control.currentView.section.criteria = criteria
     }
-    
+
     /**
      * @private
      */
@@ -733,10 +733,10 @@ Maui.AltBrowser
                 res = i
             }
         }
-        
+
         return res;
     }
-    
+
     /**
      * @private
      */
@@ -749,15 +749,15 @@ Maui.AltBrowser
         const result = b.map((discard, n) => {
             return (isReverse) ? n + end : n + start;
         });
-        
+
         return (isReverse) ? result.reverse() : result;
     }
-    
+
     /**
      * @brief Forces to focus the current browsing view first element.
      */
     function forceActiveFocus()
     {
-        control.currentView.forceActiveFocus()        
+        control.currentView.forceActiveFocus()
     }
 }
