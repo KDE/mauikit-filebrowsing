@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:40+0000\n"
+"POT-Creation-Date: 2023-12-09 00:41+0000\n"
 "PO-Revision-Date: 2023-03-12 11:34+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -117,11 +117,6 @@ msgstr "Ostatné"
 #, kde-format
 msgid "Quick"
 msgstr "Rýchlo"
-
-#: src/code/moduleinfo.cpp:18
-#, kde-format
-msgid "File browsing and management components."
-msgstr ""
 
 #: src/code/placeslist.cpp:104
 #, kde-format
@@ -383,29 +378,33 @@ msgstr "Nové meno"
 #: src/controls.5/private/BrowserView.qml:245
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
-#, kde-format
-msgid "Copy here"
+#, fuzzy, kde-format
+#| msgid "Copy here"
+msgid "Copy Here"
 msgstr "Kopírovať sem"
 
 #: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
 #: src/controls.6/FileBrowser.qml:862
 #: src/controls.6/private/BrowserView.qml:340
-#, kde-format
-msgid "Move here"
+#, fuzzy, kde-format
+#| msgid "Move here"
+msgid "Move Here"
 msgstr "Presunúť sem"
 
 #: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
 #: src/controls.6/FileBrowser.qml:875
 #: src/controls.6/private/BrowserView.qml:352
-#, kde-format
-msgid "Link here"
+#, fuzzy, kde-format
+#| msgid "Link here"
+msgid "Link Here"
 msgstr "Odkaz sem"
 
 #: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
-#, kde-format
-msgid "Open here"
+#, fuzzy, kde-format
+#| msgid "Open here"
+msgid "Open Here"
 msgstr "Otvoriť tu"
 
 #: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
@@ -560,8 +559,9 @@ msgstr "Názov adresára"
 
 #: src/controls.5/private/BrowserView.qml:230
 #: src/controls.6/private/BrowserView.qml:313
-#, kde-format
-msgid "Merge here"
+#, fuzzy, kde-format
+#| msgid "Merge here"
+msgid "Merge Here"
 msgstr "Zlúčiť sem"
 
 #: src/controls.5/private/BrowserView.qml:309

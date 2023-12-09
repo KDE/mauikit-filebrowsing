@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:40+0000\n"
+"POT-Creation-Date: 2023-12-09 00:41+0000\n"
 "PO-Revision-Date: 2023-11-28 17:23+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
@@ -119,11 +119,6 @@ msgstr "Інші"
 #, kde-format
 msgid "Quick"
 msgstr "Швидко"
-
-#: src/code/moduleinfo.cpp:18
-#, kde-format
-msgid "File browsing and management components."
-msgstr "Компоненти для навігації та керування файловою системою."
 
 #: src/code/placeslist.cpp:104
 #, kde-format
@@ -419,29 +414,33 @@ msgstr "Нова назва"
 #: src/controls.5/private/BrowserView.qml:245
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
-#, kde-format
-msgid "Copy here"
+#, fuzzy, kde-format
+#| msgid "Copy here"
+msgid "Copy Here"
 msgstr "Скопіювати сюди"
 
 #: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
 #: src/controls.6/FileBrowser.qml:862
 #: src/controls.6/private/BrowserView.qml:340
-#, kde-format
-msgid "Move here"
+#, fuzzy, kde-format
+#| msgid "Move here"
+msgid "Move Here"
 msgstr "Пересунути сюди"
 
 #: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
 #: src/controls.6/FileBrowser.qml:875
 #: src/controls.6/private/BrowserView.qml:352
-#, kde-format
-msgid "Link here"
+#, fuzzy, kde-format
+#| msgid "Link here"
+msgid "Link Here"
 msgstr "Посилання сюди"
 
 #: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
-#, kde-format
-msgid "Open here"
+#, fuzzy, kde-format
+#| msgid "Open here"
+msgid "Open Here"
 msgstr "Відкрити тут"
 
 #: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
@@ -599,8 +598,9 @@ msgstr "Назва каталогу"
 
 #: src/controls.5/private/BrowserView.qml:230
 #: src/controls.6/private/BrowserView.qml:313
-#, kde-format
-msgid "Merge here"
+#, fuzzy, kde-format
+#| msgid "Merge here"
+msgid "Merge Here"
 msgstr "Об'єднати сюди"
 
 #: src/controls.5/private/BrowserView.qml:309
@@ -657,6 +657,9 @@ msgstr "Додайте нові мітки для позначених файл�
 #, kde-format
 msgid "No tags yet."
 msgstr "Міток ще немає."
+
+#~ msgid "File browsing and management components."
+#~ msgstr "Компоненти для навігації та керування файловою системою."
 
 #~ msgid "A file named %1 already exists!"
 #~ msgstr "Файл з назвою %1 вже існує."

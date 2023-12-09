@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-11-28 00:40+0000\n"
+"POT-Creation-Date: 2023-12-09 00:41+0000\n"
 "PO-Revision-Date: 2023-07-29 22:20-0300\n"
 "Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -117,11 +117,6 @@ msgstr ""
 #: src/code/fmstatic.cpp:47
 #, kde-format
 msgid "Quick"
-msgstr ""
-
-#: src/code/moduleinfo.cpp:18
-#, kde-format
-msgid "File browsing and management components."
 msgstr ""
 
 #: src/code/placeslist.cpp:104
@@ -383,7 +378,7 @@ msgstr ""
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
 #, kde-format
-msgid "Copy here"
+msgid "Copy Here"
 msgstr ""
 
 #: src/controls.5/FileBrowser.qml:741
@@ -391,7 +386,7 @@ msgstr ""
 #: src/controls.6/FileBrowser.qml:862
 #: src/controls.6/private/BrowserView.qml:340
 #, kde-format
-msgid "Move here"
+msgid "Move Here"
 msgstr ""
 
 #: src/controls.5/FileBrowser.qml:754
@@ -399,12 +394,12 @@ msgstr ""
 #: src/controls.6/FileBrowser.qml:875
 #: src/controls.6/private/BrowserView.qml:352
 #, kde-format
-msgid "Link here"
+msgid "Link Here"
 msgstr ""
 
 #: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
 #, kde-format
-msgid "Open here"
+msgid "Open Here"
 msgstr ""
 
 #: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
@@ -559,7 +554,7 @@ msgstr ""
 #: src/controls.5/private/BrowserView.qml:230
 #: src/controls.6/private/BrowserView.qml:313
 #, kde-format
-msgid "Merge here"
+msgid "Merge Here"
 msgstr ""
 
 #: src/controls.5/private/BrowserView.qml:309
