@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-09 00:41+0000\n"
-"PO-Revision-Date: 2023-11-28 19:41+0100\n"
+"PO-Revision-Date: 2023-12-11 21:13+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -412,34 +412,30 @@ msgstr "Nova nomo"
 #: src/controls.5/private/BrowserView.qml:245
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
-#, fuzzy, kde-format
-#| msgid "Copy here"
+#, kde-format
 msgid "Copy Here"
-msgstr "Kopii ĉi tien"
+msgstr "Kopii ĉi Tien"
 
 #: src/controls.5/FileBrowser.qml:741
 #: src/controls.5/private/BrowserView.qml:257
 #: src/controls.6/FileBrowser.qml:862
 #: src/controls.6/private/BrowserView.qml:340
-#, fuzzy, kde-format
-#| msgid "Move here"
+#, kde-format
 msgid "Move Here"
-msgstr "Movi ĉi tien"
+msgstr "Movi ĉi Tien"
 
 #: src/controls.5/FileBrowser.qml:754
 #: src/controls.5/private/BrowserView.qml:269
 #: src/controls.6/FileBrowser.qml:875
 #: src/controls.6/private/BrowserView.qml:352
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Link Here"
-msgstr "Ligi ĉi tien"
+msgstr "Ligi ĉi Tien"
 
 #: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
-#, fuzzy, kde-format
-#| msgid "Open here"
+#, kde-format
 msgid "Open Here"
-msgstr "Malfermi ĉi tie"
+msgstr "Malfermi ĉi Tie"
 
 #: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
 #, kde-format
@@ -596,10 +592,9 @@ msgstr "Dosierujo nomo"
 
 #: src/controls.5/private/BrowserView.qml:230
 #: src/controls.6/private/BrowserView.qml:313
-#, fuzzy, kde-format
-#| msgid "Merge here"
+#, kde-format
 msgid "Merge Here"
-msgstr "Kunfandi ĉi tie"
+msgstr "Kunfandi ĉi Tie"
 
 #: src/controls.5/private/BrowserView.qml:309
 #: src/controls.5/private/BrowserView.qml:480
@@ -607,7 +602,7 @@ msgstr "Kunfandi ĉi tie"
 #: src/controls.6/private/BrowserView.qml:563
 #, kde-format
 msgid " items"
-msgstr "eroj"
+msgstr " eroj"
 
 #: src/controls.5/private/TagList.qml:24 src/controls.6/private/TagList.qml:32
 #, kde-format
@@ -656,6 +651,3 @@ msgstr "Aldoni novajn etikedojn por la elektitaj dosieroj."
 #, kde-format
 msgid "No tags yet."
 msgstr "Ankoraŭ neniuj etikedoj."
-
-#~ msgid "File browsing and management components."
-#~ msgstr "Dosierfoliumadaj kaj administraj komponantoj."
