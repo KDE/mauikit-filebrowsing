@@ -170,7 +170,9 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
     COMPONENT Devel)
 
 add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
+if(${QT_MAJOR_VERSION} STREQUAL 5) ##for now skip installing translations for mauikit4 to avoid packaging conflicts with translation files
 ki18n_install(po)
+endif()
 
 add_subdirectory(src)
 
