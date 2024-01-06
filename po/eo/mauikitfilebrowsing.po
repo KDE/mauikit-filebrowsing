@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-09 00:41+0000\n"
-"PO-Revision-Date: 2023-12-11 21:13+0100\n"
+"PO-Revision-Date: 2024-01-05 21:11+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -446,7 +446,7 @@ msgstr "Serĉi: %1"
 #: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:93
 #, kde-format
 msgid "Save"
-msgstr "Savi"
+msgstr "Konservi"
 
 #: src/controls.5/FileDialog.qml:144 src/controls.6/FileDialog.qml:211
 #, kde-format
