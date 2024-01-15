@@ -62,7 +62,7 @@ Maui.AltBrowser
         control.currentView.forceActiveFocus()
     }
 
-    model: Maui.MauiModel
+    model: Maui.BaseModel
     {
         id: _browserModel
         list: FB.FMList

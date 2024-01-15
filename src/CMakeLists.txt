@@ -7,7 +7,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto)
 
-ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} URI "org.mauikit.filebrowsing" CLASSNAME FileBrowsingPlugin)
+ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} URI "org.mauikit.filebrowsing" CLASS_NAME FileBrowsingPlugin)
 
 set(sources
     code/filebrowsing_plugin.cpp
