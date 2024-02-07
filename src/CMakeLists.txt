@@ -7,7 +7,9 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto)
 
-ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} URI "org.mauikit.filebrowsing" CLASS_NAME FileBrowsingPlugin)
+ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+URI "org.mauikit.filebrowsing"
+CLASS_NAME FileBrowsingPlugin)
 
 set(sources
     code/filebrowsing_plugin.cpp
@@ -143,7 +145,7 @@ target_link_libraries( MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     MauiKit${MAUI_MAJOR_VERSION})
 
 ecm_finalize_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR})
-ecm_generate_qmltypes(org.mauikit.filebrowsing 3.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
+# ecm_generate_qmltypes(org.mauikit.filebrowsing 3.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
 
 install(TARGETS MauiKitFileBrowsing${MAUI_MAJOR_VERSION} EXPORT MauiKitFileBrowsing${MAUI_MAJOR_VERSION}Targets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 

@@ -523,7 +523,7 @@ Maui.Page
             title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
 
-            template.iconSource: _newActions.currentIndex === 0 ? "folder-new" : "file-new"
+            template.iconSource: FB.FM.getIconName(textEntry.text)
             template.iconVisible: true
 
             onFinished: (text) =>
