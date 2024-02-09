@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# SPDX-FileCopyrightText: 2023 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2023, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-09 00:41+0000\n"
-"PO-Revision-Date: 2023-11-07 09:26+0100\n"
+"PO-Revision-Date: 2024-01-19 15:56+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.2\n"
+"X-Generator: Lokalize 23.08.4\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -402,7 +402,7 @@ msgstr "Odkaz sem"
 #: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
 #, kde-format
 msgid "Open Here"
-msgstr ""
+msgstr "Otevřít zde"
 
 #: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
 #, kde-format
@@ -559,7 +559,7 @@ msgstr "Název adresáře"
 #: src/controls.6/private/BrowserView.qml:313
 #, kde-format
 msgid "Merge Here"
-msgstr ""
+msgstr "Sloučit sem"
 
 #: src/controls.5/private/BrowserView.qml:309
 #: src/controls.5/private/BrowserView.qml:480
