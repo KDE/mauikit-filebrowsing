@@ -35,7 +35,7 @@
 #include "fmstatic.h"
 #include "tagdb.h"
 
-Tagging *Tagging::m_instance = nullptr;
+Q_GLOBAL_STATIC(Tagging, taggingInstance)
 
 Tagging::~Tagging() {}
 
@@ -48,9 +48,6 @@ Tagging::Tagging() : QObject()
         
         qDeleteAll(m_dbs);
         m_dbs.clear();
-        
-        delete m_instance;
-        m_instance = nullptr;
     });
 }
 
@@ -70,7 +67,12 @@ TAGDB * Tagging::db()
     return new_db;
 }
 
-const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier) 
+Tagging *Tagging::getInstance()
+{
+    return taggingInstance();
+}
+
+const QVariantList Tagging::get(const QString &queryTxt, std::function<bool(QVariantMap &item)> modifier)
 {
     QVariantList mapList;
 

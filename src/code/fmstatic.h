@@ -31,7 +31,7 @@ class KFileItem;
 class FILEBROWSING_EXPORT FMStatic : public QObject
 {
     Q_OBJECT
-    Q_DISABLE_COPY(FMStatic)
+    Q_DISABLE_COPY_MOVE(FMStatic)
 
 public:
     /**

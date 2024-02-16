@@ -50,11 +50,7 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     });
     
     //File Tagging components
-    qmlRegisterSingletonType<Tagging>(uri, 1, 3, "Tagging", [](QQmlEngine *engine, QJSEngine *scriptEngine) -> QObject * {
-        Q_UNUSED(engine)
-        Q_UNUSED(scriptEngine)
-        return Tagging::getInstance();
-    }); //the singleton instance results in having tagging instance created in different threads which is not supported byt the slq driver
+    qmlRegisterSingletonType<Tagging>(uri, 1, 3, "Tagging", &Tagging::qmlInstance); //the singleton instance results in having tagging instance created in different threads which is not supported byt the slq driver
     
     qmlRegisterType<TagsList>(uri, 1, 0, "TagsListModel");
     qmlRegisterType(componentUrl(QStringLiteral("private/TagList.qml")), uri, 1, 0, "TagList");

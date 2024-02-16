@@ -355,7 +355,7 @@ Maui.AltBrowser
             visible: active
         }
 
-        onClicked:
+        onClicked: (mouse) =>
         {
             control.currentIndex = index
 
@@ -378,13 +378,13 @@ Maui.AltBrowser
             }
         }
 
-        onDoubleClicked:
+        onDoubleClicked: (mouse) =>
         {
             control.currentIndex = index
             control.itemDoubleClicked(index)
         }
 
-        onPressAndHold:
+        onPressAndHold: (mouse) =>
         {
             if(!Maui.Handy.isTouch)
                 return
@@ -393,7 +393,7 @@ Maui.AltBrowser
                 control.itemRightClicked(index)
         }
 
-        onRightClicked:
+        onRightClicked: (mouse) =>
         {
             control.currentIndex = index
             control.itemRightClicked(index)

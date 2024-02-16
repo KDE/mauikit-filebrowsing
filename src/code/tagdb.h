@@ -73,7 +73,14 @@ private:
    
 public:    
 
+   /**
+    * @private
+    */
     TAGDB();
+
+    /**
+     * @private
+     */
     ~TAGDB();
     
     //Utils

@@ -11,9 +11,9 @@
 // QNetworkAccessManager *FMH::Downloader::manager = new QNetworkAccessManager(); 
 
 FMH::Downloader::Downloader(QObject *parent)
-: QObject(parent)    
-, reply(nullptr)
+: QObject(parent)
 , manager( new QNetworkAccessManager(this))
+, reply(nullptr)
 , file(nullptr)
 , array(new QByteArray)
 {        
