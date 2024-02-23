@@ -397,13 +397,13 @@ Maui.Page
         {
             id: _newDialog
 
-            title:  _newActions.currentIndex === 0  ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
+            title: _newDirOp.checked ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
 
-            template.iconSource: FB.FM.getIconName(textEntry.text)
+            template.iconSource: _newDirOp.checked ? "folder" : FB.FM.getIconName(textEntry.text)
             template.iconVisible: true
 
-            onFinished:
+            onFinished: (text) =>
             {
                 if(_newDirOp.checked)
                 {
