@@ -33,7 +33,8 @@ Maui.InputDialog
         }    
     }
   
-    textEntry.placeholderText: i18n("New tags")    
+    textEntry.placeholderText: i18n("New tags")
+    template.iconSource: "tag"
     
     Maui.ColorsRow
     {

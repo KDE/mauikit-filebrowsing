@@ -21,11 +21,13 @@ Maui.AltBrowser
 
     property Component delegateInjector : null
 
-    property alias dialog :_dialogLoader.item
+    readonly property alias dialog : _dialogLoader.item
+
     Loader
     {
         id: _dialogLoader
     }
+
     QtObject
     {
         id: _private
