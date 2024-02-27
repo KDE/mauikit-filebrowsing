@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-09 00:41+0000\n"
+"POT-Creation-Date: 2024-02-27 01:36+0000\n"
 "PO-Revision-Date: 2024-01-05 21:11+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -344,7 +344,7 @@ msgstr ""
 "Sute liberigita spaco %2"
 
 #: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
-#: src/controls.5/FileDialog.qml:137 src/controls.5/private/BrowserView.qml:283
+#: src/controls.5/FileDialog.qml:137 src/controls.5/private/BrowserView.qml:285
 #: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:477
 #: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:205
 #: src/controls.6/private/BrowserView.qml:366 src/controls.6/TagsDialog.qml:99
@@ -409,7 +409,7 @@ msgid "New name"
 msgstr "Nova nomo"
 
 #: src/controls.5/FileBrowser.qml:729
-#: src/controls.5/private/BrowserView.qml:245
+#: src/controls.5/private/BrowserView.qml:247
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
 #, kde-format
@@ -417,7 +417,7 @@ msgid "Copy Here"
 msgstr "Kopii ĉi Tien"
 
 #: src/controls.5/FileBrowser.qml:741
-#: src/controls.5/private/BrowserView.qml:257
+#: src/controls.5/private/BrowserView.qml:259
 #: src/controls.6/FileBrowser.qml:862
 #: src/controls.6/private/BrowserView.qml:340
 #, kde-format
@@ -425,7 +425,7 @@ msgid "Move Here"
 msgstr "Movi ĉi Tien"
 
 #: src/controls.5/FileBrowser.qml:754
-#: src/controls.5/private/BrowserView.qml:269
+#: src/controls.5/private/BrowserView.qml:271
 #: src/controls.6/FileBrowser.qml:875
 #: src/controls.6/private/BrowserView.qml:352
 #, kde-format
@@ -560,44 +560,44 @@ msgstr "Kaŝi"
 msgid "Remove"
 msgstr "Forigi"
 
-#: src/controls.5/private/BrowserView.qml:210
+#: src/controls.5/private/BrowserView.qml:212
 #: src/controls.6/private/BrowserView.qml:293
 #, kde-format
 msgid "Directory already exists."
 msgstr "Dosierujo jam ekzistas."
 
-#: src/controls.5/private/BrowserView.qml:213
+#: src/controls.5/private/BrowserView.qml:215
 #: src/controls.6/private/BrowserView.qml:296
 #, kde-format
 msgid "Looks good."
 msgstr "Aspektas bone."
 
-#: src/controls.5/private/BrowserView.qml:217
+#: src/controls.5/private/BrowserView.qml:219
 #: src/controls.6/private/BrowserView.qml:300
 #, kde-format
 msgid "Merge %1 files"
 msgstr "Kunfandi %1 dosierojn"
 
-#: src/controls.5/private/BrowserView.qml:218
+#: src/controls.5/private/BrowserView.qml:220
 #: src/controls.6/private/BrowserView.qml:301
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "Donu nomon al la nova dosierujo kie ĉiuj dosieroj estos kunfanditaj."
 
-#: src/controls.5/private/BrowserView.qml:220
+#: src/controls.5/private/BrowserView.qml:222
 #: src/controls.6/private/BrowserView.qml:303
 #, kde-format
 msgid "Directory name"
 msgstr "Dosierujo nomo"
 
-#: src/controls.5/private/BrowserView.qml:230
+#: src/controls.5/private/BrowserView.qml:232
 #: src/controls.6/private/BrowserView.qml:313
 #, kde-format
 msgid "Merge Here"
 msgstr "Kunfandi ĉi Tie"
 
-#: src/controls.5/private/BrowserView.qml:309
-#: src/controls.5/private/BrowserView.qml:480
+#: src/controls.5/private/BrowserView.qml:311
+#: src/controls.5/private/BrowserView.qml:482
 #: src/controls.6/private/BrowserView.qml:392
 #: src/controls.6/private/BrowserView.qml:563
 #, kde-format
