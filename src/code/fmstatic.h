@@ -98,6 +98,7 @@ public:
         QStringLiteral("text/x-dbus-service"),
         QStringLiteral("text/x-gettext-translation"),
         QStringLiteral("application/xml"),
+        QStringLiteral("application/yaml"),
         QStringLiteral("application/vnd.kde.knotificationrc"),
         QStringLiteral("application/x-gitignore"),
         QStringLiteral("application/javascript"),

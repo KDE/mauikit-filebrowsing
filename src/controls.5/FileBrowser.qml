@@ -599,6 +599,7 @@ Maui.Page
             {
                 const urls = filterSelection(control.currentPath, item.path)
                 control.cut(urls)
+                Maui.App.rootComponent.notify("dialog-information", i18np("%1 file has been cut", "%1 files have been cut", urls.length))
                 event.accepted = true
             }
 
@@ -607,6 +608,7 @@ Maui.Page
             {
                 const urls = filterSelection(control.currentPath, item.path)
                 control.copy(urls)
+                Maui.App.rootComponent.notify("dialog-information", i18np("%1 file has been copied", "%1 files have been copied", urls.length))
                 event.accepted = true
             }
 
