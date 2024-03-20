@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-27 01:36+0000\n"
+"POT-Creation-Date: 2024-03-20 01:40+0000\n"
 "PO-Revision-Date: 2023-12-10 09:28+0100\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: French <kde-francophone@kde.org>\n"
@@ -351,7 +351,7 @@ msgstr ""
 "Supprimer %1\n"
 "Espace libre total %2"
 
-#: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:780
+#: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:782
 #: src/controls.5/FileDialog.qml:137 src/controls.5/private/BrowserView.qml:285
 #: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:477
 #: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:205
@@ -416,7 +416,21 @@ msgstr ""
 msgid "New name"
 msgstr "Nouveau nom"
 
-#: src/controls.5/FileBrowser.qml:729
+#: src/controls.5/FileBrowser.qml:602
+#, kde-format
+msgid "%1 file has been cut"
+msgid_plural "%1 files have been cut"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/controls.5/FileBrowser.qml:611
+#, kde-format
+msgid "%1 file has been copied"
+msgid_plural "%1 files have been copied"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/controls.5/FileBrowser.qml:731
 #: src/controls.5/private/BrowserView.qml:247
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
@@ -424,7 +438,7 @@ msgstr "Nouveau nom"
 msgid "Copy Here"
 msgstr "Copier ici"
 
-#: src/controls.5/FileBrowser.qml:741
+#: src/controls.5/FileBrowser.qml:743
 #: src/controls.5/private/BrowserView.qml:259
 #: src/controls.6/FileBrowser.qml:862
 #: src/controls.6/private/BrowserView.qml:340
@@ -432,7 +446,7 @@ msgstr "Copier ici"
 msgid "Move Here"
 msgstr "Déplacer ici"
 
-#: src/controls.5/FileBrowser.qml:754
+#: src/controls.5/FileBrowser.qml:756
 #: src/controls.5/private/BrowserView.qml:271
 #: src/controls.6/FileBrowser.qml:875
 #: src/controls.6/private/BrowserView.qml:352
@@ -440,12 +454,12 @@ msgstr "Déplacer ici"
 msgid "Link Here"
 msgstr "Lier ici"
 
-#: src/controls.5/FileBrowser.qml:767 src/controls.6/FileBrowser.qml:888
+#: src/controls.5/FileBrowser.qml:769 src/controls.6/FileBrowser.qml:888
 #, kde-format
 msgid "Open Here"
 msgstr "Ouvrir ici"
 
-#: src/controls.5/FileBrowser.qml:1136 src/controls.6/FileBrowser.qml:1273
+#: src/controls.5/FileBrowser.qml:1138 src/controls.6/FileBrowser.qml:1273
 #, kde-format
 msgid "Search: %1"
 msgstr "Recherche : %1"
