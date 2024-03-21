@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
-# SPDX-FileCopyrightText: 2022, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-20 01:40+0000\n"
-"PO-Revision-Date: 2023-12-09 15:23+0100\n"
+"PO-Revision-Date: 2024-03-20 10:46+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -419,15 +419,15 @@ msgstr "Nieuwe naam"
 #, kde-format
 msgid "%1 file has been cut"
 msgid_plural "%1 files have been cut"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 bestand is geknipt"
+msgstr[1] "%1 bestanden zijn geknipt"
 
 #: src/controls.5/FileBrowser.qml:611
 #, kde-format
 msgid "%1 file has been copied"
 msgid_plural "%1 files have been copied"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 bestand is gekopieerd"
+msgstr[1] "%1 bestanden zijn gekopieerd"
 
 #: src/controls.5/FileBrowser.qml:731
 #: src/controls.5/private/BrowserView.qml:247

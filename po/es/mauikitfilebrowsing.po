@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
 # Automatically generated, 2022.
-# SPDX-FileCopyrightText: 2022, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-20 01:40+0000\n"
-"PO-Revision-Date: 2023-12-09 02:35+0100\n"
+"PO-Revision-Date: 2024-03-20 12:43+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.3\n"
+"X-Generator: Lokalize 24.02.0\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -425,15 +425,15 @@ msgstr "Nuevo nombre"
 #, kde-format
 msgid "%1 file has been cut"
 msgid_plural "%1 files have been cut"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Se ha cortado %1 archivo"
+msgstr[1] "Se han cortado %1 archivos"
 
 #: src/controls.5/FileBrowser.qml:611
 #, kde-format
 msgid "%1 file has been copied"
 msgid_plural "%1 files have been copied"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Se ha copiado %1 archivo"
+msgstr[1] "Se han copiado %1 archivos"
 
 #: src/controls.5/FileBrowser.qml:731
 #: src/controls.5/private/BrowserView.qml:247
