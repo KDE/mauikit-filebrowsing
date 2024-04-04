@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-03-20 01:40+0000\n"
-"PO-Revision-Date: 2024-01-19 15:56+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-04-03 11:46+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.1\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -379,17 +379,17 @@ msgstr "Nový název"
 #, kde-format
 msgid "%1 file has been cut"
 msgid_plural "%1 files have been cut"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 soubor byl vyjmut"
+msgstr[1] "%1 soubory byly vyjmuty"
+msgstr[2] "%1 souborů bylo vyjmuto"
 
 #: src/controls.5/FileBrowser.qml:611
 #, kde-format
 msgid "%1 file has been copied"
 msgid_plural "%1 files have been copied"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1 soubor byl zkopírován"
+msgstr[1] "%1 soubory byly zkopírovány"
+msgstr[2] "%1 souborů bylo zkopírováno"
 
 #: src/controls.5/FileBrowser.qml:731
 #: src/controls.5/private/BrowserView.qml:247
