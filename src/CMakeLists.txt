@@ -8,13 +8,16 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto)
 
+if (QT_MAJOR_VERSION STREQUAL "6")
     add_library(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SHARED)
+endif()
+
 ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
-VERSION 1.3
-URI "org.mauikit.filebrowsing"
-CLASS_NAME FileBrowsingPlugin
-NO_PLUGIN_OPTIONAL
-NO_GENERATE_PLUGIN_SOURCE)
+    VERSION 1.3
+    URI "org.mauikit.filebrowsing"
+    CLASS_NAME FileBrowsingPlugin
+    NO_PLUGIN_OPTIONAL
+    NO_GENERATE_PLUGIN_SOURCE)
 
 set_target_properties(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PROPERTIES
     VERSION ${PROJECT_VERSION}
@@ -112,8 +115,10 @@ target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     
     code/moduleinfo.cpp
     code/moduleinfo.h
+    
     ${syncing_SRCS})    
     
+if (QT_MAJOR_VERSION STREQUAL "6") ##For Qt6 the plugin is split from the shared library, thus we only link the sources to the plugin that are merely part of the plugin and not form the public shared lib. For Qt5 everything is smashed together
      target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
     PRIVATE
     code/filebrowsing_plugin.cpp
@@ -127,7 +132,25 @@ target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
    
     code/openwithmodel.cpp
     code/openwithmodel.h
+    
     assets.qrc)
+    else()
+         target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+    PRIVATE
+    code/filebrowsing_plugin.cpp
+    code/filebrowsing_plugin.h
+          
+    code/thumbnailer.cpp
+    code/thumbnailer.h
+        
+    code/tagslist.cpp
+    code/tagslist.h
+   
+    code/openwithmodel.cpp
+    code/openwithmodel.h
+    
+    assets.qrc)
+    endif()
 
 if (QT_MAJOR_VERSION STREQUAL "5")
     if(QUICK_COMPILER)
@@ -155,10 +178,12 @@ if(${KIO_AVAILABLE})
         KF${KF_MAJOR_VERSION}::KIOCore
         KF${KF_MAJOR_VERSION}::KIOFileWidgets)
         
+        if (QT_MAJOR_VERSION STREQUAL "6")
         target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
         PRIVATE
         KF${KF_MAJOR_VERSION}::KIOCore
         KF${KF_MAJOR_VERSION}::KIOFileWidgets)
+        endif()
 
     add_definitions(-DKIO_AVAILABLE)
     target_compile_definitions(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC KIO_AVAILABLE)
@@ -176,6 +201,7 @@ target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     Qt${QT_MAJOR_VERSION}::Network
     MauiKit${MAUI_MAJOR_VERSION})
     
+    if (QT_MAJOR_VERSION STREQUAL "6")
     target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
     PRIVATE
     MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
@@ -188,6 +214,7 @@ target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     Qt${QT_MAJOR_VERSION}::Concurrent
     Qt${QT_MAJOR_VERSION}::Network
     MauiKit${MAUI_MAJOR_VERSION})
+    endif()
 
 ecm_finalize_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR})
 # ecm_generate_qmltypes(org.mauikit.filebrowsing 3.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
