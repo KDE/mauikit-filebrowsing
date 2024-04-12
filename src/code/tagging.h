@@ -46,6 +46,8 @@ class TAGDB;
 class FILEBROWSING_EXPORT Tagging : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
     Q_DISABLE_COPY_MOVE(Tagging)
 
 public:

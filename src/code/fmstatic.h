@@ -3,8 +3,14 @@
 #include <QtGlobal>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <MauiKit3/Core/fmh.h>
+#ifdef Q_OS_ANDROID
+#include <MauiKit3/Core/mauiandroid.h>
+#endif
 #else
 #include <MauiKit4/Core/fmh.h>
+#ifdef Q_OS_ANDROID
+#include <MauiKit4/Core/mauiandroid.h>
+#endif
 #endif
 
 #include <QObject>
@@ -14,10 +20,7 @@
 #include <QMimeType>
 #include <QStandardPaths>
 #include <QUrl>
-
-#ifdef Q_OS_ANDROID
-#include <MauiKit3/Core/mauiandroid.h>
-#endif
+#include <QQmlEngine>
 
 #ifdef KIO_AVAILABLE
 class KFileItem;
@@ -31,6 +34,9 @@ class KFileItem;
 class FILEBROWSING_EXPORT FMStatic : public QObject
 {
     Q_OBJECT
+    // QML_NAMED_ELEMENT(FM)
+    // QML_SINGLETON
+    
     Q_DISABLE_COPY_MOVE(FMStatic)
 
 public:

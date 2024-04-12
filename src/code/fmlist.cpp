@@ -54,7 +54,7 @@ FMList::FMList(QObject *parent)
     });
 
     connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
-        for (const auto &item : qAsConst(res)) {
+        for (const auto &item : std::as_const(res)) {
             const auto index = this->indexOf(FMH::MODEL_KEY::PATH, item.first[FMH::MODEL_KEY::PATH]);
 
             if (index >= this->list.size() || index < 0)
@@ -81,7 +81,7 @@ FMList::FMList(QObject *parent)
             return;
         }
 
-        for (const auto &item : qAsConst(res.content)) {
+        for (const auto &item : std::as_const(res.content)) {
             const auto index = this->indexOf(FMH::MODEL_KEY::PATH, item[FMH::MODEL_KEY::PATH]);
             qDebug() << "SUPOSSED TO REMOVED THIS FORM THE LIST" << index << this->list.count() << item[FMH::MODEL_KEY::PATH];
 
@@ -758,7 +758,7 @@ void FMList::filterContent(const QString &query, const QUrl &path)
         FMH::MODEL_LIST m_content;
         FMStatic::PATH_CONTENT res;
 
-        for (const auto &item : qAsConst(this->list))
+        for (const auto &item : std::as_const(this->list))
         {
             if (item[FMH::MODEL_KEY::LABEL].contains(query, Qt::CaseInsensitive) || item[FMH::MODEL_KEY::SUFFIX].contains(query, Qt::CaseInsensitive) || item[FMH::MODEL_KEY::MIME].contains(query, Qt::CaseInsensitive)) {
                 m_content << item;

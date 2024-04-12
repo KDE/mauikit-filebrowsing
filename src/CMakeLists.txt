@@ -3,30 +3,25 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/code
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto)
 
+    add_library(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SHARED)
 ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+VERSION 1.3
 URI "org.mauikit.filebrowsing"
-CLASS_NAME FileBrowsingPlugin)
+CLASS_NAME FileBrowsingPlugin
+NO_PLUGIN_OPTIONAL
+NO_GENERATE_PLUGIN_SOURCE)
 
-set(sources
-    code/filebrowsing_plugin.cpp
-    code/fm.cpp
-    code/fmstatic.cpp
-    code/fmlist.cpp
-    code/placeslist.cpp
-    code/downloader.cpp
-    code/fileloader.cpp
-    code/thumbnailer.cpp
-    code/tagging.cpp
-    code/tagdb.cpp
-    code/tagslist.cpp
-    code/tagging.qrc
-    code/openwithmodel.cpp
-    code/moduleinfo.cpp
-    assets.qrc)
+set_target_properties(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+    EXPORT_NAME "FileBrowsing")
+    
+add_library(MauiKit${MAUI_MAJOR_VERSION}::FileBrowsing ALIAS MauiKitFileBrowsing${MAUI_MAJOR_VERSION})
 
 set(headers
     code/fm.h
@@ -35,12 +30,9 @@ set(headers
     code/placeslist.h
     code/downloader.h
     code/fileloader.h
-    code/thumbnailer.h
     code/tagging.h
     code/tagdb.h
-    code/tagslist.h
-    code/moduleinfo.h
-    code/openwithmodel.h)
+    code/moduleinfo.h)
 
 set(syncing_SRCS
     code/syncing.cpp
@@ -92,10 +84,50 @@ ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PATH private SOU
 
 target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     PRIVATE
-    ${sources}
-    ${syncing_SRCS})
+    code/fm.cpp
+    code/fm.h
 
-add_library(MauiKit${MAUI_MAJOR_VERSION}::FileBrowsing ALIAS MauiKitFileBrowsing${MAUI_MAJOR_VERSION})
+    code/fmstatic.cpp
+    code/fmstatic.h
+    
+    code/fmlist.cpp
+    code/fmlist.h
+    
+    code/placeslist.cpp  
+    code/placeslist.h
+    
+    code/downloader.cpp
+    code/downloader.h
+    
+    code/fileloader.cpp
+    code/fileloader.h
+    
+    code/tagging.cpp
+    code/tagging.h
+    
+    code/tagdb.cpp
+    code/tagdb.h
+    
+    code/tagging.qrc
+    
+    code/moduleinfo.cpp
+    code/moduleinfo.h
+    ${syncing_SRCS})    
+    
+     target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
+    PRIVATE
+    code/filebrowsing_plugin.cpp
+    code/filebrowsing_plugin.h
+          
+    code/thumbnailer.cpp
+    code/thumbnailer.h
+        
+    code/tagslist.cpp
+    code/tagslist.h
+   
+    code/openwithmodel.cpp
+    code/openwithmodel.h
+    assets.qrc)
 
 if (QT_MAJOR_VERSION STREQUAL "5")
     if(QUICK_COMPILER)
@@ -107,10 +139,6 @@ if (QT_MAJOR_VERSION STREQUAL "5")
 endif()
 
 generate_export_header(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} BASE_NAME FileBrowsing)
-set_target_properties(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION ${PROJECT_VERSION_MAJOR}
-    EXPORT_NAME "FileBrowsing")
 
 target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit${MAUI_MAJOR_VERSION}/FileBrowsing>")
@@ -123,7 +151,11 @@ endif()
 
 if(${KIO_AVAILABLE})
     target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
-
+        PRIVATE
+        KF${KF_MAJOR_VERSION}::KIOCore
+        KF${KF_MAJOR_VERSION}::KIOFileWidgets)
+        
+        target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
         PRIVATE
         KF${KF_MAJOR_VERSION}::KIOCore
         KF${KF_MAJOR_VERSION}::KIOFileWidgets)
@@ -132,9 +164,22 @@ if(${KIO_AVAILABLE})
     target_compile_definitions(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC KIO_AVAILABLE)
 endif()
 
-target_link_libraries( MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
-    PRIVATE
+target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+    PRIVATE    
     KF${KF_MAJOR_VERSION}::I18n
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::Quick
+    Qt${QT_MAJOR_VERSION}::Qml
+    Qt${QT_MAJOR_VERSION}::Sql
+    Qt${QT_MAJOR_VERSION}::Xml
+    Qt${QT_MAJOR_VERSION}::Concurrent
+    Qt${QT_MAJOR_VERSION}::Network
+    MauiKit${MAUI_MAJOR_VERSION})
+    
+    target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
+    PRIVATE
+    MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+     KF${KF_MAJOR_VERSION}::I18n
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Quick
     Qt${QT_MAJOR_VERSION}::Qml

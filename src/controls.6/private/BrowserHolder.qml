@@ -1,5 +1,5 @@
-import QtQuick 2.9
-import org.mauikit.filebrowsing 1.0 as FB
+import QtQuick 
+import org.mauikit.filebrowsing as FB
 
 QtObject
 {

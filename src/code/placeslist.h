@@ -21,6 +21,7 @@
 #include <QObject>
 #include <QModelIndex>
 #include <QHash>
+#include <QQmlEngine>
 
 #include "fmstatic.h"
 
@@ -30,6 +31,8 @@
 #include <MauiKit4/Core/mauilist.h>
 #endif
 
+#include "filebrowsing_export.h"
+
 class KFilePlacesModel;
 
 /**
@@ -37,9 +40,10 @@ class KFilePlacesModel;
  * 
  * A graphical interface for this controller functionality is available for quick usage as PlacesListBrowser.
  */
-class PlacesList : public MauiList
+class FILEBROWSING_EXPORT PlacesList : public MauiList
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_DISABLE_COPY(PlacesList)
     
     /**

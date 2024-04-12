@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QImage>
+#include <QQmlEngine>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <MauiKit3/Core/mauilist.h>
@@ -38,7 +39,7 @@ class FM;
  * 
  * The status object is divided into different properties for convenience, such as error label, message, icon, code, etc.
  */
-struct PathStatus
+struct FILEBROWSING_EXPORT PathStatus
 {
     Q_GADGET
     
@@ -107,7 +108,7 @@ Q_DECLARE_METATYPE(PathStatus)
 /**
  * @private
  */
-struct NavHistory {
+struct FILEBROWSING_EXPORT NavHistory {
     void appendPath(const QUrl &path)
     {
         this->prev_history.append(path);
@@ -145,6 +146,7 @@ private:
 class FILEBROWSING_EXPORT FMList : public MauiList
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_DISABLE_COPY(FMList)
     
     // writable

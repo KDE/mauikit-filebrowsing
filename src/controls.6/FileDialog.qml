@@ -23,8 +23,8 @@ import QtQml
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.3 as FB
+import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FB
 
 /**
  * @inherit org::mauikit::controls::PopupPage 
@@ -212,7 +212,7 @@ Maui.PopupPage
             onTriggered:
             {
                 console.log("CURRENT PATHb", _browser.currentPath+"/"+textField.text)
-                if(control.mode === modes.SAVE && textField.text.length === 0)
+                if(control.mode === FileDialog.Modes.Save && textField.text.length === 0)
                     return
                     
                     if(control.mode === FileDialog.Modes.Save && FB.FM.fileExists(_browser.currentPath+"/"+textField.text))
@@ -272,9 +272,10 @@ Maui.PopupPage
             id: sidebarLoader
             asynchronous: true
             anchors.fill: parent
+            
             sourceComponent: FB.PlacesListBrowser
             {
-                onPlaceClicked:
+                onPlaceClicked: (path) =>
                 {
                     //pageRow.currentIndex = 1
                     _browser.openFolder(path)
@@ -334,8 +335,8 @@ Maui.PopupPage
                                 icon.name: "view-hidden"
                                 //                        text: i18nd("mauikitfilebrowsing", "Hidden Files")
                                 checkable: true
-                                checked: settings.showHiddenFiles
-                                onTriggered: settings.showHiddenFiles = !settings.showHiddenFiles
+                                checked: browser.settings.showHiddenFiles
+                                onTriggered: browser.settings.showHiddenFiles = !browser.settings.showHiddenFiles
                             }
 
                             Action
@@ -349,7 +350,7 @@ Maui.PopupPage
                         {
                             width: parent.width
                             isSection: true
-                            label: i18nd("mauikitfilebrowsing", "View type")
+                            text: i18nd("mauikitfilebrowsing", "View type")
                         }
 
                         Action
@@ -389,7 +390,7 @@ Maui.PopupPage
                         {
                             width: parent.width
                             isSection: true
-                            label: i18nd("mauikitfilebrowsing", "Sort by")
+                            text: i18nd("mauikitfilebrowsing", "Sort by")
                         }
 
                         Action

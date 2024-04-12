@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import org.mauikit.controls 1.3 as Maui
-import org.mauikit.filebrowsing 1.3 as FB
+import org.mauikit.controls as Maui
+import org.mauikit.filebrowsing as FB
 
 /**
  * @inherit org::mauikit::controls::AltBrowser

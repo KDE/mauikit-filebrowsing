@@ -19,8 +19,7 @@ private:
     void setList();
     FM *fm;
 
-protected:
-signals:
+Q_SIGNALS:
     void preItemAppended();
     void postItemAppended();
     void preItemRemoved(int index);
@@ -29,7 +28,7 @@ signals:
     void preListChanged();
     void postListChanged();
 
-public slots:
+public Q_SLOTS:
     QVariantMap get(const int &index) const;
     void insert(const QVariantMap &data);
     void removeAccount(const QString &server, const QString &user);

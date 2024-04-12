@@ -18,7 +18,7 @@
  */
 
 import QtQml
-import org.mauikit.filebrowsing 1.0 as FB
+import org.mauikit.filebrowsing as FB
 
 /**
  * @inherit QtQml.QtObject

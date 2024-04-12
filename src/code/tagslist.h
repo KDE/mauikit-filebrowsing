@@ -1,6 +1,7 @@
 #pragma once
 #include <QObject>
 #include <QStringList>
+#include <QQmlEngine>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <MauiKit3/Core/mauilist.h>
@@ -20,6 +21,8 @@
 class TagsList : public MauiList
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_NAMED_ELEMENT(TagsListModel)
     Q_DISABLE_COPY(TagsList)
     
     /**
