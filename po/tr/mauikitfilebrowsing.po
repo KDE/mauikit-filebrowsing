@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-20 01:40+0000\n"
+"POT-Creation-Date: 2024-04-13 01:43+0000\n"
 "PO-Revision-Date: 2024-03-20 14:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -370,7 +370,7 @@ msgid "Create a new folder or a file with a custom name."
 msgstr "Özel bir adla yeni bir klasör veya dosya oluşturun."
 
 #: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:378
-#: src/controls.6/FileBrowser.qml:543 src/controls.6/FileDialog.qml:445
+#: src/controls.6/FileBrowser.qml:543 src/controls.6/FileDialog.qml:446
 #, kde-format
 msgid "Name"
 msgstr "Ad"
@@ -478,57 +478,57 @@ msgstr ""
 "Bu eylem, %1 dosyasının üzerine yazacaktır. Bunu yapmak istediğinizden emin "
 "misiniz?"
 
-#: src/controls.5/FileDialog.qml:243 src/controls.6/FileDialog.qml:310
+#: src/controls.5/FileDialog.qml:243 src/controls.6/FileDialog.qml:311
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Kenar Çubuğunu Aç/Kapat"
 
-#: src/controls.5/FileDialog.qml:285 src/controls.6/FileDialog.qml:352
+#: src/controls.5/FileDialog.qml:285 src/controls.6/FileDialog.qml:353
 #, kde-format
 msgid "View type"
 msgstr "Görünüm türü"
 
-#: src/controls.5/FileDialog.qml:290 src/controls.6/FileDialog.qml:357
+#: src/controls.5/FileDialog.qml:290 src/controls.6/FileDialog.qml:358
 #, kde-format
 msgid "List"
 msgstr "Liste"
 
-#: src/controls.5/FileDialog.qml:305 src/controls.6/FileDialog.qml:372
+#: src/controls.5/FileDialog.qml:305 src/controls.6/FileDialog.qml:373
 #, kde-format
 msgid "Grid"
 msgstr "Izgara"
 
-#: src/controls.5/FileDialog.qml:325 src/controls.6/FileDialog.qml:392
+#: src/controls.5/FileDialog.qml:325 src/controls.6/FileDialog.qml:393
 #, kde-format
 msgid "Sort by"
 msgstr "Şuna göre sırala"
 
-#: src/controls.5/FileDialog.qml:330 src/controls.6/FileDialog.qml:397
+#: src/controls.5/FileDialog.qml:330 src/controls.6/FileDialog.qml:398
 #, kde-format
 msgid "Type"
 msgstr "Tür"
 
-#: src/controls.5/FileDialog.qml:342 src/controls.6/FileDialog.qml:409
+#: src/controls.5/FileDialog.qml:342 src/controls.6/FileDialog.qml:410
 #, kde-format
 msgid "Date"
 msgstr "Tarih"
 
-#: src/controls.5/FileDialog.qml:354 src/controls.6/FileDialog.qml:421
+#: src/controls.5/FileDialog.qml:354 src/controls.6/FileDialog.qml:422
 #, kde-format
 msgid "Modified"
 msgstr "Değiştirilme"
 
-#: src/controls.5/FileDialog.qml:366 src/controls.6/FileDialog.qml:433
+#: src/controls.5/FileDialog.qml:366 src/controls.6/FileDialog.qml:434
 #, kde-format
 msgid "Size"
 msgstr "Boyut"
 
-#: src/controls.5/FileDialog.qml:392 src/controls.6/FileDialog.qml:459
+#: src/controls.5/FileDialog.qml:392 src/controls.6/FileDialog.qml:460
 #, kde-format
 msgid "Show Folders First"
 msgstr "Önce Klasörleri Göster"
 
-#: src/controls.5/FileDialog.qml:405 src/controls.6/FileDialog.qml:472
+#: src/controls.5/FileDialog.qml:405 src/controls.6/FileDialog.qml:473
 #, kde-format
 msgid "Group"
 msgstr "Grup"

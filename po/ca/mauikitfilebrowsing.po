@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-03-20 01:40+0000\n"
+"POT-Creation-Date: 2024-04-13 01:43+0000\n"
 "PO-Revision-Date: 2024-03-20 09:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -384,7 +384,7 @@ msgid "Create a new folder or a file with a custom name."
 msgstr "Crea una carpeta o fitxer nou amb un nom personalitzat."
 
 #: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:378
-#: src/controls.6/FileBrowser.qml:543 src/controls.6/FileDialog.qml:445
+#: src/controls.6/FileBrowser.qml:543 src/controls.6/FileDialog.qml:446
 #, kde-format
 msgid "Name"
 msgstr "Nom"
@@ -491,57 +491,57 @@ msgstr ""
 "Ja existeix un fitxer anomenat «%1».\n"
 " Aquesta acció sobreescriurà %1. Segur que voleu fer-ho?"
 
-#: src/controls.5/FileDialog.qml:243 src/controls.6/FileDialog.qml:310
+#: src/controls.5/FileDialog.qml:243 src/controls.6/FileDialog.qml:311
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Alterna la barra lateral"
 
-#: src/controls.5/FileDialog.qml:285 src/controls.6/FileDialog.qml:352
+#: src/controls.5/FileDialog.qml:285 src/controls.6/FileDialog.qml:353
 #, kde-format
 msgid "View type"
 msgstr "Tipus de vista"
 
-#: src/controls.5/FileDialog.qml:290 src/controls.6/FileDialog.qml:357
+#: src/controls.5/FileDialog.qml:290 src/controls.6/FileDialog.qml:358
 #, kde-format
 msgid "List"
 msgstr "Llista"
 
-#: src/controls.5/FileDialog.qml:305 src/controls.6/FileDialog.qml:372
+#: src/controls.5/FileDialog.qml:305 src/controls.6/FileDialog.qml:373
 #, kde-format
 msgid "Grid"
 msgstr "Quadrícula"
 
-#: src/controls.5/FileDialog.qml:325 src/controls.6/FileDialog.qml:392
+#: src/controls.5/FileDialog.qml:325 src/controls.6/FileDialog.qml:393
 #, kde-format
 msgid "Sort by"
 msgstr "Ordena per"
 
-#: src/controls.5/FileDialog.qml:330 src/controls.6/FileDialog.qml:397
+#: src/controls.5/FileDialog.qml:330 src/controls.6/FileDialog.qml:398
 #, kde-format
 msgid "Type"
 msgstr "Tipus"
 
-#: src/controls.5/FileDialog.qml:342 src/controls.6/FileDialog.qml:409
+#: src/controls.5/FileDialog.qml:342 src/controls.6/FileDialog.qml:410
 #, kde-format
 msgid "Date"
 msgstr "Data"
 
-#: src/controls.5/FileDialog.qml:354 src/controls.6/FileDialog.qml:421
+#: src/controls.5/FileDialog.qml:354 src/controls.6/FileDialog.qml:422
 #, kde-format
 msgid "Modified"
 msgstr "Modificació"
 
-#: src/controls.5/FileDialog.qml:366 src/controls.6/FileDialog.qml:433
+#: src/controls.5/FileDialog.qml:366 src/controls.6/FileDialog.qml:434
 #, kde-format
 msgid "Size"
 msgstr "Mida"
 
-#: src/controls.5/FileDialog.qml:392 src/controls.6/FileDialog.qml:459
+#: src/controls.5/FileDialog.qml:392 src/controls.6/FileDialog.qml:460
 #, kde-format
 msgid "Show Folders First"
 msgstr "Mostra primer les carpetes"
 
-#: src/controls.5/FileDialog.qml:405 src/controls.6/FileDialog.qml:472
+#: src/controls.5/FileDialog.qml:405 src/controls.6/FileDialog.qml:473
 #, kde-format
 msgid "Group"
 msgstr "Agrupa"
