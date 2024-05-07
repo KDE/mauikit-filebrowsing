@@ -330,7 +330,7 @@ Maui.AltBrowser
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
-                FB.FM.copy(urls, _dropMenu.target, false)
+                FB.FM.copy(urls, _dropMenu.target)
             }
         }
 
@@ -404,10 +404,9 @@ Maui.AltBrowser
         draggable: true
 
         Drag.keys: ["text/uri-list"]
-        Drag.mimeData: Drag.active ?
-        {
-            "text/uri-list": filterSelection(control.path, model.path).join("\n")
-        } : {}
+        Drag.mimeData: {
+            "text/uri-list": filterSelection(control.path, model.path)
+        } 
 
         Item
         {
@@ -570,10 +569,9 @@ Maui.AltBrowser
             template.iconContainer.opacity: model.hidden == "true" ? 0.5 : 1
 
             Drag.keys: ["text/uri-list"]
-            Drag.mimeData: Drag.active ?
-            {
-                "text/uri-list":  filterSelection(control.path, model.path).join("\n")
-            } : {}
+            Drag.mimeData: {
+                "text/uri-list":  filterSelection(control.path, model.path)
+            } 
 
             Maui.Icon
             {

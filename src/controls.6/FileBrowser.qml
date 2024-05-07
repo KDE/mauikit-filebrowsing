@@ -852,6 +852,7 @@ Maui.Page
             onTriggered:
             {
                 const urls = _dropMenu.urls.split(",")
+                console.log("COPY THESE URLS,", urls, _dropMenu.urls)
                 control.currentFMList.copyInto(urls)
             }
         }
@@ -920,9 +921,9 @@ Maui.Page
             property alias filters: _browser.filters
             readonly property alias title : _browser.title
 
-            onDropped:
+            onDropped: (drop) =>
             {
-                if(drop.urls)
+                if(drop.hasUrls)
                 {
                     _dropMenu.urls = drop.urls.join(",")
                     _dropMenu.show()

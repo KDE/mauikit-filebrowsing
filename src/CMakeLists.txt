@@ -201,7 +201,7 @@ target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     Qt${QT_MAJOR_VERSION}::Network
     MauiKit${MAUI_MAJOR_VERSION})
     
-    if (QT_MAJOR_VERSION STREQUAL "6")
+if (QT_MAJOR_VERSION STREQUAL "6")
     target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
     PRIVATE
     MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
@@ -214,7 +214,7 @@ target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     Qt${QT_MAJOR_VERSION}::Concurrent
     Qt${QT_MAJOR_VERSION}::Network
     MauiKit${MAUI_MAJOR_VERSION})
-    endif()
+ endif()
 
 ecm_finalize_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR})
 # ecm_generate_qmltypes(org.mauikit.filebrowsing 3.0 DESTINATION ${KDE_INSTALL_QMLDIR}/org/mauikit/filebrowsing)
