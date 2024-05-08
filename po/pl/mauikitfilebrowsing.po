@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-04-13 01:43+0000\n"
+"POT-Creation-Date: 2024-05-08 01:51+0000\n"
 "PO-Revision-Date: 2023-11-04 12:37+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -352,7 +352,7 @@ msgstr ""
 #: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:782
 #: src/controls.5/FileDialog.qml:137 src/controls.5/private/BrowserView.qml:285
 #: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:477
-#: src/controls.6/FileBrowser.qml:901 src/controls.6/FileDialog.qml:205
+#: src/controls.6/FileBrowser.qml:902 src/controls.6/FileDialog.qml:205
 #: src/controls.6/private/BrowserView.qml:366 src/controls.6/TagsDialog.qml:99
 #, kde-format
 msgid "Cancel"
@@ -441,7 +441,7 @@ msgstr "Skopiuj tutaj"
 
 #: src/controls.5/FileBrowser.qml:743
 #: src/controls.5/private/BrowserView.qml:259
-#: src/controls.6/FileBrowser.qml:862
+#: src/controls.6/FileBrowser.qml:863
 #: src/controls.6/private/BrowserView.qml:340
 #, fuzzy, kde-format
 #| msgid "Move here"
@@ -450,20 +450,20 @@ msgstr "Przenieś tutaj"
 
 #: src/controls.5/FileBrowser.qml:756
 #: src/controls.5/private/BrowserView.qml:271
-#: src/controls.6/FileBrowser.qml:875
+#: src/controls.6/FileBrowser.qml:876
 #: src/controls.6/private/BrowserView.qml:352
 #, fuzzy, kde-format
 #| msgid "Link here"
 msgid "Link Here"
 msgstr "Dowiąż tutaj"
 
-#: src/controls.5/FileBrowser.qml:769 src/controls.6/FileBrowser.qml:888
+#: src/controls.5/FileBrowser.qml:769 src/controls.6/FileBrowser.qml:889
 #, fuzzy, kde-format
 #| msgid "Open here"
 msgid "Open Here"
 msgstr "Otwórz tutaj"
 
-#: src/controls.5/FileBrowser.qml:1138 src/controls.6/FileBrowser.qml:1273
+#: src/controls.5/FileBrowser.qml:1138 src/controls.6/FileBrowser.qml:1274
 #, kde-format
 msgid "Search: %1"
 msgstr "Poszukaj: %1"
@@ -627,7 +627,7 @@ msgstr "Scal tutaj"
 #: src/controls.5/private/BrowserView.qml:311
 #: src/controls.5/private/BrowserView.qml:482
 #: src/controls.6/private/BrowserView.qml:392
-#: src/controls.6/private/BrowserView.qml:563
+#: src/controls.6/private/BrowserView.qml:562
 #, kde-format
 msgid " items"
 msgstr " rzeczy"
