@@ -479,7 +479,7 @@ msgstr "Obri"
 #: src/controls.5/FileDialog.qml:175 src/controls.6/FileDialog.qml:241
 #, kde-format
 msgid "File name..."
-msgstr "Nom de fitxer..."
+msgstr "Nom de fitxer…"
 
 #: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
 #, kde-format
@@ -630,7 +630,7 @@ msgstr " elements"
 #: src/controls.5/private/TagList.qml:24 src/controls.6/private/TagList.qml:32
 #, kde-format
 msgid "Add tags..."
-msgstr "Afig etiquetes..."
+msgstr "Afig etiquetes…"
 
 #: src/controls.5/TagsDialog.qml:71 src/controls.6/TagsDialog.qml:111
 #, kde-format
