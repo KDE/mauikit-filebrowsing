@@ -3,20 +3,16 @@
 #include <QStringList>
 #include <QQmlEngine>
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <MauiKit3/Core/mauilist.h>
-#else
 #include <MauiKit4/Core/mauilist.h>
-#endif
 
 /**
  * @brief The TagsList class
- * A model ready to be consumed by QML. Has basic support for browsing and handling, associating, adding and removing tags.
+ * A model of the system tags, ready to be consumed by QML. This model has basic support for browsing, associating, adding and removing tags.
  * 
  * This is a basic model for most actions supported by the MauiKit File Browsing Tagging system. For more details on supported actions and complete API documentation refer to the Tagging page.
  * @see Tagging
  * 
- * @note This class is exposed as a QML type with the name of `TagsListModel`.
+ * @note This class is exposed as a QML type with the alias name of `TagsListModel`.
  */
 class TagsList : public MauiList
 {

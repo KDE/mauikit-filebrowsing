@@ -26,7 +26,7 @@ QUrl FileBrowsingPlugin::componentUrl(const QString &fileName) const
 
 void FileBrowsingPlugin::registerTypes(const char *uri)
 {
-        qDebug() << "REGISTER MAUIKITFILEBROWSING TYPES <<<<<<<<<<<<<<<<<<<<<<";
+    qDebug() << "REGISTER MAUIKITFILEBROWSING TYPES <<<<<<<<<<<<<<<<<<<<<<";
 
 #if defined(Q_OS_ANDROID)
     QResource::registerResource(QStringLiteral("assets:/android_rcc_bundle.rcc"));
@@ -53,7 +53,7 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     });
     
     //File Tagging components
-    qmlRegisterSingletonType<Tagging>(uri, 1, 3, "Tagging", &Tagging::qmlInstance); //the singleton instance results in having tagging instance created in different threads which is not supported byt the slq driver
+    qmlRegisterSingletonType<Tagging>(uri, 1, 3, "Tagging", &Tagging::qmlInstance);
     
     qmlRegisterType<TagsList>(uri, 1, 0, "TagsListModel");
     qmlRegisterType(componentUrl(QStringLiteral("private/TagList.qml")), uri, 1, 0, "TagList");

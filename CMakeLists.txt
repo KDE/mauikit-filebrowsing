@@ -4,33 +4,14 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-option(BUILD_WITH_QT5 "Use Qt 5" OFF)
-option(BUILD_WITH_QT6 "Use Qt 6" OFF)
+set(QT_MAJOR_VERSION 6)
+set(REQUIRED_QT_VERSION 6.4)
 
-if(BUILD_WITH_QT5)
-    set(QT_MAJOR_VERSION 5)
-elseif(BUILD_WITH_QT6)
-    set(QT_MAJOR_VERSION 6)
-else()
-    set(QT_MAJOR_VERSION 5)
-endif()
+set(KF_MAJOR_VERSION 6)
+set(REQUIRED_KF_VERSION 5.240.0)
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    set(REQUIRED_QT_VERSION 6.4)
-    set(REQUIRED_KF_VERSION 5.240.0)
-    set(KF_MAJOR_VERSION 6)
-    set(MAUI_MAJOR_VERSION 4)
-
-    set(MAUIKIT_VERSION 4.0.0)
-
-else()
-    set(REQUIRED_QT_VERSION 5.15.2)
-    set(REQUIRED_KF_VERSION 5.95.0)
-    set(KF_MAJOR_VERSION 5)
-    set(MAUI_MAJOR_VERSION 3)
-
-    set(MAUIKIT_VERSION 3.1.1)
-endif()
+set(MAUI_MAJOR_VERSION 4)
+set(MAUIKIT_VERSION 4.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -58,9 +39,7 @@ include(KDEPackageAppTemplates)
 include(KDEClangFormat)
 
 include(ECMSetupVersion)
-include(ECMGenerateQmlTypes)
 include(ECMGenerateHeaders)
-include(ECMFindQmlModule)
 include(ECMQmlModule)
 include(ECMSourceVersionControl)
 
@@ -71,19 +50,6 @@ else()
 endif()
 
 option (KIO_AVAILABLE "Use KIO library if it is avalibale, otherwise use default fallack implementation" ${IS_KIO_AVAILABLE})
-
-option(QUICK_COMPILER "Use QtQuick compiler to improve performance" ON)
-
-##option to be removed in qt6 migration
-if (QT_MAJOR_VERSION STREQUAL "5")
-    option(QUICK_COMPILER ON)
-    if(ANDROID OR WIN32 OR APPLE)
-        set(QUICK_COMPILER ON)
-        set(BUNDLE_LUV_ICONS ON)
-    endif()
-else()
-    option(QUICK_COMPILER OFF)
-endif()
 
 find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} REQUIRED COMPONENTS
     Core
@@ -106,15 +72,6 @@ endif()
 
 if(${KIO_AVAILABLE})
     find_package(KF${KF_MAJOR_VERSION} ${REQUIRED_KF_VERSION} REQUIRED COMPONENTS KIO)
-endif()
-
-if (QT_MAJOR_VERSION STREQUAL "5")
-    if(QUICK_COMPILER)
-        find_package(Qt5QuickCompiler)
-        set_package_properties(Qt5QuickCompiler PROPERTIES
-            DESCRIPTION "Compile QML at build time"
-            TYPE OPTIONAL)
-    endif()
 endif()
 
 if(${ECM_SOURCE_UNDER_VERSION_CONTROL})
@@ -171,7 +128,7 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
 
 add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
 if(${QT_MAJOR_VERSION} STREQUAL 5) ##for now skip installing translations for mauikit4 to avoid packaging conflicts with translation files
-ki18n_install(po)
+    ki18n_install(po)
 endif()
 
 add_subdirectory(src)

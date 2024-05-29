@@ -2,27 +2,23 @@
 
 #include <QObject>
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <MauiKit3/Core/mauilist.h>
-#else
 #include <MauiKit4/Core/mauilist.h>
-#endif
 
 /**
  * @brief A model of services associated to a list of file URLs, that can handle its file content.
- * 
+ *
  * This model is exposed adn used by the OpenWithDialog control.
  */
 class OpenWithModel : public MauiList
 {
-  Q_OBJECT
-  Q_DISABLE_COPY(OpenWithModel)
-  
-  /**
+    Q_OBJECT
+    Q_DISABLE_COPY(OpenWithModel)
+
+    /**
    * The list of file URLs. The model will try to look for all the possible services that can handle the given files.
    */
-  Q_PROPERTY(QStringList urls READ urls WRITE setUrls NOTIFY urlsChanged)
-  
+    Q_PROPERTY(QStringList urls READ urls WRITE setUrls NOTIFY urlsChanged)
+
 public:
     explicit OpenWithModel(QObject * parent = nullptr);
     
@@ -35,7 +31,7 @@ public:
      * @private
      */
     void componentComplete() override final;
-        
+
     void setUrls(const QStringList &urls);
     QStringList urls() const;
     
