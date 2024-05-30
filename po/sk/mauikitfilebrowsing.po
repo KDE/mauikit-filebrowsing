@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-08 01:51+0000\n"
+"POT-Creation-Date: 2024-05-30 01:47+0000\n"
 "PO-Revision-Date: 2023-03-12 11:34+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -27,7 +27,7 @@ msgid "This place seems to be empty"
 msgstr ""
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
-#: src/controls.5/FileDialog.qml:185 src/controls.6/FileDialog.qml:251
+#: src/controls.6/FileDialog.qml:251
 #, kde-format
 msgid "Error"
 msgstr ""
@@ -87,8 +87,7 @@ msgstr "Vymeniteľné"
 msgid "Unknown"
 msgstr "Neznáme"
 
-#: src/code/fmstatic.cpp:40 src/controls.5/FileBrowser.qml:369
-#: src/controls.6/FileBrowser.qml:492
+#: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:492
 #, kde-format
 msgid "Trash"
 msgstr "Kôš"
@@ -272,126 +271,104 @@ msgid ""
 "connection."
 msgstr ""
 
-#: src/controls.5/FileBrowser.qml:233 src/controls.6/FileBrowser.qml:352
+#: src/controls.6/FileBrowser.qml:352
 #, kde-format
 msgid "Back"
 msgstr "Späť"
 
-#: src/controls.5/FileBrowser.qml:242 src/controls.6/FileBrowser.qml:449
-#, kde-format
-msgid "Quit"
-msgstr "Ukončiť"
-
-#: src/controls.5/FileBrowser.qml:243 src/controls.6/FileBrowser.qml:450
-#, kde-format
-msgid "Are you sure you want to quit the current search in progress?"
-msgstr ""
-
-#: src/controls.5/FileBrowser.qml:260 src/controls.6/FileBrowser.qml:365
+#: src/controls.6/FileBrowser.qml:365
 #, kde-format
 msgid "Filter"
 msgstr "Filter"
 
-#: src/controls.5/FileBrowser.qml:329 src/controls.6/FileBrowser.qml:434
+#: src/controls.6/FileBrowser.qml:434
 #, kde-format
 msgid "Empty Trash"
 msgstr "Vyprázdniť kôš"
 
-#: src/controls.5/FileBrowser.qml:348 src/controls.6/FileBrowser.qml:471
+#: src/controls.6/FileBrowser.qml:449
+#, kde-format
+msgid "Quit"
+msgstr "Ukončiť"
+
+#: src/controls.6/FileBrowser.qml:450
+#, kde-format
+msgid "Are you sure you want to quit the current search in progress?"
+msgstr ""
+
+#: src/controls.6/FileBrowser.qml:471
 #, kde-format
 msgid "Removing %1 files"
 msgstr ""
 
-#: src/controls.5/FileBrowser.qml:349 src/controls.6/FileBrowser.qml:472
+#: src/controls.6/FileBrowser.qml:472
 #, kde-format
 msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
 
-#: src/controls.5/FileBrowser.qml:354 src/controls.5/FileBrowser.qml:782
-#: src/controls.5/FileDialog.qml:137 src/controls.5/private/BrowserView.qml:285
-#: src/controls.5/TagsDialog.qml:59 src/controls.6/FileBrowser.qml:477
-#: src/controls.6/FileBrowser.qml:902 src/controls.6/FileDialog.qml:205
-#: src/controls.6/private/BrowserView.qml:366 src/controls.6/TagsDialog.qml:99
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
+#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:366
+#: src/controls.6/TagsDialog.qml:99
 #, kde-format
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/controls.5/FileBrowser.qml:360 src/controls.5/TagsDialog.qml:121
 #: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:161
 #, kde-format
 msgid "Delete"
 msgstr "Vymazať"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:523
+#: src/controls.6/FileBrowser.qml:523
 #, fuzzy, kde-format
 #| msgid "Folder"
 msgid "New folder"
 msgstr "Priečinok"
 
-#: src/controls.5/FileBrowser.qml:400 src/controls.6/FileBrowser.qml:523
+#: src/controls.6/FileBrowser.qml:523
 #, fuzzy, kde-format
 #| msgid "New name"
 msgid "New file"
 msgstr "Nové meno"
 
-#: src/controls.5/FileBrowser.qml:401 src/controls.6/FileBrowser.qml:524
+#: src/controls.6/FileBrowser.qml:524
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr ""
 
-#: src/controls.5/FileBrowser.qml:421 src/controls.5/FileDialog.qml:378
 #: src/controls.6/FileBrowser.qml:543 src/controls.6/FileDialog.qml:446
 #, kde-format
 msgid "Name"
 msgstr "Názov"
 
-#: src/controls.5/FileBrowser.qml:434 src/controls.6/FileBrowser.qml:556
+#: src/controls.6/FileBrowser.qml:556
 #, kde-format
 msgid "Folder"
 msgstr "Priečinok"
 
-#: src/controls.5/FileBrowser.qml:442 src/controls.6/FileBrowser.qml:564
+#: src/controls.6/FileBrowser.qml:564
 #, kde-format
 msgid "File"
 msgstr "Súbor"
 
-#: src/controls.5/FileBrowser.qml:459 src/controls.6/FileBrowser.qml:581
+#: src/controls.6/FileBrowser.qml:581
 #, kde-format
 msgid "Rename"
 msgstr "Premenovať"
 
-#: src/controls.5/FileBrowser.qml:460 src/controls.6/FileBrowser.qml:582
+#: src/controls.6/FileBrowser.qml:582
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr ""
 
-#: src/controls.5/FileBrowser.qml:469 src/controls.6/FileBrowser.qml:591
+#: src/controls.6/FileBrowser.qml:591
 #, kde-format
 msgid "New name"
 msgstr "Nové meno"
 
-#: src/controls.5/FileBrowser.qml:602
-#, kde-format
-msgid "%1 file has been cut"
-msgid_plural "%1 files have been cut"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: src/controls.5/FileBrowser.qml:611
-#, kde-format
-msgid "%1 file has been copied"
-msgid_plural "%1 files have been copied"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: src/controls.5/FileBrowser.qml:731
-#: src/controls.5/private/BrowserView.qml:247
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:328
 #, fuzzy, kde-format
@@ -399,8 +376,6 @@ msgstr[2] ""
 msgid "Copy Here"
 msgstr "Kopírovať sem"
 
-#: src/controls.5/FileBrowser.qml:743
-#: src/controls.5/private/BrowserView.qml:259
 #: src/controls.6/FileBrowser.qml:863
 #: src/controls.6/private/BrowserView.qml:340
 #, fuzzy, kde-format
@@ -408,8 +383,6 @@ msgstr "Kopírovať sem"
 msgid "Move Here"
 msgstr "Presunúť sem"
 
-#: src/controls.5/FileBrowser.qml:756
-#: src/controls.5/private/BrowserView.qml:271
 #: src/controls.6/FileBrowser.qml:876
 #: src/controls.6/private/BrowserView.qml:352
 #, fuzzy, kde-format
@@ -417,219 +390,206 @@ msgstr "Presunúť sem"
 msgid "Link Here"
 msgstr "Odkaz sem"
 
-#: src/controls.5/FileBrowser.qml:769 src/controls.6/FileBrowser.qml:889
+#: src/controls.6/FileBrowser.qml:889
 #, fuzzy, kde-format
 #| msgid "Open here"
 msgid "Open Here"
 msgstr "Otvoriť tu"
 
-#: src/controls.5/FileBrowser.qml:1138 src/controls.6/FileBrowser.qml:1274
+#: src/controls.6/FileBrowser.qml:1274
 #, kde-format
 msgid "Search: %1"
 msgstr "Hľadať: %1"
 
-#: src/controls.5/FileDialog.qml:144 src/controls.5/TagsDialog.qml:53
 #: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:93
 #, kde-format
 msgid "Save"
 msgstr "Uložiť"
 
-#: src/controls.5/FileDialog.qml:144 src/controls.6/FileDialog.qml:211
+#: src/controls.6/FileDialog.qml:211
 #, kde-format
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/controls.5/FileDialog.qml:175 src/controls.6/FileDialog.qml:241
+#: src/controls.6/FileDialog.qml:241
 #, kde-format
 msgid "File name..."
 msgstr "Meno súboru..."
 
-#: src/controls.5/FileDialog.qml:186 src/controls.6/FileDialog.qml:252
+#: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
 
-#: src/controls.5/FileDialog.qml:243 src/controls.6/FileDialog.qml:311
+#: src/controls.6/FileDialog.qml:311
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Prepnúť bočný panel"
 
-#: src/controls.5/FileDialog.qml:285 src/controls.6/FileDialog.qml:353
+#: src/controls.6/FileDialog.qml:353
 #, kde-format
 msgid "View type"
 msgstr "Typ pohľadu"
 
-#: src/controls.5/FileDialog.qml:290 src/controls.6/FileDialog.qml:358
+#: src/controls.6/FileDialog.qml:358
 #, kde-format
 msgid "List"
 msgstr "Zoznam"
 
-#: src/controls.5/FileDialog.qml:305 src/controls.6/FileDialog.qml:373
+#: src/controls.6/FileDialog.qml:373
 #, kde-format
 msgid "Grid"
 msgstr "Mriežka"
 
-#: src/controls.5/FileDialog.qml:325 src/controls.6/FileDialog.qml:393
+#: src/controls.6/FileDialog.qml:393
 #, kde-format
 msgid "Sort by"
 msgstr "Triediť podľa"
 
-#: src/controls.5/FileDialog.qml:330 src/controls.6/FileDialog.qml:398
+#: src/controls.6/FileDialog.qml:398
 #, kde-format
 msgid "Type"
 msgstr "Typ"
 
-#: src/controls.5/FileDialog.qml:342 src/controls.6/FileDialog.qml:410
+#: src/controls.6/FileDialog.qml:410
 #, kde-format
 msgid "Date"
 msgstr "Dátum"
 
-#: src/controls.5/FileDialog.qml:354 src/controls.6/FileDialog.qml:422
+#: src/controls.6/FileDialog.qml:422
 #, kde-format
 msgid "Modified"
 msgstr "Zmenené"
 
-#: src/controls.5/FileDialog.qml:366 src/controls.6/FileDialog.qml:434
+#: src/controls.6/FileDialog.qml:434
 #, kde-format
 msgid "Size"
 msgstr "Veľkosť"
 
-#: src/controls.5/FileDialog.qml:392 src/controls.6/FileDialog.qml:460
+#: src/controls.6/FileDialog.qml:460
 #, kde-format
 msgid "Show Folders First"
 msgstr "Zobrazovať najskôr priečinky"
 
-#: src/controls.5/FileDialog.qml:405 src/controls.6/FileDialog.qml:473
+#: src/controls.6/FileDialog.qml:473
 #, kde-format
 msgid "Group"
 msgstr "Skupina"
 
-#: src/controls.5/NewTagDialog.qml:25 src/controls.5/NewTagDialog.qml:36
 #: src/controls.6/NewTagDialog.qml:56 src/controls.6/NewTagDialog.qml:59
 #, kde-format
 msgid "New tags"
 msgstr ""
 
-#: src/controls.5/NewTagDialog.qml:26 src/controls.6/NewTagDialog.qml:57
+#: src/controls.6/NewTagDialog.qml:57
 #, kde-format
 msgid ""
 "Create new tags to organize your files. You can create multiple tags "
 "separated by a comma."
 msgstr ""
 
-#: src/controls.5/OpenWithDialog.qml:52 src/controls.6/OpenWithDialog.qml:74
+#: src/controls.6/OpenWithDialog.qml:74
 #, kde-format
 msgid "Open with"
 msgstr "Otvoriť pomocou"
 
-#: src/controls.5/PlacesListBrowser.qml:84 src/controls.5/TagsDialog.qml:115
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:155
 #, kde-format
 msgid "Edit"
 msgstr "Upraviť"
 
-#: src/controls.5/PlacesListBrowser.qml:89
 #: src/controls.6/PlacesListBrowser.qml:122
 #, kde-format
 msgid "Hide"
 msgstr "Skryť"
 
-#: src/controls.5/PlacesListBrowser.qml:94
 #: src/controls.6/PlacesListBrowser.qml:127
 #, kde-format
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: src/controls.5/private/BrowserView.qml:212
 #: src/controls.6/private/BrowserView.qml:293
 #, fuzzy, kde-format
 #| msgid "Directory name"
 msgid "Directory already exists."
 msgstr "Názov adresára"
 
-#: src/controls.5/private/BrowserView.qml:215
 #: src/controls.6/private/BrowserView.qml:296
 #, kde-format
 msgid "Looks good."
 msgstr ""
 
-#: src/controls.5/private/BrowserView.qml:219
 #: src/controls.6/private/BrowserView.qml:300
 #, kde-format
 msgid "Merge %1 files"
 msgstr ""
 
-#: src/controls.5/private/BrowserView.qml:220
 #: src/controls.6/private/BrowserView.qml:301
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr ""
 
-#: src/controls.5/private/BrowserView.qml:222
 #: src/controls.6/private/BrowserView.qml:303
 #, kde-format
 msgid "Directory name"
 msgstr "Názov adresára"
 
-#: src/controls.5/private/BrowserView.qml:232
 #: src/controls.6/private/BrowserView.qml:313
 #, fuzzy, kde-format
 #| msgid "Merge here"
 msgid "Merge Here"
 msgstr "Zlúčiť sem"
 
-#: src/controls.5/private/BrowserView.qml:311
-#: src/controls.5/private/BrowserView.qml:482
 #: src/controls.6/private/BrowserView.qml:392
 #: src/controls.6/private/BrowserView.qml:562
 #, kde-format
 msgid " items"
 msgstr " položiek"
 
-#: src/controls.5/private/TagList.qml:24 src/controls.6/private/TagList.qml:32
+#: src/controls.6/private/TagList.qml:32
 #, kde-format
 msgid "Add tags..."
 msgstr "Pridať značky..."
 
-#: src/controls.5/TagsDialog.qml:71 src/controls.6/TagsDialog.qml:111
+#: src/controls.6/TagsDialog.qml:111
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr ""
 
-#: src/controls.5/TagsDialog.qml:97 src/controls.6/TagsDialog.qml:137
+#: src/controls.6/TagsDialog.qml:137
 #, kde-format
 msgid "Delete %1"
 msgstr "Odstrániť %1"
 
-#: src/controls.5/TagsDialog.qml:98 src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:138
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr ""
 
-#: src/controls.5/TagsDialog.qml:144 src/controls.6/TagsDialog.qml:184
+#: src/controls.6/TagsDialog.qml:184
 #, kde-format
 msgid "No Tags!"
 msgstr "Žiadne značky!"
 
-#: src/controls.5/TagsDialog.qml:145 src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:185
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr ""
 
-#: src/controls.5/TagsDialog.qml:223 src/controls.6/TagsDialog.qml:261
+#: src/controls.6/TagsDialog.qml:261
 #, kde-format
 msgid "Tagging %1 files"
 msgstr ""
 
-#: src/controls.5/TagsDialog.qml:224 src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:262
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr ""
 
-#: src/controls.5/TagsDialog.qml:291 src/controls.6/TagsDialog.qml:329
+#: src/controls.6/TagsDialog.qml:329
 #, kde-format
 msgid "No tags yet."
 msgstr ""
