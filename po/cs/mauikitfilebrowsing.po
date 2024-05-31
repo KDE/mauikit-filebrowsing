@@ -590,15 +590,3 @@ msgstr ""
 #, kde-format
 msgid "No tags yet."
 msgstr ""
-
-#~ msgid "%1 file has been cut"
-#~ msgid_plural "%1 files have been cut"
-#~ msgstr[0] "%1 soubor byl vyjmut"
-#~ msgstr[1] "%1 soubory byly vyjmuty"
-#~ msgstr[2] "%1 souborů bylo vyjmuto"
-
-#~ msgid "%1 file has been copied"
-#~ msgid_plural "%1 files have been copied"
-#~ msgstr[0] "%1 soubor byl zkopírován"
-#~ msgstr[1] "%1 soubory byly zkopírovány"
-#~ msgstr[2] "%1 souborů bylo zkopírováno"
