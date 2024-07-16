@@ -25,6 +25,7 @@ Maui.AltBrowser
     gridView.itemSize : control.gridItemSize
     gridView.itemHeight: gridView.cellWidth
 
+    background: null
     /**
      * @brief It is possible to insert an arbitrary element for each entry. The component here declared will be drawn on top of the entry delegate in the grid view, and on the far right side in the list view.
      * The entry element model details are accessible via the `model` property. For example `model.name`, `model.url`, etc.
