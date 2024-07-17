@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 01:47+0000\n"
+"POT-Creation-Date: 2024-07-17 01:42+0000\n"
 "PO-Revision-Date: 2023-04-26 19:50+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -313,7 +313,7 @@ msgid ""
 msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
-#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:366
+#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
 #: src/controls.6/TagsDialog.qml:99
 #, kde-format
 msgid "Cancel"
@@ -372,21 +372,21 @@ msgid "New name"
 msgstr "Neuer Name"
 
 #: src/controls.6/FileBrowser.qml:850
-#: src/controls.6/private/BrowserView.qml:328
+#: src/controls.6/private/BrowserView.qml:329
 #, fuzzy, kde-format
 #| msgid "Copy here"
 msgid "Copy Here"
 msgstr "Hierher kopieren"
 
 #: src/controls.6/FileBrowser.qml:863
-#: src/controls.6/private/BrowserView.qml:340
+#: src/controls.6/private/BrowserView.qml:341
 #, fuzzy, kde-format
 #| msgid "Move here"
 msgid "Move Here"
 msgstr "Hierher verschieben"
 
 #: src/controls.6/FileBrowser.qml:876
-#: src/controls.6/private/BrowserView.qml:352
+#: src/controls.6/private/BrowserView.qml:353
 #, fuzzy, kde-format
 #| msgid "Link here"
 msgid "Link Here"
@@ -512,39 +512,39 @@ msgstr "Ausblenden"
 msgid "Remove"
 msgstr "Entfernen"
 
-#: src/controls.6/private/BrowserView.qml:293
+#: src/controls.6/private/BrowserView.qml:294
 #, kde-format
 msgid "Directory already exists."
 msgstr "Ordner existiert bereits."
 
-#: src/controls.6/private/BrowserView.qml:296
+#: src/controls.6/private/BrowserView.qml:297
 #, kde-format
 msgid "Looks good."
 msgstr "Sieht gut aus."
 
-#: src/controls.6/private/BrowserView.qml:300
+#: src/controls.6/private/BrowserView.qml:301
 #, kde-format
 msgid "Merge %1 files"
 msgstr "%1 Dateien zusammenführen"
 
-#: src/controls.6/private/BrowserView.qml:301
+#: src/controls.6/private/BrowserView.qml:302
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr ""
 
-#: src/controls.6/private/BrowserView.qml:303
+#: src/controls.6/private/BrowserView.qml:304
 #, kde-format
 msgid "Directory name"
 msgstr "Ordnername"
 
-#: src/controls.6/private/BrowserView.qml:313
+#: src/controls.6/private/BrowserView.qml:314
 #, fuzzy, kde-format
 #| msgid "Merge here"
 msgid "Merge Here"
 msgstr "Hier zusammenführen"
 
-#: src/controls.6/private/BrowserView.qml:392
-#: src/controls.6/private/BrowserView.qml:562
+#: src/controls.6/private/BrowserView.qml:393
+#: src/controls.6/private/BrowserView.qml:563
 #, kde-format
 msgid " items"
 msgstr " Elemente"

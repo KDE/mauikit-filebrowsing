@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-30 01:47+0000\n"
+"POT-Creation-Date: 2024-07-17 01:42+0000\n"
 "PO-Revision-Date: 2023-03-12 11:34+0100\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -309,7 +309,7 @@ msgid ""
 msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
-#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:366
+#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
 #: src/controls.6/TagsDialog.qml:99
 #, kde-format
 msgid "Cancel"
@@ -370,21 +370,21 @@ msgid "New name"
 msgstr "Nové meno"
 
 #: src/controls.6/FileBrowser.qml:850
-#: src/controls.6/private/BrowserView.qml:328
+#: src/controls.6/private/BrowserView.qml:329
 #, fuzzy, kde-format
 #| msgid "Copy here"
 msgid "Copy Here"
 msgstr "Kopírovať sem"
 
 #: src/controls.6/FileBrowser.qml:863
-#: src/controls.6/private/BrowserView.qml:340
+#: src/controls.6/private/BrowserView.qml:341
 #, fuzzy, kde-format
 #| msgid "Move here"
 msgid "Move Here"
 msgstr "Presunúť sem"
 
 #: src/controls.6/FileBrowser.qml:876
-#: src/controls.6/private/BrowserView.qml:352
+#: src/controls.6/private/BrowserView.qml:353
 #, fuzzy, kde-format
 #| msgid "Link here"
 msgid "Link Here"
@@ -510,40 +510,40 @@ msgstr "Skryť"
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: src/controls.6/private/BrowserView.qml:293
+#: src/controls.6/private/BrowserView.qml:294
 #, fuzzy, kde-format
 #| msgid "Directory name"
 msgid "Directory already exists."
 msgstr "Názov adresára"
 
-#: src/controls.6/private/BrowserView.qml:296
+#: src/controls.6/private/BrowserView.qml:297
 #, kde-format
 msgid "Looks good."
 msgstr ""
 
-#: src/controls.6/private/BrowserView.qml:300
+#: src/controls.6/private/BrowserView.qml:301
 #, kde-format
 msgid "Merge %1 files"
 msgstr ""
 
-#: src/controls.6/private/BrowserView.qml:301
+#: src/controls.6/private/BrowserView.qml:302
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr ""
 
-#: src/controls.6/private/BrowserView.qml:303
+#: src/controls.6/private/BrowserView.qml:304
 #, kde-format
 msgid "Directory name"
 msgstr "Názov adresára"
 
-#: src/controls.6/private/BrowserView.qml:313
+#: src/controls.6/private/BrowserView.qml:314
 #, fuzzy, kde-format
 #| msgid "Merge here"
 msgid "Merge Here"
 msgstr "Zlúčiť sem"
 
-#: src/controls.6/private/BrowserView.qml:392
-#: src/controls.6/private/BrowserView.qml:562
+#: src/controls.6/private/BrowserView.qml:393
+#: src/controls.6/private/BrowserView.qml:563
 #, kde-format
 msgid " items"
 msgstr " položiek"
