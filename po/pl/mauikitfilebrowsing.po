@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
+# SPDX-FileCopyrightText: 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-07-17 01:42+0000\n"
-"PO-Revision-Date: 2023-11-04 12:37+0100\n"
+"PO-Revision-Date: 2024-07-21 13:24+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -410,28 +411,24 @@ msgstr "Nowa nazwa"
 
 #: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:329
-#, fuzzy, kde-format
-#| msgid "Copy here"
+#, kde-format
 msgid "Copy Here"
 msgstr "Skopiuj tutaj"
 
 #: src/controls.6/FileBrowser.qml:863
 #: src/controls.6/private/BrowserView.qml:341
-#, fuzzy, kde-format
-#| msgid "Move here"
+#, kde-format
 msgid "Move Here"
 msgstr "Przenieś tutaj"
 
 #: src/controls.6/FileBrowser.qml:876
 #: src/controls.6/private/BrowserView.qml:353
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Link Here"
-msgstr "Dowiąż tutaj"
+msgstr "Utwórz dowiązanie tutaj"
 
 #: src/controls.6/FileBrowser.qml:889
-#, fuzzy, kde-format
-#| msgid "Open here"
+#, kde-format
 msgid "Open Here"
 msgstr "Otwórz tutaj"
 
@@ -580,8 +577,7 @@ msgid "Directory name"
 msgstr "Nazwa katalogu"
 
 #: src/controls.6/private/BrowserView.qml:314
-#, fuzzy, kde-format
-#| msgid "Merge here"
+#, kde-format
 msgid "Merge Here"
 msgstr "Scal tutaj"
 
