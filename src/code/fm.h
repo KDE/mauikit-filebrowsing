@@ -59,6 +59,12 @@ public Q_SLOTS:
      */
     void setShowingDotFiles(bool value);
 
+    /**
+     * @brief setShowHiddenFiles Placeholder method, just calls back to setShowingDotFiles
+     * @param value
+     */
+    void setShowHiddenFiles(bool value);
+
 Q_SIGNALS:
     void itemsReady(FMH::MODEL_LIST items, QUrl url);
     void itemReady(FMH::MODEL item, QUrl url);

@@ -94,7 +94,7 @@ void QDirLister::reviewChanges()
 
     FMH::MODEL_LIST removedItems;
     const auto mlist = this->m_list; // use a copy to not affect the list indexes on the iterations
-    for (const auto &item : qAsConst(mlist)) {
+    for (const auto &item : std::as_const(mlist)) {
         const auto fileUrl = QUrl(item[FMH::MODEL_KEY::URL]);
 
         if (!FMH::fileExists(fileUrl)) {
@@ -114,7 +114,7 @@ void QDirLister::reviewChanges()
     connect(checkLoader, &FMH::FileLoader::itemsReady, [=](FMH::MODEL_LIST items, QList<QUrl> urls) {
         if (urls.first() == this->m_url) {
             FMH::MODEL_LIST newItems;
-            for (const auto &item : qAsConst(items)) {
+            for (const auto &item : std::as_const(items)) {
                 const auto fileUrl = QUrl(item[FMH::MODEL_KEY::URL]);
                 if (!this->includes(fileUrl)) {
                     newItems << item;
@@ -176,12 +176,10 @@ bool QDirLister::openUrl(const QUrl &url)
     if (FMStatic::isDir(this->m_url)) {
         this->m_watcher->addPath(this->m_url.toLocalFile());
 
-        QDir::Filters dirFilter = (m_dirOnly ? QDir::AllDirs | QDir::NoDotDot | QDir::NoDot : QDir::Files | QDir::AllDirs | QDir::NoDotDot | QDir::NoDot);
+        QDir::Filters dirFilter = QDir::AllDirs | QDir::NoDotDot | QDir::NoDot;
 
-        if (m_showDotFiles)
-        {
-            dirFilter = dirFilter | QDir::Hidden;
-        }
+        dirFilter.setFlag(QDir::Hidden, m_showDotFiles);
+        dirFilter.setFlag(QDir::Files, !m_dirOnly);
 
         m_loader->requestPath({this->m_url}, false, m_nameFilters.isEmpty() ? QStringList() : m_nameFilters.split(QStringLiteral(" ")), dirFilter);
 
@@ -199,6 +197,11 @@ void QDirLister::setDirOnlyMode(bool value)
 void QDirLister::setShowingDotFiles(bool value)
 {
     m_showDotFiles = value;
+}
+
+void QDirLister::setShowHiddenFiles(bool value)
+{
+    setShowingDotFiles(value);
 }
 
 void QDirLister::setNameFilter(QString filters)

@@ -31,7 +31,7 @@ class FILEBROWSING_EXPORT FMStatic : public QObject
     Q_OBJECT
     // QML_NAMED_ELEMENT(FM)
     // QML_SINGLETON
-    
+
     Q_DISABLE_COPY_MOVE(FMStatic)
 
 public:
@@ -206,7 +206,7 @@ public:
     inline static auto func = [](QString suffix) -> QString {
         return QStringLiteral("*.") + suffix;
     };
-    
+
     /**
      * @brief Convenient map set of file type extensions.
      * The values make use of the regex wildcard operator [*] meant for filtering a directory contents, for example.
@@ -237,12 +237,12 @@ public:
 
     /**                                                                                                                                                                                 * @brief A location contents structured for convenience.                                                                                                                                                                                 */
     struct PATH_CONTENT {
-        
+
         /**
          * @brief The location URL holding all of the contents.
          */
         QUrl path;
-        
+
         /**
          * @brief The contents of the location.
          */
@@ -255,78 +255,78 @@ public:
          * Local paths, such as the Downloads, Pictures, etc. `file:/`
          */
         PLACES_PATH,
-        
+
         /**
          * Remote locations, such as servers accessed via SSH or FTP
          */
         REMOTE_PATH,
-        
+
         /**
          * Hard drives locations
          */
         DRIVES_PATH,
-        
+
         /**
          * Removable places, such as optic CDs, USB pen drives, etc.
          */
         REMOVABLE_PATH,
-        
+
         /**
          * A tag location.
          */
         TAGS_PATH,
-        
+
         /**
          * Unknown location type.
          */
         UNKNOWN_TYPE,
-        
+
         /**
          * The applications location. Accessed with KIO via the `applications://` scheme.
          */
         APPS_PATH,
-        
+
         /**
          * The trash location. `trash:/`
          */
         TRASH_PATH,
-        
+
         /**
          * A search results.
          */
         SEARCH_PATH,
-        
+
         /**
          * A remote cloud server path.
          */
         CLOUD_PATH,
-        
+
         /**
          * A remote SHH or FTP. `fish:/` `ftp:/`
          */
         FISH_PATH,
-        
+
         /**
          * MTP path
          */
         MTP_PATH,
-        
+
         /**
          * The common standard paths
          */
         QUICK_PATH,
-        
+
         /**
          * A bookmarked location. `file:/`
          */
         BOOKMARKS_PATH,
-        
+
         /**
          * Any other path
          */
         OTHER_PATH,
     };
-    
+
     /**
      * @brief The map of the PATH_TYPE to its associated protocol scheme.
      * For example `PATHTYPE_SCHEME[PATHTYPE_KEY::TRASH_PATH] = "trash"`, `PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH] = "file"`
@@ -409,16 +409,16 @@ public:
 
     /**                                                                                                                                                                                 * @brief Standard pictures location path                                                                                                                                                                                */
     inline static const QString PicturesPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)).toString();
-    
+
     /**                                                                                                                                                                                 * @brief Standard downloads location path                                                                                                                                                                                */
     inline static const QString DownloadsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).toString();
-    
+
     /**                                                                                                                                                                                 * @brief Standard documents location path                                                                                                                                                                                */
     inline static const QString DocumentsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString();
-    
+
     /**                                                                                                                                                                                 * @brief Standard music location path                                                                                                                                                                                */
     inline static const QString MusicPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MusicLocation)).toString();
-    
+
     /**                                                                                                                                                                                 * @brief Standard videos location path                                                                                                                                                                                */
     inline static const QString VideosPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)).toString();
 
@@ -578,12 +578,13 @@ public Q_SLOTS:
     /**
      * @brief Checks if a local file exists in the file system
      * @param path file URL
-     * @return whether it exists locally
+     * @return whether the file path exists locally
      */
     static bool fileExists(const QUrl &path);
 
     /**
-     * @brief Given a file URL return its parent directory, and if the path is a directory then returns the same path.
+     * @brief Given a file URL, return its parent directory
+     * @note If the given path is a directory then returns the same path.
      * @param path file path URL
      * @return the directory URL
      */

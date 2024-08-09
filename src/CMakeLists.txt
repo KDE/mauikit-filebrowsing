@@ -15,7 +15,9 @@ ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     URI "org.mauikit.filebrowsing"
     CLASS_NAME FileBrowsingPlugin
     NO_PLUGIN_OPTIONAL
-    NO_GENERATE_PLUGIN_SOURCE)
+    NO_GENERATE_PLUGIN_SOURCE
+    DEPENDENCIES
+    "org.mauikit.controls")
 
 set_target_properties(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PROPERTIES
     VERSION ${PROJECT_VERSION}
@@ -107,7 +109,6 @@ target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
 
     code/moduleinfo.cpp
     code/moduleinfo.h
-
     ${syncing_SRCS})
 
 target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
@@ -132,10 +133,6 @@ target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit${MAUI_MAJOR_VERSION}/FileBrowsing>")
 
 target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
-
-if(ANDROID)
-    target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PRIVATE Qt${QT_MAJOR_VERSION}::AndroidExtras)
-endif()
 
 if(${KIO_AVAILABLE})
     target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
