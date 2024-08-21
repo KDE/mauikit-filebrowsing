@@ -28,8 +28,7 @@
 #include <QSqlRecord>
 #include <QUuid>
 
-TAGDB::TAGDB()
-    : QObject(nullptr)
+TAGDB::TAGDB() : QObject(nullptr)
 {
     QDir collectionDBPath_dir(TAG::TaggingPath);
     if (!collectionDBPath_dir.exists())

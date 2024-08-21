@@ -183,8 +183,8 @@ void PlacesList::setList()
     Q_EMIT this->preListChanged();
     
     if (!this->groups.isEmpty())
-    {        
-        for (const auto &group : qAsConst(this->groups)) 
+    {
+        for (const auto &group : std::as_const(this->groups))
         {
             switch (group.toInt()) {
                 case FMStatic::PATHTYPE_KEY::PLACES_PATH:

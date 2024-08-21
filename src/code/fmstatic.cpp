@@ -421,7 +421,7 @@ void FMStatic::openUrl(const QUrl &url)
 
 void FMStatic::openLocation(const QStringList &urls)
 {
-    for (const auto &url : qAsConst(urls))
+    for (const auto &url : std::as_const(urls))
     {
         if(isDir(QUrl(url)))
         {
