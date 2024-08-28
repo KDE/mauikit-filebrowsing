@@ -27,6 +27,8 @@
 #ifdef KIO_AVAILABLE
 #include <KFilePlacesModel>
 #include <Solid/Device>
+#else
+#include <MauiKit4/Core/appsettings.h>
 #endif
 
 #include <KLocalizedString>
@@ -36,13 +38,13 @@ int mapPathType(const FMStatic::PATHTYPE_KEY& value)
 {
     switch(value)
     {
-        case FMStatic::PLACES_PATH: return KFilePlacesModel::GroupType::PlacesType;
-        case FMStatic::REMOTE_PATH: return KFilePlacesModel::GroupType::RemoteType;
-        case FMStatic::DRIVES_PATH: return KFilePlacesModel::GroupType::DevicesType;
-        case FMStatic::REMOVABLE_PATH: return KFilePlacesModel::GroupType::RemovableDevicesType;
-        case FMStatic::TAGS_PATH: return KFilePlacesModel::GroupType::TagsType;
-        case FMStatic::UNKNOWN_TYPE: return KFilePlacesModel::GroupType::UnknownType;
-        default: return value;
+    case FMStatic::PLACES_PATH: return KFilePlacesModel::GroupType::PlacesType;
+    case FMStatic::REMOTE_PATH: return KFilePlacesModel::GroupType::RemoteType;
+    case FMStatic::DRIVES_PATH: return KFilePlacesModel::GroupType::DevicesType;
+    case FMStatic::REMOVABLE_PATH: return KFilePlacesModel::GroupType::RemovableDevicesType;
+    case FMStatic::TAGS_PATH: return KFilePlacesModel::GroupType::TagsType;
+    case FMStatic::UNKNOWN_TYPE: return KFilePlacesModel::GroupType::UnknownType;
+    default: return value;
     }
 }
 #endif
@@ -50,38 +52,45 @@ int mapPathType(const FMStatic::PATHTYPE_KEY& value)
 
 #ifdef KIO_AVAILABLE
 PlacesList::PlacesList(QObject *parent)
-: MauiList(parent)
-, model(new KFilePlacesModel(this))
+    : MauiList(parent)
+    , model(new KFilePlacesModel(this))
 #else
 PlacesList::PlacesList(QObject *parent)
-: MauiList(parent)
-, model(nullptr)
+    : MauiList(parent)
+    , model(nullptr)
 #endif
 {    
-    #ifdef KIO_AVAILABLE
+#ifdef KIO_AVAILABLE
     connect(this->model, &KFilePlacesModel::reloaded, this, &PlacesList::setList);
     
     connect(this->model, &KFilePlacesModel::setupDone, this, &PlacesList::setList);
     
     connect(this->model, &KFilePlacesModel::rowsInserted, [this](const QModelIndex, int, int) 
-    {
-        this->setList();
-        Q_EMIT this->bookmarksChanged();
-        
-        /*Q_EMIT this->preListChanged();
-         * 
-         *        for (int i = first; i <= last; i++)
-         *        {
-         *            const QModelIndex index = model->index(i, 0);
-         * 
-         *            if(this->groups.contains(model->groupType(index)))
-         *            {
-         *                this->list << getGroup(*this->model, static_cast<FMH::PATHTYPE_KEY>(model->groupType(index)));
-    }
-    }
-    Q_EMIT this->postListChanged();	*/
-    }); // TODO improve the usage of the model
-    #endif
+            {
+                this->setList();
+                Q_EMIT this->bookmarksChanged();
+
+                /*Q_EMIT this->preListChanged();
+                 *
+                 *        for (int i = first; i <= last; i++)
+                 *        {
+                 *            const QModelIndex index = model->index(i, 0);
+                 *
+                 *            if(this->groups.contains(model->groupType(index)))
+                 *            {
+                 *                this->list << getGroup(*this->model, static_cast<FMH::PATHTYPE_KEY>(model->groupType(index)));
+            }
+            }
+            Q_EMIT this->postListChanged();	*/
+            }); // TODO improve the usage of the model
+#else
+    connect(&AppSettings::global(), &AppSettings::settingChanged, [this](const QUrl, const QString &key, const QVariant, const QString &group) {
+        if (key == QStringLiteral("BOOKMARKS") && group == QStringLiteral("PREFERENCES")) {
+            this->setList();
+            Q_EMIT this->bookmarksChanged();
+        }
+    });
+#endif
 }
 
 void PlacesList::componentComplete()
@@ -117,60 +126,57 @@ FMH::MODEL_LIST PlacesList::getGroup(const KFilePlacesModel &model, const FMStat
         res << FMStatic::getDefaultPaths();
         return res;
     }
-    
-    #ifdef KIO_AVAILABLE
+
+#ifdef KIO_AVAILABLE
     auto mappedType = mapPathType(type);
     
     const auto group = model.groupIndexes(static_cast<KFilePlacesModel::GroupType>(type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? mapPathType(FMStatic::PATHTYPE_KEY::PLACES_PATH) : mappedType));
     
     res << std::accumulate(group.constBegin(), group.constEnd(), FMH::MODEL_LIST(), [&model, &type, this](FMH::MODEL_LIST &list, const QModelIndex &index) -> FMH::MODEL_LIST 
-    {
-        const QUrl url = model.url(index);
-        if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))
-            return list;
-        
-        auto data = FMH::MODEL {{FMH::MODEL_KEY::PATH, url.toString()},
-                           {FMH::MODEL_KEY::URL, url.toString()},
-                           {FMH::MODEL_KEY::ICON, model.icon(index).name()},
-                           {FMH::MODEL_KEY::LABEL, model.text(index)},
-                           {FMH::MODEL_KEY::NAME, model.text(index)},
-                           {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH) : FMStatic::PathTypeLabel(type)}};
-                           
-                           if(model.isDevice(index))
                            {
-                               const auto udi =  model.deviceForIndex(index).udi();
-                               qDebug() << "DEVICE" << udi;
-                               
-                               data.insert(FMH::MODEL_KEY::UDI, udi);
-                               m_devices.insert(udi, index);
-                           }
-                           
-                           list << data;
-                           return list;
-    });
-    
-    #else
+                               const QUrl url = model.url(index);
+                               if (type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH && FMStatic::defaultPaths.contains(url.toString()))
+                                   return list;
+
+                               auto data = FMH::MODEL {{FMH::MODEL_KEY::PATH, url.toString()},
+                                                      {FMH::MODEL_KEY::URL, url.toString()},
+                                                      {FMH::MODEL_KEY::ICON, model.icon(index).name()},
+                                                      {FMH::MODEL_KEY::LABEL, model.text(index)},
+                                                      {FMH::MODEL_KEY::NAME, model.text(index)},
+                                                      {FMH::MODEL_KEY::TYPE, type == FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH ? FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH) : FMStatic::PathTypeLabel(type)}};
+
+                               if(model.isDevice(index))
+                               {
+                                   const auto udi =  model.deviceForIndex(index).udi();
+                                   qDebug() << "DEVICE" << udi;
+
+                                   data.insert(FMH::MODEL_KEY::UDI, udi);
+                                   m_devices.insert(udi, index);
+                               }
+
+                               list << data;
+                               return list;
+                           });
+
+#else
     Q_UNUSED(model)
     switch (type) {
-        case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
-        {
-    QSettings settings(QStringLiteral("org.mauikit.filebrowsing")) ;
-            settings.beginGroup(QStringLiteral("PREFERENCES"));
-            auto bookmarks = settings.value(QStringLiteral("BOOKMARKS"), {}).toStringList();           
-            settings.endGroup();
-            
-            res << FMStatic::packItems(bookmarks, FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
-            
-            break;
-        }
-        case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
-            res = FMStatic::getDevices();
-            break;
-        default:
-            break;
+    case (FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH):
+    {
+        auto bookmarks = AppSettings::global().load(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}).toStringList();
+
+        res << FMStatic::packItems(bookmarks, FMStatic::PathTypeLabel(FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH));
+
+        break;
     }
-    
-    #endif
+    case (FMStatic::PATHTYPE_KEY::DRIVES_PATH):
+        res = FMStatic::getDevices();
+        break;
+    default:
+        break;
+    }
+
+#endif
     
     return res;
 }
@@ -187,33 +193,33 @@ void PlacesList::setList()
         for (const auto &group : std::as_const(this->groups))
         {
             switch (group.toInt()) {
-                case FMStatic::PATHTYPE_KEY::PLACES_PATH:
-                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
-                    break;
-                    
-                case FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH:
-                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH);
-                    break;
-                    
-                case FMStatic::PATHTYPE_KEY::QUICK_PATH:
-                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::QUICK_PATH);
-                    break;
-                    
-                case FMStatic::PATHTYPE_KEY::DRIVES_PATH:
-                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::DRIVES_PATH);
-                    break;
-                    
-                case FMStatic::PATHTYPE_KEY::REMOTE_PATH:
-                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOTE_PATH);
-                    break;
-                    
-                case FMStatic::PATHTYPE_KEY::REMOVABLE_PATH:
-                    this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOVABLE_PATH);
-                    break;
-                    
-                case FMStatic::PATHTYPE_KEY::TAGS_PATH:
-                    this->list << Tagging::getInstance()->getTags();
-                    break;
+            case FMStatic::PATHTYPE_KEY::PLACES_PATH:
+                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::PLACES_PATH);
+                break;
+
+            case FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH:
+                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::BOOKMARKS_PATH);
+                break;
+
+            case FMStatic::PATHTYPE_KEY::QUICK_PATH:
+                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::QUICK_PATH);
+                break;
+
+            case FMStatic::PATHTYPE_KEY::DRIVES_PATH:
+                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::DRIVES_PATH);
+                break;
+
+            case FMStatic::PATHTYPE_KEY::REMOTE_PATH:
+                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOTE_PATH);
+                break;
+
+            case FMStatic::PATHTYPE_KEY::REMOVABLE_PATH:
+                this->list << getGroup(*this->model, FMStatic::PATHTYPE_KEY::REMOVABLE_PATH);
+                break;
+
+            case FMStatic::PATHTYPE_KEY::TAGS_PATH:
+                this->list << Tagging::getInstance()->getTags();
+                break;
             }
         }
     }
@@ -240,20 +246,17 @@ void PlacesList::removePlace(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return;
-    
-    #ifdef KIO_AVAILABLE
+
+#ifdef KIO_AVAILABLE
     Q_EMIT this->preItemRemoved(index);
     this->model->removePlace(this->model->closestItem(QUrl(this->list.at(index)[FMH::MODEL_KEY::PATH])));
     this->list.removeAt(index);
     Q_EMIT this->postItemRemoved();
-    #else
-    QSettings settings (QStringLiteral("org.mauikit.filebrowsing"));
-    settings.beginGroup(QStringLiteral("PREFERENCES"));
-    auto bookmarks = settings.value(QStringLiteral("BOOKMARKS"), {}).toStringList();
+#else
+    auto bookmarks = AppSettings::global().load(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}).toStringList();
     bookmarks.removeOne(this->list.at(index)[FMH::MODEL_KEY::PATH]);
-    settings.setValue(QStringLiteral("BOOKMARKS"), bookmarks);
-    settings.endGroup();    
-    #endif
+    AppSettings::global().save(QStringLiteral("BOOKMARKS"), bookmarks, QStringLiteral("PREFERENCES"));
+#endif
     Q_EMIT bookmarksChanged();
 }
 
@@ -266,11 +269,11 @@ bool PlacesList::isDevice(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return false;
-    
-    #ifdef KIO_AVAILABLE
+
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     return m_devices.contains(item[FMH::MODEL_KEY::UDI]);
-    #endif
+#endif
     
     return false;
 }
@@ -279,14 +282,14 @@ bool PlacesList::setupNeeded(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return false;
-    
-    #ifdef KIO_AVAILABLE
+
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
         return this->model->setupNeeded(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
-    #endif
+#endif
     
     return false;
 }
@@ -295,47 +298,47 @@ void PlacesList::requestEject(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return;
-    
-    #ifdef KIO_AVAILABLE
+
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
         this->model->requestEject(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
-    #endif
+#endif
 }
 
 void PlacesList::requestSetup(const int &index)
 {
     if (index >= this->list.size() || index < 0)
         return;
-    
-    #ifdef KIO_AVAILABLE
+
+#ifdef KIO_AVAILABLE
     const auto item = this->list.at(index);
     if(m_devices.contains(item[FMH::MODEL_KEY::UDI]))
     {
         this->model->requestSetup(m_devices.value(item[FMH::MODEL_KEY::UDI]));
     }
-    #endif
+#endif
 }
 
 void PlacesList::addBookmark(const QUrl& url)
 {
-    #ifdef KIO_AVAILABLE
+#ifdef KIO_AVAILABLE
     KFilePlacesModel model;
     model.addPlace(QDir(url.toLocalFile()).dirName(), url, FMStatic::getIconName(url));
-    #else
-    // do android stuff until cmake works with android
+#else
+  // do android stuff until cmake works with android
     if (FMStatic::isDefaultPath(url.toString()))
         return;
-    
-    QSettings settings(QStringLiteral("org.mauikit.filebrowsing")) ;
-    settings.beginGroup(QStringLiteral("PREFERENCES"));
-    auto bookmarks = settings.value(QStringLiteral("BOOKMARKS"), {}).toStringList();
+
+    auto bookmarks = AppSettings::global().load(QStringLiteral("BOOKMARKS"), QStringLiteral("PREFERENCES"), {}).toStringList();
+    if(bookmarks.contains(url.toString()))
+        return;
+
     bookmarks << url.toString();
-    settings.setValue(QStringLiteral("BOOKMARKS"), bookmarks);
-    settings.endGroup();
-    #endif
+    AppSettings::global().save(QStringLiteral("BOOKMARKS"), bookmarks, QStringLiteral("PREFERENCES"));
+#endif
 }
 
 int PlacesList::indexOfPath(const QUrl &url) const
