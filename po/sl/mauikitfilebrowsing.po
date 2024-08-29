@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-17 01:42+0000\n"
+"POT-Creation-Date: 2024-08-29 01:46+0000\n"
 "PO-Revision-Date: 2024-03-20 06:13+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -94,7 +94,7 @@ msgstr "Neznano"
 msgid "Trash"
 msgstr "Smeti"
 
-#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:110
+#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
 #, kde-format
 msgid "Tags"
 msgstr "Oznake"
@@ -119,7 +119,7 @@ msgstr "Ostali"
 msgid "Quick"
 msgstr "Hitri"
 
-#: src/code/placeslist.cpp:104
+#: src/code/placeslist.cpp:113
 #, kde-format
 msgid "Favorite"
 msgstr "Priljubljen"

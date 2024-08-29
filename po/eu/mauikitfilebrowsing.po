@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-17 01:42+0000\n"
+"POT-Creation-Date: 2024-08-29 01:46+0000\n"
 "PO-Revision-Date: 2023-12-31 16:22+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr "Ezezaguna"
 msgid "Trash"
 msgstr "Zakarrontzia"
 
-#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:110
+#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
 #, kde-format
 msgid "Tags"
 msgstr "Etiketak"
@@ -121,7 +121,7 @@ msgstr "Besteak"
 msgid "Quick"
 msgstr "Azkar"
 
-#: src/code/placeslist.cpp:104
+#: src/code/placeslist.cpp:113
 #, kde-format
 msgid "Favorite"
 msgstr "Gogokoak"

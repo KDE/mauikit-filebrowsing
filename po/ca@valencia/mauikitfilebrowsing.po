@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-07-17 01:42+0000\n"
+"POT-Creation-Date: 2024-08-29 01:46+0000\n"
 "PO-Revision-Date: 2024-03-20 09:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -96,7 +96,7 @@ msgstr "Desconeguda"
 msgid "Trash"
 msgstr "Paperera"
 
-#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:110
+#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
 #, kde-format
 msgid "Tags"
 msgstr "Etiquetes"
@@ -121,7 +121,7 @@ msgstr "Altres"
 msgid "Quick"
 msgstr "Ràpid"
 
-#: src/code/placeslist.cpp:104
+#: src/code/placeslist.cpp:113
 #, kde-format
 msgid "Favorite"
 msgstr "Preferit"
