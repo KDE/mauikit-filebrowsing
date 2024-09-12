@@ -49,140 +49,139 @@ public:
      * @brief The list of supported audio formats, associated to `FILTER_TYPE::AUDIO`
      */
     inline static const QStringList AUDIO_MIMETYPES = {
-        QStringLiteral("audio/mpeg"),
-        QStringLiteral("audio/mp4"),
-        QStringLiteral("audio/flac"),
-        QStringLiteral("audio/ogg"),
-        QStringLiteral("audio/wav")};
+                                                       QStringLiteral("audio/mpeg"),
+                                                       QStringLiteral("audio/mp4"),
+                                                       QStringLiteral("audio/flac"),
+                                                       QStringLiteral("audio/ogg"),
+                                                       QStringLiteral("audio/wav")};
 
     /**
      * @brief The list of supported video formats, associated to `FILTER_TYPE::VIDEO`
      */
     inline static const QStringList VIDEO_MIMETYPES = {
-        QStringLiteral("video/mp4"),
-        QStringLiteral("video/x-matroska"),
-        QStringLiteral("video/webm"),
-        QStringLiteral("video/avi"),
-        QStringLiteral("video/flv"),
-        QStringLiteral("video/mpg"),
-        QStringLiteral("video/wmv"),
-        QStringLiteral("video/mov"),
-        QStringLiteral("video/quicktime"),
-        QStringLiteral("video/ogg"),
-        QStringLiteral("video/x-flv"),
-        QStringLiteral("video/mpeg"),
-        QStringLiteral("video/jpeg")};
+                                                       QStringLiteral("video/mp4"),
+                                                       QStringLiteral("video/x-matroska"),
+                                                       QStringLiteral("video/webm"),
+                                                       QStringLiteral("video/avi"),
+                                                       QStringLiteral("video/flv"),
+                                                       QStringLiteral("video/mpg"),
+                                                       QStringLiteral("video/wmv"),
+                                                       QStringLiteral("video/mov"),
+                                                       QStringLiteral("video/quicktime"),
+                                                       QStringLiteral("video/ogg"),
+                                                       QStringLiteral("video/x-flv"),
+                                                       QStringLiteral("video/mpeg"),
+                                                       QStringLiteral("video/jpeg")};
 
     /**
      * @brief The list of supported text formats, associated to `FILTER_TYPE::TEXT`
      */
     inline static const QStringList TEXT_MIMETYPES = {
-        QStringLiteral("text/markdown"),
-        QStringLiteral("text/x-chdr"),
-        QStringLiteral("text/x-c++src"),
-        QStringLiteral("text/x-c++hdr"),
-        QStringLiteral("text/css"),
-        QStringLiteral("text/html"),
-        QStringLiteral("text/plain"),
-        QStringLiteral("text/richtext"),
-        QStringLiteral("text/scriptlet"),
-        QStringLiteral("text/x-vcard"),
-        QStringLiteral("text/x-go"),
-        QStringLiteral("text/x-cmake"),
-        QStringLiteral("text/x-makefile"),
-        QStringLiteral("text/x-qml"),
-        QStringLiteral("text/x-java"),
-        QStringLiteral("text/x-log"),
-        QStringLiteral("text/x-python"),
-        QStringLiteral("text/*"),
-        QStringLiteral("text/x-copying"),
-        QStringLiteral("text/x-dbus-service"),
-        QStringLiteral("text/x-gettext-translation"),
-        QStringLiteral("application/xml"),
-        QStringLiteral("application/yaml"),
-        QStringLiteral("application/vnd.kde.knotificationrc"),
-        QStringLiteral("application/x-gitignore"),
-        QStringLiteral("application/javascript"),
-        QStringLiteral("application/json"),
-        QStringLiteral("application/pgp-keys"),
-        QStringLiteral("application/x-shellscript"),
-        QStringLiteral("application/x-cmakecache"),
-        QStringLiteral("application/x-yaml"),
-        QStringLiteral("application/x-perl"),
-        QStringLiteral("application/x-kdevelop"),
-        QStringLiteral("application/x-kicad-project")};
+                                                      QStringLiteral("text/markdown"),
+                                                      QStringLiteral("text/x-chdr"),
+                                                      QStringLiteral("text/x-c++src"),
+                                                      QStringLiteral("text/x-c++hdr"),
+                                                      QStringLiteral("text/css"),
+                                                      QStringLiteral("text/html"),
+                                                      QStringLiteral("text/plain"),
+                                                      QStringLiteral("text/richtext"),
+                                                      QStringLiteral("text/scriptlet"),
+                                                      QStringLiteral("text/x-vcard"),
+                                                      QStringLiteral("text/x-go"),
+                                                      QStringLiteral("text/x-cmake"),
+                                                      QStringLiteral("text/x-makefile"),
+                                                      QStringLiteral("text/x-qml"),
+                                                      QStringLiteral("text/x-java"),
+                                                      QStringLiteral("text/x-log"),
+                                                      QStringLiteral("text/x-python"),
+                                                      QStringLiteral("text/*"),
+                                                      QStringLiteral("text/x-copying"),
+                                                      QStringLiteral("text/x-dbus-service"),
+                                                      QStringLiteral("text/x-gettext-translation"),
+                                                      QStringLiteral("application/xml"),
+                                                      QStringLiteral("application/yaml"),
+                                                      QStringLiteral("application/vnd.kde.knotificationrc"),
+                                                      QStringLiteral("application/x-gitignore"),
+                                                      QStringLiteral("application/javascript"),
+                                                      QStringLiteral("application/json"),
+                                                      QStringLiteral("application/pgp-keys"),
+                                                      QStringLiteral("application/x-shellscript"),
+                                                      QStringLiteral("application/x-cmakecache"),
+                                                      QStringLiteral("application/x-yaml"),
+                                                      QStringLiteral("application/x-perl"),
+                                                      QStringLiteral("application/x-kdevelop"),
+                                                      QStringLiteral("application/x-kicad-project")};
 
     /**
      * @brief The list of supported image formats, associated to `FILTER_TYPE::IMAGE`
      */
     inline static const QStringList IMAGE_MIMETYPES = {
-        QStringLiteral("image/bmp"),
-        QStringLiteral("image/webp"),
-        QStringLiteral("image/png"),
-        QStringLiteral("image/gif"),
-        QStringLiteral("image/jpeg"),
-        QStringLiteral("image/web"),
-        QStringLiteral("image/svg"),
-        QStringLiteral("image/svg+xml"),
-        QStringLiteral("application/x-krita"),
-        QStringLiteral("image/x-xcf"),
-        QStringLiteral("image/vnd.adobe.photoshop"),
-        QStringLiteral("image/x-eps"),
-        QStringLiteral("image/jxl"),
-        QStringLiteral("image/avif")};
+                                                       QStringLiteral("image/bmp"),
+                                                       QStringLiteral("image/webp"),
+                                                       QStringLiteral("image/png"),
+                                                       QStringLiteral("image/gif"),
+                                                       QStringLiteral("image/jpeg"),
+                                                       QStringLiteral("image/web"),
+                                                       QStringLiteral("image/svg"),
+                                                       QStringLiteral("image/svg+xml"),
+                                                       QStringLiteral("application/x-krita"),
+                                                       QStringLiteral("image/x-xcf"),
+                                                       QStringLiteral("image/vnd.adobe.photoshop"),
+                                                       QStringLiteral("image/x-eps"),
+                                                       QStringLiteral("image/jxl"),
+                                                       QStringLiteral("image/avif")};
 
     /**
      * @brief The list of supported document formats, associated to `FILTER_TYPE::DOCUMENT`
      */
     inline static const QStringList DOCUMENT_MIMETYPES = {
-        QStringLiteral("application/pdf"),
-        QStringLiteral("application/rtf"),
-        QStringLiteral("application/doc"),
-        QStringLiteral("application/odf"),
-        QStringLiteral("application/vnd.comicbook+zip"),
-        QStringLiteral("application/vnd.comicbook+rar")};
+                                                          QStringLiteral("application/pdf"),
+                                                          QStringLiteral("application/rtf"),
+                                                          QStringLiteral("application/doc"),
+                                                          QStringLiteral("application/odf"),
+                                                          QStringLiteral("application/vnd.comicbook+zip"),
+                                                          QStringLiteral("application/vnd.comicbook+rar")};
 
     /**
      * @brief The list of supported archive formats, associated to `FILTER_TYPE::COMPRESSED`
      */
     inline static const QStringList COMPRESSED_MIMETYPES = {
-        QStringLiteral("application/x-compress"),
-        QStringLiteral("application/x-compressed"),
-        QStringLiteral("application/x-xz-compressed-tar"),
-        QStringLiteral("application/x-compressed-tar"),
-        //             "application/vnd.android.package-archive",
-        QStringLiteral("application/x-xz"),
-        QStringLiteral("application/x-bzip"),
-        QStringLiteral("application/x-gtar"),
-        QStringLiteral("application/x-gzip"),
-        QStringLiteral("application/zip")};
+                                                            QStringLiteral("application/x-compress"),
+                                                            QStringLiteral("application/x-compressed"),
+                                                            QStringLiteral("application/x-xz-compressed-tar"),
+                                                            QStringLiteral("application/x-compressed-tar"),
+                                                            //             "application/vnd.android.package-archive",
+                                                            QStringLiteral("application/x-xz"),
+                                                            QStringLiteral("application/x-bzip"),
+                                                            QStringLiteral("application/x-gtar"),
+                                                            QStringLiteral("application/x-gzip"),
+                                                            QStringLiteral("application/zip")};
 
     /**
      * @brief The list of supported font formats, associated to `FILTER_TYPE::FONT`
      */
     inline static const QStringList FONT_MIMETYPES = {
-        QStringLiteral("font/ttf"),
-        QStringLiteral("font/otf")};
+                                                      QStringLiteral("font/ttf"),
+                                                      QStringLiteral("font/otf")};
 
     /**
-         * @brief The map set of the supported mime types for the FM classes. This structure maps the `FILTER_TYPE` to the associated list of mime types.
-         *
-         * For example `SUPPORTED_MIMETYPES[FILTER_TYPE::AUDIO]` would return a list of mimetypes associated to the FILTER_TYPE::AUDIO, such as `"audio/mpeg", "audio/mp4", "audio/flac", "audio/ogg", "audio/wav"`.
-         */
+     * @brief The map set of the supported mime types for the FM classes. This structure maps the `FILTER_TYPE` to the associated list of mime types.
+     *      * For example `SUPPORTED_MIMETYPES[FILTER_TYPE::AUDIO]` would return a list of mimetypes associated to the FILTER_TYPE::AUDIO, such as `"audio/mpeg", "audio/mp4", "audio/flac", "audio/ogg", "audio/wav"`.
+     */
     inline static const QMap<FILTER_TYPE, QStringList> SUPPORTED_MIMETYPES {{FILTER_TYPE::AUDIO, AUDIO_MIMETYPES},
-                                                                            {FILTER_TYPE::VIDEO, VIDEO_MIMETYPES},
-                                                                            {FILTER_TYPE::TEXT, TEXT_MIMETYPES},
-                                                                            {FILTER_TYPE::IMAGE, IMAGE_MIMETYPES},
-                                                                            {FILTER_TYPE::DOCUMENT, DOCUMENT_MIMETYPES},
-                                                                            {FILTER_TYPE::FONT, FONT_MIMETYPES},
-                                                                            {FILTER_TYPE::COMPRESSED, COMPRESSED_MIMETYPES}};
+                                                                           {FILTER_TYPE::VIDEO, VIDEO_MIMETYPES},
+                                                                           {FILTER_TYPE::TEXT, TEXT_MIMETYPES},
+                                                                           {FILTER_TYPE::IMAGE, IMAGE_MIMETYPES},
+                                                                           {FILTER_TYPE::DOCUMENT, DOCUMENT_MIMETYPES},
+                                                                           {FILTER_TYPE::FONT, FONT_MIMETYPES},
+                                                                           {FILTER_TYPE::COMPRESSED, COMPRESSED_MIMETYPES}};
 
     /**
-         * @brief Given a FILTER_TYPE and its associated mime-types, return a list of all the supported file extension suffixes.
-         * @param type the FILTER_TYPE
-         * @param cb a callback function to modify the gathered suffix extension. This function will receive the supported suffix and it can return a new string of a modified suffix or the same one. This is optional.
-         * @return the list of associated file extensions
-         */
+     * @brief Given a FILTER_TYPE and its associated mime-types, return a list of all the supported file extension suffixes.
+     * @param type the FILTER_TYPE
+     * @param cb a callback function to modify the gathered suffix extension. This function will receive the supported suffix and it can return a new string of a modified suffix or the same one. This is optional.
+     * @return the list of associated file extensions
+     */
     inline static QStringList getMimeTypeSuffixes(const FILTER_TYPE &type, QString (*cb)(QString) = nullptr)
     {
         QStringList res;
@@ -214,25 +213,25 @@ public:
      */
     inline static QHash<FILTER_TYPE, QStringList> FILTER_LIST = {{FILTER_TYPE::AUDIO,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::AUDIO,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::VIDEO,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::VIDEO,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::TEXT,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::TEXT,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::DOCUMENT,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::DOCUMENT,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::COMPRESSED,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::COMPRESSED,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::FONT,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::FONT,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::IMAGE,
                                                                   getMimeTypeSuffixes(FILTER_TYPE::IMAGE,
-                                                                  func)},
+                                                                                      func)},
                                                                  {FILTER_TYPE::NONE, QStringList()}};
 
     /**                                                                                                                                                                                 * @brief A location contents structured for convenience.                                                                                                                                                                                 */
@@ -346,9 +345,9 @@ public:
                                                                         {PATHTYPE_KEY::MTP_PATH, QStringLiteral("mtp")}};
 
     /**
-    * @brief The protocol scheme mapped to its PATHTYPE_KEY.
-    * Where `PATHTYPE_SCHEME_NAME["file"] = FMH::PATHTYPE_KEY::PLACES_PATH`
-    */
+     * @brief The protocol scheme mapped to its PATHTYPE_KEY.
+     * Where `PATHTYPE_SCHEME_NAME["file"] = FMH::PATHTYPE_KEY::PLACES_PATH`
+     */
     inline static const QHash<QString, PATHTYPE_KEY> PATHTYPE_SCHEME_NAME = {{PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH], PATHTYPE_KEY::PLACES_PATH},
                                                                              {PATHTYPE_SCHEME[PATHTYPE_KEY::BOOKMARKS_PATH], PATHTYPE_KEY::BOOKMARKS_PATH},
                                                                              {PATHTYPE_SCHEME[PATHTYPE_KEY::DRIVES_PATH], PATHTYPE_KEY::DRIVES_PATH},
@@ -364,9 +363,9 @@ public:
                                                                              {PATHTYPE_SCHEME[PATHTYPE_KEY::MTP_PATH], PATHTYPE_KEY::MTP_PATH}};
 
     /**
-    * @brief Similar to PATHTYPE_SCHEME, but mapped with the complete scheme.
-    *  For example `PATHTYPE_URIE[PATHTYPE_KEY::TRASH_PATH] = "trash://"`, `PATHTYPE_URI[PLACES_PATH] = "file://"`
-    */
+     * @brief Similar to PATHTYPE_SCHEME, but mapped with the complete scheme.
+     *  For example `PATHTYPE_URIE[PATHTYPE_KEY::TRASH_PATH] = "trash://"`, `PATHTYPE_URI[PLACES_PATH] = "file://"`
+     */
     inline static const QHash<PATHTYPE_KEY, QString> PATHTYPE_URI = {{PATHTYPE_KEY::PLACES_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::PLACES_PATH] + QStringLiteral("://")},
                                                                      {PATHTYPE_KEY::BOOKMARKS_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::BOOKMARKS_PATH] + QStringLiteral("://")},
                                                                      {PATHTYPE_KEY::DRIVES_PATH, PATHTYPE_SCHEME[PATHTYPE_KEY::DRIVES_PATH] + QStringLiteral("://")},
@@ -383,10 +382,10 @@ public:
 
 
     /**
- * @brief Given a PATHTYPE_KEY return a user friendly string.
- * @warning This is a user visible and translatable string, so it should not be used as a key anywhere
- * @param key the PATHTYPE_KEY key
- **/
+     * @brief Given a PATHTYPE_KEY return a user friendly string.
+     * @warning This is a user visible and translatable string, so it should not be used as a key anywhere
+     * @param key the PATHTYPE_KEY key
+     **/
     static QString PathTypeLabel(const FMStatic::PATHTYPE_KEY &key);
 
     /**                                                                                                                                                                                 * @brief Standard Data location path                                                                                                                                                                               */
@@ -407,32 +406,33 @@ public:
     /**                                                                                                                                                                                 * @brief Standard root location path                                                                                                                                                                                */
     inline static const QString RootPath = QUrl::fromLocalFile(QStringLiteral("/")).toString();
 
-    /**                                                                                                                                                                                 * @brief Standard pictures location path                                                                                                                                                                                */
-    inline static const QString PicturesPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)).toString();
-
-    /**                                                                                                                                                                                 * @brief Standard downloads location path                                                                                                                                                                                */
-    inline static const QString DownloadsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).toString();
-
-    /**                                                                                                                                                                                 * @brief Standard documents location path                                                                                                                                                                                */
-    inline static const QString DocumentsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString();
-
-    /**                                                                                                                                                                                 * @brief Standard music location path                                                                                                                                                                                */
-    inline static const QString MusicPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MusicLocation)).toString();
-
-    /**                                                                                                                                                                                 * @brief Standard videos location path                                                                                                                                                                                */
-    inline static const QString VideosPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)).toString();
-
 
 #if defined(Q_OS_ANDROID)
     /**                                                                                                                                                                                 * @brief Standard home location path                                                                                                                                                                                */
-    inline static const QString HomePath = QUrl::fromLocalFile( MAUIAndroid::homePath()).toString();
+    inline static const QString HomePath = QUrl::fromLocalFile(MAUIAndroid::homePath()).toString();
+    inline static const QString MusicPath = QUrl::fromLocalFile(MAUIAndroid::getStandardPath(QStandardPaths::MusicLocation)).toString();
+    inline static const QString PicturesPath = QUrl::fromLocalFile(MAUIAndroid::getStandardPath(QStandardPaths::PicturesLocation)).toString();
+    inline static const QString DownloadsPath = QUrl::fromLocalFile(MAUIAndroid::getStandardPath(QStandardPaths::DownloadLocation)).toString();
+    inline static const QString DocumentsPath = QUrl::fromLocalFile(MAUIAndroid::getStandardPath(QStandardPaths::DocumentsLocation)).toString();
+    inline static const QString VideosPath = QUrl::fromLocalFile(MAUIAndroid::getStandardPath(QStandardPaths::MoviesLocation)).toString();
 
     /**                                                                                                                                                                                 * @brief The internally defined quick standard locations.                                                                                                                                                                    */
-    inline static const QStringList defaultPaths = {HomePath, DocumentsPath, PicturesPath, MusicPath, VideosPath, DownloadsPath};
+    inline static const QStringList defaultPaths = {
+                                                    HomePath,
+                                                    DocumentsPath,
+                                                    PicturesPath,
+                                                    MusicPath,
+                                                    VideosPath,
+                                                    DownloadsPath};
 #else
 
     /**                                                                                                                                                                                 * @brief Standard home location path                                                                                                                                                                                */
     inline static const QString HomePath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::HomeLocation)).toString();
+    inline static const QString MusicPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MusicLocation)).toString();
+    inline static const QString PicturesPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)).toString();
+    inline static const QString DownloadsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation)).toString();
+    inline static const QString DocumentsPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation)).toString();
+    inline static const QString VideosPath = QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::MoviesLocation)).toString();
 
     /**                                                                                                                                                                                 * @brief Standard trash location path                                                                                                                                                                                */
     inline static const QString TrashPath = QStringLiteral("trash:/");
@@ -455,14 +455,14 @@ public:
      * @brief A mapping of the standard location to a icon name.
      */
     inline static const QMap<QString, QString> folderIcon {{PicturesPath, QStringLiteral("folder-pictures")},
-                                                           {DownloadsPath, QStringLiteral("folder-download")},
-                                                           {DocumentsPath, QStringLiteral("folder-documents")},
-                                                           {HomePath, QStringLiteral("user-home")},
-                                                           {MusicPath, QStringLiteral("folder-music")},
-                                                           {VideosPath, QStringLiteral("folder-videos")},
-                                                           {DesktopPath, QStringLiteral("user-desktop")},
-                                                           {AppsPath, QStringLiteral("system-run")},
-                                                           {RootPath, QStringLiteral("folder-root")}};
+                                                          {DownloadsPath, QStringLiteral("folder-download")},
+                                                          {DocumentsPath, QStringLiteral("folder-documents")},
+                                                          {HomePath, QStringLiteral("user-home")},
+                                                          {MusicPath, QStringLiteral("folder-music")},
+                                                          {VideosPath, QStringLiteral("folder-videos")},
+                                                          {DesktopPath, QStringLiteral("user-desktop")},
+                                                          {AppsPath, QStringLiteral("system-run")},
+                                                          {RootPath, QStringLiteral("folder-root")}};
 
 public Q_SLOTS:
     /**

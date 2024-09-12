@@ -462,7 +462,7 @@ Maui.Page
     {
         id: removeDialogComponent
 
-        Maui.FileListingDialog
+        FB.FileListingDialog
         {
             id: _removeDialog
 

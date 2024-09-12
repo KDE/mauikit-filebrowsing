@@ -243,6 +243,7 @@ bool FMStatic::copy(const QList<QUrl> &urls, const QUrl &destinationDir)
 
 bool FMStatic::group(const QList<QUrl>& urls, const QUrl& destinationDir, const QString &name)
 {
+
     if(!FMStatic::fileExists(QUrl(destinationDir.toString() + QStringLiteral("/") + name)))
     {
         QDir(destinationDir.toLocalFile()).mkdir(name);

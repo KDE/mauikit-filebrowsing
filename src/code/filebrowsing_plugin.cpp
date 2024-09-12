@@ -1,3 +1,4 @@
+
 // SPDX-FileCopyrightText: 2020 Carl Schwan <carl@carlschwan.eu>
 //
 // SPDX-License-Identifier: LGPL-2.1-or-later
@@ -42,6 +43,7 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
     qmlRegisterType(componentUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(componentUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
     qmlRegisterType(componentUrl(QStringLiteral("FileDialog.qml")), uri, 1, 0, "FileDialog");
+    qmlRegisterType(componentUrl(QStringLiteral("FileListingDialog.qml")), uri, 1, 0, "FileListingDialog");
 
     qmlRegisterType<OpenWithModel>(uri, 1, 3, "OpenWithModel");
     qmlRegisterType(componentUrl(QStringLiteral("OpenWithDialog.qml")), uri, 1, 0, "OpenWithDialog");
