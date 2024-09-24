@@ -481,6 +481,7 @@ Maui.Page
                 Action
                 {
                     text: i18nd("mauikitfilebrowsing", "Delete")
+                    Maui.Controls.status: Maui.Controls.Negative
                     onTriggered:
                     {
                         control.currentFMList.removeFiles(urls)
@@ -490,6 +491,7 @@ Maui.Page
                 Action
                 {
                     text: i18nd("mauikitfilebrowsing", "Trash")
+                    Maui.Controls.status: Maui.Controls.Neutral
                     enabled: Maui.Handy.isLinux
                     onTriggered:
                     {
