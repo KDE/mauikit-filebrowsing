@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-25 01:49+0000\n"
+"POT-Creation-Date: 2024-10-22 01:48+0000\n"
 "PO-Revision-Date: 2024-01-29 21:53+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgid "This place seems to be empty"
 msgstr "Paikka vaikuttaa tyhjältä"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
-#: src/controls.6/FileDialog.qml:251
+#: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr "Virhe"
@@ -364,7 +364,7 @@ msgstr "Uusi tiedosto"
 msgid "Create a new folder or a file with a custom name."
 msgstr "Luo uusi kansio tai mukautetun niminen tiedosto."
 
-#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:446
+#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
 msgstr "Nimi"
@@ -421,7 +421,7 @@ msgstr "Linkitä tähän"
 msgid "Open Here"
 msgstr "Avaa tähän"
 
-#: src/controls.6/FileBrowser.qml:1276
+#: src/controls.6/FileBrowser.qml:1299
 #, kde-format
 msgid "Search: %1"
 msgstr "Etsi: %1"
@@ -436,12 +436,12 @@ msgstr "Tallenna"
 msgid "Open"
 msgstr "Avaa"
 
-#: src/controls.6/FileDialog.qml:241
+#: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
 msgstr "Tiedostonimi…"
 
-#: src/controls.6/FileDialog.qml:252
+#: src/controls.6/FileDialog.qml:253
 #, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
@@ -450,57 +450,57 @@ msgstr ""
 "Tiedosto nimeltä “%1” on jo olemassa!\n"
 "Toiminto korvaa tiedoston ”%1”. Haluatko varmasti tehdä näin?"
 
-#: src/controls.6/FileDialog.qml:311
+#: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Näytä tai piilota sivupalkki"
 
-#: src/controls.6/FileDialog.qml:353
+#: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
 msgstr "Näkymä"
 
-#: src/controls.6/FileDialog.qml:358
+#: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
 msgstr "Luettelo"
 
-#: src/controls.6/FileDialog.qml:373
+#: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
 msgstr "Ruudukko"
 
-#: src/controls.6/FileDialog.qml:393
+#: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
 msgstr "Lajittelutapa"
 
-#: src/controls.6/FileDialog.qml:398
+#: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
 msgstr "Tyyppi"
 
-#: src/controls.6/FileDialog.qml:410
+#: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
 msgstr "Päiväys"
 
-#: src/controls.6/FileDialog.qml:422
+#: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
 msgstr "Muutettu"
 
-#: src/controls.6/FileDialog.qml:434
+#: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
 msgstr "Koko"
 
-#: src/controls.6/FileDialog.qml:460
+#: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
 msgstr "Näytä ensin kansiot"
 
-#: src/controls.6/FileDialog.qml:473
+#: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
 msgstr "Ryhmä"

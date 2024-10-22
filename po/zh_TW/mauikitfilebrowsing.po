@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-25 01:49+0000\n"
+"POT-Creation-Date: 2024-10-22 01:48+0000\n"
 "PO-Revision-Date: 2024-02-15 17:44+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -28,7 +28,7 @@ msgid "This place seems to be empty"
 msgstr "這個位置看起來是空的"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
-#: src/controls.6/FileDialog.qml:251
+#: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr "錯誤"
@@ -339,7 +339,7 @@ msgstr "新增檔案"
 msgid "Create a new folder or a file with a custom name."
 msgstr "用自訂名稱建立新資料夾或檔案。"
 
-#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:446
+#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
 msgstr "名稱"
@@ -394,7 +394,7 @@ msgstr "連結到這裡"
 msgid "Open Here"
 msgstr "在此開啟"
 
-#: src/controls.6/FileBrowser.qml:1276
+#: src/controls.6/FileBrowser.qml:1299
 #, kde-format
 msgid "Search: %1"
 msgstr "搜尋：%1"
@@ -409,12 +409,12 @@ msgstr "儲存"
 msgid "Open"
 msgstr "開啟"
 
-#: src/controls.6/FileDialog.qml:241
+#: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
 msgstr "檔案名稱…"
 
-#: src/controls.6/FileDialog.qml:252
+#: src/controls.6/FileDialog.qml:253
 #, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
@@ -423,57 +423,57 @@ msgstr ""
 "檔案「%1」已存在！\n"
 "這個動作會覆寫 '%1'。您確定要這樣做嗎？"
 
-#: src/controls.6/FileDialog.qml:311
+#: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "切換側邊欄"
 
-#: src/controls.6/FileDialog.qml:353
+#: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
 msgstr "檢視型態"
 
-#: src/controls.6/FileDialog.qml:358
+#: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
 msgstr "列表"
 
-#: src/controls.6/FileDialog.qml:373
+#: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
 msgstr "格線"
 
-#: src/controls.6/FileDialog.qml:393
+#: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
 msgstr "排序依據"
 
-#: src/controls.6/FileDialog.qml:398
+#: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
 msgstr "類型"
 
-#: src/controls.6/FileDialog.qml:410
+#: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
 msgstr "日期"
 
-#: src/controls.6/FileDialog.qml:422
+#: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
 msgstr "修改時間"
 
-#: src/controls.6/FileDialog.qml:434
+#: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
 msgstr "大小"
 
-#: src/controls.6/FileDialog.qml:460
+#: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
 msgstr "先顯示資料夾"
 
-#: src/controls.6/FileDialog.qml:473
+#: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
 msgstr "群組"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-25 01:49+0000\n"
+"POT-Creation-Date: 2024-10-22 01:48+0000\n"
 "PO-Revision-Date: 2023-04-25 21:19+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -30,7 +30,7 @@ msgid "This place seems to be empty"
 msgstr ""
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
-#: src/controls.6/FileDialog.qml:251
+#: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr ""
@@ -340,7 +340,7 @@ msgstr "Novo ficheiro"
 msgid "Create a new folder or a file with a custom name."
 msgstr "Cria uma nova pasta ou ficheiro com um nome personalizado."
 
-#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:446
+#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
 msgstr "Nome"
@@ -401,7 +401,7 @@ msgstr "Criar uma ligação aqui"
 msgid "Open Here"
 msgstr "Abrir aqui"
 
-#: src/controls.6/FileBrowser.qml:1276
+#: src/controls.6/FileBrowser.qml:1299
 #, kde-format
 msgid "Search: %1"
 msgstr "Procurar: %1"
@@ -416,12 +416,12 @@ msgstr "Gravar"
 msgid "Open"
 msgstr "Abrir"
 
-#: src/controls.6/FileDialog.qml:241
+#: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
 msgstr "Nome do ficheiro..."
 
-#: src/controls.6/FileDialog.qml:252
+#: src/controls.6/FileDialog.qml:253
 #, fuzzy, kde-format
 #| msgid "This action will overwrite %1. Are you sure you want to do this?"
 msgid ""
@@ -429,57 +429,57 @@ msgid ""
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr "Esta acção irá substituir o %1. Tem a certeza que deseja fazer isto?"
 
-#: src/controls.6/FileDialog.qml:311
+#: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Comutar a Barra Lateral"
 
-#: src/controls.6/FileDialog.qml:353
+#: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
 msgstr "Tipo de visualização"
 
-#: src/controls.6/FileDialog.qml:358
+#: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
 msgstr "Lista"
 
-#: src/controls.6/FileDialog.qml:373
+#: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
 msgstr "Grelha"
 
-#: src/controls.6/FileDialog.qml:393
+#: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
 msgstr "Ordenar por"
 
-#: src/controls.6/FileDialog.qml:398
+#: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
 msgstr "Tipo"
 
-#: src/controls.6/FileDialog.qml:410
+#: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
 msgstr "Data"
 
-#: src/controls.6/FileDialog.qml:422
+#: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
 msgstr "Modificado"
 
-#: src/controls.6/FileDialog.qml:434
+#: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
 msgstr "Tamanho"
 
-#: src/controls.6/FileDialog.qml:460
+#: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
 msgstr "Mostrar as Pastas Primeiro"
 
-#: src/controls.6/FileDialog.qml:473
+#: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
 msgstr "Grupo"

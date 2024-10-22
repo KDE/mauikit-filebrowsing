@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-25 01:49+0000\n"
+"POT-Creation-Date: 2024-10-22 01:48+0000\n"
 "PO-Revision-Date: 2024-03-20 22:52+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
@@ -29,7 +29,7 @@ msgid "This place seems to be empty"
 msgstr "Tiu loko ŝajnas esti malplena"
 
 #: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
-#: src/controls.6/FileDialog.qml:251
+#: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr "Eraro"
@@ -369,7 +369,7 @@ msgstr "Nova dosiero"
 msgid "Create a new folder or a file with a custom name."
 msgstr "Krei novan dosierujon aŭ dosieron kun propra nomo."
 
-#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:446
+#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
 msgstr "Nomo"
@@ -426,7 +426,7 @@ msgstr "Ligi ĉi Tien"
 msgid "Open Here"
 msgstr "Malfermi ĉi Tie"
 
-#: src/controls.6/FileBrowser.qml:1276
+#: src/controls.6/FileBrowser.qml:1299
 #, kde-format
 msgid "Search: %1"
 msgstr "Serĉi: %1"
@@ -441,12 +441,12 @@ msgstr "Konservi"
 msgid "Open"
 msgstr "Malfermi"
 
-#: src/controls.6/FileDialog.qml:241
+#: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
 msgstr "Dosiernomo..."
 
-#: src/controls.6/FileDialog.qml:252
+#: src/controls.6/FileDialog.qml:253
 #, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
@@ -455,57 +455,57 @@ msgstr ""
 "Dosiero nomita '%1' jam ekzistas!\n"
 " Ĉi tiu ago anstataŭigos '%1'. Ĉu vi certas, ke vi volas fari ĉi tion?"
 
-#: src/controls.6/FileDialog.qml:311
+#: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "Baskuligi Flankbaron"
 
-#: src/controls.6/FileDialog.qml:353
+#: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
 msgstr "Vidspeco"
 
-#: src/controls.6/FileDialog.qml:358
+#: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
 msgstr "Listo"
 
-#: src/controls.6/FileDialog.qml:373
+#: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
 msgstr "Krado"
 
-#: src/controls.6/FileDialog.qml:393
+#: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
 msgstr "Ordigi laŭ"
 
-#: src/controls.6/FileDialog.qml:398
+#: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
 msgstr "Tipo"
 
-#: src/controls.6/FileDialog.qml:410
+#: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
 msgstr "Dato"
 
-#: src/controls.6/FileDialog.qml:422
+#: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
 msgstr "Modifita"
 
-#: src/controls.6/FileDialog.qml:434
+#: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
 msgstr "Grandeco"
 
-#: src/controls.6/FileDialog.qml:460
+#: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
 msgstr "Montri Dosierujojn Unue"
 
-#: src/controls.6/FileDialog.qml:473
+#: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
 msgstr "Grupo"
