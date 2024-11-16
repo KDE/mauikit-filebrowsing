@@ -103,12 +103,13 @@ Maui.PopupPage
     
     headBar.visible: true
     headBar.forceCenterMiddleContent: false
-    headBar.middleContent: TextField
+    headBar.middleContent: Maui.TextField
     {
         id: tagText
         Layout.fillWidth: true
         Layout.maximumWidth: 500
         placeholderText: i18nd("mauikitfilebrowsing", "Filter or add a new tag")
+        icon.source: "tag"
         //             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
         onAccepted:
         {
