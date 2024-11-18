@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-22 01:48+0000\n"
+"POT-Creation-Date: 2024-11-18 01:56+0000\n"
 "PO-Revision-Date: 2023-12-31 16:22+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:161
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:162
 #, kde-format
 msgid "Delete"
 msgstr "Ezabatu"
@@ -538,7 +538,7 @@ msgstr ""
 msgid "Open with"
 msgstr "Ireki honekin"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:155
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:156
 #, kde-format
 msgid "Edit"
 msgstr "Editatu"
@@ -599,39 +599,39 @@ msgstr "Gehitu etiketak..."
 msgid "Filter or add a new tag"
 msgstr "Iragazi edo gehitu etiketa berri bat"
 
-#: src/controls.6/TagsDialog.qml:137
+#: src/controls.6/TagsDialog.qml:138
 #, kde-format
 msgid "Delete %1"
 msgstr "Ezabatu %1"
 
-#: src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:139
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr ""
 "Ziur zaude etiketa hau ezabatu nahi duzula? Ekintza hau ezin da desegin."
 
-#: src/controls.6/TagsDialog.qml:184
+#: src/controls.6/TagsDialog.qml:185
 #, kde-format
 msgid "No Tags!"
 msgstr "Etiketarik ez!"
 
-#: src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:186
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "Sortu etiketa berriak zure fitxategiak antolatzeko."
 
-#: src/controls.6/TagsDialog.qml:261
+#: src/controls.6/TagsDialog.qml:262
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "%1 fitxategi etiketatzen"
 
-#: src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:263
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "Gehitu hautatutako fitxategietarako etiketa berriak."
 
-#: src/controls.6/TagsDialog.qml:329
+#: src/controls.6/TagsDialog.qml:330
 #, kde-format
 msgid "No tags yet."
 msgstr "Oraindik etiketarik ez."

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-22 01:48+0000\n"
+"POT-Creation-Date: 2024-11-18 01:56+0000\n"
 "PO-Revision-Date: 2024-03-21 09:20+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:161
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:162
 #, kde-format
 msgid "Delete"
 msgstr "Supprimer"
@@ -537,7 +537,7 @@ msgstr ""
 msgid "Open with"
 msgstr "Ouvrir avec"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:155
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:156
 #, kde-format
 msgid "Edit"
 msgstr "Modifier"
@@ -599,12 +599,12 @@ msgstr "Ajouter des étiquettes..."
 msgid "Filter or add a new tag"
 msgstr "Filtrer ou ajouter une nouvelle étiquette"
 
-#: src/controls.6/TagsDialog.qml:137
+#: src/controls.6/TagsDialog.qml:138
 #, kde-format
 msgid "Delete %1"
 msgstr "Supprimer %1"
 
-#: src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:139
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
@@ -612,27 +612,27 @@ msgstr ""
 "Voulez-vous vraiment supprimer cette étiquette ? Cette action ne peut être "
 "annulée."
 
-#: src/controls.6/TagsDialog.qml:184
+#: src/controls.6/TagsDialog.qml:185
 #, kde-format
 msgid "No Tags!"
 msgstr "Aucune étiquette !"
 
-#: src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:186
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "Créer de nouvelles étiquettes pour organiser vos fichiers."
 
-#: src/controls.6/TagsDialog.qml:261
+#: src/controls.6/TagsDialog.qml:262
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "Étiquetage en cours de %1 fichiers"
 
-#: src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:263
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "Ajouter de nouvelles étiquettes aux fichiers sélectionnés."
 
-#: src/controls.6/TagsDialog.qml:329
+#: src/controls.6/TagsDialog.qml:330
 #, kde-format
 msgid "No tags yet."
 msgstr "Aucune étiquette encore."

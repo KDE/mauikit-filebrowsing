@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-22 01:48+0000\n"
+"POT-Creation-Date: 2024-11-18 01:56+0000\n"
 "PO-Revision-Date: 2024-02-10 00:20+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -338,7 +338,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "취소"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:161
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:162
 #, kde-format
 msgid "Delete"
 msgstr "삭제"
@@ -518,7 +518,7 @@ msgstr ""
 msgid "Open with"
 msgstr "다음으로 열기"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:155
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:156
 #, kde-format
 msgid "Edit"
 msgstr "편집"
@@ -579,38 +579,38 @@ msgstr "태그 추가..."
 msgid "Filter or add a new tag"
 msgstr "필터 또는 새 태그 추가"
 
-#: src/controls.6/TagsDialog.qml:137
+#: src/controls.6/TagsDialog.qml:138
 #, kde-format
 msgid "Delete %1"
 msgstr "%1 삭제"
 
-#: src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:139
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "이 태그를 삭제하시겠습니까? 실행 취소할 수 없습니다."
 
-#: src/controls.6/TagsDialog.qml:184
+#: src/controls.6/TagsDialog.qml:185
 #, kde-format
 msgid "No Tags!"
 msgstr "태그 없음!"
 
-#: src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:186
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "새 태그를 만들어서 파일을 정리할 수 있습니다."
 
-#: src/controls.6/TagsDialog.qml:261
+#: src/controls.6/TagsDialog.qml:262
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "파일 %1개 태그 추가"
 
-#: src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:263
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "선택한 파일에 새 태그를 추가합니다."
 
-#: src/controls.6/TagsDialog.qml:329
+#: src/controls.6/TagsDialog.qml:330
 #, kde-format
 msgid "No tags yet."
 msgstr "태그가 없습니다."
