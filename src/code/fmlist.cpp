@@ -211,11 +211,26 @@ void FMList::setList()
         if (!exists)
             this->setStatus({PathStatus::STATUS_CODE::ERROR, i18n("Error"), i18n("This URL cannot be listed"), QStringLiteral("documentinfo"), this->list.isEmpty(), exists});
         else {
-            this->fm->getPathContent(this->path, this->hidden, this->onlyDirs, QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)]);
+            const auto _filters = m_mergeFilters ? QStringList() << this->filters << FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)] : this->filters.isEmpty() ?  FMStatic::FILTER_LIST[static_cast<FMStatic::FILTER_TYPE>(this->filterType)] : this->filters;
+            this->fm->getPathContent(this->path, this->hidden, this->onlyDirs, _filters);
         }
         break; // ASYNC
     }
     }
+}
+
+void FMList::setMergeFilters(bool value)
+{
+    if(value == m_mergeFilters)
+        return;
+    
+    m_mergeFilters = value;
+    Q_EMIT mergeFiltersChanged();
+}
+
+bool FMList::mergeFilters() const
+{
+    return m_mergeFilters;
 }
 
 void FMList::reset()
