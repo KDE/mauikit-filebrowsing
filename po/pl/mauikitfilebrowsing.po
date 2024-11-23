@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-18 01:56+0000\n"
+"POT-Creation-Date: 2024-11-23 01:48+0000\n"
 "PO-Revision-Date: 2024-07-21 13:24+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -28,7 +28,7 @@ msgstr "Nie ma tutaj niczego"
 msgid "This place seems to be empty"
 msgstr "To miejsce wydaje się być pustym"
 
-#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
+#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:728
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
@@ -39,17 +39,17 @@ msgstr "Błąd"
 msgid "This URL cannot be listed"
 msgstr "Nie można wypisać tego adresu URL"
 
-#: src/code/fmlist.cpp:331
+#: src/code/fmlist.cpp:346
 #, kde-format
 msgid "Loading content"
 msgstr "Wczytywanie zawartości"
 
-#: src/code/fmlist.cpp:331
+#: src/code/fmlist.cpp:346
 #, kde-format
 msgid "Almost ready!"
 msgstr "Prawie gotowe!"
 
-#: src/code/fmlist.cpp:713
+#: src/code/fmlist.cpp:728
 #, kde-format
 msgid "No path to perform the search"
 msgstr "Brak ścieżki do wykonania wyszukiwania"
