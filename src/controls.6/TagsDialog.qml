@@ -218,7 +218,7 @@ Maui.PopupPage
                 onClicked:
                 {
                     _listView.currentIndex = index
-                    if(Qt.styleHints.singleClickActivation)
+                    if(Maui.Handy.singleClick)
                     {
                         tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
@@ -227,7 +227,7 @@ Maui.PopupPage
                 onDoubleClicked:
                 {
                     _listView.currentIndex = index
-                    if(!Qt.styleHints.singleClickActivation)
+                    if(!Maui.Handy.singleClick)
                     {
                         tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
@@ -326,7 +326,7 @@ Maui.PopupPage
         width: parent.width
         visible: count > 0
         
-        onTagRemoved: list.remove(index)
+        onTagRemoved: (index) => list.remove(index)
         placeholderText: i18nd("mauikitfilebrowsing", "No tags yet.")
     }
     
