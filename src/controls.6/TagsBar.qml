@@ -69,44 +69,44 @@ import "private" as Private
 Item
 {
     id: control
-
+    
     focus: true
     implicitHeight: Maui.Style.toolBarHeight + Maui.Style.space.tiny
-
+    
     /**
      * @brief An alias to the flickable element listing the tag buttons.
      * It is exposed to fine tune more of this control properties.
      * @property Taglist TagsBar::listView
      */
     readonly property alias listView : tagsList
-
+    
     /**
      * @brief The total amount of tag elements
      * @property int TagsBar::count
      */
     readonly property alias count : tagsList.count
-
+    
     /**
-     * @brief Whether the bar should be in edit mode or not. This can be also triggered by the user using the attached action buttons in the right side of the bar.
+     * @brief Whether the bar is in edit mode or not. This can be also triggered by the user using the attached action buttons in the right side of the bar.
      * In edit mode the bar exposes a text field, where all the tag elements are plain text divided by comma. The text can be edited to remove tags or add more.
      * @see allowEditMode
      * By default this is set to `false`.
      */
-    property bool editMode : false
-
+    readonly property bool editMode : _stackView.depth === 2
+    
     /**
      * @brief Whether the bar exposes to the user the action buttons that allow to go into edit mode, or to remove the tag elements manually.
      * By default this is set to `false`
      */
     property bool allowEditMode : false
-
+    
     /**
      * @see TagList::list
      * @brief To associate a one or a group of file URLs, use `list.urls`, or to disable the strict mode use `list.strict: false`, etc. Read more about the available properties in the TagsListModel documentation page.
      * @property TagsListModel TagsBar::list
      */
     readonly property alias list : tagsList.list
-
+    
     /**
      * Emitted when the close/dismiss button of a tag element has been clicked.
      * @param index the index position of the tag element
@@ -114,122 +114,140 @@ Item
      * @note To retrieve information of the tag given the index position, use the alias property function`list.get(index)`
      */
     signal tagRemovedClicked(int index)
-
+    
     /**
      * Emitted when a tag element has been clicked.
      * @param tag the name of the tag element
      */
     signal tagClicked(string tag)
-
+    
     /**
      * @brief Emitted when the tags have been manually edited by the user via the text field input.
      * @param tags the list of tags entered in the text field.
      */
     signal tagsEdited(var tags)
 
-    Loader
+    onAllowEditModeChanged:
     {
+        if(!control.allowEditMode)
+            control.closeEditMode()
+    }
+    
+    StackView
+    {
+        id: _stackView
         anchors.fill: parent
-        active: control.editMode
-        visible: active
-        asynchronous: true
-
-        sourceComponent: Maui.TextField
+        
+        initialItem: Private.TagList
         {
-            id: editTagsEntry
-
-            focus: true
-
-            activeFocusOnPress : true
-
-            text: list.tags.join(",")
-
-            Component.onCompleted:
+            id: tagsList
+            
+            showPlaceHolder: allowEditMode
+            showDeleteIcon: allowEditMode
+            
+            onTagRemoved: (index) => tagRemovedClicked(index)
+            
+            onTagClicked: (index) => control.tagClicked(tagsList.list.get(index).tag)
+            
+            onAreaClicked:
             {
-                editTagsEntry.forceActiveFocus()
-            }
-
-            onAccepted:
-            {
-                control.tagsEdited(getTags())
-                control.closeEditMode()
-            }
-
-            actions: Action
-            {
-                icon.name: "checkbox"
-                onTriggered: editTagsEntry.accepted()
-            }
-
-            background: Rectangle
-            {
-                color: "transparent"
-            }
-
-            function getTags()
-            {
-                if(!editTagsEntry.text.length > 0)
+                if(allowEditMode)
                 {
-                    return
+                    goEditMode()
                 }
+            }
 
-                var tags = []
-                if(editTagsEntry.text.trim().length > 0)
+            Item
+            {
+                enabled: visible
+                visible: Maui.Handy.isMobile
+                anchors.fill: parent
+                TapHandler
                 {
-                    var list = editTagsEntry.text.split(",")
-
-                    if(list.length > 0)
+                    onTapped: goEditMode()
+                }
+            }
+        }
+        
+        Component
+        {
+            id: _editComponent
+            Maui.TextField
+            {
+                id: editTagsEntry
+                
+                focus: true
+                
+                activeFocusOnPress : true
+                
+                text: list.tags.join(",")
+                
+                StackView.onActivated:
+                {
+                    editTagsEntry.forceActiveFocus()
+                }
+                
+                onAccepted:
+                {
+                    control.tagsEdited(getTags())
+                    control.closeEditMode()
+                }
+                
+                actions: Action
+                {
+                    icon.name: "checkbox"
+                    onTriggered: editTagsEntry.accepted()
+                }
+                
+                background: Rectangle
+                {
+                    color: "transparent"
+                }
+                
+                function getTags()
+                {
+                    if(!editTagsEntry.text.length > 0)
                     {
-                        for(var i in list)
+                        return
+                    }
+                    
+                    var tags = []
+                    if(editTagsEntry.text.trim().length > 0)
+                    {
+                        var list = editTagsEntry.text.split(",")
+                        
+                        if(list.length > 0)
                         {
-                            tags.push(list[i].trim())
-
+                            for(var i in list)
+                            {
+                                tags.push(list[i].trim())
+                                
+                            }
                         }
                     }
+                    
+                    return tags
                 }
-
-                return tags
             }
         }
     }
-
-    Private.TagList
-    {
-        id: tagsList
-        anchors.fill: parent
-
-        visible: !control.editMode
-
-        showPlaceHolder: allowEditMode
-        showDeleteIcon: allowEditMode
-
-        onTagRemoved: (index) => tagRemovedClicked(index)
-
-        onTagClicked: (index) => control.tagClicked(tagsList.list.get(index).tag)
-
-        onAreaClicked:
-        {
-            if(allowEditMode)
-            {
-                goEditMode()
-            }
-        }
-    }
-
+    
     /**
      * @brief Force the bar to go into editing mode.
      */
     function goEditMode()
     {
         control.forceActiveFocus()
-        control.editMode = true
+        if(control.allowEditMode)
+            _stackView.push(_editComponent)
     }
-
+    
     /**
      * @brief Force to exit the editing mode.
      */
     function closeEditMode()
     {
-        control.editMode = false
+        if(_stackView.depth === 2)
+            _stackView.pop()
     }
 }
