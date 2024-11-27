@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-23 01:48+0000\n"
+"POT-Creation-Date: 2024-11-27 01:51+0000\n"
 "PO-Revision-Date: 2024-03-20 09:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -353,12 +353,12 @@ msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
 #: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
-#: src/controls.6/TagsDialog.qml:99
+#: src/controls.6/TagsDialog.qml:100
 #, kde-format
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:162
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
 #, kde-format
 msgid "Delete"
 msgstr "Suprimix"
@@ -440,7 +440,7 @@ msgstr "Obri ací"
 msgid "Search: %1"
 msgstr "Busca: %1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:93
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
 #, kde-format
 msgid "Save"
 msgstr "Guarda"
@@ -538,7 +538,7 @@ msgstr ""
 msgid "Open with"
 msgstr "Obri amb"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:156
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
 msgid "Edit"
 msgstr "Edita"
@@ -594,43 +594,43 @@ msgstr " elements"
 msgid "Add tags..."
 msgstr "Afig etiquetes…"
 
-#: src/controls.6/TagsDialog.qml:111
+#: src/controls.6/TagsDialog.qml:112
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "Filtra o afig una etiqueta nova"
 
-#: src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:139
 #, kde-format
 msgid "Delete %1"
 msgstr "Suprimix %1"
 
-#: src/controls.6/TagsDialog.qml:139
+#: src/controls.6/TagsDialog.qml:140
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "Segur que voleu suprimir esta etiqueta? Esta acció no es podrà desfer."
 
-#: src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:186
 #, kde-format
 msgid "No Tags!"
 msgstr "Sense etiquetes!"
 
-#: src/controls.6/TagsDialog.qml:186
+#: src/controls.6/TagsDialog.qml:187
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "Creeu etiquetes noves per a organitzar els vostres fitxers."
 
-#: src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:263
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "S'etiqueten %1 fitxers"
 
-#: src/controls.6/TagsDialog.qml:263
+#: src/controls.6/TagsDialog.qml:264
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "Afig etiquetes noves per als fitxers seleccionats."
 
-#: src/controls.6/TagsDialog.qml:330
+#: src/controls.6/TagsDialog.qml:331
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."

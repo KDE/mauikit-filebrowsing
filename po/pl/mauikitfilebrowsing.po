@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-23 01:48+0000\n"
+"POT-Creation-Date: 2024-11-27 01:51+0000\n"
 "PO-Revision-Date: 2024-07-21 13:24+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -350,12 +350,12 @@ msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
 #: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
-#: src/controls.6/TagsDialog.qml:99
+#: src/controls.6/TagsDialog.qml:100
 #, kde-format
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:162
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
 #, kde-format
 msgid "Delete"
 msgstr "Usuń"
@@ -437,7 +437,7 @@ msgstr "Otwórz tutaj"
 msgid "Search: %1"
 msgstr "Poszukaj: %1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:93
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
 #, kde-format
 msgid "Save"
 msgstr "Zapisz"
@@ -535,7 +535,7 @@ msgstr ""
 msgid "Open with"
 msgstr "Otwórz w"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:156
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
 msgid "Edit"
 msgstr "Edytuj"
@@ -592,43 +592,43 @@ msgstr " rzeczy"
 msgid "Add tags..."
 msgstr "Dodaj znaczniki..."
 
-#: src/controls.6/TagsDialog.qml:111
+#: src/controls.6/TagsDialog.qml:112
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "Odfiltruj lub dodaj nowy znacznik"
 
-#: src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:139
 #, kde-format
 msgid "Delete %1"
 msgstr "Usuń %1"
 
-#: src/controls.6/TagsDialog.qml:139
+#: src/controls.6/TagsDialog.qml:140
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "Czy na pewno usunąć ten znacznik? Nie można wycofać tego działania."
 
-#: src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:186
 #, kde-format
 msgid "No Tags!"
 msgstr "Brak znaczników!"
 
-#: src/controls.6/TagsDialog.qml:186
+#: src/controls.6/TagsDialog.qml:187
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "Utwórz nowe znaczniki lub porządkuj swoje pliki."
 
-#: src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:263
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "Znaczenie %1 plików"
 
-#: src/controls.6/TagsDialog.qml:263
+#: src/controls.6/TagsDialog.qml:264
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "Dodaj nowe znaczniki do wybranych plików."
 
-#: src/controls.6/TagsDialog.qml:330
+#: src/controls.6/TagsDialog.qml:331
 #, kde-format
 msgid "No tags yet."
 msgstr "Nie ma jeszcze żadnych znaczników."
