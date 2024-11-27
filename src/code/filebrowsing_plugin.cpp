@@ -42,6 +42,7 @@ void FileBrowsingPlugin::registerTypes(const char *uri)
 
     qmlRegisterType(componentUrl(QStringLiteral("FileBrowser.qml")), uri, 1, 0, "FileBrowser");
     qmlRegisterType(componentUrl(QStringLiteral("PlacesListBrowser.qml")), uri, 1, 0, "PlacesListBrowser");
+    qmlRegisterType(componentUrl(QStringLiteral("FavButton.qml")), uri, 1, 0, "FavButton");
     qmlRegisterType(componentUrl(QStringLiteral("FileDialog.qml")), uri, 1, 0, "FileDialog");
     qmlRegisterType(componentUrl(QStringLiteral("FileListingDialog.qml")), uri, 1, 0, "FileListingDialog");
 
