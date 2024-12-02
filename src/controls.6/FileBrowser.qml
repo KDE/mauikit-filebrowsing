@@ -810,7 +810,7 @@ Maui.Page
             control.currentView.forceActiveFocus()
         }
 
-        function onItemToggled(index)
+        function onItemToggled(index, state)
         {
             const item = control.currentFMModel.get(index)
 
