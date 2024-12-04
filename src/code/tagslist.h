@@ -5,6 +5,7 @@
 
 #include <MauiKit4/Core/mauilist.h>
 
+class QTimer;
 /**
  * @brief The TagsList class
  * A model of the system tags, ready to be consumed by QML. This model has basic support for browsing, associating, adding and removing tags.
@@ -60,6 +61,8 @@ private:
     QStringList m_urls;
 
     void append(const FMH::MODEL &tag);
+
+    QTimer *m_refreshTimer;
 
 Q_SIGNALS:
     void strictChanged();

@@ -32,7 +32,7 @@ ToolButton
         Binding on isFav
         {
             value: control.url.length > 0 ? FB.Tagging.isFav(control.url) : false
-            restoreMode: Binding.Binding.RestoreBindingOrValue
+            restoreMode: Binding.RestoreBindingOrValue
             delayed: true
         }
     }

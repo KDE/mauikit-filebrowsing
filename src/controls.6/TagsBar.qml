@@ -132,6 +132,12 @@ Item
         if(!control.allowEditMode)
             control.closeEditMode()
     }
+
+    Connections
+    {
+        target: tagsList.list
+        onUrlsChanged: closeEditMode()
+    }
     
     StackView
     {

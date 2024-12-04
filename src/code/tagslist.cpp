@@ -1,25 +1,29 @@
+
 #include "tagslist.h"
 #include "tagging.h"
+#include <QTimer>
 
 TagsList::TagsList(QObject *parent)
     : MauiList(parent)
+    ,m_refreshTimer(new QTimer(this))
 {
+    m_refreshTimer->setInterval(1000);
+    m_refreshTimer->setSingleShot(true);
 
-
+    connect(m_refreshTimer, &QTimer::timeout, this, &TagsList::setList);
 }
 
 void TagsList::setList()
 {
     Q_EMIT this->preListChanged();
-    
-    if (this->m_urls.isEmpty()) {
+    this->list.clear();
+
+    if (this->m_urls.isEmpty())
+    {
         this->list = FMH::toModelList(Tagging::getInstance()->getAllTags(this->strict));
         
-    } else if(this->m_urls.size() > 1) {
-        this->list.clear();
-        
-    } else {
-        this->list.clear();
+    }else
+    {
         this->list = std::accumulate(this->m_urls.constBegin(), this->m_urls.constEnd(), FMH::MODEL_LIST(), [this](FMH::MODEL_LIST &list, const QString &url) {
             list << FMH::toModelList(Tagging::getInstance()->getUrlTags(url, this->strict));
             return list;
@@ -32,7 +36,7 @@ void TagsList::setList()
 
 void TagsList::refresh()
 {
-    this->setList();
+    m_refreshTimer->start();
 }
 
 bool TagsList::insert(const QString &tag)
@@ -197,10 +201,12 @@ bool TagsList::contains(const QString &tag)
 
 void TagsList::componentComplete()
 {
-    connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap tag)
+    connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap)
             {
                 if(this->m_urls.isEmpty())
+                {
                     this->refresh();
+                }
             });
 
     connect(Tagging::getInstance(), &Tagging::tagRemoved, this, &TagsList::refresh);
