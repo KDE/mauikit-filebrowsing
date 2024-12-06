@@ -481,6 +481,7 @@ Maui.Page
                 Action
                 {
                     text: i18nd("mauikitfilebrowsing", "Delete")
+                    Maui.Controls.status: Maui.Controls.Negative
                     onTriggered:
                     {
                         control.currentFMList.removeFiles(urls)
@@ -490,6 +491,7 @@ Maui.Page
                 Action
                 {
                     text: i18nd("mauikitfilebrowsing", "Trash")
+                    Maui.Controls.status: Maui.Controls.Neutral
                     enabled: Maui.Handy.isLinux
                     onTriggered:
                     {
@@ -808,7 +810,7 @@ Maui.Page
             control.currentView.forceActiveFocus()
         }
 
-        function onItemToggled(index)
+        function onItemToggled(index, state)
         {
             const item = control.currentFMModel.get(index)
 
@@ -1157,7 +1159,30 @@ Maui.Page
     {
         openFolder(control.currentFMList.parentPath)
     }
+    
+    /**
+     * @brief Selects the next item in the view
+     */
+    function nextItem()
+    {
+        if(_browser.viewType === Maui.AltBrowser.ViewType.List)
+        _browser.currentView.flickable.incrementCurrentIndex()
+        else
+            _browser.currentView.flickable.moveCurrentIndexRight()
+            
+    }
 
+    /**
+     * @brief Selects the previous item in the view
+     */
+    function previousItem()
+    {
+        if(_browser.viewType === Maui.AltBrowser.ViewType.List)
+            _browser.currentView.flickable.decrementCurrentIndex()
+            else
+                _browser.currentView.flickable.moveCurrentIndexLeft()
+    }
+    
     /**
      * @brief Add an item to the selection
      * @param item the item object/map representing the file to be added to the selection

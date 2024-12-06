@@ -230,6 +230,12 @@ class FILEBROWSING_EXPORT FMList : public MauiList
      */
     Q_PROPERTY(QUrl parentPath READ getParentPath NOTIFY pathChanged)
     
+    /**
+     * Merge the name filters and mimetype filters together for filtering the requested location contentent's.
+     * The `filters` and `filterType` are the properties to be merged. If this is set to false, then the `filters` property will have priority over the `filterType` one, unless it is empty.
+     */
+    Q_PROPERTY(bool mergeFilters READ mergeFilters WRITE setMergeFilters NOTIFY mergeFiltersChanged)
+    
 public:
     /**
      * @brief The possible values to sort the location contents
@@ -407,6 +413,9 @@ public:
     void setReadOnly(bool value);
     bool readOnly() const;
     
+    void setMergeFilters(bool value);
+    bool mergeFilters() const;
+    
 private:
     FM *fm;
     void clear();
@@ -450,6 +459,7 @@ private:
     NavHistory m_navHistory;
     
     bool m_readOnly = false;
+    bool m_mergeFilters = true;
     
 public Q_SLOTS:
     
@@ -553,7 +563,7 @@ public Q_SLOTS:
     const QUrl posteriorPath();
     
     /**
-     * @brief Given a file name query find if it exists in the current location 
+     * @brief Given a file-name-query, check if it exists in the current location 
      * @param index the index of the found file entry otherwise `-1`
      */
     int indexOfName(const QString &query);
@@ -573,6 +583,7 @@ Q_SIGNALS:
     void cloudDepthChanged();
     void autoLoadChanged();    
     void readOnlyChanged();
+    void mergeFiltersChanged();
     
     /**
      * @brief Emitted when the listing process has any error message that needs to be notified.

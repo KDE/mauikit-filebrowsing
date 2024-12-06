@@ -209,6 +209,7 @@ Maui.PopupPage
         Action
         {
             text: control.mode === FileDialog.Modes.Save ? i18nd("mauikitfilebrowsing", "Save") : i18nd("mauikitfilebrowsing", "Open")
+            Maui.Controls.status: Maui.Controls.Positive
             onTriggered:
             {
                 console.log("CURRENT PATHb", _browser.currentPath+"/"+textField.text)

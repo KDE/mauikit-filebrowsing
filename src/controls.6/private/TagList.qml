@@ -99,7 +99,7 @@ Maui.ListBrowser
       control.flickable.positionViewAtEnd()
     }
     
-    onRemoveTag: tagRemoved(index)
+    onRemoveTag: (index) => tagRemoved(index)
     onClicked: tagClicked(index)
   }    
 }

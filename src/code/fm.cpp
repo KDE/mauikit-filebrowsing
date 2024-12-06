@@ -248,14 +248,14 @@ FM::FM(QObject *parent)
         Q_EMIT this->pathContentItemsReady({dirUrl, packItems(items)});
     });
 
-//        connect(dirLister, static_cast<void (KCoreDirLister::*)(const KFileItemList &items)>(&KCoreDirLister::newItems), [&](KFileItemList items)
-//        {
-//            qDebug()<< "MORE NEW ITEMS WERE ADDED";
-//            for(const auto &item : items)
-//                qDebug()<< "MORE <<" << item.url();
-//     
-//            Q_EMIT this->pathContentChanged(dirLister->url());
-//        });
+    //        connect(dirLister, static_cast<void (KCoreDirLister::*)(const KFileItemList &items)>(&KCoreDirLister::newItems), [&](KFileItemList items)
+    //        {
+    //            qDebug()<< "MORE NEW ITEMS WERE ADDED";
+    //            for(const auto &item : items)
+    //                qDebug()<< "MORE <<" << item.url();
+    //
+    //            Q_EMIT this->pathContentChanged(dirLister->url());
+    //        });
 
     connect(dirLister, static_cast<void (KCoreDirLister::*)(const KFileItemList &items)>(&KCoreDirLister::itemsDeleted), this, [&](KFileItemList items) {
         qDebug() << "ITEMS WERE DELETED";
@@ -321,7 +321,7 @@ FM::FM(QObject *parent)
             for (auto key : keys)
                 data.insert(FMH::MODEL_NAME[key], item[key]);
 
-            //                         this->copy(QVariantList {data}, this->sync->getCopyTo());
+                   //                         this->copy(QVariantList {data}, this->sync->getCopyTo());
             break;
         }
         default:
@@ -349,13 +349,16 @@ FM::FM(QObject *parent)
 
 void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDirs, const QStringList &filters, const QDirIterator::IteratorFlags &iteratorFlags)
 {
-    qDebug() << "Getting async path contents";
+    qDebug() << "Getting async path contents" << filters;
     Q_UNUSED(iteratorFlags)
 
     this->dirLister->setShowHiddenFiles(hidden);
     this->dirLister->setDirOnlyMode(onlyDirs);
     this->dirLister->setNameFilter(filters.join(QStringLiteral(" ")));
 
+#ifdef KIO_AVAILABLE
+    this->dirLister->emitChanges ( );
+#endif
     if (this->dirLister->openUrl(path))
         qDebug() << "GETTING PATH CONTENT" << path;
 }

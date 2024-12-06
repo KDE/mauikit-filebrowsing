@@ -283,10 +283,36 @@ protected:
     static bool setTagIconName(QVariantMap &item);
 
 Q_SIGNALS:
+    /**
+     * @brief Emitted when a tag has been assigened to a file URL
+     * @param url The file URL tagged
+     * @param tag the tag name
+     */
     void urlTagged(QString url, QString tag);
+
+    /**
+     * @brief Emitted when a new tag has been created.
+     * @param tag contains information about the new tag, such as color, add date and comment
+     */
     void tagged(QVariantMap tag);
+
+    /**
+     * @brief Emitted when a tag has been removed
+     * @param tag
+     */
     void tagRemoved(QString tag);
+
+    /**
+     * @brief Emitted when a tag has been dissociated from a file URL
+     * @param tag
+     * @param url
+     */
     void urlTagRemoved(QString tag, QString url);
+
+    /**
+     * @brief Emitted when a file has been removed a thus all associations to any tag
+     * @param url
+     */
     void urlRemoved(QString url);
 };
 

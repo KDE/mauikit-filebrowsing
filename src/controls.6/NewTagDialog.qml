@@ -64,7 +64,7 @@ Maui.InputDialog
         Layout.fillWidth: true
         
         colors: control.defaultColors
-        onColorPicked: currentColor = color
+        onColorPicked: (color) => currentColor = color
     }
     
     Flow
@@ -98,6 +98,6 @@ Maui.InputDialog
     
     onClosed:
     {
-        control.currentColor = ""
+        _colorsRow.currentColor = ""
     }
 }

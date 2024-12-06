@@ -90,6 +90,7 @@ Maui.PopupPage
         
         Action
         {
+            Maui.Controls.status: Maui.Controls.Positive
             text: i18nd("mauikitfilebrowsing", "Save")
             onTriggered: control.setTags()
         },
@@ -103,24 +104,25 @@ Maui.PopupPage
     
     headBar.visible: true
     headBar.forceCenterMiddleContent: false
-    headBar.middleContent: TextField
+    headBar.middleContent: Maui.TextField
     {
         id: tagText
         Layout.fillWidth: true
         Layout.maximumWidth: 500
         placeholderText: i18nd("mauikitfilebrowsing", "Filter or add a new tag")
+        icon.source: "tag"
         //             validator: RegExpValidator { regExp: /[0-9A-F]+/ }
-        onAccepted:
+        onAccepted: //here we append a new tag to the model but we do not insert it into the DB until the user saves the tag to an url
         {
             const tags = tagText.text.split(",")
             for(var i in tags)
             {
                 const myTag = tags[i].trim()
-                _tagsList.insert(myTag)
+                _tagsList.append(myTag)
                 tagListComposer.list.append(myTag)
             }
             clear()
-            _tagsModel.filter = ""
+            // _tagsModel.filter = ""
         }
         
         onTextChanged:
@@ -217,7 +219,7 @@ Maui.PopupPage
                 onClicked:
                 {
                     _listView.currentIndex = index
-                    if(Qt.styleHints.singleClickActivation)
+                    if(Maui.Handy.singleClick)
                     {
                         tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
@@ -226,7 +228,7 @@ Maui.PopupPage
                 onDoubleClicked:
                 {
                     _listView.currentIndex = index
-                    if(!Qt.styleHints.singleClickActivation)
+                    if(!Maui.Handy.singleClick)
                     {
                         tagListComposer.list.appendItem(_tagsModel.get(_listView.currentIndex))
                     }
@@ -325,7 +327,7 @@ Maui.PopupPage
         width: parent.width
         visible: count > 0
         
-        onTagRemoved: list.remove(index)
+        onTagRemoved: (index) => list.remove(index)
         placeholderText: i18nd("mauikitfilebrowsing", "No tags yet.")
     }
     

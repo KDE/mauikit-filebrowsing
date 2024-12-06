@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-08-29 01:46+0000\n"
+"POT-Creation-Date: 2024-11-27 01:51+0000\n"
 "PO-Revision-Date: 2024-02-15 17:44+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -27,8 +27,8 @@ msgstr "這裡什麼都沒有！"
 msgid "This place seems to be empty"
 msgstr "這個位置看起來是空的"
 
-#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:713
-#: src/controls.6/FileDialog.qml:251
+#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:728
+#: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr "錯誤"
@@ -38,17 +38,17 @@ msgstr "錯誤"
 msgid "This URL cannot be listed"
 msgstr "無法列出這個網址"
 
-#: src/code/fmlist.cpp:331
+#: src/code/fmlist.cpp:346
 #, kde-format
 msgid "Loading content"
 msgstr "內容載入中"
 
-#: src/code/fmlist.cpp:331
+#: src/code/fmlist.cpp:346
 #, kde-format
 msgid "Almost ready!"
 msgstr "即將就緒！"
 
-#: src/code/fmlist.cpp:713
+#: src/code/fmlist.cpp:728
 #, kde-format
 msgid "No path to perform the search"
 msgstr "沒有進行搜尋用的路徑"
@@ -88,7 +88,7 @@ msgstr "可移除"
 msgid "Unknown"
 msgstr "未知"
 
-#: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:492
+#: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:493
 #, kde-format
 msgid "Trash"
 msgstr "垃圾桶"
@@ -312,94 +312,94 @@ msgstr ""
 "刪除 %1  \n"
 "清出空間共 %2"
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
 #: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
-#: src/controls.6/TagsDialog.qml:99
+#: src/controls.6/TagsDialog.qml:100
 #, kde-format
 msgid "Cancel"
 msgstr "取消"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:161
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
 #, kde-format
 msgid "Delete"
 msgstr "刪除"
 
-#: src/controls.6/FileBrowser.qml:523
+#: src/controls.6/FileBrowser.qml:525
 #, kde-format
 msgid "New folder"
 msgstr "新增資料夾"
 
-#: src/controls.6/FileBrowser.qml:523
+#: src/controls.6/FileBrowser.qml:525
 #, kde-format
 msgid "New file"
 msgstr "新增檔案"
 
-#: src/controls.6/FileBrowser.qml:524
+#: src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
 msgstr "用自訂名稱建立新資料夾或檔案。"
 
-#: src/controls.6/FileBrowser.qml:543 src/controls.6/FileDialog.qml:446
+#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
 msgstr "名稱"
 
-#: src/controls.6/FileBrowser.qml:556
+#: src/controls.6/FileBrowser.qml:558
 #, kde-format
 msgid "Folder"
 msgstr "資料夾"
 
-#: src/controls.6/FileBrowser.qml:564
+#: src/controls.6/FileBrowser.qml:566
 #, kde-format
 msgid "File"
 msgstr "檔案"
 
-#: src/controls.6/FileBrowser.qml:581
+#: src/controls.6/FileBrowser.qml:583
 #, kde-format
 msgid "Rename"
 msgstr "重新命名"
 
-#: src/controls.6/FileBrowser.qml:582
+#: src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid ""
 "Change the name of a file or folder. Write a new name and click Rename to "
 "apply the change."
 msgstr "變更檔案或資料夾的名稱。寫下新名稱並點擊「重新命名」來套用變更。"
 
-#: src/controls.6/FileBrowser.qml:591
+#: src/controls.6/FileBrowser.qml:593
 #, kde-format
 msgid "New name"
 msgstr "新名稱"
 
-#: src/controls.6/FileBrowser.qml:850
+#: src/controls.6/FileBrowser.qml:852
 #: src/controls.6/private/BrowserView.qml:329
 #, kde-format
 msgid "Copy Here"
 msgstr "複製到這裡"
 
-#: src/controls.6/FileBrowser.qml:863
+#: src/controls.6/FileBrowser.qml:865
 #: src/controls.6/private/BrowserView.qml:341
 #, kde-format
 msgid "Move Here"
 msgstr "移動到這裡"
 
-#: src/controls.6/FileBrowser.qml:876
+#: src/controls.6/FileBrowser.qml:878
 #: src/controls.6/private/BrowserView.qml:353
 #, kde-format
 msgid "Link Here"
 msgstr "連結到這裡"
 
-#: src/controls.6/FileBrowser.qml:889
+#: src/controls.6/FileBrowser.qml:891
 #, kde-format
 msgid "Open Here"
 msgstr "在此開啟"
 
-#: src/controls.6/FileBrowser.qml:1274
+#: src/controls.6/FileBrowser.qml:1299
 #, kde-format
 msgid "Search: %1"
 msgstr "搜尋：%1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:93
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
 #, kde-format
 msgid "Save"
 msgstr "儲存"
@@ -409,12 +409,12 @@ msgstr "儲存"
 msgid "Open"
 msgstr "開啟"
 
-#: src/controls.6/FileDialog.qml:241
+#: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
 msgstr "檔案名稱…"
 
-#: src/controls.6/FileDialog.qml:252
+#: src/controls.6/FileDialog.qml:253
 #, kde-format
 msgid ""
 "A file named '%1' already exists!\n"
@@ -423,57 +423,57 @@ msgstr ""
 "檔案「%1」已存在！\n"
 "這個動作會覆寫 '%1'。您確定要這樣做嗎？"
 
-#: src/controls.6/FileDialog.qml:311
+#: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
 msgstr "切換側邊欄"
 
-#: src/controls.6/FileDialog.qml:353
+#: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
 msgstr "檢視型態"
 
-#: src/controls.6/FileDialog.qml:358
+#: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
 msgstr "列表"
 
-#: src/controls.6/FileDialog.qml:373
+#: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
 msgstr "格線"
 
-#: src/controls.6/FileDialog.qml:393
+#: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
 msgstr "排序依據"
 
-#: src/controls.6/FileDialog.qml:398
+#: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
 msgstr "類型"
 
-#: src/controls.6/FileDialog.qml:410
+#: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
 msgstr "日期"
 
-#: src/controls.6/FileDialog.qml:422
+#: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
 msgstr "修改時間"
 
-#: src/controls.6/FileDialog.qml:434
+#: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
 msgstr "大小"
 
-#: src/controls.6/FileDialog.qml:460
+#: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
 msgstr "先顯示資料夾"
 
-#: src/controls.6/FileDialog.qml:473
+#: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
 msgstr "群組"
@@ -495,7 +495,7 @@ msgstr "建立新標籤來管理您的檔案。您可以用逗號分隔來建立
 msgid "Open with"
 msgstr "開啟方式"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:155
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
 msgid "Edit"
 msgstr "編輯"
@@ -551,43 +551,43 @@ msgstr " 個項目"
 msgid "Add tags..."
 msgstr "新增標籤…"
 
-#: src/controls.6/TagsDialog.qml:111
+#: src/controls.6/TagsDialog.qml:112
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "過濾或新增標籤"
 
-#: src/controls.6/TagsDialog.qml:137
+#: src/controls.6/TagsDialog.qml:139
 #, kde-format
 msgid "Delete %1"
 msgstr "刪除 %1"
 
-#: src/controls.6/TagsDialog.qml:138
+#: src/controls.6/TagsDialog.qml:140
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "您確定要移除這個標籤嗎？這個動作無法復原。"
 
-#: src/controls.6/TagsDialog.qml:184
+#: src/controls.6/TagsDialog.qml:186
 #, kde-format
 msgid "No Tags!"
 msgstr "沒有標籤！"
 
-#: src/controls.6/TagsDialog.qml:185
+#: src/controls.6/TagsDialog.qml:187
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "建立新標籤來管理您的檔案。"
 
-#: src/controls.6/TagsDialog.qml:261
+#: src/controls.6/TagsDialog.qml:263
 #, kde-format
 msgid "Tagging %1 files"
 msgstr "正在為 %1 個檔案加上標籤"
 
-#: src/controls.6/TagsDialog.qml:262
+#: src/controls.6/TagsDialog.qml:264
 #, kde-format
 msgid "Add new tags for the selected files."
 msgstr "為已選檔案新增標籤。"
 
-#: src/controls.6/TagsDialog.qml:329
+#: src/controls.6/TagsDialog.qml:331
 #, kde-format
 msgid "No tags yet."
 msgstr "還沒有標籤。"
