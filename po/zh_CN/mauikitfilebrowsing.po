@@ -14,9 +14,9 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf5-trunk/messages/mauikit-filebrowsing/mauikitfilebrowsing."
+"X-Crowdin-File: /kf6-trunk/messages/mauikit-filebrowsing/mauikitfilebrowsing."
 "pot\n"
-"X-Crowdin-File-ID: 41199\n"
+"X-Crowdin-File-ID: 56906\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
