@@ -60,8 +60,9 @@ Maui.ListBrowser
   /**
    * @brief Emitted when a tag button has been clicked.
    * @param index the index position of the tag element in the list
+   * @param tag the tag name
    */
-  signal tagClicked(int index)
+  signal tagClicked(int index, string tag)
   
   model: Maui.BaseModel
   {
@@ -100,6 +101,6 @@ Maui.ListBrowser
     }
     
     onRemoveTag: (index) => tagRemoved(index)
-    onClicked: tagClicked(index)
+    onClicked: tagClicked(index, model.tag)
   }    
 }
