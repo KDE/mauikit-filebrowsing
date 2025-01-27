@@ -1,13 +1,13 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# SPDX-FileCopyrightText: 2023, 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-27 01:51+0000\n"
-"PO-Revision-Date: 2024-12-13 22:56+0100\n"
+"PO-Revision-Date: 2025-01-26 19:38+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.3\n"
+"X-Generator: Lokalize 24.12.1\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -66,7 +66,7 @@ msgstr "Marcadores"
 #: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Drives"
-msgstr "Dispositivos"
+msgstr "Unidades"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
