@@ -1,0 +1,628 @@
+# Copyright (C) 2025 This file is copyright:
+# This file is distributed under the same license as the mauikit-filebrowsing package.
+#
+# SPDX-FileCopyrightText: 2025 Toms Trasuns <toms.trasuns@posteo.net>
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikit-filebrowsing\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-11-27 01:51+0000\n"
+"PO-Revision-Date: 2025-01-31 17:59+0200\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 24.12.1\n"
+
+#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
+#, kde-format
+msgid "Nothing here!"
+msgstr "Te nekā nav!"
+
+#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
+#, kde-format
+msgid "This place seems to be empty"
+msgstr "Izskatās, ka šī vieta ir tukša"
+
+#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:728
+#: src/controls.6/FileDialog.qml:252
+#, kde-format
+msgid "Error"
+msgstr "Kļūda"
+
+#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
+#, kde-format
+msgid "This URL cannot be listed"
+msgstr "Šo URL nevar parādīt"
+
+#: src/code/fmlist.cpp:346
+#, kde-format
+msgid "Loading content"
+msgstr "Ielādē saturu"
+
+#: src/code/fmlist.cpp:346
+#, kde-format
+msgid "Almost ready!"
+msgstr "Gandrīz gatavs!"
+
+#: src/code/fmlist.cpp:728
+#, kde-format
+msgid "No path to perform the search"
+msgstr "Nav ceļš meklēšanai"
+
+#: src/code/fmstatic.cpp:33
+#, kde-format
+msgid "Places"
+msgstr "Vietas"
+
+#: src/code/fmstatic.cpp:34
+#, kde-format
+msgid "Bookmarks"
+msgstr "Grāmatzīmes"
+
+#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:45
+#, kde-format
+msgid "Drives"
+msgstr "Dziņi"
+
+#: src/code/fmstatic.cpp:36
+#, kde-format
+msgid "Apps"
+msgstr "Programmas"
+
+#: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:44
+#, kde-format
+msgid "Remote"
+msgstr "Attāls"
+
+#: src/code/fmstatic.cpp:38
+#, kde-format
+msgid "Removable"
+msgstr "Noņemams"
+
+#: src/code/fmstatic.cpp:39
+#, kde-format
+msgid "Unknown"
+msgstr "Nezināms"
+
+#: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:493
+#, kde-format
+msgid "Trash"
+msgstr "Atkritne"
+
+#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
+#, kde-format
+msgid "Tags"
+msgstr "Birkas"
+
+#: src/code/fmstatic.cpp:42
+#, kde-format
+msgid "Search"
+msgstr "Meklēt"
+
+#: src/code/fmstatic.cpp:43
+#, kde-format
+msgid "Cloud"
+msgstr "Mākonis"
+
+#: src/code/fmstatic.cpp:46
+#, kde-format
+msgid "Others"
+msgstr "Citi"
+
+#: src/code/fmstatic.cpp:47
+#, kde-format
+msgid "Quick"
+msgstr "Ātri"
+
+#: src/code/placeslist.cpp:113
+#, kde-format
+msgid "Favorite"
+msgstr "Iecienīts"
+
+#: src/code/syncing.cpp:207
+#, kde-format
+msgid ""
+"The remote server requires authentication to serve the content but the "
+"credentials provided were not accepted (if any)"
+msgstr ""
+"Attālais serveris pieprasa autentificēties, lai varētu jums nosūtīt saturu, "
+"bet nosūtītie pieslēgšanās dati (ja tādi bija) netika pieņemti."
+
+#: src/code/syncing.cpp:211
+#, kde-format
+msgid ""
+"the remote server refused the connection (the server is not accepting "
+"requests"
+msgstr ""
+"Attālais serveris noraidīja savienojumu (serveris nepieņem pieprasījumus)"
+
+#: src/code/syncing.cpp:215
+#, kde-format
+msgid ""
+"the remote server closed the connection prematurely, before the entire reply "
+"was received and processed"
+msgstr ""
+"attālais serveris pirms laika aizvēra savienojumu, kad vēl nebija "
+"apstrādājis un nosūtījis pilnu atbildi"
+
+#: src/code/syncing.cpp:219
+#, kde-format
+msgid "the remote host name was not found (invalid hostname)"
+msgstr "neatrada attālo resursdatoru (nederīgs resursdatora nosaukums)"
+
+#: src/code/syncing.cpp:223
+#, kde-format
+msgid "the connection to the remote server timed out"
+msgstr "savienojuma ar attālo serveri noildze"
+
+#: src/code/syncing.cpp:227
+#, kde-format
+msgid ""
+"the operation was canceled via calls to abort() or close() before it was "
+"finished."
+msgstr ""
+"operācija ir atcelta pirms tās pabeigšanas ar „abort()“ vai „close()“ "
+"izsaukumu."
+
+#: src/code/syncing.cpp:231
+#, kde-format
+msgid ""
+"the SSL/TLS handshake failed and the encrypted channel could not be "
+"established. The sslErrors() signal should have been emitted."
+msgstr ""
+"SSL/TLS rokasspiediens neizdevās un nevar izveidot šifrēšanas kanālu. Būtu "
+"jātiek nosūtītam „sslError()“ signālam."
+
+#: src/code/syncing.cpp:236
+#, kde-format
+msgid ""
+"the connection was broken due to disconnection from the network, however the "
+"system has initiated roaming to another access point. The request should be "
+"resubmitted and will be processed as soon as the connection is re-"
+"established."
+msgstr ""
+"savienojums nedarbojas, jo ierīce atvienojās no tīkla, tomēr sistēma ir "
+"uzsākusi viesabonēšanu citā tīklā. Pēc savienojuma izveidošanas sistēmai "
+"vajadzētu automātiski pieprasījumu nosūtīt atkārtoti un saņemt atbildi."
+
+#: src/code/syncing.cpp:240
+#, kde-format
+msgid ""
+"the connection was broken due to disconnection from the network or failure "
+"to start the network."
+msgstr ""
+"savienojums nedarbojas, jo ierīce atvienojās no tīkla vai notika kļūda, "
+"savienojoties ar tīklu."
+
+#: src/code/syncing.cpp:244
+#, kde-format
+msgid "the background request is not currently allowed due to platform policy."
+msgstr "platformas privātums šobrīd neļauj fona pieprasījumu."
+
+#: src/code/syncing.cpp:248
+#, kde-format
+msgid ""
+"while following redirects, the maximum limit was reached. The limit is by "
+"default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
+"(This value was introduced in 5.6.)"
+msgstr ""
+"sekojot pāradresācijām, ir sasniegts maksimālais limits. Pēc noklusējuma "
+"limits ir 50, bet tas var tikt mainīts ar „QNetworkRequest::"
+"setMaxRedirectsAllowed()“. (Šī vērtība ir ieviesta līdz ar 5.6. versiju)"
+
+#: src/code/syncing.cpp:252
+#, kde-format
+msgid ""
+"while following redirects, the network access API detected a redirect from a "
+"encrypted protocol (https) to an unencrypted one (http)."
+msgstr ""
+"sekojot pāradresācijām, tīkla piekļuves API konstatēja pāradresāciju no "
+"šifrēta protokola (https) uz nešifrētu (http)."
+
+#: src/code/syncing.cpp:256
+#, kde-format
+msgid ""
+"the connection to the proxy server was refused (the proxy server is not "
+"accepting requests)"
+msgstr ""
+"savienojums ar starpniekserveru ir noraidīts (starpniekserveris "
+"pieprasījumus nepieņem)"
+
+#: src/code/syncing.cpp:260
+#, kde-format
+msgid ""
+"the proxy server closed the connection prematurely, before the entire reply "
+"was received and processed"
+msgstr ""
+"starpniekserveris pāragri slēdza savienojumu pirms bija saņēmis un "
+"apstrādājis visu atbildi"
+
+#: src/code/syncing.cpp:264
+#, kde-format
+msgid "the proxy host name was not found (invalid proxy hostname)"
+msgstr ""
+"starpniekservera resursdatora nosaukums nav atrasts (nederīgs "
+"starpniekservera resursdatora nosaukums)"
+
+#: src/code/syncing.cpp:268
+#, kde-format
+msgid ""
+"the connection to the proxy timed out or the proxy did not reply in time to "
+"the request sent"
+msgstr ""
+"iestājās noildze savienojumā ar resursdatoru, vai arī resursdators laicīgi "
+"neatbildēja uz nosūtīto pieprasījumu"
+
+#: src/code/syncing.cpp:272
+#, kde-format
+msgid ""
+"the proxy requires authentication in order to honour the request but did not "
+"accept any credentials offered (if any)"
+msgstr ""
+"lai apstrādātu pieprasījumu, starpniekserveris pieprasa autentifikāciju, bet "
+"nepieņēma nosūtītos pieslēgšanās datus (ja tādi bija)"
+
+#: src/code/syncing.cpp:276
+#, kde-format
+msgid "the access to the remote content was denied (similar to HTTP error 403)"
+msgstr "piekļuve attālajam saturam tika liegta (līdzīgi HTTPS 403. kļūdai)"
+
+#: src/code/syncing.cpp:280
+#, kde-format
+msgid "the operation requested on the remote content is not permitted"
+msgstr "pieprasītā darbība ar attālo saturu nav atļauta"
+
+#: src/code/syncing.cpp:284
+#, kde-format
+msgid ""
+"the remote content was not found at the server (similar to HTTP error 404)"
+msgstr "attālais saturs serverī nav atrasts (līdzīgi HTTP 404. kļūdai)"
+
+#: src/code/syncing.cpp:288
+#, kde-format
+msgid ""
+"the request needed to be sent again, but this failed for example because the "
+"upload data could not be read a second time."
+msgstr ""
+"pieprasījums bija jānosūta vēlreiz, bet tas neizdevās, jo, iespējams, "
+"neizdevās otru reizi nolasīt augšupielādētos datus."
+
+#: src/code/syncing.cpp:292
+#, kde-format
+msgid "the server is unable to handle the request at this time."
+msgstr "šobrīd serveris nespēj apstrādāt šo pieprasījumu."
+
+#: src/code/syncing.cpp:296
+#, kde-format
+msgid ""
+"There was an unknown error with the remote server or your internet "
+"connection."
+msgstr "Kļūda ar attālo serveri vai jūsu interneta savienojumu."
+
+#: src/controls.6/FileBrowser.qml:352
+#, kde-format
+msgid "Back"
+msgstr "Atpakaļ"
+
+#: src/controls.6/FileBrowser.qml:365
+#, kde-format
+msgid "Filter"
+msgstr "Filtrēt"
+
+#: src/controls.6/FileBrowser.qml:434
+#, kde-format
+msgid "Empty Trash"
+msgstr "Iztukšot atkritni"
+
+#: src/controls.6/FileBrowser.qml:449
+#, kde-format
+msgid "Quit"
+msgstr "Iziet"
+
+#: src/controls.6/FileBrowser.qml:450
+#, kde-format
+msgid "Are you sure you want to quit the current search in progress?"
+msgstr "Vai tiešām vēlaties iziet no pašreizējās meklēšanas?"
+
+#: src/controls.6/FileBrowser.qml:471
+#, kde-format
+msgid "Removing %1 files"
+msgstr "Noņem %1 datnes"
+
+#: src/controls.6/FileBrowser.qml:472
+#, kde-format
+msgid ""
+"Delete %1  \n"
+"Total freed space %2"
+msgstr ""
+"Dzēst „%1“  \n"
+"Kopējā atbrīvotā vieta ir %2"
+
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
+#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
+#: src/controls.6/TagsDialog.qml:100
+#, kde-format
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
+#, kde-format
+msgid "Delete"
+msgstr "Dzēst"
+
+#: src/controls.6/FileBrowser.qml:525
+#, kde-format
+msgid "New folder"
+msgstr "Jauna mape"
+
+#: src/controls.6/FileBrowser.qml:525
+#, kde-format
+msgid "New file"
+msgstr "Jauna datne"
+
+#: src/controls.6/FileBrowser.qml:526
+#, kde-format
+msgid "Create a new folder or a file with a custom name."
+msgstr "Izveidot jaunu mapi vai datni ar savu nosaukumu."
+
+#: src/controls.6/FileBrowser.qml:545 src/controls.6/FileDialog.qml:447
+#, kde-format
+msgid "Name"
+msgstr "Nosaukums"
+
+#: src/controls.6/FileBrowser.qml:558
+#, kde-format
+msgid "Folder"
+msgstr "Mape"
+
+#: src/controls.6/FileBrowser.qml:566
+#, kde-format
+msgid "File"
+msgstr "Datne"
+
+#: src/controls.6/FileBrowser.qml:583
+#, kde-format
+msgid "Rename"
+msgstr "Pārdēvēt"
+
+#: src/controls.6/FileBrowser.qml:584
+#, kde-format
+msgid ""
+"Change the name of a file or folder. Write a new name and click Rename to "
+"apply the change."
+msgstr ""
+"Mainīt datnes vai mapes nosaukumu. Lai darbību pabeigtu, ierakstiet jauno "
+"nosaukumu un spiediet uz „Pārdēvēt“."
+
+#: src/controls.6/FileBrowser.qml:593
+#, kde-format
+msgid "New name"
+msgstr "Jauns nosaukums"
+
+#: src/controls.6/FileBrowser.qml:852
+#: src/controls.6/private/BrowserView.qml:329
+#, kde-format
+msgid "Copy Here"
+msgstr "Kopēt šeit"
+
+#: src/controls.6/FileBrowser.qml:865
+#: src/controls.6/private/BrowserView.qml:341
+#, kde-format
+msgid "Move Here"
+msgstr "Pārvietot šeit"
+
+#: src/controls.6/FileBrowser.qml:878
+#: src/controls.6/private/BrowserView.qml:353
+#, kde-format
+msgid "Link Here"
+msgstr "Saitēt šeit"
+
+#: src/controls.6/FileBrowser.qml:891
+#, kde-format
+msgid "Open Here"
+msgstr "Atvērt šeit"
+
+#: src/controls.6/FileBrowser.qml:1299
+#, kde-format
+msgid "Search: %1"
+msgstr "Meklēt: %1"
+
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
+#, kde-format
+msgid "Save"
+msgstr "Saglabāt"
+
+#: src/controls.6/FileDialog.qml:211
+#, kde-format
+msgid "Open"
+msgstr "Atvērt"
+
+#: src/controls.6/FileDialog.qml:242
+#, kde-format
+msgid "File name..."
+msgstr "Datnes nosaukums..."
+
+#: src/controls.6/FileDialog.qml:253
+#, kde-format
+msgid ""
+"A file named '%1' already exists!\n"
+" This action will overwrite '%1'. Are you sure you want to do this?"
+msgstr ""
+"Datne ar nosaukumu „%1“ jau pastāv!\n"
+" Šī darbība pārrakstīs „%1“. Vai tiešām vēlaties turpināt?"
+
+#: src/controls.6/FileDialog.qml:312
+#, kde-format
+msgid "Toogle SideBar"
+msgstr "Pārslēgt sānu joslu"
+
+#: src/controls.6/FileDialog.qml:354
+#, kde-format
+msgid "View type"
+msgstr "Skata tips"
+
+#: src/controls.6/FileDialog.qml:359
+#, kde-format
+msgid "List"
+msgstr "Saraksts"
+
+#: src/controls.6/FileDialog.qml:374
+#, kde-format
+msgid "Grid"
+msgstr "Režģis"
+
+#: src/controls.6/FileDialog.qml:394
+#, kde-format
+msgid "Sort by"
+msgstr "Kārtot pēc"
+
+#: src/controls.6/FileDialog.qml:399
+#, kde-format
+msgid "Type"
+msgstr "Tips"
+
+#: src/controls.6/FileDialog.qml:411
+#, kde-format
+msgid "Date"
+msgstr "Datum"
+
+#: src/controls.6/FileDialog.qml:423
+#, kde-format
+msgid "Modified"
+msgstr "Modificēts"
+
+#: src/controls.6/FileDialog.qml:435
+#, kde-format
+msgid "Size"
+msgstr "Izmērs"
+
+#: src/controls.6/FileDialog.qml:461
+#, kde-format
+msgid "Show Folders First"
+msgstr "Mapes rādīt augšā"
+
+#: src/controls.6/FileDialog.qml:474
+#, kde-format
+msgid "Group"
+msgstr "Grupa"
+
+#: src/controls.6/NewTagDialog.qml:56 src/controls.6/NewTagDialog.qml:59
+#, kde-format
+msgid "New tags"
+msgstr "Jaunas birkas"
+
+#: src/controls.6/NewTagDialog.qml:57
+#, kde-format
+msgid ""
+"Create new tags to organize your files. You can create multiple tags "
+"separated by a comma."
+msgstr ""
+"Sakārtojiet datnes ar jaunām birkām. Varat izveidot vairākas birkas, tās "
+"atdalot ar komatu."
+
+#: src/controls.6/OpenWithDialog.qml:74
+#, kde-format
+msgid "Open with"
+msgstr "Atvērt ar"
+
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
+#, kde-format
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: src/controls.6/PlacesListBrowser.qml:122
+#, kde-format
+msgid "Hide"
+msgstr "Slēpt"
+
+#: src/controls.6/PlacesListBrowser.qml:127
+#, kde-format
+msgid "Remove"
+msgstr "Noņemt"
+
+#: src/controls.6/private/BrowserView.qml:294
+#, kde-format
+msgid "Directory already exists."
+msgstr "Mape jau pastāv."
+
+#: src/controls.6/private/BrowserView.qml:297
+#, kde-format
+msgid "Looks good."
+msgstr "Izskatās labi."
+
+#: src/controls.6/private/BrowserView.qml:301
+#, kde-format
+msgid "Merge %1 files"
+msgstr "Apvienot %1 datnes"
+
+#: src/controls.6/private/BrowserView.qml:302
+#, kde-format
+msgid "Give a name to the new directory where all files will be merge."
+msgstr "Norādiet jaunu nosaukumu mapei, kurā apvienot visas datnes."
+
+#: src/controls.6/private/BrowserView.qml:304
+#, kde-format
+msgid "Directory name"
+msgstr "Mapes nosaukums"
+
+#: src/controls.6/private/BrowserView.qml:314
+#, kde-format
+msgid "Merge Here"
+msgstr "Apvienot te"
+
+#: src/controls.6/private/BrowserView.qml:393
+#: src/controls.6/private/BrowserView.qml:563
+#, kde-format
+msgid " items"
+msgstr " vienumi"
+
+#: src/controls.6/private/TagList.qml:32
+#, kde-format
+msgid "Add tags..."
+msgstr "Pievienot birkas..."
+
+#: src/controls.6/TagsDialog.qml:112
+#, kde-format
+msgid "Filter or add a new tag"
+msgstr "Filtrēt vai pievienot jaunu birku"
+
+#: src/controls.6/TagsDialog.qml:139
+#, kde-format
+msgid "Delete %1"
+msgstr "Dzēst „%1“"
+
+#: src/controls.6/TagsDialog.qml:140
+#, kde-format
+msgid ""
+"Are you sure you want to delete this tag? This action can not be undone."
+msgstr "Vai tiešām vēlaties dzēst šo birku? Šo darbību atsaukt nevarēsiet."
+
+#: src/controls.6/TagsDialog.qml:186
+#, kde-format
+msgid "No Tags!"
+msgstr "Nav birku!"
+
+#: src/controls.6/TagsDialog.qml:187
+#, kde-format
+msgid "Create new tags to organize your files."
+msgstr "Izveidojiet jaunas birkas, lai sakārtotu datnes."
+
+#: src/controls.6/TagsDialog.qml:263
+#, kde-format
+msgid "Tagging %1 files"
+msgstr "Pievienot birkas %1 datnēm"
+
+#: src/controls.6/TagsDialog.qml:264
+#, kde-format
+msgid "Add new tags for the selected files."
+msgstr "Atlasītajām datnēm pievienojiet jaunas birkas."
+
+#: src/controls.6/TagsDialog.qml:331
+#, kde-format
+msgid "No tags yet."
+msgstr "Vēl nav birku."
