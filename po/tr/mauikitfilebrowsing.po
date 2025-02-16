@@ -1,14 +1,14 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-27 01:51+0000\n"
-"PO-Revision-Date: 2024-03-20 14:53+0300\n"
+"PO-Revision-Date: 2025-02-15 21:40+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
 #, kde-format
@@ -210,8 +210,8 @@ msgid ""
 "(This value was introduced in 5.6.)"
 msgstr ""
 "Yönlendirmeler takip edilirken en yüksek sınıra ulaşıldı. Sınır, öntanımlı "
-"olarak 50'ye ayarlanmıştır veya QNetworkRequest::setMaxRedirectsAllowed() "
-"tarafından ayarlanmıştır. (Bu değer 5.6'da eklendi.)"
+"olarak 50’ye ayarlanmıştır veya QNetworkRequest::setMaxRedirectsAllowed() "
+"tarafından ayarlanmıştır. (Bu değer 5.6’da eklendi.)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -219,7 +219,7 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
-"Yönlendirmeler takip edilirken, ağ erişim API'si şifreli bir protokolden "
+"Yönlendirmeler takip edilirken, ağ erişim API’si şifreli bir protokolden "
 "(https) şifrelenmemiş bir protokole (http) bir yönlendirme saptadı."
 
 #: src/code/syncing.cpp:256
@@ -265,7 +265,7 @@ msgstr ""
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr "Uzak içeriğe erişim reddedildi (HTTP hatası 403'e benzer)"
+msgstr "Uzak içeriğe erişim reddedildi (HTTP hatası 403’e benzer)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
@@ -276,7 +276,7 @@ msgstr "Uzak içerikte istenen işleme izin verilmiyor"
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
-msgstr "Uzak içerik sunucuda bulunamadı (HTTP hatası 404'e benzer)"
+msgstr "Uzak içerik sunucuda bulunamadı (HTTP hatası 404’e benzer)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -392,7 +392,7 @@ msgid ""
 "apply the change."
 msgstr ""
 "Bir dosyanın veya klasörün adını değiştirin. Yeni bir ad yazın ve "
-"değişikliği uygulamak için Yeniden Adlandır'a tıklayın."
+"değişikliği uygulamak için Yeniden Adlandır’a tıklayın."
 
 #: src/controls.6/FileBrowser.qml:593
 #, kde-format
@@ -440,7 +440,7 @@ msgstr "Aç"
 #: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
-msgstr "Dosya adı..."
+msgstr "Dosya adı…"
 
 #: src/controls.6/FileDialog.qml:253
 #, kde-format
@@ -448,7 +448,7 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
-"'%1' adlı bir dosya halihazırda var!\n"
+"“%1” adlı bir dosya halihazırda var!\n"
 "Bu eylem, %1 dosyasının üzerine yazacaktır. Bunu yapmak istediğinizden emin "
 "misiniz?"
 
@@ -580,7 +580,7 @@ msgstr " öge"
 #: src/controls.6/private/TagList.qml:32
 #, kde-format
 msgid "Add tags..."
-msgstr "Etiketler ekle..."
+msgstr "Etiketler ekle…"
 
 #: src/controls.6/TagsDialog.qml:112
 #, kde-format
