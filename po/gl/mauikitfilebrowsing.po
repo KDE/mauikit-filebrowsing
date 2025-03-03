@@ -291,7 +291,7 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
-"Facía falla enviar de novo a solicitude, pero fallou, por exemplo porque os "
+"Facía falla subir de novo a solicitude, pero fallou, por exemplo porque os "
 "datos de envío non se puideron ler unha segunda vez."
 
 #: src/code/syncing.cpp:292
