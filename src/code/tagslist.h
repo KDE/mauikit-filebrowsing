@@ -34,9 +34,15 @@ class TagsList : public MauiList
     Q_PROPERTY(QStringList urls READ getUrls WRITE setUrls NOTIFY urlsChanged)
     
     /**
-     * The resulting list of tag names that were found.
+     * The resulting list of tag names that were found. Or compossed, some existing tags might still not be added permanently.
      */
     Q_PROPERTY(QStringList tags READ getTags NOTIFY tagsChanged)
+    
+    /**
+     * The list of tags that are still not written to the urls, and are pending to be saved
+     */
+    Q_PROPERTY(QStringList newTags READ getNewTags NOTIFY tagsChanged)
+    
 
 public:
     explicit TagsList(QObject *parent = nullptr);
@@ -50,6 +56,7 @@ public:
     void setUrls(const QStringList &value);
 
     QStringList getTags() const;
+    QStringList getNewTags() const;
 
     void componentComplete() override final;
 
@@ -61,7 +68,7 @@ private:
     QStringList m_urls;
 
     void append(const FMH::MODEL &tag);
-
+    FMH::MODEL_LIST getDBTags() const;
     QTimer *m_refreshTimer;
 
 Q_SIGNALS:

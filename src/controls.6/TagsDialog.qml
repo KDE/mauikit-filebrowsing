@@ -345,8 +345,7 @@ Maui.PopupPage
      */
     function setTags()
     {
-        var tags = tagListComposer.list.tags            
-        control.tagsReady(tags)
+        control.tagsReady(tagListComposer.list.newTags )
         close()
     }
 }

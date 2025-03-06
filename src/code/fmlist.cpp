@@ -53,8 +53,10 @@ FMList::FMList(QObject *parent)
         Q_EMIT this->countChanged();
     });
 
-    connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
-        for (const auto &item : std::as_const(res)) {
+    connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) 
+    {
+        for (const auto &item : std::as_const(res))
+        {
             const auto index = this->indexOf(FMH::MODEL_KEY::PATH, item.first[FMH::MODEL_KEY::PATH]);
 
             if (index >= this->list.size() || index < 0)

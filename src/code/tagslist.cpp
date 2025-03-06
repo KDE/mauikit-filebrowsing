@@ -17,21 +17,26 @@ void TagsList::setList()
 {
     Q_EMIT this->preListChanged();
     this->list.clear();
+    this->list = getDBTags();
+    
+    Q_EMIT this->tagsChanged();
+    Q_EMIT this->postListChanged();
+}
 
+FMH::MODEL_LIST TagsList::getDBTags() const
+{
+    
     if (this->m_urls.isEmpty())
     {
-        this->list = FMH::toModelList(Tagging::getInstance()->getAllTags(this->strict));
+        return FMH::toModelList(Tagging::getInstance()->getAllTags(this->strict));
         
     }else
     {
-        this->list = std::accumulate(this->m_urls.constBegin(), this->m_urls.constEnd(), FMH::MODEL_LIST(), [this](FMH::MODEL_LIST &list, const QString &url) {
+        return std::accumulate(this->m_urls.constBegin(), this->m_urls.constEnd(), FMH::MODEL_LIST(), [this](FMH::MODEL_LIST &list, const QString &url) {
             list << FMH::toModelList(Tagging::getInstance()->getUrlTags(url, this->strict));
             return list;
         });
     }
-    
-    Q_EMIT this->tagsChanged();
-    Q_EMIT this->postListChanged();
 }
 
 void TagsList::refresh()
@@ -149,6 +154,20 @@ void TagsList::setStrict(const bool &value)
 QStringList TagsList::getTags() const
 {   
     return FMH::modelToList(this->list, FMH::MODEL_KEY::TAG);
+}
+
+QStringList TagsList::getNewTags() const
+{   
+   auto allTags = getTags();
+   auto existingTags = FMH::modelToList(getDBTags(), FMH::MODEL_KEY::TAG);
+   
+   QStringListIterator i(existingTags);
+   while(i.hasNext())
+   {
+       allTags.removeAll(i.next());
+   }
+   
+   return allTags;
 }
 
 QStringList TagsList::getUrls() const
