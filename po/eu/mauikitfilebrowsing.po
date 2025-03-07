@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-11-27 01:51+0000\n"
+"POT-Creation-Date: 2025-03-07 00:41+0000\n"
 "PO-Revision-Date: 2023-12-31 16:22+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -20,38 +20,38 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.4\n"
 
-#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
+#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
 msgid "Nothing here!"
 msgstr "Hemen ez dago ezer!"
 
-#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:91 src/code/fmlist.cpp:152
+#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
 msgid "This place seems to be empty"
 msgstr "Leku hori hutsik dagoela dirudi"
 
-#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212 src/code/fmlist.cpp:728
+#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:730
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr "Errorea"
 
-#: src/code/fmlist.cpp:80 src/code/fmlist.cpp:212
+#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214
 #, kde-format
 msgid "This URL cannot be listed"
 msgstr "URL hori ezin da zerrendatu"
 
-#: src/code/fmlist.cpp:346
+#: src/code/fmlist.cpp:348
 #, kde-format
 msgid "Loading content"
 msgstr "Edukia zamatzen"
 
-#: src/code/fmlist.cpp:346
+#: src/code/fmlist.cpp:348
 #, kde-format
 msgid "Almost ready!"
 msgstr "Ia-ia prest!"
 
-#: src/code/fmlist.cpp:728
+#: src/code/fmlist.cpp:730
 #, kde-format
 msgid "No path to perform the search"
 msgstr "Ez dago bilaketa burutzeko bide-izenik"
