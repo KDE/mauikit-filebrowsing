@@ -598,7 +598,30 @@ void FMList::paste()
     }
 }
 
-bool FMList::clipboardHasContent() const
+int FMList::clipboardFilesCount() 
+{
+    if(FMList::clipboardHasContent())
+    {
+        const QClipboard *clipboard = QGuiApplication::clipboard();
+        const QMimeData *mimeData = clipboard->mimeData();       
+        
+        
+        if( mimeData->hasUrls())
+        {
+            return mimeData->urls().size();
+            
+        } 
+        
+        if(mimeData->hasImage() || mimeData->hasText())
+        {
+            return 1;
+        }
+    }
+    
+    return 0;   
+}
+
+bool FMList::clipboardHasContent()
 {
     const QClipboard *clipboard = QGuiApplication::clipboard();
     const QMimeData *mimeData = clipboard->mimeData();

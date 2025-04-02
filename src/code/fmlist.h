@@ -510,7 +510,8 @@ public Q_SLOTS:
      * @brief Whether the clipboard has a supported type of content.
      * @return whether the clipboard content is a supported file URL or a text or image raw data.
      */
-    bool clipboardHasContent() const;
+    static bool clipboardHasContent();
+    static int clipboardFilesCount();
     
     /**
      * @brief Copy a list of file URLs into the current directory
