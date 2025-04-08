@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
-# SPDX-FileCopyrightText: 2023, 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-07 00:41+0000\n"
-"PO-Revision-Date: 2024-02-15 17:44+0900\n"
+"PO-Revision-Date: 2025-04-07 14:31+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -168,6 +168,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"SSL/TLS 交換連線資訊失敗，無法建立加密通訊管道。應該已經送出 sslErrors() 訊號"
+"了。"
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -177,13 +179,15 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"連線已中斷，因為已從網路斷線，但系統已開始初始化對另一個存取點的漫遊。請重新"
+"遞交請求，它會在連線重新建立之後馬上被處理。"
 
 #: src/code/syncing.cpp:240
 #, kde-format
 msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
-msgstr ""
+msgstr "連線已中斷，因為已從網路斷線或是無法啟動網路。"
 
 #: src/code/syncing.cpp:244
 #, kde-format
@@ -197,6 +201,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"跟隨重新導向時，到達了最大重新導向深度。這個限制預設是 50 或是依 "
+"QNetworkRequest::setMaxRedirectsAllowed() 的設定值。（該數值於 Qt 5.6 新"
+"增。）"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -204,32 +211,34 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"跟隨重新導向時，網路存取 API 偵測到了從加密協定 (https) 到未加密協定 (http) "
+"的重新導向。"
 
 #: src/code/syncing.cpp:256
 #, kde-format
 msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
-msgstr ""
+msgstr "到代理伺服器的連線被回絕（代理伺服器不接受請求）"
 
 #: src/code/syncing.cpp:260
 #, kde-format
 msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
-msgstr ""
+msgstr "代理伺服器在我方收到整個回應並處理之前提早關閉了連線"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "找不到代理伺服器主機名稱（無效代理伺服器主機名稱）"
 
 #: src/code/syncing.cpp:268
 #, kde-format
 msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
-msgstr ""
+msgstr "連線到代理伺服器逾時，或是代理伺服器沒有對於送出的請求及時回應"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -237,11 +246,13 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"代理伺服器需要認證才能遵從請求，但沒有接受任何提供的認證資訊（如果有提供的"
+"話）"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "對於遠端內容的存取被回絕（類似 HTTP 錯誤 403）"
 
 #: src/code/syncing.cpp:280
 #, kde-format
