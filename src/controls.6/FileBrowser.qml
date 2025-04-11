@@ -716,6 +716,7 @@ Maui.Page
             // Shortcut for pasting an item
             if((event.key == Qt.Key_V) && (event.modifiers & Qt.ControlModifier))
             {
+                console.log("trying to do paste with keyboard shorcut")
                 control.paste()
                 event.accepted = true
             }

@@ -17,7 +17,8 @@
  */
 
 import QtQuick
-import QtQuick.Layouts 
+import QtQuick.Layouts
+import QtQuick.Controls
 
 import org.mauikit.controls as Maui
 import org.mauikit.filebrowsing as FB
@@ -29,24 +30,24 @@ import org.mauikit.filebrowsing as FB
  * @see urls
  *
  * This control inherits from MauiKit PopupPage, to checkout its inherited properties refer to docs.
- * 
+ *
  * The services listed can open the file type of the file URLs.
- * 
+ *
  * @image html openwithdialog.png "Example"
- * 
+ *
  * @code
  * Maui.Page
  * {
  *    Maui.Controls.showCSD: true
  *    anchors.fill: parent
- * 
+ *
  *    Button
  *    {
  *        anchors.centerIn: parent
  *        text: "Open"
  *        onClicked: _dialog.open()
  *    }
- * 
+ *
  *    FB.OpenWithDialog
  *    {
  *        id: _dialog
@@ -72,13 +73,43 @@ Maui.PopupPage
     persistent: false
     
     page.title: i18nd("mauikitfilebrowsing", "Open with")
-    headBar.visible: true
+    headBar.visible: false
+    actions: Action
+    {
+        Maui.Controls.status: Maui.Controls.Negative
+        text: i18n("Cancel")
+        onTriggered: control.close()
+    }
     
     stack: Maui.ListBrowser
     {
         id: _list
         Layout.fillWidth: true
         Layout.fillHeight: true
+
+        header: Pane
+        {
+            width: parent.width
+            background: null
+
+            contentItem: Item
+            {
+                implicitHeight: 150
+
+                Maui.GridItemTemplate
+                {
+                    readonly property var itemInfo : FB.FM.getFileInfo( control.urls[0])
+
+                    anchors.fill: parent
+                    anchors.margins: Maui.Style.space.tiny
+                    iconSizeHint: Maui.Style.iconSizes.huge
+                    fillMode: Image.PreserveAspectFit
+                    iconSource: itemInfo.icon
+                    imageSource:  itemInfo.thumbnail
+                    text1: i18np("1 item", "%1 items", control.urls.length)
+                }
+            }
+        }
         
         model: Maui.BaseModel
         {
@@ -106,5 +137,5 @@ Maui.PopupPage
                 close()
             }
         }
-    }  
+    }
 }
