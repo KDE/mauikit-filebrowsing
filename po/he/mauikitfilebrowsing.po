@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:41+0000\n"
+"POT-Creation-Date: 2025-04-12 00:40+0000\n"
 "PO-Revision-Date: 2025-01-01 06:50+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -28,7 +28,7 @@ msgstr "אין כאן כלום!"
 msgid "This place seems to be empty"
 msgstr "המקום הזה נראה שומם"
 
-#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:730
+#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:753
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
@@ -49,7 +49,7 @@ msgstr "התוכן נטען"
 msgid "Almost ready!"
 msgstr "כמעט מוכן!"
 
-#: src/code/fmlist.cpp:730
+#: src/code/fmlist.cpp:753
 #, kde-format
 msgid "No path to perform the search"
 msgstr "אין נתיב לביצוע החיפוש"
@@ -327,9 +327,9 @@ msgstr ""
 "מחיקת %1  \n"
 "סך כל המקום שהתפנה %2"
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
-#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
-#: src/controls.6/TagsDialog.qml:100
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:905
+#: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
 #, kde-format
 msgid "Cancel"
 msgstr "ביטול"
@@ -388,30 +388,30 @@ msgstr ""
 msgid "New name"
 msgstr "שם חדשה"
 
-#: src/controls.6/FileBrowser.qml:852
+#: src/controls.6/FileBrowser.qml:853
 #: src/controls.6/private/BrowserView.qml:329
 #, kde-format
 msgid "Copy Here"
 msgstr "העתקה לכאן"
 
-#: src/controls.6/FileBrowser.qml:865
+#: src/controls.6/FileBrowser.qml:866
 #: src/controls.6/private/BrowserView.qml:341
 #, kde-format
 msgid "Move Here"
 msgstr "העברה לכאן"
 
-#: src/controls.6/FileBrowser.qml:878
+#: src/controls.6/FileBrowser.qml:879
 #: src/controls.6/private/BrowserView.qml:353
 #, kde-format
 msgid "Link Here"
 msgstr "קישור לכאן"
 
-#: src/controls.6/FileBrowser.qml:891
+#: src/controls.6/FileBrowser.qml:892
 #, kde-format
 msgid "Open Here"
 msgstr "פתיחה כאן"
 
-#: src/controls.6/FileBrowser.qml:1299
+#: src/controls.6/FileBrowser.qml:1300
 #, kde-format
 msgid "Search: %1"
 msgstr "חיפוש: %1"
@@ -509,10 +509,20 @@ msgstr ""
 "אפשר ליצור תגיות חדשות כדי לארגן את הקבצים שלך. אפשר ליצור מספר תגיות "
 "ולהפריד ביניהן בפסיקים."
 
-#: src/controls.6/OpenWithDialog.qml:74
+#: src/controls.6/OpenWithDialog.qml:75
 #, kde-format
 msgid "Open with"
 msgstr "פתיחה עם"
+
+#: src/controls.6/OpenWithDialog.qml:109
+#, fuzzy, kde-format
+#| msgid " items"
+msgid "1 item"
+msgid_plural "%1 items"
+msgstr[0] " פריטים"
+msgstr[1] " פריטים"
+msgstr[2] " פריטים"
+msgstr[3] " פריטים"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format

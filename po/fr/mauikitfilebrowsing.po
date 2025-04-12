@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:41+0000\n"
+"POT-Creation-Date: 2025-04-12 00:40+0000\n"
 "PO-Revision-Date: 2024-03-21 09:20+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
@@ -24,7 +24,7 @@ msgstr "Rien ici !"
 msgid "This place seems to be empty"
 msgstr "Cet emplacement semble être vide"
 
-#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:730
+#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:753
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
@@ -45,7 +45,7 @@ msgstr "Chargement en cours du contenu"
 msgid "Almost ready!"
 msgstr "Presque prêt !"
 
-#: src/code/fmlist.cpp:730
+#: src/code/fmlist.cpp:753
 #, kde-format
 msgid "No path to perform the search"
 msgstr "Aucun emplacement pour réaliser la recherche"
@@ -350,9 +350,9 @@ msgstr ""
 "Supprimer %1\n"
 "Espace libre total %2"
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
-#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
-#: src/controls.6/TagsDialog.qml:100
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:905
+#: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
 #, kde-format
 msgid "Cancel"
 msgstr "Annuler"
@@ -411,30 +411,30 @@ msgstr ""
 msgid "New name"
 msgstr "Nouveau nom"
 
-#: src/controls.6/FileBrowser.qml:852
+#: src/controls.6/FileBrowser.qml:853
 #: src/controls.6/private/BrowserView.qml:329
 #, kde-format
 msgid "Copy Here"
 msgstr "Copier ici"
 
-#: src/controls.6/FileBrowser.qml:865
+#: src/controls.6/FileBrowser.qml:866
 #: src/controls.6/private/BrowserView.qml:341
 #, kde-format
 msgid "Move Here"
 msgstr "Déplacer ici"
 
-#: src/controls.6/FileBrowser.qml:878
+#: src/controls.6/FileBrowser.qml:879
 #: src/controls.6/private/BrowserView.qml:353
 #, kde-format
 msgid "Link Here"
 msgstr "Lier ici"
 
-#: src/controls.6/FileBrowser.qml:891
+#: src/controls.6/FileBrowser.qml:892
 #, kde-format
 msgid "Open Here"
 msgstr "Ouvrir ici"
 
-#: src/controls.6/FileBrowser.qml:1299
+#: src/controls.6/FileBrowser.qml:1300
 #, kde-format
 msgid "Search: %1"
 msgstr "Recherche : %1"
@@ -532,10 +532,18 @@ msgstr ""
 "Créer de nouvelles étiquettes pour organiser vos fichiers. Vous pouvez créer "
 "de multiples étiquettes, séparées par des virgules."
 
-#: src/controls.6/OpenWithDialog.qml:74
+#: src/controls.6/OpenWithDialog.qml:75
 #, kde-format
 msgid "Open with"
 msgstr "Ouvrir avec"
+
+#: src/controls.6/OpenWithDialog.qml:109
+#, fuzzy, kde-format
+#| msgid " items"
+msgid "1 item"
+msgid_plural "%1 items"
+msgstr[0] " éléments"
+msgstr[1] " éléments"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format

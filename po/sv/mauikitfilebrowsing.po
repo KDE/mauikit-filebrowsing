@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-07 00:41+0000\n"
+"POT-Creation-Date: 2025-04-12 00:40+0000\n"
 "PO-Revision-Date: 2024-05-02 14:54+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -27,7 +27,7 @@ msgstr "Ingenting här."
 msgid "This place seems to be empty"
 msgstr "Platsen verkar vara tom"
 
-#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:730
+#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:753
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
@@ -48,7 +48,7 @@ msgstr "Läser in innehåll"
 msgid "Almost ready!"
 msgstr "Nästan klar."
 
-#: src/code/fmlist.cpp:730
+#: src/code/fmlist.cpp:753
 #, kde-format
 msgid "No path to perform the search"
 msgstr "Ingen sökväg för att utföra sökningen"
@@ -341,9 +341,9 @@ msgstr ""
 "Ta bort %1  \n"
 "Totalt frigjort utrymme %2"
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:904
-#: src/controls.6/FileDialog.qml:205 src/controls.6/private/BrowserView.qml:367
-#: src/controls.6/TagsDialog.qml:100
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:905
+#: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
 #, kde-format
 msgid "Cancel"
 msgstr "Avbryt"
@@ -402,30 +402,30 @@ msgstr ""
 msgid "New name"
 msgstr "Nytt namn"
 
-#: src/controls.6/FileBrowser.qml:852
+#: src/controls.6/FileBrowser.qml:853
 #: src/controls.6/private/BrowserView.qml:329
 #, kde-format
 msgid "Copy Here"
 msgstr "Kopiera hit"
 
-#: src/controls.6/FileBrowser.qml:865
+#: src/controls.6/FileBrowser.qml:866
 #: src/controls.6/private/BrowserView.qml:341
 #, kde-format
 msgid "Move Here"
 msgstr "Flytta hit"
 
-#: src/controls.6/FileBrowser.qml:878
+#: src/controls.6/FileBrowser.qml:879
 #: src/controls.6/private/BrowserView.qml:353
 #, kde-format
 msgid "Link Here"
 msgstr "Länka hit"
 
-#: src/controls.6/FileBrowser.qml:891
+#: src/controls.6/FileBrowser.qml:892
 #, kde-format
 msgid "Open Here"
 msgstr "Öppna här"
 
-#: src/controls.6/FileBrowser.qml:1299
+#: src/controls.6/FileBrowser.qml:1300
 #, kde-format
 msgid "Search: %1"
 msgstr "Sök: %1"
@@ -523,10 +523,18 @@ msgstr ""
 "Skapa nya etiketter för att organisera dina filer. Du kan skapa flera "
 "etiketter åtskilda med kommatecken."
 
-#: src/controls.6/OpenWithDialog.qml:74
+#: src/controls.6/OpenWithDialog.qml:75
 #, kde-format
 msgid "Open with"
 msgstr "Öppna med"
+
+#: src/controls.6/OpenWithDialog.qml:109
+#, fuzzy, kde-format
+#| msgid " items"
+msgid "1 item"
+msgid_plural "%1 items"
+msgstr[0] " objekt"
+msgstr[1] " objekt"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
