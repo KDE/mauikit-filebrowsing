@@ -1,16 +1,16 @@
 # Translation of mauikitfilebrowsing.po to Catalan (Valencian)
-# Copyright (C) 2022-2024 This_file_is_part_of_KDE
+# Copyright (C) 2022-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023, 2024.
+# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023, 2024, 2025.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:40+0000\n"
-"PO-Revision-Date: 2024-03-20 09:51+0100\n"
+"PO-Revision-Date: 2025-04-12 10:59+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -539,12 +539,11 @@ msgid "Open with"
 msgstr "Obri amb"
 
 #: src/controls.6/OpenWithDialog.qml:109
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " elements"
-msgstr[1] " elements"
+msgstr[0] "1 element"
+msgstr[1] "%1 elements"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
@@ -642,13 +641,3 @@ msgstr "Afig etiquetes noves per als fitxers seleccionats."
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."
-
-#~ msgid "%1 file has been cut"
-#~ msgid_plural "%1 files have been cut"
-#~ msgstr[0] "S'ha retallat %1 fitxer"
-#~ msgstr[1] "S'han retallat %1 fitxers"
-
-#~ msgid "%1 file has been copied"
-#~ msgid_plural "%1 files have been copied"
-#~ msgstr[0] "S'ha copiat %1 fitxer"
-#~ msgstr[1] "S'han copiat %1 fitxers"

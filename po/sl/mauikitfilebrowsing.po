@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:40+0000\n"
-"PO-Revision-Date: 2024-03-20 06:13+0100\n"
+"PO-Revision-Date: 2025-04-12 07:08+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -533,14 +533,13 @@ msgid "Open with"
 msgstr "Odpri z"
 
 #: src/controls.6/OpenWithDialog.qml:109
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " postavke"
-msgstr[1] " postavke"
-msgstr[2] " postavke"
-msgstr[3] " postavke"
+msgstr[0] "%1 postavke"
+msgstr[1] "%1 postavka"
+msgstr[2] "%1 postavki"
+msgstr[3] "%1 postavke"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format

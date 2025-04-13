@@ -1,15 +1,15 @@
 # Spanish translations for mauikitfilebrowsing.po package.
-# Copyright (C) 2022 This file is copyright:
+# Copyright (C) 2022-2025 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
 # Automatically generated, 2022.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:40+0000\n"
-"PO-Revision-Date: 2024-03-20 12:43+0100\n"
+"PO-Revision-Date: 2025-04-12 21:29+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -457,7 +457,7 @@ msgstr "Abrir"
 #: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
-msgstr "Nombre de archivo..."
+msgstr "Nombre de archivo…"
 
 #: src/controls.6/FileDialog.qml:253
 #, kde-format
@@ -543,12 +543,11 @@ msgid "Open with"
 msgstr "Abrir con"
 
 #: src/controls.6/OpenWithDialog.qml:109
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " elementos"
-msgstr[1] " elementos"
+msgstr[0] "1 elemento"
+msgstr[1] "%1 elementos"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
@@ -605,7 +604,7 @@ msgstr " elementos"
 #: src/controls.6/private/TagList.qml:32
 #, kde-format
 msgid "Add tags..."
-msgstr "Añadir etiquetas..."
+msgstr "Añadir etiquetas…"
 
 #: src/controls.6/TagsDialog.qml:112
 #, kde-format
@@ -648,37 +647,3 @@ msgstr "Añadir nuevas etiquetas para los archivos seleccionados."
 #, kde-format
 msgid "No tags yet."
 msgstr "Todavía no hay etiquetas."
-
-#~ msgid "%1 file has been cut"
-#~ msgid_plural "%1 files have been cut"
-#~ msgstr[0] "Se ha cortado %1 archivo"
-#~ msgstr[1] "Se han cortado %1 archivos"
-
-#~ msgid "%1 file has been copied"
-#~ msgid_plural "%1 files have been copied"
-#~ msgstr[0] "Se ha copiado %1 archivo"
-#~ msgstr[1] "Se han copiado %1 archivos"
-
-#~ msgid "File browsing and management components."
-#~ msgstr "Componentes de navegación y gestión de archivos."
-
-#~ msgid "A file named %1 already exists!"
-#~ msgstr "Ya existe un archivo con el nombre %1"
-
-#~ msgid "Create"
-#~ msgstr "Crear"
-
-#~ msgid "Yes"
-#~ msgstr "Sí"
-
-#~ msgid "No"
-#~ msgstr "No"
-
-#~ msgid "Add"
-#~ msgstr "Añadir"
-
-#~ msgid "New %1"
-#~ msgstr "Nuevo %1"
-
-#~ msgid "Change the name of a file or folder"
-#~ msgstr "Cambiar el nombre de un archivo o carpeta"
