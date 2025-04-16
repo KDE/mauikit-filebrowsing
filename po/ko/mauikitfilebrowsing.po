@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# SPDX-FileCopyrightText: 2023, 2024 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-12 00:40+0000\n"
-"PO-Revision-Date: 2024-02-10 00:20+0100\n"
+"PO-Revision-Date: 2025-04-16 00:09+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -519,11 +519,10 @@ msgid "Open with"
 msgstr "다음으로 열기"
 
 #: src/controls.6/OpenWithDialog.qml:109
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] "개 항목"
+msgstr[0] "항목 %1개"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
