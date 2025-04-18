@@ -522,7 +522,7 @@ Maui.Page
         {
             id: _newDialog
 
-            title: _newDirOp.checked ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
+            // title: _newDirOp.checked ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
 
             template.iconSource: _newDirOp.checked ? "folder" : FB.FM.getIconName(textEntry.text)
@@ -580,14 +580,11 @@ Maui.Page
 
             property var item : ({})
 
-            title: i18nd("mauikitfilebrowsing", "Rename")
-            message: i18nd("mauikitfilebrowsing", "Change the name of a file or folder. Write a new name and click Rename to apply the change.")
-
-            //            headBar.visible: false
+            // title: i18nd("mauikitfilebrowsing", "Rename")
+            message: i18nd("mauikitfilebrowsing", "Enter the new name for the file.")
 
             template.iconSource: item.icon
             template.imageSource: item.thumbnail
-            template.iconSizeHint: Maui.Style.iconSizes.huge
 
             textEntry.text: item.label
             textEntry.placeholderText: i18nd("mauikitfilebrowsing", "New name")
