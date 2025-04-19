@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikitfilebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:41+0000\n"
 "PO-Revision-Date: 2023-04-26 19:50+0200\n"
 "Last-Translator: Frederik Schwarzer <schwarzer@kde.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -312,7 +312,7 @@ msgid ""
 "Total freed space %2"
 msgstr ""
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:905
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
 #: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
 #, kde-format
@@ -324,16 +324,7 @@ msgstr "Abbrechen"
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/controls.6/FileBrowser.qml:525
-#, kde-format
-msgid "New folder"
-msgstr "Neuer Ordner"
-
-#: src/controls.6/FileBrowser.qml:525
-#, kde-format
-msgid "New file"
-msgstr "Neue Datei"
-
+#. i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
 #: src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
@@ -354,51 +345,45 @@ msgstr "Ordner"
 msgid "File"
 msgstr "Datei"
 
-#: src/controls.6/FileBrowser.qml:583
-#, kde-format
-msgid "Rename"
-msgstr "Umbenennen"
-
+#. i18nd("mauikitfilebrowsing", "Rename")
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
-msgid ""
-"Change the name of a file or folder. Write a new name and click Rename to "
-"apply the change."
+msgid "Enter the new name for the file."
 msgstr ""
 
-#: src/controls.6/FileBrowser.qml:593
+#: src/controls.6/FileBrowser.qml:590
 #, kde-format
 msgid "New name"
 msgstr "Neuer Name"
 
-#: src/controls.6/FileBrowser.qml:853
+#: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:329
 #, fuzzy, kde-format
 #| msgid "Copy here"
 msgid "Copy Here"
 msgstr "Hierher kopieren"
 
-#: src/controls.6/FileBrowser.qml:866
+#: src/controls.6/FileBrowser.qml:863
 #: src/controls.6/private/BrowserView.qml:341
 #, fuzzy, kde-format
 #| msgid "Move here"
 msgid "Move Here"
 msgstr "Hierher verschieben"
 
-#: src/controls.6/FileBrowser.qml:879
+#: src/controls.6/FileBrowser.qml:876
 #: src/controls.6/private/BrowserView.qml:353
 #, fuzzy, kde-format
 #| msgid "Link here"
 msgid "Link Here"
 msgstr "Hiermit verknüpfen"
 
-#: src/controls.6/FileBrowser.qml:892
+#: src/controls.6/FileBrowser.qml:889
 #, fuzzy, kde-format
 #| msgid "Open here"
 msgid "Open Here"
 msgstr "Hier öffnen"
 
-#: src/controls.6/FileBrowser.qml:1300
+#: src/controls.6/FileBrowser.qml:1297
 #, kde-format
 msgid "Search: %1"
 msgstr "Suchen: %1"
@@ -602,6 +587,15 @@ msgstr ""
 #, kde-format
 msgid "No tags yet."
 msgstr "Bisher keine Stichwörter."
+
+#~ msgid "New folder"
+#~ msgstr "Neuer Ordner"
+
+#~ msgid "New file"
+#~ msgstr "Neue Datei"
+
+#~ msgid "Rename"
+#~ msgstr "Umbenennen"
 
 #~ msgid "A file named %1 already exists!"
 #~ msgstr "Eine Datei namens %1 existiert bereits."

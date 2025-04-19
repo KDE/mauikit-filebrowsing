@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:41+0000\n"
 "PO-Revision-Date: 2025-01-31 17:59+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -343,7 +343,7 @@ msgstr ""
 "Dzēst „%1“  \n"
 "Kopējā atbrīvotā vieta ir %2"
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:905
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
 #: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
 #, kde-format
@@ -355,16 +355,7 @@ msgstr "Atcelt"
 msgid "Delete"
 msgstr "Dzēst"
 
-#: src/controls.6/FileBrowser.qml:525
-#, kde-format
-msgid "New folder"
-msgstr "Jauna mape"
-
-#: src/controls.6/FileBrowser.qml:525
-#, kde-format
-msgid "New file"
-msgstr "Jauna datne"
-
+#. i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
 #: src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
@@ -385,49 +376,41 @@ msgstr "Mape"
 msgid "File"
 msgstr "Datne"
 
-#: src/controls.6/FileBrowser.qml:583
-#, kde-format
-msgid "Rename"
-msgstr "Pārdēvēt"
-
+#. i18nd("mauikitfilebrowsing", "Rename")
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
-msgid ""
-"Change the name of a file or folder. Write a new name and click Rename to "
-"apply the change."
+msgid "Enter the new name for the file."
 msgstr ""
-"Mainīt datnes vai mapes nosaukumu. Lai darbību pabeigtu, ierakstiet jauno "
-"nosaukumu un spiediet uz „Pārdēvēt“."
 
-#: src/controls.6/FileBrowser.qml:593
+#: src/controls.6/FileBrowser.qml:590
 #, kde-format
 msgid "New name"
 msgstr "Jauns nosaukums"
 
-#: src/controls.6/FileBrowser.qml:853
+#: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:329
 #, kde-format
 msgid "Copy Here"
 msgstr "Kopēt šeit"
 
-#: src/controls.6/FileBrowser.qml:866
+#: src/controls.6/FileBrowser.qml:863
 #: src/controls.6/private/BrowserView.qml:341
 #, kde-format
 msgid "Move Here"
 msgstr "Pārvietot šeit"
 
-#: src/controls.6/FileBrowser.qml:879
+#: src/controls.6/FileBrowser.qml:876
 #: src/controls.6/private/BrowserView.qml:353
 #, kde-format
 msgid "Link Here"
 msgstr "Saitēt šeit"
 
-#: src/controls.6/FileBrowser.qml:892
+#: src/controls.6/FileBrowser.qml:889
 #, kde-format
 msgid "Open Here"
 msgstr "Atvērt šeit"
 
-#: src/controls.6/FileBrowser.qml:1300
+#: src/controls.6/FileBrowser.qml:1297
 #, kde-format
 msgid "Search: %1"
 msgstr "Meklēt: %1"
@@ -635,3 +618,19 @@ msgstr "Atlasītajām datnēm pievienojiet jaunas birkas."
 #, kde-format
 msgid "No tags yet."
 msgstr "Vēl nav birku."
+
+#~ msgid "New folder"
+#~ msgstr "Jauna mape"
+
+#~ msgid "New file"
+#~ msgstr "Jauna datne"
+
+#~ msgid "Rename"
+#~ msgstr "Pārdēvēt"
+
+#~ msgid ""
+#~ "Change the name of a file or folder. Write a new name and click Rename to "
+#~ "apply the change."
+#~ msgstr ""
+#~ "Mainīt datnes vai mapes nosaukumu. Lai darbību pabeigtu, ierakstiet jauno "
+#~ "nosaukumu un spiediet uz „Pārdēvēt“."

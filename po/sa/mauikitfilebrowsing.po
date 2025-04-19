@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-12 00:40+0000\n"
+"POT-Creation-Date: 2025-04-19 00:41+0000\n"
 "PO-Revision-Date: 2024-12-29 16:07+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -327,7 +327,7 @@ msgid ""
 "Total freed space %2"
 msgstr "%1 कुलमुक्तस्थानं %2 विलोपयतु"
 
-#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:905
+#: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
 #: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
 #, kde-format
@@ -339,16 +339,7 @@ msgstr "निरसयतु"
 msgid "Delete"
 msgstr "लुप्"
 
-#: src/controls.6/FileBrowser.qml:525
-#, kde-format
-msgid "New folder"
-msgstr "नवीनं पुटम्"
-
-#: src/controls.6/FileBrowser.qml:525
-#, kde-format
-msgid "New file"
-msgstr "नवीनं सञ्चिका"
-
+#. i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
 #: src/controls.6/FileBrowser.qml:526
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
@@ -369,49 +360,41 @@ msgstr "फोल्डर"
 msgid "File"
 msgstr "संचिका"
 
-#: src/controls.6/FileBrowser.qml:583
-#, kde-format
-msgid "Rename"
-msgstr "पुनर्नाम"
-
+#. i18nd("mauikitfilebrowsing", "Rename")
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
-msgid ""
-"Change the name of a file or folder. Write a new name and click Rename to "
-"apply the change."
+msgid "Enter the new name for the file."
 msgstr ""
-"सञ्चिकायाः अथवा पुटस्य नाम परिवर्तयन्तु । नूतनं नाम लिखित्वा परिवर्तनं प्रयोक्तुं Rename "
-"नुदन्तु ।"
 
-#: src/controls.6/FileBrowser.qml:593
+#: src/controls.6/FileBrowser.qml:590
 #, kde-format
 msgid "New name"
 msgstr "नव नाम"
 
-#: src/controls.6/FileBrowser.qml:853
+#: src/controls.6/FileBrowser.qml:850
 #: src/controls.6/private/BrowserView.qml:329
 #, kde-format
 msgid "Copy Here"
 msgstr "अत्र प्रतिलिख्यताम्"
 
-#: src/controls.6/FileBrowser.qml:866
+#: src/controls.6/FileBrowser.qml:863
 #: src/controls.6/private/BrowserView.qml:341
 #, kde-format
 msgid "Move Here"
 msgstr "अत्र गच्छतु"
 
-#: src/controls.6/FileBrowser.qml:879
+#: src/controls.6/FileBrowser.qml:876
 #: src/controls.6/private/BrowserView.qml:353
 #, kde-format
 msgid "Link Here"
 msgstr "अत्र लिङ्क् कुर्वन्तु"
 
-#: src/controls.6/FileBrowser.qml:892
+#: src/controls.6/FileBrowser.qml:889
 #, kde-format
 msgid "Open Here"
 msgstr "अत्र उद्घाटयतु"
 
-#: src/controls.6/FileBrowser.qml:1300
+#: src/controls.6/FileBrowser.qml:1297
 #, kde-format
 msgid "Search: %1"
 msgstr "अन्वेषणम् : %1"
@@ -618,3 +601,19 @@ msgstr "चयनितसञ्चिकानां कृते नूतन�
 #, kde-format
 msgid "No tags yet."
 msgstr "अद्यापि कोऽपि टैगः नास्ति।"
+
+#~ msgid "New folder"
+#~ msgstr "नवीनं पुटम्"
+
+#~ msgid "New file"
+#~ msgstr "नवीनं सञ्चिका"
+
+#~ msgid "Rename"
+#~ msgstr "पुनर्नाम"
+
+#~ msgid ""
+#~ "Change the name of a file or folder. Write a new name and click Rename to "
+#~ "apply the change."
+#~ msgstr ""
+#~ "सञ्चिकायाः अथवा पुटस्य नाम परिवर्तयन्तु । नूतनं नाम लिखित्वा परिवर्तनं प्रयोक्तुं Rename "
+#~ "नुदन्तु ।"
