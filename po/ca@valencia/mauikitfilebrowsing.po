@@ -3,14 +3,14 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2022, 2023, 2024, 2025.
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:41+0000\n"
-"PO-Revision-Date: 2025-04-12 10:59+0200\n"
+"PO-Revision-Date: 2025-04-19 11:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -388,7 +388,7 @@ msgstr "Fitxer"
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "Introduïu el nom nou del fitxer."
 
 #: src/controls.6/FileBrowser.qml:590
 #, kde-format
@@ -624,19 +624,3 @@ msgstr "Afig etiquetes noves per als fitxers seleccionats."
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."
-
-#~ msgid "New folder"
-#~ msgstr "Carpeta nova"
-
-#~ msgid "New file"
-#~ msgstr "Fitxer nou"
-
-#~ msgid "Rename"
-#~ msgstr "Canvia el nom"
-
-#~ msgid ""
-#~ "Change the name of a file or folder. Write a new name and click Rename to "
-#~ "apply the change."
-#~ msgstr ""
-#~ "Canvia el nom d'un fitxer o carpeta. Escriviu un nom nou i feu clic en "
-#~ "Canvia el nom per a aplicar el canvi."

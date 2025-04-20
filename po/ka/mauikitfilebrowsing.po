@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:41+0000\n"
-"PO-Revision-Date: 2025-04-12 03:31+0200\n"
+"PO-Revision-Date: 2025-04-19 04:06+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -375,7 +375,7 @@ msgstr "ფაილი"
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "შეიყვანეთ ახალი სახელი ამ ფაილისთვის."
 
 #: src/controls.6/FileBrowser.qml:590
 #, kde-format

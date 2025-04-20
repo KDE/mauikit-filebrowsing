@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:41+0000\n"
-"PO-Revision-Date: 2025-04-12 09:30+0300\n"
+"PO-Revision-Date: 2025-04-19 18:41+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -381,7 +381,7 @@ msgstr "Файл"
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "Введіть нову назву файла."
 
 #: src/controls.6/FileBrowser.qml:590
 #, kde-format
