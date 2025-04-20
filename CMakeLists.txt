@@ -95,6 +95,8 @@ else()
     add_definitions(-DGIT_BRANCH="Stable")
 endif()
 
+qt_policy(SET QTP0004 NEW)
+
 ##CMAKE PARTS
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/MauiKitFileBrowsing${MAUI_MAJOR_VERSION}")
 
