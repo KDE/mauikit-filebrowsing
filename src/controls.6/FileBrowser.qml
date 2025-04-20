@@ -1157,7 +1157,7 @@ Maui.Page
     {
         openFolder(control.currentFMList.parentPath)
     }
-    
+
     /**
      * @brief Selects the next item in the view
      */
@@ -1167,7 +1167,7 @@ Maui.Page
         _browser.currentView.flickable.incrementCurrentIndex()
         else
             _browser.currentView.flickable.moveCurrentIndexRight()
-            
+
     }
 
     /**
@@ -1180,7 +1180,7 @@ Maui.Page
             else
                 _browser.currentView.flickable.moveCurrentIndexLeft()
     }
-    
+
     /**
      * @brief Add an item to the selection
      * @param item the item object/map representing the file to be added to the selection

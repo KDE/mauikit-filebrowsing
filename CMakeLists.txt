@@ -28,20 +28,17 @@ find_package(ECM ${REQUIRED_KF_VERSION} NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
 include(GenerateExportHeader)
-include(GNUInstallDirs)
-include(FeatureSummary)
 include(CMakePackageConfigHelpers)
-
-include(KDEInstallDirs)
-include(KDECMakeSettings)
-include(KDECompilerSettings)
-include(KDEPackageAppTemplates)
-include(KDEClangFormat)
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMFindQmlModule)
 include(ECMQmlModule)
 include(ECMSourceVersionControl)
+
+include(KDEClangFormat)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
 
 if(ANDROID OR APPLE OR WIN32)
     set(IS_KIO_AVAILABLE OFF)
@@ -129,6 +126,8 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/filebrowsing_version.h"
 
 add_definitions(-DTRANSLATION_DOMAIN="mauikitfilebrowsing")
 ki18n_install(po)
+
+add_compile_definitions(QT_DISABLE_DEPRECATED_UP_TO=0x050F00)
 
 add_subdirectory(src)
 

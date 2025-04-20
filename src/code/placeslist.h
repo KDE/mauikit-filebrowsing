@@ -33,15 +33,15 @@ class KFilePlacesModel;
 
 /**
  * @brief The list model of the system locations, such as bookmarks, standard places, networks and devices.
- * 
+ *
  * A graphical interface for this controller functionality is available for quick usage as PlacesListBrowser.
  */
 class FILEBROWSING_EXPORT PlacesList : public MauiList
 {
     Q_OBJECT
-    QML_ELEMENT
+    // QML_ELEMENT
     Q_DISABLE_COPY(PlacesList)
-    
+
     /**
      * The groups to be listed.
      * The possible list of groups are defined at FMList::PATHTYPE
@@ -110,7 +110,7 @@ public Q_SLOTS:
      * @param index index position of the entry
      */
     void requestSetup (const int &index);
-    
+
     /**
      * @brief Add a location to the bookmarks sections
      * @param url The URL path of the location or directory
@@ -123,13 +123,13 @@ public Q_SLOTS:
      * @return the index position if it exists otherwise `-1`
      */
     int indexOfPath(const QUrl &url) const;
-    
+
     /**
      * @brief Hide/show a section
-     * @param The section type to be toggle. The possible values are defined in FMStatic::PATHTYPE_KEY. 
+     * @param The section type to be toggle. The possible values are defined in FMStatic::PATHTYPE_KEY.
      */
     void toggleSection(const int &section);
-    
+
     /**
      * @brief Whether the current listing contains a group type. The possible values are defined in FMStatic::PATHTYPE_KEY
      * @param group the group type
@@ -149,7 +149,7 @@ private:
 
 Q_SIGNALS:
     void groupsChanged();
-    
+
     /**
      * @brief Emitted when a new bookmark entry has been added
      */

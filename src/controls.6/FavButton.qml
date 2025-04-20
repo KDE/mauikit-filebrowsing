@@ -18,7 +18,7 @@ ToolButton
     icon.name: "love"
     icon.color: mcolor
     property color mcolor : (control.checked ? "white" :  (control.pressed || control.down || control.highlighted || control.hovered ) ?Maui.Theme.highlitedTextColor : Maui.Theme.textColor)
-    
+
     Behavior on mcolor
     {
         Maui.ColorTransition{}
