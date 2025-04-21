@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-19 00:41+0000\n"
-"PO-Revision-Date: 2025-04-07 14:31+0900\n"
+"PO-Revision-Date: 2025-04-20 15:13+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.07.70\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -360,7 +360,7 @@ msgstr "檔案"
 #: src/controls.6/FileBrowser.qml:584
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "輸入檔案的新名稱。"
 
 #: src/controls.6/FileBrowser.qml:590
 #, kde-format
@@ -492,11 +492,10 @@ msgid "Open with"
 msgstr "開啟方式"
 
 #: src/controls.6/OpenWithDialog.qml:109
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " 個項目"
+msgstr[0] "%1 個項目"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
 #, kde-format
