@@ -22,7 +22,7 @@ ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
 set_target_properties(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    EXPORT_NAME "FileBrowsing${MAUI_MAJOR_VERSION}")
+    EXPORT_NAME "FileBrowsing")
 
 add_library(MauiKit${MAUI_MAJOR_VERSION}::FileBrowsing ALIAS MauiKitFileBrowsing${MAUI_MAJOR_VERSION})
 
@@ -127,7 +127,6 @@ ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PATH private SOU
 
     controls.${QT_MAJOR_VERSION}/private/TagDelegate.qml
     controls.${QT_MAJOR_VERSION}/private/TagList.qml)
-
 
 if(${KIO_AVAILABLE})
     target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
