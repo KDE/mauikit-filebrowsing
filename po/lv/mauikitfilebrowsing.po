@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:41+0000\n"
+"POT-Creation-Date: 2025-04-23 00:41+0000\n"
 "PO-Revision-Date: 2025-01-31 17:59+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -345,12 +345,12 @@ msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
-#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:165
 #, kde-format
 msgid "Delete"
 msgstr "Dzēst"
@@ -415,7 +415,7 @@ msgstr "Atvērt šeit"
 msgid "Search: %1"
 msgstr "Meklēt: %1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
 #, kde-format
 msgid "Save"
 msgstr "Saglabāt"
@@ -513,7 +513,7 @@ msgstr ""
 msgid "Open with"
 msgstr "Atvērt ar"
 
-#: src/controls.6/OpenWithDialog.qml:109
+#: src/controls.6/OpenWithDialog.qml:109 src/controls.6/TagsDialog.qml:216
 #, fuzzy, kde-format
 #| msgid " items"
 msgid "1 item"
@@ -522,7 +522,7 @@ msgstr[0] " vienumi"
 msgstr[1] " vienumi"
 msgstr[2] " vienumi"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
 msgid "Edit"
 msgstr "Rediģēt"
@@ -578,46 +578,42 @@ msgstr " vienumi"
 msgid "Add tags..."
 msgstr "Pievienot birkas..."
 
-#: src/controls.6/TagsDialog.qml:112
+#: src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "Filtrēt vai pievienot jaunu birku"
 
-#: src/controls.6/TagsDialog.qml:139
+#: src/controls.6/TagsDialog.qml:141
 #, kde-format
 msgid "Delete %1"
 msgstr "Dzēst „%1“"
 
-#: src/controls.6/TagsDialog.qml:140
+#: src/controls.6/TagsDialog.qml:142
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "Vai tiešām vēlaties dzēst šo birku? Šo darbību atsaukt nevarēsiet."
 
-#: src/controls.6/TagsDialog.qml:186
+#: src/controls.6/TagsDialog.qml:188
 #, kde-format
 msgid "No Tags!"
 msgstr "Nav birku!"
 
-#: src/controls.6/TagsDialog.qml:187
+#: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "Izveidojiet jaunas birkas, lai sakārtotu datnes."
 
-#: src/controls.6/TagsDialog.qml:263
-#, kde-format
-msgid "Tagging %1 files"
-msgstr "Pievienot birkas %1 datnēm"
-
-#: src/controls.6/TagsDialog.qml:264
-#, kde-format
-msgid "Add new tags for the selected files."
-msgstr "Atlasītajām datnēm pievienojiet jaunas birkas."
-
-#: src/controls.6/TagsDialog.qml:331
+#: src/controls.6/TagsDialog.qml:291
 #, kde-format
 msgid "No tags yet."
 msgstr "Vēl nav birku."
+
+#~ msgid "Tagging %1 files"
+#~ msgstr "Pievienot birkas %1 datnēm"
+
+#~ msgid "Add new tags for the selected files."
+#~ msgstr "Atlasītajām datnēm pievienojiet jaunas birkas."
 
 #~ msgid "New folder"
 #~ msgstr "Jauna mape"

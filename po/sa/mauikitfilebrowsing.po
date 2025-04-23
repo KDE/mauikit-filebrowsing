@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:41+0000\n"
+"POT-Creation-Date: 2025-04-23 00:41+0000\n"
 "PO-Revision-Date: 2024-12-29 16:07+0530\n"
 "Last-Translator: Kali <EMAIL@ADDRESS>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -329,12 +329,12 @@ msgstr "%1 कुलमुक्तस्थानं %2 विलोपयत�
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
-#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
 msgstr "निरसयतु"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:165
 #, kde-format
 msgid "Delete"
 msgstr "लुप्"
@@ -399,7 +399,7 @@ msgstr "अत्र उद्घाटयतु"
 msgid "Search: %1"
 msgstr "अन्वेषणम् : %1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
 #, kde-format
 msgid "Save"
 msgstr "रक्ष्"
@@ -497,7 +497,7 @@ msgstr ""
 msgid "Open with"
 msgstr "सह उद्घाटयतु"
 
-#: src/controls.6/OpenWithDialog.qml:109
+#: src/controls.6/OpenWithDialog.qml:109 src/controls.6/TagsDialog.qml:216
 #, fuzzy, kde-format
 #| msgid " items"
 msgid "1 item"
@@ -505,7 +505,7 @@ msgid_plural "%1 items"
 msgstr[0] "मदा :"
 msgstr[1] "मदा :"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
 msgid "Edit"
 msgstr "सम्पादन"
@@ -561,46 +561,42 @@ msgstr "मदा :"
 msgid "Add tags..."
 msgstr "टैग्स् योजयन्तु..."
 
-#: src/controls.6/TagsDialog.qml:112
+#: src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "नूतनं टैग् फ़िल्टर कुर्वन्तु अथवा योजयन्तु"
 
-#: src/controls.6/TagsDialog.qml:139
+#: src/controls.6/TagsDialog.qml:141
 #, kde-format
 msgid "Delete %1"
 msgstr "%1 विलोपयन्तु"
 
-#: src/controls.6/TagsDialog.qml:140
+#: src/controls.6/TagsDialog.qml:142
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr "किं भवान् निश्चयेन एतत् टैग् विलोपयितुम् इच्छति? एतत् कर्म न निवर्तयितुं शक्यते।"
 
-#: src/controls.6/TagsDialog.qml:186
+#: src/controls.6/TagsDialog.qml:188
 #, kde-format
 msgid "No Tags!"
 msgstr "No Tags!"
 
-#: src/controls.6/TagsDialog.qml:187
+#: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "स्वसञ्चिकानां व्यवस्थित्यै नूतनानि टैग्स् रचयन्तु ।"
 
-#: src/controls.6/TagsDialog.qml:263
-#, kde-format
-msgid "Tagging %1 files"
-msgstr "%1 सञ्चिकाः टैगिंग् करणम्"
-
-#: src/controls.6/TagsDialog.qml:264
-#, kde-format
-msgid "Add new tags for the selected files."
-msgstr "चयनितसञ्चिकानां कृते नूतनानि टैग्स् योजयन्तु ।"
-
-#: src/controls.6/TagsDialog.qml:331
+#: src/controls.6/TagsDialog.qml:291
 #, kde-format
 msgid "No tags yet."
 msgstr "अद्यापि कोऽपि टैगः नास्ति।"
+
+#~ msgid "Tagging %1 files"
+#~ msgstr "%1 सञ्चिकाः टैगिंग् करणम्"
+
+#~ msgid "Add new tags for the selected files."
+#~ msgstr "चयनितसञ्चिकानां कृते नूतनानि टैग्स् योजयन्तु ।"
 
 #~ msgid "New folder"
 #~ msgstr "नवीनं पुटम्"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:41+0000\n"
+"POT-Creation-Date: 2025-04-23 00:41+0000\n"
 "PO-Revision-Date: 2025-04-19 16:19+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -351,12 +351,12 @@ msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
-#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:165
 #, kde-format
 msgid "Delete"
 msgstr "Verwijderen"
@@ -421,7 +421,7 @@ msgstr "Hier openen"
 msgid "Search: %1"
 msgstr "Zoeken: %1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
 #, kde-format
 msgid "Save"
 msgstr "Opslaan"
@@ -519,14 +519,14 @@ msgstr ""
 msgid "Open with"
 msgstr "Openen met"
 
-#: src/controls.6/OpenWithDialog.qml:109
+#: src/controls.6/OpenWithDialog.qml:109 src/controls.6/TagsDialog.qml:216
 #, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
 msgstr[0] "1 item"
 msgstr[1] "%1 items"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
 msgid "Edit"
 msgstr "Bewerken"
@@ -584,47 +584,43 @@ msgstr " items"
 msgid "Add tags..."
 msgstr "Tags toevoegen..."
 
-#: src/controls.6/TagsDialog.qml:112
+#: src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr "Een nieuwe tag filteren of toevoegen"
 
-#: src/controls.6/TagsDialog.qml:139
+#: src/controls.6/TagsDialog.qml:141
 #, kde-format
 msgid "Delete %1"
 msgstr "%1 verwijderen"
 
-#: src/controls.6/TagsDialog.qml:140
+#: src/controls.6/TagsDialog.qml:142
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr ""
 "Wilt u deze tag verwijderen? Deze actie kan niet ongedaan worden gemaakt."
 
-#: src/controls.6/TagsDialog.qml:186
+#: src/controls.6/TagsDialog.qml:188
 #, kde-format
 msgid "No Tags!"
 msgstr "Geen tags!"
 
-#: src/controls.6/TagsDialog.qml:187
+#: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr "Nieuwe tags aanmaken om uw bestanden te organiseren."
 
-#: src/controls.6/TagsDialog.qml:263
-#, kde-format
-msgid "Tagging %1 files"
-msgstr "%1 bestanden krijgen een tag"
-
-#: src/controls.6/TagsDialog.qml:264
-#, kde-format
-msgid "Add new tags for the selected files."
-msgstr "Nieuwe tag toevoegen aan de geselecteerde bestanden."
-
-#: src/controls.6/TagsDialog.qml:331
+#: src/controls.6/TagsDialog.qml:291
 #, kde-format
 msgid "No tags yet."
 msgstr "Nog geen tags."
+
+#~ msgid "Tagging %1 files"
+#~ msgstr "%1 bestanden krijgen een tag"
+
+#~ msgid "Add new tags for the selected files."
+#~ msgstr "Nieuwe tag toevoegen aan de geselecteerde bestanden."
 
 #~ msgid "New folder"
 #~ msgstr "Nieuwe map"

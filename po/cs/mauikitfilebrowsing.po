@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-19 00:41+0000\n"
+"POT-Creation-Date: 2025-04-23 00:41+0000\n"
 "PO-Revision-Date: 2024-04-03 11:46+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -313,12 +313,12 @@ msgstr ""
 
 #: src/controls.6/FileBrowser.qml:477 src/controls.6/FileBrowser.qml:902
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:80
-#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:100
+#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:163
+#: src/controls.6/FileBrowser.qml:483 src/controls.6/TagsDialog.qml:165
 #, kde-format
 msgid "Delete"
 msgstr "Smazat"
@@ -383,7 +383,7 @@ msgstr "Otevřít zde"
 msgid "Search: %1"
 msgstr "Hledat: %1"
 
-#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:94
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
 #, kde-format
 msgid "Save"
 msgstr "Uložit"
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Open with"
 msgstr "Otevřít pomocí"
 
-#: src/controls.6/OpenWithDialog.qml:109
+#: src/controls.6/OpenWithDialog.qml:109 src/controls.6/TagsDialog.qml:216
 #, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
@@ -487,7 +487,7 @@ msgstr[0] "1 položka"
 msgstr[1] "%1 položky"
 msgstr[2] "%1 položek"
 
-#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:157
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
 msgid "Edit"
 msgstr "Upravit"
@@ -543,43 +543,33 @@ msgstr "položky"
 msgid "Add tags..."
 msgstr "Přidat značky..."
 
-#: src/controls.6/TagsDialog.qml:112
+#: src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Filter or add a new tag"
 msgstr ""
 
-#: src/controls.6/TagsDialog.qml:139
+#: src/controls.6/TagsDialog.qml:141
 #, kde-format
 msgid "Delete %1"
 msgstr "Smazat %1"
 
-#: src/controls.6/TagsDialog.qml:140
+#: src/controls.6/TagsDialog.qml:142
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr ""
 
-#: src/controls.6/TagsDialog.qml:186
+#: src/controls.6/TagsDialog.qml:188
 #, kde-format
 msgid "No Tags!"
 msgstr "Žádné značky."
 
-#: src/controls.6/TagsDialog.qml:187
+#: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
 msgstr ""
 
-#: src/controls.6/TagsDialog.qml:263
-#, kde-format
-msgid "Tagging %1 files"
-msgstr ""
-
-#: src/controls.6/TagsDialog.qml:264
-#, kde-format
-msgid "Add new tags for the selected files."
-msgstr ""
-
-#: src/controls.6/TagsDialog.qml:331
+#: src/controls.6/TagsDialog.qml:291
 #, kde-format
 msgid "No tags yet."
 msgstr ""
