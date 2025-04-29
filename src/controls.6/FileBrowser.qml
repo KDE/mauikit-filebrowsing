@@ -277,13 +277,6 @@ Maui.Page
     property Maui.SelectionBar selectionBar : null
 
     /**
-     * @brief An alias to the currently loaded dialog, if not dialog is loaded then null.
-     *
-     * @property Dialog FileBrowser::dialog
-     */
-    readonly property alias dialog : dialogLoader.item
-
-    /**
      * @brief Whether the browser is on a read only mode, and modifications are now allowed, such as pasting, moving, removing or renaming.
      * @property bool FileBrowser::readOnly
      */
@@ -435,17 +428,13 @@ Maui.Page
         onClicked: FB.FM.emptyTrash()
     }
 
-    Loader
-    {
-        id: dialogLoader
-    }
-
     Component
     {
         id: _quitSearchDialogComponent
 
         Maui.InfoDialog
         {
+            onClosed: destroy()
             title: i18n("Quit")
             message: i18n("Are you sure you want to quit the current search in progress?")
             onAccepted:
@@ -470,7 +459,7 @@ Maui.Page
 
             title:  i18nd("mauikitfilebrowsing", "Removing %1 files", urls.length)
             message: i18nd("mauikitfilebrowsing", "Delete %1  \nTotal freed space %2", (Maui.Handy.isLinux ? "or move to trash?" : "? This action can not be undone."),  Maui.Handy.formatSize(freedSpace))
-
+            onClosed: destroy()
             actions: [
                 Action
                 {
@@ -521,7 +510,7 @@ Maui.Page
         Maui.InputDialog
         {
             id: _newDialog
-
+onClosed: destroy()
             // title: _newDirOp.checked ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
 
@@ -579,7 +568,7 @@ Maui.Page
             id: _renameDialog
 
             property var item : ({})
-
+onClosed: destroy()
             // title: i18nd("mauikitfilebrowsing", "Rename")
             message: i18nd("mauikitfilebrowsing", "Enter the new name for the file.")
 
@@ -613,7 +602,7 @@ Maui.Page
     Component
     {
         id: _newTagDialogComponent
-        FB.NewTagDialog {}
+        FB.NewTagDialog {onClosed: destroy()}
     }
 
     /**
@@ -679,7 +668,7 @@ Maui.Page
             // Shortcuts for renaming
             if((event.key === Qt.Key_F2))
             {
-                dialogLoader.sourceComponent = renameDialogComponent
+                var dialog = renameDialogComponent.createObject(control)
                 dialog.open()
                 event.accepted = true
             }
@@ -960,7 +949,7 @@ Maui.Page
                         icon.name : "list-add"
                         onClicked:
                         {
-                            dialogLoader.sourceComponent = _newTagDialogComponent
+                            var dialog = _newTagDialogComponent.createObject(control)
                             dialog.open()
                         }
                     }
@@ -1054,7 +1043,7 @@ Maui.Page
             return
         }
 
-        dialogLoader.sourceComponent = removeDialogComponent
+        var dialog = removeDialogComponent.createObject(control)
         dialog.urls = urls
         dialog.open()
     }
@@ -1276,8 +1265,8 @@ Maui.Page
     {
         if(control.currentView.loading)
         {
-            dialogLoader.sourceComponent = _quitSearchDialogComponent
-            control.dialog.open()
+            var dialog = _quitSearchDialogComponent.createObject(control)
+            dialog.open()
             return
         }
 
@@ -1309,7 +1298,7 @@ Maui.Page
         if(control.isSearchView)
             return;
 
-        dialogLoader.sourceComponent = newDialogComponent
+        var dialog = newDialogComponent.createObject(control)
         dialog.open()
         dialog.forceActiveFocus()
     }
@@ -1323,7 +1312,7 @@ Maui.Page
         if(control.isSearchView)
             return;
 
-        dialogLoader.sourceComponent= renameDialogComponent
+        var dialog = renameDialogComponent.createObject(control)
         dialog.open()
         dialog.forceActiveFocus()
     }
@@ -1337,7 +1326,7 @@ Maui.Page
         if(control.isSearchView)
             return;
 
-        dialogLoader.sourceComponent= renameDialogComponent
+        var dialog = renameDialogComponent.createObject(control)
         dialog.open()
         dialog.forceActiveFocus()
     }

@@ -447,7 +447,7 @@ Maui.AltBrowser
                 control.itemsSelected([index])
             }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
             {
-                var lastSelectedIndex = findLastSelectedIndex(control.listView.flickable, index)
+                var lastSelectedIndex = findLastSelectedIndex(control.listView.flickable, control.listView.count)
 
                 if(lastSelectedIndex < 0)
                 {
