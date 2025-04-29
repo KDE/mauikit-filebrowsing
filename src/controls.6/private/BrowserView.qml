@@ -407,7 +407,7 @@ Maui.AltBrowser
         Drag.keys: ["text/uri-list"]
         Drag.mimeData: {
             "text/uri-list": filterSelection(control.path, model.path)
-        } 
+        }
 
         Item
         {
@@ -439,27 +439,27 @@ Maui.AltBrowser
         }
 
         onClicked: (mouse) =>
-        {
-            control.currentIndex = index
+                   {
+                       if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
+                       {
+                           control.itemsSelected([index])
+                       }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
+                       {
+                           // var lastSelectedIndex = findLastSelectedIndex(control.listView.flickable, control.listView.count)
 
-            if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
-            {
-                control.itemsSelected([index])
-            }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
-            {
-                var lastSelectedIndex = findLastSelectedIndex(control.listView.flickable, control.listView.count)
+                           // if(lastSelectedIndex < 0)
+                           // {
+                           //     return
+                           // }
+                           control.itemsSelected(control.range(control.currentIndex, index))
 
-                if(lastSelectedIndex < 0)
-                {
-                    return
-                }
-                control.itemsSelected(control.range(lastSelectedIndex, index))
+                       }else
+                       {
+                           control.itemClicked(index)
+                       }
 
-            }else
-            {
-                control.itemClicked(index)
-            }
-        }
+                       control.currentIndex = index
+                   }
 
         onDoubleClicked:
         {
@@ -472,8 +472,8 @@ Maui.AltBrowser
             if(!Maui.Handy.isTouch)
                 return
 
-                control.currentIndex = index
-                control.itemRightClicked(index)
+            control.currentIndex = index
+            control.itemRightClicked(index)
         }
 
         onRightClicked:
@@ -483,17 +483,17 @@ Maui.AltBrowser
         }
 
         onToggled: (state) =>
-        {
-            control.currentIndex = index
-            control.itemToggled(index, state)
-        }
+                   {
+                       control.currentIndex = index
+                       control.itemToggled(index, state)
+                   }
 
         onContentDropped: (drop) =>
-        {
-            _dropMenu.urls = drop.urls.join(",")
-            _dropMenu.target = model.path
-            _dropMenu.show()
-        }
+                          {
+                              _dropMenu.urls = drop.urls.join(",")
+                              _dropMenu.target = model.path
+                              _dropMenu.show()
+                          }
 
         ListView.onRemove:
         {
@@ -572,7 +572,7 @@ Maui.AltBrowser
             Drag.keys: ["text/uri-list"]
             Drag.mimeData: {
                 "text/uri-list":  filterSelection(control.path, model.path)
-            } 
+            }
 
             Maui.Icon
             {
@@ -599,26 +599,26 @@ Maui.AltBrowser
             }
 
             onClicked: (mouse) =>
-            {
-                if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
-                {
-                    control.itemsSelected([index])
-                }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
-                {
-                    var lastSelectedIndex = findLastSelectedIndex(control.gridView.flickable, index)
+                       {
+                           if ((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ControlModifier))
+                           {
+                               control.itemsSelected([index])
+                           }else if((mouse.button == Qt.LeftButton) && (mouse.modifiers & Qt.ShiftModifier))
+                           {
+                               // var lastSelectedIndex = findLastSelectedIndex(control.gridView.flickable, index)
 
-                    if(lastSelectedIndex < 0)
-                    {
-                        return
-                    }
-                    control.itemsSelected(control.range(lastSelectedIndex, index))
-
-                }else
-                {
-                    control.itemClicked(index)
-                }
-                control.currentIndex = index
-            }
+                               // if(lastSelectedIndex < 0)
+                               // {
+                               //     return
+                               // }
+                               // control.itemsSelected(control.range(lastSelectedIndex, index))
+                               control.itemsSelected(control.range(control.currentIndex, index))
+                           }else
+                           {
+                               control.itemClicked(index)
+                           }
+                           control.currentIndex = index
+                       }
 
             onDoubleClicked:
             {
@@ -631,8 +631,8 @@ Maui.AltBrowser
                 if(!Maui.Handy.isTouch)
                     return
 
-                    control.currentIndex = index
-                    control.itemRightClicked(index)
+                control.currentIndex = index
+                control.itemRightClicked(index)
             }
 
             onRightClicked:
@@ -642,18 +642,18 @@ Maui.AltBrowser
             }
 
             onToggled: (state) =>
-            {
-                control.currentIndex = index
+                       {
+                           control.currentIndex = index
 
-                control.itemToggled(index, state)
-            }
+                           control.itemToggled(index, state)
+                       }
 
             onContentDropped: (drop) =>
-            {
-                _dropMenu.urls = drop.urls.join(",")
-                _dropMenu.target = model.path
-                _dropMenu.show()
-            }
+                              {
+                                  _dropMenu.urls = drop.urls.join(",")
+                                  _dropMenu.target = model.path
+                                  _dropMenu.show()
+                              }
 
             Connections
             {
@@ -690,22 +690,22 @@ Maui.AltBrowser
 
         switch(control.currentFMList.sortBy)
         {
-            case FB.FMList.LABEL:
-                prop = "label"
-                criteria = ViewSection.FirstCharacter
-                break;
-            case FB.FMList.MIME:
-                prop = "mime"
-                break;
-            case FB.FMList.SIZE:
-                prop = "size"
-                break;
-            case FB.FMList.DATE:
-                prop = "date"
-                break;
-            case FB.FMList.MODIFIED:
-                prop = "modified"
-                break;
+        case FB.FMList.LABEL:
+            prop = "label"
+            criteria = ViewSection.FirstCharacter
+            break;
+        case FB.FMList.MIME:
+            prop = "mime"
+            break;
+        case FB.FMList.SIZE:
+            prop = "size"
+            break;
+        case FB.FMList.DATE:
+            prop = "date"
+            break;
+        case FB.FMList.MODIFIED:
+            prop = "modified"
+            break;
         }
 
         if(!prop)
@@ -746,8 +746,8 @@ Maui.AltBrowser
         const arr = new Array(targetLength);
         const b = Array.apply(null, arr);
         const result = b.map((discard, n) => {
-            return (isReverse) ? n + end : n + start;
-        });
+                                 return (isReverse) ? n + end : n + start;
+                             });
 
         return (isReverse) ? result.reverse() : result;
     }

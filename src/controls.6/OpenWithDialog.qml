@@ -23,7 +23,6 @@ import QtQuick.Controls
 import org.mauikit.controls as Maui
 import org.mauikit.filebrowsing as FB
 
-
 /**
  * @inherit org::mauikit::control::PopupPage
  * A dialog with a list of services -that can handled the associated list of URLs.
