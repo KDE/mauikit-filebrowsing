@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-30 00:41+0000\n"
-"PO-Revision-Date: 2025-04-17 09:27+0200\n"
+"PO-Revision-Date: 2025-04-30 14:50+0200\n"
 "Last-Translator: Paolo Zamponi <feus73@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -388,7 +388,7 @@ msgstr "File"
 #: src/controls.6/FileBrowser.qml:573
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "Inserisci il nuovo nome del file."
 
 #: src/controls.6/FileBrowser.qml:579
 #, kde-format

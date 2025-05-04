@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-04-30 00:41+0000\n"
-"PO-Revision-Date: 2025-01-26 19:38+0100\n"
-"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
+"PO-Revision-Date: 2025-05-03 07:10+0200\n"
+"Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.1\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
@@ -384,7 +384,7 @@ msgstr "Ficheiro"
 #: src/controls.6/FileBrowser.qml:573
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "Escriba o novo nome do ficheiro."
 
 #: src/controls.6/FileBrowser.qml:579
 #, kde-format
@@ -518,12 +518,11 @@ msgid "Open with"
 msgstr "Abrir con"
 
 #: src/controls.6/OpenWithDialog.qml:108 src/controls.6/TagsDialog.qml:216
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " elementos"
-msgstr[1] " elementos"
+msgstr[0] "1 elemento"
+msgstr[1] "%1 elementos"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
