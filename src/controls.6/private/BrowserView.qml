@@ -84,6 +84,13 @@ Maui.AltBrowser
         filterCaseSensitivity: Qt.CaseInsensitive
     }
 
+    Keys.enabled: true
+    Keys.onPressed: (event) =>
+    {
+        control.keyPress(event)
+        event.accepted = false
+    }
+
     /**
      * @brief The current location path.
      * @see FMList::path
@@ -204,11 +211,6 @@ Maui.AltBrowser
     {
         target: control.currentView
         ignoreUnknownSignals: true
-
-        function onKeyPress(event)
-        {
-            control.keyPress(event)
-        }
 
         function onItemsSelected(indexes)
         {
