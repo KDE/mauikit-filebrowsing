@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-04-30 00:41+0000\n"
+"POT-Creation-Date: 2025-05-09 00:40+0000\n"
 "PO-Revision-Date: 2023-04-25 21:19+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
@@ -29,7 +29,7 @@ msgstr "Criar uma ligação aqui"
 msgid "This place seems to be empty"
 msgstr ""
 
-#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:753
+#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:748
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Almost ready!"
 msgstr ""
 
-#: src/code/fmlist.cpp:753
+#: src/code/fmlist.cpp:748
 #, kde-format
 msgid "No path to perform the search"
 msgstr ""
@@ -315,7 +315,7 @@ msgstr ""
 
 #: src/controls.6/FileBrowser.qml:466 src/controls.6/FileBrowser.qml:891
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:79
-#: src/controls.6/private/BrowserView.qml:367 src/controls.6/TagsDialog.qml:102
+#: src/controls.6/private/BrowserView.qml:369 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
 msgstr "Cancelar"
@@ -358,21 +358,21 @@ msgid "New name"
 msgstr "Novo nome"
 
 #: src/controls.6/FileBrowser.qml:839
-#: src/controls.6/private/BrowserView.qml:329
+#: src/controls.6/private/BrowserView.qml:331
 #, fuzzy, kde-format
 #| msgid "Copy here"
 msgid "Copy Here"
 msgstr "Copiar para aqui"
 
 #: src/controls.6/FileBrowser.qml:852
-#: src/controls.6/private/BrowserView.qml:341
+#: src/controls.6/private/BrowserView.qml:343
 #, fuzzy, kde-format
 #| msgid "Move here"
 msgid "Move Here"
 msgstr "Mover para aqui"
 
 #: src/controls.6/FileBrowser.qml:865
-#: src/controls.6/private/BrowserView.qml:353
+#: src/controls.6/private/BrowserView.qml:355
 #, fuzzy, kde-format
 #| msgid "Link here"
 msgid "Link Here"
@@ -509,39 +509,39 @@ msgstr "Esconder"
 msgid "Remove"
 msgstr "Remover"
 
-#: src/controls.6/private/BrowserView.qml:294
+#: src/controls.6/private/BrowserView.qml:296
 #, kde-format
 msgid "Directory already exists."
 msgstr "A pasta já existe."
 
-#: src/controls.6/private/BrowserView.qml:297
+#: src/controls.6/private/BrowserView.qml:299
 #, kde-format
 msgid "Looks good."
 msgstr "Parece estar bem."
 
-#: src/controls.6/private/BrowserView.qml:301
+#: src/controls.6/private/BrowserView.qml:303
 #, kde-format
 msgid "Merge %1 files"
 msgstr "Reunir os %1 ficheiros"
 
-#: src/controls.6/private/BrowserView.qml:302
+#: src/controls.6/private/BrowserView.qml:304
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
 msgstr "Atribui um nome à pasta nova onde serão reunidos todos os ficheiros."
 
-#: src/controls.6/private/BrowserView.qml:304
+#: src/controls.6/private/BrowserView.qml:306
 #, kde-format
 msgid "Directory name"
 msgstr "Nome da pasta"
 
-#: src/controls.6/private/BrowserView.qml:314
+#: src/controls.6/private/BrowserView.qml:316
 #, fuzzy, kde-format
 #| msgid "Merge here"
 msgid "Merge Here"
 msgstr "Reunir aqui"
 
-#: src/controls.6/private/BrowserView.qml:393
-#: src/controls.6/private/BrowserView.qml:563
+#: src/controls.6/private/BrowserView.qml:395
+#: src/controls.6/private/BrowserView.qml:565
 #, kde-format
 msgid " items"
 msgstr " itens"
