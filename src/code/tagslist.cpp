@@ -7,7 +7,7 @@ TagsList::TagsList(QObject *parent)
     : MauiList(parent)
     ,m_refreshTimer(new QTimer(this))
 {
-    m_refreshTimer->setInterval(1000);
+    m_refreshTimer->setInterval(100);
     m_refreshTimer->setSingleShot(true);
 
     connect(m_refreshTimer, &QTimer::timeout, this, &TagsList::setList);

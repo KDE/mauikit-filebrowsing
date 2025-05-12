@@ -94,7 +94,8 @@ Maui.ListBrowser
   {
     showCloseButton: control.showDeleteIcon
     Maui.Theme.textColor: control.Maui.Theme.textColor
-    
+    color: model.color
+
     ListView.onAdd:
     {
       control.flickable.positionViewAtEnd()
