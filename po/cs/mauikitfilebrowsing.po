@@ -573,12 +573,3 @@ msgstr ""
 #, kde-format
 msgid "No tags yet."
 msgstr ""
-
-#~ msgid "New folder"
-#~ msgstr "Nová složka"
-
-#~ msgid "New file"
-#~ msgstr "Nový soubor"
-
-#~ msgid "Rename"
-#~ msgstr "Přejmenovat"
