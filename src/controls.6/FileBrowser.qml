@@ -333,7 +333,7 @@ Maui.Page
      */
     signal urlsDropped(var urls)
 
-    headBar.forceCenterMiddleContent: isWide
+    headerMargins: Maui.Style.contentMargins
     headBar.visible: control.settings.searchBarVisible
     headBar.leftContent: Loader
     {

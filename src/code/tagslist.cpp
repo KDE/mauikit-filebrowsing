@@ -66,17 +66,11 @@ void TagsList::updateToUrls(const QStringList &tags) //if there is only one url 
     if (this->m_urls.isEmpty())
         return;
     
-    if(this->m_urls.size() == 1)
+    for (const auto &url : std::as_const(this->m_urls))
     {
-        Tagging::getInstance()->updateUrlTags(this->m_urls.first(), tags);
-    }else
-    {
-        for (const auto &url : std::as_const(this->m_urls))
+        for(const auto &tag : tags)
         {
-            for(const auto &tag : tags)
-            {
-                Tagging::getInstance()->tagUrl(url, tag);
-            }
+            Tagging::getInstance()->tagUrl(url, tag);
         }
     }
 }
@@ -158,16 +152,16 @@ QStringList TagsList::getTags() const
 
 QStringList TagsList::getNewTags() const
 {   
-   auto allTags = getTags();
-   auto existingTags = FMH::modelToList(getDBTags(), FMH::MODEL_KEY::TAG);
-   
-   QStringListIterator i(existingTags);
-   while(i.hasNext())
-   {
-       allTags.removeAll(i.next());
-   }
-   
-   return allTags;
+    auto allTags = getTags();
+    auto existingTags = FMH::modelToList(getDBTags(), FMH::MODEL_KEY::TAG);
+
+    QStringListIterator i(existingTags);
+    while(i.hasNext())
+    {
+        allTags.removeAll(i.next());
+    }
+
+    return allTags;
 }
 
 QStringList TagsList::getUrls() const
