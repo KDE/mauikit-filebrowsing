@@ -614,9 +614,3 @@ msgstr "Creeu etiquetes noves per a organitzar els vostres fitxers."
 #, kde-format
 msgid "No tags yet."
 msgstr "Encara sense etiquetes."
-
-#~ msgid "Tagging %1 files"
-#~ msgstr "S'etiqueten %1 fitxers"
-
-#~ msgid "Add new tags for the selected files."
-#~ msgstr "Afig etiquetes noves per als fitxers seleccionats."
