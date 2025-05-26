@@ -4,7 +4,7 @@
 #include <QQmlEngine>
 
 #include <MauiKit4/Core/mauilist.h>
-
+class Tagging;
 class QTimer;
 /**
  * @brief The TagsList class
@@ -46,6 +46,7 @@ class TagsList : public MauiList
 
 public:
     explicit TagsList(QObject *parent = nullptr);
+    ~TagsList();
 
     const FMH::MODEL_LIST &items() const override;
 
@@ -70,6 +71,7 @@ private:
     void append(const FMH::MODEL &tag);
     FMH::MODEL_LIST getDBTags() const;
     QTimer *m_refreshTimer;
+    Tagging *m_tagging;
 
 Q_SIGNALS:
     void strictChanged();

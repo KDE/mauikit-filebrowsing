@@ -38,6 +38,7 @@ FMList::FMList(QObject *parent)
     : MauiList(parent)
     , fm(new FM(this))
 {
+    m_tagging = Tagging::getInstance();
     qRegisterMetaType<FMList *>("const FMList*"); // this is needed for QML to know of FMList in the search method
     connect(this->fm, &FM::cloudServerContentReady, [this](FMStatic::PATH_CONTENT res) {
         if (this->path == res.path) {
@@ -117,7 +118,7 @@ FMList::FMList(QObject *parent)
         }
     });
 
-    connect(Tagging::getInstance(), &Tagging::urlTagged, [this](QString, QString tag)
+    connect(m_tagging, &Tagging::urlTagged, [this](QString, QString tag)
     {
         if(this->getPathType() == FMList::PATHTYPE::TAGS_PATH)
         {
@@ -129,7 +130,7 @@ FMList::FMList(QObject *parent)
         }
     });
 
-    connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap)
+    connect(m_tagging, &Tagging::tagged, [this](QVariantMap)
     {
         if(this->pathType == PATHTYPE::TAGS_PATH)
         {
@@ -137,13 +138,19 @@ FMList::FMList(QObject *parent)
         }
     });
 
-    connect(Tagging::getInstance(), &Tagging::tagRemoved, [this](QString)
+    connect(m_tagging, &Tagging::tagRemoved, [this](QString)
     {
         if(this->pathType == PATHTYPE::TAGS_PATH)
         {
             this->refresh();
         }
     });
+}
+
+FMList::~FMList()
+{
+    m_tagging->disconnect();
+    m_tagging = nullptr;
 }
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
@@ -175,10 +182,10 @@ void FMList::clear()
 FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &filters)
 {
     if (tag.isEmpty()) {
-        return Tagging::getInstance()->getTags();
+        return m_tagging->getTags();
     } else {
         FMH::MODEL_LIST content;
-        const auto urls = Tagging::getInstance()->getTagUrls(tag, filters, false);
+        const auto urls = m_tagging->getTagUrls(tag, filters, false);
         for (const auto &url : urls) {
             content << FMStatic::getFileInfoModel(url);
         }

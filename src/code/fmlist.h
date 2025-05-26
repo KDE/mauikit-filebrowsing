@@ -29,7 +29,7 @@
 #include "fmstatic.h"
 
 class FM;
-
+class Tagging;
 /**
  * @brief Represents the status of a directory listing, be it non existence location, loading or empty.
  *
@@ -361,6 +361,7 @@ public:
      * @param parent
      */
     FMList(QObject *parent = nullptr);
+    ~FMList();
 
     /**
      * @brief items
@@ -418,6 +419,8 @@ public:
 
 private:
     FM *fm;
+    Tagging *m_tagging;
+
     void clear();
     void reset();
     void setList();
