@@ -510,7 +510,7 @@ Maui.Page
         Maui.InputDialog
         {
             id: _newDialog
-onClosed: destroy()
+            onClosed: destroy()
             // title: _newDirOp.checked ? i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
             message: i18nd("mauikitfilebrowsing", "Create a new folder or a file with a custom name.")
 
@@ -518,18 +518,18 @@ onClosed: destroy()
             template.iconVisible: true
 
             onFinished: (text) =>
-            {
-                if(_newDirOp.checked)
-                {
-                    control.currentFMList.createDir(text)
-                    return
-                }
-                if(_newFileOp.checked)
-                {
-                    control.currentFMList.createFile(text)
-                    return
-                }
-            }
+                        {
+                            if(_newDirOp.checked)
+                            {
+                                control.currentFMList.createDir(text)
+                                return
+                            }
+                            if(_newFileOp.checked)
+                            {
+                                control.currentFMList.createFile(text)
+                                return
+                            }
+                        }
 
             textEntry.placeholderText: i18nd("mauikitfilebrowsing", "Name")
 
@@ -568,7 +568,7 @@ onClosed: destroy()
             id: _renameDialog
 
             property var item : ({})
-onClosed: destroy()
+            onClosed: destroy()
             // title: i18nd("mauikitfilebrowsing", "Rename")
             message: i18nd("mauikitfilebrowsing", "Enter the new name for the file.")
 
@@ -817,13 +817,13 @@ onClosed: destroy()
             if(control.isSearchView)
                 return
 
-                if(!Maui.Handy.isMobile && mouse.button === Qt.RightButton)
-                {
-                    control.rightClicked()
-                }
+            if(!Maui.Handy.isMobile && mouse.button === Qt.RightButton)
+            {
+                control.rightClicked()
+            }
 
-                control.areaClicked(mouse)
-                control.currentView.forceActiveFocus()
+            control.areaClicked(mouse)
+            control.currentView.forceActiveFocus()
         }
     }
 
@@ -898,6 +898,7 @@ onClosed: destroy()
     {
         id: _stackView
         anchors.fill: parent
+        background: null
 
         initialItem: DropArea
         {
@@ -911,14 +912,14 @@ onClosed: destroy()
             readonly property alias title : _browser.title
 
             onDropped: (drop) =>
-            {
-                if(drop.hasUrls)
-                {
-                    _dropMenu.urls = drop.urls.join(",")
-                    _dropMenu.show()
-                    control.urlsDropped(drop.urls)
-                }
-            }
+                       {
+                           if(drop.hasUrls)
+                           {
+                               _dropMenu.urls = drop.urls.join(",")
+                               _dropMenu.show()
+                               control.urlsDropped(drop.urls)
+                           }
+                       }
 
             opacity:  _dropArea.containsDrag ? 0.5 : 1
 
@@ -926,6 +927,7 @@ onClosed: destroy()
             {
                 id: _browser
                 anchors.fill: parent
+                background: null
 
                 Binding on currentIndex
                 {
@@ -972,6 +974,7 @@ onClosed: destroy()
                     value: control.currentIndex
                     restoreMode: Binding.RestoreBindingOrValue
                 }
+                background: null
 
                 objectName: "searchView"
                 gridItemSize: control.gridItemSize
@@ -983,7 +986,6 @@ onClosed: destroy()
                 settings.showHiddenFiles: control.settings.showHiddenFiles
                 settings.group: control.settings.group
                 settings.foldersFirst: control.settings.foldersFirst
-
             }
         }
     }
@@ -1016,12 +1018,12 @@ onClosed: destroy()
         if(control.readOnly)
             return
 
-            if(urls.length <= 0)
-            {
-                return
-            }
+        if(urls.length <= 0)
+        {
+            return
+        }
 
-            Maui.Handy.copyToClipboard({"urls": urls}, true)
+        Maui.Handy.copyToClipboard({"urls": urls}, true)
     }
 
     /**
@@ -1059,38 +1061,38 @@ onClosed: destroy()
 
         switch(control.currentFMList.pathType)
         {
-            case FB.FMList.CLOUD_PATH: //TODO deprecrated and needs to be removed or clean up for 1.1
-                if(item.isdir === "true")
+        case FB.FMList.CLOUD_PATH: //TODO deprecrated and needs to be removed or clean up for 1.1
+            if(item.isdir === "true")
+            {
+                control.openFolder(path)
+            }
+            else
+            {
+                FB.FM.openCloudItem(item)
+            }
+            break;
+        default:
+            if(control.selectionMode && item.isdir == "false")
+            {
+                if(control.selectionBar && control.selectionBar.contains(item.path))
+                {
+                    control.selectionBar.removeAtPath(item.path)
+                }else
+                {
+                    control.addToSelection(item)
+                }
+            }
+            else
+            {
+                if(item.isdir == "true")
                 {
                     control.openFolder(path)
                 }
                 else
                 {
-                    FB.FM.openCloudItem(item)
+                    control.openFile(path)
                 }
-                break;
-            default:
-                if(control.selectionMode && item.isdir == "false")
-                {
-                    if(control.selectionBar && control.selectionBar.contains(item.path))
-                    {
-                        control.selectionBar.removeAtPath(item.path)
-                    }else
-                    {
-                        control.addToSelection(item)
-                    }
-                }
-                else
-                {
-                    if(item.isdir == "true")
-                    {
-                        control.openFolder(path)
-                    }
-                    else
-                    {
-                        control.openFile(path)
-                    }
-                }
+            }
         }
     }
 
@@ -1153,7 +1155,7 @@ onClosed: destroy()
     function nextItem()
     {
         if(_browser.viewType === Maui.AltBrowser.ViewType.List)
-        _browser.currentView.flickable.incrementCurrentIndex()
+            _browser.currentView.flickable.incrementCurrentIndex()
         else
             _browser.currentView.flickable.moveCurrentIndexRight()
 
@@ -1166,8 +1168,8 @@ onClosed: destroy()
     {
         if(_browser.viewType === Maui.AltBrowser.ViewType.List)
             _browser.currentView.flickable.decrementCurrentIndex()
-            else
-                _browser.currentView.flickable.moveCurrentIndexLeft()
+        else
+            _browser.currentView.flickable.moveCurrentIndexLeft()
     }
 
     /**
