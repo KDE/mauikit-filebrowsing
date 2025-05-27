@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-05-09 00:40+0000\n"
+"POT-Creation-Date: 2025-05-27 00:40+0000\n"
 "PO-Revision-Date: 2025-05-03 07:10+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -17,38 +17,38 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.04.0\n"
 
-#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
+#: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
 msgid "Nothing here!"
 msgstr "Aquí non hai nada."
 
-#: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
+#: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
 msgid "This place seems to be empty"
 msgstr "Este lugar parece estar baleiro."
 
-#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:748
+#: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221 src/code/fmlist.cpp:755
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
 msgstr "Erro"
 
-#: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214
+#: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221
 #, kde-format
 msgid "This URL cannot be listed"
 msgstr "Este URL non pode listarse."
 
-#: src/code/fmlist.cpp:348
+#: src/code/fmlist.cpp:355
 #, kde-format
 msgid "Loading content"
 msgstr "Cargando o contido"
 
-#: src/code/fmlist.cpp:348
+#: src/code/fmlist.cpp:355
 #, kde-format
 msgid "Almost ready!"
 msgstr "Xa case está!"
 
-#: src/code/fmlist.cpp:748
+#: src/code/fmlist.cpp:755
 #, kde-format
 msgid "No path to perform the search"
 msgstr "Non hai unha ruta na que realizar a busca"
@@ -414,7 +414,7 @@ msgstr "Ligar aquí"
 msgid "Open Here"
 msgstr "Abrir aquí"
 
-#: src/controls.6/FileBrowser.qml:1286
+#: src/controls.6/FileBrowser.qml:1288
 #, kde-format
 msgid "Search: %1"
 msgstr "Buscar: %1"
