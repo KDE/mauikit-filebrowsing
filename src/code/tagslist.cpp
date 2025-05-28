@@ -5,33 +5,73 @@
 
 TagsList::TagsList(QObject *parent)
     : MauiList(parent)
-    ,m_refreshTimer(new QTimer(this))
+    , m_refreshTimer(new QTimer(this))
 {
-    m_refreshTimer->setInterval(1000);
+    m_refreshTimer->setInterval(100);
     m_refreshTimer->setSingleShot(true);
 
     connect(m_refreshTimer, &QTimer::timeout, this, &TagsList::setList);
+
+    m_tagging = Tagging::getInstance();
+    connect(m_tagging, &Tagging::tagged, [this](QVariantMap)
+            {
+                if(this->m_urls.isEmpty())
+                {
+                    this->refresh();
+                }
+            });
+
+    connect(m_tagging, &Tagging::tagRemoved, this, &TagsList::refresh);
+
+    connect(m_tagging, &Tagging::urlTagged, [this](QString url, QString)
+            {
+                qDebug() << "Tagging url tagged" << url << m_urls.isDetached() << this;
+
+                if(this->m_urls.contains(url))
+                    this->refresh();
+            });
+
+    connect(m_tagging, &Tagging::urlTagRemoved, [this](QString, QString url)
+            {
+                if(this->m_urls.contains(url))
+                    this->refresh();
+            });
+
+    connect(this, &TagsList::urlsChanged, this, &TagsList::setList);
+    connect(this, &TagsList::strictChanged, this, &TagsList::setList);
+}
+
+TagsList::~TagsList()
+{
+    qDebug() << "Deleting single tagging instance" << this;
+    m_tagging->disconnect();
+    m_tagging = nullptr;
 }
 
 void TagsList::setList()
 {
     Q_EMIT this->preListChanged();
     this->list.clear();
-
-    if (this->m_urls.isEmpty())
-    {
-        this->list = FMH::toModelList(Tagging::getInstance()->getAllTags(this->strict));
-        
-    }else
-    {
-        this->list = std::accumulate(this->m_urls.constBegin(), this->m_urls.constEnd(), FMH::MODEL_LIST(), [this](FMH::MODEL_LIST &list, const QString &url) {
-            list << FMH::toModelList(Tagging::getInstance()->getUrlTags(url, this->strict));
-            return list;
-        });
-    }
+    this->list = getDBTags();
     
     Q_EMIT this->tagsChanged();
     Q_EMIT this->postListChanged();
+}
+
+FMH::MODEL_LIST TagsList::getDBTags() const
+{
+    
+    if (this->m_urls.isEmpty())
+    {
+        return FMH::toModelList(m_tagging->getAllTags(this->strict));
+        
+    }else
+    {
+        return std::accumulate(this->m_urls.constBegin(), this->m_urls.constEnd(), FMH::MODEL_LIST(), [this](FMH::MODEL_LIST &list, const QString &url) {
+            list << FMH::toModelList(m_tagging->getUrlTags(url, this->strict));
+            return list;
+        });
+    }
 }
 
 void TagsList::refresh()
@@ -41,7 +81,7 @@ void TagsList::refresh()
 
 bool TagsList::insert(const QString &tag)
 {
-    if (Tagging::getInstance()->tag(tag.trimmed()))
+    if (m_tagging->tag(tag.trimmed()))
         return true;
 
     return false;
@@ -53,7 +93,7 @@ void TagsList::insertToUrls(const QString &tag)
         return;
 
     for (const auto &url : std::as_const(this->m_urls))
-        Tagging::getInstance()->tagUrl(url, tag);
+        m_tagging->tagUrl(url, tag);
 }
 
 void TagsList::updateToUrls(const QStringList &tags) //if there is only one url update the tags if there are more than one url then add the new tags
@@ -61,17 +101,11 @@ void TagsList::updateToUrls(const QStringList &tags) //if there is only one url 
     if (this->m_urls.isEmpty())
         return;
     
-    if(this->m_urls.size() == 1)
+    for (const auto &url : std::as_const(this->m_urls))
     {
-        Tagging::getInstance()->updateUrlTags(this->m_urls.first(), tags);
-    }else
-    {
-        for (const auto &url : std::as_const(this->m_urls))
+        for(const auto &tag : tags)
         {
-            for(const auto &tag : tags)
-            {
-                Tagging::getInstance()->tagUrl(url, tag);
-            }
+            m_tagging->tagUrl(url, tag);
         }
     }
 }
@@ -88,7 +122,7 @@ void TagsList::removeFromUrls(const int &index)
 
     for (const auto &url : std::as_const(m_urls))
     {
-        Tagging::getInstance()->removeUrlTag(url, tag);
+        m_tagging->removeUrlTag(url, tag);
     }
 
     this->remove(index);
@@ -118,7 +152,7 @@ void TagsList::removeFrom(const int &index, const QString &url)
     if (index >= this->list.size() || index < 0)
         return;
 
-    if (Tagging::getInstance()->removeUrlTag(url, this->list[index][FMH::MODEL_KEY::TAG]))
+    if (m_tagging->removeUrlTag(url, this->list[index][FMH::MODEL_KEY::TAG]))
         this->remove(index);
 }
 
@@ -149,6 +183,20 @@ void TagsList::setStrict(const bool &value)
 QStringList TagsList::getTags() const
 {   
     return FMH::modelToList(this->list, FMH::MODEL_KEY::TAG);
+}
+
+QStringList TagsList::getNewTags() const
+{   
+    auto allTags = getTags();
+    auto existingTags = FMH::modelToList(getDBTags(), FMH::MODEL_KEY::TAG);
+
+    QStringListIterator i(existingTags);
+    while(i.hasNext())
+    {
+        allTags.removeAll(i.next());
+    }
+
+    return allTags;
 }
 
 QStringList TagsList::getUrls() const
@@ -201,31 +249,5 @@ bool TagsList::contains(const QString &tag)
 
 void TagsList::componentComplete()
 {
-    connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap)
-            {
-                if(this->m_urls.isEmpty())
-                {
-                    this->refresh();
-                }
-            });
-
-    connect(Tagging::getInstance(), &Tagging::tagRemoved, this, &TagsList::refresh);
-
-
-    connect(Tagging::getInstance(), &Tagging::urlTagged, [this](QString url, QString)
-            {
-                if(m_urls.contains(url))
-                    this->refresh();
-            });
-
-    connect(Tagging::getInstance(), &Tagging::urlTagRemoved, [this](QString, QString url)
-            {
-                if(m_urls.contains(url))
-                    this->refresh();
-            });
-    
-    connect(this, &TagsList::urlsChanged, this, &TagsList::setList);
-    connect(this, &TagsList::strictChanged, this, &TagsList::setList);
-
     this->setList();
 }

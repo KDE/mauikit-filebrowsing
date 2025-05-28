@@ -4,7 +4,7 @@
 #include <QQmlEngine>
 
 #include <MauiKit4/Core/mauilist.h>
-
+class Tagging;
 class QTimer;
 /**
  * @brief The TagsList class
@@ -34,12 +34,19 @@ class TagsList : public MauiList
     Q_PROPERTY(QStringList urls READ getUrls WRITE setUrls NOTIFY urlsChanged)
     
     /**
-     * The resulting list of tag names that were found.
+     * The resulting list of tag names that were found. Or compossed, some existing tags might still not be added permanently.
      */
     Q_PROPERTY(QStringList tags READ getTags NOTIFY tagsChanged)
+    
+    /**
+     * The list of tags that are still not written to the urls, and are pending to be saved
+     */
+    Q_PROPERTY(QStringList newTags READ getNewTags NOTIFY tagsChanged)
+    
 
 public:
     explicit TagsList(QObject *parent = nullptr);
+    ~TagsList();
 
     const FMH::MODEL_LIST &items() const override;
 
@@ -50,6 +57,7 @@ public:
     void setUrls(const QStringList &value);
 
     QStringList getTags() const;
+    QStringList getNewTags() const;
 
     void componentComplete() override final;
 
@@ -61,8 +69,9 @@ private:
     QStringList m_urls;
 
     void append(const FMH::MODEL &tag);
-
+    FMH::MODEL_LIST getDBTags() const;
     QTimer *m_refreshTimer;
+    Tagging *m_tagging;
 
 Q_SIGNALS:
     void strictChanged();

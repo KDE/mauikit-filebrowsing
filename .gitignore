@@ -51,6 +51,7 @@ CMakeLists.txt.user*
 
 # build folders and output
 build/
+build.4/
 build.5/
 build.6/
 

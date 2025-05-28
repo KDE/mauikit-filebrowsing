@@ -27,10 +27,10 @@ import org.mauikit.controls as Maui
 import org.mauikit.filebrowsing as FB
 
 /**
- * @inherit org::mauikit::controls::PopupPage 
- * 
+ * @inherit org::mauikit::controls::PopupPage
+ *
  * @brief A dialog to quickly select files for opening or saving.
- * 
+ *
  * This controls inherits from MauiKit PopupPage, to checkout its inherited properties refer to the docs.
  * @see MauiKit::PopupPage
  *
@@ -40,20 +40,20 @@ import org.mauikit.filebrowsing as FB
  *
  * The file dialog allows to have multiple or single selection,
  * and filtering content specific to a file type or arbitrary name filters.
- * 
+ *
  * @image html filedialog.png
- * 
+ *
  * @code
  * Maui.Page
  *    {
  *        Maui.Controls.showCSD: true
  *        anchors.fill: parent
- *        
+ *
  *        Column
  *        {
  *            width: 100
- *            anchors.centerIn: parent            
- *            
+ *            anchors.centerIn: parent
+ *
  *            Button
  *            {
  *                text: "Open"
@@ -68,7 +68,7 @@ import org.mauikit.filebrowsing as FB
  *                    _dialog.open()
  *                }
  *            }
- *            
+ *
  *            Button
  *            {
  *                text: "Save"
@@ -83,14 +83,14 @@ import org.mauikit.filebrowsing as FB
  *                    _dialog.open()
  *                }
  *            }
- *            
+ *
  *            Text
  *            {
  *                id: _text
- *            }            
+ *            }
  *        }
  *    }
- *    
+ *
  *    FB.FileDialog
  *    {
  *        id: _dialog
@@ -143,7 +143,7 @@ Maui.PopupPage
      * By default this is set to empty string
      */
     property string suggestedFileName : ""
-       
+
     /**
      * @brief Show the search bar to enter a search query.
      */
@@ -167,7 +167,7 @@ Maui.PopupPage
     }
     
     /**
-     * @brief The current mode in use. 
+     * @brief The current mode in use.
      * By default this is set to `FileDialog.Modes.Open`
      * @see Modes
      */
@@ -199,7 +199,7 @@ Maui.PopupPage
     signal finished(var urls)
     
     actions:
-    [
+        [
         Action
         {
             text: i18nd("mauikitfilebrowsing", "Cancel")
@@ -215,14 +215,14 @@ Maui.PopupPage
                 console.log("CURRENT PATHb", _browser.currentPath+"/"+textField.text)
                 if(control.mode === FileDialog.Modes.Save && textField.text.length === 0)
                     return
-                    
-                    if(control.mode === FileDialog.Modes.Save && FB.FM.fileExists(_browser.currentPath+"/"+textField.text))
-                    {
-                        _confirmationDialog.open()
-                    }else
-                    {
-                        done()
-                    }
+
+                if(control.mode === FileDialog.Modes.Save && FB.FM.fileExists(_browser.currentPath+"/"+textField.text))
+                {
+                    _confirmationDialog.open()
+                }else
+                {
+                    done()
+                }
             }
         }
     ]
@@ -277,10 +277,10 @@ Maui.PopupPage
             sourceComponent: FB.PlacesListBrowser
             {
                 onPlaceClicked: (path) =>
-                {
-                    //pageRow.currentIndex = 1
-                    _browser.openFolder(path)
-                }
+                                {
+                                    //pageRow.currentIndex = 1
+                                    _browser.openFolder(path)
+                                }
                 
                 currentPath: _browser.currentPath
                 
@@ -484,38 +484,38 @@ Maui.PopupPage
             ]
             
             headBar.leftContent: Loader
+            {
+                asynchronous: true
+                sourceComponent: Maui.ToolActions
                 {
-                    asynchronous: true
-                    sourceComponent: Maui.ToolActions
+                    expanded: true
+                    autoExclusive: false
+                    checkable: false
+
+                    Action
                     {
-                        expanded: true
-                        autoExclusive: false
-                        checkable: false
+                        icon.name: "go-previous"
+                        onTriggered : browser.goBack()
+                    }
 
-                        Action
-                        {
-                            icon.name: "go-previous"
-                            onTriggered : browser.goBack()
-                        }
+                    Action
+                    {
+                        icon.name: "go-up"
+                        onTriggered : browser.goUp()
+                    }
 
-                        Action
-                        {
-                            icon.name: "go-up"
-                            onTriggered : browser.goUp()
-                        }
-
-                        Action
-                        {
-                            icon.name: "go-next"
-                            onTriggered: browser.goNext()
-                        }
+                    Action
+                    {
+                        icon.name: "go-next"
+                        onTriggered: browser.goNext()
                     }
                 }
+            }
             
             footer: Maui.SelectionBar
             {
                 id: _selectionBar
-                
+                visible: count > 0
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: Math.min(parent.width-(Maui.Style.space.medium*2), implicitWidth)
                 maxListHeight: control.height - (Maui.Style.contentMargins*2)
@@ -545,20 +545,20 @@ Maui.PopupPage
                 currentPath: FB.FM.homePath()
                 selectionMode: control.mode === FileDialog.Modes.Open
                 onItemClicked: (index) =>
-                {
-                    if(Maui.Handy.singleClick)
-                    {
-                        performAction(index)
-                    }
-                }
+                               {
+                                   if(Maui.Handy.singleClick)
+                                   {
+                                       performAction(index)
+                                   }
+                               }
                 
                 onItemDoubleClicked: (index) =>
-                {
-                    if(!Maui.Handy.singleClick)
-                    {
-                        performAction(index)
-                    }
-                }
+                                     {
+                                         if(!Maui.Handy.singleClick)
+                                         {
+                                             performAction(index)
+                                         }
+                                     }
                 
                 function performAction(index)
                 {
@@ -569,13 +569,13 @@ Maui.PopupPage
                     
                     switch(control.mode)
                     {
-                        case FileDialog.Modes.Open :
-                            addToSelection(currentFMModel.get(index))
-                            break;
-                            
-                        case FileDialog.Modes.Save:
-                            textField.text = currentFMModel.get(index).label
-                            break;
+                    case FileDialog.Modes.Open :
+                        addToSelection(currentFMModel.get(index))
+                        break;
+
+                    case FileDialog.Modes.Save:
+                        textField.text = currentFMModel.get(index).label
+                        break;
                     }
                 }
             }
@@ -592,7 +592,7 @@ Maui.PopupPage
      */
     function done()
     {
-        var paths = _browser.selectionBar && _browser.selectionBar.visible ? _browser.selectionBar.uris : [_browser.currentPath]
+        var paths = selectionBar.count > 0 ? _browser.selectionBar.uris : [_browser.currentPath]
         
         if(control.mode === FileDialog.Modes.Save)
         {

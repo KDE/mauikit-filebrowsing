@@ -8,7 +8,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/utils
     ${CMAKE_CURRENT_SOURCE_DIR}/code/libwebdavclient/lib/dto)
 
-add_library(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SHARED)
+add_library(MauiKitFileBrowsing${MAUI_MAJOR_VERSION})
 
 ecm_add_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     VERSION 1.3
@@ -59,28 +59,6 @@ set(syncing_HDRS
 
 qt_add_resources(filebrowsing_QML_QRC assets.qrc) #Maybe it is needed by Android?
 
-ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SOURCES
-
-    controls.${QT_MAJOR_VERSION}/FileBrowser.qml
-    controls.${QT_MAJOR_VERSION}/OpenWithDialog.qml
-    controls.${QT_MAJOR_VERSION}/FavButton.qml
-    controls.${QT_MAJOR_VERSION}/FileDialog.qml
-    controls.${QT_MAJOR_VERSION}/FileListingDialog.qml
-    controls.${QT_MAJOR_VERSION}/NewTagDialog.qml
-    controls.${QT_MAJOR_VERSION}/PlacesListBrowser.qml
-    controls.${QT_MAJOR_VERSION}/TagsDialog.qml
-    controls.${QT_MAJOR_VERSION}/TagsBar.qml)
-
-ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PATH private SOURCES
-
-    controls.${QT_MAJOR_VERSION}/private/BrowserHolder.qml
-    controls.${QT_MAJOR_VERSION}/private/BrowserSettings.qml
-
-    controls.${QT_MAJOR_VERSION}/private/BrowserView.qml
-
-    controls.${QT_MAJOR_VERSION}/private/TagDelegate.qml
-    controls.${QT_MAJOR_VERSION}/private/TagList.qml)
-
 target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
     PRIVATE
     code/fm.cpp
@@ -126,15 +104,29 @@ target_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
 
     code/openwithmodel.cpp
     code/openwithmodel.h
-
     ${filebrowsing_QML_QRC})
 
-generate_export_header(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} BASE_NAME FileBrowsing)
+ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} SOURCES
 
-target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
-    INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit${MAUI_MAJOR_VERSION}/FileBrowsing>")
+    controls.${QT_MAJOR_VERSION}/FileBrowser.qml
+    controls.${QT_MAJOR_VERSION}/OpenWithDialog.qml
+    controls.${QT_MAJOR_VERSION}/FavButton.qml
+    controls.${QT_MAJOR_VERSION}/FileDialog.qml
+    controls.${QT_MAJOR_VERSION}/FileListingDialog.qml
+    controls.${QT_MAJOR_VERSION}/NewTagDialog.qml
+    controls.${QT_MAJOR_VERSION}/PlacesListBrowser.qml
+    controls.${QT_MAJOR_VERSION}/TagsDialog.qml
+    controls.${QT_MAJOR_VERSION}/TagsBar.qml)
 
-target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
+ecm_target_qml_sources(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PATH private SOURCES
+
+    controls.${QT_MAJOR_VERSION}/private/BrowserHolder.qml
+    controls.${QT_MAJOR_VERSION}/private/BrowserSettings.qml
+
+    controls.${QT_MAJOR_VERSION}/private/BrowserView.qml
+
+    controls.${QT_MAJOR_VERSION}/private/TagDelegate.qml
+    controls.${QT_MAJOR_VERSION}/private/TagList.qml)
 
 if(${KIO_AVAILABLE})
     target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
@@ -178,7 +170,13 @@ target_link_libraries(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}plugin
 
 ecm_finalize_qml_module(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} DESTINATION ${KDE_INSTALL_QMLDIR})
 
+generate_export_header(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} BASE_NAME FileBrowsing)
 install(TARGETS MauiKitFileBrowsing${MAUI_MAJOR_VERSION} EXPORT MauiKitFileBrowsing${MAUI_MAJOR_VERSION}Targets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+
+target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION}
+    INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/MauiKit${MAUI_MAJOR_VERSION}/FileBrowsing>")
+
+target_include_directories(MauiKitFileBrowsing${MAUI_MAJOR_VERSION} PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR};>")
 
 install(FILES
     ${headers}

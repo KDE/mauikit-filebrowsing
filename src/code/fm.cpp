@@ -237,7 +237,7 @@ FM::FM(QObject *parent)
         qDebug() << "PATH CONTENT READY" << url;
         Q_EMIT this->pathContentReady(url);
     });
-    
+
     connect(dirLister, static_cast<void (KCoreDirLister::*)(const QUrl &)>(&KCoreDirLister::listingDirCanceled), this, [&](QUrl url) {
         qDebug() << "PATH CONTENT READY" << url;
         Q_EMIT this->pathContentReady(url);
@@ -285,7 +285,7 @@ FM::FM(QObject *parent)
     connect(dirLister, &QDirLister::refreshItems, this, [&](QVector<QPair<FMH::MODEL, FMH::MODEL>> items, QUrl) {
         qDebug() << "ITEMS WERE REFRESHED";
         Q_EMIT this->pathContentItemsChanged(items);
-    }); 
+    });
 
     connect(dirLister, &QDirLister::itemsAdded, this, [&](FMH::MODEL_LIST items, QUrl url) {
         qDebug() << "MORE ITEMS WERE ADDED";
@@ -357,7 +357,7 @@ void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDi
     this->dirLister->setNameFilter(filters.join(QStringLiteral(" ")));
 
 #ifdef KIO_AVAILABLE
-    this->dirLister->emitChanges ( );
+    // this->dirLister->emitChanges ( );
 #endif
     if (this->dirLister->openUrl(path))
         qDebug() << "GETTING PATH CONTENT" << path;
@@ -366,9 +366,9 @@ void FM::getPathContent(const QUrl &path, const bool &hidden, const bool &onlyDi
 bool FM::getCloudServerContent(const QUrl &path, const QStringList &filters, const int &depth)
 {
     Q_UNUSED(path)
-    Q_UNUSED(filters)    
-    Q_UNUSED(depth)    
-    
+    Q_UNUSED(filters)
+    Q_UNUSED(depth)
+
 #ifdef COMPONENT_SYNCING
     const auto __list = path.toString().replace("cloud:///", "/").split("/");
 
@@ -401,7 +401,7 @@ void FM::createCloudDir(const QString &path, const QString &name)
 {
     Q_UNUSED(path)
     Q_UNUSED(name)
-    
+
 #ifdef COMPONENT_SYNCING
     this->sync->createDir(path, name);
 #endif
@@ -410,7 +410,7 @@ void FM::createCloudDir(const QString &path, const QString &name)
 void FM::openCloudItem(const QVariantMap &item)
 {
     Q_UNUSED(item)
-    
+
 #ifdef COMPONENT_SYNCING
     this->sync->resolveFile(FMH::toModel(item), Syncing::SIGNAL_TYPE::OPEN);
 #endif
@@ -418,7 +418,7 @@ void FM::openCloudItem(const QVariantMap &item)
 
 void FM::getCloudItem(const QVariantMap &item)
 {
-    Q_UNUSED(item)    
+    Q_UNUSED(item)
 #ifdef COMPONENT_SYNCING
     this->sync->resolveFile(FMH::toModel(item), Syncing::SIGNAL_TYPE::DOWNLOAD);
 #endif

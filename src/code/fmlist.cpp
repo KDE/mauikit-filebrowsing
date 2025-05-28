@@ -38,6 +38,7 @@ FMList::FMList(QObject *parent)
     : MauiList(parent)
     , fm(new FM(this))
 {
+    m_tagging = Tagging::getInstance();
     qRegisterMetaType<FMList *>("const FMList*"); // this is needed for QML to know of FMList in the search method
     connect(this->fm, &FM::cloudServerContentReady, [this](FMStatic::PATH_CONTENT res) {
         if (this->path == res.path) {
@@ -53,8 +54,10 @@ FMList::FMList(QObject *parent)
         Q_EMIT this->countChanged();
     });
 
-    connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res) {
-        for (const auto &item : std::as_const(res)) {
+    connect(this->fm, &FM::pathContentItemsChanged, [this](QVector<QPair<FMH::MODEL, FMH::MODEL>> res)
+    {
+        for (const auto &item : std::as_const(res))
+        {
             const auto index = this->indexOf(FMH::MODEL_KEY::PATH, item.first[FMH::MODEL_KEY::PATH]);
 
             if (index >= this->list.size() || index < 0)
@@ -114,8 +117,8 @@ FMList::FMList(QObject *parent)
             Q_EMIT this->countChanged();
         }
     });
-    
-    connect(Tagging::getInstance(), &Tagging::urlTagged, [this](QString, QString tag)
+
+    connect(m_tagging, &Tagging::urlTagged, [this](QString, QString tag)
     {
         if(this->getPathType() == FMList::PATHTYPE::TAGS_PATH)
         {
@@ -126,22 +129,28 @@ FMList::FMList(QObject *parent)
             }
         }
     });
-    
-    connect(Tagging::getInstance(), &Tagging::tagged, [this](QVariantMap)
+
+    connect(m_tagging, &Tagging::tagged, [this](QVariantMap)
     {
         if(this->pathType == PATHTYPE::TAGS_PATH)
         {
             this->refresh();
         }
     });
-    
-    connect(Tagging::getInstance(), &Tagging::tagRemoved, [this](QString)
+
+    connect(m_tagging, &Tagging::tagRemoved, [this](QString)
     {
         if(this->pathType == PATHTYPE::TAGS_PATH)
         {
             this->refresh();
         }
     });
+}
+
+FMList::~FMList()
+{
+    m_tagging->disconnect();
+    m_tagging = nullptr;
 }
 
 void FMList::assignList(const FMH::MODEL_LIST &list)
@@ -171,16 +180,16 @@ void FMList::clear()
 }
 
 FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &filters)
-{   
+{
     if (tag.isEmpty()) {
-        return Tagging::getInstance()->getTags();
+        return m_tagging->getTags();
     } else {
         FMH::MODEL_LIST content;
-        const auto urls = Tagging::getInstance()->getTagUrls(tag, filters, false);
+        const auto urls = m_tagging->getTagUrls(tag, filters, false);
         for (const auto &url : urls) {
             content << FMStatic::getFileInfoModel(url);
         }
-        
+
         return content;
     }
 }
@@ -188,12 +197,12 @@ FMH::MODEL_LIST FMList::getTagContent(const QString &tag, const QStringList &fil
 void FMList::setList()
 {
     qDebug() << "PATHTYPE FOR URL" << pathType << this->path.toString() << this->filters << this;
-    
+
     if(this->path.isEmpty() || !m_autoLoad)
     {
         return;
     }
-    
+
     this->clear();
 
     switch (this->pathType)
@@ -223,7 +232,7 @@ void FMList::setMergeFilters(bool value)
 {
     if(value == m_mergeFilters)
         return;
-    
+
     m_mergeFilters = value;
     Q_EMIT mergeFiltersChanged();
 }
@@ -261,7 +270,7 @@ void FMList::sortList()
 {
     const FMH::MODEL_KEY key = static_cast<FMH::MODEL_KEY>(this->sort);
     auto it = this->list.begin();
-    
+
     const auto sortFunc = [key](const FMH::MODEL &e1, const FMH::MODEL &e2) -> bool
     {
         switch (key) {
@@ -270,7 +279,7 @@ void FMList::sortList()
                 return true;
             break;
         }
-            
+
         case FMH::MODEL_KEY::ADDDATE:
         case FMH::MODEL_KEY::MODIFIED:
         case FMH::MODEL_KEY::DATE: {
@@ -284,7 +293,7 @@ void FMList::sortList()
 
             break;
         }
-            
+
         case FMH::MODEL_KEY::MIME:
         case FMH::MODEL_KEY::LABEL: {
             const auto str1 = QString(e1[key]).toLower();
@@ -294,17 +303,17 @@ void FMList::sortList()
                 return true;
             break;
         }
-            
+
         default:
             if (e1[key] < e2[key])
                 return true;
         }
-        
+
         return false;
     };
 
     if (this->foldersFirst) {
-        
+
         it = std::partition(this->list.begin(),
                             this->list.end(),
                             [](const FMH::MODEL &e1) -> bool {
@@ -468,7 +477,7 @@ void FMList::createDir(const QString &name)
 {
     if(m_readOnly)
         return;
-    
+
     if (this->pathType == FMList::PATHTYPE::CLOUD_PATH) {
 #ifdef COMPONENT_SYNCING
         this->fm->createCloudDir(QString(this->path.toString()).replace(FMStatic::PATHTYPE_SCHEME[FMStatic::PATHTYPE_KEY::CLOUD_PATH] + "/" + this->fm->sync->getUser(), ""), name);
@@ -482,7 +491,7 @@ void FMList::createFile(const QString& name)
 {
     if(m_readOnly)
         return;
-    
+
     FMStatic::createFile(this->path, name);
 }
 
@@ -490,7 +499,7 @@ void FMList::renameFile(const QString& url, const QString& newName)
 {
     if(m_readOnly)
         return;
-    
+
     FMStatic::rename(QUrl(url), newName);
 }
 
@@ -498,7 +507,7 @@ void FMList::moveToTrash(const QStringList& urls)
 {
     if(m_readOnly)
         return;
-    
+
     FMStatic::moveToTrash(QUrl::fromStringList(urls));
 }
 
@@ -506,7 +515,7 @@ void FMList::removeFiles(const QStringList& urls)
 {
     if(m_readOnly)
         return;
-    
+
     FMStatic::removeFiles(QUrl::fromStringList(urls));
 }
 
@@ -514,7 +523,7 @@ void FMList::createSymlink(const QString& url)
 {
     if(m_readOnly)
         return;
-    
+
     FMStatic::createSymlink(QUrl(url), this->path);
 }
 
@@ -528,7 +537,7 @@ bool FMList::saveImageFile(const QImage& image)
         fileName = QString(QStringLiteral("%1/pasted_image-%2.%3")).arg(path.toLocalFile(), QString::number(idx), QStringLiteral("png"));
         idx++;
     }
-    
+
     return image.save(fileName);
 }
 
@@ -542,9 +551,9 @@ bool FMList::saveTextFile(const QString& data, const QString &format)
         fileName = QString(QStringLiteral("%1/pasted_text-%2.%3")).arg(path.toLocalFile(), QString::number(idx), format);
         idx++;
     }
-    
+
     QFile file(fileName);
-    
+
     if (file.open(QIODevice::ReadWrite))
     {
         QTextStream out(&file);
@@ -557,19 +566,18 @@ bool FMList::saveTextFile(const QString& data, const QString &format)
 }
 
 void FMList::paste()
-{  
+{
     if(m_readOnly)
         return;
-    
-    const QClipboard *clipboard = QGuiApplication::clipboard();
-    const QMimeData *mimeData = clipboard->mimeData();
-    
+
+    const QMimeData *mimeData = QGuiApplication::clipboard()->mimeData();
+
     if(!mimeData)
     {
         qWarning() << "Could not get mime data from the clipboard";
         return;
     }
-    
+
     if (mimeData->hasImage())
     {
         saveImageFile(qvariant_cast<QImage>(mimeData->imageData()));
@@ -596,17 +604,36 @@ void FMList::paste()
     }
 }
 
-bool FMList::clipboardHasContent() const
+int FMList::clipboardFilesCount()
 {
-    const QClipboard *clipboard = QGuiApplication::clipboard();
-    const QMimeData *mimeData = clipboard->mimeData();
-    
+    if(FMList::clipboardHasContent())
+    {
+        const QMimeData *mimeData = QGuiApplication::clipboard()->mimeData();
+
+        if( mimeData->hasUrls())
+        {
+            return mimeData->urls().size();
+        }
+
+        if(mimeData->hasImage() || mimeData->hasText())
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+bool FMList::clipboardHasContent()
+{
+    const QMimeData *mimeData = QGuiApplication::clipboard()->mimeData();
+
     if(!mimeData)
     {
         qWarning() << "Could not get mime data from the clipboard";
         return false;
     }
-    
+
     return mimeData->hasUrls() || mimeData->hasImage() || mimeData->hasText();
 }
 
@@ -615,7 +642,7 @@ void FMList::copyInto(const QStringList &urls)
 {
     if(m_readOnly)
         return;
-    
+
     this->fm->copy(QUrl::fromStringList(urls), this->path);
 }
 
@@ -623,7 +650,7 @@ void FMList::cutInto(const QStringList &urls)
 {
     if(m_readOnly)
         return;
-    
+
     this->fm->cut(QUrl::fromStringList(urls), this->path);
 }
 
@@ -703,7 +730,7 @@ void FMList::componentComplete()
     connect(this, &FMList::filterTypeChanged, this, &FMList::setList);
     connect(this, &FMList::hiddenChanged, this, &FMList::setList);
     connect(this, &FMList::onlyDirsChanged, this, &FMList::setList);
-    
+
     connect(this, &FMList::sortByChanged, [this]()
     {
         if(this->list.size() > 0)
@@ -847,7 +874,7 @@ void FMList::setAutoLoad(bool value)
     {
         return;
     }
-    
+
     m_autoLoad = value;
     Q_EMIT autoLoadChanged();
 }
@@ -861,7 +888,7 @@ void FMList::setReadOnly(bool value)
 {
     if(m_readOnly == value)
         return;
-    
+
     m_readOnly = value;
     Q_EMIT readOnlyChanged();
 }
@@ -871,7 +898,7 @@ int FMList::indexOfFile(const QString& url)
     const auto it = std::find_if(this->items().constBegin(), this->items().constEnd(), [url](const FMH::MODEL &item) -> bool {
         return item[FMH::MODEL_KEY::URL] == url;
     });
-    
+
     if (it != this->items().constEnd())
         return (std::distance(this->items().constBegin(), it));
     else

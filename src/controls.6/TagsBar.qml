@@ -193,6 +193,14 @@ Item
                     editTagsEntry.forceActiveFocus()
                 }
                 
+                onActiveFocusChanged:
+                {
+                    if(!editTagsEntry.activeFocus)
+                    {
+                        closeEditMode()
+                    }
+                }
+                
                 onAccepted:
                 {
                     control.tagsEdited(getTags())

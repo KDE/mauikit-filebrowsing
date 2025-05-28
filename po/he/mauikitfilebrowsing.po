@@ -1,127 +1,128 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
-# Geraldo Simiao <geraldosimiao@fedoraproject.org>, 2023.
+# SPDX-FileCopyrightText: 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-09 00:40+0000\n"
-"PO-Revision-Date: 2023-07-29 22:20-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
-"Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2025-04-19 18:16+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
 msgid "Nothing here!"
-msgstr ""
+msgstr "אין כאן כלום!"
 
 #: src/code/fmlist.cpp:51 src/code/fmlist.cpp:93 src/code/fmlist.cpp:154
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "המקום הזה נראה שומם"
 
 #: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214 src/code/fmlist.cpp:748
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "שגיאה"
 
 #: src/code/fmlist.cpp:82 src/code/fmlist.cpp:214
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "אי אפשר להציג את הכתובת הזאת"
 
 #: src/code/fmlist.cpp:348
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "התוכן נטען"
 
 #: src/code/fmlist.cpp:348
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "כמעט מוכן!"
 
 #: src/code/fmlist.cpp:748
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "אין נתיב לביצוע החיפוש"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "מקומות"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "סימניות"
 
 #: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "כוננים"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Apps"
-msgstr "Aplicações"
+msgstr "יישומים"
 
 #: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Remote"
-msgstr ""
+msgstr "מרוחק"
 
 #: src/code/fmstatic.cpp:38
 #, kde-format
 msgid "Removable"
-msgstr ""
+msgstr "נשלף"
 
 #: src/code/fmstatic.cpp:39
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "לא ידוע"
 
 #: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:482
 #, kde-format
 msgid "Trash"
-msgstr ""
+msgstr "אשפה"
 
 #: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
 #, kde-format
 msgid "Tags"
-msgstr ""
+msgstr "תגיות"
 
 #: src/code/fmstatic.cpp:42
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "חיפוש"
 
 #: src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "ענן"
 
 #: src/code/fmstatic.cpp:46
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "אחרים"
 
 #: src/code/fmstatic.cpp:47
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "מהיר"
 
 #: src/code/placeslist.cpp:113
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "מועדפים"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -129,37 +130,39 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"השרת המרוחק דורש אימות כדי להגיש את התוכן אבל פרטי הגישה שסופקו לא התקבלו "
+"(אם בכלל)"
 
 #: src/code/syncing.cpp:211
 #, kde-format
 msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
-msgstr ""
+msgstr "השרת המרוחק סירב לחיבור (השרת לא מקבל בקשות)"
 
 #: src/code/syncing.cpp:215
 #, kde-format
 msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
-msgstr ""
+msgstr "השרת המרוחק סגר את החיבור בטרם עת, לפני שהתגוה התקבלה ועובדה במלואה"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "שם המארח של הצד המאוחר לא נמצא (שם מארח שגוי)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "הזמן שהוקצב לחיבור לשרת המרוחק הסתיים"
 
 #: src/code/syncing.cpp:227
 #, kde-format
 msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
-msgstr ""
+msgstr "הפעולה בוטלה על ידי קריאות ל־abort()‎ או ל־close()‎ לפני שהסתיימה."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -167,6 +170,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"לחיצת יד ה־SSL/TLS נכשלה ולא ניתן להקים את הערוץ המוצפן. האות sslErrors()‎ "
+"אמור היה להישלח."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -176,18 +181,20 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"החיבור נקטע עקב ניתוק מהרשת, עם זאת, המערכת החלה בתהליך נדידה לנקודת גישה "
+"אחרת. יש להגיש את הבקשה מחדש והיא תעובד ברגע שהקישוריות תוקם מחדש."
 
 #: src/code/syncing.cpp:240
 #, kde-format
 msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
-msgstr ""
+msgstr "החיבור נקטע עקב ניתוק מהרשת או כשל בהפעלת חיבור הרשת."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
-msgstr ""
+msgstr "בקשת הרקע לא מורשית כרגע עקב מדיניות הפלטפורמה."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -196,6 +203,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"תוך כדי קפיצה בין הפניות, הגענו למגבלה העליונה. המגבלה מוגדרת ל־50 כברירת "
+"מחדל או כפי שנקבע על ידי QNetworkRequest::setMaxRedirectsAllowed()‎. (הערך "
+"הזה הוצג לראשונה ב־5.6.)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -203,32 +213,34 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"תוך כדי קפיצה בין הפניות, ה־API של הגישה לרשת זיהה הפניה מפרוטוקול מוצפן "
+"(https) לפרוטוקול לא מוצפן (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
 msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
-msgstr ""
+msgstr "החיבור לשרת המתווך סורב (השרת המתווך לא מאשר בקשות)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
 msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
-msgstr ""
+msgstr "שרת המתווך סגר את החיבור בטרם עת, לפני שהתגוה התקבלה ועובדה במלואה"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "שם המארח של המתווך לא נמצא (שם מארח שגוי למתווך)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
 msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
-msgstr ""
+msgstr "הזמן שהוקצב לחיבור למתווך הסתיים או שהמתווך לא הגיב בזמן לבקשה שנשלחה"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -236,22 +248,24 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"המתווך דורש אימות כדי לכבד את הבקשה אבל לא אישר אף אחד מפרטי הגישה שסופקו "
+"(אם בכלל)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "הגישה לתוכן המרוחק הזה נדחתה (בדומה לשגיאת HTTP 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "הפעולה שנתבקשה על התוכן המבוקש אסורה"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
-msgstr ""
+msgstr "התוכן המרוחק לא נמצא בשרת (בדומה לשגיאת HTTP 404)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -259,48 +273,50 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"יש לשלוח את הבקשה שוב, אבל היא עלולה להיכשל אם הנתונים שהועלו לא ייקראו "
+"כראוי בפעם השנייה."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "השרת לא מסוגל לטפל בבקשה כרגע."
 
 #: src/code/syncing.cpp:296
 #, kde-format
 msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
-msgstr ""
+msgstr "אירעה שגיאה בלתי ידועה מול השרת המרוחק או החיבור שלך לאינטרנט."
 
 #: src/controls.6/FileBrowser.qml:345
 #, kde-format
 msgid "Back"
-msgstr ""
+msgstr "חזרה"
 
 #: src/controls.6/FileBrowser.qml:358
 #, kde-format
 msgid "Filter"
-msgstr ""
+msgstr "מסנן"
 
 #: src/controls.6/FileBrowser.qml:427
 #, kde-format
 msgid "Empty Trash"
-msgstr ""
+msgstr "פינוי אשפה"
 
 #: src/controls.6/FileBrowser.qml:438
 #, kde-format
 msgid "Quit"
-msgstr ""
+msgstr "יציאה"
 
 #: src/controls.6/FileBrowser.qml:439
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
-msgstr ""
+msgstr "לצאת מהחיפוש שמתבצע כרגע?"
 
 #: src/controls.6/FileBrowser.qml:460
 #, kde-format
 msgid "Removing %1 files"
-msgstr ""
+msgstr "%1 קבצים נמחקים"
 
 #: src/controls.6/FileBrowser.qml:461
 #, kde-format
@@ -308,93 +324,95 @@ msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
+"מחיקת %1  \n"
+"סך כל המקום שהתפנה %2"
 
 #: src/controls.6/FileBrowser.qml:466 src/controls.6/FileBrowser.qml:891
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:79
 #: src/controls.6/private/BrowserView.qml:369 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: src/controls.6/FileBrowser.qml:472 src/controls.6/TagsDialog.qml:165
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "מחיקה"
 
 #. i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
 #: src/controls.6/FileBrowser.qml:515
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr ""
+msgstr "יצירת קובץ חדש או קובץ עם שם מותאם אישית."
 
 #: src/controls.6/FileBrowser.qml:534 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 #: src/controls.6/FileBrowser.qml:547
 #, kde-format
 msgid "Folder"
-msgstr ""
+msgstr "תיקייה"
 
 #: src/controls.6/FileBrowser.qml:555
 #, kde-format
 msgid "File"
-msgstr ""
+msgstr "קובץ"
 
 #. i18nd("mauikitfilebrowsing", "Rename")
 #: src/controls.6/FileBrowser.qml:573
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "נא למלא שם חדש לקובץ."
 
 #: src/controls.6/FileBrowser.qml:579
 #, kde-format
 msgid "New name"
-msgstr ""
+msgstr "שם חדשה"
 
 #: src/controls.6/FileBrowser.qml:839
 #: src/controls.6/private/BrowserView.qml:331
 #, kde-format
 msgid "Copy Here"
-msgstr ""
+msgstr "העתקה לכאן"
 
 #: src/controls.6/FileBrowser.qml:852
 #: src/controls.6/private/BrowserView.qml:343
 #, kde-format
 msgid "Move Here"
-msgstr ""
+msgstr "העברה לכאן"
 
 #: src/controls.6/FileBrowser.qml:865
 #: src/controls.6/private/BrowserView.qml:355
 #, kde-format
 msgid "Link Here"
-msgstr ""
+msgstr "קישור לכאן"
 
 #: src/controls.6/FileBrowser.qml:878
 #, kde-format
 msgid "Open Here"
-msgstr ""
+msgstr "פתיחה כאן"
 
 #: src/controls.6/FileBrowser.qml:1286
 #, kde-format
 msgid "Search: %1"
-msgstr ""
+msgstr "חיפוש: %1"
 
 #: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "שמירה"
 
 #: src/controls.6/FileDialog.qml:211
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "פתיחה"
 
 #: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
-msgstr ""
+msgstr "שם קובץ…"
 
 #: src/controls.6/FileDialog.qml:253
 #, kde-format
@@ -402,66 +420,68 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
+"כבר קיים קובץ בשם ‚%1’!\n"
+"הפעולה הזאת תדרוס את ‚%1’. להמשיך?"
 
 #: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
-msgstr ""
+msgstr "הצגת/הסתרת סרגל צד"
 
 #: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
-msgstr ""
+msgstr "סוג תצוגה"
 
 #: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
-msgstr ""
+msgstr "רשימה"
 
 #: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "רשת"
 
 #: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
-msgstr ""
+msgstr "מיון לפי"
 
 #: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
-msgstr ""
+msgstr "סוג"
 
 #: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "תאריך"
 
 #: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
-msgstr ""
+msgstr "מועד עריכה"
 
 #: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
-msgstr ""
+msgstr "גודל"
 
 #: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
-msgstr ""
+msgstr "להציג תיקיות בהתחלה"
 
 #: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
-msgstr ""
+msgstr "קבוצה"
 
 #: src/controls.6/NewTagDialog.qml:56 src/controls.6/NewTagDialog.qml:59
 #, kde-format
 msgid "New tags"
-msgstr ""
+msgstr "תגיות חדשות"
 
 #: src/controls.6/NewTagDialog.qml:57
 #, kde-format
@@ -469,111 +489,128 @@ msgid ""
 "Create new tags to organize your files. You can create multiple tags "
 "separated by a comma."
 msgstr ""
+"אפשר ליצור תגיות חדשות כדי לארגן את הקבצים שלך. אפשר ליצור מספר תגיות "
+"ולהפריד ביניהן בפסיקים."
 
 #: src/controls.6/OpenWithDialog.qml:74
 #, kde-format
 msgid "Open with"
-msgstr ""
+msgstr "פתיחה עם"
 
 #: src/controls.6/OpenWithDialog.qml:108 src/controls.6/TagsDialog.qml:216
 #, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פריט"
+msgstr[1] "שני פריטים"
+msgstr[2] "%1 פריטים"
+msgstr[3] "%1 פריטים"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "עריכה"
 
 #: src/controls.6/PlacesListBrowser.qml:122
 #, kde-format
 msgid "Hide"
-msgstr ""
+msgstr "הסתרה"
 
 #: src/controls.6/PlacesListBrowser.qml:127
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "הסרה"
 
 #: src/controls.6/private/BrowserView.qml:296
 #, kde-format
 msgid "Directory already exists."
-msgstr ""
+msgstr "התיקייה כבר קיימת."
 
 #: src/controls.6/private/BrowserView.qml:299
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "נראה בסדר."
 
 #: src/controls.6/private/BrowserView.qml:303
 #, kde-format
 msgid "Merge %1 files"
-msgstr ""
+msgstr "מיזוג %1 קבצים"
 
 #: src/controls.6/private/BrowserView.qml:304
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
-msgstr ""
+msgstr "נא להעניק שם לתיקייה החדשה בה ימוזגו על הקבצים."
 
 #: src/controls.6/private/BrowserView.qml:306
 #, kde-format
 msgid "Directory name"
-msgstr ""
+msgstr "שם תיקייה"
 
 #: src/controls.6/private/BrowserView.qml:316
 #, kde-format
 msgid "Merge Here"
-msgstr ""
+msgstr "מיזוג לכאן"
 
 #: src/controls.6/private/BrowserView.qml:395
 #: src/controls.6/private/BrowserView.qml:565
 #, kde-format
 msgid " items"
-msgstr ""
+msgstr " פריטים"
 
 #: src/controls.6/private/TagList.qml:32
 #, kde-format
 msgid "Add tags..."
-msgstr ""
+msgstr "הוספת תגיות…"
 
 #: src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Filter or add a new tag"
-msgstr ""
+msgstr "לסנן או להוסיף תגית חדשה"
 
 #: src/controls.6/TagsDialog.qml:141
 #, kde-format
 msgid "Delete %1"
-msgstr ""
+msgstr "מחיקת %1"
 
 #: src/controls.6/TagsDialog.qml:142
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
-msgstr ""
+msgstr "למחוק את התגית הזאת? זאת פעולה בלתי הפיכה."
 
 #: src/controls.6/TagsDialog.qml:188
 #, kde-format
 msgid "No Tags!"
-msgstr ""
+msgstr "אין תגיות!"
 
 #: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
-msgstr ""
+msgstr "אפשר ליצור תגיות חדשות כדי לארגן את הקבצים שלך."
 
 #: src/controls.6/TagsDialog.qml:291
 #, kde-format
 msgid "No tags yet."
-msgstr ""
+msgstr "אין תגיות עדיין."
 
-#~ msgid "Yes"
-#~ msgstr "Sim"
+#~ msgid "Tagging %1 files"
+#~ msgstr "%1 קבצים מתויגים"
 
-#~ msgid "No"
-#~ msgstr "Não"
+#~ msgid "Add new tags for the selected files."
+#~ msgstr "הוספת תגיות חדשות לקבצים הנבחרים."
 
-#~ msgid "Add"
-#~ msgstr "Adicionar"
+#~ msgid "New folder"
+#~ msgstr "תיקייה חדשה"
+
+#~ msgid "New file"
+#~ msgstr "קובץ חדש"
+
+#~ msgid "Rename"
+#~ msgstr "שינוי שם"
+
+#~ msgid ""
+#~ "Change the name of a file or folder. Write a new name and click Rename to "
+#~ "apply the change."
+#~ msgstr ""
+#~ "עריכת שם של קובץ או תיקייה. נא לכתוב שם חדש וללחוץ על שינוי שם כדי להחיל "
+#~ "את השינויים."

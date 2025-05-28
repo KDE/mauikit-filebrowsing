@@ -129,7 +129,13 @@ public:
                                                        QStringLiteral("image/vnd.adobe.photoshop"),
                                                        QStringLiteral("image/x-eps"),
                                                        QStringLiteral("image/jxl"),
-                                                       QStringLiteral("image/avif")};
+                                                       QStringLiteral("image/avif"),
+                                                       QStringLiteral("image/qoi"),
+                                                       QStringLiteral("image/heif"),
+                                                       QStringLiteral("image/x-jp2-codestream"),
+                                                       QStringLiteral("image/jp2"),
+                                                       QStringLiteral("image/jpx"),
+                                                       QStringLiteral("image/x-dds")};
 
     /**
      * @brief The list of supported document formats, associated to `FILTER_TYPE::DOCUMENT`
