@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-27 00:40+0000\n"
-"PO-Revision-Date: 2025-05-16 13:18+0400\n"
+"PO-Revision-Date: 2025-08-03 15:54+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -216,7 +216,7 @@ msgid ""
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
 "أثناء متابعة عمليات إعادة التوجيه، اكتشفت واجهة برمجة تطبيقات الوصول إلى "
-"الشبكة إعادة توجيه من ميفاق مشفر (https) إلى ميفاق غير مشفر (http)."
+"الشبكة إعادة توجيه من ميفاق معمى (https) إلى ميفاق غير معمى (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
