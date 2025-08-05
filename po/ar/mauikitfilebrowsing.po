@@ -206,7 +206,7 @@ msgid ""
 "(This value was introduced in 5.6.)"
 msgstr ""
 "أثناء متابعة عمليات إعادة التوجيه، تم الوصول إلى الحد الأقصى. يُضبط الحد "
-"افتراضيًا على 50 أو كما هو مُحدد بواسطة QNetworkRequest::"
+"مبدئيًا على 50 أو كما هو مُحدد بواسطة QNetworkRequest::"
 "setMaxRedirectsAllowed(). (هذه القيمة موجودة منذ الإصدار 5.6.)"
 
 #: src/code/syncing.cpp:252
