@@ -1,127 +1,128 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
 # Geraldo Simiao <geraldosimiao@fedoraproject.org>, 2023.
+# SPDX-FileCopyrightText: 2025 Marcus Gama <marcus.gama@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-27 00:40+0000\n"
-"PO-Revision-Date: 2023-07-29 22:20-0300\n"
-"Last-Translator: Geraldo Simiao <geraldosimiao@fedoraproject.org>\n"
+"PO-Revision-Date: 2025-08-25 19:10-0300\n"
+"Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
 msgid "Nothing here!"
-msgstr ""
+msgstr "Nada aqui!"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "Esta local parece estar vazio"
 
 #: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221 src/code/fmlist.cpp:755
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "Esta URL não pode ser listada"
 
 #: src/code/fmlist.cpp:355
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "Carregando conteúdo"
 
 #: src/code/fmlist.cpp:355
 #, kde-format
 msgid "Almost ready!"
-msgstr ""
+msgstr "Quase pronto!"
 
 #: src/code/fmlist.cpp:755
 #, kde-format
 msgid "No path to perform the search"
-msgstr ""
+msgstr "Nenhum caminho para realizar a pesquisa"
 
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Locais"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
 msgid "Bookmarks"
-msgstr ""
+msgstr "Favoritos"
 
 #: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Drives"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
 msgid "Apps"
-msgstr "Aplicações"
+msgstr "Aplicativos"
 
 #: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:44
 #, kde-format
 msgid "Remote"
-msgstr ""
+msgstr "Remoto"
 
 #: src/code/fmstatic.cpp:38
 #, kde-format
 msgid "Removable"
-msgstr ""
+msgstr "Removível"
 
 #: src/code/fmstatic.cpp:39
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Desconhecido"
 
 #: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:482
 #, kde-format
 msgid "Trash"
-msgstr ""
+msgstr "Lixeira"
 
 #: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
 #, kde-format
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: src/code/fmstatic.cpp:42
 #, kde-format
 msgid "Search"
-msgstr ""
+msgstr "Pesquisar"
 
 #: src/code/fmstatic.cpp:43
 #, kde-format
 msgid "Cloud"
-msgstr ""
+msgstr "Nuvem"
 
 #: src/code/fmstatic.cpp:46
 #, kde-format
 msgid "Others"
-msgstr ""
+msgstr "Outros"
 
 #: src/code/fmstatic.cpp:47
 #, kde-format
 msgid "Quick"
-msgstr ""
+msgstr "Rápido"
 
 #: src/code/placeslist.cpp:113
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Favorito"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -129,6 +130,8 @@ msgid ""
 "The remote server requires authentication to serve the content but the "
 "credentials provided were not accepted (if any)"
 msgstr ""
+"O servidor remoto requer autenticação para servir o conteúdo, mas as "
+"credenciais fornecidas não foram aceitas (se houver)."
 
 #: src/code/syncing.cpp:211
 #, kde-format
@@ -136,6 +139,8 @@ msgid ""
 "the remote server refused the connection (the server is not accepting "
 "requests"
 msgstr ""
+"o servidor remoto recusou a conexão (o servidor não está aceitando "
+"solicitações"
 
 #: src/code/syncing.cpp:215
 #, kde-format
@@ -143,16 +148,18 @@ msgid ""
 "the remote server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"o servidor remoto fechou a conexão prematuramente, antes que toda a resposta "
+"fosse recebida e processada"
 
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr ""
+msgstr "o nome do host remoto não foi encontrado (nome do host inválido)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
 msgid "the connection to the remote server timed out"
-msgstr ""
+msgstr "a conexão com o servidor remoto expirou"
 
 #: src/code/syncing.cpp:227
 #, kde-format
@@ -160,6 +167,8 @@ msgid ""
 "the operation was canceled via calls to abort() or close() before it was "
 "finished."
 msgstr ""
+"a operação foi cancelada por meio de chamadas para abort() ou close() antes "
+"de ser concluída."
 
 #: src/code/syncing.cpp:231
 #, kde-format
@@ -167,6 +176,8 @@ msgid ""
 "the SSL/TLS handshake failed and the encrypted channel could not be "
 "established. The sslErrors() signal should have been emitted."
 msgstr ""
+"o handshake SSL/TLS falhou e o canal criptografado não pôde ser "
+"estabelecido. O sinal sslErrors() deveria ter sido emitido."
 
 #: src/code/syncing.cpp:236
 #, kde-format
@@ -176,6 +187,9 @@ msgid ""
 "resubmitted and will be processed as soon as the connection is re-"
 "established."
 msgstr ""
+"a conexão foi interrompida devido à desconexão da rede, porém o sistema "
+"iniciou o roaming para outro ponto de acesso. A solicitação deve ser "
+"reenviada e será processada assim que a conexão for restabelecida."
 
 #: src/code/syncing.cpp:240
 #, kde-format
@@ -183,11 +197,15 @@ msgid ""
 "the connection was broken due to disconnection from the network or failure "
 "to start the network."
 msgstr ""
+"a conexão foi interrompida devido à desconexão da rede ou falha na "
+"inicialização da rede."
 
 #: src/code/syncing.cpp:244
 #, kde-format
 msgid "the background request is not currently allowed due to platform policy."
 msgstr ""
+"a solicitação em segundo plano não é permitida no momento devido à política "
+"da plataforma."
 
 #: src/code/syncing.cpp:248
 #, kde-format
@@ -196,6 +214,9 @@ msgid ""
 "default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
 "(This value was introduced in 5.6.)"
 msgstr ""
+"ao seguir redirecionamentos, o limite máximo foi atingido. O limite é "
+"definido por padrão como 50 ou conforme definido por QNetworkRequest::"
+"setMaxRedirectsAllowed(). (Este valor foi introduzido na versão 5.6.)"
 
 #: src/code/syncing.cpp:252
 #, kde-format
@@ -203,6 +224,9 @@ msgid ""
 "while following redirects, the network access API detected a redirect from a "
 "encrypted protocol (https) to an unencrypted one (http)."
 msgstr ""
+"ao seguir redirecionamentos, a API de acesso à rede detectou um "
+"redirecionamento de um protocolo criptografado (https) para um não "
+"criptografado (http)."
 
 #: src/code/syncing.cpp:256
 #, kde-format
@@ -210,6 +234,8 @@ msgid ""
 "the connection to the proxy server was refused (the proxy server is not "
 "accepting requests)"
 msgstr ""
+"a conexão com o servidor proxy foi recusada (o servidor proxy não está "
+"aceitando solicitações)"
 
 #: src/code/syncing.cpp:260
 #, kde-format
@@ -217,11 +243,13 @@ msgid ""
 "the proxy server closed the connection prematurely, before the entire reply "
 "was received and processed"
 msgstr ""
+"o servidor proxy fechou a conexão prematuramente, antes que toda a resposta "
+"fosse recebida e processada"
 
 #: src/code/syncing.cpp:264
 #, kde-format
 msgid "the proxy host name was not found (invalid proxy hostname)"
-msgstr ""
+msgstr "o nome do host proxy não foi encontrado (nome do host proxy inválido)"
 
 #: src/code/syncing.cpp:268
 #, kde-format
@@ -229,6 +257,8 @@ msgid ""
 "the connection to the proxy timed out or the proxy did not reply in time to "
 "the request sent"
 msgstr ""
+"a conexão com o proxy expirou ou o proxy não respondeu a tempo à solicitação "
+"enviada"
 
 #: src/code/syncing.cpp:272
 #, kde-format
@@ -236,22 +266,26 @@ msgid ""
 "the proxy requires authentication in order to honour the request but did not "
 "accept any credentials offered (if any)"
 msgstr ""
+"o proxy requer autenticação para atender à solicitação, mas não aceitou "
+"nenhuma credencial oferecida (se houver)"
 
 #: src/code/syncing.cpp:276
 #, kde-format
 msgid "the access to the remote content was denied (similar to HTTP error 403)"
-msgstr ""
+msgstr "o acesso ao conteúdo remoto foi negado (semelhante ao erro HTTP 403)"
 
 #: src/code/syncing.cpp:280
 #, kde-format
 msgid "the operation requested on the remote content is not permitted"
-msgstr ""
+msgstr "a operação solicitada no conteúdo remoto não é permitida"
 
 #: src/code/syncing.cpp:284
 #, kde-format
 msgid ""
 "the remote content was not found at the server (similar to HTTP error 404)"
 msgstr ""
+"o conteúdo remoto não foi encontrado no servidor (semelhante ao erro HTTP "
+"404)"
 
 #: src/code/syncing.cpp:288
 #, kde-format
@@ -259,11 +293,13 @@ msgid ""
 "the request needed to be sent again, but this failed for example because the "
 "upload data could not be read a second time."
 msgstr ""
+"a solicitação precisava ser enviada novamente, mas isso falhou, por exemplo, "
+"porque os dados de upload não puderam ser lidos uma segunda vez."
 
 #: src/code/syncing.cpp:292
 #, kde-format
 msgid "the server is unable to handle the request at this time."
-msgstr ""
+msgstr "o servidor não pode processar a solicitação neste momento."
 
 #: src/code/syncing.cpp:296
 #, kde-format
@@ -271,36 +307,38 @@ msgid ""
 "There was an unknown error with the remote server or your internet "
 "connection."
 msgstr ""
+"Ocorreu um erro desconhecido com o servidor remoto ou com sua conexão de "
+"internet."
 
 #: src/controls.6/FileBrowser.qml:345
 #, kde-format
 msgid "Back"
-msgstr ""
+msgstr "Voltar"
 
 #: src/controls.6/FileBrowser.qml:358
 #, kde-format
 msgid "Filter"
-msgstr ""
+msgstr "Filtro"
 
 #: src/controls.6/FileBrowser.qml:427
 #, kde-format
 msgid "Empty Trash"
-msgstr ""
+msgstr "Esvaziar a Lixeira"
 
 #: src/controls.6/FileBrowser.qml:438
 #, kde-format
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
 #: src/controls.6/FileBrowser.qml:439
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
-msgstr ""
+msgstr "Tem certeza de que deseja sair da pesquisa em andamento?"
 
 #: src/controls.6/FileBrowser.qml:460
 #, kde-format
 msgid "Removing %1 files"
-msgstr ""
+msgstr "Removendo %1 arquivos"
 
 #: src/controls.6/FileBrowser.qml:461
 #, kde-format
@@ -308,93 +346,95 @@ msgid ""
 "Delete %1  \n"
 "Total freed space %2"
 msgstr ""
+"Excluir %1  \n"
+"Espaço total liberado %2"
 
 #: src/controls.6/FileBrowser.qml:466 src/controls.6/FileBrowser.qml:891
 #: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:79
 #: src/controls.6/private/BrowserView.qml:369 src/controls.6/TagsDialog.qml:102
 #, kde-format
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/controls.6/FileBrowser.qml:472 src/controls.6/TagsDialog.qml:165
 #, kde-format
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
 #. i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
 #: src/controls.6/FileBrowser.qml:515
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr ""
+msgstr "Crie uma nova pasta ou um arquivo com um nome personalizado."
 
 #: src/controls.6/FileBrowser.qml:534 src/controls.6/FileDialog.qml:447
 #, kde-format
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: src/controls.6/FileBrowser.qml:547
 #, kde-format
 msgid "Folder"
-msgstr ""
+msgstr "Pasta"
 
 #: src/controls.6/FileBrowser.qml:555
 #, kde-format
 msgid "File"
-msgstr ""
+msgstr "Arquivo"
 
 #. i18nd("mauikitfilebrowsing", "Rename")
 #: src/controls.6/FileBrowser.qml:573
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "Digite o novo nome para o arquivo."
 
 #: src/controls.6/FileBrowser.qml:579
 #, kde-format
 msgid "New name"
-msgstr ""
+msgstr "Novo nome"
 
 #: src/controls.6/FileBrowser.qml:839
 #: src/controls.6/private/BrowserView.qml:331
 #, kde-format
 msgid "Copy Here"
-msgstr ""
+msgstr "Copiar aqui"
 
 #: src/controls.6/FileBrowser.qml:852
 #: src/controls.6/private/BrowserView.qml:343
 #, kde-format
 msgid "Move Here"
-msgstr ""
+msgstr "Mover aqui"
 
 #: src/controls.6/FileBrowser.qml:865
 #: src/controls.6/private/BrowserView.qml:355
 #, kde-format
 msgid "Link Here"
-msgstr ""
+msgstr "Criar link aqui"
 
 #: src/controls.6/FileBrowser.qml:878
 #, kde-format
 msgid "Open Here"
-msgstr ""
+msgstr "Abrir aqui"
 
 #: src/controls.6/FileBrowser.qml:1288
 #, kde-format
 msgid "Search: %1"
-msgstr ""
+msgstr "Pesquisar: %1"
 
 #: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
 #, kde-format
 msgid "Save"
-msgstr ""
+msgstr "Salvar"
 
 #: src/controls.6/FileDialog.qml:211
 #, kde-format
 msgid "Open"
-msgstr ""
+msgstr "Abrir"
 
 #: src/controls.6/FileDialog.qml:242
 #, kde-format
 msgid "File name..."
-msgstr ""
+msgstr "Nome do arquivo..."
 
 #: src/controls.6/FileDialog.qml:253
 #, kde-format
@@ -402,66 +442,68 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
+"Um arquivo chamado '%1' já existe!\n"
+"Esta ação substituirá '%1'. Tem certeza de que deseja fazer isso?"
 
 #: src/controls.6/FileDialog.qml:312
 #, kde-format
 msgid "Toogle SideBar"
-msgstr ""
+msgstr "Alternar barra lateral"
 
 #: src/controls.6/FileDialog.qml:354
 #, kde-format
 msgid "View type"
-msgstr ""
+msgstr "Tipo de visualização"
 
 #: src/controls.6/FileDialog.qml:359
 #, kde-format
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: src/controls.6/FileDialog.qml:374
 #, kde-format
 msgid "Grid"
-msgstr ""
+msgstr "Grade"
 
 #: src/controls.6/FileDialog.qml:394
 #, kde-format
 msgid "Sort by"
-msgstr ""
+msgstr "Ordenar por"
 
 #: src/controls.6/FileDialog.qml:399
 #, kde-format
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: src/controls.6/FileDialog.qml:411
 #, kde-format
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: src/controls.6/FileDialog.qml:423
 #, kde-format
 msgid "Modified"
-msgstr ""
+msgstr "Modificado"
 
 #: src/controls.6/FileDialog.qml:435
 #, kde-format
 msgid "Size"
-msgstr ""
+msgstr "Tamanho"
 
 #: src/controls.6/FileDialog.qml:461
 #, kde-format
 msgid "Show Folders First"
-msgstr ""
+msgstr "Mostrar as pastas primeiro"
 
 #: src/controls.6/FileDialog.qml:474
 #, kde-format
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: src/controls.6/NewTagDialog.qml:56 src/controls.6/NewTagDialog.qml:59
 #, kde-format
 msgid "New tags"
-msgstr ""
+msgstr "Novas etiquetas"
 
 #: src/controls.6/NewTagDialog.qml:57
 #, kde-format
@@ -469,105 +511,109 @@ msgid ""
 "Create new tags to organize your files. You can create multiple tags "
 "separated by a comma."
 msgstr ""
+"Crie novas etiquetas para organizar seus arquivos. Você pode criar várias "
+"etiquetas separadas por vírgula."
 
 #: src/controls.6/OpenWithDialog.qml:74
 #, kde-format
 msgid "Open with"
-msgstr ""
+msgstr "Abrir com"
 
 #: src/controls.6/OpenWithDialog.qml:108 src/controls.6/TagsDialog.qml:216
 #, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 item"
+msgstr[1] "%1 itens"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: src/controls.6/PlacesListBrowser.qml:122
 #, kde-format
 msgid "Hide"
-msgstr ""
+msgstr "Ocultar"
 
 #: src/controls.6/PlacesListBrowser.qml:127
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: src/controls.6/private/BrowserView.qml:296
 #, kde-format
 msgid "Directory already exists."
-msgstr ""
+msgstr "A pasta já existe."
 
 #: src/controls.6/private/BrowserView.qml:299
 #, kde-format
 msgid "Looks good."
-msgstr ""
+msgstr "Parece bom."
 
 #: src/controls.6/private/BrowserView.qml:303
 #, kde-format
 msgid "Merge %1 files"
-msgstr ""
+msgstr "Mesclar %1 arquivos"
 
 #: src/controls.6/private/BrowserView.qml:304
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
-msgstr ""
+msgstr "Dê um nome à nova pasta onde todos os arquivos serão mesclados."
 
 #: src/controls.6/private/BrowserView.qml:306
 #, kde-format
 msgid "Directory name"
-msgstr ""
+msgstr "Nome da pasta"
 
 #: src/controls.6/private/BrowserView.qml:316
 #, kde-format
 msgid "Merge Here"
-msgstr ""
+msgstr "Mesclar aqui"
 
 #: src/controls.6/private/BrowserView.qml:395
 #: src/controls.6/private/BrowserView.qml:565
 #, kde-format
 msgid " items"
-msgstr ""
+msgstr " itens"
 
 #: src/controls.6/private/TagList.qml:32
 #, kde-format
 msgid "Add tags..."
-msgstr ""
+msgstr "Adicionar etiquetas..."
 
 #: src/controls.6/TagsDialog.qml:114
 #, kde-format
 msgid "Filter or add a new tag"
-msgstr ""
+msgstr "Filtrar ou adicionar uma nova etiqueta"
 
 #: src/controls.6/TagsDialog.qml:141
 #, kde-format
 msgid "Delete %1"
-msgstr ""
+msgstr "Excluir %1"
 
 #: src/controls.6/TagsDialog.qml:142
 #, kde-format
 msgid ""
 "Are you sure you want to delete this tag? This action can not be undone."
 msgstr ""
+"Tem certeza de que deseja excluir esta etiqueta? Esta ação não pode ser "
+"desfeita."
 
 #: src/controls.6/TagsDialog.qml:188
 #, kde-format
 msgid "No Tags!"
-msgstr ""
+msgstr "Sem etiquetas!"
 
 #: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
-msgstr ""
+msgstr "Cria novas etiquetas para organizar seus arquivos."
 
 #: src/controls.6/TagsDialog.qml:291
 #, kde-format
 msgid "No tags yet."
-msgstr ""
+msgstr "Nenhuma etiqueta ainda."
 
 #~ msgid "Yes"
 #~ msgstr "Sim"
