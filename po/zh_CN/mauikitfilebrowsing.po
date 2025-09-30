@@ -347,7 +347,7 @@ msgstr ""
 #: src/controls.6/FileBrowser.qml:573
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "输入新的文件名。"
 
 #: src/controls.6/FileBrowser.qml:579
 #, kde-format
