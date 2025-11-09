@@ -1,21 +1,22 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
-# SPDX-FileCopyrightText: 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-05-27 00:40+0000\n"
-"PO-Revision-Date: 2024-07-21 13:24+0200\n"
+"PO-Revision-Date: 2025-11-08 09:39+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language-Team: pl\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
@@ -384,7 +385,7 @@ msgstr "Plik"
 #: src/controls.6/FileBrowser.qml:573
 #, kde-format
 msgid "Enter the new name for the file."
-msgstr ""
+msgstr "Wpisz nową nazwę dla pliku."
 
 #: src/controls.6/FileBrowser.qml:579
 #, kde-format
@@ -518,13 +519,12 @@ msgid "Open with"
 msgstr "Otwórz w"
 
 #: src/controls.6/OpenWithDialog.qml:108 src/controls.6/TagsDialog.qml:216
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " rzeczy"
-msgstr[1] " rzeczy"
-msgstr[2] " rzeczy"
+msgstr[0] "1 element"
+msgstr[1] "%1 elementy"
+msgstr[2] "%1 elementów"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
