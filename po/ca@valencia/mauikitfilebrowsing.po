@@ -155,7 +155,7 @@ msgstr ""
 #: src/code/syncing.cpp:219
 #, kde-format
 msgid "the remote host name was not found (invalid hostname)"
-msgstr "No s'ha trobat el nom del servidor remot (nom de servidor no vàlid)"
+msgstr "No s'ha trobat el nom de l'amfitrió remot (nom no vàlid de l'amfitrió)"
 
 #: src/code/syncing.cpp:223
 #, kde-format
