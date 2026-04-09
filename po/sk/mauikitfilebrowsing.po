@@ -12,35 +12,34 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Nothing here!"
 msgstr "Odkaz sem"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
 msgid "This place seems to be empty"
-msgstr ""
+msgstr "Toto miesto sa zdá byť prázdne"
 
 #: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221 src/code/fmlist.cpp:755
 #: src/controls.6/FileDialog.qml:252
 #, kde-format
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221
 #, kde-format
 msgid "This URL cannot be listed"
-msgstr ""
+msgstr "Túto URL nie je možné zobraziť"
 
 #: src/code/fmlist.cpp:355
 #, kde-format
 msgid "Loading content"
-msgstr ""
+msgstr "Načítava sa obsah"
 
 #: src/code/fmlist.cpp:355
 #, kde-format
@@ -55,7 +54,7 @@ msgstr ""
 #: src/code/fmstatic.cpp:33
 #, kde-format
 msgid "Places"
-msgstr ""
+msgstr "Miesta"
 
 #: src/code/fmstatic.cpp:34
 #, kde-format
@@ -65,7 +64,7 @@ msgstr "Záložky"
 #: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:45
 #, kde-format
 msgid "Drives"
-msgstr ""
+msgstr "Drives"
 
 #: src/code/fmstatic.cpp:36
 #, kde-format
@@ -120,7 +119,7 @@ msgstr "Rýchlo"
 #: src/code/placeslist.cpp:113
 #, kde-format
 msgid "Favorite"
-msgstr ""
+msgstr "Obľúbené"
 
 #: src/code/syncing.cpp:207
 #, kde-format
@@ -294,7 +293,7 @@ msgstr "Ukončiť"
 #: src/controls.6/FileBrowser.qml:439
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
-msgstr ""
+msgstr "Ste si istý, you want to quit the current search in progress?"
 
 #: src/controls.6/FileBrowser.qml:460
 #, kde-format
@@ -354,28 +353,24 @@ msgstr "Nové meno"
 
 #: src/controls.6/FileBrowser.qml:839
 #: src/controls.6/private/BrowserView.qml:331
-#, fuzzy, kde-format
-#| msgid "Copy here"
+#, kde-format
 msgid "Copy Here"
 msgstr "Kopírovať sem"
 
 #: src/controls.6/FileBrowser.qml:852
 #: src/controls.6/private/BrowserView.qml:343
-#, fuzzy, kde-format
-#| msgid "Move here"
+#, kde-format
 msgid "Move Here"
 msgstr "Presunúť sem"
 
 #: src/controls.6/FileBrowser.qml:865
 #: src/controls.6/private/BrowserView.qml:355
-#, fuzzy, kde-format
-#| msgid "Link here"
+#, kde-format
 msgid "Link Here"
 msgstr "Odkaz sem"
 
 #: src/controls.6/FileBrowser.qml:878
-#, fuzzy, kde-format
-#| msgid "Open here"
+#, kde-format
 msgid "Open Here"
 msgstr "Otvoriť tu"
 
@@ -464,7 +459,7 @@ msgstr "Skupina"
 #: src/controls.6/NewTagDialog.qml:56 src/controls.6/NewTagDialog.qml:59
 #, kde-format
 msgid "New tags"
-msgstr ""
+msgstr "Nový značky"
 
 #: src/controls.6/NewTagDialog.qml:57
 #, kde-format
@@ -479,13 +474,12 @@ msgid "Open with"
 msgstr "Otvoriť pomocou"
 
 #: src/controls.6/OpenWithDialog.qml:108 src/controls.6/TagsDialog.qml:216
-#, fuzzy, kde-format
-#| msgid " items"
+#, kde-format
 msgid "1 item"
 msgid_plural "%1 items"
-msgstr[0] " položiek"
-msgstr[1] " položiek"
-msgstr[2] " položiek"
+msgstr[0] "1 položka"
+msgstr[1] "%1 položky"
+msgstr[2] "%1 položiek"
 
 #: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
 #, kde-format
@@ -503,8 +497,7 @@ msgid "Remove"
 msgstr "Odstrániť"
 
 #: src/controls.6/private/BrowserView.qml:296
-#, fuzzy, kde-format
-#| msgid "Directory name"
+#, kde-format
 msgid "Directory already exists."
 msgstr "Názov adresára"
 
@@ -529,8 +522,7 @@ msgid "Directory name"
 msgstr "Názov adresára"
 
 #: src/controls.6/private/BrowserView.qml:316
-#, fuzzy, kde-format
-#| msgid "Merge here"
+#, kde-format
 msgid "Merge Here"
 msgstr "Zlúčiť sem"
 
@@ -577,12 +569,10 @@ msgid "No tags yet."
 msgstr ""
 
 #, fuzzy
-#~| msgid "Folder"
 #~ msgid "New folder"
 #~ msgstr "Priečinok"
 
 #, fuzzy
-#~| msgid "New name"
 #~ msgid "New file"
 #~ msgstr "Nové meno"
 
