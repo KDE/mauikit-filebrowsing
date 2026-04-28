@@ -323,7 +323,7 @@ msgstr "Ukončiť"
 #: src/controls.6/FileBrowser.qml:439
 #, kde-format
 msgid "Are you sure you want to quit the current search in progress?"
-msgstr "Ste si istý, you want to quit the current search in progress?"
+msgstr "Ste si istý, že chcete ukončiť práve prebiehajúce vyhľadávanie?"
 
 #: src/controls.6/FileBrowser.qml:460
 #, kde-format
