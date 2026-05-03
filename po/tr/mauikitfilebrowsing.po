@@ -1,22 +1,22 @@
 # Copyright (C) 2023 This file is copyright:
 # This file is distributed under the same license as the mauikit-filebrowsing package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
 # Emir SARI <emir_sari@icloud.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2025-04-21 10:51+0300\n"
-"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
+"PO-Revision-Date: 2026-05-02 18:53+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
@@ -431,7 +431,7 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
-"“%1” adlı bir dosya halihazırda var!\n"
+"“%1” adlı bir dosya hâlihazırda var!\n"
 "Bu eylem, %1 dosyasının üzerine yazacaktır. Bunu yapmak istediğinizden emin "
 "misiniz?"
 
@@ -534,7 +534,7 @@ msgstr "Kaldır"
 #: src/controls.6/private/BrowserView.qml:296
 #, kde-format
 msgid "Directory already exists."
-msgstr "Dizin halihazırda var."
+msgstr "Dizin hâlihazırda var."
 
 #: src/controls.6/private/BrowserView.qml:299
 #, kde-format
