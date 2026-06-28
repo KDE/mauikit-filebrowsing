@@ -566,7 +566,7 @@ msgstr "Doneu un nom en el directori nou on es fusionaran tots els fitxers."
 #: src/controls.6/private/BrowserView.qml:306
 #, kde-format
 msgid "Directory name"
-msgstr "Nom del directori"
+msgstr "Nom de la carpeta"
 
 #: src/controls.6/private/BrowserView.qml:316
 #, kde-format
