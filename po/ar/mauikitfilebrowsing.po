@@ -347,7 +347,7 @@ msgstr "احذف"
 #: src/controls.6/FileBrowser.qml:515
 #, kde-format
 msgid "Create a new folder or a file with a custom name."
-msgstr "أنشئ مجلداً جديداً أو ملفاً جديداً باسم مخصص."
+msgstr "أنشئ مجلدًا جديدًا أو ملفًا جديدًا باسم مخصص."
 
 #: src/controls.6/FileBrowser.qml:534 src/controls.6/FileDialog.qml:447
 #, kde-format
@@ -424,7 +424,7 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
-"يوجد ملف باسم '%1' موجود مسبقاً! \n"
+"يوجد ملف باسم '%1' موجود مسبقًا! \n"
 " سيؤدي هذا الإجراء إلى الكتابة فوق '%1'. هل تريد بالتأكيد القيام بذلك؟"
 
 #: src/controls.6/FileDialog.qml:312
@@ -544,7 +544,7 @@ msgstr "دمج %1 من الملفات"
 #: src/controls.6/private/BrowserView.qml:304
 #, kde-format
 msgid "Give a name to the new directory where all files will be merge."
-msgstr "أعط اسماً للدليل الجديد حيث ستُدمج جميع الملفات."
+msgstr "أعط اسمًا للدليل الجديد حيث ستُدمج جميع الملفات."
 
 #: src/controls.6/private/BrowserView.qml:306
 #, kde-format
@@ -591,7 +591,7 @@ msgstr "لا يوجد وسوم!"
 #: src/controls.6/TagsDialog.qml:189
 #, kde-format
 msgid "Create new tags to organize your files."
-msgstr "أنشئ وسوماً جديدة لتنظيم ملفاتك."
+msgstr "أنشئ وسومًا جديدة لتنظيم ملفاتك."
 
 #: src/controls.6/TagsDialog.qml:291
 #, kde-format
