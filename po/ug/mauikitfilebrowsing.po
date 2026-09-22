@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2026-05-31 20:28-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -403,6 +403,8 @@ msgid ""
 "A file named '%1' already exists!\n"
 " This action will overwrite '%1'. Are you sure you want to do this?"
 msgstr ""
+"A file named '%1' already exists!\n"
+" This action will overwrite '%1'. Are you sure you want to do this?"
 
 #: src/controls.6/FileDialog.qml:312
 #, kde-format
