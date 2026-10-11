@@ -1,0 +1,604 @@
+# Translation of mauikitfilebrowsing into Russian.
+# This file is distributed under the same license as the mauikit-filebrowsing package.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mauikitfilebrowsing\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2025-11-17 11:51+0000\n"
+"PO-Revision-Date: 2026-10-10 12:32+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
+"Language-Team: Russian <kde-russian@lists.kde.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
+#, kde-format
+msgid "Nothing here!"
+msgstr "Здесь ничего нет"
+
+#: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
+#, kde-format
+msgid "This place seems to be empty"
+msgstr "Похоже, здесь пусто"
+
+#: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221 src/code/fmlist.cpp:755
+#: src/controls.6/FileDialog.qml:252
+#, kde-format
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/code/fmlist.cpp:83 src/code/fmlist.cpp:221
+#, kde-format
+msgid "This URL cannot be listed"
+msgstr "Не удалось получить список содержимого по этому адресу"
+
+#: src/code/fmlist.cpp:355
+#, kde-format
+msgid "Loading content"
+msgstr "Загружается содержимое"
+
+#: src/code/fmlist.cpp:355
+#, kde-format
+msgid "Almost ready!"
+msgstr "Почти готово"
+
+#: src/code/fmlist.cpp:755
+#, kde-format
+msgid "No path to perform the search"
+msgstr "Не указан путь для поиска"
+
+#: src/code/fmstatic.cpp:33
+#, kde-format
+msgid "Places"
+msgstr "Точки входа"
+
+#: src/code/fmstatic.cpp:34
+#, kde-format
+msgid "Bookmarks"
+msgstr "Закладки"
+
+#: src/code/fmstatic.cpp:35 src/code/fmstatic.cpp:45
+#, kde-format
+msgid "Drives"
+msgstr "Диски"
+
+#: src/code/fmstatic.cpp:36
+#, kde-format
+msgid "Apps"
+msgstr "Приложения"
+
+#: src/code/fmstatic.cpp:37 src/code/fmstatic.cpp:44
+#, kde-format
+msgid "Remote"
+msgstr "Удалённые"
+
+#: src/code/fmstatic.cpp:38
+#, kde-format
+msgid "Removable"
+msgstr "Сменные носители"
+
+#: src/code/fmstatic.cpp:39
+#, kde-format
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:482
+#, kde-format
+msgid "Trash"
+msgstr "Корзина"
+
+#: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
+#, kde-format
+msgid "Tags"
+msgstr "Метки"
+
+#: src/code/fmstatic.cpp:42
+#, kde-format
+msgid "Search"
+msgstr "Поиск"
+
+#: src/code/fmstatic.cpp:43
+#, kde-format
+msgid "Cloud"
+msgstr "Облако"
+
+#: src/code/fmstatic.cpp:46
+#, kde-format
+msgid "Others"
+msgstr "Другое"
+
+#: src/code/fmstatic.cpp:47
+#, kde-format
+msgid "Quick"
+msgstr "Быстрый доступ"
+
+#: src/code/placeslist.cpp:113
+#, kde-format
+msgid "Favorite"
+msgstr "Избранное"
+
+#: src/code/syncing.cpp:207
+#, kde-format
+msgid ""
+"The remote server requires authentication to serve the content but the "
+"credentials provided were not accepted (if any)"
+msgstr ""
+"Удалённый сервер требует проверки подлинности для предоставления "
+"содержимого, однако указанные учётные данные (если они были) не приняты"
+
+#: src/code/syncing.cpp:211
+#, kde-format
+msgid ""
+"the remote server refused the connection (the server is not accepting "
+"requests"
+msgstr "Удалённый сервер отклонил подключение (сервер не принимает запросы"
+
+#: src/code/syncing.cpp:215
+#, kde-format
+msgid ""
+"the remote server closed the connection prematurely, before the entire reply "
+"was received and processed"
+msgstr ""
+"Удалённый сервер преждевременно закрыл подключение до получения и обработки "
+"всего ответа"
+
+#: src/code/syncing.cpp:219
+#, kde-format
+msgid "the remote host name was not found (invalid hostname)"
+msgstr "Не удалось найти имя удалённого узла (неверное имя узла)"
+
+#: src/code/syncing.cpp:223
+#, kde-format
+msgid "the connection to the remote server timed out"
+msgstr "Истекло время ожидания подключения к удалённому серверу"
+
+#: src/code/syncing.cpp:227
+#, kde-format
+msgid ""
+"the operation was canceled via calls to abort() or close() before it was "
+"finished."
+msgstr "Операция была отменена вызовами abort() или close() до её завершения."
+
+#: src/code/syncing.cpp:231
+#, kde-format
+msgid ""
+"the SSL/TLS handshake failed and the encrypted channel could not be "
+"established. The sslErrors() signal should have been emitted."
+msgstr ""
+"Не удалось выполнить согласование SSL/TLS, зашифрованный канал не "
+"установлен. Должен был быть отправлен сигнал sslErrors()."
+
+#: src/code/syncing.cpp:236
+#, kde-format
+msgid ""
+"the connection was broken due to disconnection from the network, however the "
+"system has initiated roaming to another access point. The request should be "
+"resubmitted and will be processed as soon as the connection is re-"
+"established."
+msgstr ""
+"Подключение прервано из-за отключения от сети, однако система инициировала "
+"переход к другой точке доступа. Запрос следует отправить повторно — он будет "
+"обработан, как только подключение будет восстановлено."
+
+#: src/code/syncing.cpp:240
+#, kde-format
+msgid ""
+"the connection was broken due to disconnection from the network or failure "
+"to start the network."
+msgstr "Подключение разорвано из-за отключения от сети или сбоя запуска сети."
+
+#: src/code/syncing.cpp:244
+#, kde-format
+msgid "the background request is not currently allowed due to platform policy."
+msgstr "Фоновый запрос сейчас не разрешён из-за политики платформы."
+
+#: src/code/syncing.cpp:248
+#, kde-format
+msgid ""
+"while following redirects, the maximum limit was reached. The limit is by "
+"default set to 50 or as set by QNetworkRequest::setMaxRedirectsAllowed(). "
+"(This value was introduced in 5.6.)"
+msgstr ""
+"При переходе по перенаправлениям достигнут максимальный предел. По умолчанию "
+"предел равен 50 или задаётся вызовом QNetworkRequest::"
+"setMaxRedirectsAllowed(). (Это значение появилось в версии 5.6.)"
+
+#: src/code/syncing.cpp:252
+#, kde-format
+msgid ""
+"while following redirects, the network access API detected a redirect from a "
+"encrypted protocol (https) to an unencrypted one (http)."
+msgstr ""
+"При переходе по перенаправлениям API сетевого доступа обнаружил "
+"перенаправление с зашифрованного протокола (https) на незашифрованный (http)."
+
+#: src/code/syncing.cpp:256
+#, kde-format
+msgid ""
+"the connection to the proxy server was refused (the proxy server is not "
+"accepting requests)"
+msgstr ""
+"Прокси-сервер отклонил подключение (прокси-сервер не принимает запросы)"
+
+#: src/code/syncing.cpp:260
+#, kde-format
+msgid ""
+"the proxy server closed the connection prematurely, before the entire reply "
+"was received and processed"
+msgstr ""
+"Прокси-сервер преждевременно закрыл подключение до получения и обработки "
+"всего ответа"
+
+#: src/code/syncing.cpp:264
+#, kde-format
+msgid "the proxy host name was not found (invalid proxy hostname)"
+msgstr "Не удалось найти имя узла прокси (неверное имя узла прокси)"
+
+#: src/code/syncing.cpp:268
+#, kde-format
+msgid ""
+"the connection to the proxy timed out or the proxy did not reply in time to "
+"the request sent"
+msgstr ""
+"Истекло время ожидания подключения к прокси-серверу или прокси-сервер не "
+"ответил вовремя на отправленный запрос"
+
+#: src/code/syncing.cpp:272
+#, kde-format
+msgid ""
+"the proxy requires authentication in order to honour the request but did not "
+"accept any credentials offered (if any)"
+msgstr ""
+"Прокси-сервер требует проверки подлинности для выполнения запроса, однако "
+"указанные учётные данные (если они были) не приняты"
+
+#: src/code/syncing.cpp:276
+#, kde-format
+msgid "the access to the remote content was denied (similar to HTTP error 403)"
+msgstr "Доступ к удалённому содержимому запрещён (аналогично ошибке HTTP 403)"
+
+#: src/code/syncing.cpp:280
+#, kde-format
+msgid "the operation requested on the remote content is not permitted"
+msgstr "Запрошенная операция над удалённым содержимым не разрешена"
+
+#: src/code/syncing.cpp:284
+#, kde-format
+msgid ""
+"the remote content was not found at the server (similar to HTTP error 404)"
+msgstr ""
+"Не удалось найти удалённое содержимое на сервере (аналогично ошибке HTTP 404)"
+
+#: src/code/syncing.cpp:288
+#, kde-format
+msgid ""
+"the request needed to be sent again, but this failed for example because the "
+"upload data could not be read a second time."
+msgstr ""
+"Запрос требовалось отправить повторно, но это не удалось — например, потому "
+"что данные для выгрузки не удалось прочитать во второй раз."
+
+#: src/code/syncing.cpp:292
+#, kde-format
+msgid "the server is unable to handle the request at this time."
+msgstr "Сервер не может обработать запрос в настоящее время."
+
+#: src/code/syncing.cpp:296
+#, kde-format
+msgid ""
+"There was an unknown error with the remote server or your internet "
+"connection."
+msgstr ""
+"Произошла неизвестная ошибка, связанная с удалённым сервером или "
+"подключением к Интернету."
+
+#: src/controls.6/FileBrowser.qml:345
+#, kde-format
+msgid "Back"
+msgstr "Назад"
+
+#: src/controls.6/FileBrowser.qml:358
+#, kde-format
+msgid "Filter"
+msgstr "Фильтр"
+
+#: src/controls.6/FileBrowser.qml:427
+#, kde-format
+msgid "Empty Trash"
+msgstr "Очистить корзину"
+
+#: src/controls.6/FileBrowser.qml:438
+#, kde-format
+msgid "Quit"
+msgstr "Выход"
+
+#: src/controls.6/FileBrowser.qml:439
+#, kde-format
+msgid "Are you sure you want to quit the current search in progress?"
+msgstr "Прервать текущий поиск?"
+
+#: src/controls.6/FileBrowser.qml:460
+#, kde-format
+msgid "Removing %1 files"
+msgstr "Удаление файлов: %1"
+
+#: src/controls.6/FileBrowser.qml:461
+#, kde-format
+msgid ""
+"Delete %1  \n"
+"Total freed space %2"
+msgstr ""
+"Удалить %1  \n"
+"Будет освобождено: %2"
+
+#: src/controls.6/FileBrowser.qml:466 src/controls.6/FileBrowser.qml:891
+#: src/controls.6/FileDialog.qml:205 src/controls.6/OpenWithDialog.qml:79
+#: src/controls.6/private/BrowserView.qml:369 src/controls.6/TagsDialog.qml:102
+#, kde-format
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/controls.6/FileBrowser.qml:472 src/controls.6/TagsDialog.qml:165
+#, kde-format
+msgid "Delete"
+msgstr "Удалить"
+
+#. i18nd("mauikitfilebrowsing", "New folder") : i18nd("mauikitfilebrowsing", "New file")
+#: src/controls.6/FileBrowser.qml:515
+#, kde-format
+msgid "Create a new folder or a file with a custom name."
+msgstr "Создаёт новую папку или файл с заданным именем."
+
+#: src/controls.6/FileBrowser.qml:534 src/controls.6/FileDialog.qml:447
+#, kde-format
+msgid "Name"
+msgstr "Имя"
+
+#: src/controls.6/FileBrowser.qml:547
+#, kde-format
+msgid "Folder"
+msgstr "Папка"
+
+#: src/controls.6/FileBrowser.qml:555
+#, kde-format
+msgid "File"
+msgstr "Файл"
+
+#. i18nd("mauikitfilebrowsing", "Rename")
+#: src/controls.6/FileBrowser.qml:573
+#, kde-format
+msgid "Enter the new name for the file."
+msgstr "Укажите новое имя файла."
+
+#: src/controls.6/FileBrowser.qml:579
+#, kde-format
+msgid "New name"
+msgstr "Новое имя"
+
+#: src/controls.6/FileBrowser.qml:839
+#: src/controls.6/private/BrowserView.qml:331
+#, kde-format
+msgid "Copy Here"
+msgstr "Копировать сюда"
+
+#: src/controls.6/FileBrowser.qml:852
+#: src/controls.6/private/BrowserView.qml:343
+#, kde-format
+msgid "Move Here"
+msgstr "Переместить сюда"
+
+#: src/controls.6/FileBrowser.qml:865
+#: src/controls.6/private/BrowserView.qml:355
+#, kde-format
+msgid "Link Here"
+msgstr "Создать ссылку здесь"
+
+#: src/controls.6/FileBrowser.qml:878
+#, kde-format
+msgid "Open Here"
+msgstr "Открыть здесь"
+
+#: src/controls.6/FileBrowser.qml:1288
+#, kde-format
+msgid "Search: %1"
+msgstr "Поиск: %1"
+
+#: src/controls.6/FileDialog.qml:211 src/controls.6/TagsDialog.qml:96
+#, kde-format
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/controls.6/FileDialog.qml:211
+#, kde-format
+msgid "Open"
+msgstr "Открыть"
+
+#: src/controls.6/FileDialog.qml:242
+#, kde-format
+msgid "File name..."
+msgstr "Имя файла…"
+
+#: src/controls.6/FileDialog.qml:253
+#, kde-format
+msgid ""
+"A file named '%1' already exists!\n"
+" This action will overwrite '%1'. Are you sure you want to do this?"
+msgstr ""
+"Файл с именем «%1» уже существует.\n"
+" Это действие перезапишет «%1». Продолжить?"
+
+#: src/controls.6/FileDialog.qml:312
+#, kde-format
+msgid "Toogle SideBar"
+msgstr "Показать или скрыть боковую панель"
+
+#: src/controls.6/FileDialog.qml:354
+#, kde-format
+msgid "View type"
+msgstr "Режим просмотра"
+
+#: src/controls.6/FileDialog.qml:359
+#, kde-format
+msgid "List"
+msgstr "Список"
+
+#: src/controls.6/FileDialog.qml:374
+#, kde-format
+msgid "Grid"
+msgstr "Сетка"
+
+#: src/controls.6/FileDialog.qml:394
+#, kde-format
+msgid "Sort by"
+msgstr "Сортировать по"
+
+#: src/controls.6/FileDialog.qml:399
+#, kde-format
+msgid "Type"
+msgstr "Тип"
+
+#: src/controls.6/FileDialog.qml:411
+#, kde-format
+msgid "Date"
+msgstr "Дата"
+
+#: src/controls.6/FileDialog.qml:423
+#, kde-format
+msgid "Modified"
+msgstr "Дата изменения"
+
+#: src/controls.6/FileDialog.qml:435
+#, kde-format
+msgid "Size"
+msgstr "Размер"
+
+#: src/controls.6/FileDialog.qml:461
+#, kde-format
+msgid "Show Folders First"
+msgstr "Показывать папки первыми"
+
+#: src/controls.6/FileDialog.qml:474
+#, kde-format
+msgid "Group"
+msgstr "Группировать"
+
+#: src/controls.6/NewTagDialog.qml:56 src/controls.6/NewTagDialog.qml:59
+#, kde-format
+msgid "New tags"
+msgstr "Новые метки"
+
+#: src/controls.6/NewTagDialog.qml:57
+#, kde-format
+msgid ""
+"Create new tags to organize your files. You can create multiple tags "
+"separated by a comma."
+msgstr ""
+"Создавайте метки для упорядочивания файлов. Несколько меток можно указать "
+"через запятую."
+
+#: src/controls.6/OpenWithDialog.qml:74
+#, kde-format
+msgid "Open with"
+msgstr "Открыть с помощью"
+
+#: src/controls.6/OpenWithDialog.qml:108 src/controls.6/TagsDialog.qml:216
+#, kde-format
+msgid "1 item"
+msgid_plural "%1 items"
+msgstr[0] "%1 элемент"
+msgstr[1] "%1 элемента"
+msgstr[2] "%1 элементов"
+msgstr[3] "1 элемент"
+
+#: src/controls.6/PlacesListBrowser.qml:117 src/controls.6/TagsDialog.qml:159
+#, kde-format
+msgid "Edit"
+msgstr "Изменить"
+
+#: src/controls.6/PlacesListBrowser.qml:122
+#, kde-format
+msgid "Hide"
+msgstr "Скрыть"
+
+#: src/controls.6/PlacesListBrowser.qml:127
+#, kde-format
+msgid "Remove"
+msgstr "Удалить"
+
+#: src/controls.6/private/BrowserView.qml:296
+#, kde-format
+msgid "Directory already exists."
+msgstr "Папка уже существует."
+
+#: src/controls.6/private/BrowserView.qml:299
+#, kde-format
+msgid "Looks good."
+msgstr "Подходит."
+
+#: src/controls.6/private/BrowserView.qml:303
+#, kde-format
+msgid "Merge %1 files"
+msgstr "Объединение файлов: %1"
+
+#: src/controls.6/private/BrowserView.qml:304
+#, kde-format
+msgid "Give a name to the new directory where all files will be merge."
+msgstr "Укажите имя новой папки, в которую будут объединены все файлы."
+
+#: src/controls.6/private/BrowserView.qml:306
+#, kde-format
+msgid "Directory name"
+msgstr "Имя папки"
+
+#: src/controls.6/private/BrowserView.qml:316
+#, kde-format
+msgid "Merge Here"
+msgstr "Объединить здесь"
+
+#: src/controls.6/private/BrowserView.qml:395
+#: src/controls.6/private/BrowserView.qml:565
+#, kde-format
+msgid " items"
+msgstr " элем."
+
+#: src/controls.6/private/TagList.qml:32
+#, kde-format
+msgid "Add tags..."
+msgstr "Добавить метки…"
+
+#: src/controls.6/TagsDialog.qml:114
+#, kde-format
+msgid "Filter or add a new tag"
+msgstr "Отфильтровать или добавить новую метку"
+
+#: src/controls.6/TagsDialog.qml:141
+#, kde-format
+msgid "Delete %1"
+msgstr "Удалить %1"
+
+#: src/controls.6/TagsDialog.qml:142
+#, kde-format
+msgid ""
+"Are you sure you want to delete this tag? This action can not be undone."
+msgstr "Удалить эту метку? Это действие нельзя отменить."
+
+#: src/controls.6/TagsDialog.qml:188
+#, kde-format
+msgid "No Tags!"
+msgstr "Меток нет"
+
+#: src/controls.6/TagsDialog.qml:189
+#, kde-format
+msgid "Create new tags to organize your files."
+msgstr "Создавайте метки для упорядочивания файлов."
+
+#: src/controls.6/TagsDialog.qml:291
+#, kde-format
+msgid "No tags yet."
+msgstr "Пока нет меток."
