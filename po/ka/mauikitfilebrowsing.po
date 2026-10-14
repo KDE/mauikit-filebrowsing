@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mauikit-filebrowsing\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:51+0000\n"
-"PO-Revision-Date: 2025-04-19 04:06+0200\n"
+"PO-Revision-Date: 2026-10-13 14:51+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 #: src/code/fmlist.cpp:52 src/code/fmlist.cpp:94 src/code/fmlist.cpp:161
 #, kde-format
@@ -92,7 +92,7 @@ msgstr "უცნობი"
 #: src/code/fmstatic.cpp:40 src/controls.6/FileBrowser.qml:482
 #, kde-format
 msgid "Trash"
-msgstr "ნაგავი"
+msgstr "ნაგვის ყუთი"
 
 #: src/code/fmstatic.cpp:41 src/code/placeslist.cpp:119
 #, kde-format
@@ -310,7 +310,7 @@ msgstr "ფილტრი"
 #: src/controls.6/FileBrowser.qml:427
 #, kde-format
 msgid "Empty Trash"
-msgstr "ნაგვის დაცარიელება"
+msgstr "ნაგვის ყუთის დაცარიელება"
 
 #: src/controls.6/FileBrowser.qml:438
 #, kde-format
